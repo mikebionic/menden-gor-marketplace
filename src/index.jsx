@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './Components/App/App.jsx'
 import './tailwind.css'
 
+const App = lazy(() => import('./Components/App/App.jsx'));
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Suspense fallback={<p>Loading...</p>}>
     <App />
-  </React.StrictMode>,
+  </Suspense>,
   document.getElementById('root')
 );
