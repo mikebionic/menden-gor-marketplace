@@ -1,12 +1,11 @@
 import React from 'react'
 
-import './ErrorIndicator.css'
 import {ReactComponent as  ErrorImage} from './alert-octagon.svg'
 
 const ErrorIndicator = () => {
   return (
-    <div className="ErrorIndicator">
-      <ErrorImage />
+    <div className="ErrorIndicator w-full flex flex-col items-center m-auto text-purple-900">
+      <ErrorImage className="mt-4 mb-2" />
       <span>
         Something went wrong!
       </span>
