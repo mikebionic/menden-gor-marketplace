@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Shimmer = () => {
+
+const Shimmer: React.FC = () => {
   return (
     <section className="text-gray-700 body-font">
       <div className="container px-5 py-24 mx-auto">

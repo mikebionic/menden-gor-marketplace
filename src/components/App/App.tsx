@@ -1,10 +1,10 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import './i18next.js'
+import './i18next.ts'
 
 import {Shimmer, Spinner} from '../loaders'
 
-const App = () => {
+const App: React.FC = () => {
   const {t} = useTranslation()
 
   return (

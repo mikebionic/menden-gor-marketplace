@@ -25,3 +25,4 @@ yarn-error.log*
 yarn.lock
 /dist
 package-lock.json
+react-app-env.d.ts

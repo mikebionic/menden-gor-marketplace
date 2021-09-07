@@ -1,10 +1,10 @@
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 
-import Spinner from './components/loaders/Spinner/Spinner.jsx'
+import {Spinner} from './components/loaders'
 import './tailwind.css'
 
-const App = lazy(() => import('./components/App/App.jsx'));
+const App = lazy(() => import('./components/App'));
 
 ReactDOM.render(
   <Suspense fallback={<Spinner />}>
