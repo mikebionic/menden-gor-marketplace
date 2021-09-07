@@ -1,8 +1,8 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import './i18next.js'
 
-import Shimmer from '../Loaders/Shimmer/Shimmer.jsx'
-import Spinner from '../Loaders/Spinner/Spinner.jsx'
+import {Shimmer, Spinner} from '../loaders'
 
 const App = () => {
   const {t} = useTranslation()
