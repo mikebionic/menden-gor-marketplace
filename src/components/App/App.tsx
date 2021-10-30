@@ -1,19 +1,32 @@
-import React from 'react'
-import { useTranslation } from 'react-i18next'
-import './i18next.ts'
+import React, { useEffect } from 'react';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import 'i18n';
 
-import {Shimmer, Spinner} from '../loaders'
+import { ErrorBoundary } from 'modules/errors';
+import { AppRoutes } from 'navigation';
+
+import { history} from 'sapredux/helpers';
+import { alertActions } from 'sapredux/actions';
 
 const App: React.FC = () => {
-  const {t} = useTranslation()
+  const alert = useSelector((state: RootStateOrAny) => state.alert);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    history.listen((location:any) => {
+      dispatch(alertActions.clear())});
+  }, [dispatch]);
 
   return (
-    <div className="container mx-auto mt-3 font-thin">
-      <h1 className="text-5xl text-red-900">{t('test.mendengor')}</h1>
-      <Spinner />
-      <Shimmer />
-    </div>
-  )
-}
+    <ErrorBoundary>
+      {alert.message && (
+        <div className={`alert ${alert.type}`}>{alert.message}</div>
+      )}
+      <div className={`App`}>
+        <AppRoutes />
+      </div>
+    </ErrorBoundary>
+  );
+};
 
 export default App

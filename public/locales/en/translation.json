@@ -1,5 +1,20 @@
 {
-  "test": {
-		"mendengor": "See from us Marketplace"
-  }
+	"common": {
+		"admin": "Admin",
+		"dashboard": "Dashboard",
+		"categories": "Categories",
+		"users": "Users",
+		"orders": "Orders",
+		"products": "Products",
+		"settings": "Settings",
+		"pictures": "Pictures",
+		"status": "Status",
+		"login": "Login",
+		"logout": "Logout"
+	},
+	"auth": {
+		"username": "Username",
+		"password": "Password",
+		"login": "Login"
+	}
 }

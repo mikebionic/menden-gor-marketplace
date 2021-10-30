@@ -1,5 +1,20 @@
 {
-  "test": {
-		"mendengor": "Menden-gor Marketplace"
-  }
+	"common": {
+		"admin": "Admin",
+		"dashboard": "Dolandyryş paneli",
+		"categories": "Kategoriýalar",
+		"users": "Ulanyjylar",
+		"orders": "Sargytlar",
+		"products": "Harytlar",
+		"settings": "Sazlama",
+		"pictures": "Suratlar",
+		"status": "Ýagdaý",
+		"login": "Giriş",
+		"logout": "Çykyş"
+	},
+	"auth": {
+		"username": "Ulanyjy ady",
+		"password": "Açar söz",
+		"login": "Giriş"
+	}
 }

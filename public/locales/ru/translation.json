@@ -1,5 +1,20 @@
 {
-  "test": {
-		"mendengor": "Смотри на меня Marketplace"
-  }
+	"common": {
+		"admin": "Админ",
+		"dashboard": "Панель управления",
+		"categories": "Категории",
+		"users": "Пользватели",
+		"orders": "Заказы",
+		"products": "Продукты",
+		"settings": "Настройки",
+		"pictures": "Избражения",
+		"status": "Статус",
+		"login": "Войти",
+		"logout": "Выйти"
+	},
+	"auth": {
+		"username": "Пользователь",
+		"password": "Пароль",
+		"login": "Войти"
+	}
 }
