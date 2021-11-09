@@ -4,6 +4,7 @@ import 'i18n';
 
 import { ErrorBoundary } from 'modules/errors';
 import { AppRoutes } from 'navigation';
+import { Navbar } from 'components/Navbar'
 
 import { history} from 'sapredux/helpers';
 import { alertActions } from 'sapredux/actions';
@@ -18,14 +19,17 @@ const App: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <ErrorBoundary>
-      {alert.message && (
-        <div className={`alert ${alert.type}`}>{alert.message}</div>
-      )}
-      <div className={`App`}>
-        <AppRoutes />
-      </div>
-    </ErrorBoundary>
+    <>
+      <Navbar />
+      <ErrorBoundary>
+        {alert.message && (
+          <div className={`alert ${alert.type}`}>{alert.message}</div>
+        )}
+        <div className={`App`}>
+          <AppRoutes />
+        </div>
+      </ErrorBoundary>
+    </>
   );
 };
 

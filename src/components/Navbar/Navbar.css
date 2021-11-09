@@ -1,9 +1,0 @@
-@media screen and (max-width: 560px) {
-  .NavbarToggle {
-    padding-left: 0;
-  }
-
-  .NavbarPadding {
-    padding-left: calc(var(--navbar-width) + 7.5rem);
-  }
-}
