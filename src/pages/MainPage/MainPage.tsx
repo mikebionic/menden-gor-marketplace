@@ -2,23 +2,20 @@ import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { fetchCategories, fetchResources } from 'sapredux/actions';
-import { getCategories, getResources } from 'sapredux/selectors';
+import { fetchResources } from 'sapredux/actions';
+import { getResources } from 'sapredux/selectors';
 
 import { ErrorBoundary } from 'modules/errors';
 import { ProductCard } from 'components/ProductCard'
 
 const MainPage: React.FC = (props: any) => {
   const {
-    fetchCategories,
-    categories,
     fetchResources,
     resources
   } = props;
   useEffect(() => {
-    fetchCategories();
     fetchResources();
-  }, [fetchCategories, fetchResources]);
+  }, [fetchResources]);
 
   return (
     <ErrorBoundary>
@@ -41,12 +38,10 @@ const MainPage: React.FC = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  categories: getCategories(state),
   resources: getResources(state),
 });
 
 const mapDispatchToProps = {
-  fetchCategories,
   fetchResources
 };
 

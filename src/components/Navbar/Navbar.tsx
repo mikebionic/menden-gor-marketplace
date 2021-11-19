@@ -129,7 +129,9 @@ const classNames = (...classes: any) => {
   return classes.filter(Boolean).join(' ')
 }
 
-export const Navbar = () => {
+export const Navbar = (props: any) => {
+  const categories = props.categories
+
   const [open, setOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
 

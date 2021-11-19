@@ -9,7 +9,21 @@ import { Navbar } from 'components/Navbar'
 import { history} from 'sapredux/helpers';
 import { alertActions } from 'sapredux/actions';
 
-const App: React.FC = () => {
+import { connect } from 'react-redux';
+
+import { fetchCategories } from 'sapredux/actions';
+import { getCategories } from 'sapredux/selectors';
+
+const App: React.FC = (props: any) => {
+  const {
+    fetchCategories,
+    categories,
+  } = props;
+
+  useEffect(() => {
+    fetchCategories();
+  }, [fetchCategories]);
+
   const alert = useSelector((state: RootStateOrAny) => state.alert);
   const dispatch = useDispatch();
 
@@ -20,7 +34,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar categories={categories} />
       <ErrorBoundary>
         {alert.message && (
           <div className={`alert ${alert.type}`}>{alert.message}</div>
@@ -33,4 +47,16 @@ const App: React.FC = () => {
   );
 };
 
-export default App
+
+const mapStateToProps = (state: any) => ({
+  categories: getCategories(state),
+});
+
+const mapDispatchToProps = {
+  fetchCategories,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
