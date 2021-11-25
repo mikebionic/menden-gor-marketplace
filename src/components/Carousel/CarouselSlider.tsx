@@ -13,6 +13,8 @@ export const CarouselSlider: React.FC = () => {
         autoplay: true,
         pauseOnHover: true,
         resetProgress: false,
+        lazyLoad: true,
+        speed: 1500,
         arrows: 'slider',
         height: '25rem',
       }}

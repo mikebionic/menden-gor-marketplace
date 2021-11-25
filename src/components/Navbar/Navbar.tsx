@@ -10,6 +10,16 @@ import {
 import { Cart } from 'components/Cart';
 import { ErrorBoundary } from 'modules/errors';
 
+const mobileResponsive = {
+  mobileView: 'fixed bottom-0 z-100 w-full bg-white',
+  desktopView: 'fixed z-100 min-w-screen bg-white',
+};
+
+const classes =
+  window.innerWidth < 768
+    ? mobileResponsive.mobileView
+    : mobileResponsive.desktopView;
+
 const navigation = {
   categories: [
     {
@@ -322,7 +332,7 @@ export const Navbar = (props: any) => {
 
           <nav
             aria-label="Top"
-            className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8"
+            className={`px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ${classes}`}
           >
             <div className="border-b border-gray-200">
               <div className="flex items-center h-16">
