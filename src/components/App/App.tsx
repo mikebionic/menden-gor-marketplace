@@ -4,9 +4,9 @@ import 'i18n';
 
 import { ErrorBoundary } from 'modules/errors';
 import { AppRoutes } from 'navigation';
-import { Navbar } from 'components/Navbar'
+import { Navbar } from 'components/Navbar';
 
-import { history} from 'sapredux/helpers';
+import { history } from 'sapredux/helpers';
 import { alertActions } from 'sapredux/actions';
 
 import { connect } from 'react-redux';
@@ -15,10 +15,7 @@ import { fetchCategories } from 'sapredux/actions';
 import { getCategories } from 'sapredux/selectors';
 
 const App: React.FC = (props: any) => {
-  const {
-    fetchCategories,
-    categories,
-  } = props;
+  const { fetchCategories, categories } = props;
 
   useEffect(() => {
     fetchCategories();
@@ -28,8 +25,9 @@ const App: React.FC = (props: any) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    history.listen((location:any) => {
-      dispatch(alertActions.clear())});
+    history.listen((location: any) => {
+      dispatch(alertActions.clear());
+    });
   }, [dispatch]);
 
   return (
@@ -47,7 +45,6 @@ const App: React.FC = (props: any) => {
   );
 };
 
-
 const mapStateToProps = (state: any) => ({
   categories: getCategories(state),
 });
@@ -56,7 +53,4 @@ const mapDispatchToProps = {
   fetchCategories,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

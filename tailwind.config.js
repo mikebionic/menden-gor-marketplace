@@ -152,7 +152,10 @@ module.exports = {
         'sidebarSticky': '2vw auto'
       },
       height: {
-        sidebar: '95%'
+        sidebar: '95%',
+      },
+      padding: {
+        'carousel': '0 0 56.23% 0'
       }
     },
   },
