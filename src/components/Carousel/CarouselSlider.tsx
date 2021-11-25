@@ -1,13 +1,9 @@
 import React from 'react';
 
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-// import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 import '@splidejs/splide/dist/css/splide.min.css';
-// import noimage from 'common/images/noimage.png';
 
-// const classes = [{ 'absolute h-full w-full'}]
-
-export const CarouselSlider = () => {
+export const CarouselSlider: React.FC = () => {
   return (
     <Splide
       className="mb-8"
