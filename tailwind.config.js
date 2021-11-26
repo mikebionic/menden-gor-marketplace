@@ -154,7 +154,8 @@ module.exports = {
       'glass': '20px'
     },
     zIndex: {
-      '100': '100'
+      '100': '100',
+      '1': '1'
     },
     extend: {
       gridTemplateColumns: {

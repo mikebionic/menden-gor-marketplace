@@ -3,10 +3,20 @@ import React from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
+const carouselSlide = {
+  mobileView: 'mt-2',
+  desktopView: 'mt-16',
+};
+
+const classes =
+  window.innerWidth < 768
+    ? carouselSlide.mobileView
+    : carouselSlide.desktopView;
+
 export const CarouselSlider: React.FC = () => {
   return (
     <Splide
-      className="mb-8"
+      className={`mb-8 ${classes}`}
       options={{
         type: 'loop',
         gap: '1rem',
@@ -14,7 +24,7 @@ export const CarouselSlider: React.FC = () => {
         pauseOnHover: true,
         resetProgress: false,
         lazyLoad: true,
-        speed: 1500,
+        speed: 4000,
         arrows: 'slider',
         height: '25rem',
       }}

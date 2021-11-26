@@ -9,6 +9,7 @@ import {
 
 import { Cart } from 'components/Cart';
 import { ErrorBoundary } from 'modules/errors';
+import { navigation } from './NavbarLinks';
 
 const mobileResponsive = {
   mobileView: 'fixed bottom-0 z-100 w-full bg-white',
@@ -19,129 +20,6 @@ const classes =
   window.innerWidth < 768
     ? mobileResponsive.mobileView
     : mobileResponsive.desktopView;
-
-const navigation = {
-  categories: [
-    {
-      id: 'women',
-      name: 'Women',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc: '',
-          imageAlt:
-            'Models sitting back to back, wearing Basic Tee in black and bone.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc: '',
-          imageAlt:
-            'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-        },
-      ],
-      sections: [
-        {
-          id: 'clothing',
-          name: 'Clothing',
-          items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Significant Other', href: '#' },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'men',
-      name: 'Men',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc: '',
-          imageAlt:
-            'Drawstring top with elastic loop closure and textured interior padding.',
-        },
-        {
-          name: 'Artwork Tees',
-          href: '#',
-          imageSrc: '',
-          imageAlt:
-            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
-        },
-      ],
-      sections: [
-        {
-          id: 'clothing',
-          name: 'Clothing',
-          items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-          ],
-        },
-      ],
-    },
-  ],
-  pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
-  ],
-};
 
 const classNames = (...classes: any) => {
   return classes.filter(Boolean).join(' ');
@@ -160,7 +38,7 @@ export const Navbar = (props: any) => {
         <Transition.Root show={open} as={Fragment}>
           <Dialog
             as="div"
-            className="fixed inset-0 z-40 flex lg:hidden"
+            className="fixed inset-0 z-40 flex lg:hidden z-1"
             onClose={setOpen}
           >
             <Transition.Child
@@ -223,35 +101,6 @@ export const Navbar = (props: any) => {
                         key={category.name}
                         className="px-4 pt-10 pb-8 space-y-10"
                       >
-                        <div className="grid grid-cols-2 gap-x-4">
-                          {category.featured.map((item) => (
-                            <div
-                              key={item.name}
-                              className="relative text-sm group"
-                            >
-                              <div className="overflow-hidden bg-gray-100 rounded-lg aspect-w-1 aspect-h-1 group-hover:opacity-75">
-                                <img
-                                  src={item.imageSrc}
-                                  alt={item.imageAlt}
-                                  className="object-cover object-center"
-                                />
-                              </div>
-                              <a
-                                href={item.href}
-                                className="block mt-6 font-medium text-gray-900"
-                              >
-                                <span
-                                  className="absolute inset-0 z-10"
-                                  aria-hidden="true"
-                                />
-                                {item.name}
-                              </a>
-                              <p aria-hidden="true" className="mt-1">
-                                Shop now
-                              </p>
-                            </div>
-                          ))}
-                        </div>
                         {category.sections.map((section) => (
                           <div key={section.name}>
                             <p
@@ -287,7 +136,7 @@ export const Navbar = (props: any) => {
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
                       <a
-                        href={page.href}
+                        href={page.route}
                         className="block p-2 -m-2 font-medium text-gray-900"
                       >
                         {page.name}
@@ -297,30 +146,16 @@ export const Navbar = (props: any) => {
                 </div>
 
                 <div className="px-4 py-6 space-y-6 border-t border-gray-200">
-                  <div className="flow-root">
-                    <a className="block p-2 -m-2 font-medium text-gray-900">
-                      Sign in
-                    </a>
-                  </div>
-                  <div className="flow-root">
-                    <a className="block p-2 -m-2 font-medium text-gray-900">
-                      Create account
-                    </a>
-                  </div>
-                </div>
-
-                <div className="px-4 py-6 border-t border-gray-200">
-                  <a className="flex items-center p-2 -m-2">
-                    <img
-                      src=""
-                      alt=""
-                      className="flex-shrink-0 block w-5 h-auto"
-                    />
-                    <span className="block ml-3 text-base font-medium text-gray-900">
-                      CAD
-                    </span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
+                  {navigation.registration.map((registration) => (
+                    <div key={registration.name} className="flow-root">
+                      <a
+                        href={registration.route}
+                        className="block p-2 -m-2 font-medium text-gray-900"
+                      >
+                        {registration.name}
+                      </a>
+                    </div>
+                  ))}
                 </div>
               </div>
             </Transition.Child>
@@ -328,8 +163,6 @@ export const Navbar = (props: any) => {
         </Transition.Root>
 
         <header className="relative bg-white">
-          {/* z-index: 99; bottom: 0; position: fixed; width: 100%; */}
-
           <nav
             aria-label="Top"
             className={`px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ${classes}`}
@@ -356,6 +189,15 @@ export const Navbar = (props: any) => {
                 {/* Flyout menus */}
                 <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
                   <div className="flex h-full space-x-8">
+                    {navigation.pages.map((page) => (
+                      <a
+                        key={page.name}
+                        href={page.route}
+                        className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                      >
+                        {page.name}
+                      </a>
+                    ))}
                     {navigation.categories.map((category) => (
                       <Popover key={category.name} className="flex">
                         {({ open }) => (
@@ -389,41 +231,9 @@ export const Navbar = (props: any) => {
                                   aria-hidden="true"
                                 />
 
-                                <div className="relative bg-white">
+                                <div className="relative bg-white ">
                                   <div className="px-8 mx-auto max-w-7xl">
                                     <div className="grid grid-cols-2 py-16 gap-y-10 gap-x-8">
-                                      <div className="grid grid-cols-2 col-start-2 gap-x-8">
-                                        {category.featured.map((item) => (
-                                          <div
-                                            key={item.name}
-                                            className="relative text-base group sm:text-sm"
-                                          >
-                                            <div className="overflow-hidden bg-gray-100 rounded-lg aspect-w-1 aspect-h-1 group-hover:opacity-75">
-                                              <img
-                                                src={item.imageSrc}
-                                                alt={item.imageAlt}
-                                                className="object-cover object-center"
-                                              />
-                                            </div>
-                                            <a
-                                              href={item.href}
-                                              className="block mt-6 font-medium text-gray-900"
-                                            >
-                                              <span
-                                                className="absolute inset-0 z-10"
-                                                aria-hidden="true"
-                                              />
-                                              {item.name}
-                                            </a>
-                                            <p
-                                              aria-hidden="true"
-                                              className="mt-1"
-                                            >
-                                              Shop now
-                                            </p>
-                                          </div>
-                                        ))}
-                                      </div>
                                       <div className="grid grid-cols-3 row-start-1 text-sm gap-y-10 gap-x-8">
                                         {category.sections.map((section) => (
                                           <div key={section.name}>
@@ -464,42 +274,25 @@ export const Navbar = (props: any) => {
                         )}
                       </Popover>
                     ))}
-
-                    {navigation.pages.map((page) => (
-                      <a
-                        key={page.name}
-                        href={page.href}
-                        className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-                      >
-                        {page.name}
-                      </a>
-                    ))}
                   </div>
                 </Popover.Group>
 
-                <div className="flex items-center ml-auto">
+                <div className="flex items-center ml-auto cursor-pointer">
                   <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                    <a className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                      Sign in
-                    </a>
-                    <span className="w-px h-6 bg-gray-200" aria-hidden="true" />
-                    <a className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                      Create account
-                    </a>
-                  </div>
-
-                  <div className="hidden lg:ml-8 lg:flex">
-                    <a className="flex items-center text-gray-700 hover:text-gray-800">
-                      <img
-                        src=""
-                        alt=""
-                        className="flex-shrink-0 block w-5 h-auto"
-                      />
-                      <span className="block ml-3 text-sm font-medium">
-                        CAD
-                      </span>
-                      <span className="sr-only">, change currency</span>
-                    </a>
+                    {navigation.registration.map((registration) => (
+                      <>
+                        <a
+                          href={registration.route}
+                          className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                        >
+                          {registration.name}
+                        </a>
+                        <span
+                          className={registration.className}
+                          aria-hidden="true"
+                        />
+                      </>
+                    ))}
                   </div>
 
                   {/* Search */}
