@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { handleImageError, handleLoadingImage } from 'modules/errors';
+import Image from 'common/Image'
 
 export const ProductCard: React.FC = ({
   name,
@@ -12,11 +12,9 @@ export const ProductCard: React.FC = ({
   return (
     <div className="relative group">
       <div className="w-full overflow-hidden bg-gray-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none">
-        <img
+        <Image
           src={image}
           alt={`${name} - ${description}`}
-          onLoad={handleLoadingImage}
-          onError={handleImageError}
           className="object-cover object-center w-full h-full lg:w-full lg:h-full"
         />
       </div>
