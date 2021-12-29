@@ -1,7 +1,8 @@
 
 import { handleImageError, handleLoadingImage } from 'modules/errors'
 
-const ProductCard = ({name, description, priceValue, currencyCode, image}: any) => {
+const ProductCard = ({data, onAddedToCart}: any) => {
+  const { name, description, priceValue, currencyCode, image } = data
 	return (
 		<div className="group relative">
       <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
@@ -23,6 +24,11 @@ const ProductCard = ({name, description, priceValue, currencyCode, image}: any) 
         </div>
         <p className="text-sm font-medium text-gray-900">{priceValue} {currencyCode}</p>
       </div>
+      <button
+        onClick={onAddedToCart}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Add to cart
+      </button>
     </div>
 	)
 }

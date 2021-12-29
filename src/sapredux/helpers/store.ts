@@ -17,7 +17,8 @@ const middlewares = [
 	routerMiddleware(history),
 ]
 
-export const store = createStore(
+
+const store = createStore(
 	rootReducer(history),
 	composeWithDevTools(
 		applyMiddleware(
@@ -25,3 +26,13 @@ export const store = createStore(
 		)
 	)
 );
+
+const delayedActionCreator = (timeout:number) => (dispatch: any) => {
+	setTimeout(() => dispatch({
+		type: 'DELAYED_ACTION'
+	}), timeout);
+};
+
+store.dispatch(delayedActionCreator(3000));
+
+export { store }
