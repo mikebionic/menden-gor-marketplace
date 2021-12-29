@@ -9,6 +9,16 @@ module.exports = {
       'secondary': '#ffed4a',
       'danger': '#e3342f',
     }),
+    screens: {
+      'min-phone': '320px',
+      'max-phone': '550px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+      '3xl': '1850px'
+    },
     colors: {
       transparent: 'transparent',
       firstColor: '#10087cc6',
@@ -144,7 +154,8 @@ module.exports = {
       'glass': '20px'
     },
     zIndex: {
-      '100': '100'
+      '100': '100',
+      '1': '1'
     },
     extend: {
       gridTemplateColumns: {
@@ -152,7 +163,10 @@ module.exports = {
         'sidebarSticky': '2vw auto'
       },
       height: {
-        sidebar: '95%'
+        sidebar: '95%',
+      },
+      padding: {
+        'carousel': '0 0 56.23% 0'
       }
     },
   },

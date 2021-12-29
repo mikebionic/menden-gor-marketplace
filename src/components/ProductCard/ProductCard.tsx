@@ -1,28 +1,31 @@
+import React from 'react';
 
-import { handleImageError, handleLoadingImage } from 'modules/errors'
+import { Image } from 'common/Image'
 
-const ProductCard = ({data, onAddedToCart}: any) => {
+export const ProductCard = ({data, onAddedToCart}: any) => {
   const { name, description, priceValue, currencyCode, image } = data
-	return (
-		<div className="group relative">
-      <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-        <img src={image}
-					alt={`${name} - ${description}`}
-					onLoad={handleLoadingImage}
-					onError={handleImageError}
-					className="w-full h-full object-center object-cover lg:w-full lg:h-full" />
+  return (
+    <div className="relative group">
+      <div className="w-full overflow-hidden bg-gray-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none">
+        <Image
+          src={image}
+          alt={`${name} - ${description}`}
+          className="object-cover object-center w-full h-full lg:w-full lg:h-full"
+        />
       </div>
-      <div className="mt-4 flex justify-between">
+      <div className="flex justify-between mt-4">
         <div>
           <h3 className="text-sm text-gray-700">
-            <a>
+            <a href={window.location.href}>
               <span aria-hidden="true" className="absolute inset-0"></span>
               {name}
             </a>
           </h3>
           <p className="mt-1 text-sm text-gray-500">{description}</p>
         </div>
-        <p className="text-sm font-medium text-gray-900">{priceValue} {currencyCode}</p>
+        <p className="text-sm font-medium text-gray-900">
+          {priceValue} {currencyCode}
+        </p>
       </div>
       <button
         onClick={onAddedToCart}
@@ -30,7 +33,5 @@ const ProductCard = ({data, onAddedToCart}: any) => {
         Add to cart
       </button>
     </div>
-	)
-}
-
-export default ProductCard
+  );
+};

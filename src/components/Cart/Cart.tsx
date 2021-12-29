@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import { Fragment } from 'react'
 import { connect } from 'react-redux';
 import { Dialog, Transition } from '@headlessui/react'
+=======
+import { Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+>>>>>>> 51a7dd81cd0948184011bcf2ebfc9e7cf92d556b
 import { BsX } from 'react-icons/bs';
 
 import {
@@ -18,8 +23,9 @@ const products = [
     color: 'Salmon',
     price: '$90.00',
     quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+    imageSrc: '',
+    imageAlt:
+      'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
   },
   {
     id: 2,
@@ -28,18 +34,27 @@ const products = [
     color: 'Blue',
     price: '$32.00',
     quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+    imageSrc: '',
     imageAlt:
       'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
   },
   // More products...
+<<<<<<< HEAD
 ]
 
 export const Cart = ({open, setOpen, items, total, onIncrease, onDecrease, onDelete}: any) => {
+=======
+];
+>>>>>>> 51a7dd81cd0948184011bcf2ebfc9e7cf92d556b
 
+export const Cart = ({ open, setOpen }: any) => {
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="fixed inset-0 overflow-hidden" onClose={setOpen}>
+      <Dialog
+        as="div"
+        className="fixed inset-0 overflow-hidden"
+        onClose={setOpen}
+      >
         <div className="absolute inset-0 overflow-hidden">
           <Transition.Child
             as={Fragment}
@@ -50,10 +65,10 @@ export const Cart = ({open, setOpen, items, total, onIncrease, onDecrease, onDel
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <Dialog.Overlay className="absolute inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
           </Transition.Child>
 
-          <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+          <div className="fixed inset-y-0 right-0 flex max-w-full pl-10">
             <Transition.Child
               as={Fragment}
               enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -64,25 +79,30 @@ export const Cart = ({open, setOpen, items, total, onIncrease, onDecrease, onDel
               leaveTo="translate-x-full"
             >
               <div className="w-screen max-w-md">
-                <div className="h-full flex flex-col bg-white shadow-xl overflow-y-scroll">
-                  <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
+                <div className="flex flex-col h-full overflow-y-scroll bg-white shadow-xl">
+                  <div className="flex-1 px-4 py-6 overflow-y-auto sm:px-6">
                     <div className="flex items-start justify-between">
-                      <Dialog.Title className="text-lg font-medium text-gray-900">Shopping cart</Dialog.Title>
-                      <div className="ml-3 h-7 flex items-center">
+                      <Dialog.Title className="text-lg font-medium text-gray-900">
+                        Shopping cart
+                      </Dialog.Title>
+                      <div className="flex items-center ml-3 h-7">
                         <button
                           type="button"
-                          className="-m-2 p-2 text-gray-400 hover:text-gray-500"
+                          className="p-2 -m-2 text-gray-400 hover:text-gray-500"
                           onClick={() => setOpen(false)}
                         >
                           <span className="sr-only">Close panel</span>
-                          <BsX className="h-6 w-6" aria-hidden="true" />
+                          <BsX className="w-6 h-6" aria-hidden="true" />
                         </button>
                       </div>
                     </div>
 
                     <div className="mt-8">
                       <div className="flow-root">
-                        <ul role="list" className="-my-6 divide-y divide-gray-200">
+                        <ul
+                          role="list"
+                          className="-my-6 divide-y divide-gray-200"
+                        >
                           {products.map((product) => (
                             <h1>{product}</h1>
                           ))}
@@ -91,29 +111,32 @@ export const Cart = ({open, setOpen, items, total, onIncrease, onDecrease, onDel
                     </div>
                   </div>
 
-                  <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
+                  <div className="px-4 py-6 border-t border-gray-200 sm:px-6">
                     <div className="flex justify-between text-base font-medium text-gray-900">
                       <p>Subtotal</p>
                       <p>$262.00</p>
                     </div>
-                    <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+                    <p className="mt-0.5 text-sm text-gray-500">
+                      Shipping and taxes calculated at checkout.
+                    </p>
                     <div className="mt-6">
                       <a
                         href="#"
-                        className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                        className="flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700"
                       >
                         Checkout
                       </a>
                     </div>
-                    <div className="mt-6 flex justify-center text-sm text-center text-gray-500">
+                    <div className="flex justify-center mt-6 text-sm text-center text-gray-500">
                       <p>
                         or{' '}
                         <button
                           type="button"
-                          className="text-indigo-600 font-medium hover:text-indigo-500"
+                          className="font-medium text-indigo-600 hover:text-indigo-500"
                           onClick={() => setOpen(false)}
                         >
-                          Continue Shopping<span aria-hidden="true"> &rarr;</span>
+                          Continue Shopping
+                          <span aria-hidden="true"> &rarr;</span>
                         </button>
                       </p>
                     </div>
@@ -125,6 +148,7 @@ export const Cart = ({open, setOpen, items, total, onIncrease, onDecrease, onDel
         </div>
       </Dialog>
     </Transition.Root>
+<<<<<<< HEAD
   )
 }
 
@@ -144,3 +168,7 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+=======
+  );
+};
+>>>>>>> 51a7dd81cd0948184011bcf2ebfc9e7cf92d556b
