@@ -2,8 +2,9 @@ import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 import { History } from 'history'
 
-import { auth } from './auth.reducer'
 import { alert } from './alert.reducer'
+import { auth } from './auth.reducer'
+import { cart } from './cart.reducer'
 import { category } from './category.reducer'
 import { categoryPage } from './categoryPage.reducer'
 import { resource } from './resource.reducer'
@@ -11,8 +12,9 @@ import { resourcePage } from './resourcePage.reducer'
 
 
 export const rootReducer = (history: History) => combineReducers({
-    auth,
     alert,
+    auth,
+    cart,
     category,
     categoryPage,
     resource,

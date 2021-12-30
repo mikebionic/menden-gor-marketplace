@@ -78,9 +78,9 @@ export const Navbar = (props: any) => {
                 <Tab.Group as="div" className="mt-2">
                   <div className="border-b border-gray-200">
                     <Tab.List className="flex px-4 -mb-px space-x-8">
-                      {navigation.categories.map((category) => (
+                      {navigation.categories.map((category, idx) => (
                         <Tab
-                          key={category.name}
+                          key={`${category.name}${idx}`}
                           className={({ selected }) =>
                             classNames(
                               selected
@@ -101,7 +101,7 @@ export const Navbar = (props: any) => {
                         key={category.name}
                         className="px-4 pt-10 pb-8 space-y-10"
                       >
-                        {category.sections.map((section) => (
+                        {category.sections.map((section, idx) => (
                           <div key={section.name}>
                             <p
                               id={`${category.id}-${section.id}-heading-mobile`}

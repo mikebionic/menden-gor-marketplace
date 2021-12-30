@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 import { Fragment } from 'react'
 import { connect } from 'react-redux';
-import { Dialog, Transition } from '@headlessui/react'
-=======
-import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
->>>>>>> 51a7dd81cd0948184011bcf2ebfc9e7cf92d556b
 import { BsX } from 'react-icons/bs';
 
 import {
@@ -39,15 +34,10 @@ const products = [
       'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
   },
   // More products...
-<<<<<<< HEAD
 ]
 
 export const Cart = ({open, setOpen, items, total, onIncrease, onDecrease, onDelete}: any) => {
-=======
-];
->>>>>>> 51a7dd81cd0948184011bcf2ebfc9e7cf92d556b
 
-export const Cart = ({ open, setOpen }: any) => {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -103,8 +93,8 @@ export const Cart = ({ open, setOpen }: any) => {
                           role="list"
                           className="-my-6 divide-y divide-gray-200"
                         >
-                          {products.map((product) => (
-                            <h1>{product}</h1>
+                          {products.map((product, idx) => (
+                            <h1 key={idx}>{product.toString()}</h1>
                           ))}
                         </ul>
                       </div>
@@ -148,16 +138,14 @@ export const Cart = ({ open, setOpen }: any) => {
         </div>
       </Dialog>
     </Transition.Root>
-<<<<<<< HEAD
   )
 }
 
-
-
-const mapStateToProps = ({ shoppingCart: { cartItems, orderTotal }}: any) => {
+const mapStateToProps = ({ cart }: any) => {
+  const { shoppingCart } = cart;
   return {
-    items: cartItems,
-    total: orderTotal
+    items: shoppingCart.cartItems,
+    total: shoppingCart.orderTotal
   };
 };
 
@@ -168,7 +156,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
-=======
-  );
-};
->>>>>>> 51a7dd81cd0948184011bcf2ebfc9e7cf92d556b

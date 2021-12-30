@@ -29,10 +29,10 @@ const store = createStore(
 
 const delayedActionCreator = (timeout:number) => (dispatch: any) => {
 	setTimeout(() => dispatch({
-		type: 'DELAYED_ACTION'
+		type: 'DELAYED_ACTION',
 	}), timeout);
 };
 
-store.dispatch(delayedActionCreator(3000));
+// store.dispatch(delayedActionCreator(3000));
 
 export { store }

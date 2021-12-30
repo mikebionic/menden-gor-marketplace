@@ -1,80 +1,88 @@
-// const updateCartItems = (cartItems, item, idx) => {
+import { resourceConstants } from 'sapredux/constants';
 
-//   if (item.count === 0) {
-//     return [
-//       ...cartItems.slice(0, idx),
-//       ...cartItems.slice(idx + 1)
-//     ];
-//   }
+const updateCartItems = (cartItems: any, item: any, idx: number) => {
 
-//   if (idx === -1) {
-//     return [
-//       ...cartItems,
-//       item
-//     ];
-//   }
+  if (item.count === 0) {
+    return [
+      ...cartItems.slice(0, idx),
+      ...cartItems.slice(idx + 1)
+    ];
+  }
 
-//   return [
-//     ...cartItems.slice(0, idx),
-//     item,
-//     ...cartItems.slice(idx + 1)
-//   ];
-// };
+  if (idx === -1) {
+    return [
+      ...cartItems,
+      item
+    ];
+  }
 
-// const updateCartItem = (resource, item = {}, quantity) => {
+  return [
+    ...cartItems.slice(0, idx),
+    item,
+    ...cartItems.slice(idx + 1)
+  ];
+};
 
-//   const {
-//     id = resource.id,
-//     count = 0,
-//     title = resource.title,
-//     total = 0 } = item;
+const updateCartItem = (resource: any, item: any, quantity: number) => {
 
-//   return {
-//     id,
-//     title,
-//     count: count + quantity,
-//     total: total + quantity*resource.price
-//   };
-// };
+  const {
+    id = resource.id,
+    count = 0,
+    title = resource.title,
+    total = 0 } = item;
 
-// const updateOrder = (state, resourceId, quantity) => {
-//   const { resourceList: { resources }, shoppingCart: { cartItems }} = state;
+  return {
+    id,
+    title,
+    count: count + quantity,
+    total: total + quantity*resource.price
+  };
+};
 
-//   const resource = resources.find(({id}) => id === resourceId);
-//   const itemIndex = cartItems.findIndex(({id}) => id === resourceId);
-//   const item = cartItems[itemIndex];
+const updateOrder = (state: any, resourceId: number, quantity: number) => {
+  const { resourceList: { resources }, shoppingCart: { cartItems }} = state;
 
-//   const newItem = updateCartItem(resource, item, quantity);
-//   return {
-//     orderTotal: 0,
-//     cartItems: updateCartItems(cartItems, newItem, itemIndex)
-//   };
-// };
+  const resource = resources.find(({id}:any) => id === resourceId);
+  const itemIndex = cartItems.findIndex(({id}:any) => id === resourceId);
+  const item = cartItems[itemIndex];
 
-// const updateShoppingCart = (state, action) => {
+  const newItem = updateCartItem(resource, item, quantity);
+  return {
+    orderTotal: 0,
+    cartItems: updateCartItems(cartItems, newItem, itemIndex)
+  };
+};
 
-//   if (state === undefined) {
-//     return {
-//       cartItems: [],
-//       orderTotal: 0
-//     }
-//   }
 
-//   switch(action.type) {
-//     case 'RESOURCE_ADDED_TO_CART':
-//       return updateOrder(state, action.payload, 1);
+const initialState = {
+	shoppingCart: {
+		cartItems: [],
+		orderTotal: 0
+	},
+	orderTotal: 0,
+};
 
-//     case 'RESOURCE_REMOVED_FROM_CART':
-//       return updateOrder(state, action.payload, -1);
+export const cart = (state = initialState, action: {[name: string]: any}) => {
 
-//     case 'RESOURCE_ALL_REMOVED_FROM_CART':
-//       const item = state.shoppingCart.cartItems.find(({id}) => id === action.payload);
-//       return updateOrder(state, action.payload, -item.count);
+  // if (state === undefined) {
+  //   return {
+  //     cartItems: [],
+  //     orderTotal: 0
+  //   }
+  // }
 
-//     default:
-//       return state.shoppingCart;
-//   }
-// };
+  switch(action.type) {
+    case resourceConstants.ADDED_TO_CART:
+      return updateOrder(state, action.payload, 1);
 
-const updateShoppingCart = () => {}
-export default updateShoppingCart;
+    case resourceConstants.REMOVED_FROM_CART:
+      return updateOrder(state, action.payload, -1);
+
+    case resourceConstants.ALL_REMOVED_FROM_CART:
+      const itemCount = state.shoppingCart.cartItems.find(({id}: any) => id === action.payload.count) || 0;
+      return updateOrder(state, action.payload, itemCount);
+
+    default:
+      return state;
+  }
+};
