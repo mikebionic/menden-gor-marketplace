@@ -11,7 +11,6 @@ import { bindActionCreators } from 'redux';
 
 import { ErrorIndicator } from 'modules/errors'
 import { Spinner } from 'modules/loaders'
-import { ProductCard } from 'components/ProductCard';
 import { CarouselSlider } from 'components/Carousel';
 
 const MainPage: React.FC = (props: any) => {

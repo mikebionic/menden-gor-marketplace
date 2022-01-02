@@ -1,4 +1,3 @@
-import React from 'react';
 
 import { Image } from 'common/Image'
 
@@ -17,7 +16,6 @@ export const ProductCard = ({data, onAddedToCart}: any) => {
         <div>
           <h3 className="text-sm text-gray-700">
             <a href={window.location.href}>
-              <span aria-hidden="true" className="absolute inset-0"></span>
               {name}
             </a>
           </h3>
@@ -29,7 +27,7 @@ export const ProductCard = ({data, onAddedToCart}: any) => {
       </div>
       <button
         onClick={onAddedToCart}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        className="bg-blue-200 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Add to cart
       </button>
     </div>
