@@ -40,7 +40,9 @@ const updateCartItem = (resource: any, item: any, quantity: number) => {
 };
 
 const updateOrder = (state: any, resourceId: number, quantity: number) => {
-  const { resourceList: { resources }, shoppingCart: { cartItems }} = state;
+  console.log("state is", state)
+  const { resources, shoppingCart: { cartItems }} = state;
+  console.log(resources)
 
   const resource = resources.find(({id}:any) => id === resourceId);
   const itemIndex = cartItems.findIndex(({id}:any) => id === resourceId);
@@ -62,14 +64,11 @@ const initialState = {
 	orderTotal: 0,
 };
 
-export const cart = (state = initialState, action: {[name: string]: any}) => {
+export const cart = (state: any, action: {[name: string]: any}) => {
 
-  // if (state === undefined) {
-  //   return {
-  //     cartItems: [],
-  //     orderTotal: 0
-  //   }
-  // }
+  if (state === undefined) {
+    return initialState
+  }
 
   switch(action.type) {
     case resourceConstants.ADDED_TO_CART:
