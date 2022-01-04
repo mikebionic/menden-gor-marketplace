@@ -22,19 +22,19 @@ export const routeConstants = {
 		name: 'Profile',
 	},
 	about: {
-		route: `${ route_prefix }/about/`,
+		route: `${route_prefix}/about/`,
 		name: 'About'
 	},
 	contact: {
-		route: `${ route_prefix }/contact/`,
+		route: `${route_prefix}/contact/`,
 		name: 'Contact'
 	},
 	shop: {
-		route: `${ route_prefix }/shop/`,
+		route: `${route_prefix}/shop/`,
 		name: 'Shop'
 	},
 	market: {
-		route: `${ route_prefix }/market/`,
+		route: `${route_prefix}/market/`,
 		name: 'Market'
 	}
 }

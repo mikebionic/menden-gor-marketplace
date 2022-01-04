@@ -1,3 +1,5 @@
+const { maxWidth } = require('tailwindcss/defaultTheme');
+
 module.exports = {
   purge: ['./src/**/*.{ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
@@ -160,13 +162,17 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         'sidebar': '10px auto',
-        'sidebarSticky': '2vw auto'
+        'sidebarSticky': '2vw auto',
+        'about': '30rem auto',
       },
       height: {
         sidebar: '95%',
       },
       padding: {
         'carousel': '0 0 56.23% 0'
+      },
+      maxWidth: {
+        '95': '95%'
       }
     },
   },
