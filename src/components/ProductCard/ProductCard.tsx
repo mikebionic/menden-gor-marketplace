@@ -1,22 +1,14 @@
-import React from 'react';
 
-import { handleImageError, handleLoadingImage } from 'modules/errors';
+import { Image } from 'common/Image'
 
-export const ProductCard: React.FC = ({
-  name,
-  description,
-  priceValue,
-  currencyCode,
-  image,
-}: any) => {
+export const ProductCard = ({data, onAddedToCart}: any) => {
+  const { name, description, priceValue, currencyCode, image } = data
   return (
     <div className="relative group">
       <div className="w-full overflow-hidden bg-gray-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none">
-        <img
+        <Image
           src={image}
           alt={`${name} - ${description}`}
-          onLoad={handleLoadingImage}
-          onError={handleImageError}
           className="object-cover object-center w-full h-full lg:w-full lg:h-full"
         />
       </div>
@@ -24,7 +16,6 @@ export const ProductCard: React.FC = ({
         <div>
           <h3 className="text-sm text-gray-700">
             <a href={window.location.href}>
-              <span aria-hidden="true" className="absolute inset-0"></span>
               {name}
             </a>
           </h3>
@@ -34,6 +25,11 @@ export const ProductCard: React.FC = ({
           {priceValue} {currencyCode}
         </p>
       </div>
+      <button
+        onClick={onAddedToCart}
+        className="bg-blue-200 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Add to cart
+      </button>
     </div>
   );
 };

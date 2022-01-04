@@ -14,7 +14,7 @@ export const category = (state = initialState, action: {[name: string]: any}) =>
 			}
 			return R.merge(state, newState)
 
-			case categoryConstants.FETCH_START:
+		case categoryConstants.FETCH_START:
 			return {
 				loading: true,
 				error: false
@@ -26,7 +26,7 @@ export const category = (state = initialState, action: {[name: string]: any}) =>
 				error: true
 			}
 
-			default:
+		default:
 			return state
 	}
 }

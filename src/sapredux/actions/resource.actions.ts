@@ -22,3 +22,24 @@ export const fetchResources = () => async (dispatch: any) => {
 		})
 	}
 }
+
+export const resourceAddedToCart = (resId: number) => {
+	return {
+		type: actionConstants.ADDED_TO_CART,
+    payload: resId
+  };
+}
+
+export const resourceRemovedFromCart = (resId: number) => {
+  return {
+		type: actionConstants.REMOVED_FROM_CART,
+    payload: resId
+  };
+};
+
+export const resourceAllRemovedFromCart = (resId: number) => {
+  return {
+		type: actionConstants.ALL_REMOVED_FROM_CART,
+    payload: resId
+  };
+};

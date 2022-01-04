@@ -1,6 +1,14 @@
-import { Fragment } from 'react';
+import { Fragment } from 'react'
+import { connect } from 'react-redux';
 import { Dialog, Transition } from '@headlessui/react';
 import { BsX } from 'react-icons/bs';
+
+import {
+  resourceAddedToCart,
+  resourceRemovedFromCart,
+  resourceAllRemovedFromCart,
+} from 'sapredux/actions'
+
 
 const products = [
   {
@@ -26,9 +34,10 @@ const products = [
       'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
   },
   // More products...
-];
+]
 
-export const Cart = ({ open, setOpen }: any) => {
+export const Cart = ({open, setOpen, items, total, onIncrease, onDecrease, onDelete}: any) => {
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -84,44 +93,8 @@ export const Cart = ({ open, setOpen }: any) => {
                           role="list"
                           className="-my-6 divide-y divide-gray-200"
                         >
-                          {products.map((product) => (
-                            <li key={product.id} className="flex py-6">
-                              <div className="flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
-                                <img
-                                  src={product.imageSrc}
-                                  alt={product.imageAlt}
-                                  className="object-cover object-center w-full h-full"
-                                />
-                              </div>
-
-                              <div className="flex flex-col flex-1 ml-4">
-                                <div>
-                                  <div className="flex justify-between text-base font-medium text-gray-900">
-                                    <h3>
-                                      <a href={product.href}>{product.name}</a>
-                                    </h3>
-                                    <p className="ml-4">{product.price}</p>
-                                  </div>
-                                  <p className="mt-1 text-sm text-gray-500">
-                                    {product.color}
-                                  </p>
-                                </div>
-                                <div className="flex items-end justify-between flex-1 text-sm">
-                                  <p className="text-gray-500">
-                                    Qty {product.quantity}
-                                  </p>
-
-                                  <div className="flex">
-                                    <button
-                                      type="button"
-                                      className="font-medium text-indigo-600 hover:text-indigo-500"
-                                    >
-                                      Remove
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
+                          {products.map((product, idx) => (
+                            <h1 key={idx}>{product.toString()}</h1>
                           ))}
                         </ul>
                       </div>
@@ -165,5 +138,21 @@ export const Cart = ({ open, setOpen }: any) => {
         </div>
       </Dialog>
     </Transition.Root>
-  );
+  )
+}
+
+const mapStateToProps = ({ cart }: any) => {
+  const { shoppingCart } = cart;
+  return {
+    items: shoppingCart.cartItems,
+    total: shoppingCart.orderTotal
+  };
 };
+
+const mapDispatchToProps = {
+  onIncrease: resourceAddedToCart,
+  onDecrease: resourceRemovedFromCart,
+  onDelete: resourceAllRemovedFromCart
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

@@ -6,7 +6,9 @@ const fetchAll = async () => {
 
 	if (serviceConfig.useMockApi){
 		return new Promise((resolve, reject) => {
-			resolve(paginated_resources)
+			setTimeout(() => {
+				resolve(paginated_resources)
+			}, 200);
 		});
 	}
 
