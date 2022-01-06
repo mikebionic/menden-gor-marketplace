@@ -8,6 +8,10 @@ import {
   resourceRemovedFromCart,
   resourceAllRemovedFromCart,
 } from 'sapredux/actions'
+import {
+  getTotalCount,
+  getTotalPrice
+} from 'sapredux/selectors'
 
 
 const products = [
@@ -36,7 +40,8 @@ const products = [
   // More products...
 ]
 
-export const Cart = ({open, setOpen, items, total, onIncrease, onDecrease, onDelete}: any) => {
+export const Cart = ({open, setOpen, items, totalCount,
+  totalPrice, onIncrease, onDecrease, onDelete}: any) => {
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -104,7 +109,8 @@ export const Cart = ({open, setOpen, items, total, onIncrease, onDecrease, onDel
                   <div className="px-4 py-6 border-t border-gray-200 sm:px-6">
                     <div className="flex justify-between text-base font-medium text-gray-900">
                       <p>Subtotal</p>
-                      <p>$262.00</p>
+                      <p>{totalPrice}</p>
+                      <p>Count: {totalCount}</p>
                     </div>
                     <p className="mt-0.5 text-sm text-gray-500">
                       Shipping and taxes calculated at checkout.
@@ -141,11 +147,11 @@ export const Cart = ({open, setOpen, items, total, onIncrease, onDecrease, onDel
   )
 }
 
-const mapStateToProps = ({ cart }: any) => {
-  const { shoppingCart } = cart;
+const mapStateToProps = (state: any) => {
   return {
-    items: shoppingCart.cartItems,
-    total: shoppingCart.orderTotal
+    items: state.cart,
+    totalCount: getTotalCount(state),
+    totalPrice: getTotalPrice(state)
   };
 };
 

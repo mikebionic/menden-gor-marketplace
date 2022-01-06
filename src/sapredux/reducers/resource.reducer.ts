@@ -26,7 +26,7 @@ export const resource = (state = initialState, action: {[name: string]: any}) =>
 				error: true
 			}
 
-			default:
+		default:
 			return state
 	}
 }

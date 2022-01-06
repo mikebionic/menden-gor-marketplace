@@ -23,23 +23,23 @@ export const fetchResources = () => async (dispatch: any) => {
 	}
 }
 
-export const resourceAddedToCart = (resId: number) => {
-	return {
+export const resourceAddedToCart = (id: number) => (dispatch:any) => {
+	dispatch({
 		type: actionConstants.ADDED_TO_CART,
-    payload: resId
-  };
+    payload: id
+  });
 }
 
-export const resourceRemovedFromCart = (resId: number) => {
+export const resourceRemovedFromCart = (id: number) => {
   return {
 		type: actionConstants.REMOVED_FROM_CART,
-    payload: resId
+    payload: id
   };
 };
 
-export const resourceAllRemovedFromCart = (resId: number) => {
+export const resourceAllRemovedFromCart = (id: number) => {
   return {
 		type: actionConstants.ALL_REMOVED_FROM_CART,
-    payload: resId
+    payload: id
   };
 };

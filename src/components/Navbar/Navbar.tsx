@@ -3,11 +3,10 @@ import { Dialog, Popover, Tab, Transition } from '@headlessui/react';
 import {
   MenuIcon,
   SearchIcon,
-  ShoppingBagIcon,
   XIcon,
 } from '@heroicons/react/outline';
 
-import { Cart } from 'components/Cart';
+import { Cart, CartButton } from 'components/Cart';
 import { ErrorBoundary } from 'modules/errors';
 import { navigation } from './NavbarLinks';
 
@@ -305,19 +304,9 @@ export const Navbar = (props: any) => {
 
                   {/* Cart */}
                   <div className="flow-root ml-4 lg:ml-6">
-                    <a
-                      className="flex items-center p-2 -m-2 group"
-                      onClick={() => setCartOpen(!cartOpen)}
-                    >
-                      <ShoppingBagIcon
-                        className="flex-shrink-0 w-6 h-6 text-gray-400 group-hover:text-gray-500"
-                        aria-hidden="true"
-                      />
-                      <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                        0
-                      </span>
-                      <span className="sr-only">items in cart, view bag</span>
-                    </a>
+                    <CartButton 
+                      cartOpen={cartOpen}
+                      setCartOpen={setCartOpen} />
                   </div>
                 </div>
               </div>

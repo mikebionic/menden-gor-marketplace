@@ -1,5 +1,9 @@
 import Cart from './Cart'
+import CartButton from './CartButton'
 
-export { Cart }
+export {
+	Cart,
+	CartButton
+}
 
 export * from './CartRow'
