@@ -78,9 +78,11 @@ export const cart = (state = initialState, {type, payload}: any) => {
     // case resourceConstants.REMOVED_FROM_CART:
     //   return updateOrder(state, payload, -1);
 
-    // case resourceConstants.ALL_REMOVED_FROM_CART:
-    //   const itemCount = state.shoppingCart.cartItems.find(({id}: any) => id === payload.count) || 0;
-    //   return updateOrder(state, payload, itemCount);
+    case resourceConstants.ALL_REMOVED_FROM_CART:
+      console.log("removing called")
+      return R.without(R.of(payload), state)
+      // const itemCount = state.shoppingCart.cartItems.find(({id}: any) => id === payload.count) || 0;
+      // return updateOrder(state, payload, itemCount);
 
     default:
       return state;

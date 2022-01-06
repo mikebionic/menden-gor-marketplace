@@ -97,7 +97,7 @@ export const Navbar = (props: any) => {
                     </Tab.List>
                   </div>
                   <Tab.Panels as={Fragment}>
-                    {navigation.categories.map((category) => (
+                    {navigation.categories.map((category, idx) => (
                       <Tab.Panel
                         key={category.name}
                         className="px-4 pt-10 pb-8 space-y-10"
@@ -282,8 +282,8 @@ export const Navbar = (props: any) => {
 
                 <div className="flex items-center ml-auto cursor-pointer">
                   <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                    {navigation.registration.map((registration) => (
-                      <>
+                    {navigation.registration.map((registration, idx) => (
+                      <div key={idx}>
                         <a
                           href={registration.route}
                           className="text-sm font-medium text-gray-700 hover:text-gray-800"
@@ -294,7 +294,7 @@ export const Navbar = (props: any) => {
                           className={registration.className}
                           aria-hidden="true"
                         />
-                      </>
+                      </div>
                     ))}
                   </div>
 

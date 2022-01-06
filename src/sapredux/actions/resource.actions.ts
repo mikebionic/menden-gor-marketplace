@@ -23,11 +23,11 @@ export const fetchResources = () => async (dispatch: any) => {
 	}
 }
 
-export const resourceAddedToCart = (id: number) => (dispatch:any) => {
-	dispatch({
+export const resourceAddedToCart = (id: number) => {
+	return {
 		type: actionConstants.ADDED_TO_CART,
     payload: id
-  });
+  };
 }
 
 export const resourceRemovedFromCart = (id: number) => {
