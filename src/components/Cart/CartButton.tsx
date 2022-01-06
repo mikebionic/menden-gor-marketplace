@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   ShoppingBagIcon,
 } from '@heroicons/react/outline';
@@ -7,7 +6,7 @@ import { connect } from 'react-redux';
 import { getTotalCount } from 'sapredux/selectors'
 
 
-const CartButton: React.FC = (props: any) => {
+const CartButton = (props: any) => {
 	const { cartOpen, setCartOpen, totalCount } = props
 	return (
 		<a
@@ -25,7 +24,6 @@ const CartButton: React.FC = (props: any) => {
 		</a>
 	)
 }
-
 
 const mapStateToProps = (state: any) => {
   return {
