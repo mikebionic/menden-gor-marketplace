@@ -2,7 +2,9 @@ import { Fragment } from 'react'
 import { connect } from 'react-redux';
 import { Dialog, Transition } from '@headlessui/react';
 import { BsX } from 'react-icons/bs';
+import { Link } from 'react-router-dom'
 
+import { CartRow } from 'components/Cart'
 import {
   resourceAddedToCart,
   resourceRemovedFromCart,
@@ -10,35 +12,10 @@ import {
 } from 'sapredux/actions'
 import {
   getTotalCount,
-  getTotalPrice
+  getTotalPrice,
+  getCartItems
 } from 'sapredux/selectors'
 
-
-const products = [
-  {
-    id: 1,
-    name: 'Throwback Hip Bag',
-    href: '#',
-    color: 'Salmon',
-    price: '$90.00',
-    quantity: 1,
-    imageSrc: '',
-    imageAlt:
-      'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-  },
-  {
-    id: 2,
-    name: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '$32.00',
-    quantity: 1,
-    imageSrc: '',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  // More products...
-]
 
 export const Cart = ({open, setOpen, items, totalCount,
   totalPrice, onIncrease, onDecrease, onDelete}: any) => {
@@ -98,8 +75,8 @@ export const Cart = ({open, setOpen, items, totalCount,
                           role="list"
                           className="-my-6 divide-y divide-gray-200"
                         >
-                          {products.map((product, idx) => (
-                            <h1 key={idx}>{product.toString()}</h1>
+                          {items.map((item: any, idx: number) => (
+                            <CartRow key={idx} item={item} />
                           ))}
                         </ul>
                       </div>
@@ -116,12 +93,12 @@ export const Cart = ({open, setOpen, items, totalCount,
                       Shipping and taxes calculated at checkout.
                     </p>
                     <div className="mt-6">
-                      <a
-                        href="#"
+                      <Link
+                        to="/checkoutCart"
                         className="flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700"
                       >
                         Checkout
-                      </a>
+                      </Link>
                     </div>
                     <div className="flex justify-center mt-6 text-sm text-center text-gray-500">
                       <p>
@@ -149,7 +126,7 @@ export const Cart = ({open, setOpen, items, totalCount,
 
 const mapStateToProps = (state: any) => {
   return {
-    items: state.cart,
+    items: getCartItems(state),
     totalCount: getTotalCount(state),
     totalPrice: getTotalPrice(state)
   };

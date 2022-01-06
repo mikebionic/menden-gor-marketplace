@@ -64,7 +64,7 @@ import { resourceConstants } from 'sapredux/constants';
 //   itemTotal: 0
 // };
 
-const initialState: any[] = []
+const initialState: number[] = []
 
 export const cart = (state = initialState, {type, payload}: any) => {
 

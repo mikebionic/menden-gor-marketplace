@@ -17,3 +17,16 @@ export const getTotalPrice = (state: any) => {
 	)(state.cart)
 	return totalPrice.toFixed(2)
 }
+
+export const getCartItems = (state: any) => {
+	const itemCount = (id: number) => R.compose(
+		R.filter((cartId:number) => R.equals(id, cartId))
+	)(state.cart)
+	const itemWithCount = (item: any) => R.assoc('count', itemCount(item.id).length, item)
+	const uniqueIds: number[] = R.uniq(state.cart)
+	const items = R.compose(
+		R.map(itemWithCount),
+		R.map((id: number) => getResourceById(state.resource.data, id))
+	)(uniqueIds)
+	return items
+}

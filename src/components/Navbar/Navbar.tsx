@@ -6,6 +6,7 @@ import {
   SearchIcon,
   XIcon,
 } from '@heroicons/react/outline';
+import { Link } from 'react-router-dom'
 
 import { Cart, CartButton } from 'components/Cart';
 import { ErrorBoundary } from 'modules/errors';
@@ -147,14 +148,15 @@ export const Navbar = (props: any) => {
                 </div>
 
                 <div className="px-4 py-6 space-y-6 border-t border-gray-200">
-                  {navigation.registration.map((registration) => (
+                  {navigation.registration.map((registration, idx) => (
                     <div key={registration.name} className="flow-root">
-                      <a
-                        href={registration.route}
+                      <Link
+                        key={idx}
+                        to={registration.route}
                         className="block p-2 -m-2 font-medium text-gray-900"
                       >
                         {registration.name}
-                      </a>
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -190,14 +192,14 @@ export const Navbar = (props: any) => {
                 {/* Flyout menus */}
                 <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
                   <div className="flex h-full space-x-8">
-                    {navigation.pages.map((page) => (
-                      <a
-                        key={page.name}
-                        href={page.route}
+                    {navigation.pages.map((page, idx) => (
+                      <Link
+                        key={idx}
+                        to={page.route}
                         className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
                       >
                         {page.name}
-                      </a>
+                      </Link>
                     ))}
                     {navigation.categories.map((category) => (
                       <Popover key={category.name} className="flex">
