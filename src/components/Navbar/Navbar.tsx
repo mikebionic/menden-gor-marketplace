@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-redundant-roles */
 import { Fragment, useState } from 'react';
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react';
 import {
@@ -108,6 +109,7 @@ export const Navbar = (props: any) => {
                             >
                               {section.name}
                             </p>
+
                             <ul
                               role="list"
                               aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
@@ -179,7 +181,7 @@ export const Navbar = (props: any) => {
 
                 {/* Logo */}
                 <div className="flex ml-4 lg:ml-0">
-                  <a href="#">
+                  <a href={window.location.href}>
                     <span className="sr-only">Workflow</span>
                     <img className="w-auto h-8" src="" alt="" />
                   </a>
@@ -296,7 +298,10 @@ export const Navbar = (props: any) => {
 
                   {/* Search */}
                   <div className="flex lg:ml-6">
-                    <a className="p-2 text-gray-400 hover:text-gray-500">
+                    <a
+                      href={window.location.href}
+                      className="p-2 text-gray-400 hover:text-gray-500"
+                    >
                       <span className="sr-only">Search</span>
                       <SearchIcon className="w-6 h-6" aria-hidden="true" />
                     </a>

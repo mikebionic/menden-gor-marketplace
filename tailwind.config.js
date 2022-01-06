@@ -1,3 +1,5 @@
+// const { maxWidth } = require('tailwindcss/defaultTheme');
+
 module.exports = {
   purge: ['./src/**/*.{ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
@@ -141,10 +143,7 @@ module.exports = {
       lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
     },
-    minWidth: {
-      '[200px]': '200px',
-      'screen': '100vw'
-    },
+   
     minHeight: {
       '[220px]': '220px',
       'screen': '100vh',
@@ -160,14 +159,26 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         'sidebar': '10px auto',
-        'sidebarSticky': '2vw auto'
+        'sidebarSticky': '2vw auto',
+        'about': '30rem auto',
       },
       height: {
         sidebar: '95%',
       },
       padding: {
         'carousel': '0 0 56.23% 0'
-      }
+      },
+      maxWidth: {
+        '95': '95%'
+      },
+      minWidth: {
+        '[200px]': '200px',
+        'screen': '100vw',
+        '60': '60px'
+      },
+      borderRadius: {
+        'semifull': '50%'
+      },
     },
   },
   variants: {
