@@ -1,7 +1,17 @@
+import { connect } from 'react-redux';
+
+import { bindActionCreators } from 'redux';
+import {
+  resourceAddedToCart,
+  resourceRemovedFromCart,
+  resourceAllRemovedFromCart,
+} from 'sapredux/actions'
 
 import { Image } from 'common/Image'
+import { AddToCartButton } from 'common/AddToCartButton'
 
-export const ProductCard = ({data, onAddedToCart}: any) => {
+const ProductCard = ({data, onIncrease, onDecrease}: any) => {
+  console.log("hahahahaha ", data)
   const { name, description, priceValue, currencyCode, image } = data
   return (
     <div className="relative group">
@@ -25,11 +35,25 @@ export const ProductCard = ({data, onAddedToCart}: any) => {
           {priceValue} {currencyCode}
         </p>
       </div>
-      <button
-        onClick={onAddedToCart}
-        className="bg-blue-200 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Add to cart
-      </button>
+      <AddToCartButton
+        onIncrease={() => onIncrease(data.id)}
+        onDecrease={() => onDecrease(data.id)}
+        count={data.count || 0}
+      />
+
     </div>
   );
 };
+
+const mapDispatchToProps = (dispatch: any) => {
+  return bindActionCreators({
+    onIncrease: resourceAddedToCart,
+    onDecrease: resourceRemovedFromCart,
+    onDelete: resourceAllRemovedFromCart
+  }, dispatch);
+}
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(ProductCard);

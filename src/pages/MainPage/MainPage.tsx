@@ -17,7 +17,6 @@ const MainPage: React.FC = (props: any) => {
   const {
     fetchResources,
     resources,
-    onAddedToCart,
     resource_loading,
     resource_error,
   } = props;
@@ -27,7 +26,7 @@ const MainPage: React.FC = (props: any) => {
   }, [fetchResources]);
 
   const productsList = 
-    (!resource_loading && !resource_error)? <ProductList data={resources} onAddedToCart={onAddedToCart} /> :
+    (!resource_loading && !resource_error)? <ProductList data={resources} /> :
     (resource_loading && !resource_error)? <Spinner /> : <ErrorIndicator />
 
   return (
@@ -52,7 +51,7 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators({
     fetchResources,
-    onAddedToCart: resourceAddedToCart
+    // onAddedToCart: resourceAddedToCart
   }, dispatch);
 };
 
