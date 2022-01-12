@@ -5,8 +5,8 @@ import { ImLocation } from 'react-icons/im';
 
 export const ContactPage: React.FC = () => {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen px-24 py-12">
-      <div className="max-w-3xl text-center">
+    <section className="relative flex flex-col items-center justify-center min-h-screen md:px-24 md:py-12 min-phone:p-10">
+      <div className="max-w-3xl text-center md:mt-12">
         <h2 className="text-3xl font-medium text-black">Contact Us</h2>
         <p className="font-light text-black">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui saepe
@@ -14,8 +14,8 @@ export const ContactPage: React.FC = () => {
           commodi soluta impedit.
         </p>
       </div>
-      <div className="flex justify-center w-full mt-8 align-center">
-        <div className="flex flex-col w-1/2">
+      <div className="grid justify-center w-full mt-8 min-phone:mb-12 md:mb-0 min-phone:grid-cols-1 align-center md:grid-cols-2 min-phone:grid-rows-2">
+        <div className="flex flex-col w-full">
           <div className="relative flex px-0 py-5">
             <div className="flex flex-col flex-wrap items-center justify-center text-3xl bg-yellow-200 rounded-semifull min-w-60 h-14">
               <ImLocation />
@@ -50,7 +50,7 @@ export const ContactPage: React.FC = () => {
           </div>
         </div>
         {/* contactForm */}
-        <div className="w-2/5 px-5 py-5 font-serif bg-gray-100">
+        <div className="w-full px-5 font-serif bg-gray-100 md:py-5 min-phone:py-8 ">
           <form action="">
             <h2 className="text-3xl font-normal">Send Message</h2>
             <div className="relative w-full mt-2 inputbox">
