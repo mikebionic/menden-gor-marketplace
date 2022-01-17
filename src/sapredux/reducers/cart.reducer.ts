@@ -57,6 +57,10 @@ import { resourceConstants } from 'sapredux/constants';
 //   // };
 // };
 
+// https://github.com/sumanchalki/shopping-cart-react-redux
+
+
+
 
 // const initialState = {
 //   cartItems: [],
@@ -64,27 +68,100 @@ import { resourceConstants } from 'sapredux/constants';
 //   itemTotal: 0
 // };
 
-const initialState: number[] = []
+// const newState = [
+//   {
+//     "id": 12,
+//     "total": 1
+//   }
+// ]
 
-export const cart = (state = initialState, {type, payload}: any) => {
+// const initialState: number[] = []
 
-  switch(type) {
+export const cart = (state = [], {type, payload}: any) => {
+  let doesItemExist;
+  switch (type) {
     case resourceConstants.ADDED_TO_CART:
-      console.log("cart reducer state ", state)
-      return R.append(payload, state)
-      // console.log("cart after appending state ", state)
-      // return updateOrder(state, payload, 1);
+      doesItemExist = false;
+      const newState = state.map((item: any) => {
+        if (item.id === payload) {
+          item.quantity += 1;
+          doesItemExist = true;
+        }
+        return item;
+      });
+      if (doesItemExist) {
+        return newState;
+      }
+      return [...state, {id: payload, quantity: 1}];
 
-    // case resourceConstants.REMOVED_FROM_CART:
-    //   return updateOrder(state, payload, -1);
+    case resourceConstants.REMOVED_FROM_CART:
+      const newCartState = state.filter((item: any) => {
+        if (item.id === payload) {
+          return false;
+        }
+        return true;
+      });
+      return newCartState;
 
-    case resourceConstants.ALL_REMOVED_FROM_CART:
-      console.log("removing called")
-      return R.without(R.of(payload), state)
-      // const itemCount = state.shoppingCart.cartItems.find(({id}: any) => id === payload.count) || 0;
-      // return updateOrder(state, payload, itemCount);
+    // case resourceConstants.UPDATE_CART:
+    //   const cartFormArr = Object.keys(payload).map((key, index) => {
+    //     return payload[key];
+    //   });
+
+    //   doesItemExist = false;
+
+    //   const newProdCartState = state.map((item: any) => {
+    //     let itemFound = cartFormArr.find((element: any) => element.Id === item.id);
+    //     if (itemFound) {
+    //       item.quantity = itemFound.quantity;
+    //       doesItemExist = true;
+    //     }
+    //     return item;
+    //   });
+
+    //   if (doesItemExist) {
+    //     return newProdCartState;
+    //   }
+
+    //   return state;
 
     default:
       return state;
   }
+
+
+
+
+
+
+
+
+
+
+  ///////////////////////////////////////////
+  // switch(type) {
+  //   case resourceConstants.ADDED_TO_CART:
+  //     state.map((item) => {
+
+  //     })
+      
+  //     return R.append(payload, state)
+  //     // console.log("cart after appending state ", state)
+  //     // return updateOrder(state, payload, 1);
+
+  //   // case resourceConstants.REMOVED_FROM_CART:
+  //   //   return updateOrder(state, payload, -1);
+
+  //   case resourceConstants.ALL_REMOVED_FROM_CART:
+  //     console.log("removing called")
+  //     return R.without(R.of(payload), state)
+  //     // const itemCount = state.shoppingCart.cartItems.find(({id}: any) => id === payload.count) || 0;
+  //     // return updateOrder(state, payload, itemCount);
+
+  //   default:
+  //     return state;
+  // }
 };
+
+
+export default cart;

@@ -19,14 +19,11 @@ export const getTotalPrice = (state: any) => {
 }
 
 export const getCartItems = (state: any) => {
-	const itemCount = (id: number) => R.compose(
-		R.filter((cartId:number) => R.equals(id, cartId))
-	)(state.cart)
-	const itemWithCount = (item: any) => R.assoc('count', itemCount(item.id).length, item)
-	const uniqueIds: number[] = R.uniq(state.cart)
-	const items = R.compose(
-		R.map(itemWithCount),
-		R.map((id: number) => getResourceById(state.resource.data, id))
-	)(uniqueIds)
+	// const itemCount = (id: number) => R.compose(
+	// 	R.filter((cartItem:any) => R.equals(id, cartItem.id))
+	// )(state.cart)
+	// const itemWithCount = (item: any) => R.assoc('count', itemCount(item.id).length, item)
+	// const uniqueIds: number[] = R.uniq(state.cart)
+	const items = R.map((cartItem: any) => getResourceById(state.resource.data, cartItem.id))(state.cart)
 	return items
 }
