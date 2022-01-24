@@ -34,6 +34,8 @@ module.exports = {
       tableGlass: 'rgba(243,244,246,0.3)',
       sidebarHover: '#0000000f',
       black: '#000',
+      search: '#4371BE',
+      c8: 'c8c8c8',
       gray: {
         50: '#f9fafb',
         100: '#f3f4f6',
@@ -158,12 +160,18 @@ module.exports = {
     },
     extend: {
       gridTemplateColumns: {
-        'sidebar': '10px auto',
-        'sidebarSticky': '2vw auto',
         'about': '30rem auto',
+        'search': 'auto 1fr auto',
+        'firstRowNavbar': '15rem 50rem 8rem 8rem',
+        'icon': '1fr auto',
+        'navIcons': '40px 1fr 48px 42px 1fr 1fr'
       },
       height: {
         sidebar: '95%',
+        '46': '46px'
+      },
+      left: {
+        '82': '82%'
       },
       padding: {
         'carousel': '0 0 56.23% 0'
@@ -179,6 +187,12 @@ module.exports = {
       borderRadius: {
         'semifull': '50%'
       },
+      width: {
+        'search': '728px'
+      },
+      fontSize: {
+        '10': '10px',
+      }
     },
   },
   variants: {
