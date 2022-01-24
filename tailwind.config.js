@@ -35,7 +35,8 @@ module.exports = {
       sidebarHover: '#0000000f',
       black: '#000',
       search: '#4371BE',
-      c8: 'c8c8c8',
+      c8: '#c8c8c8',
+      resGroupItem: '#FBFBFB',
       gray: {
         50: '#f9fafb',
         100: '#f3f4f6',
@@ -144,6 +145,7 @@ module.exports = {
       cardShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+      'ResGroupShadow': '3px 3px 10px rgba(0, 0, 0, 0.17);'
     },
    
     minHeight: {
@@ -164,7 +166,8 @@ module.exports = {
         'search': 'auto 1fr auto',
         'firstRowNavbar': '15rem 50rem 8rem 8rem',
         'icon': '1fr auto',
-        'navIcons': '40px 1fr 48px 42px 1fr 1fr'
+        'navIcons': '40px 1fr 48px 42px 1fr 1fr',
+        'ResGroup': '1fr 1fr 1fr'
       },
       height: {
         sidebar: '95%',
@@ -188,7 +191,8 @@ module.exports = {
         'semifull': '50%'
       },
       width: {
-        'search': '728px'
+        'search': '728px',
+        'ResGroup': '380px'
       },
       fontSize: {
         '10': '10px',
