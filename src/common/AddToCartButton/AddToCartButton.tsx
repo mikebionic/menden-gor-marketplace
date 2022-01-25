@@ -8,12 +8,12 @@ export const AddToCartButton = ({onIncrease, onDecrease, count}: any) => {
 	</button>)
 	const CountButtons = () => (
 		<div>
-			<button onClick={onIncrease}
+			<button onClick={onDecrease}
 				className="bg-blue-200 hover:bg-blue-700 rounded">
 				-
 			</button>
-			<input value={count} />
-			<button onClick={onDecrease}
+			<p>{count}</p>
+			<button onClick={onIncrease}
 				className="bg-blue-200 hover:bg-blue-700 rounded">
 				+
 			</button>

@@ -9,6 +9,7 @@ import {
 
 import { Image } from 'common/Image'
 import { AddToCartButton } from 'common/AddToCartButton'
+import { getTotalCount } from 'sapredux/selectors';
 
 const ProductCard = ({data, onIncrease, onDecrease}: any) => {
   console.log("hahahahaha ", data)
@@ -44,6 +45,14 @@ const ProductCard = ({data, onIncrease, onDecrease}: any) => {
     </div>
   );
 };
+
+// const mapStateToProps = (state: any) => {
+//   const totalData = getTotalCount(state)
+//   return {
+//     totalCount: totalData.totalCount,
+//     totalPrice: totalData.totalPrice,
+//   }
+// }
 
 const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators({

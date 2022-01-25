@@ -52,6 +52,7 @@ const MainPage: React.FC = (props: any) => {
 
 const mapStateToProps = (state: any) => ({
   resources: getResources(state),
+  // resources: state.resourcePage.ids,
   resource_loading: state.resource.loading,
   resource_error: state.resource.error,
 });

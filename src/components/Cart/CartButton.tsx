@@ -1,33 +1,41 @@
-import {
-  ShoppingBagIcon,
-} from '@heroicons/react/outline';
+// import {
+//   ShoppingBagIcon,
+// } from '@heroicons/react/outline';
 
+import { RiShoppingBasketLine } from 'react-icons/ri';
+import { IconLabelButton } from 'common/IconLabelButton';
 import { connect } from 'react-redux';
 import { getTotalCount } from 'sapredux/selectors'
 
 
 const CartButton = (props: any) => {
-	const { cartOpen, setCartOpen, totalCount } = props
+	const { cartOpen, setCartOpen, totalCount, totalPrice } = props
 	return (
-		<a
-			className="flex items-center p-2 -m-2 group"
-			onClick={() => setCartOpen(!cartOpen)}
-		>
-			<ShoppingBagIcon
-				className="flex-shrink-0 w-6 h-6 text-gray-400 group-hover:text-gray-500"
-				aria-hidden="true"
-			/>
-			<span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-				{totalCount}
-			</span>
-			<span className="sr-only">items in cart, view bag</span>
-		</a>
+		<>
+			<a className="flex flex-row-reverse mr-1"
+				onClick={() => setCartOpen(!cartOpen)}>
+				<IconLabelButton
+					className="items-center grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid h-1/3 "
+					icon={
+						<RiShoppingBasketLine className="w-6 h-6 mx-3 text-2xl text-white" />
+					}
+				/>
+				<span className="absolute text-sm font-semibold text-white ">
+					{totalCount}
+				</span>
+			</a>
+			<div className="mt-3 text-sm font-semibold text-white ">
+				{totalPrice} TMT
+			</div>
+		</>
 	)
 }
 
 const mapStateToProps = (state: any) => {
+	const totalData = getTotalCount(state)
   return {
-    totalCount: getTotalCount(state)
+		totalCount: totalData.totalCount,
+		totalPrice: totalData.totalPrice,
   };
 };
 
