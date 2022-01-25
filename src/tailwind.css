@@ -14,6 +14,18 @@
   transform: translateY(-20px);
 }
 
+.navbarColor {
+  background-image: linear-gradient(to right, #ff8d73, #feb37b);
+}
+
+.productColor {
+  background: linear-gradient(263.41deg, #ff8d73 6.94%, #feb37a 100%);
+}
+
+.searchColor {
+  background: linear-gradient(266.08deg, #ff8d73 1%, #feb37a 100%);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
