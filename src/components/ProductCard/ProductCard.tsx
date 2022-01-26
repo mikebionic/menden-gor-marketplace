@@ -1,18 +1,7 @@
-import { connect } from 'react-redux';
-
-import { bindActionCreators } from 'redux';
-import {
-  resourceAddedToCart,
-  resourceRemovedFromCart,
-  resourceAllRemovedFromCart,
-} from 'sapredux/actions'
-
 import { Image } from 'common/Image'
-import { AddToCartButton } from 'common/AddToCartButton'
-import { getTotalCount } from 'sapredux/selectors';
+import { ProductAddToCart } from 'components/ProductCard'
 
-const ProductCard = ({data, onIncrease, onDecrease}: any) => {
-  console.log("hahahahaha ", data)
+const ProductCard = ({data}: any) => {
   const { name, description, priceValue, currencyCode, image } = data
   return (
     <div className="relative group">
@@ -36,33 +25,13 @@ const ProductCard = ({data, onIncrease, onDecrease}: any) => {
           {priceValue} {currencyCode}
         </p>
       </div>
-      <AddToCartButton
-        onIncrease={() => onIncrease(data.id)}
-        onDecrease={() => onDecrease(data.id)}
-        count={data.count || 0}
+
+      <ProductAddToCart
+        resourceId={data.id}
       />
 
     </div>
   );
 };
 
-// const mapStateToProps = (state: any) => {
-//   const totalData = getTotalCount(state)
-//   return {
-//     totalCount: totalData.totalCount,
-//     totalPrice: totalData.totalPrice,
-//   }
-// }
-
-const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators({
-    onIncrease: resourceAddedToCart,
-    onDecrease: resourceRemovedFromCart,
-    onDelete: resourceAllRemovedFromCart
-  }, dispatch);
-}
-
-export default connect(
-  null,
-  mapDispatchToProps,
-)(ProductCard);
+export default ProductCard

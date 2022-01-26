@@ -1,3 +1,7 @@
+import ProductAddToCart from './ProductAddToCart'
 import ProductCard from './ProductCard'
 
-export { ProductCard }
+export {
+	ProductAddToCart,
+	ProductCard,
+}

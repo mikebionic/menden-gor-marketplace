@@ -9,19 +9,22 @@ export const getResources = (state: any) => {
 
 export const getTotalCount = (state: any, id: number = 0) => {
 	var totalPrice: number = 0;
+	var totalCount: number = 0;
 	state.cart.map((item:any) => {
 		if (id > 0){
 			if (item.id === id){
 				const resource = getResourceById(state.resource.data, item.id)
 				totalPrice = resource.priceValue * item.quantity
+				totalCount = item.quantity;
 			}
 		} else {
 			const resource = getResourceById(state.resource.data, item.id)
 			totalPrice += resource.priceValue * item.quantity
+			totalCount = R.length(state.cart)
 		}
 	})
 	return {
-		"totalCount":	R.length(state.cart),
+		"totalCount":	totalCount,
 		"totalPrice": totalPrice.toFixed(2)
 	}
 }
@@ -40,7 +43,6 @@ export const getCartItems = (state: any) => {
 		R.map((cartItem: any) => cartItem),
 		R.map((cartItem: any) => getResourceById(state.resource.data, cartItem.id))
 	)(state.cart)
-	console.log("getting items ", items)
 
 	return items
 }
