@@ -26,6 +26,14 @@
   background: linear-gradient(266.08deg, #ff8d73 1%, #feb37a 100%);
 }
 
+.socialBarColor {
+  background: linear-gradient(
+    180deg,
+    rgba(172, 172, 172, 0.3) 0%,
+    rgba(172, 172, 172, 0.3) 100%
+  );
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -37,6 +37,8 @@ module.exports = {
       search: '#4371BE',
       c8: '#c8c8c8',
       resGroupItem: '#FBFBFB',
+      socialBarItemHover: '#FE9F76',
+      fullPageColor: '#F3F4F8',
       gray: {
         50: '#f9fafb',
         100: '#f3f4f6',
@@ -145,7 +147,7 @@ module.exports = {
       cardShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-      'ResGroupShadow': '3px 3px 10px rgba(0, 0, 0, 0.17);'
+      'ResGroupShadow': '3px 3px 10px rgba(0, 0, 0, 0.07);'
     },
    
     minHeight: {
@@ -167,7 +169,10 @@ module.exports = {
         'firstRowNavbar': '15rem 50rem 8rem 8rem',
         'icon': '1fr auto',
         'navIcons': '40px 1fr 48px 42px 1fr 1fr',
-        'ResGroup': '1fr 1fr 1fr'
+        'ResGroup': '1fr 1fr 1fr',
+      },
+      gridTemplateRows: {
+        'SocialBar': '35px 35px 35px 35px'
       },
       height: {
         sidebar: '95%',
