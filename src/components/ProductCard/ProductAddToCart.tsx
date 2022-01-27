@@ -1,5 +1,5 @@
 
-import { AddToCartButton } from 'common/AddToCartButton'
+import { AddToCartButton, AddToCartWithCounter } from 'common/AddToCartButton'
 import { getTotalCount } from 'sapredux/selectors';
 
 import { connect } from 'react-redux';
@@ -12,13 +12,17 @@ import {
 } from 'sapredux/actions'
 
 
-const ProductAddToCart = ({resourceId, onIncrease, onDecrease, totalCount, totalPrice}: any) => {
+const ProductAddToCart = ({resourceId, withCounter=false, onIncrease, onDecrease, totalCount, totalPrice}: any) => {
 
 	return (
-		<AddToCartButton
+		withCounter ? 
+    <AddToCartWithCounter
 			onIncrease={() => onIncrease(resourceId)}
 			onDecrease={() => onDecrease(resourceId)}
 			count={totalCount || 0}
+		/> :
+    <AddToCartButton
+			onIncrease={() => onIncrease(resourceId)}
 		/>
 	)
 }
