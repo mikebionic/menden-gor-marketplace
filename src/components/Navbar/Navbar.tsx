@@ -8,7 +8,6 @@ import { BsMoon } from 'react-icons/bs';
 import { MdLanguage } from 'react-icons/md';
 import { BsWallet2 } from 'react-icons/bs';
 import { FaRegHeart } from 'react-icons/fa';
-import { RiShoppingBasketLine } from 'react-icons/ri';
 
 import { Cart, CartButton } from 'components/Cart';
 import { ErrorBoundary } from 'modules/errors';
@@ -106,21 +105,10 @@ export const Navbar = (props: any) => {
                 label=""
               />
 
-              <Link to={''} className="flex flex-row-reverse mr-1">
-                <IconLabelButton
-                  className="items-center grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid h-1/3 "
-                  icon={
-                    <RiShoppingBasketLine className="w-6 h-6 mx-3 text-2xl text-white" />
-                  }
-                  label=""
-                />
-                <span className="absolute text-sm font-semibold text-white ">
-                  0
-                </span>
-              </Link>
-              <div className="mt-3 text-sm font-semibold text-white ">
-                0.00 TMT
-              </div>
+              <CartButton 
+                cartOpen={cartOpen}
+                setCartOpen={setCartOpen} />
+              
             </div>
           </div>
         </header>

@@ -103,15 +103,19 @@ export const cart = (state = [], {type, payload}: any) => {
       });
       return newCartState;
 
-    // case resourceConstants.UPDATE_CART:
+    // case resourceConstants.REMOVED_FROM_CART:
+    //   console.log("helloo", payload)
     //   const cartFormArr = Object.keys(payload).map((key, index) => {
     //     return payload[key];
     //   });
+
+    //   console.log(cartFormArr)
 
     //   doesItemExist = false;
 
     //   const newProdCartState = state.map((item: any) => {
     //     let itemFound = cartFormArr.find((element: any) => element.Id === item.id);
+    //     console.log(itemFound)
     //     if (itemFound) {
     //       item.quantity = itemFound.quantity;
     //       doesItemExist = true;

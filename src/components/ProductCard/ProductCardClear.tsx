@@ -1,5 +1,5 @@
+
 import { Image } from 'common/Image'
-import { ProductAddToCart } from 'components/ProductCard'
 
 const ProductCard = ({data}: any) => {
   const { name, description, priceValue, currencyCode, image } = data
@@ -26,12 +26,7 @@ const ProductCard = ({data}: any) => {
         </p>
       </div>
 
-      <ProductAddToCart
-        resourceId={data.id}
-      />
-
     </div>
   );
 };
-
 export default ProductCard
