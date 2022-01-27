@@ -37,7 +37,7 @@ const App: React.FC = (props: any) => {
         {alert.message && (
           <div className={`alert ${alert.type}`}>{alert.message}</div>
         )}
-        <div className={`App`}>
+        <div className={`App bg-fullPageColor`}>
           <AppRoutes />
         </div>
       </ErrorBoundary>
