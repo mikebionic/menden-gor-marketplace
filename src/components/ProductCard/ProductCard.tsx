@@ -32,7 +32,7 @@ const ProductCard = ({ data }: any) => {
         <hr className="w-full" />
       </div>
       <p className="mx-4 mb-2 text-sm text-justify">{description}</p>
-      <h3 className="mx-auto my-0 ">
+      <h3 className="w-auto px-3 mx-auto my-0 rounded-full navbarColor">
         {priceValue} {currencyCode}
       </h3>
     </div>
