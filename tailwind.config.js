@@ -39,6 +39,7 @@ module.exports = {
       resGroupItem: '#FBFBFB',
       socialBarItemHover: '#FE9F76',
       fullPageColor: '#F3F4F8',
+      Divider: '#DEDFE4',
       gray: {
         50: '#f9fafb',
         100: '#f3f4f6',
@@ -162,10 +163,12 @@ module.exports = {
         'icon': '1fr auto',
         'navIcons': '40px 1fr 48px 42px 1fr 1fr',
         'ResGroup': '1fr 1fr 1fr',
+        'Divider': '15rem 1fr'
       },
       gridTemplateRows: {
         'SocialBar': '35px 35px 35px 35px',
-        'Card': '1fr 40px auto 1fr'
+        'Card': '1fr 40px auto 1fr',
+        'Divider': '2rem'
       },
       boxShadow: {
         loginShadow: '0px 15px 50px 1px rgba(0, 0, 0, 0.25)',
