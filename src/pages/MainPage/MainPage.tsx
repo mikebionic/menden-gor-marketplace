@@ -46,6 +46,7 @@ const MainPage: React.FC = (props: any) => {
           <ResGroup />
           <ResGroup />
         </div>
+
         <SocialBar />
       </div>
     </ErrorBoundary>
