@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 
 import { fetchCategories } from 'sapredux/actions';
 import { getCategories } from 'sapredux/selectors';
+import { Footer } from 'components/Footer';
 
 const App: React.FC = (props: any) => {
   const { fetchCategories, categories } = props;
@@ -41,6 +42,7 @@ const App: React.FC = (props: any) => {
           <AppRoutes />
         </div>
       </ErrorBoundary>
+      <Footer />
     </>
   );
 };

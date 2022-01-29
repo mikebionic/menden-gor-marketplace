@@ -39,6 +39,7 @@ module.exports = {
       resGroupItem: '#FBFBFB',
       socialBarItemHover: '#FE9F76',
       fullPageColor: '#F3F4F8',
+      Divider: '#DEDFE4',
       gray: {
         50: '#f9fafb',
         100: '#f3f4f6',
@@ -141,15 +142,7 @@ module.exports = {
     },
     backdropFilter: {
       'none': 'none'
-    },
-    boxShadow: {
-      loginShadow: '0px 15px 50px 1px rgba(0, 0, 0, 0.25)',
-      cardShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-      lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-      md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-      'ResGroupShadow': '3px 3px 10px rgba(0, 0, 0, 0.07);'
-    },
-   
+    },  
     minHeight: {
       '[220px]': '220px',
       'screen': '100vh',
@@ -170,13 +163,27 @@ module.exports = {
         'icon': '1fr auto',
         'navIcons': '40px 1fr 48px 42px 1fr 1fr',
         'ResGroup': '1fr 1fr 1fr',
+        'Divider': '15rem 1fr'
       },
       gridTemplateRows: {
-        'SocialBar': '35px 35px 35px 35px'
+        'SocialBar': '35px 35px 35px 35px',
+        'Card': '1fr 40px auto 1fr',
+        'Divider': '2rem'
+      },
+      boxShadow: {
+        loginShadow: '0px 15px 50px 1px rgba(0, 0, 0, 0.25)',
+        cardShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'ResGroupShadow': '3px 3px 10px rgba(0, 0, 0, 0.07);'
       },
       height: {
         sidebar: '95%',
-        '46': '46px'
+        '46': '46px',
+        'Card': '26rem'
+      },
+      inset: {
+        'Card': '87%'
       },
       left: {
         '82': '82%'

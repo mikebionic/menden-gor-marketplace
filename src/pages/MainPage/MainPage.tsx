@@ -14,6 +14,7 @@ import { Spinner } from 'modules/loaders';
 import { CarouselSlider } from 'components/Carousel';
 import { ResGroup } from 'components/ResGroup';
 import { SocialBar } from 'components/SocialBar';
+import { Divider } from 'components/Divider';
 
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -46,6 +47,7 @@ const MainPage: React.FC = (props: any) => {
           <ResGroup />
           <ResGroup />
         </div>
+        <Divider />
         <SocialBar />
       </div>
     </ErrorBoundary>
