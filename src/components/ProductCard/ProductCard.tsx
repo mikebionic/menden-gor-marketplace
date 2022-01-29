@@ -6,6 +6,7 @@ import { FaRegHeart } from 'react-icons/fa';
 
 const ProductCard = ({ data }: any) => {
   const { name, description, priceValue, currencyCode, image } = data;
+  const resource_description = description.length > 60 ? `${description.slice(0,60)}...` : description
   return (
     <div className="grid items-center grid-cols-1 mt-4 bg-white rounded grid-rows-Card w-72 h-Card shadow-ResGroupShadow">
       <div className="relative w-64 h-64 mx-auto my-3 bg-gray-200">
@@ -31,7 +32,7 @@ const ProductCard = ({ data }: any) => {
         <h3 className="mx-auto my-0">{name}</h3>
         <hr className="w-full" />
       </div>
-      <p className="mx-4 mb-2 text-sm text-justify">{description}</p>
+      <p className="mx-4 mb-2 text-sm text-justify">{resource_description}</p>
       <h3 className="w-auto px-3 mx-auto my-0 rounded-full navbarColor">
         {priceValue} {currencyCode}
       </h3>

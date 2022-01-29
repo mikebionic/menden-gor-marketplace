@@ -51,16 +51,20 @@ export const Navbar = (props: any) => {
               </Link>
             </div>
             <Search />
-            <IconLabelButton
-              className="inline-grid items-center grid-rows-1 mx-16 text-lg font-medium text-white grid-cols-icon"
-              icon={<BiLogIn />}
-              label="Login"
-            />
-            <IconLabelButton
-              className="inline-grid items-center grid-rows-1 mx-16 text-lg font-medium text-white grid-cols-icon"
-              icon={<FiUserPlus />}
-              label="Register"
-            />
+            <Link to={routeConstants.login.route}>
+              <IconLabelButton
+                className="inline-grid items-center grid-rows-1 mx-16 text-lg font-medium text-white grid-cols-icon"
+                icon={<BiLogIn />}
+                label="Login"
+              />
+            </Link>
+            <Link to={routeConstants.register.route}>
+              <IconLabelButton
+                className="inline-grid items-center grid-rows-1 mx-16 text-lg font-medium text-white grid-cols-icon"
+                icon={<FiUserPlus />}
+                label="Register"
+              />
+            </Link>
           </div>
         </header>
         <header className="top-0 left-0 w-full h-12 border-b border-white shadow-md navbarColor">
