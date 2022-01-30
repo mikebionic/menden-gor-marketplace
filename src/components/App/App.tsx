@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import 'i18n';
 import { useTranslation } from 'react-i18next'
 
-import AppHeader from '../AppHeader'
-import { HeaderProvider } from '../HeaderProvider'
 import getTitle from 'components/App/getTitle'
 import { useHeader } from '../HeaderProvider'
 
@@ -62,8 +60,6 @@ const App: React.FC = (props: any) => {
 
   return (
     <>
-    <HeaderProvider>
-			<AppHeader />
       <Navbar categories={categories} />
       <ErrorBoundary>
         {alert.message && (
@@ -74,7 +70,6 @@ const App: React.FC = (props: any) => {
         </div>
       </ErrorBoundary>
       <Footer />
-    </HeaderProvider>
     </>
   );
 };
