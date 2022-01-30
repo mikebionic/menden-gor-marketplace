@@ -1,21 +1,50 @@
 import React, { useEffect } from 'react';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import 'i18n';
+import { useTranslation } from 'react-i18next'
+
+import AppHeader from '../AppHeader'
+import { HeaderProvider } from '../HeaderProvider'
+import getTitle from 'components/App/getTitle'
+import { useHeader } from '../HeaderProvider'
 
 import { ErrorBoundary } from 'modules/errors';
-import { AppRoutes, UserRoutes } from 'navigation';
+import { AppRoutes } from 'navigation';
 import { Navbar } from 'components/Navbar';
 
 import { history } from 'sapredux/helpers';
 import { alertActions } from 'sapredux/actions';
 
-import { connect } from 'react-redux';
 
 import { fetchCategories } from 'sapredux/actions';
 import { getCategories } from 'sapredux/selectors';
 import { Footer } from 'components/Footer';
 
 const App: React.FC = (props: any) => {
+  const {t} = useTranslation()
+  const { onHeaderUpdate }: any = useHeader()
+  const page_data_list = getTitle(t)
+  var current_path = history.location.pathname
+
+	useEffect(() => {
+		let pageData:any = fetchPageData(page_data_list, current_path)
+		onHeaderUpdate({...pageData})
+	}, [current_path])
+
+	const fetchPageData = (page_data_list:any, current_path:any) => {
+		var pageData = null;
+		page_data_list.map((page_data:any) => {
+			if (page_data.path === current_path){
+				pageData = page_data
+			}
+			return true
+		})
+		return pageData
+	}
+
+
+
   const { fetchCategories, categories } = props;
 
   useEffect(() => {
@@ -33,6 +62,8 @@ const App: React.FC = (props: any) => {
 
   return (
     <>
+    <HeaderProvider>
+			<AppHeader />
       <Navbar categories={categories} />
       <ErrorBoundary>
         {alert.message && (
@@ -40,10 +71,10 @@ const App: React.FC = (props: any) => {
         )}
         <div className={`App bg-fullPageColor`}>
           <AppRoutes />
-          {/* <UserRoutes /> */}
         </div>
       </ErrorBoundary>
       <Footer />
+    </HeaderProvider>
     </>
   );
 };
