@@ -3,7 +3,7 @@ import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import 'i18n';
 
 import { ErrorBoundary } from 'modules/errors';
-import { AppRoutes } from 'navigation';
+import { AppRoutes, UserRoutes } from 'navigation';
 import { Navbar } from 'components/Navbar';
 
 import { history } from 'sapredux/helpers';
@@ -40,6 +40,7 @@ const App: React.FC = (props: any) => {
         )}
         <div className={`App bg-fullPageColor`}>
           <AppRoutes />
+          {/* <UserRoutes /> */}
         </div>
       </ErrorBoundary>
       <Footer />

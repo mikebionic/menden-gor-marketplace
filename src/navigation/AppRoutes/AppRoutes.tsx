@@ -8,6 +8,8 @@ import { routeConstants } from 'navigation/routeConstants';
 import { ProfilePage } from 'pages/ProfilePage';
 import { AboutPage } from 'pages/AboutPage';
 import { ContactPage } from 'pages/ContactPage';
+import { NotFoundPage } from 'pages/error'
+import { UserRoutes } from 'navigation';
 
 export const AppRoutes: React.FC = ({ props }: any) => {
   return (
@@ -35,7 +37,11 @@ export const AppRoutes: React.FC = ({ props }: any) => {
           exact
           render={() => <ContactPage />}
         />
+
+        <UserRoutes />
+        
         <PrivateRoute component={User} {...props} />
+        <Route component={NotFoundPage}/>
       </Switch>
     </>
   );

@@ -1,11 +1,12 @@
-import Turkmen from './flags/tm.png'
-import English from './flags/us.png'
-import Russian from './flags/ru.png'
+import Turkmen from './flags/tm.svg'
+import English from './flags/us.svg'
+import Russian from './flags/ru.svg'
 
 const Languages = [
   {
     "icon": <Turkmen />,
     "name": "Türkmen",
+    "label": "TKM",
     "url": "/tk",
     "style": "tk",
     "switchLang": "tk"
@@ -14,6 +15,7 @@ const Languages = [
   {
     "icon": <English />,
     "name": "English",
+    "label": "ENG",
     "url": "/en",
     "style": "en",
     "switchLang": "en"
@@ -22,6 +24,7 @@ const Languages = [
   {
     "icon": <Russian />,
     "name": "Русский",
+    "label": "RUS",
     "url": "/ru",
     "style": "ru",
     "switchLang": "ru"

@@ -5,13 +5,16 @@ import { withRouter } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 
+
+import { MdLanguage } from 'react-icons/md';
+import { IconLabelButton } from 'common/IconLabelButton';
+
 import Languages from './Languages'
-import './LangButton.scss'
 
 const LangButton = ({onDropdownStateChange, dropdownState, data}: any) => {
   const {i18n} = useTranslation()
 
-  const [currentLanguage, setLanguage] = useState(filterLang(i18n.language, Languages))
+  const [currentLanguage, setLanguage]:any = useState(filterLang(i18n.language, Languages))
 
   const handleClick = (lang:any) => {
     i18n.changeLanguage(lang)
@@ -38,25 +41,29 @@ const LangButton = ({onDropdownStateChange, dropdownState, data}: any) => {
     })
 
   return (
-    <nav>
-      <ClickAwayListener onClickAway={ () => {
-        if (dropdownState === true){
-          onDropdownStateChange(false)}}} >
-        <div className="lang-menu">
-          {/* <div className={`selected-lang ${currentLanguage.style}`}
-            onClick={()=> {
-              onDropdownStateChange(!dropdownState)
-            }}>
-            {currentLanguage.name}
-          </div> */}
-          {/* <ul style={styles}>
-            
-            {filtered_data}
+    <ClickAwayListener onClickAway={ () => {
+      if (dropdownState === true){
+        onDropdownStateChange(false)}}} >
+      <div className="flex flex-row-reverse mr-1">
+        <IconLabelButton
+          className="items-center grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid h-1/3"
+          icon={
+            <MdLanguage className="w-6 h-6 mx-3 text-2xl text-white" />
+          }
+          onClick={()=> {
+            onDropdownStateChange(!dropdownState)
+          }}
+        />
+        <span className="absolute font-semibold text-white text-10 ">
+          {currentLanguage.label}
+        </span>
 
-          </ul> */}
-        </div>
-      </ClickAwayListener>
-    </nav>
+        <ul>
+          {filtered_data}
+        </ul>
+      </div>
+    </ClickAwayListener>
+    
   )
 }
 
