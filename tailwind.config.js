@@ -243,7 +243,7 @@ module.exports = {
     borderCollapse: ['responsive', 'active'],
     borderColor: ['responsive', 'dark', 'group-hover', 'focus-within', 'hover', 'focus', 'active', 'checked'],
     borderOpacity: ['responsive', 'dark', 'group-hover', 'focus-within', 'hover', 'focus', 'active'],
-    borderRadius: ['responsive', 'active'],
+    borderRadius: ['responsive', 'active', 'hover','focus'],
     borderStyle: ['responsive', 'active', 'hover', 'active'],
     borderWidth: ['responsive', 'active', 'hover'],
     boxDecorationBreak: ['responsive'],
