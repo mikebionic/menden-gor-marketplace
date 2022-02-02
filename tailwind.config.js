@@ -161,7 +161,7 @@ module.exports = {
         'search': 'auto 1fr auto',
         'firstRowNavbar': '15rem 50rem 8rem 8rem',
         'icon': '1fr auto',
-        'navIcons': '40px 1fr 48px 42px 1fr 1fr',
+        'navIcons': '42px 50px 42px 42px 50px auto',
         'ResGroup': '1fr 1fr 1fr',
         'Divider': '15rem 1fr'
       },

@@ -10,29 +10,29 @@ export const Footer: React.FC = () => {
   return (
     <div className="relative grid w-full h-56 grid-cols-5 grid-rows-2 gap-4 px-32 pt-8 shadow-Footer">
       <div className="mx-auto my-0">
-        <h1 className="text-xl">About us</h1>
+        <h1 className="text-xl font-semibold">About us</h1>
         <p>About us</p>
         <p>Bla bla</p>
         <p>bla sadaslkd</p>
       </div>
       <div className="mx-auto my-0">
-        <h1 className="text-xl">Contact us</h1>
+        <h1 className="text-xl font-semibold">Contact us</h1>
         <p>Contact us</p>
         <p>Bla bla</p>
       </div>
       <div className="mx-auto my-0">
-        <h1 className="text-xl">Our Services</h1>
+        <h1 className="text-xl font-semibold">Our Services</h1>
         <p>Contact us</p>
         <p>Bla bla</p>
       </div>
       <div className="mx-auto my-0">
-        <h1 className="text-xl">Help</h1>
+        <h1 className="text-xl font-semibold">Help</h1>
         <p>Contact us</p>
         <p>Bla bla</p>
         <p>Bla bla</p>
       </div>
       <div className="mx-auto my-0">
-        <h1 className="text-xl text-gradient">Contact us</h1>
+        <h1 className="text-xl font-semibold text-gradient">Contact us</h1>
         <IconLabelButton
           className="flex items-center"
           icon={<BsFillTelephoneFill />}
