@@ -7,7 +7,7 @@ import { FaGooglePlay } from 'react-icons/fa';
 
 export const SocialBar: React.FC = () => {
   return (
-    <div className="fixed left-0 grid w-8 grid-cols-1 grid-rows-SocialBar top-2/3 socialBarColor backdrop-blur-glass ">
+    <div className="fixed left-0 grid w-8 grid-cols-1 grid-rows-SocialBar top-2/4 socialBarColor backdrop-blur-glass ">
       <IconLabelButton
         className=""
         icon={
