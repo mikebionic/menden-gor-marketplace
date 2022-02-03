@@ -4,7 +4,7 @@ interface IButtonProps {
   onClick?: () => void;
   icon?: JSX.Element;
   label?: string;
-  className: any;
+  className?: any;
 }
 
 export const IconLabelButton: React.FC<IButtonProps> = ({

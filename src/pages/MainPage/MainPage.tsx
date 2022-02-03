@@ -15,6 +15,7 @@ import { CarouselSlider } from 'components/Carousel';
 import { ResGroup } from 'components/ResGroup';
 import { SocialBar } from 'components/SocialBar';
 import { Divider } from 'components/Divider';
+import { Banner } from 'components/Banner';
 
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -36,6 +37,7 @@ const MainPage: React.FC = (props: any) => {
     <ErrorBoundary>
       <div className="max-w-2xl px-4 py-16 mx-auto sm:py-24 lg:pb-24 lg:pt-12 sm:px-6 lg:max-w-7xl lg:px-8 md:pt-8 min-phone:pt-4">
         {/* <CarouselSlider /> */}
+        <Banner />
         <div className="max-w-2xl px-4 py-16 mx-auto sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
             Main page

@@ -4,8 +4,10 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
 const carouselSlide = {
-  mobileView: 'mt-2',
-  desktopView: 'mt-16',
+  mobileView: '',
+  // mt-2
+  desktopView: '',
+  // mt-16
 };
 
 const classes =

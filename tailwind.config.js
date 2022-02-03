@@ -26,6 +26,7 @@ module.exports = {
       firstColor: '#10087cc6',
       firstColorLight: '#afa5d9',
       white: '#f7f6fb',
+      fullwhite: '#fff',
       scrollColor: '#9b95b6',
       buttonColor: '#214ed8',
       hoverButton: '#2b63eb',
@@ -163,7 +164,8 @@ module.exports = {
         'icon': '1fr auto',
         'navIcons': '42px 50px 42px 42px 50px auto',
         'ResGroup': '1fr 1fr 1fr',
-        'Divider': '15rem 1fr'
+        'Divider': '15rem 1fr',
+        'Banner': '30% 70%'
       },
       gridTemplateRows: {
         'SocialBar': '35px 35px 35px 35px',
@@ -176,12 +178,15 @@ module.exports = {
         lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
         md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
         'ResGroupShadow': '3px 3px 10px rgba(0, 0, 0, 0.07);',
-        'Footer': '0px -3px 10px rgb(0 0 0 / 5%);'
+        'Footer': '0px -3px 10px rgb(0 0 0 / 5%);',
+        'BannerCategory': '0 0 4px 0 rgb(0 0 0 / 15%);'
       },
       height: {
         sidebar: '95%',
         '46': '46px',
-        'Card': '26rem'
+        'Card': '26rem',
+        'Banner': '470px',
+        'BannerCategory': '400px'
       },
       inset: {
         'Card': '87%'
@@ -190,10 +195,14 @@ module.exports = {
         '82': '82%'
       },
       padding: {
-        'carousel': '0 0 56.23% 0'
+        'carousel': '0 0 56.23% 0',
+        'main-content': '24px 60px 0 60px;'
       },
       maxWidth: {
         '95': '95%'
+      },
+      maxHeight: {
+        'BannerCategory': '80%',
       },
       minWidth: {
         '[200px]': '200px',
@@ -320,7 +329,7 @@ module.exports = {
     placeholderColor: ['responsive', 'dark', 'focus'],
     placeholderOpacity: ['responsive', 'dark', 'focus'],
     pointerEvents: ['responsive'],
-    position: ['responsive', 'active'],
+    position: ['responsive', 'active', 'hover', 'focus'],
     resize: ['responsive'],
     ringColor: ['responsive', 'dark', 'focus-within', 'focus'],
     ringOffsetColor: ['responsive', 'dark', 'focus-within', 'focus'],
