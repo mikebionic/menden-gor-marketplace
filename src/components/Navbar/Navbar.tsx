@@ -35,7 +35,7 @@ export const Navbar = (props: any) => {
 
   const [open, setOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
-  const [dropdownState, onDropdownStateChange] = useState(false)
+  const [dropdownState, onDropdownStateChange] = useState(false);
 
   return (
     <ErrorBoundary>
@@ -68,7 +68,7 @@ export const Navbar = (props: any) => {
             </Link>
           </div>
         </header>
-        <header className="top-0 left-0 w-full h-12 border-b border-white shadow-md navbarColor">
+        <header className="top-0 left-0 w-full h-12 border-b border-white shadow-md navbarColor relarive">
           {/* second row */}
           <div className="w-full border-t border-white">
             <div className="absolute float-left border-r border-white h-46">
@@ -78,7 +78,7 @@ export const Navbar = (props: any) => {
                 label="Categories"
               />
             </div>
-            <div className="grid float-right grid-rows-1 mr-4 grid-cols-navIcons">
+            <div className="grid float-right grid-rows-1 gap-2 mr-4 grid-cols-navIcons">
               <IconLabelButton
                 className="items-center grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid h-1/3 "
                 icon={<BsMoon className="w-6 h-6 mx-3 text-2xl" />}
@@ -86,9 +86,11 @@ export const Navbar = (props: any) => {
               />
 
               <LangButton
+                className="absolute"
                 onDropdownStateChange={onDropdownStateChange}
-                dropdownState={dropdownState} />
-              
+                dropdownState={dropdownState}
+              />
+
               <IconLabelButton
                 className="items-center grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid h-1/3 "
                 icon={
@@ -102,10 +104,7 @@ export const Navbar = (props: any) => {
                 }
               />
 
-              <CartButton 
-                cartOpen={cartOpen}
-                setCartOpen={setCartOpen} />
-              
+              <CartButton cartOpen={cartOpen} setCartOpen={setCartOpen} />
             </div>
           </div>
         </header>
