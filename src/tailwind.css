@@ -62,6 +62,12 @@
   box-shadow: 0px 0px 3px rgb(0 0 0 / 30%);
 }
 
+.text-gradient {
+  background: linear-gradient(to right, #ff8d73, #feb37b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
