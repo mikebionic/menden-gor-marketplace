@@ -1,0 +1,66 @@
+import slider_mock_image from 'slider.mock.jpg'
+
+export const all_sliders = {
+  "data": [
+    {
+      "AddInf1": null, 
+      "AddInf2": null, 
+      "AddInf3": null, 
+      "AddInf4": null, 
+      "AddInf5": null, 
+      "AddInf6": null, 
+      "CId": null, 
+      "CreatedDate": "2020-11-03 15:39:30", 
+      "CreatedUId": null, 
+      "DivId": null, 
+      "GCRecord": null, 
+      "ModifiedDate": "2020-11-03 15:39:30", 
+      "ModifiedUId": null, 
+      "SlDesc": "", 
+      "SlGuid": null, 
+      "SlId": 1, 
+      "SlName": "commerce_header", 
+      "Sl_images": [
+        {
+          "AddInf1": null, 
+          "AddInf2": null, 
+          "AddInf3": null, 
+          "AddInf4": null, 
+          "AddInf5": null, 
+          "AddInf6": null, 
+          "CreatedDate": "2021-12-15 12:12:37", 
+          "CreatedUId": null, 
+          "GCRecord": null, 
+          "ModifiedDate": "2021-12-15 12:12:37", 
+          "ModifiedUId": null, 
+          "SlId": 1, 
+          "SlImgDesc": "", 
+          "SlImgEndDate": null, 
+          "SlImgGuid": null, 
+          "SlImgId": 18, 
+          "SlImgLink": "", 
+          "SlImgMainImgFileName": "49edaa9b84eee5a3f90284908574.jpg", 
+          "SlImgMainImgFilePathM": slider_mock_image, 
+          "SlImgMainImgFilePathR": slider_mock_image, 
+          "SlImgMainImgFilePathS": slider_mock_image, 
+          "SlImgStartDate": "2021-12-15 19:01:14", 
+          "SlImgSubImageFileName1": "", 
+          "SlImgSubImageFileName2": "", 
+          "SlImgSubImageFileName3": "", 
+          "SlImgSubImageFileName4": "", 
+          "SlImgSubImageFileName5": "", 
+          "SlImgSubImageFilePath1": "", 
+          "SlImgSubImageFilePath2": "", 
+          "SlImgSubImageFilePath3": "", 
+          "SlImgSubImageFilePath4": "", 
+          "SlImgSubImageFilePath5": "", 
+          "SlImgTitle": "", 
+          "SyncDateTime": "2021-12-15 12:12:37"
+        },
+			]
+		}
+  ],
+  "message": "Sliders",
+  "status": 1,
+  "total": 1
+}

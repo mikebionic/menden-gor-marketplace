@@ -14,7 +14,7 @@ import { Spinner } from 'modules/loaders';
 import { ResGroup } from 'components/ResGroup';
 import { SocialBar } from 'components/SocialBar';
 import { Divider } from 'components/Divider';
-import { Banner } from 'components/Banner';
+import { BannerWithCategory } from 'components/BannerWithCategory';
 
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -35,7 +35,7 @@ const MainPage: React.FC = (props: any) => {
   return (
     <ErrorBoundary>
       <div className="max-w-2xl px-4 py-16 mx-auto sm:py-24 lg:pb-24 lg:pt-12 sm:px-6 lg:max-w-7xl lg:px-8 md:pt-8 min-phone:pt-4">
-        <Banner />
+        <BannerWithCategory />
         <div className="max-w-2xl px-4 py-16 mx-auto sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
             Main page
