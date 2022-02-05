@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchResources, resourceAddedToCart } from 'sapredux/actions';
@@ -7,14 +8,12 @@ import { getResources } from 'sapredux/selectors';
 
 import { ErrorBoundary } from 'modules/errors';
 import { ProductList } from 'components/ProductList';
-import { bindActionCreators } from 'redux';
-
 import { ErrorIndicator } from 'modules/errors';
 import { Spinner } from 'modules/loaders';
 import { ResGroup } from 'components/ResGroup';
 import { SocialBar } from 'components/SocialBar';
 import { Divider } from 'components/Divider';
-import { BannerWithCategory } from 'components/BannerWithCategory';
+import BannerWithCategory from 'components/BannerWithCategory';
 
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -56,16 +55,13 @@ const MainPage: React.FC = (props: any) => {
 
 const mapStateToProps = (state: any) => ({
   resources: getResources(state),
-  // resources: state.resourcePage.ids,
   resource_loading: state.resource.loading,
   resource_error: state.resource.error,
 });
 
 const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators(
-    {
+  return bindActionCreators({
       fetchResources,
-      // onAddedToCart: resourceAddedToCart
     },
     dispatch,
   );

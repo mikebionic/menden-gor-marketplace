@@ -1,1 +1,2 @@
-export * from './BannerWithCategory';
+import BannerWithCategory from './BannerWithCategory';
+export default BannerWithCategory
