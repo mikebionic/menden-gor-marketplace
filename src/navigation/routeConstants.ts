@@ -29,12 +29,8 @@ export const routeConstants = {
 		route: `${route_prefix}/contact/`,
 		name: 'Contact'
 	},
-	shop: {
-		route: `${route_prefix}/shop/`,
-		name: 'Shop'
+	vGrid: {
+		route: `${ route_prefix }/v-grid/`,
+		name: 'v-grid'
 	},
-	market: {
-		route: `${route_prefix}/market/`,
-		name: 'Market'
-	}
 }

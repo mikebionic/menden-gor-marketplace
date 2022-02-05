@@ -10,8 +10,8 @@ const ProductCard = ({ data }: any) => {
   const resource_description =
     description.length > 60 ? `${description.slice(0, 60)}...` : description;
   return (
-    <div className="grid items-center grid-cols-1 mt-4 bg-white rounded grid-rows-Card w-72 h-Card shadow-ResGroupShadow">
-      <div className="relative w-64 h-64 mx-auto my-3 bg-gray-200">
+    <div className="grid items-center grid-cols-1 mt-4 bg-white rounded grid-rows-Card w-60 h-Card shadow-ResGroupShadow">
+      <div className="relative w-56 h-56 mx-auto my-3 bg-gray-200">
         <Ribbon />
         <Image
           src={image}
