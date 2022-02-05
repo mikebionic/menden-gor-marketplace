@@ -9,7 +9,7 @@ import { BsArrowUpShort } from 'react-icons/bs';
 export const Footer: React.FC = () => {
   return (
     <div className="relative">
-      <div className="bottom-0 grid w-full h-56 grid-cols-5 grid-rows-2 gap-4 px-32 pt-8 absolte shadow-Footer">
+      <div className="relative bottom-0 grid w-full h-56 grid-cols-5 grid-rows-2 gap-4 px-32 pt-8 absolte shadow-Footer">
         <div className="mx-auto my-0">
           <h1 className="text-xl font-semibold">About us</h1>
           <p>About us</p>
