@@ -1,7 +1,6 @@
-import React from 'react';
-
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
+import { Image } from 'common/Image'
 
 const carouselSlide = {
   mobileView: '',
@@ -15,7 +14,7 @@ const classes =
     ? carouselSlide.mobileView
     : carouselSlide.desktopView;
 
-export const CarouselSlider: React.FC = () => {
+export const CarouselSlider = ({images}:any) => {
   return (
     <Splide
       className={`mb-8 ${classes}`}
@@ -33,47 +32,13 @@ export const CarouselSlider: React.FC = () => {
       hasSliderWrapper
       hasAutoplayProgress
     >
-      <SplideSlide className="h-full p-carousel">
-        <img
-          src="https://cdn.pixabay.com/photo/2021/01/17/00/13/tiger-5923710_1280.jpg"
-          alt="1"
-          className="absolute w-full h-full"
-        />
-      </SplideSlide>
-      <SplideSlide className="h-full p-carousel">
-        <img
-          src="https://cdn.pixabay.com/photo/2014/10/23/18/56/tiger-500118_1280.jpg"
-          alt="2"
-          className="absolute w-full h-full"
-        />
-      </SplideSlide>
-      <SplideSlide className="h-full p-carousel">
-        <img
-          src="https://cdn.pixabay.com/photo/2019/02/08/14/11/tomcat-3983278_1280.jpg"
-          alt="3"
-          className="absolute w-full h-full"
-        />
-      </SplideSlide>
-      <SplideSlide className="h-full p-carousel">
-        <img
-          src="https://cdn.pixabay.com/photo/2021/02/14/11/41/monkeys-6014204_1280.jpg"
-          alt="4"
-          className="absolute w-full h-full"
-        />
-      </SplideSlide>
-      <SplideSlide className="h-full p-carousel">
-        <img
-          src="https://cdn.pixabay.com/photo/2020/12/17/07/12/cat-5838406_1280.jpg"
-          alt="5"
-          className="absolute w-full h-full"
-        />
-      </SplideSlide>
+      {images.map((image:any, idx:number) => {
+        <SplideSlide className="h-full p-carousel" key={idx}>
+          <Image src={image.filePathM}
+            alt={image.title}
+            className="absolute w-full h-full" />
+        </SplideSlide>
+      })}
     </Splide>
   );
 };
-
-// { generateSlides().map( slide => (
-//   <SplideSlide key={ slide.src }>
-//     <img src={ slide.src } alt={ slide.alt }/>
-//   </SplideSlide>
-// ) ) }

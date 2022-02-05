@@ -9,6 +9,7 @@ import { category } from './category.reducer'
 import { categoryPage } from './categoryPage.reducer'
 import { resource } from './resource.reducer'
 import { resourcePage } from './resourcePage.reducer'
+import { slider } from './slider.reducer'
 
 
 export const rootReducer = (history: History) => combineReducers({
@@ -19,6 +20,7 @@ export const rootReducer = (history: History) => combineReducers({
     categoryPage,
     resource,
     resourcePage,
+    slider,
     router: connectRouter(history)
 });
 

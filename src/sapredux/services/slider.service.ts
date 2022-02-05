@@ -7,6 +7,7 @@ const fetchAll = async () => {
 	if (serviceConfig.useMockApi){
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
+				console.log("+++++++++++=fetching sliders")
 				resolve(all_sliders)
 			}, 3000);
 		});
@@ -20,6 +21,6 @@ const fetchAll = async () => {
 
 }
 
-export const categoryService = {
+export const sliderService = {
 	fetchAll
 };

@@ -1,4 +1,4 @@
-import slider_mock_image from 'slider.mock.jpg'
+import slider_mock_image from './slider.mock.jpg'
 
 export const all_sliders = {
   "data": [
