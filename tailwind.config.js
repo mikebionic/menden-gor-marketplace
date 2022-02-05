@@ -41,6 +41,7 @@ module.exports = {
       socialBarItemHover: '#FE9F76',
       fullPageColor: '#F3F4F8',
       Divider: '#DEDFE4',
+      textColorParagraph: '#5B5B5B',
       gray: {
         50: '#f9fafb',
         100: '#f3f4f6',
@@ -184,7 +185,7 @@ module.exports = {
       height: {
         sidebar: '95%',
         '46': '46px',
-        'Card': '26rem',
+        'Card': '25rem',
         'Banner': '470px',
         'BannerCategory': '400px'
       },

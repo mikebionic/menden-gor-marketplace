@@ -8,8 +8,9 @@ import { routeConstants } from 'navigation/routeConstants';
 import { ProfilePage } from 'pages/ProfilePage';
 import { AboutPage } from 'pages/AboutPage';
 import { ContactPage } from 'pages/ContactPage';
-import { NotFoundPage } from 'pages/error'
+import { NotFoundPage } from 'pages/error';
 import { UserRoutes } from 'navigation';
+import { VGrid } from 'pages/VGrid';
 
 export const AppRoutes: React.FC = ({ props }: any) => {
   return (
@@ -38,10 +39,16 @@ export const AppRoutes: React.FC = ({ props }: any) => {
           render={() => <ContactPage />}
         />
 
+        <Route
+          path={routeConstants.vGrid.route}
+          exact
+          render={() => <VGrid />}
+        />
+
         <UserRoutes />
-        
+
         <PrivateRoute component={User} {...props} />
-        <Route component={NotFoundPage}/>
+        <Route component={NotFoundPage} />
       </Switch>
     </>
   );

@@ -10,15 +10,17 @@ export const Banner: React.FC = () => {
     <div className="grid w-full h-auto gap-4 px-4 mx-auto bg-fullwhite grid-rows-auto mt-28 grid-cols-Banner sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-4 lg:pt-8">
       {/* first col */}
       <div>
-        <div>
-          <h1 className="py-2 mb-2 text-base font-semibold border-b border-gray-400">
+        <div className="pl-3">
+          <h1 className="py-2 mb-2 text-base font-semibold border-b border-gray-200">
             Marketplace
           </h1>
         </div>
-        <div className="overflow-auto h-BannerCategory max-h-BannerCategory">
+        <div className="pl-1 overflow-auto h-BannerCategory max-h-BannerCategory">
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
             {/* <div
               style={{
@@ -40,62 +42,86 @@ export const Banner: React.FC = () => {
           </button>
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
           </button>
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
           </button>
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
           </button>
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
           </button>
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
           </button>
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
           </button>
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
           </button>
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
           </button>
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
           </button>
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
           </button>
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
           </button>
           <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
             <FaGooglePlay className="ml-2" />
-            <h4 className="ml-4 text-left">Elektronika</h4>
+            <h4 className="ml-4 text-left text-textColorParagraph">
+              Elektronika
+            </h4>
             <MdOutlineKeyboardArrowRight className="mr-2" />
           </button>
         </div>
