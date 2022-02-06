@@ -14,7 +14,7 @@ const fetchAll = async () => {
 
 	const requestOptions = {
 		method: 'GET',
-		headers: authBearerHeader()
+		// headers: authBearerHeader()
 	};
 	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_sliders}`, requestOptions).then(handleResponse);
 

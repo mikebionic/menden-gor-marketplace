@@ -4,12 +4,15 @@ import { IconLabelButton } from 'common/IconLabelButton';
 import { MdDone } from 'react-icons/md';
 import { FaRegHeart } from 'react-icons/fa';
 import { Ribbon } from 'common/Ribbon';
+import { ErrorBoundary } from 'modules/errors'
 
 const ProductCard = ({ data }: any) => {
   const { name, description, priceValue, currencyCode, image } = data;
-  const resource_description =
-    description.length > 60 ? `${description.slice(0, 60)}...` : description;
+  var resource_description = description ? description.html(description.text()) : ""
+  resource_description = resource_description.length > 60 ? `${resource_description.slice(0, 60)}...` : resource_description
+
   return (
+    <ErrorBoundary>
     <div className="grid items-center grid-cols-1 mt-4 bg-white rounded grid-rows-Card w-60 h-Card shadow-ResGroupShadow">
       <div className="relative w-56 h-56 mx-auto my-3 bg-gray-200">
         <Ribbon />
@@ -40,6 +43,7 @@ const ProductCard = ({ data }: any) => {
         {priceValue} {currencyCode}
       </h3>
     </div>
+    </ErrorBoundary>
   );
 };
 
