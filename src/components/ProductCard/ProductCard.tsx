@@ -17,7 +17,6 @@ const ProductCard = ({ data }: any) => {
 
   // !!!TODO: use parser or some method to make all description as object xml
   // var resource_description = description ? Parser(`${description}`) : ""
-  // console.log(resource_description)
   // resource_description = resource_description.length > 60 ? `${resource_description.slice(0, 60)}...` : resource_description
 
   return (

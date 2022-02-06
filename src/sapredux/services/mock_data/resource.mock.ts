@@ -154,7 +154,7 @@ export const paginated_resources = {
       "New": false,
       "ResCatId": 5,
       "ResCatName": "Noutbuklar",
-      "ResDesc": "Lorem ipsum dolor sit amet. RAM: 32GB memory SSD 2Tb Intel i7 ",
+      "ResDesc": "<br/><b>DELL <br/><b> 1 sany (40000MT)<br/> <br/><b>Öndürilen ýeri:</b> Bolgariya <br/><b>Görnüşi:</b>Noutbuk",
       "ResFullDesc": null,
       "ResGuid": "d0d43809-d242-43b0-acf7-0e4812bb2e94",
       "ResHeight": 0.0,
