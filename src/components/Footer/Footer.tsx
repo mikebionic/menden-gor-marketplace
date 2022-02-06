@@ -34,21 +34,27 @@ export const Footer: React.FC = () => {
         </div>
         <div className="mx-auto my-0">
           <h1 className="text-xl font-semibold text-gradient">Contact us</h1>
-          <IconLabelButton
-            className="flex items-center"
-            icon={<BsFillTelephoneFill />}
-            label="+99365000000"
-          />
-          <IconLabelButton
-            className="flex items-center"
-            icon={<MdOutlineAlternateEmail />}
-            label="dowlpack@gmail.com"
-          />
-          <IconLabelButton
-            className="flex items-center"
-            icon={<AiOutlineGlobal />}
-            label="www.saphasap.com"
-          />
+          <a href="tel:+99364045600">
+            <IconLabelButton
+              className="flex items-center"
+              icon={<BsFillTelephoneFill />}
+              label="+99364045600"
+            />
+          </a>
+          <a href="mailto:dowlpack@gmail.com">
+            <IconLabelButton
+              className="flex items-center"
+              icon={<MdOutlineAlternateEmail />}
+              label="dowlpack@gmail.com"
+            />
+          </a>
+          <a href="https://saphasap.com">
+            <IconLabelButton
+              className="flex items-center"
+              icon={<AiOutlineGlobal />}
+              label="www.saphasap.com"
+            />
+          </a>
         </div>
         <IconLabelButton
           className="absolute w-8 h-8 rounded navbarColor bottom-8 right-8"
@@ -58,10 +64,12 @@ export const Footer: React.FC = () => {
           label=""
         />
         <div className="absolute bottom-0 w-full col-start-1 col-end-6 text-center border-t-2">
-          <IconLabelButton
-            className="py-3 text-gray-400 cursor-default"
-            label="Made by Sapcozgut"
-          />
+          <a href="https://saphasap.com">
+            <IconLabelButton
+              className="py-3 text-gray-400 cursor-default"
+              label="Made by Sapcozgut"
+            />
+          </a>
         </div>
       </div>
     </div>
