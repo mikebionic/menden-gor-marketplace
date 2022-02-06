@@ -12,3 +12,7 @@ export const serviceConfig = {
 		paginated_resources: process.env.REACT_APP_API_PAGINATED_RESOURCES_ROUTE ?? '/resources/',
 	},
 }
+
+export const namesConfig = {
+	main_page_slider_name: process.env.REACT_APP_MAIN_PAGE_SLIDER_NAME ?? "commerce_header"
+} 

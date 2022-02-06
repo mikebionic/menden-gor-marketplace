@@ -8,7 +8,7 @@ import { CategoryList } from 'common/CategoryList'
 import { fetchCategories, fetchSliders } from 'sapredux/actions';
 import { getCategories, getSliderByName } from 'sapredux/selectors';
 import { ErrorBoundary } from 'modules/errors';
-
+import { namesConfig } from 'configs';
 
 
 const BannerWithCategory: React.FC = (props: any) => {
@@ -36,7 +36,7 @@ const BannerWithCategory: React.FC = (props: any) => {
 
 const mapStateToProps = (state: any) => ({
   categories: getCategories(state),
-  header_slider: getSliderByName(state.slider.data, "commerce_header"),
+  header_slider: getSliderByName(state.slider.data, namesConfig.main_page_slider_name),
 });
 
 const mapDispatchToProps = (dispatch: any) => {

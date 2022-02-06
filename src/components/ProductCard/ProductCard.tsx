@@ -1,15 +1,24 @@
 import { Image } from 'common/Image';
 import { ProductAddToCart } from 'components/ProductCard';
 import { IconLabelButton } from 'common/IconLabelButton';
-import { MdDone } from 'react-icons/md';
 import { FaRegHeart } from 'react-icons/fa';
 import { Ribbon } from 'common/Ribbon';
 import { ErrorBoundary } from 'modules/errors'
+// import Parser from 'html-react-parser'; 
 
 const ProductCard = ({ data }: any) => {
   const { name, description, priceValue, currencyCode, image } = data;
-  var resource_description = description ? description.html(description.text()) : ""
-  resource_description = resource_description.length > 60 ? `${resource_description.slice(0, 60)}...` : resource_description
+  var resource_description = description ? description : ""
+  
+  // // !!!Note: I cannot crop the html stream value that is going to inner html, need css solution or something else
+  // var resource_description = description ? 
+  //   description.length > 60 ? `${description.slice(0, 60)}...` : description
+  //   : ""
+
+  // !!!TODO: use parser or some method to make all description as object xml
+  // var resource_description = description ? Parser(`${description}`) : ""
+  // console.log(resource_description)
+  // resource_description = resource_description.length > 60 ? `${resource_description.slice(0, 60)}...` : resource_description
 
   return (
     <ErrorBoundary>
@@ -18,7 +27,7 @@ const ProductCard = ({ data }: any) => {
         <Ribbon />
         <Image
           src={image}
-          alt={`${name} - ${description}`}
+          alt={`${name} - ${resource_description}`}
           className="object-cover object-center w-full h-full lg:w-full lg:h-full"
         />
         <span className="absolute top-0 right-0">
@@ -27,7 +36,6 @@ const ProductCard = ({ data }: any) => {
             icon={
               <FaRegHeart className="w-6 h-full mx-auto my-0 text-red-500" />
             }
-            label=""
           />
         </span>
         <span className="absolute bottom-0 right-0">
@@ -38,7 +46,7 @@ const ProductCard = ({ data }: any) => {
         <h3 className="mx-auto my-0">{name}</h3>
         <hr className="w-full" />
       </div>
-      <p className="mx-4 mb-2 text-sm text-justify">{resource_description}</p>
+      <p className="mx-4 mb-2 text-sm text-justify" dangerouslySetInnerHTML={{ __html: resource_description }}></p>
       <h3 className="w-auto px-3 mx-auto my-0 rounded-full navbarColor">
         {priceValue} {currencyCode}
       </h3>

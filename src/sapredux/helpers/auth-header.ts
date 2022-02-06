@@ -8,7 +8,7 @@ export const authBearerHeader = (key = 'user') => {
 		return {'Authorization': `Bearer ${user.token}`};
 	} else {
 		// !!!TODO: retry login to refresh token here
-		window.location.pathname = '/logout'
+		// window.location.pathname = '/logout'
 	}
 }
 
