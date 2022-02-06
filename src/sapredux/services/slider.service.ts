@@ -7,7 +7,6 @@ const fetchAll = async () => {
 	if (serviceConfig.useMockApi){
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
-				console.log("+++++++++++=fetching sliders")
 				resolve(all_sliders)
 			}, 3000);
 		});

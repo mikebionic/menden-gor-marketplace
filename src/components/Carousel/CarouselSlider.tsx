@@ -32,13 +32,13 @@ export const CarouselSlider = ({images}:any) => {
       hasSliderWrapper
       hasAutoplayProgress
     >
-      {images.map((image:any, idx:number) => {
+      {images.map((image:any, idx:number) => (
         <SplideSlide className="h-full p-carousel" key={idx}>
           <Image src={image.filePathM}
             alt={image.title}
             className="absolute w-full h-full" />
         </SplideSlide>
-      })}
+      ))}
     </Splide>
   );
 };

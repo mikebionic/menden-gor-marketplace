@@ -6,7 +6,7 @@ const initialState = { loading: false, error: false };
 export const slider = (state = initialState, action: {[name: string]: any}) => {
 	switch (action.type){
 		case sliderConstants.FETCH_SUCCESS:
-			const newValues = R.indexBy(R.prop<string, string>('id'), action.payload)
+			const newValues = R.indexBy(R.prop<string, string>('name'), action.payload)
 			const newState = {
 				loading: false,
 				error: false,

@@ -6,30 +6,28 @@ import { CarouselSlider } from 'components/Carousel';
 import { CategoryListItem } from 'common/CategoryListItem'
 import { CategoryList } from 'common/CategoryList'
 import { fetchCategories, fetchSliders } from 'sapredux/actions';
-import { getCategories, getSliders, getSliderByName } from 'sapredux/selectors';
+import { getCategories, getSliderByName } from 'sapredux/selectors';
 import { ErrorBoundary } from 'modules/errors';
 
-import { all_sliders } from 'sapredux/services/mock_data/slider.mock'
 
 
 const BannerWithCategory: React.FC = (props: any) => {
 
-  const { fetchCategories, categories, fetchSliders, header_slider, sliders } = props
+  const { fetchCategories, categories, fetchSliders, header_slider } = props
 
   useEffect(() => {
     fetchCategories();
     fetchSliders();
   }, [fetchCategories, fetchSliders]);
-  console.log("heheheh sliderrr ", header_slider, sliders)
 
   return (
     <ErrorBoundary>
       <div className="grid w-full h-auto gap-4 px-4 mx-auto bg-fullwhite grid-rows-auto mt-28 grid-cols-Banner sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-4 lg:pt-8">
         <CategoryList>
-          {categories.map((category:any) => <CategoryListItem {...category} />)}
+          {categories.map((category:any, idx:number) => <CategoryListItem key={idx} {...category} />)}
         </CategoryList>
         <div>
-          {/* {!!header_slider ? <CarouselSlider images={header_slider.images} /> : null} */}
+          {!!header_slider ? <CarouselSlider images={header_slider.images} /> : null}
         </div>
       </div>    
     </ErrorBoundary>
@@ -38,10 +36,7 @@ const BannerWithCategory: React.FC = (props: any) => {
 
 const mapStateToProps = (state: any) => ({
   categories: getCategories(state),
-  header_slider: all_sliders.data[0],
-  sliders: all_sliders,
-  // header_slider: getSliderByName(state.slider.data, "commerce_header"),
-  // sliders: getSliders(state),
+  header_slider: getSliderByName(state.slider.data, "commerce_header"),
 });
 
 const mapDispatchToProps = (dispatch: any) => {
