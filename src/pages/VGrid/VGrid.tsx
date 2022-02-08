@@ -12,6 +12,7 @@ import { ErrorIndicator } from 'modules/errors';
 import { Spinner } from 'modules/loaders';
 
 import { Input, Switch, Radio, Space } from 'antd';
+import { IconLabelButton } from 'common/IconLabelButton';
 
 const VGrid: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -166,7 +167,16 @@ const VGrid: React.FC = (props: any) => {
               </div>
             </a>
           </div>
-          <div className="w-56 rounded-lg h-9 bg-fullwhite"></div>
+          <div className="inline-grid w-56 grid-cols-2 rounded-lg h-9 bg-fullwhite">
+            <IconLabelButton
+              className="w-24 mx-auto my-0 bg-green-500 rounded-full"
+              label="Search"
+            />
+            <IconLabelButton
+              className="w-24 mx-auto my-0 bg-red-500 rounded-full"
+              label="Clear"
+            />
+          </div>
         </div>
         {/* second column */}
         <div className="gap-4 ml-4 ">{productsList}</div>
