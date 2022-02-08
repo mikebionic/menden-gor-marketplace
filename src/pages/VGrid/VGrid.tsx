@@ -11,10 +11,7 @@ import { ProductList } from 'components/ProductList';
 import { ErrorIndicator } from 'modules/errors';
 import { Spinner } from 'modules/loaders';
 
-import { Input, Switch, Radio, Space, Card } from 'antd';
-
-const { Meta } = Card;
-
+import { Input, Switch, Radio, Space } from 'antd';
 
 const VGrid: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -172,38 +169,7 @@ const VGrid: React.FC = (props: any) => {
           <div className="w-56 rounded-lg h-9 bg-fullwhite"></div>
         </div>
         {/* second column */}
-        <div className="grid grid-cols-8 gap-4 ml-4 grid-rows-auto">
-
-          ,
-          <Card
-            hoverable
-            style={{ width: 240 }}
-            cover={
-              <img
-                alt="example"
-                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-              />
-            }
-          >
-            <Meta title="Europe Street beat" description="www.instagram.com" />
-          </Card>
-          ,
-          <Card
-            hoverable
-            style={{ width: 240 }}
-            cover={
-              <img
-                alt="example"
-                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-              />
-            }
-          >
-            <Meta title="Europe Street beat" description="www.instagram.com" />
-          </Card>
-          ,
-
-          {productsList}
-        </div>
+        <div className="gap-4 ml-4 ">{productsList}</div>
       </div>
     </ErrorBoundary>
   );
@@ -216,14 +182,12 @@ const mapStateToProps = (state: any) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators({
+  return bindActionCreators(
+    {
       fetchResources,
     },
     dispatch,
   );
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withRouter(VGrid));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(VGrid));
