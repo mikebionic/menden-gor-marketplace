@@ -6,10 +6,10 @@ import { ConnectedRouter } from 'connected-react-router';
 import { store, history } from 'sapredux/helpers';
 import { Spinner } from 'modules/loaders';
 import './tailwind.css';
+import 'antd/dist/antd.css';
 
-
-import AppHeader from 'components/AppHeader'
-import { HeaderProvider } from 'components/HeaderProvider'
+import AppHeader from 'components/AppHeader';
+import { HeaderProvider } from 'components/HeaderProvider';
 
 const App = React.lazy(() =>
   import('components/App').then(({ App }) => ({ default: App })),

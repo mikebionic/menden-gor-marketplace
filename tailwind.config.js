@@ -167,7 +167,9 @@ module.exports = {
         'navIcons': '42px 50px 42px 42px 50px auto',
         'ResGroup': '1fr 1fr 1fr',
         'Divider': '15rem 1fr',
-        'Banner': '30% 70%'
+        'Banner': '30% 70%',
+        'iconReverse': 'auto 2.75rem',
+        'VGrid': 'auto 1fr',
       },
       gridTemplateRows: {
         'SocialBar': '35px 35px 35px 35px',
