@@ -1,1 +1,2 @@
-export * from './VGrid'
+import VGrid from './VGrid'
+export { VGrid }
