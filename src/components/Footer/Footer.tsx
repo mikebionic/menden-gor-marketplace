@@ -1,39 +1,49 @@
 import React from 'react';
-import { IconLabelButton } from 'common/IconLabelButton';
-
+import { Link } from 'react-router-dom'
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { AiOutlineGlobal } from 'react-icons/ai';
 import { BsArrowUpShort } from 'react-icons/bs';
+
+import { IconLabelButton } from 'common/IconLabelButton';
+import { routeConstants } from 'navigation/routeConstants';
 
 export const Footer: React.FC = () => {
   return (
     <div className="relative">
       <div className="relative bottom-0 grid w-full h-56 grid-cols-5 grid-rows-2 gap-4 px-32 pt-8 absolte shadow-Footer">
         <div className="mx-auto my-0">
-          <h1 className="text-xl font-semibold">About us</h1>
-          <p>About us</p>
-          <p>Bla bla</p>
-          <p>bla sadaslkd</p>
+          <Link to={routeConstants.about.route}>
+            <h1 className="text-xl font-semibold">{routeConstants.about.name}</h1>
+          </Link>
+          <Link to={routeConstants.about.route}>
+            <p>{routeConstants.about.name}</p>
+          </Link>
+          <p>Delivery and payment</p>
+          <p>Order now!</p>
         </div>
         <div className="mx-auto my-0">
-          <h1 className="text-xl font-semibold">Contact us</h1>
-          <p>Contact us</p>
-          <p>Bla bla</p>
+          <h1 className="text-xl font-semibold">Partnership</h1>
+          <p>Collaboration</p>
+          <p>Brands</p>
+          <p>Vacancies</p>
         </div>
         <div className="mx-auto my-0">
           <h1 className="text-xl font-semibold">Our Services</h1>
-          <p>Contact us</p>
-          <p>Bla bla</p>
+          <p>Terms and conditions</p>
+          <p>Conspiracy</p>
         </div>
         <div className="mx-auto my-0">
           <h1 className="text-xl font-semibold">Help</h1>
-          <p>Contact us</p>
-          <p>Bla bla</p>
-          <p>Bla bla</p>
+          <p>Help & support</p>
+          <Link to={routeConstants.contact.route}>
+            <p>{routeConstants.contact.name}</p>
+          </Link>
         </div>
         <div className="mx-auto my-0">
-          <h1 className="text-xl font-semibold text-gradient">Contact us</h1>
+          <Link to={routeConstants.contact.route}>
+            <h1 className="text-xl font-semibold text-gradient">{routeConstants.contact.name}</h1>
+          </Link>
           <a href="tel:+99364045600">
             <IconLabelButton
               className="flex items-center"

@@ -9,9 +9,7 @@ export const ContactPage: React.FC = () => {
       <div className="max-w-3xl text-center md:mt-12">
         <h2 className="text-3xl font-medium text-black">Contact Us</h2>
         <p className="font-light text-black">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui saepe
-          officia blanditiis perspiciatis voluptatum debitis, tempore sapiente
-          commodi soluta impedit.
+          To make your business easier and faster, we offer you comprehensive solutions to automate your trading system.
         </p>
       </div>
       <div className="grid justify-center w-full mt-8 min-phone:mb-12 md:mb-0 min-phone:grid-cols-1 align-center md:grid-cols-2 min-phone:grid-rows-2">
@@ -23,10 +21,9 @@ export const ContactPage: React.FC = () => {
             <div className="flex flex-col ml-5 text-xl font-light text-black">
               <h3 className="font-medium text-blue-400">Address</h3>
               <p>
-                4671 Sugar Camp Road, <br />
-                Owatonna,Minnesota,
+                Parahat 7/1, Jay 25
                 <br />
-                55060
+                Ashgabat, Turkmenistan
               </p>
             </div>
           </div>
@@ -36,7 +33,9 @@ export const ContactPage: React.FC = () => {
             </div>
             <div className="flex flex-col ml-5 text-xl font-light text-black">
               <h3 className="font-medium text-blue-400">Phone</h3>
-              <p>507-475-6094</p>
+              <a href="tel:+99364045600">
+                <p>+993 64 045600</p>
+              </a>
             </div>
           </div>
           <div className="relative flex px-0 py-5">
@@ -45,7 +44,9 @@ export const ContactPage: React.FC = () => {
             </div>
             <div className="flex flex-col ml-5 text-xl font-light text-black">
               <h3 className="font-medium text-blue-400">Email</h3>
-              <p>dowlpack@gmail.com</p>
+              <a href="mailto:dowlpack@gmail.com">
+                <p>dowlpack@gmail.com</p>
+              </a>
             </div>
           </div>
         </div>

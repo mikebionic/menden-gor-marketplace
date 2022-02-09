@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { routeConstants } from 'navigation/routeConstants';
+import { Link } from 'react-router-dom'
+
 export const AboutPage: React.FC = () => {
   return (
     <div className="w-full px-0 py-16">
@@ -15,20 +18,18 @@ export const AboutPage: React.FC = () => {
             Marketplace
           </h5>
           <p className="mb-12 text-lg leading-7 tracking-wider text-justify">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita,
-            aut minima? Nostrum nobis perferendis qui at. Quia, suscipit quidem
-            perspiciatis totam incidunt optio recusandae ad quo voluptate porro,
-            numquam, consequuntur ex voluptas culpa placeat excepturi voluptates
-            sint ipsum esse soluta nulla velit! Eos non eum expedita vitae
-            labore explicabo, tenetur necessitatibus accusantium ducimus quasi
-            neque hic ut libero nihil soluta?
+            The e-commerce program is primarily designed for merchants, making it easy to manage their goods, customers and orders. This software is state-of-the-art and is designed to automate trading for trading agents.
+            The list of goods, types, prices and the possibility of adding goods to the basket are created. In this section, it is convenient for trading agents to show, present and sell their goods to buyers.
+            Trading agents can control the number of their customers, its location, phone number and the goods to be shipped to that customer through the software.
           </p>
-          <button
-            type="button"
-            className="px-8 py-3 font-bold text-black transition-all border-2 border-transparent border-solid cursor-pointer delay-400 bg-firstColorLight rounded-3xl hover:bg-transparent hover:border-firstColorLight"
-          >
-            Let's Talk
-          </button>
+          <Link to={routeConstants.contact.route}>
+            <button
+              type="button"
+              className="px-8 py-3 font-bold text-black transition-all border-2 border-transparent border-solid cursor-pointer delay-400 bg-firstColorLight rounded-3xl hover:bg-transparent hover:border-firstColorLight"
+            >
+              {routeConstants.contact.name}
+            </button>
+          </Link>
         </div>
       </div>
     </div>

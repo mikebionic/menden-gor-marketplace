@@ -23,14 +23,14 @@ export const routeConstants = {
 	},
 	about: {
 		route: `${route_prefix}/about/`,
-		name: 'About'
+		name: 'About us'
 	},
 	contact: {
 		route: `${route_prefix}/contact/`,
-		name: 'Contact'
+		name: 'Contact us'
 	},
 	vGrid: {
 		route: `${ route_prefix }/v-grid/`,
-		name: 'v-grid'
+		name: 'Shop'
 	},
 }
