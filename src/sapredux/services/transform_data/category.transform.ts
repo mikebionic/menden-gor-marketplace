@@ -6,7 +6,7 @@ export const transformCategories = (data: any) => {
 		isMain: data.IsMain,
 		guid: data.ResCatGuid,
 		iconData: data.ResCatIconData,
-		image: data.ResCatIconFilePath,
+		icon: data.ResCatIconFilePath,
 		iconName: data.ResCatIconName,
 		visibleIndex: data.ResCatVisibleIndex,
 		ownerCatId: data.ResOwnerCatId,

@@ -11,7 +11,11 @@ interface IImage {
 
 export const Image: React.FC<IImage> = (props) => {
 
-	const image_src = (!props.src.includes('http') && serviceConfig.useMockApi === 0) ? `${serviceConfig.apiHost}${props.src}` : props.src
+	const image_src = 
+		(!props.src.includes('http') && serviceConfig.useMockApi === 0)
+		? `${serviceConfig.apiHost}${props.src}`
+		: props.src
+
 	return (
 		<img 
 			src={image_src}

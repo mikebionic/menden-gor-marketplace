@@ -7,13 +7,11 @@ import { ErrorBoundary } from 'modules/errors';
 // import Parser from 'html-react-parser';
 
 const ProductCard = ({ data }: any) => {
-  const { name, description, priceValue, currencyCode, image } = data;
-  var resource_description = description ? description : '';
+  const { name, description, priceValue, currencyCode, image, isNew } = data;
 
-  // // !!!Note: I cannot crop the html stream value that is going to inner html, need css solution or something else
-  // var resource_description = description ?
-  //   description.length > 60 ? `${description.slice(0, 60)}...` : description
-  //   : ""
+  var resource_description = description ?
+    description.length > 60 ? `${description.slice(0, 60)}...` : description
+    : ""
 
   // !!!TODO: use parser or some method to make all description as object xml
   // var resource_description = description ? Parser(`${description}`) : ""
@@ -23,7 +21,7 @@ const ProductCard = ({ data }: any) => {
     <ErrorBoundary>
       <div className="grid items-center grid-cols-1 mt-4 bg-white rounded grid-rows-Card w-60 h-Card shadow-ResGroupShadow">
         <div className="relative w-56 h-56 mx-auto my-3 bg-gray-200">
-          <Ribbon />
+          { isNew ? <Ribbon /> : null }
           <Image
             src={image}
             alt={`${name} - ${resource_description}`}
@@ -47,8 +45,9 @@ const ProductCard = ({ data }: any) => {
         </div>
         <p
           className="mx-4 mb-2 text-sm text-justify"
-          dangerouslySetInnerHTML={{ __html: resource_description }}
-        ></p>
+        >
+          {resource_description}
+        </p>
         <h3 className="w-auto px-3 mx-auto my-0 rounded-full navbarColor">
           {priceValue} {currencyCode}
         </h3>

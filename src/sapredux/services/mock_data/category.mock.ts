@@ -1,3 +1,5 @@
+import category_mock from './category.svg'
+
 export const all_categories = {
   "data": [
     {
@@ -10,7 +12,7 @@ export const all_categories = {
       "ResCatDesc": "various high cquality sound system available",
       "ResCatGuid": null,
       "ResCatIconData": null,
-      "ResCatIconFilePath": "/ls/api/get-icon/Electronics/earbud_headphones.svg",
+      "ResCatIconFilePath": category_mock,
       "ResCatIconName": "earbud_headphones.svg",
       "ResCatId": 2,
       "ResCatName": "Nau\u015fniklar",
@@ -28,7 +30,7 @@ export const all_categories = {
       "ResCatDesc": "High speed full power latest laptops",
       "ResCatGuid": null,
       "ResCatIconData": null,
-      "ResCatIconFilePath": "/ls/api/get-icon/Electronics/laptop.svg",
+      "ResCatIconFilePath": category_mock,
       "ResCatIconName": "laptop.svg",
       "ResCatId": 5,
       "ResCatName": "Noutbuklar",
@@ -46,7 +48,7 @@ export const all_categories = {
       "ResCatDesc": "Pure coffe from arabica is easily cooked",
       "ResCatGuid": null,
       "ResCatIconData": null,
-      "ResCatIconFilePath": "/ls/api/get-icon/Electronics/electric_teapot.svg",
+      "ResCatIconFilePath": category_mock,
       "ResCatIconName": "electric_teapot.svg",
       "ResCatId": 8,
       "ResCatName": "Kofe bi\u015firijiler",
@@ -64,7 +66,7 @@ export const all_categories = {
       "ResCatDesc": "High resolution images taken by cameras are available in picures menu",
       "ResCatGuid": null,
       "ResCatIconData": null,
-      "ResCatIconFilePath": "/ls/api/get-icon/Electronics/bullet_camera.svg",
+      "ResCatIconFilePath": category_mock,
       "ResCatIconName": "bullet_camera.svg",
       "ResCatId": 6,
       "ResCatName": "Kameralar",
@@ -82,7 +84,7 @@ export const all_categories = {
       "ResCatDesc": "smartwatches available from now! hurry up",
       "ResCatGuid": null,
       "ResCatIconData": null,
-      "ResCatIconFilePath": "/ls/api/get-icon/Electronics/smart_watch.svg",
+      "ResCatIconFilePath": category_mock,
       "ResCatIconName": "smart_watch.svg",
       "ResCatId": 3,
       "ResCatName": "Sagatlar",
@@ -100,7 +102,7 @@ export const all_categories = {
       "ResCatDesc": "Meat freezes insanely fast",
       "ResCatGuid": null,
       "ResCatIconData": null,
-      "ResCatIconFilePath": "/ls/api/get-icon/Electronics/video_card.svg",
+      "ResCatIconFilePath": category_mock,
       "ResCatIconName": "video_card.svg",
       "ResCatId": 7,
       "ResCatName": "Sowadyjylar",
@@ -118,7 +120,7 @@ export const all_categories = {
       "ResCatDesc": "latest models of smartphones with builtin AI",
       "ResCatGuid": null,
       "ResCatIconData": null,
-      "ResCatIconFilePath": "/ls/api/get-icon/Electronics/smartphone_tablet.svg",
+      "ResCatIconFilePath": category_mock,
       "ResCatIconName": "smartphone_tablet.svg",
       "ResCatId": 1,
       "ResCatName": "Smartfonlar",
