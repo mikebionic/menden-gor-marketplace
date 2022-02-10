@@ -32,7 +32,7 @@ const VGrid: React.FC = (props: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="grid pb-8 grid-cols-VGrid">
+      <div className="grid pb-8 text-base grid-cols-VGrid">
         {/* first column */}
         <div className="">
           <div className="grid w-56 h-40 px-2 py-2 my-4 rounded-lg bg-fullwhite gap-y-1">
@@ -76,7 +76,7 @@ const VGrid: React.FC = (props: any) => {
             </div>
           </div>
           <div className="grid w-56 h-24 px-2 py-2 my-4 rounded-lg bg-fullwhite gap-y-1">
-            <div className="grid grid-cols-iconReverse">
+            <div className="grid grid-cols-iconReverse ">
               <p>In taze</p>
               <Switch defaultChecked onChange={undefined} />
             </div>
