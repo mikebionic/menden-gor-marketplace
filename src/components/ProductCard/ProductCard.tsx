@@ -27,7 +27,7 @@ const ProductCard = ({ data }: any) => {
           <Badge.Ribbon
             text="50%"
             placement="start"
-            className="top-DiscountRibbon"
+            className="cursor-default top-DiscountRibbon"
             color="gold"
           >
             {isNew ? <Ribbon /> : null}

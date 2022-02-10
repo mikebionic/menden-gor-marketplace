@@ -7,9 +7,10 @@ export const ContactPage: React.FC = () => {
   return (
     <section className="relative flex flex-col items-center justify-center min-h-screen md:px-24 md:py-12 min-phone:p-10">
       <div className="max-w-3xl text-center md:mt-12">
-        <h2 className="text-3xl font-medium text-black">Contact Us</h2>
+        <h2 className="text-3xl font-bold text-black">Contact Us</h2>
         <p className="font-light text-black">
-          To make your business easier and faster, we offer you comprehensive solutions to automate your trading system.
+          To make your business easier and faster, we offer you comprehensive
+          solutions to automate your trading system.
         </p>
       </div>
       <div className="grid justify-center w-full mt-8 min-phone:mb-12 md:mb-0 min-phone:grid-cols-1 align-center md:grid-cols-2 min-phone:grid-rows-2">

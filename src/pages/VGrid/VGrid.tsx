@@ -169,11 +169,11 @@ const VGrid: React.FC = (props: any) => {
           </div>
           <div className="inline-grid w-56 grid-cols-2 rounded-lg h-9 bg-fullwhite">
             <IconLabelButton
-              className="w-24 mx-auto my-0 bg-green-500 rounded-full"
+              className="w-24 mx-auto my-0 rounded-full bg-gradientSecondColor"
               label="Search"
             />
             <IconLabelButton
-              className="w-24 mx-auto my-0 bg-red-500 rounded-full"
+              className="w-24 mx-auto my-0 rounded-full bg-gradientFirstColor"
               label="Clear"
             />
           </div>

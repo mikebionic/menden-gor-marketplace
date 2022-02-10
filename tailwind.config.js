@@ -42,6 +42,8 @@ module.exports = {
       fullPageColor: '#F3F4F8',
       Divider: '#DEDFE4',
       textColorParagraph: '#5B5B5B',
+      gradientFirstColor: '#ff8d73',
+      gradientSecondColor: '#feb37b',
       gray: {
         50: '#f9fafb',
         100: '#f3f4f6',
