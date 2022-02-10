@@ -193,7 +193,8 @@ module.exports = {
         'BannerCategory': '400px'
       },
       inset: {
-        'Card': '87%'
+        'Card': '87%',
+        'DiscountRibbon': '83%'
       },
       left: {
         '82': '82%'
