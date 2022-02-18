@@ -1,10 +1,13 @@
+import { Link } from 'react-router-dom'
+import { FaRegHeart } from 'react-icons/fa';
+import { Badge } from 'antd';
+
 import { Image } from 'common/Image';
 import { ProductAddToCart } from 'components/ProductCard';
 import { IconLabelButton } from 'common/IconLabelButton';
-import { FaRegHeart } from 'react-icons/fa';
 import { Ribbon } from 'common/Ribbon';
 import { ErrorBoundary } from 'modules/errors';
-import { Badge } from 'antd';
+import { routeConstants } from 'navigation/routeConstants';
 // import Parser from 'html-react-parser';
 
 const ProductCard = ({ data }: any) => {
@@ -31,11 +34,13 @@ const ProductCard = ({ data }: any) => {
             color="gold"
           >
             {isNew ? <Ribbon /> : null}
-            <Image
-              src={image}
-              alt={`${name} - ${resource_description}`}
-              className="object-cover object-center w-full h-full lg:w-full lg:h-full"
-            />
+            <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
+              <Image
+                src={image}
+                alt={`${name} - ${resource_description}`}
+                className="object-cover object-center w-full h-full lg:w-full lg:h-full"
+              />
+            </Link>
 
             <span className="absolute top-0 right-0">
               <IconLabelButton
@@ -50,10 +55,12 @@ const ProductCard = ({ data }: any) => {
             </span>
           </Badge.Ribbon>
         </div>
-        <div className="mx-auto my-0 text-center">
-          <h3 className="mx-auto my-0">{name}</h3>
-          <hr className="w-full" />
-        </div>
+        <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
+          <div className="mx-auto my-0 text-center">
+            <h3 className="mx-auto my-0">{name}</h3>
+            <hr className="w-full" />
+          </div>
+        </Link>
         <p className="mx-4 mb-2 text-sm text-justify">{resource_description}</p>
         <h3 className="w-auto px-3 mx-auto my-0 rounded-full navbarColor">
           {priceValue} {currencyCode}

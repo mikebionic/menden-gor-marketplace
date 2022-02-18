@@ -14,7 +14,14 @@ export const resource = (state = initialState, action: {[name: string]: any}) =>
 			}
 			return R.merge(state, newState)
 
-			case resourceConstants.FETCH_START:
+		case resourceConstants.LOAD_MORE_SUCCESS:
+			const moreValues = R.indexBy(R.prop<string, string>('id'), action.payload)
+			return R.merge(state, moreValues)
+
+		case resourceConstants.FETCH_BY_ID_SUCCESS:
+			return R.assoc(action.payload.id, action.payload, state)
+
+		case resourceConstants.FETCH_START:
 			return {
 				loading: true,
 				error: false

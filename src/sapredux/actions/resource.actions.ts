@@ -23,6 +23,25 @@ export const fetchResources = () => async (dispatch: any) => {
 	}
 }
 
+export const fetchResourceById = (id:number) => async (dispatch:any) => {
+	dispatch({type: actionConstants.FETCH_BY_ID_START})
+	try {
+		const response = await service.fetchById(id)
+		const data = transformResponse(response)
+		dispatch({
+			type: actionConstants.FETCH_BY_ID_SUCCESS,
+			payload: data
+		})
+	} catch (err:any) {
+		dispatch({
+			type: actionConstants.FETCH_BY_ID_FAILURE,
+			error: true,
+			payload: err
+		})
+	}
+}
+
+
 export const resourceAddedToCart = (id: number) => {
 	return {
 		type: actionConstants.ADDED_TO_CART,

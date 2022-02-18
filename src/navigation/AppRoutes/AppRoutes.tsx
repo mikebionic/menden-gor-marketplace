@@ -29,9 +29,10 @@ export const AppRoutes: React.FC = ({ props }: any) => {
         />
 
         <Route
-          path={routeConstants.product.route}
-          exact
-          render={() => <ProductPage />}
+          path={`${routeConstants.product.route}:id`}
+          // exact
+          component={ProductPage}
+          // render={() => <ProductPage />}
         />
 
         <Route
