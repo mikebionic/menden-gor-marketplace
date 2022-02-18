@@ -17,6 +17,7 @@ import { alertActions } from 'sapredux/actions';
 import { fetchCategories } from 'sapredux/actions';
 import { getCategories } from 'sapredux/selectors';
 import { Footer } from 'components/Footer';
+import { routeConstants } from 'navigation/routeConstants';
 
 const App: React.FC = (props: any) => {
   const { t } = useTranslation();
@@ -57,16 +58,17 @@ const App: React.FC = (props: any) => {
 
   return (
     <>
-      <Navbar categories={categories} />
       <ErrorBoundary>
+        <Navbar categories={categories} />
         {alert.message && (
           <div className={`alert ${alert.type}`}>{alert.message}</div>
         )}
         <div className={`App bg-fullPageColor p-main-content pt-40 pb-8`}>
           <AppRoutes />
         </div>
+
+        <Footer />
       </ErrorBoundary>
-      <Footer />
     </>
   );
 };

@@ -150,7 +150,8 @@ module.exports = {
     minHeight: {
       '[220px]': '220px',
       'screen': '100vh',
-      'sidebar': '95vh'
+      'sidebar': '95vh',
+      '32px': '32px'
     },
     blur: {
       'glass': '20px'
@@ -228,7 +229,7 @@ module.exports = {
       },
       fontSize: {
         '10': '10px',
-      }
+      },
     },
   },
   variants: {
@@ -286,6 +287,7 @@ module.exports = {
     flexGrow: ['responsive'],
     flexShrink: ['responsive'],
     flexWrap: ['responsive'],
+    flexBasis: ['responsive'],
     float: ['responsive'],
     fontFamily: ['responsive'],
     fontSize: ['responsive'],
