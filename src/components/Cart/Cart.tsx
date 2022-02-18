@@ -1,25 +1,28 @@
-import { Fragment } from 'react'
+import { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Dialog, Transition } from '@headlessui/react';
 import { BsX } from 'react-icons/bs';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
-import { CartRow } from 'components/Cart'
+import { CartRow } from 'components/Cart';
 import {
   resourceAddedToCart,
   resourceRemovedFromCart,
   resourceAllRemovedFromCart,
-} from 'sapredux/actions'
-import {
-  getTotalCount,
-  getTotalPrice,
-  getCartItems
-} from 'sapredux/selectors'
+} from 'sapredux/actions';
+import { getTotalCount, getTotalPrice, getCartItems } from 'sapredux/selectors';
 
-export const Cart = ({open, setOpen, items, totalCount,
-  totalPrice, onIncrease, onDecrease, onDelete}: any) => {
-
+export const Cart = ({
+  open,
+  setOpen,
+  items,
+  totalCount,
+  totalPrice,
+  onIncrease,
+  onDecrease,
+  onDelete,
+}: any) => {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -76,7 +79,9 @@ export const Cart = ({open, setOpen, items, totalCount,
                           className="-my-6 divide-y divide-gray-200"
                         >
                           {items.map((item: any, idx: number) => (
-                            <CartRow key={idx} item={item}
+                            <CartRow
+                              key={idx}
+                              item={item}
                               onIncrease={onIncrease}
                               onDecrease={onDecrease}
                               onDelete={onDelete}
@@ -125,23 +130,26 @@ export const Cart = ({open, setOpen, items, totalCount,
         </div>
       </Dialog>
     </Transition.Root>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state: any) => {
   return {
     items: getCartItems(state),
     totalCount: getTotalCount(state),
-    totalPrice: getTotalPrice(state)
+    totalPrice: getTotalPrice(state),
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators({
-    onIncrease: resourceAddedToCart,
-    onDecrease: resourceRemovedFromCart,
-    onDelete: resourceAllRemovedFromCart
-  }, dispatch);
-}
+  return bindActionCreators(
+    {
+      onIncrease: resourceAddedToCart,
+      onDecrease: resourceRemovedFromCart,
+      onDelete: resourceAllRemovedFromCart,
+    },
+    dispatch,
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

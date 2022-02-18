@@ -176,7 +176,8 @@ module.exports = {
       gridTemplateRows: {
         'SocialBar': '35px 35px 35px 35px',
         'Card': '1fr 40px auto 1fr',
-        'Divider': '2rem'
+        'Divider': '2rem',
+        'Product': 'auto max-content max-content max-content max-content 1fr'
       },
       boxShadow: {
         loginShadow: '0px 15px 50px 1px rgba(0, 0, 0, 0.25)',
@@ -192,7 +193,8 @@ module.exports = {
         '46': '46px',
         'Card': '25rem',
         'Banner': '470px',
-        'BannerCategory': '400px'
+        'BannerCategory': '400px',
+        'Product': '450px'
       },
       inset: {
         'Card': '87%',
@@ -221,7 +223,8 @@ module.exports = {
       },
       width: {
         'search': '728px',
-        'ResGroup': '380px'
+        'ResGroup': '380px',
+        'Product': '1150px'
       },
       fontSize: {
         '10': '10px',

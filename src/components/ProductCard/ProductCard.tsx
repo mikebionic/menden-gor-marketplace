@@ -4,7 +4,7 @@ import { IconLabelButton } from 'common/IconLabelButton';
 import { FaRegHeart } from 'react-icons/fa';
 import { Ribbon } from 'common/Ribbon';
 import { ErrorBoundary } from 'modules/errors';
-import { Badge, Card } from 'antd';
+import { Badge } from 'antd';
 // import Parser from 'html-react-parser';
 
 const ProductCard = ({ data }: any) => {

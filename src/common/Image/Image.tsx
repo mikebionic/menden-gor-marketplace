@@ -6,23 +6,26 @@ import { serviceConfig } from 'configs';
 interface IImage {
   src: string;
   alt: string;
-	className?: string;
+  className?: string;
 }
 
-export const Image: React.FC<IImage> = (props) => {
+export const Image: React.FC<IImage> = ({
+  src = '',
+  alt = '',
+  className = '',
+}) => {
+  const image_src =
+    !src.includes('http') && serviceConfig.useMockApi === 0
+      ? `${serviceConfig.apiHost}${src}`
+      : src;
 
-	const image_src = 
-		(!props.src.includes('http') && serviceConfig.useMockApi === 0)
-		? `${serviceConfig.apiHost}${props.src}`
-		: props.src
-
-	return (
-		<img 
-			src={image_src}
-			alt={props.alt}
-			onLoad={handleLoadingImage}
-			onError={handleImageError}
-			className={props.className}
-		/>
-	)
-}
+  return (
+    <img
+      src={image_src}
+      alt={alt}
+      onLoad={handleLoadingImage}
+      onError={handleImageError}
+      className={className}
+    />
+  );
+};

@@ -11,6 +11,7 @@ import { ContactPage } from 'pages/ContactPage';
 import { NotFoundPage } from 'pages/error';
 import { UserRoutes } from 'navigation';
 import { VGrid } from 'pages/VGrid';
+import { ProductPage } from 'pages/ProductPage';
 
 export const AppRoutes: React.FC = ({ props }: any) => {
   return (
@@ -25,6 +26,12 @@ export const AppRoutes: React.FC = ({ props }: any) => {
           path={routeConstants.profile.route}
           exact
           render={() => <ProfilePage />}
+        />
+
+        <Route
+          path={routeConstants.product.route}
+          exact
+          render={() => <ProductPage />}
         />
 
         <Route

@@ -60,7 +60,8 @@ const mapStateToProps = (state: any) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators({
+  return bindActionCreators(
+    {
       fetchResources,
     },
     dispatch,

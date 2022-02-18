@@ -105,6 +105,7 @@ export const Navbar = (props: any) => {
               />
 
               <CartButton cartOpen={cartOpen} setCartOpen={setCartOpen} />
+              <Cart open={cartOpen} setOpen={setCartOpen} />
             </div>
           </div>
         </header>
