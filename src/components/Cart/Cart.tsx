@@ -134,10 +134,12 @@ export const Cart = ({
 };
 
 const mapStateToProps = (state: any) => {
+  const totalData = getTotalCount(state)
   return {
     items: getCartItems(state),
-    totalCount: getTotalCount(state),
-    totalPrice: getTotalPrice(state),
+    // totalPrice: getTotalPrice(state),
+    totalCount: totalData.totalCount,
+    totalPrice: totalData.totalPrice,
   };
 };
 
