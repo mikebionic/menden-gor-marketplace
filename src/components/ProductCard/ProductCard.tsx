@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { FaRegHeart } from 'react-icons/fa';
 import { Badge } from 'antd';
 
@@ -56,7 +56,7 @@ const ProductCard = ({ data }: any) => {
           </Badge.Ribbon>
         </div>
         <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
-          <div className="mx-auto my-0 text-center">
+          <div className="mx-auto my-0 text-center w-max">
             <h3 className="mx-auto my-0">{name}</h3>
             <hr className="w-full" />
           </div>

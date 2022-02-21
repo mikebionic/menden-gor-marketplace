@@ -14,6 +14,7 @@ import { ResGroup } from 'components/ResGroup';
 import { SocialBar } from 'components/SocialBar';
 import { Divider } from 'components/Divider';
 import BannerWithCategory from 'components/BannerWithCategory';
+import { Tab } from 'components/Tab';
 
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -48,6 +49,7 @@ const MainPage: React.FC = (props: any) => {
         </div>
         <Divider />
         <SocialBar />
+        <Tab />
       </div>
     </ErrorBoundary>
   );

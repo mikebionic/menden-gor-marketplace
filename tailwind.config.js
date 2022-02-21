@@ -178,7 +178,9 @@ module.exports = {
         'SocialBar': '35px 35px 35px 35px',
         'Card': '1fr 40px auto 1fr',
         'Divider': '2rem',
-        'Product': 'auto max-content max-content max-content max-content 1fr'
+        'Product': 'auto max-content max-content max-content max-content 1fr',
+        'Avatar': '1fr max-content max-content auto',
+        'Profile': '1fr max-content max-content max-content max-content max-content'
       },
       boxShadow: {
         loginShadow: '0px 15px 50px 1px rgba(0, 0, 0, 0.25)',

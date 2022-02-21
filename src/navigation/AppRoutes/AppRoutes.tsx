@@ -12,6 +12,7 @@ import { NotFoundPage } from 'pages/error';
 import { UserRoutes } from 'navigation';
 import { VGrid } from 'pages/VGrid';
 import { ProductPage } from 'pages/ProductPage';
+import { WishlistPage } from 'pages/WishlistPage';
 
 export const AppRoutes: React.FC = ({ props }: any) => {
   return (
@@ -39,6 +40,12 @@ export const AppRoutes: React.FC = ({ props }: any) => {
           path={routeConstants.about.route}
           exact
           render={() => <AboutPage />}
+        />
+
+        <Route
+          path={routeConstants.wishlist.route}
+          exact
+          render={() => <WishlistPage />}
         />
 
         <Route
