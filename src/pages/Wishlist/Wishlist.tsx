@@ -12,7 +12,7 @@ const columns = [
     title: 'Description',
     align: 'center',
     render: () => (
-      <Space size="small" className="grid grid-rows-3 text-left">
+      <Space size="small" className="grid grid-rows-3 text-left text-gray-500">
         <p>Name: CRAFERS - DELUXE MILK CHOCOLATE ( PEACH & VANILLA )</p>
         <p>Category: CRAFERS</p>
         <p>Barcode: 4780059600807</p>
@@ -23,6 +23,7 @@ const columns = [
     title: 'Price',
     dataIndex: 'price',
     align: 'center',
+    className: 'text-gray-500',
   },
   {
     title: 'Action',
