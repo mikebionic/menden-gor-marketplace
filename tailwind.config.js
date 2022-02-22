@@ -201,7 +201,10 @@ module.exports = {
       },
       inset: {
         'Card': '87%',
-        'DiscountRibbon': '83%'
+        'DiscountRibbon': '83%',
+        '45': '45%',
+        '36': '36%',
+        '40': '40%'
       },
       left: {
         '82': '82%'

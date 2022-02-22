@@ -93,3 +93,24 @@
   transition: all 0.2s ease-in-out 0s;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 5px 43px !important;
 }
+
+.inputProfileEdit {
+  padding: 9px;
+  background-color: #fff;
+  color: #444;
+  outline: none;
+  border: 0;
+  -webkit-appearance: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-weight: normal;
+  font-size: 1em;
+  border: 1px solid #bfbfbf;
+  height: 35px;
+}
+
+.uploadPhoto {
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  stroke: #0023ff;
+}
