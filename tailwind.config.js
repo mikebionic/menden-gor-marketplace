@@ -173,6 +173,7 @@ module.exports = {
         'Banner': '30% 70%',
         'iconReverse': 'auto 2.75rem',
         'VGrid': 'auto 1fr',
+        'OrderLine': 'max-content max-content'
       },
       gridTemplateRows: {
         'SocialBar': '35px 35px 35px 35px',
@@ -180,7 +181,8 @@ module.exports = {
         'Divider': '2rem',
         'Product': 'auto max-content max-content max-content max-content 1fr',
         'Avatar': '1fr max-content max-content auto',
-        'Profile': '1fr max-content max-content max-content max-content max-content'
+        'Profile': '1fr max-content max-content max-content max-content max-content',
+        'OrderLine': 'auto auto'
       },
       boxShadow: {
         loginShadow: '0px 15px 50px 1px rgba(0, 0, 0, 0.25)',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs } from 'antd';
 import { Profile } from 'pages/Profile';
-import { Orders } from 'pages/Orders';
+import { OrderLine, Orders } from 'pages/Orders';
 import { Wishlist } from 'pages/Wishlist';
 import { ProfileEdit } from 'pages/ProfileEdit';
 
@@ -15,7 +15,8 @@ export const Tab: React.FC = () => {
           <Profile />
         </TabPane>
         <TabPane tab="Orders" key="2">
-          <Orders />
+          {/* <Orders /> */}
+          <OrderLine />
         </TabPane>
         <TabPane tab="Wishlist" key="3">
           <Wishlist />
