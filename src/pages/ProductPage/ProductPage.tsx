@@ -8,6 +8,7 @@ import ErrorBoundary from 'antd/lib/alert/ErrorBoundary';
 import { fetchResourceById } from 'sapredux/actions';
 import { getResourceById } from 'sapredux/selectors'
 import { Image } from 'common/Image';
+import { Divider } from 'components/Divider';
 
 const ProductPage: React.FC = (props: any, data: any) => {
   const { fetchResourceById, resource } = props
@@ -72,8 +73,8 @@ const ProductPage: React.FC = (props: any, data: any) => {
     <ErrorBoundary>
       <div>
         {resource && renderProuct()}
-        {/* <Divider />
-        {productsList} */}
+        <Divider title="Similar products" />
+        {/* {productsList} */}
       </div>
     </ErrorBoundary>
   );

@@ -41,4 +41,12 @@ export const routeConstants = {
 		route: `${ route_prefix }/wishlist/`,
 		name: 'Wishlist'
 	},
+	profileEdit: {
+		route: `${ route_prefix }/profile-edit/`,
+		name: 'Edit profile'
+	},
+	orders: {
+		route: `${ route_prefix }/orders/`,
+		name: 'Orders'
+	},
 }

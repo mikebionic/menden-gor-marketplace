@@ -17,7 +17,6 @@ import { alertActions } from 'sapredux/actions';
 import { fetchCategories } from 'sapredux/actions';
 import { getCategories } from 'sapredux/selectors';
 import { Footer } from 'components/Footer';
-import { routeConstants } from 'navigation/routeConstants';
 
 const App: React.FC = (props: any) => {
   const { t } = useTranslation();

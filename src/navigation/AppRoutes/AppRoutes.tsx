@@ -12,7 +12,6 @@ import { NotFoundPage } from 'pages/error';
 import { UserRoutes } from 'navigation';
 import { VGrid } from 'pages/VGrid';
 import { ProductPage } from 'pages/ProductPage';
-import { WishlistPage } from 'pages/WishlistPage';
 
 export const AppRoutes: React.FC = ({ props }: any) => {
   return (
@@ -23,29 +22,16 @@ export const AppRoutes: React.FC = ({ props }: any) => {
           exact
           render={() => <MainPage />}
         />
-        <Route
-          path={routeConstants.profile.route}
-          exact
-          render={() => <ProfilePage />}
-        />
 
         <Route
           path={`${routeConstants.product.route}:id`}
-          // exact
           component={ProductPage}
-          // render={() => <ProductPage />}
         />
 
         <Route
           path={routeConstants.about.route}
           exact
           render={() => <AboutPage />}
-        />
-
-        <Route
-          path={routeConstants.wishlist.route}
-          exact
-          render={() => <WishlistPage />}
         />
 
         <Route

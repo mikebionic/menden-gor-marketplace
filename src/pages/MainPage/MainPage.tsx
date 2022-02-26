@@ -47,7 +47,7 @@ const MainPage: React.FC = (props: any) => {
           <ResGroup />
           <ResGroup />
         </div>
-        <Divider />
+        <Divider title="Just for you" />
         <SocialBar />
         <Tab />
       </div>
