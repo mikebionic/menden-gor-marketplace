@@ -15,7 +15,6 @@ export const LoginPage: React.FC = () => {
     username: '',
     password: '',
   });
-  const [submitted, setSubmitted] = useState(false);
   const { username, password } = inputs;
   const loading = useSelector((state: RootState | any) => {
     return state.auth.loading;
@@ -32,7 +31,6 @@ export const LoginPage: React.FC = () => {
   };
 
   const handleSubmit = (e: any) => {
-    setSubmitted(true);
     if (username && password) {
       dispatch(authActions.login(username, password));
     }

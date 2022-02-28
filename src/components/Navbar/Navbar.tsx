@@ -129,12 +129,14 @@ export const Navbar = (props: any) => {
                   <BsWallet2 className="w-6 h-6 mx-3 text-2xl text-white" />
                 }
               />
-              <IconLabelButton
-                className="items-center grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid h-1/3 "
-                icon={
-                  <FaRegHeart className="w-6 h-6 mx-3 text-2xl text-white" />
-                }
-              />
+              <Link to={`${routeConstants.wishlist.route}`}>
+                <IconLabelButton
+                  className="items-center grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid h-1/3 "
+                  icon={
+                    <FaRegHeart className="w-6 h-6 mx-3 text-2xl text-white" />
+                  }
+                />
+              </Link>
 
               <CartButton cartOpen={cartOpen} setCartOpen={setCartOpen} />
               <Cart open={cartOpen} setOpen={setCartOpen} />
