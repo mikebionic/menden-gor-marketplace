@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom'
 import { Image } from 'common/Image'
 
 export const CartRow = ({item, onIncrease, onDecrease, onDelete}: any) => {
+	console.log(item)
 	return (
-		<li className="py-6 flex">
+		<div className="py-6 flex">
 			<div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
 				<Image
 					src={item.image}
@@ -23,7 +24,6 @@ export const CartRow = ({item, onIncrease, onDecrease, onDelete}: any) => {
 					<p className="mt-1 text-sm text-gray-500">{item.description}</p>
 				</div>
 				<div className="flex-1 flex items-end justify-between text-sm">
-					<p className="text-gray-500">Qty {item.count}</p>
 
 					<div className="flex">
 						<button type="button"
@@ -34,6 +34,6 @@ export const CartRow = ({item, onIncrease, onDecrease, onDelete}: any) => {
 					</div>
 				</div>
 			</div>
-		</li>
+		</div>
 	);
 };

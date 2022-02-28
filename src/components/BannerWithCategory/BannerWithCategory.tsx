@@ -25,7 +25,7 @@ const BannerWithCategory: React.FC = (props: any) => {
       <div className="grid w-full h-auto gap-4 px-4 mx-auto bg-fullwhite grid-rows-auto grid-cols-Banner sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-4 lg:pt-8">
         <CategoryList>
           {categories.map((category: any, idx: number) => (
-            <Link to={`${routeConstants.vGrid.route}?category=${category.id}`}>
+            <Link key={idx} to={`${routeConstants.vGrid.route}?category=${category.id}`}>
               <CategoryListItem key={idx} {...category} />
             </Link>
           ))}
