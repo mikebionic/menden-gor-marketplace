@@ -159,7 +159,8 @@ module.exports = {
     zIndex: {
       '100': '100',
       '1': '1',
-      '10': '10'
+      '10': '10',
+      'category': '-1'
     },
     extend: {
       gridTemplateColumns: {

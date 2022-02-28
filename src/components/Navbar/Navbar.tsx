@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiLogIn } from 'react-icons/bi';
 import { FiUserPlus } from 'react-icons/fi';
-import { MdSort } from 'react-icons/md';
+import { MdOutlineKeyboardArrowRight, MdSort } from 'react-icons/md';
 import { BsMoon } from 'react-icons/bs';
 import { MdLanguage } from 'react-icons/md';
 import { BsWallet2 } from 'react-icons/bs';
@@ -31,11 +31,37 @@ const classNames = (...classes: any) => {
 };
 
 export const Navbar = (props: any) => {
-  const categories = props.categories;
-
+  // const categories = props.categories;
   const [open, setOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [dropdownState, onDropdownStateChange] = useState(false);
+  const [categoryDropdownState, onCategoryDropdownStateChange] =
+    useState(false);
+
+  console.log(categoryDropdownState, onCategoryDropdownStateChange);
+
+  const styles = {
+    categoryDropdownState: '',
+    onCategoryDropdownStateChange: '',
+  };
+
+  const CategoryItem = ({ data }: any) => {
+    return (
+      <Link
+        to={''}
+        // className={`${data.style}`}
+        onClick={() => onCategoryDropdownStateChange(false)}
+        className="m-auto"
+      >
+        <button className="grid gap-4 pl-2 grid-cols-search place-items-center">
+          <FaRegHeart />
+          <h4>DSDKLASDKASLKDLAS</h4>
+          <MdOutlineKeyboardArrowRight className="mr-2" />
+        </button>
+        {/* {data.name} */}
+      </Link>
+    );
+  };
 
   return (
     <ErrorBoundary>
@@ -76,7 +102,13 @@ export const Navbar = (props: any) => {
                 className="inline-grid items-center grid-rows-1 px-0 py-2 mx-16 text-lg font-medium text-white grid-cols-icon"
                 icon={<MdSort className="text-2xl" />}
                 label="Categories"
+                onClick={() =>
+                  onCategoryDropdownStateChange(!categoryDropdownState)
+                }
               />
+              <div className="absolute grid w-full mt-1 shadow-lg left-12 z-category h-5/6 bg-fullwhite">
+                <CategoryItem />
+              </div>
             </div>
             <div className="grid float-right grid-rows-1 gap-2 mr-4 grid-cols-navIcons">
               <IconLabelButton
