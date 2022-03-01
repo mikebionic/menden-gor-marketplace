@@ -6,12 +6,13 @@ import { RiShoppingBasketLine } from 'react-icons/ri';
 import { IconLabelButton } from 'common/IconLabelButton';
 import { connect } from 'react-redux';
 import { getTotalCount } from 'sapredux/selectors'
+import { ErrorBoundary } from 'modules/errors';
 
 
 const CartButton = (props: any) => {
 	const { cartOpen, setCartOpen, totalCount, totalPrice } = props
 	return (
-		<>
+		<ErrorBoundary>
 			<a className="flex flex-row-reverse mr-1"
 				onClick={() => setCartOpen(!cartOpen)}>
 				<IconLabelButton
@@ -27,7 +28,7 @@ const CartButton = (props: any) => {
 			<div className="mt-3 text-sm font-semibold text-white ">
 				{totalPrice} TMT
 			</div>
-		</>
+		</ErrorBoundary>
 	)
 }
 

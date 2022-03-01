@@ -137,9 +137,12 @@ export const Navbar = (props: any) => {
                   }
                 />
               </Link>
-
-              <CartButton cartOpen={cartOpen} setCartOpen={setCartOpen} />
-              <Cart open={cartOpen} setOpen={setCartOpen} />
+              <ErrorBoundary>
+                <CartButton cartOpen={cartOpen} setCartOpen={setCartOpen} />
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <Cart open={cartOpen} setOpen={setCartOpen} />
+              </ErrorBoundary>
             </div>
           </div>
         </header>

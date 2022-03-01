@@ -12,6 +12,7 @@ import {
   resourceAllRemovedFromCart,
 } from 'sapredux/actions';
 import { getTotalCount, getTotalPrice, getCartItems } from 'sapredux/selectors';
+import { ErrorBoundary } from 'modules/errors';
 
 export const Cart = ({
   open,
@@ -24,6 +25,7 @@ export const Cart = ({
   onDelete,
 }: any) => {
   return (
+    <ErrorBoundary>
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
@@ -129,6 +131,7 @@ export const Cart = ({
         </div>
       </Dialog>
     </Transition.Root>
+    </ErrorBoundary>
   );
 };
 
@@ -138,7 +141,7 @@ const mapStateToProps = (state: any) => {
     items: getCartItems(state),
     // totalPrice: getTotalPrice(state),
     totalCount: totalData.totalCount,
-    totalPrice: totalData.totalPrice,
+    totalPrice: totalData.totalPrice,      
   };
 };
 

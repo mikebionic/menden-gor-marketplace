@@ -10,7 +10,7 @@ import { getResourceById } from 'sapredux/selectors'
 import { Image } from 'common/Image';
 import { Divider } from 'components/Divider';
 
-const ProductPage: React.FC = (props: any, data: any) => {
+const ProductPage: React.FC = (props: any) => {
   const { fetchResourceById, resource } = props
 
   useEffect(() => {
@@ -19,30 +19,24 @@ const ProductPage: React.FC = (props: any, data: any) => {
     } catch (err:any) {
       console.log(err)
     }
-  }, [])
+  }, [props.match.params.id, fetchResourceById])
 
-  const renderProuct = () => {
-    const {
-      description,
-      name,
-      image,
-      priceValue,
-      currencyCode,
-      categoryName,
-      totBalance 
-    } = resource
-    var resource_description = description
-      ? description.length > 60
-        ? `${description.slice(0, 60)}...`
-        : description
-      : '';
-    
+  const RenderProuct = ({
+    description,
+    name,
+    image,
+    priceValue,
+    currencyCode,
+    categoryName,
+    totBalance 
+  }:any) => {
+    // const  = resource
     return (
       <div className="grid mx-auto my-8 grid-cols-VGrid w-Product h-Product bg-fullwhite place-content-center ">
         <div className="mx-8 bg-gray-200 w-96 h-96">
           <Image
             src={image}
-            alt={`${name} - ${resource_description}`}
+            alt={`${name} - ${description}`}
             className="object-cover object-center w-full h-full lg:w-full lg:h-full"
           />
         </div>
@@ -62,7 +56,6 @@ const ProductPage: React.FC = (props: any, data: any) => {
           <p className="py-1 text-2xl font-medium text-black place-self-start">
             {description}
           </p>
-          <div></div>
         </div>
       </div>
     )
@@ -72,7 +65,7 @@ const ProductPage: React.FC = (props: any, data: any) => {
   return (
     <ErrorBoundary>
       <div>
-        {resource && renderProuct()}
+        <RenderProuct {...resource} />
         <Divider title="Similar products" />
         {/* {productsList} */}
       </div>
@@ -81,7 +74,7 @@ const ProductPage: React.FC = (props: any, data: any) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  resource: getResourceById(state.resource.data, state.resourcePage.id)
+  resource: getResourceById(state.resource, state.resourcePage.id)
 });
 
 const mapDispatchToProps = {

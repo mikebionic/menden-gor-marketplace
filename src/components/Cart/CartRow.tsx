@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { Image } from 'common/Image'
+import { routeConstants } from 'navigation/routeConstants';
 
 export const CartRow = ({item, onIncrease, onDecrease, onDelete}: any) => {
-	console.log(item)
-	return (
+	return item && (
 		<div className="py-6 flex">
 			<div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
 				<Image
@@ -17,7 +17,7 @@ export const CartRow = ({item, onIncrease, onDecrease, onDelete}: any) => {
 				<div>
 					<div className="flex justify-between text-base font-medium text-gray-900">
 						<h3>
-							<Link to={item.name}>{item.name}</Link>
+							<Link to={`${routeConstants.product.route}${item.id}/${item.name}`}>{item.name}</Link>
 						</h3>
 						<p className="ml-4">{item.priceValue} {item.currencyCode}</p>
 					</div>
