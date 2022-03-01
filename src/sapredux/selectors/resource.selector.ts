@@ -19,8 +19,10 @@ export const getTotalCount = (state: any, id: number = 0) => {
 			}
 		} else {
 			const resource = getResourceById(state.resource.data, item.id)
-			totalPrice += resource.priceValue * item.quantity
-			totalCount = R.length(state.cart)
+			if (resource) {
+				totalPrice += resource.priceValue * item.quantity
+				totalCount = R.length(state.cart)
+			}
 		}
 	})
 	return {

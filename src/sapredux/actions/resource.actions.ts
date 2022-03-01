@@ -8,8 +8,7 @@ export const fetchResources = () => async (dispatch: any) => {
 		type: actionConstants.FETCH_START
 	})
 	try {
-		const response = await service.fetchAll()
-		const data = response.data.map(transformResponse)
+		const data = await service.fetchAll_data()
 		dispatch({
 			type: actionConstants.FETCH_SUCCESS,
 			payload: data
@@ -26,8 +25,7 @@ export const fetchResources = () => async (dispatch: any) => {
 export const fetchResourceById = (id:number) => async (dispatch:any) => {
 	dispatch({type: actionConstants.FETCH_BY_ID_START})
 	try {
-		const response = await service.fetchById(id)
-		const data = transformResponse(response)
+		const data = await service.fetchById_data(id)
 		dispatch({
 			type: actionConstants.FETCH_BY_ID_SUCCESS,
 			payload: data

@@ -12,6 +12,7 @@ import {
   resourceAllRemovedFromCart,
 } from 'sapredux/actions';
 import { getTotalCount, getTotalPrice, getCartItems } from 'sapredux/selectors';
+import { ErrorBoundary } from 'modules/errors';
 
 export const Cart = ({
   open,
@@ -24,6 +25,7 @@ export const Cart = ({
   onDelete,
 }: any) => {
   return (
+    <ErrorBoundary>
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
@@ -79,13 +81,15 @@ export const Cart = ({
                           className="-my-6 divide-y divide-gray-200"
                         >
                           {items.map((item: any, idx: number) => (
-                            <CartRow
-                              key={idx}
-                              item={item}
-                              onIncrease={onIncrease}
-                              onDecrease={onDecrease}
-                              onDelete={onDelete}
-                            />
+                            <li key={idx}>
+                              <CartRow
+                                key={idx}
+                                item={item}
+                                onIncrease={onIncrease}
+                                onDecrease={onDecrease}
+                                onDelete={onDelete}
+                              />
+                            </li>
                           ))}
                         </ul>
                       </div>
@@ -98,9 +102,6 @@ export const Cart = ({
                       <p>{totalPrice}</p>
                       <p>Count: {totalCount}</p>
                     </div>
-                    <p className="mt-0.5 text-sm text-gray-500">
-                      Shipping and taxes calculated at checkout.
-                    </p>
                     <div className="mt-6">
                       <Link
                         to="/checkoutCart"
@@ -130,6 +131,7 @@ export const Cart = ({
         </div>
       </Dialog>
     </Transition.Root>
+    </ErrorBoundary>
   );
 };
 
@@ -139,7 +141,7 @@ const mapStateToProps = (state: any) => {
     items: getCartItems(state),
     // totalPrice: getTotalPrice(state),
     totalCount: totalData.totalCount,
-    totalPrice: totalData.totalPrice,
+    totalPrice: totalData.totalPrice,      
   };
 };
 
