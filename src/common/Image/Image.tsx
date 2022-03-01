@@ -14,10 +14,11 @@ export const Image: React.FC<IImage> = ({
   alt = '',
   className = '',
 }) => {
-  const image_src =
-    !src.includes('http') && serviceConfig.useMockApi === 0
+  const image_src = src
+    ? !src.includes('http') && serviceConfig.useMockApi === 0
       ? `${serviceConfig.apiHost}${src}`
-      : src;
+      : src
+    : '';
 
   return (
     <img
