@@ -27,10 +27,6 @@ const classes =
     ? mobileResponsive.mobileView
     : mobileResponsive.desktopView;
 
-const classNames = (...classes: any) => {
-  return classes.filter(Boolean).join(' ');
-};
-
 export const Navbar = (props: any) => {
   // const categories = props.categories;
   const { fetchCategories, categories, fetchSliders, header_slider } = props;
