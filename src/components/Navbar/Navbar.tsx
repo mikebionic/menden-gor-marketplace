@@ -1,11 +1,9 @@
-/* eslint-disable jsx-a11y/no-redundant-roles */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiLogIn } from 'react-icons/bi';
 import { FiUserPlus } from 'react-icons/fi';
 import { MdOutlineKeyboardArrowRight, MdSort } from 'react-icons/md';
 import { BsMoon } from 'react-icons/bs';
-import { MdLanguage } from 'react-icons/md';
 import { BsWallet2 } from 'react-icons/bs';
 import { FaRegHeart } from 'react-icons/fa';
 
@@ -15,6 +13,9 @@ import { routeConstants } from 'navigation/routeConstants';
 import { Search } from 'components/Search';
 import { IconLabelButton } from 'common/IconLabelButton';
 import LangButton from 'components/LangButton';
+import { CategoryList } from 'common/CategoryList';
+import { CategoryListItem } from 'common/CategoryListItem';
+import { Transition } from '@headlessui/react';
 
 const mobileResponsive = {
   mobileView: 'fixed bottom-0 z-100 w-full bg-white',
@@ -32,34 +33,22 @@ const classNames = (...classes: any) => {
 
 export const Navbar = (props: any) => {
   // const categories = props.categories;
+  const { fetchCategories, categories, fetchSliders, header_slider } = props;
   const [open, setOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [dropdownState, onDropdownStateChange] = useState(false);
   const [categoryDropdownState, onCategoryDropdownStateChange] =
     useState(false);
 
-  console.log(categoryDropdownState, onCategoryDropdownStateChange);
-
-  const styles = {
-    categoryDropdownState: '',
-    onCategoryDropdownStateChange: '',
-  };
-
-  const CategoryItem = ({ data }: any) => {
+  const CategoryItem = () => {
     return (
-      <Link
-        to={''}
-        // className={`${data.style}`}
-        onClick={() => onCategoryDropdownStateChange(false)}
-        className="m-auto"
-      >
-        <button className="grid gap-4 pl-2 grid-cols-search place-items-center">
-          <FaRegHeart />
-          <h4>DSDKLASDKASLKDLAS</h4>
-          <MdOutlineKeyboardArrowRight className="mr-2" />
-        </button>
-        {/* {data.name} */}
-      </Link>
+      <div className="absolute grid w-full p-2 overflow-x-hidden overflow-y-auto shadow-lg h-80 mt-2px left-12 bg-fullwhite">
+        {categories.map((category: any, idx: number) => (
+          <Link to={`${routeConstants.vGrid.route}?category=${category.id}`}>
+            <CategoryListItem key={idx} {...category} />
+          </Link>
+        ))}
+      </div>
     );
   };
 
@@ -103,12 +92,23 @@ export const Navbar = (props: any) => {
                 icon={<MdSort className="text-2xl" />}
                 label="Categories"
                 onClick={() =>
-                  onCategoryDropdownStateChange(!categoryDropdownState)
+                  onCategoryDropdownStateChange(
+                    (categoryDropdownState) => !categoryDropdownState,
+                  )
                 }
               />
-              <div className="absolute grid w-full mt-1 shadow-lg left-12 z-category h-5/6 bg-fullwhite">
-                <CategoryItem />
-              </div>
+
+              <Transition
+                show={categoryDropdownState}
+                enter="transition ease-out duration-300"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-300"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                {categoryDropdownState ? <CategoryItem /> : null}
+              </Transition>
             </div>
             <div className="grid float-right grid-rows-1 gap-2 mr-4 grid-cols-navIcons">
               <IconLabelButton

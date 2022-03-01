@@ -192,7 +192,8 @@ module.exports = {
         md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
         'ResGroupShadow': '3px 3px 10px rgba(0, 0, 0, 0.07);',
         'Footer': '0px -3px 10px rgb(0 0 0 / 5%);',
-        'BannerCategory': '0 0 4px 0 rgb(0 0 0 / 15%);'
+        'BannerCategory': '0 0 4px 0 rgb(0 0 0 / 15%);',
+        'category': '1px 1px 10px rgba(0, 0, 0, 0.25);'
       },
       height: {
         sidebar: '95%',
@@ -238,6 +239,9 @@ module.exports = {
       fontSize: {
         '10': '10px',
       },
+      spacing: {
+        '2px': '2px'
+      }
     },
   },
   variants: {
