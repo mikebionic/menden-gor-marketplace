@@ -22,8 +22,8 @@ export const transformSliders = (data: any) => {
 			filePathM: image.SlImgMainImgFilePathM,
 			filePathR: image.SlImgMainImgFilePathR,
 			filePathS: image.SlImgMainImgFilePathS,
-			createdDate: data.CreatedDate,
-			modifiedDate: data.ModifiedDate,
+			createdDate: image.CreatedDate,
+			modifiedDate: image.ModifiedDate,
 		}))
 	}
 }
