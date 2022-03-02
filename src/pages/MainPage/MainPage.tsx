@@ -15,6 +15,10 @@ import { SocialBar } from 'components/SocialBar';
 import { Divider } from 'components/Divider';
 import BannerWithCategory from 'components/BannerWithCategory';
 import { Tab } from 'components/Tab';
+import { DropdownMenu } from 'common/DropdownMenu';
+
+import { ChevronDownIcon } from '@heroicons/react/solid';
+import { AiOutlineEdit } from 'react-icons/ai';
 
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -50,6 +54,12 @@ const MainPage: React.FC = (props: any) => {
         <Divider title="Just for you" />
         <SocialBar />
         <Tab />
+        <DropdownMenu
+          menuButtonLabel="Options"
+          menuButtonIcon={<ChevronDownIcon className="w-full h-full" />}
+          menuItemIcon={<AiOutlineEdit className="w-full h-full" />}
+          menuItemLabel="Edit"
+        />
       </div>
     </ErrorBoundary>
   );
