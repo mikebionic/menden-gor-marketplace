@@ -125,23 +125,12 @@ export const Navbar = (props: any) => {
                     icon={
                       <BsWallet2 className="w-6 h-6 mx-3 text-2xl text-white" />
                     }
+                    labelClassName="px-0"
                   />
                   <span className="absolute top-0 font-semibold text-white left-70 text-10">
                     TMT
                   </span>
                 </div>
-                {/* 
-                <Transition
-                  show={currencyDropdownState}
-                  enter="transition ease-out duration-300"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-300"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  {currencyDropdownState ? <CurrencyItem /> : null}
-                </Transition> */}
               </div>
               <Link to={`${routeConstants.wishlist.route}`}>
                 <IconLabelButton

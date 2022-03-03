@@ -19,6 +19,9 @@ import { DropdownMenu } from 'common/DropdownMenu';
 
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { AiOutlineEdit } from 'react-icons/ai';
+import { MdLanguage } from 'react-icons/md';
+import { IconLabelButton } from 'common/IconLabelButton';
+import { BsWallet2 } from 'react-icons/bs';
 
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -35,6 +38,17 @@ const MainPage: React.FC = (props: any) => {
     ) : (
       <ErrorIndicator />
     );
+
+  const dropdownItems = [
+    {
+      name: 'foo',
+      icon: <ChevronDownIcon />,
+    },
+    {
+      name: 'bar',
+      // icon: <ChevronDownIcon />,
+    },
+  ];
 
   return (
     <ErrorBoundary>
@@ -55,10 +69,23 @@ const MainPage: React.FC = (props: any) => {
         <SocialBar />
         <Tab />
         <DropdownMenu
+          items={dropdownItems}
           menuButtonLabel="Options"
           menuButtonIcon={<ChevronDownIcon className="w-full h-full" />}
-          menuItemIcon={<AiOutlineEdit className="w-full h-full" />}
-          menuItemLabel="Edit"
+          activeClassName="bg-red-500 text-white"
+          menuButton={
+            <>
+              <IconLabelButton
+                className="px-0 mt-3 font-medium text-white"
+                icon={
+                  <BsWallet2 className="w-6 h-6 mx-3 text-2xl text-black" />
+                }
+              />
+              <span className="absolute top-0 font-semibold text-black left-70 text-10">
+                TMT
+              </span>
+            </>
+          }
         />
       </div>
     </ErrorBoundary>

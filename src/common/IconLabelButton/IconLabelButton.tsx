@@ -6,6 +6,7 @@ interface IButtonProps {
   label?: string;
   className?: any;
   type?: any;
+  labelClassName?: string;
 }
 
 export const IconLabelButton: React.FC<IButtonProps> = ({
@@ -14,12 +15,12 @@ export const IconLabelButton: React.FC<IButtonProps> = ({
   label,
   className,
   type,
+  labelClassName = 'px-1',
 }) => {
-
   return (
     <button onClick={onClick} className={className} type={type ?? 'button'}>
       {icon}
-      <span className="px-1">{label}</span>
+      {label && <span className={labelClassName}>{label}</span>}
     </button>
   );
 };
