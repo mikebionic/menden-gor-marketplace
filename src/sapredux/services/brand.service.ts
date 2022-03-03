@@ -25,11 +25,10 @@ const fetchAll = async () => {
 }
 
 const fetchById = async (id:number) => {
-	console.log("requested", id)
 	if (serviceConfig.useMockApi){
 		return new Promise((resolve, reject) => {
-			const resource = R.find(R.propEq('ResId', id), all_brands.data)
-			resolve(resource)
+			const data = R.find(R.propEq('BrandId', id), all_brands.data)
+			resolve(data)
 		});
 	}
 
@@ -37,7 +36,7 @@ const fetchById = async (id:number) => {
 		method: 'GET',
 		// headers: authBearerHeader()
 	};
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_resources}${id}/`, requestOptions).then(handleResponse);
+	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_brands}${id}/`, requestOptions).then(handleResponse);
 
 }
 
