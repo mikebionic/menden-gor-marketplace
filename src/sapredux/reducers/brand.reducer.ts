@@ -1,9 +1,9 @@
-import { categoryConstants as actionConstants } from 'sapredux/constants'
+import { brandConstants as actionConstants } from 'sapredux/constants'
 import * as R from 'ramda'
 
 const initialState = { loading: false, error: false };
 
-export const category = (state = initialState, action: {[name: string]: any}) => {
+export const brand = (state = initialState, action: {[name: string]: any}) => {
 	switch (action.type){
 		case actionConstants.FETCH_SUCCESS:
 			const newValues = R.indexBy(R.prop<string, string>('id'), action.payload)
