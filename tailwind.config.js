@@ -46,6 +46,7 @@ module.exports = {
         gradientFirstColor: '#ff8d73',
         gradientSecondColor: '#feb37b',
         defaultHover: '#f5f5f5',
+        borderColor: '#E2E1E1',
         gray: {
           50: '#f9fafb',
           100: '#f3f4f6',
@@ -181,7 +182,7 @@ module.exports = {
         'search': 'auto 1fr auto',
         'firstRowNavbar': '15rem 50rem 8rem 8rem',
         'icon': '1fr auto',
-        'navIcons': '42px 50px 50px 42px 50px auto',
+        'navIcons': '42px 50px 50px 42px 50px auto ',
         'ResGroup': '1fr 1fr 1fr',
         'Divider': '15rem 1fr',
         'Banner': '30% 70%',
@@ -206,7 +207,8 @@ module.exports = {
         'ResGroupShadow': '3px 3px 10px rgba(0, 0, 0, 0.07);',
         'Footer': '0px -3px 10px rgb(0 0 0 / 5%);',
         'BannerCategory': '0 0 4px 0 rgb(0 0 0 / 15%);',
-        'category': '1px 1px 10px rgba(0, 0, 0, 0.25);'
+        'category': '1px 1px 10px rgba(0, 0, 0, 0.25);',
+        'InnerCountryShadow': 'inset -4px -4px 4px rgba(217, 217, 217, 0.25), inset 4px 4px 4px rgba(182, 182, 182, 0.3);'
       },
       height: {
         sidebar: '95%',

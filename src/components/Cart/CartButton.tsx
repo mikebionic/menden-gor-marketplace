@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 // import {
 //   ShoppingBagIcon,
 // } from '@heroicons/react/outline';
@@ -17,7 +18,7 @@ const CartButton = (props: any) => {
         onClick={() => setCartOpen(!cartOpen)}
       >
         <IconLabelButton
-          className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid "
+          className="items-center h-6 grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid "
           icon={
             <RiShoppingBasketLine className="w-6 h-6 mx-3 text-2xl text-white" />
           }

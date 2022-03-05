@@ -16,7 +16,6 @@ import { IconLabelButton } from 'common/IconLabelButton';
 
 import { getCategories, getBrands } from 'sapredux/selectors';
 
-
 const VGrid: React.FC = (props: any) => {
   const {
     fetchResources,
@@ -106,7 +105,11 @@ const VGrid: React.FC = (props: any) => {
               <li className="flex justify-start h-6 ml-1">
                 <Radio.Group>
                   <Space direction="vertical" style={{ gap: '4px' }}>
-                    {brands.map((data:any, idx:number) => <Radio value={data.id} key={idx}>{data.name}</Radio>)}                    
+                    {brands.map((data: any, idx: number) => (
+                      <Radio value={data.id} key={idx}>
+                        {data.name}
+                      </Radio>
+                    ))}
                   </Space>
                 </Radio.Group>
               </li>
@@ -126,7 +129,11 @@ const VGrid: React.FC = (props: any) => {
               <li className="flex justify-start h-6 ml-1">
                 <Radio.Group>
                   <Space direction="vertical" style={{ gap: '4px' }}>
-                    {categories.map((data:any, idx:number) => <Radio value={data.id} key={idx}>{data.name}</Radio>)}
+                    {categories.map((data: any, idx: number) => (
+                      <Radio value={data.id} key={idx}>
+                        {data.name}
+                      </Radio>
+                    ))}
                   </Space>
                 </Radio.Group>
               </li>
@@ -137,7 +144,7 @@ const VGrid: React.FC = (props: any) => {
               </div>
             </a> */}
           </div>
-          <div className="inline-grid w-56 grid-cols-2 rounded-lg h-9 bg-fullwhite">
+          <div className="inline-grid w-56 grid-cols-2 rounded-lg h-9">
             <IconLabelButton
               className="w-24 mx-auto my-0 rounded-full bg-gradientSecondColor"
               label="Search"

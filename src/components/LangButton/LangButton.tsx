@@ -22,22 +22,19 @@ const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
     i18n.changeLanguage(lang);
   };
 
-  // const styles: any = dropdownState ? { display: 'block' } : null;
-
-  const LanguageItem = ({ data }: any) => {
+  const LanguageItem = ({ icon, data }: any) => {
     return (
-      <li>
-        <a
-          className={`${data.style}`}
-          onClick={() => {
-            setLanguage(data);
-            onDropdownStateChange(false);
-            handleClick(`${data.switchLang}`);
-          }}
-        >
-          {data.name}
-        </a>
-      </li>
+      <div
+        className={`w-full p-2 hover:text-socialBarItemHover flex cursor-pointer place-items-center hover:bg-gray-100`}
+        onClick={() => {
+          setLanguage(data);
+          onDropdownStateChange(false);
+          handleClick(`${data.switchLang}`);
+        }}
+      >
+        <img src={icon} alt={data.name} className="h-5 mr-2 w-7" />
+        {data.name}
+      </div>
     );
   };
 
@@ -75,7 +72,9 @@ const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          {dropdownState ? { filtered_data } : null}
+          <div className="grid w-32 h-auto mt-1 overflow-x-hidden overflow-y-auto text-base font-medium rounded-md shadow-lg left-12 bg-fullwhite">
+            {dropdownState ? filtered_data : null}
+          </div>
         </Transition>
         {/* On Click show */}
         {/* <ul>{filtered_data}</ul> */}
