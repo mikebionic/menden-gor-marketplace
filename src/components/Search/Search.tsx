@@ -7,9 +7,14 @@ import { history } from 'sapredux/helpers';
 import { routeConstants } from 'navigation/routeConstants';
 import { Transition } from '@headlessui/react';
 import { Link } from 'react-router-dom';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
-export const Search: React.FC = () => {
+export const Search: React.FC = (props: any) => {
   const [dropdownState, onDropdownStateChange] = useState(false);
+
+  const handleClickAway = () => {
+    onDropdownStateChange(false);
+  };
 
   const [inputs, setInputs] = useState({
     search_tag: '',
@@ -58,7 +63,7 @@ export const Search: React.FC = () => {
 
   const SearchType = () => {
     return (
-      <div className="grid w-32 h-auto mt-4 overflow-x-hidden overflow-y-auto text-base font-medium shadow-lg left-12 bg-fullwhite">
+      <div className="grid w-32 h-auto mt-4 overflow-x-hidden overflow-y-auto text-base font-medium rounded-md shadow-lg left-12 bg-fullwhite">
         {search_types.map((s_type: any, idx: number) => (
           <div
             key={idx}
@@ -75,29 +80,32 @@ export const Search: React.FC = () => {
   return (
     <form name="navbar_search" action="" onSubmit={handleSubmit}>
       <div className="grid grid-rows-1 mx-auto my-0 w-search grid-cols-search">
-        <div
-          className="w-32 h-12 rotate-180 bg-white border-2 border-white border-solid rounded-l-full cursor-pointer productColor gap-x-8"
-          onClick={() =>
-            onDropdownStateChange((dropdownState) => !dropdownState)
-          }
-        >
-          <IconLabelButton
-            className="flex flex-row-reverse items-center w-20 h-4 pl-1 mx-auto my-3 text-sm text-center text-white cursor-pointer"
-            icon={<IoIosArrowDown className="" />}
-            label={current_search_type.name}
-          />
-          <Transition
-            show={dropdownState}
-            enter="transition ease-out duration-300"
-            enterFrom="transform opacity-0 scale-95"
-            enterTo="transform opacity-100 scale-100"
-            leave="transition ease-in duration-300"
-            leaveFrom="transform opacity-100 scale-100"
-            leaveTo="transform opacity-0 scale-95"
+        <ClickAwayListener onClickAway={handleClickAway}>
+          <div
+            className="w-32 h-12 rotate-180 bg-white border-2 border-white border-solid rounded-l-full cursor-pointer productColor gap-x-8"
+            onClick={() =>
+              onDropdownStateChange((dropdownState) => !dropdownState)
+            }
           >
-            {dropdownState ? <SearchType /> : null}
-          </Transition>
-        </div>
+            <IconLabelButton
+              className="flex flex-row-reverse items-center w-20 h-4 pl-1 mx-auto my-3 text-sm text-center text-white cursor-pointer"
+              icon={<IoIosArrowDown className="" />}
+              label={current_search_type.name}
+            />
+            <Transition
+              show={dropdownState}
+              enter="transition ease-out duration-300"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-300"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              {dropdownState ? <SearchType /> : null}
+            </Transition>
+          </div>
+        </ClickAwayListener>
+
         <div className="w-full h-12 bg-white">
           <input
             type="text"

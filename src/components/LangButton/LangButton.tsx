@@ -9,6 +9,7 @@ import { MdLanguage } from 'react-icons/md';
 import { IconLabelButton } from 'common/IconLabelButton';
 
 import Languages from './Languages';
+import { Transition } from '@headlessui/react';
 
 const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
   const { i18n } = useTranslation();
@@ -21,7 +22,7 @@ const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
     i18n.changeLanguage(lang);
   };
 
-  const styles = dropdownState ? { display: 'block' } : null;
+  // const styles: any = dropdownState ? { display: 'block' } : null;
 
   const LanguageItem = ({ data }: any) => {
     return (
@@ -56,7 +57,7 @@ const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
     >
       <div className="relative grid">
         <IconLabelButton
-          className="items-center grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid h-1/3"
+          className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid"
           icon={<MdLanguage className="w-6 h-6 mx-3 text-2xl text-white" />}
           onClick={() => {
             onDropdownStateChange(!dropdownState);
@@ -65,7 +66,17 @@ const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
         <span className="absolute top-0 right-0 font-semibold text-white text-10">
           {currentLanguage.label}
         </span>
-
+        <Transition
+          show={dropdownState}
+          enter="transition ease-out duration-300"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-300"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+        >
+          {dropdownState ? { filtered_data } : null}
+        </Transition>
         {/* On Click show */}
         {/* <ul>{filtered_data}</ul> */}
       </div>

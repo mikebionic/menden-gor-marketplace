@@ -19,7 +19,7 @@ export const DropdownMenu: React.FC<IDropdownProps> = ({
   className = 'w-44',
 }) => {
   return (
-    <div className="w-56 text-right top-16">
+    <div className="w-auto">
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button>
@@ -54,7 +54,7 @@ export const DropdownMenu: React.FC<IDropdownProps> = ({
                     <button
                       className={`${
                         active ? activeClassName : 'text-gray-900'
-                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm hover:text-black`}
                     >
                       {item.icon && (
                         <i className="w-5 h-5 mr-2" aria-hidden="true">

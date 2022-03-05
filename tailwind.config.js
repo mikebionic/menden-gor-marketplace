@@ -45,6 +45,7 @@ module.exports = {
         textColorParagraph: '#5B5B5B',
         gradientFirstColor: '#ff8d73',
         gradientSecondColor: '#feb37b',
+        defaultHover: '#f5f5f5',
         gray: {
           50: '#f9fafb',
           100: '#f3f4f6',
@@ -180,7 +181,7 @@ module.exports = {
         'search': 'auto 1fr auto',
         'firstRowNavbar': '15rem 50rem 8rem 8rem',
         'icon': '1fr auto',
-        'navIcons': '42px 50px 42px 42px 50px auto',
+        'navIcons': '42px 50px 50px 42px 50px auto',
         'ResGroup': '1fr 1fr 1fr',
         'Divider': '15rem 1fr',
         'Banner': '30% 70%',
