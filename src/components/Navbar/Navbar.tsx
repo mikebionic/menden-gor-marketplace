@@ -40,13 +40,10 @@ const currencyItems = [
 ];
 
 export const Navbar = (props: any) => {
-  // const categories = props.categories;
-  const { fetchCategories, categories, fetchSliders, header_slider } = props;
-  const [open, setOpen] = useState(false);
+  const { categories } = props;
   const [cartOpen, setCartOpen] = useState(false);
   const [dropdownState, onDropdownStateChange] = useState(false);
-  const [categoryDropdownState, onCategoryDropdownStateChange] =
-    useState(false);
+  const [categoryDropdownState, onCategoryDropdownStateChange] = useState(false);
 
   const handleClickAway = () => {
     onCategoryDropdownStateChange(false);

@@ -6,19 +6,18 @@ import { Link } from 'react-router-dom'
 import { CarouselSlider } from 'components/Carousel';
 import { CategoryListItem } from 'common/CategoryListItem';
 import { CategoryList } from 'common/CategoryList';
-import { fetchCategories, fetchSliders } from 'sapredux/actions';
+import { fetchSliders } from 'sapredux/actions';
 import { getCategories, getSliderByName } from 'sapredux/selectors';
 import { ErrorBoundary } from 'modules/errors';
 import { namesConfig } from 'configs';
 import { routeConstants } from 'navigation/routeConstants';
 
 const BannerWithCategory: React.FC = (props: any) => {
-  const { fetchCategories, categories, fetchSliders, header_slider } = props;
+  const { categories, fetchSliders, header_slider } = props;
 
   useEffect(() => {
-    fetchCategories();
     fetchSliders();
-  }, [fetchCategories, fetchSliders]);
+  }, [fetchSliders]);
 
   return (
     <ErrorBoundary>
@@ -51,7 +50,6 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators(
     {
-      fetchCategories,
       fetchSliders,
     },
     dispatch,

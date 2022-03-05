@@ -14,8 +14,18 @@ import { Spinner } from 'modules/loaders';
 import { Input, Switch, Radio, Space } from 'antd';
 import { IconLabelButton } from 'common/IconLabelButton';
 
+import { getCategories, getBrands } from 'sapredux/selectors';
+
+
 const VGrid: React.FC = (props: any) => {
-  const { fetchResources, resources, resource_loading, resource_error } = props;
+  const {
+    fetchResources,
+    resources,
+    resource_loading,
+    resource_error,
+    categories,
+    brands,
+  } = props;
 
   useEffect(() => {
     fetchResources();
@@ -96,36 +106,16 @@ const VGrid: React.FC = (props: any) => {
               <li className="flex justify-start h-6 ml-1">
                 <Radio.Group>
                   <Space direction="vertical" style={{ gap: '4px' }}>
-                    <Radio value={1}>Option A</Radio>
-                    <Radio value={2}>Option B</Radio>
-                    <Radio value={3}>Option C</Radio>
-                    <Radio value={4}>Option A</Radio>
-                    <Radio value={5}>Option B</Radio>
-                    <Radio value={6}>Option C</Radio>
-                    <Radio value={7}>Option A</Radio>
-                    <Radio value={8}>Option B</Radio>
-                    <Radio value={9}>Option C</Radio>
-                    <Radio value={10}>Option A</Radio>
-                    <Radio value={11}>Option B</Radio>
-                    <Radio value={12}>Option C</Radio>
-                    <Radio value={13}>Option A</Radio>
-                    <Radio value={14}>Option B</Radio>
-                    <Radio value={15}>Option C</Radio>
-                    <Radio value={16}>Option A</Radio>
-                    <Radio value={17}>Option B</Radio>
-                    <Radio value={18}>Option C</Radio>
-                    <Radio value={19}>Option A</Radio>
-                    <Radio value={20}>Option B</Radio>
-                    <Radio value={21}>Option C</Radio>
+                    {brands.map((data:any, idx:number) => <Radio value={data.id} key={idx}>{data.name}</Radio>)}                    
                   </Space>
                 </Radio.Group>
               </li>
             </ul>
-            <a href="/" className="">
+            {/* <a href="/" className="">
               <div className="relative mt-4 text-base font-bold text-center text-black border-t border-gray-200 border-solid cursor-pointer -top-2">
                 Others
               </div>
-            </a>
+            </a> */}
           </div>
           <div className="w-56 px-2 py-2 my-4 rounded-lg bg-fullwhite h-80">
             <b className="relative text-base text-black bottom-1">
@@ -136,36 +126,16 @@ const VGrid: React.FC = (props: any) => {
               <li className="flex justify-start h-6 ml-1">
                 <Radio.Group>
                   <Space direction="vertical" style={{ gap: '4px' }}>
-                    <Radio value={1}>Option A</Radio>
-                    <Radio value={2}>Option B</Radio>
-                    <Radio value={3}>Option C</Radio>
-                    <Radio value={4}>Option A</Radio>
-                    <Radio value={5}>Option B</Radio>
-                    <Radio value={6}>Option C</Radio>
-                    <Radio value={7}>Option A</Radio>
-                    <Radio value={8}>Option B</Radio>
-                    <Radio value={9}>Option C</Radio>
-                    <Radio value={10}>Option A</Radio>
-                    <Radio value={11}>Option B</Radio>
-                    <Radio value={12}>Option C</Radio>
-                    <Radio value={13}>Option A</Radio>
-                    <Radio value={14}>Option B</Radio>
-                    <Radio value={15}>Option C</Radio>
-                    <Radio value={16}>Option A</Radio>
-                    <Radio value={17}>Option B</Radio>
-                    <Radio value={18}>Option C</Radio>
-                    <Radio value={19}>Option A</Radio>
-                    <Radio value={20}>Option B</Radio>
-                    <Radio value={21}>Option C</Radio>
+                    {categories.map((data:any, idx:number) => <Radio value={data.id} key={idx}>{data.name}</Radio>)}
                   </Space>
                 </Radio.Group>
               </li>
             </ul>
-            <a href="/" className="">
+            {/* <a href="/" className="">
               <div className="relative mt-4 text-base font-bold text-center text-black border-t border-gray-200 border-solid cursor-pointer -top-2">
                 Others
               </div>
-            </a>
+            </a> */}
           </div>
           <div className="inline-grid w-56 grid-cols-2 rounded-lg h-9 bg-fullwhite">
             <IconLabelButton
@@ -189,6 +159,8 @@ const mapStateToProps = (state: any) => ({
   resources: getResources(state),
   resource_loading: state.resource.loading,
   resource_error: state.resource.error,
+  brands: getBrands(state),
+  categories: getCategories(state),
 });
 
 const mapDispatchToProps = (dispatch: any) => {

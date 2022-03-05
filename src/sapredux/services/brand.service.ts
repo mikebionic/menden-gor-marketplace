@@ -21,7 +21,6 @@ const fetchAll = async () => {
 		// headers: authBearerHeader()
 	};
 	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_brands}`, requestOptions).then(handleResponse);
-
 }
 
 const fetchById = async (id:number) => {
@@ -37,7 +36,6 @@ const fetchById = async (id:number) => {
 		// headers: authBearerHeader()
 	};
 	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_brands}${id}/`, requestOptions).then(handleResponse);
-
 }
 
 const fetchAll_data = async() => {
@@ -49,8 +47,7 @@ const fetchById_data = async(id:number) => {
 }
 
 
-
-export const resourceService = {
+export const brandService = {
 	fetchAll,
 	fetchById,
 	fetchAll_data,

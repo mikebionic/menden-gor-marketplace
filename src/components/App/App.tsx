@@ -7,16 +7,15 @@ import { useTranslation } from 'react-i18next';
 import getTitle from 'components/App/getTitle';
 import { useHeader } from '../HeaderProvider';
 
-import { ErrorBoundary } from 'modules/errors';
 import { AppRoutes } from 'navigation';
+import { ErrorBoundary } from 'modules/errors';
 import { Navbar } from 'components/Navbar';
+import { Footer } from 'components/Footer';
 
 import { history } from 'sapredux/helpers';
 import { alertActions } from 'sapredux/actions';
-
-import { fetchCategories } from 'sapredux/actions';
+import { fetchCategories, fetchBrands } from 'sapredux/actions';
 import { getCategories } from 'sapredux/selectors';
-import { Footer } from 'components/Footer';
 
 const App: React.FC = (props: any) => {
   const { t } = useTranslation();
@@ -40,11 +39,12 @@ const App: React.FC = (props: any) => {
     return pageData;
   };
 
-  const { fetchCategories, categories } = props;
+  const { fetchCategories, categories, fetchBrands } = props;
 
   useEffect(() => {
     fetchCategories();
-  }, [fetchCategories]);
+    fetchBrands();
+  }, [fetchCategories, fetchBrands]);
 
   const alert = useSelector((state: RootStateOrAny) => state.alert);
   const dispatch = useDispatch();
@@ -78,6 +78,7 @@ const mapStateToProps = (state: any) => ({
 
 const mapDispatchToProps = {
   fetchCategories,
+  fetchBrands,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

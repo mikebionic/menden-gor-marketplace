@@ -8,7 +8,6 @@ export const fetchSliders = () => async (dispatch: any) => {
 	})
 	try {
 		const response = await service.fetchAll()
-		console.log(response)
 		const sliders = response.data.map(transformResponse)
 		dispatch({
 			type: actionConstants.FETCH_SUCCESS,

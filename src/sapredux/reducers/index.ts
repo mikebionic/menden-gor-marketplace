@@ -11,11 +11,13 @@ import { resource } from './resource.reducer'
 import { resourcePage } from './resourcePage.reducer'
 import { resourcesPage } from './resourcesPage.reducer'
 import { slider } from './slider.reducer'
+import { brand } from './brand.reducer'
 
 
 export const rootReducer = (history: History) => combineReducers({
     alert,
     auth,
+    brand,
     cart,
     category,
     categoryPage,
