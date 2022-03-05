@@ -43,7 +43,8 @@ export const Navbar = (props: any) => {
   const { categories } = props;
   const [cartOpen, setCartOpen] = useState(false);
   const [dropdownState, onDropdownStateChange] = useState(false);
-  const [categoryDropdownState, onCategoryDropdownStateChange] = useState(false);
+  const [categoryDropdownState, onCategoryDropdownStateChange] =
+    useState(false);
 
   const handleClickAway = () => {
     onCategoryDropdownStateChange(false);
@@ -127,18 +128,21 @@ export const Navbar = (props: any) => {
                 </Transition>
               </div>
             </ClickAwayListener>
-            <div className="grid float-right grid-rows-1 gap-2 mr-4 grid-cols-navIcons">
-              <IconLabelButton
-                className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid "
-                icon={<BsMoon className="w-6 h-6 mx-3 text-2xl" />}
-                label=""
-              />
-
-              <LangButton
-                className="absolute"
-                onDropdownStateChange={onDropdownStateChange}
-                dropdownState={dropdownState}
-              />
+            <div className="relative grid float-right grid-rows-1 gap-2 mr-4 grid-cols-navIcons">
+              <div>
+                <IconLabelButton
+                  className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid "
+                  icon={<BsMoon className="w-6 h-6 mx-3 text-2xl" />}
+                  label=""
+                />
+              </div>
+              <div>
+                <LangButton
+                  className="absolute"
+                  onDropdownStateChange={onDropdownStateChange}
+                  dropdownState={dropdownState}
+                />
+              </div>
               <div className="relative grid">
                 <div>
                   <DropdownMenu
@@ -148,7 +152,7 @@ export const Navbar = (props: any) => {
                       <ChevronDownIcon className="w-full h-full" />
                     }
                     className="w-20"
-                    activeClassName="hover:bg-gray-200 text-white"
+                    activeClassName="hover:bg-gray-100 text-white"
                     menuButton={
                       <>
                         <IconLabelButton
