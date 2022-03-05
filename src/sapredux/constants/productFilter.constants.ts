@@ -1,0 +1,4 @@
+export const productFilterConstants = {
+	FILTER_UPDATE: 'PRODUCT_FILTER_UPDATE',
+	FILTER_CLEAR: 'BRAND_FILTER_CLEAR',
+}

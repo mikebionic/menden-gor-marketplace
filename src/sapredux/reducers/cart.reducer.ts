@@ -95,6 +95,17 @@ export const cart = (state = [], {type, payload}: any) => {
       return [...state, {id: payload, quantity: 1}];
 
     case resourceConstants.REMOVED_FROM_CART:
+      doesItemExist = false;
+      const removingState = state.map((item: any) => {
+        if (item.id === payload) {
+          item.quantity -= 1;
+          doesItemExist = true;
+        }
+        return item;
+      });
+      if (doesItemExist) {
+        return removingState;
+      }
       const newCartState = state.filter((item: any) => {
         if (item.id === payload) {
           return false;

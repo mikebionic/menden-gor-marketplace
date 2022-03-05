@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ErrorBoundary from 'antd/lib/alert/ErrorBoundary';
-// import { Divider } from 'components/Divider';
-// import { ProductList } from 'components/ProductList';
+import { Divider } from 'components/Divider';
+import { ProductList } from 'components/ProductList';
 // import { Spinner } from 'modules/loaders';
 // import { ErrorIndicator } from 'modules/errors';
 import { fetchResourceById } from 'sapredux/actions';
 import { getResourceById } from 'sapredux/selectors'
 import { Image } from 'common/Image';
-import { Divider } from 'components/Divider';
 
 const ProductPage: React.FC = (props: any) => {
   const { fetchResourceById, resource } = props
@@ -20,6 +19,11 @@ const ProductPage: React.FC = (props: any) => {
       console.log(err)
     }
   }, [props.match.params.id, fetchResourceById])
+
+  const productsList =
+    resource && !!resource.related_resources ? (
+      <ProductList data={resource.related_resources} />
+    ) : null
 
   const RenderProuct = ({
     description,
@@ -67,7 +71,7 @@ const ProductPage: React.FC = (props: any) => {
       <div>
         <RenderProuct {...resource} />
         <Divider title="Similar products" />
-        {/* {productsList} */}
+        { productsList }
       </div>
     </ErrorBoundary>
   );
