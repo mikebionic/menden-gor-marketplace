@@ -12,6 +12,7 @@ import { resourcePage } from './resourcePage.reducer'
 import { resourcesPage } from './resourcesPage.reducer'
 import { slider } from './slider.reducer'
 import { brand } from './brand.reducer'
+import { productFilter } from './productFilter.reducer'
 
 
 export const rootReducer = (history: History) => combineReducers({
@@ -21,6 +22,7 @@ export const rootReducer = (history: History) => combineReducers({
     cart,
     category,
     categoryPage,
+    productFilter,
     resource,
     resourcePage,
     resourcesPage,
