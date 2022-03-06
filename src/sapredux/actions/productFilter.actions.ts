@@ -8,10 +8,8 @@ export const applyFilters = (data: any) => {
 }
 
 
-
 export const clearFilters = () => {
 	return {
 		type: actionConstants.FILTER_CLEAR,
-    payload: null
   };
 }

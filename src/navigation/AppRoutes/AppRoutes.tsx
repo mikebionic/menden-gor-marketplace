@@ -43,7 +43,7 @@ export const AppRoutes: React.FC = ({ props }: any) => {
         <Route
           path={routeConstants.vGrid.route}
           exact
-          render={() => <VGrid />}
+          component={VGrid}
         />
 
         <UserRoutes />

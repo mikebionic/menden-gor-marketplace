@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchResources } from 'sapredux/actions';
+import { applyFilters, fetchResources } from 'sapredux/actions';
 import { getResources } from 'sapredux/selectors';
 
 import { ErrorBoundary } from 'modules/errors';
@@ -11,6 +10,7 @@ import { ProductList } from 'components/ProductList';
 import { ErrorIndicator } from 'modules/errors';
 import { Spinner } from 'modules/loaders';
 import { ProductsFilterPanel } from 'components/ProductsFilterPanel'
+import { history } from 'sapredux/helpers'
 
 const VGrid: React.FC = (props: any) => {
   const {
@@ -18,11 +18,16 @@ const VGrid: React.FC = (props: any) => {
     resources,
     resource_loading,
     resource_error,
+    onFiltersApply,
   } = props;
 
   useEffect(() => {
     fetchResources();
   }, [fetchResources]);
+
+  useEffect(() => {
+    console.log(history)
+  }, [])
 
   const productsList =
     !resource_loading && !resource_error ? (
@@ -55,9 +60,10 @@ const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators(
     {
       fetchResources,
+      onFiltersApply: applyFilters,
     },
     dispatch,
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(VGrid));
+export default connect(mapStateToProps, mapDispatchToProps)(VGrid);

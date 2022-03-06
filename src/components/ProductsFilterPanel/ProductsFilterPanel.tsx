@@ -7,12 +7,28 @@ import { Input, Switch, Radio, Space } from 'antd';
 import { IconLabelButton } from 'common/IconLabelButton';
 
 import { getCategories, getBrands } from 'sapredux/selectors';
+import { applyFilters, clearFilters } from 'sapredux/actions';
 
 const ProductsFilterPanel: React.FC = (props: any) => {
 	const {
 		categories,
 		brands,
+		filters,
+		onFiltersApply,
+		onFiltersClear,
 	} = props;
+	console.log(filters)
+
+	const handlePriceChange = (priceType:string, e:any) => {
+		let newFilters:any = {}
+		try {
+			const val = parseInt(e.target.value)
+			applyFilters(newFilters[priceType] = val)
+		} catch (err){
+			console.log(err)
+			applyFilters(newFilters[priceType] = null)
+		}
+	}
 
 	return (
 		<ErrorBoundary>
@@ -31,6 +47,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 									borderRadius: 5,
 								}}
 								placeholder="Minimum"
+								onChange={(e:any) => handlePriceChange("fromPrice", e)}
 							/>
 							<Input
 								className="ml-1 site-input-right"
@@ -41,34 +58,47 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 									borderRadius: 5,
 								}}
 								placeholder="Maximum"
+								onChange={(e:any) => handlePriceChange("toPrice", e)}
 							/>
 						</Input.Group>
 					</div>
 					<div className="grid grid-cols-iconReverse">
 						<p>Arzanladysh</p>
-						<Switch defaultChecked onChange={undefined} />
+						<Switch
+							checked={(filters.sort_type === "discounts") ? true : false}
+							onChange={(value:boolean) => value===true && onFiltersApply({sort_type: "discounts"})} />
 					</div>
 					<div className="grid grid-cols-iconReverse">
 						<p>Baha uludan kica</p>
-						<Switch defaultChecked onChange={undefined} />
+						<Switch
+							checked={(filters.sort_type === "price_high") ? true : false}
+							onChange={(value:boolean) => value===true && onFiltersApply({sort_type: "price_high"})} />
 					</div>
 					<div className="grid grid-cols-iconReverse">
 						<p>Baha kiciden ula</p>
-						<Switch defaultChecked onChange={undefined} />
+						<Switch
+							checked={(filters.sort_type === "price_low") ? true : false}
+							onChange={(value:boolean) => value===true && onFiltersApply({sort_type: "price_low"})} />
 					</div>
 				</div>
 				<div className="grid w-56 h-24 px-2 py-2 my-4 rounded-lg bg-fullwhite gap-y-1">
 					<div className="grid grid-cols-iconReverse ">
 						<p>In taze</p>
-						<Switch defaultChecked onChange={undefined} />
+						<Switch
+							checked={(filters.sort_type === "date_new") ? true : false}
+							onChange={(value:boolean) => value===true && onFiltersApply({sort_type: "date_new"})} />
 					</div>
 					<div className="grid grid-cols-iconReverse">
 						<p>In kone</p>
-						<Switch defaultChecked onChange={undefined} />
+						<Switch
+							checked={(filters.sort_type === "date_old") ? true : false}
+							onChange={(value:boolean) => value===true && onFiltersApply({sort_type: "date_old"})} />
 					</div>
 					<div className="grid grid-cols-iconReverse">
 						<p>Kop satylanlar</p>
-						<Switch defaultChecked onChange={undefined} />
+						<Switch
+							checked={(filters.sort_type === "rated") ? true : false}
+							onChange={(value:boolean) => value===true && onFiltersApply({sort_type: "rated"})} />
 					</div>
 				</div>
 				<div className="w-56 px-2 py-2 my-4 rounded-lg bg-fullwhite h-80">
@@ -78,8 +108,15 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 						<li className="flex justify-start h-6 ml-1">
 							<Radio.Group>
 								<Space direction="vertical" style={{ gap: '4px' }}>
+										<Radio value={0}
+											onClick={() => onFiltersApply({brand: null})}
+										>
+											Hemmesi
+										</Radio>
 									{brands.map((data: any, idx: number) => (
-										<Radio value={data.id} key={idx}>
+										<Radio value={data.id} key={idx}
+											onClick={() => onFiltersApply({brand: data.id})}
+										>
 											{data.name}
 										</Radio>
 									))}
@@ -102,8 +139,15 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 						<li className="flex justify-start h-6 ml-1">
 							<Radio.Group>
 								<Space direction="vertical" style={{ gap: '4px' }}>
+									<Radio value={0}
+										onClick={() => onFiltersApply({category: null})}
+									>
+										Hemmesi
+									</Radio>
 									{categories.map((data: any, idx: number) => (
-										<Radio value={data.id} key={idx}>
+										<Radio value={data.id} key={idx}
+											onClick={() => onFiltersApply({category: data.id})}
+										>
 											{data.name}
 										</Radio>
 									))}
@@ -125,6 +169,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 					<IconLabelButton
 						className="w-24 mx-auto my-0 rounded-full bg-gradientFirstColor"
 						label="Clear"
+						onClick={()=> onFiltersClear()}
 					/>
 				</div>
 			</div>
@@ -133,43 +178,19 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 }
 
 
-// const mapStateToProps = (state: any, props: any) => {
-// 	const { resourceId } = props;
-//   const totalData = getTotalCount(state, resourceId)
-//   return {
-//     totalCount: totalData.totalCount,
-//     totalPrice: totalData.totalPrice,
-//   }
-// }
-
-// const mapDispatchToProps = (dispatch: any) => {
-//   return bindActionCreators({
-//     onIncrease: resourceAddedToCart,
-//     onDecrease: resourceRemovedFromCart,
-//     onDelete: resourceAllRemovedFromCart
-//   }, dispatch);
-// }
-
-// export default connect( 
-//   mapStateToProps,
-//   mapDispatchToProps,
-// )(ProductsFilterPanel);
-
-
-
-// ###################
 const mapStateToProps = (state: any) => ({
   brands: getBrands(state),
   categories: getCategories(state),
+	filters: state.productFilter
 });
 
-// const mapDispatchToProps = (dispatch: any) => {
-//   return bindActionCreators(
-//     {
-//       fetchResources,
-//     },
-//     dispatch,
-//   );
-// };
 
-export default connect(mapStateToProps, null)(ProductsFilterPanel);
+const mapDispatchToProps = (dispatch: any) => {
+  return bindActionCreators({
+    onFiltersApply: applyFilters,
+    onFiltersClear: clearFilters,
+  }, dispatch);
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsFilterPanel);
