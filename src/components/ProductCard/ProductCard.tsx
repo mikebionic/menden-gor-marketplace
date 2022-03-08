@@ -11,7 +11,16 @@ import { routeConstants } from 'navigation/routeConstants';
 // import Parser from 'html-react-parser';
 
 const ProductCard = ({ data }: any) => {
-  const { name, description, priceValue, currencyCode, image, isNew } = data;
+  const {
+    id,
+    name,
+    description,
+    priceValue,
+    currencyCode,
+    image,
+    isNew,
+    discount,
+  } = data;
 
   var resource_description = description
     ? description.length > 50
@@ -27,7 +36,7 @@ const ProductCard = ({ data }: any) => {
     <ErrorBoundary>
       <div className="relative grid items-center w-64 grid-cols-1 mt-4 bg-white rounded grid-rows-Card h-Card shadow-ResGroupShadow">
         <Badge.Ribbon
-          text="50%"
+          text={discount}
           placement="start"
           className="cursor-default top-DiscountRibbon discount-left"
           color="gold"
