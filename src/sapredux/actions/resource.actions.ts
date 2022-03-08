@@ -1,7 +1,6 @@
 
 import { resourceConstants as actionConstants } from 'sapredux/constants'
 import { resourceService as service } from 'sapredux/services'
-import { transformResources as transformResponse } from 'sapredux/services/transform_data'
 
 export const fetchResources = () => async (dispatch: any) => {
 	dispatch({

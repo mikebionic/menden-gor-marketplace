@@ -37,7 +37,7 @@ const fetchById = async (id:number) => {
 		method: 'GET',
 		// headers: authBearerHeader()
 	};
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_resources}${id}/`, requestOptions).then(handleResponse);
+	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_resources}${id}/?showRelated=1`, requestOptions).then(handleResponse);
 
 }
 
