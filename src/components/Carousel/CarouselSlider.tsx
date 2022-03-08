@@ -1,6 +1,6 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
-import { Image } from 'common/Image'
+import { Image } from 'common/Image';
 
 const carouselSlide = {
   mobileView: '',
@@ -14,7 +14,7 @@ const classes =
     ? carouselSlide.mobileView
     : carouselSlide.desktopView;
 
-export const CarouselSlider = ({images}:any) => {
+export const CarouselSlider = ({ images }: any) => {
   return (
     <Splide
       className={`mb-8 ${classes}`}
@@ -25,18 +25,20 @@ export const CarouselSlider = ({images}:any) => {
         pauseOnHover: true,
         resetProgress: false,
         lazyLoad: true,
-        speed: 4000,
+        speed: 700,
         arrows: 'slider',
         height: '25rem',
       }}
       hasSliderWrapper
       hasAutoplayProgress
     >
-      {images.map((image:any, idx:number) => (
+      {images.map((image: any, idx: number) => (
         <SplideSlide className="h-full p-carousel" key={idx}>
-          <Image src={image.filePathM}
+          <Image
+            src={image.filePathM}
             alt={image.title}
-            className="absolute w-full h-full" />
+            className="absolute w-full h-full"
+          />
         </SplideSlide>
       ))}
     </Splide>

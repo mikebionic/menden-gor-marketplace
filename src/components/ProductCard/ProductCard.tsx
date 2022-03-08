@@ -14,8 +14,8 @@ const ProductCard = ({ data }: any) => {
   const { name, description, priceValue, currencyCode, image, isNew } = data;
 
   var resource_description = description
-    ? description.length > 60
-      ? `${description.slice(0, 60)}...`
+    ? description.length > 50
+      ? `${description.slice(0, 50)}...`
       : description
     : '';
 
@@ -25,39 +25,41 @@ const ProductCard = ({ data }: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="grid items-center grid-cols-1 mt-4 bg-white rounded grid-rows-Card w-60 h-Card shadow-ResGroupShadow">
-        <div className="relative w-56 h-56 mx-auto my-3 bg-gray-200">
+      <div className="relative grid items-center w-64 grid-cols-1 mt-4 bg-white rounded grid-rows-Card h-Card shadow-ResGroupShadow">
+        <div className="items-center justify-center w-56 h-64 mx-auto my-3 overflow-hidden bg-gray-200 ">
           <Badge.Ribbon
             text="50%"
             placement="start"
-            className="cursor-default top-DiscountRibbon"
+            className="absolute cursor-default top-DiscountRibbon"
             color="gold"
           >
-            {isNew ? <Ribbon /> : null}
-            <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
-              <Image
-                src={image}
-                alt={`${name} - ${resource_description}`}
-                className="object-cover object-center w-full h-full lg:w-full lg:h-full"
-              />
-            </Link>
+            <div className="relative">
+              {isNew ? <Ribbon /> : null}
 
-            <span className="absolute top-0 right-0">
-              <IconLabelButton
-                className="relative bottom-0 right-0 float-right mt-2 mb-2 mr-2 bg-white border border-white rounded-md shadow-sm h-9 w-9 "
-                icon={
-                  <FaRegHeart className="w-6 h-full mx-auto my-0 text-red-500" />
-                }
-              />
-            </span>
-            <span className="absolute bottom-0 right-0">
-              <ProductAddToCart resourceId={data.id} />
-            </span>
+              <span className="absolute top-0 right-0">
+                <IconLabelButton
+                  className="relative bottom-0 right-0 float-right mt-2 mb-2 mr-2 bg-white border border-white rounded-md shadow-sm h-9 w-9 "
+                  icon={
+                    <FaRegHeart className="w-6 h-full mx-auto my-0 text-red-500" />
+                  }
+                />
+              </span>
+              <span className="absolute bottom-0 right-0">
+                <ProductAddToCart resourceId={data.id} />
+              </span>
+            </div>
           </Badge.Ribbon>
+          <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
+            <Image
+              src={image}
+              alt={`${name} - ${resource_description}`}
+              className="object-cover object-center w-full h-full max-w-full max-h-full lg:w-full lg:h-full"
+            />
+          </Link>
         </div>
         <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
           <div className="mx-auto my-0 text-center w-max">
-            <h3 className="mx-auto my-0">{name}</h3>
+            <h3 className="mx-auto my-0 font-semibold">{name}</h3>
             <hr className="w-full" />
           </div>
         </Link>

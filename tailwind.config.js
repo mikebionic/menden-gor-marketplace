@@ -213,7 +213,7 @@ module.exports = {
       height: {
         sidebar: '95%',
         '46': '46px',
-        'Card': '25rem',
+        'Card': '26rem',
         'Banner': '470px',
         'BannerCategory': '400px',
         'Product': '450px'

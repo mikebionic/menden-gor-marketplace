@@ -22,6 +22,7 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { MdLanguage } from 'react-icons/md';
 import { IconLabelButton } from 'common/IconLabelButton';
 import { BsWallet2 } from 'react-icons/bs';
+import { PriceButton } from 'common/PriceButton';
 
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -68,6 +69,7 @@ const MainPage: React.FC = (props: any) => {
         <Divider title="Just for you" />
         <SocialBar />
         <Tab />
+        <PriceButton priceValue={11.14} />
         <DropdownMenu
           items={dropdownItems}
           menuButtonLabel="Options"
