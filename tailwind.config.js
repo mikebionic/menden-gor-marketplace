@@ -172,6 +172,7 @@ module.exports = {
         'glass': '20px'
       },
       zIndex: {
+        'navbar': '999',
         '100': '100',
         '1': '1',
         '10': '10',
@@ -220,7 +221,7 @@ module.exports = {
       },
       inset: {
         'Card': '87%',
-        'DiscountRibbon': '83%',
+        'DiscountRibbon': '82%',
         '45': '45%',
         '36': '36%',
         '40': '40%',

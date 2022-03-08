@@ -70,7 +70,7 @@ export const Navbar = (props: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="fixed z-10 w-full">
+      <div className="fixed w-full z-navbar">
         <header className="top-0 left-0 grid w-full h-20 grid-rows-1 navbarColor">
           {/* first row */}
           <div className="inline-grid items-center w-full grid-rows-1 mx-auto my-2 grid-cols-firstRowNavbar">

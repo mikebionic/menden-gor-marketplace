@@ -26,13 +26,13 @@ const ProductCard = ({ data }: any) => {
   return (
     <ErrorBoundary>
       <div className="relative grid items-center w-64 grid-cols-1 mt-4 bg-white rounded grid-rows-Card h-Card shadow-ResGroupShadow">
-        <div className="items-center justify-center w-56 h-64 mx-auto my-3 overflow-hidden bg-gray-200 ">
-          <Badge.Ribbon
-            text="50%"
-            placement="start"
-            className="absolute cursor-default top-DiscountRibbon"
-            color="gold"
-          >
+        <Badge.Ribbon
+          text="50%"
+          placement="start"
+          className="cursor-default top-DiscountRibbon discount-left"
+          color="gold"
+        >
+          <div className="items-center justify-center w-56 h-64 mx-auto my-3 overflow-hidden bg-gray-200 ">
             <div className="relative">
               {isNew ? <Ribbon /> : null}
 
@@ -44,19 +44,20 @@ const ProductCard = ({ data }: any) => {
                   }
                 />
               </span>
-              <span className="absolute bottom-0 right-0">
+              <span className="absolute right-0 top-52">
                 <ProductAddToCart resourceId={data.id} />
               </span>
             </div>
-          </Badge.Ribbon>
-          <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
-            <Image
-              src={image}
-              alt={`${name} - ${resource_description}`}
-              className="object-cover object-center w-full h-full max-w-full max-h-full lg:w-full lg:h-full"
-            />
-          </Link>
-        </div>
+
+            <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
+              <Image
+                src={image}
+                alt={`${name} - ${resource_description}`}
+                className="object-contain object-center w-full h-full max-w-full max-h-full py-4 lg:w-full lg:h-full"
+              />
+            </Link>
+          </div>
+        </Badge.Ribbon>
         <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
           <div className="mx-auto my-0 text-center w-max">
             <h3 className="mx-auto my-0 font-semibold">{name}</h3>
