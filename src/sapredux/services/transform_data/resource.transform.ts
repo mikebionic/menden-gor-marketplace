@@ -44,6 +44,10 @@ export const transformResources = (data: any) => {
 		usageStatusId: data.UsageStatusId,
 		usageStatusName: data.UsageStatusName,
 		wishlist: data.Wishlist,
+		realPrice: data.RealPrice ?? null,
+		discountValue: data.DiscValue ?? null,
+		discountType: data.DiscType ?? null,
+		discount: data.DiscValue && `${data.DiscValue}${data.DiscType}`,
 		related_resources: data.Related_resources ?
 		data.Related_resources.map((resource:any) => ({
 			id: resource.ResId,
@@ -90,6 +94,10 @@ export const transformResources = (data: any) => {
 			usageStatusId: resource.UsageStatusId,
 			usageStatusName: resource.UsageStatusName,
 			wishlist: resource.Wishlist,
+			realPrice: resource.RealPrice,
+			discountValue: resource.DiscValue,
+			discountType: resource.DiscType,
+			discount: resource.DiscValue && `${resource.DiscValue}${resource.DiscType}`,
 		})) : []
 	}
 }
