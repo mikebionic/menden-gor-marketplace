@@ -39,7 +39,7 @@ const login = (username='', password='') => {
 		}
 	};
 
-	return fetch(`${serviceConfig.apiUrl}/login/?type=user`, requestOptions)
+	return fetch(`${serviceConfig.apiUrl}/login/?type=rp_acc`, requestOptions)
 	.then(handleResponse)
 	.then(user => {
 		set_local_data_by_key('user', user)

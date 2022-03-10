@@ -54,7 +54,7 @@ const ProductCard = ({ data }: any) => {
                 />
               </span>
               <span className="absolute right-0 top-52">
-                <ProductAddToCart resourceId={data.id} />
+                <ProductAddToCart resourceId={id} />
               </span>
             </div>
 

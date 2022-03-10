@@ -1,58 +1,73 @@
 import React from 'react';
-import noimage from 'common/images/noimage.png';
-import { Button } from 'antd';
+import { connect } from 'react-redux';
 
-export const Profile: React.FC = () => {
+import { Button } from 'antd';
+import { getCurrentUserInfo } from 'sapredux/selectors/auth.selector';
+import { Image } from 'common/Image'
+
+const Profile: React.FC = ({current_user}:any) => {
   return (
     <div className="grid grid-cols-2 gap-8 text-center grid-rows-Profile">
       <div className="inline-grid col-start-1 col-end-3 gap-2 mx-auto grid-rows-Avatar">
-        <img className="m-auto avatar" src={noimage} alt="" />
-        <span className="text-center">Full Name</span>
-        <small className="text-center">Hasaba alnan senesi: 25-01-2022</small>
+        <Image className="m-auto avatar"
+          src={current_user.FilePathS}
+          alt={current_user.RpAccUName} />
+        <span className="text-center">{current_user.RpAccName}</span>
+        <small className="text-center">Hasaba alnan senesi: {current_user.CreatedDate}</small>
         <Button type="ghost" shape="round">
           Change password
         </Button>
       </div>
       <div className="inline-grid gap-2">
         <b>Ulanyjy ady</b>
-        <p className="text-gray-400">merri23</p>
+        <p className="text-gray-400">{current_user.RpAccUName}</p>
       </div>
       <div className="inline-grid gap-2">
         <b>E-poçta</b>
-        <p className="text-gray-400">mekanhodzaberdiev@gmail.com</p>
-      </div>
-      <div className="inline-grid gap-2">
-        <b>Öý telefony</b>
-        <p className="text-gray-400">+99332321312</p>
-      </div>
-      <div className="inline-grid gap-2">
-        <b>Salgy</b>
-        <p className="text-gray-400">Sap cozgut IT company</p>
-      </div>
-      <div className="inline-grid gap-2">
-        <b>Poçta kody</b>
-        <p className="text-gray-400">14400</p>
-      </div>
-      <div className="inline-grid gap-2">
-        <b>Doly ady</b>
-        <p className="text-gray-400">merri23</p>
+        <p className="text-gray-400">{current_user.RpAccEMail ?? "Email not registered"}</p>
       </div>
       <div className="inline-grid gap-2">
         <b>El telefony</b>
-        <p className="text-gray-400">+9933213123</p>
+        <p className="text-gray-400">{current_user.RpAccMobilePhoneNumber ?? "Phone number not specified"}</p>
+      </div>
+      <div className="inline-grid gap-2">
+        <b>Salgy</b>
+        <p className="text-gray-400">{current_user.RpAccAddress ?? "Address not specified"}</p>
+      </div>
+      <div className="inline-grid gap-2">
+        <b>Poçta kody</b>
+        <p className="text-gray-400">{current_user.RpAccPostalCode ?? "Email not registered"}</p>
+      </div>
+      <div className="inline-grid gap-2">
+        <b>Doly ady</b>
+        <p className="text-gray-400">{current_user.RpAccName ?? ""}</p>
+      </div>
+      <div className="inline-grid gap-2">
+        <b>Öý telefony</b>
+        <p className="text-gray-400">{current_user.RpAccHomePhoneNumber ?? ""}</p>
       </div>
       <div className="inline-grid gap-2">
         <b>Iş telefony</b>
-        <p className="text-gray-400">+9933213123</p>
+        <p className="text-gray-400">{current_user.RpAccWorkPhoneNumber ?? ""}</p>
       </div>
       <div className="inline-grid gap-2">
         <b>Web salgysy</b>
-        <p className="text-gray-400">www.saphasap.com</p>
+        <p className="text-gray-400">{current_user.RpAccWebAddress ?? ""}</p>
       </div>
       <div className="inline-grid gap-2">
         <b>Faks</b>
-        <p className="text-gray-400">merri23</p>
+        <p className="text-gray-400">{current_user.RpAccWorkFaxNumber ?? ""}</p>
       </div>
     </div>
   );
 };
+
+
+const mapStateToProps = (state: any) => ({
+  current_user: getCurrentUserInfo(state.auth)
+});
+
+export default connect(
+  mapStateToProps,
+  null,
+)(Profile)
