@@ -21,9 +21,9 @@ const login = (username: string, password: string) => {
 		);
 	};
 
-	function request(user: any) { return { type: authConstants.LOGIN_REQUEST, user } }
-	function success(user: any) { return { type: authConstants.LOGIN_SUCCESS, user } }
-	function failure(error: any) { return { type: authConstants.LOGIN_FAILURE, error } }
+	function request(user: any) { return { type: authConstants.LOGIN_REQUEST, payload: user } }
+	function success(user: any) { return { type: authConstants.LOGIN_SUCCESS, payload: user } }
+	function failure(error: any) { return { type: authConstants.LOGIN_FAILURE, payload: error } }
 }
 
 const logout = () => {

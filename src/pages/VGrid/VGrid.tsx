@@ -26,8 +26,11 @@ const VGrid: React.FC = (props: any) => {
   }, [fetchResources]);
 
   useEffect(() => {
-    console.log(history)
+    console.log("HISTORYYYYYYYYYYYYYYYYYYYYYYYY", history)
   }, [])
+
+  // let search_data = history.location.search
+  // search_data.subst
 
   const productsList =
     !resource_loading && !resource_error ? (

@@ -1,6 +1,6 @@
 
 
-import { Profile } from 'pages/Profile';
+import { ProfilePage } from 'pages/ProfilePage';
 import { OrderLine, Orders } from 'pages/Orders';
 import { Wishlist } from 'pages/Wishlist';
 import { ProfileEdit } from 'pages/ProfileEdit';
@@ -12,7 +12,7 @@ export const TabContent = () => {
 
 	switch(page){
 		case routeConstants.profile.route:
-			return <Profile />
+			return <ProfilePage />
 
 		case routeConstants.wishlist.route:
 			return <Wishlist />
@@ -24,6 +24,6 @@ export const TabContent = () => {
 			return <ProfileEdit />
 
 		default:
-			return <Profile />
+			return <ProfilePage />
 	}
 }
