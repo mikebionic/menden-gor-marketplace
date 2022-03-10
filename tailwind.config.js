@@ -193,7 +193,7 @@ module.exports = {
       },
       gridTemplateRows: {
         'SocialBar': '35px 35px 35px 35px',
-        'Card': '1fr 40px auto 1fr',
+        'Card': 'max-content 30px auto auto auto',
         'Divider': '2rem',
         'Product': 'auto max-content max-content max-content max-content 1fr',
         'Avatar': '1fr max-content max-content auto',

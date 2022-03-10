@@ -1,15 +1,19 @@
 import React from 'react';
-import { MdStarRate } from 'react-icons/md';
-import { FaStarHalfAlt } from 'react-icons/fa';
+import { Rate } from 'antd';
 
-export const StarRate: React.FC = () => {
+interface IRateStarProps {
+  disabled?: boolean;
+}
+
+export const StarRate: React.FC<IRateStarProps> = ({ disabled = false }) => {
   return (
-    <div className="flex">
-      <MdStarRate className="text-yellow-400" />
-      <MdStarRate className="text-yellow-400" />
-      <FaStarHalfAlt className="text-yellow-400" />
-      <MdStarRate className="text-yellow-400" />
-      <MdStarRate />
+    <div className="px-4">
+      <Rate
+        allowHalf
+        defaultValue={2.5}
+        className="text-sm"
+        disabled={disabled}
+      />
     </div>
   );
 };
