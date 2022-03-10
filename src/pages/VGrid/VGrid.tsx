@@ -26,11 +26,19 @@ const VGrid: React.FC = (props: any) => {
   }, [fetchResources]);
 
   useEffect(() => {
-    console.log("HISTORYYYYYYYYYYYYYYYYYYYYYYYY", history)
-  }, [])
+    const params = new URLSearchParams(history.location.search);
+    const history_filters = {
+      "category": params.get('category'),
+      "brand": params.get('brand'),
+      "search": params.get('search'),
+      "fromPrice": params.get('fromPrice'),
+      "toPrice": params.get('toPrice'),
+      "division": params.get('division'),
+      "sortType": params.get('sortType'),
+    }
+    onFiltersApply(history_filters)
+  }, [history])
 
-  // let search_data = history.location.search
-  // search_data.subst
 
   const productsList =
     !resource_loading && !resource_error ? (
