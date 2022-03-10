@@ -67,6 +67,10 @@
   box-shadow: 0px 0px 3px rgb(0 0 0 / 30%);
 }
 
+.transition_animation {
+  transition: opacity 3s ease;
+}
+
 .discount-left {
   left: 9px !important;
 }

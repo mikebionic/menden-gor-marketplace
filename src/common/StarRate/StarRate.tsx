@@ -11,7 +11,7 @@ export const StarRate: React.FC<IRateStarProps> = ({ disabled = false }) => {
       <Rate
         allowHalf
         defaultValue={2.5}
-        className="text-sm"
+        className="text-xs"
         disabled={disabled}
       />
     </div>

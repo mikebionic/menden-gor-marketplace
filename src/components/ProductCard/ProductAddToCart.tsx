@@ -17,6 +17,7 @@ const ProductAddToCart = ({
   onDecrease,
   totalCount,
   totalPrice,
+  onDelete,
 }: any) => {
   return withCounter ? (
     <AddToCartWithCounter
@@ -26,7 +27,11 @@ const ProductAddToCart = ({
       // coloredCountry={true}
     />
   ) : (
-    <AddToCartButton onIncrease={() => onIncrease(resourceId)} />
+    <AddToCartButton
+      onIncrease={() => onIncrease(resourceId)}
+      count={totalCount || 0}
+      onDelete={() => onDelete(resourceId)}
+    />
   );
 };
 

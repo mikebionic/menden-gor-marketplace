@@ -42,6 +42,13 @@ export const cart = (state = [], {type, payload}: any) => {
       });
       return newCartState;
 
+    case resourceConstants.ALL_REMOVED_FROM_CART:
+      const removingCartState = state.filter((item: any) => {
+        if (item.id === payload) { return false } return true
+      })
+      return removingCartState
+    
+    
     default:
       return state;
   }

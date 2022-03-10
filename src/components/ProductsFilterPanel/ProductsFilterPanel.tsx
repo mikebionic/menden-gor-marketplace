@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -13,11 +13,13 @@ const ProductsFilterPanel: React.FC = (props: any) => {
   const { categories, brands, filters, onFiltersApply, onFiltersClear } = props;
   console.log(filters);
 
-  const handlePriceChange = (priceType: string, e: any) => {
+  const handlePriceChange = (priceType: string, value: any) => {
     let newFilters: any = {};
     try {
-      const val = parseInt(e.target.value);
-      applyFilters((newFilters[priceType] = val));
+      const val = parseFloat(value);
+      if (priceType === 'fromPrice') {
+        applyFilters({ fromPrice: val });
+      }
     } catch (err) {
       console.log(err);
       applyFilters((newFilters[priceType] = null));
@@ -41,7 +43,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                   borderRadius: 5,
                 }}
                 placeholder="Minimum"
-                onChange={(e: any) => handlePriceChange('fromPrice', e)}
+                onChange={(value: any) => handlePriceChange('fromPrice', value)}
               />
               <InputNumber
                 className="ml-1 site-input-right"
@@ -52,7 +54,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                   borderRadius: 5,
                 }}
                 placeholder="Maximum"
-                onChange={(e: any) => handlePriceChange('toPrice', e)}
+                onChange={(value: any) => handlePriceChange('toPrice', value)}
               />
             </Input.Group>
           </div>
@@ -150,11 +152,12 @@ const ProductsFilterPanel: React.FC = (props: any) => {
           <br />
           <ul className="inline-block w-full h-full pl-0 overflow-y-scroll list-none max-h-60">
             <li className="flex justify-start h-6 ml-1">
-              <Radio.Group>
+              <Radio.Group buttonStyle="solid">
                 <Space direction="vertical" style={{ gap: '4px' }}>
                   <Radio
                     value={0}
                     onClick={() => onFiltersApply({ category: null })}
+                    checked={true}
                   >
                     Hemmesi
                   </Radio>

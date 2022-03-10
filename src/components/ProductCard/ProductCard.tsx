@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom';
-import { FaRegHeart } from 'react-icons/fa';
 import { Badge } from 'antd';
 
 import { Image } from 'common/Image';
 import { ProductAddToCart } from 'components/ProductCard';
-import { IconLabelButton } from 'common/IconLabelButton';
 import { Ribbon } from 'common/Ribbon';
 import { ErrorBoundary } from 'modules/errors';
 import { routeConstants } from 'navigation/routeConstants';
 import { StarRate } from 'common/StarRate';
 import { PriceButton } from 'common/PriceButton';
+import { WishlistButton } from 'common/WishlistButton';
 // import Parser from 'html-react-parser';
 
 const ProductCard = ({ data }: any) => {
@@ -22,6 +21,7 @@ const ProductCard = ({ data }: any) => {
     image,
     isNew,
     discount,
+    wishlist,
   } = data;
 
   var resource_description = description
@@ -49,12 +49,7 @@ const ProductCard = ({ data }: any) => {
             <div className="relative">
               {isNew ? <Ribbon /> : null}
               <span className="absolute top-0 right-0">
-                <IconLabelButton
-                  className="relative bottom-0 right-0 float-right mt-2 mb-2 mr-2 bg-white border border-white rounded-md shadow-sm h-9 w-9 "
-                  icon={
-                    <FaRegHeart className="w-6 h-full mx-auto my-0 text-red-500" />
-                  }
-                />
+                <WishlistButton wishlist={wishlist} />
               </span>
               <span className="absolute right-0 top-52">
                 <ProductAddToCart resourceId={id} />
