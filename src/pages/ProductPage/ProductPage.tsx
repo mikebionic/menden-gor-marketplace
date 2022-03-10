@@ -30,7 +30,7 @@ const ProductPage: React.FC = (props: any) => {
     name,
     image,
     priceValue,
-    currencyCode,
+    currencySymbol,
     categoryName,
     totBalance 
   }:any) => {
@@ -52,7 +52,7 @@ const ProductPage: React.FC = (props: any) => {
             Kategoriya: {categoryName}
           </p>
           <p className="py-1 text-2xl font-medium text-black place-self-start">
-            Bahasy: {priceValue} {currencyCode}
+            Bahasy: {priceValue} {currencySymbol}
           </p>
           <p className="py-1 text-2xl font-medium text-black place-self-start">
             Sany: {totBalance}

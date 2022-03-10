@@ -28,7 +28,7 @@ export const CartRow = ({ item, onIncrease, onDecrease, onDelete }: any) => {
                 </Link>
               </h3>
               <p className="ml-4">
-                {item.priceValue} {item.currencyCode}
+                {item.priceValue} {item.currencySymbol}
               </p>
             </div>
             <p className="mt-1 text-sm text-gray-500">{item.description}</p>

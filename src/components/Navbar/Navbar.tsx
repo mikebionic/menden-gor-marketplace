@@ -60,8 +60,8 @@ export const Navbar = (props: any) => {
     return (
       <div className="absolute grid w-full p-2 overflow-x-hidden overflow-y-auto shadow-lg h-80 mt-2px left-12 bg-fullwhite">
         {categories.map((category: any, idx: number) => (
-          <Link to={`${routeConstants.vGrid.route}?category=${category.id}`}>
-            <CategoryListItem key={idx} {...category} />
+          <Link to={`${routeConstants.vGrid.route}?category=${category.id}`} key={idx}>
+            <CategoryListItem {...category} />
           </Link>
         ))}
       </div>

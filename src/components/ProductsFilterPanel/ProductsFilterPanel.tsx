@@ -17,7 +17,6 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 		onFiltersApply,
 		onFiltersClear,
 	} = props;
-	console.log(filters)
 
 	const handlePriceChange = (priceType:string, e:any) => {
 		let newFilters:any = {}
@@ -25,7 +24,6 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 			const val = parseInt(e.target.value)
 			applyFilters(newFilters[priceType] = val)
 		} catch (err){
-			console.log(err)
 			applyFilters(newFilters[priceType] = null)
 		}
 	}
@@ -139,7 +137,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 						<li className="flex justify-start h-6 ml-1">
 							<Radio.Group>
 								<Space direction="vertical" style={{ gap: '4px' }}>
-									<Radio value={0}
+									<Radio value={0} checked={true}
 										onClick={() => onFiltersApply({category: null})}
 									>
 										Hemmesi

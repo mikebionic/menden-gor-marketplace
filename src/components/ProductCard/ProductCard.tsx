@@ -18,7 +18,7 @@ const ProductCard = ({ data }: any) => {
     name,
     description,
     priceValue,
-    currencyCode,
+    currencySymbol,
     image,
     isNew,
     discount,
@@ -88,14 +88,14 @@ const ProductCard = ({ data }: any) => {
         >
           {discount && (
             <p className="mx-4 text-sm text-justify text-gray-400 line-through">
-              {priceValue} {currencyCode}
+              {priceValue} {currencySymbol}
             </p>
           )}
 
           <p className="mx-4 text-sm text-justify">
             <PriceButton
               priceValue={priceValue}
-              currencyCode={currencyCode}
+              currencySymbol={currencySymbol}
               width="w-auto"
               coloredButton={true}
             />
@@ -103,7 +103,7 @@ const ProductCard = ({ data }: any) => {
         </div>
         {/* <p className="mx-4 mb-2 text-sm text-justify">{resource_description}</p> */}
         {/* <h3 className="w-auto px-3 mx-auto my-0 rounded-full navbarColor">
-          {priceValue} {currencyCode} */}
+          {priceValue} {currencySymbol} */}
         {/* </h3> */}
       </div>
     </ErrorBoundary>
