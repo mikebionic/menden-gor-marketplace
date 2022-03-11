@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchResources, resourceAddedToCart } from 'sapredux/actions';
+import { fetchResources } from 'sapredux/actions';
 import { getResources } from 'sapredux/selectors';
+import { resourceService } from 'sapredux/services'
 
 import { ErrorBoundary } from 'modules/errors';
 import { ProductList } from 'components/ProductList';
@@ -14,22 +15,35 @@ import { ResGroup } from 'components/ResGroup';
 import { SocialBar } from 'components/SocialBar';
 import { Divider } from 'components/Divider';
 import BannerWithCategory from 'components/BannerWithCategory';
-import { Tab } from 'components/Tab';
-import { DropdownMenu } from 'common/DropdownMenu';
+// import { Tab } from 'components/Tab';
+// import { DropdownMenu } from 'common/DropdownMenu';
 
-import { ChevronDownIcon } from '@heroicons/react/solid';
-import { AiOutlineEdit } from 'react-icons/ai';
-import { MdLanguage } from 'react-icons/md';
-import { IconLabelButton } from 'common/IconLabelButton';
-import { BsWallet2 } from 'react-icons/bs';
-import { PriceButton } from 'common/PriceButton';
-import { StarRate } from 'common/StarRate';
+// import { ChevronDownIcon } from '@heroicons/react/solid';
+// import { IconLabelButton } from 'common/IconLabelButton';
+// import { BsWallet2 } from 'react-icons/bs';
+// import { PriceButton } from 'common/PriceButton';
+// import { StarRate } from 'common/StarRate';
 
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
 
+  const [featured_resources, set_featured_resources] = useState([])
+  const get_featured_resources = async() => {
+    const featured_resources = await resourceService.fetchFeatured_data()
+    featured_resources && set_featured_resources(featured_resources)
+  }
+
+  
+  const [discount_resources, set_discount_resources] = useState([])
+  const get_discount_resources = async() => {
+    const discount_resources = await resourceService.fetchDiscount_data()
+    discount_resources && set_discount_resources(discount_resources)
+  }
+
   useEffect(() => {
     fetchResources();
+    get_featured_resources();
+    get_discount_resources();
   }, [fetchResources]);
 
   const productsList =
@@ -41,16 +55,26 @@ const MainPage: React.FC = (props: any) => {
       <ErrorIndicator />
     );
 
-  const dropdownItems = [
-    {
-      name: 'foo',
-      icon: <ChevronDownIcon />,
-    },
-    {
-      name: 'bar',
-      // icon: <ChevronDownIcon />,
-    },
-  ];
+  const featuredList =
+    featured_resources ?
+      <ProductList data={featured_resources} />
+    : null
+  
+  const discountsList =
+    discount_resources ?
+      <ProductList data={discount_resources} />
+    : null
+
+  // const dropdownItems = [
+  //   {
+  //     name: 'foo',
+  //     icon: <ChevronDownIcon />,
+  //   },
+  //   {
+  //     name: 'bar',
+  //     // icon: <ChevronDownIcon />,
+  //   },
+  // ];
 
   return (
     <ErrorBoundary>
@@ -67,9 +91,16 @@ const MainPage: React.FC = (props: any) => {
           <ResGroup />
           <ResGroup />
         </div>
-        <Divider title="Just for you" />
+
+        <Divider title="Featured products" />
+        {featuredList}
+
+        <Divider title="Discounts!" />
+        {discountsList}
+
         <SocialBar />
-        <Tab />
+
+        {/* <Tab />
         <StarRate />
         <PriceButton priceValue={11.14} />
         <DropdownMenu
@@ -90,7 +121,7 @@ const MainPage: React.FC = (props: any) => {
               </span>
             </>
           }
-        />
+        /> */}
       </div>
     </ErrorBoundary>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -11,6 +11,7 @@ import { ErrorIndicator } from 'modules/errors';
 import { Spinner } from 'modules/loaders';
 import { ProductsFilterPanel } from 'components/ProductsFilterPanel'
 import { history } from 'sapredux/helpers'
+import { setTimeout } from 'timers';
 
 const VGrid: React.FC = (props: any) => {
   const {
@@ -21,13 +22,17 @@ const VGrid: React.FC = (props: any) => {
     onFiltersApply,
   } = props;
 
+  const [query_string, set_query_string] = useState('')
   useEffect(() => {
-    fetchResources();
-  }, [fetchResources]);
+    setTimeout(() => {
+      console.log(query_string)
+      fetchResources(query_string);
+    }, 200);
+  }, [fetchResources, query_string]);
 
   useEffect(() => {
     const params = new URLSearchParams(history.location.search);
-    const history_filters = {
+    const history_filters: any = {
       "category": params.get('category'),
       "brand": params.get('brand'),
       "search": params.get('search'),
@@ -37,6 +42,16 @@ const VGrid: React.FC = (props: any) => {
       "sortType": params.get('sortType'),
     }
     onFiltersApply(history_filters)
+    console.log("filters applied")
+    let search_querystring = '?';//`${history.location.pathname}?`
+    Object.keys(history_filters).map((key) => {
+      if (history_filters[key]){
+        search_querystring += `${key}=${history_filters[key]}&`
+      }
+    })
+    set_query_string(search_querystring)
+    // history.push(search_querystring)
+    console.log(search_querystring)
   }, [history])
 
 

@@ -20,7 +20,7 @@ export const AppRoutes: React.FC = ({ props }: any) => {
         <Route
           path={routeConstants.root.route}
           exact
-          render={() => <MainPage />}
+          component={MainPage}
         />
 
         <Route
@@ -31,13 +31,13 @@ export const AppRoutes: React.FC = ({ props }: any) => {
         <Route
           path={routeConstants.about.route}
           exact
-          render={() => <AboutPage />}
+          component={AboutPage}
         />
 
         <Route
           path={routeConstants.contact.route}
           exact
-          render={() => <ContactPage />}
+          component={ContactPage}
         />
 
         <Route

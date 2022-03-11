@@ -12,9 +12,11 @@ export const serviceConfig = {
 		paginated_resources: process.env.REACT_APP_API_PAGINATED_RESOURCES_ROUTE ?? '/resources/',
 		all_resources: process.env.REACT_APP_API_ALL_RESOURCES_ROUTE ?? '/v-resources/',
 		all_brands: process.env.REACT_APP_API_ALL_BRANDS_ROUTE ?? '/tbl-dk-brands/',
+		discount_resources: process.env.REACT_APP_API_DISCOUNT_RESOURCES_ROUTE ?? '/v1/discount-resources/?limit=10',
+		featured_resources: process.env.REACT_APP_API_FEATURED_RESOURCES_ROUTE ?? '/v-resources/?showMain=1&limit=10',
 	},
 }
 
 export const namesConfig = {
 	main_page_slider_name: process.env.REACT_APP_MAIN_PAGE_SLIDER_NAME ?? "commerce_header"
-} 
+}

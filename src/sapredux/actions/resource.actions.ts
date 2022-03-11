@@ -1,16 +1,22 @@
 
-import { resourceConstants as actionConstants } from 'sapredux/constants'
+import { resourceConstants as actionConstants, productFilterConstants } from 'sapredux/constants'
 import { resourceService as service } from 'sapredux/services'
+import { transformResources as transformResponse } from 'sapredux/services/transform_data'
 
-export const fetchResources = () => async (dispatch: any) => {
+export const fetchResources = (query_string = "") => async (dispatch: any) => {
 	dispatch({
 		type: actionConstants.FETCH_START
 	})
 	try {
-		const data = await service.fetchAll_data()
+		const response = await service.fetchAll(query_string)
+		const data = response.data.map(transformResponse)
 		dispatch({
 			type: actionConstants.FETCH_SUCCESS,
 			payload: data
+		})
+		response.next_url && dispatch({
+			type: productFilterConstants.FILTER_UPDATE,
+			payload: {next_url: response.next_url}
 		})
 	} catch (err) {
 		dispatch({
