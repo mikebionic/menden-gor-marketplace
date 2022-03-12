@@ -1,35 +1,50 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Slider from 'react-slick';
 
-const SlickBanner = ({ data }: any) => {
-  console.log('HELLOLODLODLSAODLSODAOSK', data, data.icon, data.name);
-  return data.map(() => {
-    <div className="flex flex-col items-center">
-      <img
-        className="border border-solid border-[#e6e6e6] rounded-semifull w-16 h-16 transition_animation"
-        src={data.icon}
-      />
-      <span className="mt-2 text-sm text-center text-black transition_animation hover:text-gradientFirstColor">
-        {data.name}
-      </span>
-    </div>;
-  });
-};
+import { Image } from 'common/Image';
+import { getBrands } from 'sapredux/selectors';
 
-export const SlickBrandsSlider: React.FC = () => {
+const SlickBanner = ({ data }: any) => (
+  <div className="flex flex-col items-center m-auto w-brands banner-container">
+    <Image
+      className="w-16 h-16 border border-solid border-borderBrands rounded-semifull transition_animation"
+      src={data.icon}
+      alt={data.name}
+    />
+    <span className="mt-2 text-sm text-center text-black transition_animation">
+      {data.name}
+    </span>
+  </div>
+);
+
+const SlickBrandsSlider: React.FC = (props: any) => {
+  const { brands } = props;
   const settings = {
     className: 'center',
     infinite: true,
     centerPadding: '60px',
-    slidesToShow: 5,
+    slidesToShow: 2,
     autoplay: true,
-    speed: 3000,
+    speed: 700,
     autoplaySpeed: 3000,
     swipeToSlide: true,
   };
   return (
     <div className="cursor-pointer">
-      <Slider {...settings}>{SlickBanner}</Slider>
+      <Slider {...settings}>
+        {brands.map((item: any, idx: number) => (
+          <>
+            <SlickBanner data={item} key={idx} />
+          </>
+        ))}
+      </Slider>
     </div>
   );
 };
+
+const mapStateToProps = (state: any) => ({
+  brands: getBrands(state),
+});
+
+export default connect(mapStateToProps)(SlickBrandsSlider);

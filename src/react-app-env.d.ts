@@ -19,3 +19,7 @@ declare module 'react-i18next'
 declare module 'antd'
 
 declare module '@ant-design/*'
+
+declare module 'common/*'
+
+

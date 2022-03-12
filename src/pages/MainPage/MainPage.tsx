@@ -71,28 +71,7 @@ const MainPage: React.FC = (props: any) => {
         <Divider title="Just for you" />
         <SocialBar />
         <Tab />
-        <StarRate />
         <SlickBrandsSlider />
-        <PriceButton priceValue={11.14} />
-        <DropdownMenu
-          items={dropdownItems}
-          menuButtonLabel="Options"
-          menuButtonIcon={<ChevronDownIcon className="w-full h-full" />}
-          activeClassName="bg-red-500 text-white"
-          menuButton={
-            <>
-              <IconLabelButton
-                className="px-0 mt-3 font-medium text-white"
-                icon={
-                  <BsWallet2 className="w-6 h-6 mx-3 text-2xl text-black" />
-                }
-              />
-              <span className="absolute top-0 font-semibold text-black left-70 text-10">
-                TMT
-              </span>
-            </>
-          }
-        />
       </div>
     </ErrorBoundary>
   );

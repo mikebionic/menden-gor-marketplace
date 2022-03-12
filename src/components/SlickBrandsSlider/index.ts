@@ -1,1 +1,5 @@
-export * from './SlickBrandsSlider'
+import SlickBrandsSlider from './SlickBrandsSlider';
+
+export {
+  SlickBrandsSlider
+}
