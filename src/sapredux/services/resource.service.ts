@@ -48,7 +48,9 @@ const fetchById_data = async(id:number) => {
 	return await fetch_with_data((() => fetchById(id)), transformResponse, false)
 }
 
-
+const loadMore = async({next_url}:any) => {
+	return await fetch(`${serviceConfig.apiHost}${next_url}`).then(handleResponse);
+}
 
 export const resourceService = {
 	fetchAll,
@@ -57,4 +59,5 @@ export const resourceService = {
 	fetchById_data,
 	fetchFeatured_data,
 	fetchDiscount_data,
+	loadMore,
 };

@@ -48,3 +48,5 @@ export const getCartItems = (state: any) => {
 
 	return items
 }
+
+export const getResourceNextUrl = (state:any) => state.productFilter.next_url ?? ''

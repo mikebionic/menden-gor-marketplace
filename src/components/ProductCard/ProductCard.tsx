@@ -22,6 +22,8 @@ const ProductCard = ({ data }: any) => {
     isNew,
     discount,
     wishlist,
+    ratingValue,
+    categoryName,
   } = data;
 
   var resource_description = description
@@ -56,7 +58,7 @@ const ProductCard = ({ data }: any) => {
               </span>
             </div>
 
-            <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
+            <Link to={`${routeConstants.product.route}${id}/${name}`}>
               <Image
                 src={image}
                 alt={`${name} - ${resource_description}`}
@@ -65,7 +67,7 @@ const ProductCard = ({ data }: any) => {
             </Link>
           </div>
         </Badge.Ribbon>
-        <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
+        <Link to={`${routeConstants.product.route}${id}/${name}`}>
           <div className="mx-auto my-0 text-center w-max">
             <h3 className="mx-auto my-0 font-semibold">{name}</h3>
             <hr className="w-full" />
@@ -73,9 +75,9 @@ const ProductCard = ({ data }: any) => {
         </Link>
 
         <p className="mx-4 text-sm text-justify text-gray-400">
-          {data.categoryName}
+          {categoryName}
         </p>
-        <StarRate disabled={true} />
+        <StarRate disabled={true} value={ratingValue} />
         <div
           className={`flex items-center py-1 border-t border-gray-300 ${
             discount ? 'justify-between' : 'justify-end'

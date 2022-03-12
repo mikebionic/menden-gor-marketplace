@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { applyFilters, fetchResources } from 'sapredux/actions';
+import { applyFilters, fetchResources, loadMoreResources } from 'sapredux/actions';
 import { getResources } from 'sapredux/selectors';
 
 import { ErrorBoundary } from 'modules/errors';
@@ -20,6 +20,7 @@ const VGrid: React.FC = (props: any) => {
     resource_loading,
     resource_error,
     onFiltersApply,
+    loadMoreResources,
   } = props;
 
   const [query_string, set_query_string] = useState('')
@@ -28,7 +29,7 @@ const VGrid: React.FC = (props: any) => {
       console.log(query_string)
       fetchResources(query_string);
     }, 200);
-  }, [fetchResources, query_string]);
+  }, [query_string]);
 
   useEffect(() => {
     const params = new URLSearchParams(history.location.search);
@@ -42,7 +43,6 @@ const VGrid: React.FC = (props: any) => {
       "sortType": params.get('sortType'),
     }
     onFiltersApply(history_filters)
-    console.log("filters applied")
     let search_querystring = '?';//`${history.location.pathname}?`
     Object.keys(history_filters).map((key) => {
       if (history_filters[key]){
@@ -51,8 +51,7 @@ const VGrid: React.FC = (props: any) => {
     })
     set_query_string(search_querystring)
     // history.push(search_querystring)
-    console.log(search_querystring)
-  }, [history])
+  }, [history.location])
 
 
   const productsList =
@@ -70,8 +69,12 @@ const VGrid: React.FC = (props: any) => {
         {/* first column */}
         <ProductsFilterPanel />
         {/* second column */}
-        <div className="gap-4 ml-4 ">{productsList}</div>
+        <div className="gap-4 ml-4 ">
+          {/* <ProductList data={resources} /> */}
+          {productsList}
+        </div>
       </div>
+      <button onClick={()=> loadMoreResources()}>Load more</button>
     </ErrorBoundary>
   );
 };
@@ -86,6 +89,7 @@ const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators(
     {
       fetchResources,
+      loadMoreResources,
       onFiltersApply: applyFilters,
     },
     dispatch,
