@@ -91,6 +91,7 @@
     "@types/react": "^17.0.22",
     "@types/react-router-dom": "^5.1.9",
     "@types/react-scrollbar": "^0.5.3",
+    "@types/react-slick": "^0.23.8",
     "@types/redux-logger": "^3.0.9",
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.36",

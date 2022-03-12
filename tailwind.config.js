@@ -1,7 +1,7 @@
 // const { maxWidth } = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  purge: ['./src/**/*.{ts,tsx}', './public/index.html'],
+  content: ['./src/**/*.{ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   important: false,
   theme: {

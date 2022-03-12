@@ -16,9 +16,9 @@ export const WishlistButton: React.FC<IWishlistProps> = ({ wishlist }) => {
       onClick={() => setActive(!active)}
       icon={
         active ? (
-          <HeartFilled className="w-6 h-full mx-auto my-0 text-2xl text-red-500 transition_animation" />
+          <HeartFilled className="w-6 h-full mx-auto my-0 text-2xl text-red-500" />
         ) : (
-          <HeartOutlined className="w-6 h-full mx-auto my-0 text-2xl text-red-500 transition_animation" />
+          <HeartOutlined className="w-6 h-full mx-auto my-0 text-2xl text-red-500" />
         )
       }
     />

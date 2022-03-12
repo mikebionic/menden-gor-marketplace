@@ -8,8 +8,6 @@ import { Spinner } from 'modules/loaders';
 
 import './tailwind.css';
 import 'antd/dist/antd.css';
-import '~slick-carousel/slick/slick.css';
-import '~slick-carousel/slick/slick-theme.css';
 
 import AppHeader from 'components/AppHeader';
 import { HeaderProvider } from 'components/HeaderProvider';

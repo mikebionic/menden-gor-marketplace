@@ -24,6 +24,7 @@ import { IconLabelButton } from 'common/IconLabelButton';
 import { BsWallet2 } from 'react-icons/bs';
 import { PriceButton } from 'common/PriceButton';
 import { StarRate } from 'common/StarRate';
+import { SlickBrandsSlider } from 'components/SlickBrandsSlider';
 
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -71,6 +72,7 @@ const MainPage: React.FC = (props: any) => {
         <SocialBar />
         <Tab />
         <StarRate />
+        <SlickBrandsSlider />
         <PriceButton priceValue={11.14} />
         <DropdownMenu
           items={dropdownItems}

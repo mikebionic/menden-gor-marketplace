@@ -14,7 +14,18 @@ import {
 import { getTotalCount, getTotalPrice, getCartItems } from 'sapredux/selectors';
 import { ErrorBoundary } from 'modules/errors';
 
-export const Cart = ({
+interface ICartProps {
+  open?: any;
+  setOpen?: any;
+  items?: any;
+  totalCount?: any;
+  totalPrice?: any;
+  onIncrease?: any;
+  onDecrease?: any;
+  onDelete?: any;
+}
+
+export const Cart: React.FC<ICartProps> = ({
   open,
   setOpen,
   items,
@@ -23,7 +34,7 @@ export const Cart = ({
   onIncrease,
   onDecrease,
   onDelete,
-}: any) => {
+}) => {
   return (
     <ErrorBoundary>
       <Transition.Root show={open} as={Fragment}>
