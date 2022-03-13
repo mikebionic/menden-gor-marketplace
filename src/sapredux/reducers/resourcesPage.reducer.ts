@@ -28,3 +28,27 @@ export const resourcesPage = (state = initialState, {type, payload}: IAction) =>
 			return state
 	}
 }
+
+export const discountResourceIds = (state = initialState, {type, payload}: IAction) => {
+	switch (type) {
+		case actionConstants.FEATURED_FETCH_SUCCESS:
+			return R.merge(state, {
+				ids: R.pluck('id', payload)
+			})
+			
+		default:
+			return state
+	}
+}
+
+export const featuredResourceIds = (state = initialState, {type, payload}: IAction) => {
+	switch (type) {
+		case actionConstants.DISCOUNT_FETCH_SUCCESS:
+			return R.merge(state, {
+				ids: R.pluck('id', payload)
+			})
+
+		default:
+			return state
+	}
+}
