@@ -24,6 +24,7 @@
     "antd": "^4.19.1",
     "axios": "^0.26.1",
     "connected-react-router": "^6.9.2",
+    "cross-env": "^7.0.3",
     "crypto-js": "^4.1.1",
     "headlessui": "^0.0.0",
     "history": "^5.3.0",
@@ -63,7 +64,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "TAILWIND_MODE=WATCH postcss ./src/tailwind.css -o ./dist/output.css --watch --verbose",
+    "prod": "NODE_ENV=production postcss ./src/tailwind.css -o ./dist/output.css"
   },
   "eslintConfig": {
     "extends": [
@@ -96,7 +99,9 @@
     "@types/react-slick": "^0.23.8",
     "@types/redux-logger": "^3.0.9",
     "autoprefixer": "^10.4.2",
+    "cssnano": "^5.1.4",
     "postcss": "^8.4.8",
+    "postcss-cli": "^9.1.0",
     "tailwindcss": "^3.0.23",
     "tailwindcss-pseudo-elements": "^2.0.0",
     "ts-loader": "^9.2.8"
