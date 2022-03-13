@@ -1,4 +1,6 @@
 @import '~antd/dist/antd.css';
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -39,6 +41,17 @@
   );
 }
 
+.banner-container:hover span {
+  color: #f28232;
+}
+.banner-container:hover img {
+  border-color: #f28232;
+}
+
+.transition_animation {
+  transition: all ease 0.3s;
+}
+
 .ribbon-wrapper {
   pointer-events: none;
   width: 85px;
@@ -65,10 +78,6 @@
   background-image: -o-linear-gradient(top, #ff0808, #962c2c);
   color: #ffffff;
   box-shadow: 0px 0px 3px rgb(0 0 0 / 30%);
-}
-
-.transition_animation {
-  transition: opacity 3s ease;
 }
 
 .discount-left {

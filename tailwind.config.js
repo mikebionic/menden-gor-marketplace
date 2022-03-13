@@ -1,7 +1,7 @@
 // const { maxWidth } = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  purge: ['./src/**/*.{ts,tsx}', './public/index.html'],
+  content: ['./src/**/*.{ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   important: false,
   theme: {
@@ -47,6 +47,7 @@ module.exports = {
         gradientSecondColor: '#feb37b',
         defaultHover: '#f5f5f5',
         borderColor: '#E2E1E1',
+        borderBrands: '#e6e6e6',
         gray: {
           50: '#f9fafb',
           100: '#f3f4f6',
@@ -251,7 +252,8 @@ module.exports = {
       width: {
         'search': '728px',
         'ResGroup': '380px',
-        'Product': '1150px'
+        'Product': '1150px',
+        'brands': '115px'
       },
       fontSize: {
         '10': '10px',

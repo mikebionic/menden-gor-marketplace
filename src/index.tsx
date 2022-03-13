@@ -5,6 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import { store, history } from 'sapredux/helpers';
 import { Spinner } from 'modules/loaders';
+
 import './tailwind.css';
 import 'antd/dist/antd.css';
 

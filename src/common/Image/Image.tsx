@@ -5,7 +5,7 @@ import { serviceConfig } from 'configs';
 
 interface IImage {
   src: string;
-  alt: string;
+  alt?: string;
   className?: string;
 }
 

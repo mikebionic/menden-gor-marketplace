@@ -95,8 +95,8 @@ export const RegisterPage: React.FC = () => {
               required: true,
               message: 'Please confirm your password!',
             },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
+            ({ getFieldValue }: any) => ({
+              validator(_: any, value: any) {
                 if (!value || getFieldValue('password') === value) {
                   return Promise.resolve();
                 }
@@ -154,7 +154,7 @@ export const RegisterPage: React.FC = () => {
           valuePropName="checked"
           rules={[
             {
-              validator: (_, value) =>
+              validator: (_: any, value: any) =>
                 value
                   ? Promise.resolve()
                   : Promise.reject(new Error('Should accept agreement')),

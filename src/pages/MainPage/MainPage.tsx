@@ -19,10 +19,13 @@ import BannerWithCategory from 'components/BannerWithCategory';
 // import { DropdownMenu } from 'common/DropdownMenu';
 
 // import { ChevronDownIcon } from '@heroicons/react/solid';
+// import { AiOutlineEdit } from 'react-icons/ai';
+// import { MdLanguage } from 'react-icons/md';
 // import { IconLabelButton } from 'common/IconLabelButton';
 // import { BsWallet2 } from 'react-icons/bs';
 // import { PriceButton } from 'common/PriceButton';
 // import { StarRate } from 'common/StarRate';
+import { SlickBrandsSlider } from 'components/SlickBrandsSlider';
 
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -122,6 +125,7 @@ const MainPage: React.FC = (props: any) => {
             </>
           }
         /> */}
+        <SlickBrandsSlider />
       </div>
     </ErrorBoundary>
   );
