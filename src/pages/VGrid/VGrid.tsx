@@ -70,7 +70,6 @@ const VGrid: React.FC = (props: any) => {
         <ProductsFilterPanel />
         {/* second column */}
         <div className="gap-4 ml-4 ">
-          {/* <ProductList data={resources} /> */}
           {productsList}
         </div>
       </div>

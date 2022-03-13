@@ -7,6 +7,16 @@ export const getResources = (state: any) => {
 	return resources
 }
 
+export const getFeaturedResources = (state: any) => {
+	const resources = !!state.resource.data ? R.map((id: number) => getResourceById(state.resource.data, id), state.resourcesPage.ids) : []
+	return resources
+}
+
+export const getDiscountResources = (state: any) => {
+	const resources = !!state.resource.data ? R.map((id: number) => getResourceById(state.resource.data, id), state.resourcesPage.ids) : []
+	return resources
+}
+
 export const getTotalCount = (state: any, id: number = 0) => {
 	var totalPrice: number = 0;
 	var totalCount: number = 0;
