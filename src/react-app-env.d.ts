@@ -22,4 +22,5 @@ declare module '@ant-design/*'
 
 declare module 'common/*'
 
+declare module 'sapredux/actions'
 

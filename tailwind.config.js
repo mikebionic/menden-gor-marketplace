@@ -2,7 +2,7 @@
 
 module.exports = {
   content: ['./src/**/*.{ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  // darkMode: false, // or 'media' or 'class'
   important: false,
   theme: {
     backgroundColor: theme => ({

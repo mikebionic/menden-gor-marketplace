@@ -2,16 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { applyFilters, fetchResources, loadMoreResources } from 'sapredux/actions';
+import {
+  applyFilters,
+  fetchResources,
+  loadMoreResources,
+} from 'sapredux/actions';
 import { getResources } from 'sapredux/selectors';
 
 import { ErrorBoundary } from 'modules/errors';
 import { ProductList } from 'components/ProductList';
 import { ErrorIndicator } from 'modules/errors';
 import { Spinner } from 'modules/loaders';
-import { ProductsFilterPanel } from 'components/ProductsFilterPanel'
-import { history } from 'sapredux/helpers'
-import { setTimeout } from 'timers';
+import { ProductsFilterPanel } from 'components/ProductsFilterPanel';
+import { history } from 'sapredux/helpers';
+// import { setTimeout } from 'timers';
 
 const VGrid: React.FC = (props: any) => {
   const {
@@ -23,10 +27,10 @@ const VGrid: React.FC = (props: any) => {
     loadMoreResources,
   } = props;
 
-  const [query_string, set_query_string] = useState('')
+  const [query_string, set_query_string] = useState('');
   useEffect(() => {
     setTimeout(() => {
-      console.log(query_string)
+      console.log(query_string);
       fetchResources(query_string);
     }, 200);
   }, [query_string]);
@@ -34,25 +38,24 @@ const VGrid: React.FC = (props: any) => {
   useEffect(() => {
     const params = new URLSearchParams(history.location.search);
     const history_filters: any = {
-      "category": params.get('category'),
-      "brand": params.get('brand'),
-      "search": params.get('search'),
-      "fromPrice": params.get('fromPrice'),
-      "toPrice": params.get('toPrice'),
-      "division": params.get('division'),
-      "sortType": params.get('sortType'),
-    }
-    onFiltersApply(history_filters)
-    let search_querystring = '?';//`${history.location.pathname}?`
+      category: params.get('category'),
+      brand: params.get('brand'),
+      search: params.get('search'),
+      fromPrice: params.get('fromPrice'),
+      toPrice: params.get('toPrice'),
+      division: params.get('division'),
+      sortType: params.get('sortType'),
+    };
+    onFiltersApply(history_filters);
+    let search_querystring = '?'; //`${history.location.pathname}?`
     Object.keys(history_filters).map((key) => {
-      if (history_filters[key]){
-        search_querystring += `${key}=${history_filters[key]}&`
+      if (history_filters[key]) {
+        search_querystring += `${key}=${history_filters[key]}&`;
       }
-    })
-    set_query_string(search_querystring)
+    });
+    set_query_string(search_querystring);
     // history.push(search_querystring)
-  }, [history.location])
-
+  }, [history.location]);
 
   const productsList =
     !resource_loading && !resource_error ? (
@@ -69,11 +72,9 @@ const VGrid: React.FC = (props: any) => {
         {/* first column */}
         <ProductsFilterPanel />
         {/* second column */}
-        <div className="gap-4 ml-4 ">
-          {productsList}
-        </div>
+        <div className="gap-4 ml-4 ">{productsList}</div>
       </div>
-      <button onClick={()=> loadMoreResources()}>Load more</button>
+      <button onClick={() => loadMoreResources()}>Load more</button>
     </ErrorBoundary>
   );
 };

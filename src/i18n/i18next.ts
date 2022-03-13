@@ -13,9 +13,8 @@ i18n
 	.use(initReactI18next)
 	.init({
 		fallbackLng: defaultLanguage,
-		debug: true,
-    whitelist: language_codes,
-
+		debug: true,	
+    // whitelist: language_codes,
 		interpolation: {
 			escapeValue: false,
 		},

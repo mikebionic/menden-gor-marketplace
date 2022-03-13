@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { fetchResources } from 'sapredux/actions';
 import { getResources } from 'sapredux/selectors';
-import { resourceService } from 'sapredux/services'
+import { resourceService } from 'sapredux/services';
 
 import { ErrorBoundary } from 'modules/errors';
 import { ProductList } from 'components/ProductList';
@@ -29,18 +29,17 @@ import { SlickBrandsSlider } from 'components/SlickBrandsSlider';
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
 
-  const [featured_resources, set_featured_resources] = useState([])
-  const get_featured_resources = async() => {
-    const featured_resources = await resourceService.fetchFeatured_data()
-    featured_resources && set_featured_resources(featured_resources)
-  }
+  const [featured_resources, set_featured_resources] = useState([]);
+  const get_featured_resources = async () => {
+    const featured_resources = await resourceService.fetchFeatured_data();
+    featured_resources && set_featured_resources(featured_resources);
+  };
 
-  
-  const [discount_resources, set_discount_resources] = useState([])
-  const get_discount_resources = async() => {
-    const discount_resources = await resourceService.fetchDiscount_data()
-    discount_resources && set_discount_resources(discount_resources)
-  }
+  const [discount_resources, set_discount_resources] = useState([]);
+  const get_discount_resources = async () => {
+    const discount_resources = await resourceService.fetchDiscount_data();
+    discount_resources && set_discount_resources(discount_resources);
+  };
 
   useEffect(() => {
     fetchResources();
@@ -57,15 +56,13 @@ const MainPage: React.FC = (props: any) => {
       <ErrorIndicator />
     );
 
-  const featuredList =
-    featured_resources ?
-      <ProductList data={featured_resources} />
-    : null
-  
-  const discountsList =
-    discount_resources ?
-      <ProductList data={discount_resources} />
-    : null
+  const featuredList = featured_resources ? (
+    <ProductList data={featured_resources} />
+  ) : null;
+
+  const discountsList = discount_resources ? (
+    <ProductList data={discount_resources} />
+  ) : null;
 
   // const dropdownItems = [
   //   {
@@ -145,7 +142,4 @@ const mapDispatchToProps = (dispatch: any) => {
   );
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

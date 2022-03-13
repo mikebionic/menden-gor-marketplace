@@ -7,7 +7,7 @@ import { store, history } from 'sapredux/helpers';
 import { Spinner } from 'modules/loaders';
 
 import './tailwind.css';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
 
 import AppHeader from 'components/AppHeader';
 import { HeaderProvider } from 'components/HeaderProvider';
