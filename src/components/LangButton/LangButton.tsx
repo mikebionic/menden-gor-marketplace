@@ -1,7 +1,6 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
-import { withRouter } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
@@ -83,7 +82,7 @@ const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
   );
 };
 
-export default withRouter(LangButton);
+export default LangButton;
 
 const filterLang = (current: any, language_list: any) => {
   var current_language = null;

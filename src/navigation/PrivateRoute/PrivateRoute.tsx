@@ -1,18 +1,17 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Route, Navigate } from 'react-router-dom';
 
 import { routeConstants } from 'navigation/routeConstants';
 
-export const PrivateRoute = ({ component: Component, ...rest }: any) => (
+export const PrivateRoute = ({ element: Component, ...rest }: any) => (
   <Route
     {...rest}
-    render={(props) =>
+    render={(props:any) =>
       localStorage.getItem('user') ? (
         <Component {...props} />
       ) : (
-        <Redirect
+        <Navigate
           to={{
             pathname: routeConstants.root.route,
-            state: { from: props.location },
           }}
         />
       )

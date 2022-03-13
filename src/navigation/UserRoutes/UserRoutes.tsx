@@ -10,34 +10,28 @@ export const UserRoutes = () => {
     <>
       <Route
         path={routeConstants.login.route}
-        exact
-        render={() => <LoginPage />}
+        element={LoginPage}
       />
       <Route
         path={routeConstants.register.route}
-        exact
-        render={() => <RegisterPage />}
+        element={RegisterPage}
       />
 
       <Route
         path={routeConstants.profile.route}
-        exact
-        component={ProfileTab}
+        element={ProfileTab}
       />
       <Route
         path={routeConstants.profileEdit.route}
-        exact
-        component={ProfileTab}
+        element={ProfileTab}
       />
       <Route
         path={routeConstants.orders.route}
-        exact
-        component={ProfileTab}
+        element={ProfileTab}
       />
       <Route
         path={routeConstants.wishlist.route}
-        exact
-        component={ProfileTab}
+        element={ProfileTab}
       />
 
       {/* <Redirect to={routeConstants.root.route} /> */}

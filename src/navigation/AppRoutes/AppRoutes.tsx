@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { User } from 'components/User';
 import { MainPage } from 'pages/MainPage';
@@ -16,41 +16,37 @@ import { ProductPage } from 'pages/ProductPage';
 export const AppRoutes: React.FC = ({ props }: any) => {
   return (
     <>
-      <Switch>
+      <Routes>
         <Route
           path={routeConstants.root.route}
-          exact
-          component={MainPage}
+          element={MainPage}
         />
 
         <Route
           path={`${routeConstants.product.route}:id`}
-          component={ProductPage}
+          element={ProductPage}
         />
 
         <Route
           path={routeConstants.about.route}
-          exact
-          component={AboutPage}
+          element={AboutPage}
         />
 
         <Route
           path={routeConstants.contact.route}
-          exact
-          component={ContactPage}
+          element={ContactPage}
         />
 
         <Route
           path={routeConstants.vGrid.route}
-          exact
-          component={VGrid}
+          element={VGrid}
         />
 
         <UserRoutes />
 
-        <PrivateRoute component={User} {...props} />
-        <Route component={NotFoundPage} />
-      </Switch>
+        <PrivateRoute element={User} {...props} />
+        <Route element={NotFoundPage} />
+      </Routes>
     </>
   );
 };

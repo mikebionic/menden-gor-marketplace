@@ -14,13 +14,13 @@ interface IAction {
 export const resourcesPage = (state = initialState, {type, payload}: IAction) => {
 	switch (type) {
 		case actionConstants.FETCH_SUCCESS:
-			return R.merge(state, {
+			return R.mergeLeft(state, {
 				ids: R.pluck('id', payload)
 			})
 
 		case actionConstants.LOAD_MORE_SUCCESS:
 			const ids = R.pluck('id', payload)
-			return R.merge(state, {
+			return R.mergeLeft(state, {
 				ids: R.concat(state.ids, ids)
 			})
 
@@ -32,7 +32,7 @@ export const resourcesPage = (state = initialState, {type, payload}: IAction) =>
 export const discountResourceIds = (state = initialState, {type, payload}: IAction) => {
 	switch (type) {
 		case actionConstants.FEATURED_FETCH_SUCCESS:
-			return R.merge(state, {
+			return R.mergeLeft(state, {
 				ids: R.pluck('id', payload)
 			})
 			
@@ -44,7 +44,7 @@ export const discountResourceIds = (state = initialState, {type, payload}: IActi
 export const featuredResourceIds = (state = initialState, {type, payload}: IAction) => {
 	switch (type) {
 		case actionConstants.DISCOUNT_FETCH_SUCCESS:
-			return R.merge(state, {
+			return R.mergeLeft(state, {
 				ids: R.pluck('id', payload)
 			})
 

@@ -15,7 +15,7 @@ const initialState = {
 export const productFilter = (state = initialState, action: {[name: string]: any}) => {
 	switch (action.type){
 		case actionConstants.FILTER_UPDATE:
-			const newState = R.merge(state, action.payload)
+			const newState = R.mergeLeft(state, action.payload)
 		return newState
 
 		case actionConstants.FILTER_CLEAR:

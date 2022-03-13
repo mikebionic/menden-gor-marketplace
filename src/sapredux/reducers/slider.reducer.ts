@@ -12,7 +12,7 @@ export const slider = (state = initialState, action: {[name: string]: any}) => {
 				error: false,
 				data: newValues
 			}
-			return R.merge(state, newState)
+			return R.mergeLeft(state, newState)
 
 		case sliderConstants.FETCH_START:
 			return {
