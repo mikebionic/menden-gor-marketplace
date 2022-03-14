@@ -1,29 +1,27 @@
-
-
 import { ProfilePage } from 'pages/ProfilePage';
 import { OrderLine, Orders } from 'pages/Orders';
-import { Wishlist } from 'pages/Wishlist';
+import { WishlistPage } from 'pages/Wishlist';
 import { ProfileEdit } from 'pages/ProfileEdit';
-import { history } from 'sapredux/helpers'
+import { history } from 'sapredux/helpers';
 import { routeConstants } from 'navigation/routeConstants';
 
 export const TabContent = () => {
-	const page = history.location.pathname
+  const page = history.location.pathname;
 
-	switch(page){
-		case routeConstants.profile.route:
-			return <ProfilePage />
+  switch (page) {
+    case routeConstants.profile.route:
+      return <ProfilePage />;
 
-		case routeConstants.wishlist.route:
-			return <Wishlist />
+    case routeConstants.wishlist.route:
+      return <WishlistPage />;
 
-		case routeConstants.orders.route:
-			return <OrderLine />
+    case routeConstants.orders.route:
+      return <OrderLine />;
 
-		case routeConstants.profileEdit.route:
-			return <ProfileEdit />
+    case routeConstants.profileEdit.route:
+      return <ProfileEdit />;
 
-		default:
-			return <ProfilePage />
-	}
-}
+    default:
+      return <ProfilePage />;
+  }
+};

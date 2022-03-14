@@ -44,9 +44,10 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                 }}
                 placeholder="Minimum"
                 onChange={(value: any) => handlePriceChange('fromPrice', value)}
+                className="focus:border-gradientFirstColor hover:border-gradientFirstColor active:border-gradientFirstColor"
               />
               <InputNumber
-                className="ml-1 site-input-right"
+                className="ml-1 site-input-right focus:border-gradientFirstColor hover:border-gradientFirstColor active:border-gradientFirstColor"
                 style={{
                   width: 100,
                   textAlign: 'center',
@@ -121,7 +122,11 @@ const ProductsFilterPanel: React.FC = (props: any) => {
           <ul className="inline-block w-full h-full pl-0 overflow-y-scroll list-none max-h-60">
             <li className="flex justify-start h-6 ml-1">
               <Radio.Group>
-                <Space direction="vertical" style={{ gap: '4px' }}>
+                <Space
+                  direction="vertical"
+                  style={{ gap: '4px' }}
+                  className="accent-gradientFirstColor"
+                >
                   <Radio
                     value={0}
                     onClick={() => onFiltersApply({ brand: null })}

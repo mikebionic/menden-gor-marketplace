@@ -46,7 +46,7 @@ for (let i = 1; i <= 10; i++) {
   });
 }
 
-export class Wishlist extends React.Component {
+export class WishlistPage extends React.Component {
   state: any = {
     bordered: false,
     loading: false,

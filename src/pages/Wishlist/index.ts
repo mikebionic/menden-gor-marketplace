@@ -1,1 +1,1 @@
-export * from './Wishlist'
+export * from './WishlistPage'

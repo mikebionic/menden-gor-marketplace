@@ -84,7 +84,7 @@ export const Search: React.FC = (props: any) => {
       <div className="grid grid-rows-1 mx-auto my-0 w-search grid-cols-search">
         <ClickAwayListener onClickAway={handleClickAway}>
           <div
-            className="w-32 h-12 rotate-180 bg-white border-2 border-white border-solid rounded-l-full cursor-pointer productColor gap-x-8"
+            className="w-32 h-12 bg-white border-2 border-white border-solid rounded-l-full cursor-pointer productColor gap-x-8"
             onClick={() =>
               onDropdownStateChange((dropdownState) => !dropdownState)
             }
