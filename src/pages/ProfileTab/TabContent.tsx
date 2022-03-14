@@ -1,14 +1,15 @@
+import { useLocation } from 'react-router-dom';
+
 import { ProfilePage } from 'pages/ProfilePage';
 import { OrderLine, Orders } from 'pages/Orders';
 import { WishlistPage } from 'pages/Wishlist';
 import { ProfileEdit } from 'pages/ProfileEdit';
-import { history } from 'sapredux/helpers';
 import { routeConstants } from 'navigation/routeConstants';
 
 export const TabContent = () => {
-  const page = history.location.pathname;
+  const page_location = useLocation();
 
-  switch (page) {
+  switch (page_location.pathname) {
     case routeConstants.profile.route:
       return <ProfilePage />;
 

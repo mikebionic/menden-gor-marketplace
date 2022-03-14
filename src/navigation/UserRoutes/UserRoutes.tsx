@@ -10,7 +10,7 @@ import { ProfileTab } from 'pages/ProfileTab';
 
 export const UserRoutes = () => {
   return (
-    <>
+    <Routes>
       <Route path={routeConstants.login.route} element={<LoginPage />} />
       <Route
         path={routeConstants.register.route}
@@ -32,6 +32,6 @@ export const UserRoutes = () => {
         path="*"
         element={<Navigate to={routeConstants.root.route} />}
       />
-    </>
+    </Routes>
   );
 };

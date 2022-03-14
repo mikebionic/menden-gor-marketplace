@@ -20,7 +20,7 @@ export const AppRoutes: React.FC = ({ props }: any) => {
         <Route path={routeConstants.root.route} element={<MainPage />} />
 
         <Route
-          path={`${routeConstants.product.route}:id/:name`}
+          path={`${routeConstants.product.route}:id/*`}
           element={<ProductPage />}
         />
 
@@ -33,9 +33,8 @@ export const AppRoutes: React.FC = ({ props }: any) => {
 
         <Route path={routeConstants.vGrid.route} element={<VGrid />} />
 
-        {UserRoutes}
-
-        {/* <PrivateRoute element={User} {...props} /> */}
+        <Route path="*" element={<UserRoutes />} />
+        <Route path="*" element={<PrivateRoute component={User} {...props} />} />
         <Route element={<NotFoundPage />} />
       </Routes>
     </>
