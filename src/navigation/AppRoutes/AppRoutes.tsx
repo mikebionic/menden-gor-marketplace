@@ -33,7 +33,7 @@ export const AppRoutes: React.FC = ({ props }: any) => {
 
         <Route path={routeConstants.vGrid.route} element={<VGrid />} />
 
-        {/* <UserRoutes /> */}
+        {UserRoutes}
 
         {/* <PrivateRoute element={User} {...props} /> */}
         <Route element={<NotFoundPage />} />
