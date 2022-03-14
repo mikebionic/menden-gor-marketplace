@@ -12,7 +12,7 @@ export const category = (state = initialState, action: {[name: string]: any}) =>
 				error: false,
 				data: newValues
 			}
-			return R.mergeLeft(state, newState)
+			return R.mergeRight(state, newState)
 
 		case actionConstants.FETCH_START:
 			return {

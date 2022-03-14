@@ -9,27 +9,27 @@ export const resource = (state = initialState, action: {[name: string]: any}) =>
 			const newState = {
 				loading: false,
 				error: false,
-				data: R.mergeLeft(state.data, R.indexBy(R.prop<string, string>('id'), action.payload))
+				data: R.mergeRight(state.data, R.indexBy(R.prop<string, string>('id'), action.payload))
 			}
-			return R.mergeLeft(state, newState)
+			return R.mergeRight(state, newState)
 
 		case resourceConstants.LOAD_MORE_SUCCESS:
 
 			const moreValues = {
 				loading: false,
 				error:false,
-				data: R.mergeLeft(state.data, R.indexBy(R.prop<string, string>('id'), action.payload))
+				data: R.mergeRight(state.data, R.indexBy(R.prop<string, string>('id'), action.payload))
 			}
-			return R.mergeLeft(state, moreValues)
+			return R.mergeRight(state, moreValues)
 
 		case resourceConstants.FETCH_BY_ID_SUCCESS:
 			return R.assoc(action.payload.id, action.payload, state)
 
 		case resourceConstants.FETCH_START:
-			return R.mergeLeft(state, { loading: true, error: false })
+			return R.mergeRight(state, { loading: true, error: false })
 
 		case resourceConstants.FETCH_FAILURE:
-			return R.mergeLeft(state, { loading: false, error: true })
+			return R.mergeRight(state, { loading: false, error: true })
 
 		default:
 			return state

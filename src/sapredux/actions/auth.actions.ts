@@ -2,7 +2,8 @@ import { authConstants } from 'sapredux/constants';
 import { authService } from 'sapredux/services';
 import { alertActions } from '.';
 import { routeConstants } from 'navigation/routeConstants'
-import { history } from 'sapredux/helpers'
+import { useNavigate } from 'react-router-dom'
+// import { history } from 'sapredux/helpers'
 
 
 const login = (username: string, password: string) => {
@@ -12,7 +13,9 @@ const login = (username: string, password: string) => {
 		authService.login(username, password).then(
 			(user: any) => {
 				dispatch(success(user));
-				history.push(routeConstants.root.route)
+				const navigate = useNavigate()
+				navigate(routeConstants.root.route)
+				// history.push(routeConstants.root.route)
 			},
 			(error: any) => {
 				dispatch(failure(error.toString()));

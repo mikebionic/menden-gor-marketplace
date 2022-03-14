@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
+// import { ConnectedRouter } from 'connected-react-router';
 
 import { store, history } from 'sapredux/helpers';
 import { Spinner } from 'modules/loaders';
@@ -19,12 +19,12 @@ const App = React.lazy(() =>
 ReactDOM.render(
   <React.Suspense fallback={<Spinner />}>
     <Provider store={store}>
-      <ConnectedRouter history={history}>
+      {/* <ConnectedRouter history={history}> */}
         <HeaderProvider>
           <AppHeader />
           <App />
         </HeaderProvider>
-      </ConnectedRouter>
+      {/* </ConnectedRouter> */}
     </Provider>
   </React.Suspense>,
   document.getElementById('root'),

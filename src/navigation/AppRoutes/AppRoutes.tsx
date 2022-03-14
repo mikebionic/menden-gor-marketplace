@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import { User } from 'components/User';
 import { MainPage } from 'pages/MainPage';
@@ -11,35 +11,33 @@ import { ContactPage } from 'pages/ContactPage';
 import { NotFoundPage } from 'pages/error';
 import { UserRoutes } from 'navigation';
 import { VGrid } from 'pages/VGrid';
-import { ProductPage } from 'pages/ProductPage';
+import { ProductPage } from 'pages/ProductPage';  
 
 export const AppRoutes: React.FC = ({ props }: any) => {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path={routeConstants.root.route} element={<MainPage />} />
+      <Routes>
+        <Route path={routeConstants.root.route} element={<MainPage />} />
 
-          <Route
-            path={`${routeConstants.product.route}:id`}
-            element={<ProductPage />}
-          />
+        <Route
+          path={`${routeConstants.product.route}:id/:name`}
+          element={<ProductPage />}
+        />
 
-          <Route path={routeConstants.about.route} element={<AboutPage />} />
+        <Route path={routeConstants.about.route} element={<AboutPage />} />
 
-          <Route
-            path={routeConstants.contact.route}
-            element={<ContactPage />}
-          />
+        <Route
+          path={routeConstants.contact.route}
+          element={<ContactPage />}
+        />
 
-          <Route path={routeConstants.vGrid.route} element={<VGrid />} />
+        <Route path={routeConstants.vGrid.route} element={<VGrid />} />
 
-          <UserRoutes />
+        {/* <UserRoutes /> */}
 
-          <PrivateRoute element={User} {...props} />
-          <Route element={NotFoundPage} />
-        </Routes>
-      </Router>
+        {/* <PrivateRoute element={User} {...props} /> */}
+        <Route element={<NotFoundPage />} />
+      </Routes>
     </>
   );
 };

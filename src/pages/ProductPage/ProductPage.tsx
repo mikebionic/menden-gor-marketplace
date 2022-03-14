@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ErrorBoundary from 'antd/lib/alert/ErrorBoundary';
 import { Divider } from 'components/Divider';
@@ -12,13 +13,14 @@ import { Image } from 'common/Image';
 const ProductPage: React.FC = (props: any) => {
   const { fetchResourceById, resource } = props;
 
+  const params:any = useParams()
   useEffect(() => {
     try {
-      fetchResourceById(parseInt(props.match.params.id));
+      fetchResourceById(parseInt(params.id));
     } catch (err: any) {
       console.log(err);
     }
-  }, [props.match.params.id, fetchResourceById]);
+  }, [params.id, fetchResourceById]);
 
   const productsList =
     resource && !!resource.related_resources ? (

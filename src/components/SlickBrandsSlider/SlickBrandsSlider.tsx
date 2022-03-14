@@ -33,11 +33,7 @@ const SlickBrandsSlider: React.FC = (props: any) => {
   return (
     <div className="cursor-pointer">
       <Slider {...settings}>
-        {brands.map((item: any, idx: number) => (
-          <>
-            <SlickBanner data={item} key={idx} />
-          </>
-        ))}
+        {brands.map((item: any, idx: number) => (<SlickBanner data={item} key={idx} />))}
       </Slider>
     </div>
   );

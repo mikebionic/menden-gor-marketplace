@@ -9,7 +9,7 @@ const initialState = {
 export const resourcePage = (state = initialState, {type, payload}: any) => {
 	switch (type) {
 		case resourceConstants.FETCH_BY_ID_SUCCESS:
-			return R.mergeLeft(state, {
+			return R.mergeRight(state, {
 				id: R.prop('id', payload)
 			})
 		default:

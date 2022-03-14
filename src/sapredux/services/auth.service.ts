@@ -7,8 +7,7 @@ import {
 	rp_acc_basic_login_failure
 } from './mock_data/auth.mock'
 import { routeConstants } from 'navigation/routeConstants'
-import { history } from 'sapredux/helpers'
-
+// import { history } from 'sapredux/helpers'
 
 const login = (username='', password='') => {
 
@@ -50,9 +49,9 @@ const login = (username='', password='') => {
 const logout = () => {
 	localStorage.removeItem('user');
 	
-	if (history.location.pathname !== routeConstants.login.route){
-		history.push(routeConstants.login.route)
-	}
+	// if (history.location.pathname !== routeConstants.login.route){
+	// 	history.push(routeConstants.login.route)
+	// }
 }
 
 export const authService = {

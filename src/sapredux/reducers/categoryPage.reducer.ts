@@ -14,7 +14,7 @@ interface IAction {
 export const categoryPage = (state = initialState, action: IAction) => {
 	switch (action.type) {
 		case categoryConstants.FETCH_SUCCESS:
-			return R.mergeLeft(state, {
+			return R.mergeRight(state, {
 				ids: R.pluck('id', action.payload)
 			})
 		default:

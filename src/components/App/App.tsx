@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom'
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { connect } from 'react-redux';
 import 'i18n';
@@ -56,21 +57,19 @@ const App: React.FC = (props: any) => {
   }, [dispatch]);
 
   return (
-    <>
-      <ErrorBoundary>
+    <ErrorBoundary>
+      <Router>
         <Navbar categories={categories} />
         {alert.message && (
           <div className={`alert ${alert.type}`}>{alert.message}</div>
         )}
-        <div
-          className={`App bg-fullPageColor p-main-content pt-40 pb-8 overflow-x-hidden`}
-        >
+        <div className={`App bg-fullPageColor p-main-content pt-40 pb-8 overflow-x-hidden`}>
           <AppRoutes />
         </div>
 
         <Footer />
-      </ErrorBoundary>
-    </>
+      </Router>
+    </ErrorBoundary>
   );
 };
 
