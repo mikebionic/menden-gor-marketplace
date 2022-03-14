@@ -20,7 +20,7 @@ export const AppRoutes: React.FC = ({ props }: any) => {
         <Route path={routeConstants.root.route} element={<MainPage />} />
 
         <Route
-          path={`${routeConstants.product.route}:id/:name`}
+          path={`${routeConstants.product.route}:id/*`}
           element={<ProductPage />}
         />
 

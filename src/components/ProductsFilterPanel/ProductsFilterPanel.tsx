@@ -11,7 +11,6 @@ import { applyFilters, clearFilters } from 'sapredux/actions';
 
 const ProductsFilterPanel: React.FC = (props: any) => {
   const { categories, brands, filters, onFiltersApply, onFiltersClear } = props;
-  console.log(filters);
 
   const handlePriceChange = (priceType: string, value: any) => {
     let newFilters: any = {};
@@ -28,7 +27,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="">
+      <div>
         <div className="grid w-56 h-40 px-2 py-2 my-4 rounded-lg bg-fullwhite gap-y-1">
           <div>
             <p>Baha aralyk: </p>
