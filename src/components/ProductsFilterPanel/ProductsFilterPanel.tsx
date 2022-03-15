@@ -13,15 +13,15 @@ const ProductsFilterPanel: React.FC = (props: any) => {
   const { categories, brands, filters, onFiltersApply, onFiltersClear } = props;
 
   const handlePriceChange = (priceType: string, value: any) => {
-    let newFilters: any = {};
     try {
       const val = parseFloat(value);
       if (priceType === 'fromPrice') {
-        applyFilters({ fromPrice: val });
+        onFiltersApply({ fromPrice: val });
+      } else {
+        onFiltersApply({ toPrice: val });
       }
     } catch (err) {
       console.log(err);
-      applyFilters((newFilters[priceType] = null));
     }
   };
 

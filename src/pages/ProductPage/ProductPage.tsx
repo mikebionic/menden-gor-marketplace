@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ErrorBoundary from 'antd/lib/alert/ErrorBoundary';
 import { Divider } from 'components/Divider';
-import { ProductList } from 'components/ProductList';
 // import { Spinner } from 'modules/loaders';
 // import { ErrorIndicator } from 'modules/errors';
 import { fetchResourceById } from 'sapredux/actions';
 import { getResourceById } from 'sapredux/selectors';
 import { Image } from 'common/Image';
-import { SlickBrandsSlider } from 'components/SlickBrandsSlider';
+import SlickSlider from 'common/SlickSlider';
+import { ProductCard } from 'components/ProductCard';
 
 const ProductPage: React.FC = (props: any) => {
   const { fetchResourceById, resource } = props;
@@ -25,7 +25,11 @@ const ProductPage: React.FC = (props: any) => {
 
   const productsList =
     resource && !!resource.related_resources ? (
-      <ProductList data={resource.related_resources} />
+      <SlickSlider>
+        {resource.related_resources.map((resource: any, idx: number) => (
+          <ProductCard key={idx} data={resource} />
+        ))}
+      </SlickSlider>
     ) : null;
 
   const RenderProuct = ({
@@ -73,7 +77,7 @@ const ProductPage: React.FC = (props: any) => {
       <div>
         <RenderProuct {...resource} />
         <Divider title="Similar products" />
-        <SlickBrandsSlider anotherSlickComponent={productsList} />
+        {productsList}
       </div>
     </ErrorBoundary>
   );
