@@ -9,11 +9,12 @@ import { ProductList } from 'components/ProductList';
 import { fetchResourceById } from 'sapredux/actions';
 import { getResourceById } from 'sapredux/selectors';
 import { Image } from 'common/Image';
+import { SlickBrandsSlider } from 'components/SlickBrandsSlider';
 
 const ProductPage: React.FC = (props: any) => {
   const { fetchResourceById, resource } = props;
 
-  const params:any = useParams()
+  const params: any = useParams();
   useEffect(() => {
     try {
       fetchResourceById(parseInt(params.id));
@@ -72,7 +73,7 @@ const ProductPage: React.FC = (props: any) => {
       <div>
         <RenderProuct {...resource} />
         <Divider title="Similar products" />
-        {productsList}
+        <SlickBrandsSlider anotherSlickComponent={productsList} />
       </div>
     </ErrorBoundary>
   );

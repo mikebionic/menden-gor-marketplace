@@ -94,6 +94,20 @@
   background-color: #feaf7a;
 }
 
+.ant-input-number-status-warning:not(.ant-input-number-disabled):not(.ant-input-number-borderless).ant-input-number,
+.ant-input-number-status-warning:not(.ant-input-number-disabled):not(.ant-input-number-borderless).ant-input-number:hover {
+  background: #fff;
+  border-color: #d9d9d9;
+}
+
+.ant-input-number-status-warning:not(.ant-input-number-disabled):not(.ant-input-number-borderless).ant-input-number:focus,
+.ant-input-number-status-warning:not(.ant-input-number-disabled):not(.ant-input-number-borderless).ant-input-number-focused {
+  border-color: rgb(255 141 115 / 70%);
+  box-shadow: 0 0 0 2px rgb(255 141 115 / 30%);
+  border-right-width: 1px;
+  outline: 0;
+}
+
 .avatar {
   line-height: 1.42857;
   background-color: rgb(255, 255, 255);

@@ -18,13 +18,20 @@ const SlickBanner = ({ data }: any) => (
   </div>
 );
 
-const SlickBrandsSlider: React.FC = (props: any) => {
+interface ISlickBrandsSlider {
+  anotherSlickComponent?: any;
+}
+
+const SlickBrandsSlider: React.FC<ISlickBrandsSlider> = (
+  props: any,
+  { anotherSlickComponent }: any,
+) => {
   const { brands } = props;
   const settings = {
     className: 'center',
     infinite: true,
     centerPadding: '60px',
-    slidesToShow: 2,
+    slidesToShow: 5,
     autoplay: true,
     speed: 700,
     autoplaySpeed: 3000,
@@ -33,7 +40,10 @@ const SlickBrandsSlider: React.FC = (props: any) => {
   return (
     <div className="cursor-pointer">
       <Slider {...settings}>
-        {brands.map((item: any, idx: number) => (<SlickBanner data={item} key={idx} />))}
+        {anotherSlickComponent ??
+          brands.map((item: any, idx: number) => (
+            <SlickBanner data={item} key={idx} />
+          ))}
       </Slider>
     </div>
   );

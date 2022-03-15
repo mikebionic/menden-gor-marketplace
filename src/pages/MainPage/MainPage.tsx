@@ -25,6 +25,7 @@ import BannerWithCategory from 'components/BannerWithCategory';
 // import { PriceButton } from 'common/PriceButton';
 // import { StarRate } from 'common/StarRate';
 import { SlickBrandsSlider } from 'components/SlickBrandsSlider';
+import { UserAvatar } from 'components/UserAvatar';
 
 const MainPage: React.FC = (props: any) => {
   const { fetchResources, resources, resource_loading, resource_error } = props;
@@ -99,29 +100,30 @@ const MainPage: React.FC = (props: any) => {
 
         <SocialBar />
 
-        {/* <Tab />
-        <StarRate />
+        {/* <Tab /> */}
+        {/* <StarRate />
         <PriceButton priceValue={11.14} />
         <DropdownMenu
-          items={dropdownItems}
-          menuButtonLabel="Options"
-          menuButtonIcon={<ChevronDownIcon className="w-full h-full" />}
-          activeClassName="bg-red-500 text-white"
-          menuButton={
-            <>
-              <IconLabelButton
-                className="px-0 mt-3 font-medium text-white"
-                icon={
-                  <BsWallet2 className="w-6 h-6 mx-3 text-2xl text-black" />
-                }
-              />
-              <span className="absolute top-0 font-semibold text-black left-70 text-10">
-                TMT
-              </span>
-            </>
+        items={dropdownItems}
+        menuButtonLabel="Options"
+        menuButtonIcon={<ChevronDownIcon className="w-full h-full" />}
+        activeClassName="bg-red-500 text-white"
+        menuButton={
+          <>
+          <IconLabelButton
+          className="px-0 mt-3 font-medium text-white"
+          icon={
+            <BsWallet2 className="w-6 h-6 mx-3 text-2xl text-black" />
           }
-        /> */}
+          />
+          <span className="absolute top-0 font-semibold text-black left-70 text-10">
+          TMT
+          </span>
+          </>
+        }
+      /> */}
         <SlickBrandsSlider />
+        <UserAvatar />
       </div>
     </ErrorBoundary>
   );

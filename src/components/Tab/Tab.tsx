@@ -10,7 +10,7 @@ const { TabPane } = Tabs;
 export const Tab: React.FC = () => {
   return (
     <div>
-      <Tabs defaultActiveKey="1" type="card" size="small" animated={true}>
+      <Tabs defaultActiveKey="1" type="line" size="small" animated={true}>
         <TabPane tab="Profile" key="1">
           <ProfilePage />
         </TabPane>
