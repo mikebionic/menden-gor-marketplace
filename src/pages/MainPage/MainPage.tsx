@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchResources, fetchFeaturedResources, fetchDiscountResources } from 'sapredux/actions';
+import { fetchFeaturedResources, fetchDiscountResources } from 'sapredux/actions';
 import { getFeaturedResources, getDiscountResources } from 'sapredux/selectors';
 
 import { ErrorBoundary } from 'modules/errors';
@@ -88,7 +88,6 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators(
     {
-      fetchResources,
       fetchFeaturedResources,
       fetchDiscountResources
     },

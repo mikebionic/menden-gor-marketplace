@@ -30,7 +30,7 @@ const VGrid: React.FC = (props: any) => {
   const [query_string, set_query_string] = useState('');
   useEffect(() => {
     setTimeout(() => {
-      console.log(query_string);
+      console.log("fetching resources", query_string);
       fetchResources(query_string);
     }, 200);
   }, [query_string]);

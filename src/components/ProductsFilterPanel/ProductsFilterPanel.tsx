@@ -42,6 +42,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                   borderRadius: 5,
                 }}
                 placeholder="Minimum"
+                value={filters.fromPrice}
                 onChange={(value: any) => handlePriceChange('fromPrice', value)}
                 status="warning"
                 type="number"
@@ -56,6 +57,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                   borderRadius: 5,
                 }}
                 placeholder="Maximum"
+                value={filters.toPrice}
                 onChange={(value: any) => handlePriceChange('toPrice', value)}
                 status="warning"
               />
@@ -127,26 +129,25 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                 <input
                   className="w-3 h-3 my-auto transform scale-125 text-gradientFirstColor active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
                   type="radio"
-                  name="radio"
-                  // checked
-                  onClick={() => onFiltersApply({ brand: null })}
+                  name="radio-brand-null"
+                  onChange={() => onFiltersApply({ brand: null })}
+                  checked={filters.brand === null ? true : false}
                 />
                 <p className="px-2 text-sm">Hemmesi</p>
               </label>
               {brands.map((data: any, idx: number) => (
-                <>
-                  <label className="flex my-1 cursor-pointer">
-                    <input
-                      className="w-3 h-3 my-auto transform scale-125 outline-none text-gradientFirstColor form-radio active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
-                      type="radio"
-                      name="radio"
-                      value={data.id}
-                      key={idx}
-                      onClick={() => onFiltersApply({ brand: data.id })}
-                    />
-                    <p className="px-2 text-sm">{data.name}</p>
-                  </label>
-                </>
+                <label className="flex my-1 cursor-pointer" key={idx}>
+                  <input
+                    className="w-3 h-3 my-auto transform scale-125 outline-none text-gradientFirstColor form-radio active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
+                    type="radio"
+                    name={`radio-brand-${data.name}-${data.id}`}
+                    value={data.id}
+                    key={idx}
+                    onChange={() => onFiltersApply({ brand: data.id })}
+                    checked={parseInt(filters.brand) === parseInt(data.id) ? true : false}
+                  />
+                  <p className="px-2 text-sm">{data.name}</p>
+                </label>
               ))}
             </li>
           </ul>
@@ -165,50 +166,26 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                 <input
                   className="w-3 h-3 my-auto transform scale-125 text-gradientFirstColor active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
                   type="radio"
-                  name="radio"
-                  // checked
-                  onClick={() => onFiltersApply({ category: null })}
+                  name="radio-category-null"
+                  onChange={() => onFiltersApply({ category: null })}
+                  checked={filters.category === null ? true : false}
                 />
                 <p className="px-2 text-sm">Hemmesi</p>
               </label>
               {categories.map((data: any, idx: number) => (
-                <>
-                  <label className="flex my-1 cursor-pointer">
-                    <input
-                      className="w-3 h-3 my-auto transform scale-125 outline-none text-gradientFirstColor form-radio active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
-                      type="radio"
-                      name="radio"
-                      value={data.id}
-                      key={idx}
-                      onClick={() => onFiltersApply({ category: data.id })}
-                    />
-                    <p className="px-2 text-sm">{data.name}</p>
-                  </label>
-                </>
+                <label className="flex my-1 cursor-pointer" key={idx}>
+                  <input
+                    className="w-3 h-3 my-auto transform scale-125 outline-none text-gradientFirstColor form-radio active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
+                    type="radio"
+                    name={`radio-category-${data.name}-${data.id}`}
+                    value={data.id}
+                    onChange={() => onFiltersApply({ category: data.id })}
+                    checked={parseInt(filters.category) === parseInt(data.id) ? true : false}
+                  />
+                  <p className="px-2 text-sm">{data.name}</p>
+                </label>
               ))}
             </li>
-            {/* <li className="flex justify-start h-6 ml-1">
-              <Radio.Group buttonStyle="solid">
-                <Space direction="vertical" style={{ gap: '4px' }}>
-                  <Radio
-                    value={0}
-                    onClick={() => onFiltersApply({ category: null })}
-                    checked={true}
-                  >
-                    Hemmesi
-                  </Radio>
-                  {categories.map((data: any, idx: number) => (
-                    <Radio
-                      value={data.id}
-                      key={idx}
-                      onClick={() => onFiltersApply({ category: data.id })}
-                    >
-                      {data.name}
-                    </Radio>
-                  ))}
-                </Space>
-              </Radio.Group>
-            </li> */}
           </ul>
           {/* <a href="/" className="">
 						<div className="relative mt-4 text-base font-bold text-center text-black border-t border-gray-200 border-solid cursor-pointer -top-2">

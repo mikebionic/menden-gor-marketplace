@@ -12,8 +12,8 @@ import { FiUserPlus } from 'react-icons/fi';
 import { routeConstants } from 'navigation/routeConstants';
 
 const UserAvatar: React.FC = () => {
-  const avatarList = userItems.map((data: any) => (
-    <li className="font-medium">
+  const avatarList = userItems.map((data: any, idx: number) => (
+    <li className="font-medium" key={idx}>
       <Link
         to={data.link}
         className="flex items-center text-black transition-colors duration-200 transform border-r-2 border-transparent hover:border-gradientFirstColor hover:text-gradientFirstColor"
