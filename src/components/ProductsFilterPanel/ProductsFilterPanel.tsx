@@ -44,7 +44,9 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                 placeholder="Minimum"
                 onChange={(value: any) => handlePriceChange('fromPrice', value)}
                 status="warning"
+                type="number"
               />
+              {/* !!!TODO: Merri, this (type="number") creates a form around input */}
               <InputNumber
                 className="ml-1 site-input-right"
                 style={{

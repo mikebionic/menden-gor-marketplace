@@ -9,7 +9,7 @@ import { category } from './category.reducer'
 import { categoryPage } from './categoryPage.reducer'
 import { resource } from './resource.reducer'
 import { resourcePage } from './resourcePage.reducer'
-import { resourcesPage } from './resourcesPage.reducer'
+import { resourcesPage, discountResourceIds, featuredResourceIds } from './resourcesPage.reducer'
 import { slider } from './slider.reducer'
 import { brand } from './brand.reducer'
 import { productFilter } from './productFilter.reducer'
@@ -26,6 +26,8 @@ export const rootReducer = (history: History) => combineReducers({
     resource,
     resourcePage,
     resourcesPage,
+    discountResourceIds,
+    featuredResourceIds,
     slider,
     router: connectRouter(history)
 });

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchResources } from 'sapredux/actions';
-import { getResources } from 'sapredux/selectors';
-import { resourceService } from 'sapredux/services';
+import { fetchResources, fetchFeaturedResources, fetchDiscountResources } from 'sapredux/actions';
+import { getFeaturedResources, getDiscountResources } from 'sapredux/selectors';
 
 import { ErrorBoundary } from 'modules/errors';
 import { ProductList } from 'components/ProductList';
@@ -14,114 +13,64 @@ import { ResGroup } from 'components/ResGroup';
 import { SocialBar } from 'components/SocialBar';
 import { Divider } from 'components/Divider';
 import BannerWithCategory from 'components/BannerWithCategory';
-// import { Tab } from 'components/Tab';
-// import { DropdownMenu } from 'common/DropdownMenu';
-
-// import { ChevronDownIcon } from '@heroicons/react/solid';
-// import { AiOutlineEdit } from 'react-icons/ai';
-// import { MdLanguage } from 'react-icons/md';
-// import { IconLabelButton } from 'common/IconLabelButton';
-// import { BsWallet2 } from 'react-icons/bs';
-// import { PriceButton } from 'common/PriceButton';
-// import { StarRate } from 'common/StarRate';
 import { SlickBrandsSlider } from 'components/SlickBrandsSlider';
 import { UserAvatar } from 'components/UserAvatar';
 
 const MainPage: React.FC = (props: any) => {
-  const { fetchResources, resources, resource_loading, resource_error } = props;
-
-  const [featured_resources, set_featured_resources] = useState([]);
-  const get_featured_resources = async () => {
-    const featured_resources = await resourceService.fetchFeatured_data();
-    featured_resources && set_featured_resources(featured_resources);
-  };
-
-  const [discount_resources, set_discount_resources] = useState([]);
-  const get_discount_resources = async () => {
-    const discount_resources = await resourceService.fetchDiscount_data();
-    discount_resources && set_discount_resources(discount_resources);
-  };
+  const { 
+    featured_resources,
+    discount_resources,
+    fetchFeaturedResources,
+    fetchDiscountResources,
+    discount_resource_loading,
+    discount_resource_error,
+    featured_resource_loading,
+    featured_resource_error,
+} = props;
 
   useEffect(() => {
-    fetchResources();
-    get_featured_resources();
-    get_discount_resources();
-  }, [fetchResources]);
+    fetchFeaturedResources();
+    fetchDiscountResources();
+  }, []);
 
-  const productsList =
-    !resource_loading && !resource_error ? (
-      <ProductList data={resources} />
-    ) : resource_loading && !resource_error ? (
+
+  const featuredList =
+    !featured_resource_loading && !featured_resource_error ? (
+      <ProductList data={featured_resources} />
+    ) : featured_resource_loading && !featured_resource_error ? (
       <Spinner />
     ) : (
       <ErrorIndicator />
     );
 
-  const featuredList = featured_resources ? (
-    <ProductList data={featured_resources} />
-  ) : null;
-
-  const discountsList = discount_resources ? (
-    <ProductList data={discount_resources} />
-  ) : null;
-
-  // const dropdownItems = [
-  //   {
-  //     name: 'foo',
-  //     icon: <ChevronDownIcon />,
-  //   },
-  //   {
-  //     name: 'bar',
-  //     // icon: <ChevronDownIcon />,
-  //   },
-  // ];
+  const discountList =
+    !discount_resource_loading && !discount_resource_error ? (
+      <ProductList data={discount_resources} />
+    ) : discount_resource_loading && !discount_resource_error ? (
+      <Spinner />
+    ) : (
+      <ErrorIndicator />
+    );
 
   return (
     <ErrorBoundary>
       <div className="max-w-2xl px-4 py-16 mx-auto sm:py-24 lg:pb-24 lg:pt-12 sm:px-6 lg:max-w-7xl lg:px-8 md:pt-8 min-phone:pt-4">
         <BannerWithCategory />
-        <div className="max-w-2xl px-4 py-16 mx-auto sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
-            Main page
-          </h2>
-          {productsList}
-        </div>
+
+        <Divider title="Featured products" />
+        {featuredList}
+
+        <Divider title="Discounts!" />
+        {discountList}
+
         <div className="grid grid-cols-ResGroup">
           <ResGroup />
           <ResGroup />
           <ResGroup />
         </div>
 
-        <Divider title="Featured products" />
-        {featuredList}
-
-        <Divider title="Discounts!" />
-        {discountsList}
-
         <SocialBar />
 
-        {/* <Tab /> */}
-        {/* <StarRate />
-        <PriceButton priceValue={11.14} />
-        <DropdownMenu
-        items={dropdownItems}
-        menuButtonLabel="Options"
-        menuButtonIcon={<ChevronDownIcon className="w-full h-full" />}
-        activeClassName="bg-red-500 text-white"
-        menuButton={
-          <>
-          <IconLabelButton
-          className="px-0 mt-3 font-medium text-white"
-          icon={
-            <BsWallet2 className="w-6 h-6 mx-3 text-2xl text-black" />
-          }
-          />
-          <span className="absolute top-0 font-semibold text-black left-70 text-10">
-          TMT
-          </span>
-          </>
-        }
-      /> */}
         <SlickBrandsSlider />
         <UserAvatar />
       </div>
@@ -130,15 +79,20 @@ const MainPage: React.FC = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  resources: getResources(state),
-  resource_loading: state.resource.loading,
-  resource_error: state.resource.error,
+  featured_resources: getFeaturedResources(state),
+  discount_resources: getDiscountResources(state),
+  discount_resource_loading: state.discountResourceIds.loading,
+  discount_resource_error: state.discountResourceIds.error,
+  featured_resource_loading: state.featuredResourceIds.loading,
+  featured_resource_error: state.featuredResourceIds.error,
 });
 
 const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators(
     {
       fetchResources,
+      fetchFeaturedResources,
+      fetchDiscountResources
     },
     dispatch,
   );

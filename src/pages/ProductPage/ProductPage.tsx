@@ -25,7 +25,7 @@ const ProductPage: React.FC = (props: any) => {
 
   const productsList =
     resource && !!resource.related_resources ? (
-      <SlickSlider>
+      <SlickSlider settings={{slidesToShow: 3}}>
         {resource.related_resources.map((resource: any, idx: number) => (
           <ProductCard key={idx} data={resource} />
         ))}

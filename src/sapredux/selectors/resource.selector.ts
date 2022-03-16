@@ -8,12 +8,12 @@ export const getResources = (state: any) => {
 }
 
 export const getFeaturedResources = (state: any) => {
-	const resources = !!state.resource.data ? R.map((id: number) => getResourceById(state.resource.data, id), state.resourcesPage.ids) : []
+	const resources = !!state.resource.data ? R.map((id: number) => getResourceById(state.resource.data, id), state.featuredResourceIds.ids) : []
 	return resources
 }
 
 export const getDiscountResources = (state: any) => {
-	const resources = !!state.resource.data ? R.map((id: number) => getResourceById(state.resource.data, id), state.resourcesPage.ids) : []
+	const resources = !!state.resource.data ? R.map((id: number) => getResourceById(state.resource.data, id), state.discountResourceIds.ids) : []
 	return resources
 }
 

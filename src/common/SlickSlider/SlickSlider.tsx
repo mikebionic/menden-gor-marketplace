@@ -9,7 +9,7 @@ interface ISlickSlider {
 const SlickSlider: React.FC<ISlickSlider> = (
   {settings, children}
 ) => {
-  const configured_settings = settings ?? {
+  const configured_settings = {
     className: 'center',
     infinite: true,
     centerPadding: '60px',
@@ -18,6 +18,7 @@ const SlickSlider: React.FC<ISlickSlider> = (
     speed: 700,
     autoplaySpeed: 3000,
     swipeToSlide: true,
+    ...settings
   };
   return (
     <div className="cursor-pointer">

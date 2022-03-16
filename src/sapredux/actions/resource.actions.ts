@@ -70,6 +70,44 @@ export const loadMoreResources = () => async (dispatch:any, getState:any) => {
 	}
 }
 
+export const fetchFeaturedResources = () => async (dispatch: any) => {
+	dispatch({
+		type: actionConstants.FEATURED_FETCH_START
+	})
+	try {
+		const data = await service.fetchFeatured_data()
+		dispatch({
+			type: actionConstants.FEATURED_FETCH_SUCCESS,
+			payload: data
+		})
+	} catch (err) {
+		dispatch({
+			type: actionConstants.FEATURED_FETCH_FAILURE,
+			payload: err,
+			error: true
+		})
+	}
+}
+
+export const fetchDiscountResources = () => async (dispatch: any) => {
+	dispatch({
+		type: actionConstants.DISCOUNT_FETCH_START
+	})
+	try {
+		const data = await service.fetchDiscount_data()
+		dispatch({
+			type: actionConstants.DISCOUNT_FETCH_SUCCESS,
+			payload: data
+		})
+	} catch (err) {
+		dispatch({
+			type: actionConstants.DISCOUNT_FETCH_FAILURE,
+			payload: err,
+			error: true
+		})
+	}
+}
+
 
 export const resourceAddedToCart = (id: number) => {
 	return {

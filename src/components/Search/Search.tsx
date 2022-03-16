@@ -118,14 +118,15 @@ export const Search: React.FC = (props: any) => {
             onChange={handleChange}
           />
         </div>
-        <div className="w-32 h-12 bg-white border-2 border-white border-solid rounded-r-full cursor-pointer rsearch_tagotate-180 productColor gap-x-8">
+        <button className="w-32 h-12 bg-white border-2 border-white border-solid rounded-r-full cursor-pointer rsearch_tagotate-180 productColor gap-x-8"
+          type="submit">
           <IconLabelButton
-            className="flex items-center w-20 h-4 pl-1 mx-auto my-3 text-sm text-center text-white"
+            className="
+            flex items-center w-20 h-4 pl-1 mx-auto my-3 text-sm text-center text-white"
             icon={<AiOutlineSearch />}
             label="Search"
-            type="submit"
           />
-        </div>
+        </button>
       </div>
     </form>
   );
