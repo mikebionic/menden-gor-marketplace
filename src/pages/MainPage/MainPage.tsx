@@ -14,7 +14,6 @@ import { SocialBar } from 'components/SocialBar';
 import { Divider } from 'components/Divider';
 import BannerWithCategory from 'components/BannerWithCategory';
 import { SlickBrandsSlider } from 'components/SlickBrandsSlider';
-import { UserAvatar } from 'components/UserAvatar';
 
 const MainPage: React.FC = (props: any) => {
   const { 
@@ -72,7 +71,6 @@ const MainPage: React.FC = (props: any) => {
         <SocialBar />
 
         <SlickBrandsSlider />
-        <UserAvatar />
       </div>
     </ErrorBoundary>
   );

@@ -2,11 +2,16 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FiLogOut } from 'react-icons/fi';
+import { HiUserCircle } from 'react-icons/hi'
 import { Menu, Transition } from '@headlessui/react';
 
 import userItems from './userItems';
 
-export const UserAvatar: React.FC = () => {
+import { BiLogIn } from 'react-icons/bi';
+import { FiUserPlus } from 'react-icons/fi';
+import { routeConstants } from 'navigation/routeConstants';
+
+const UserAvatar: React.FC = () => {
   const avatarList = userItems.map((data: any) => (
     <li className="font-medium">
       <Link
@@ -22,7 +27,7 @@ export const UserAvatar: React.FC = () => {
   return (
     <Menu
       as="div"
-      className="relative items-center justify-center inline-block w-64 m-auto bg-slate-300"
+      className="relative items-center justify-center inline-block w-64 m-auto"
     >
       <Menu.Button className="flex items-center justify-center space-x-3 cursor-pointer">
         <div className="w-12 h-12 overflow-hidden border-2 border-white rounded-full ">
@@ -31,9 +36,6 @@ export const UserAvatar: React.FC = () => {
             alt=""
             className="object-cover w-full h-full"
           />
-        </div>
-        <div className="text-lg font-semibold text-white ">
-          <div className="cursor-pointer">Hasan Muhammad</div>
         </div>
       </Menu.Button>
 
@@ -52,13 +54,36 @@ export const UserAvatar: React.FC = () => {
             <hr className="border-gray-700" />
             <li className="font-medium">
               <Link
-                to={''}
+                to={routeConstants.logout.route}
                 className="flex items-center text-black transition-colors duration-200 transform border-r-2 border-transparent hover:border-red-600 hover:text-red-600"
               >
                 <div className="mr-3 text-red-600">
                   <FiLogOut className="text-xl" />
                 </div>
-                Logout
+                {routeConstants.logout.name}
+              </Link>
+            </li>
+
+            <li className="font-medium">
+              <Link
+                to={routeConstants.login.route}
+                className="flex items-center text-black transition-colors duration-200 transform border-r-2 border-transparent hover:border-red-600 hover:text-red-600"
+              >
+                <div className="mr-3 text-green-600">
+                  <BiLogIn className="text-xl" />
+                </div>
+                {routeConstants.login.name}
+              </Link>
+            </li>
+            <li className="font-medium">
+              <Link
+                to={routeConstants.register.route}
+                className="flex items-center text-black transition-colors duration-200 transform border-r-2 border-transparent hover:border-red-600 hover:text-red-600"
+              >
+                <div className="mr-3 text-green-600">
+                  <FiUserPlus className="text-xl" />
+                </div>
+                {routeConstants.register.name}
               </Link>
             </li>
           </ul>
@@ -67,3 +92,5 @@ export const UserAvatar: React.FC = () => {
     </Menu>
   );
 };
+
+export default UserAvatar

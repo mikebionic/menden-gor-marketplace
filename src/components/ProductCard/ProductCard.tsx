@@ -9,7 +9,6 @@ import { routeConstants } from 'navigation/routeConstants';
 import { StarRate } from 'common/StarRate';
 import { PriceButton } from 'common/PriceButton';
 import { WishlistButton } from 'common/WishlistButton';
-// import Parser from 'html-react-parser';
 
 const ProductCard = ({ data }: any) => {
   const {
@@ -31,10 +30,6 @@ const ProductCard = ({ data }: any) => {
       ? `${description.slice(0, 50)}...`
       : description
     : '';
-
-  // !!!TODO: use parser or some method to make all description as object xml
-  // var resource_description = description ? Parser(`${description}`) : ""
-  // resource_description = resource_description.length > 60 ? `${resource_description.slice(0, 60)}...` : resource_description
 
   return (
     <ErrorBoundary>

@@ -1,8 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BiLogIn } from 'react-icons/bi';
-import { FiUserPlus } from 'react-icons/fi';
-import { MdOutlineKeyboardArrowRight, MdSort } from 'react-icons/md';
 import { BsMoon } from 'react-icons/bs';
 import { BsWallet2 } from 'react-icons/bs';
 import { FaRegHeart } from 'react-icons/fa';
@@ -19,6 +16,8 @@ import { Transition } from '@headlessui/react';
 import { DropdownMenu } from 'common/DropdownMenu';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import UserAvatar from 'components/UserAvatar';
+import { MdSort } from 'react-icons/md';
 
 const mobileResponsive = {
   mobileView: 'fixed bottom-0 z-100 w-full bg-white',
@@ -83,20 +82,11 @@ export const Navbar = (props: any) => {
               </Link>
             </div>
             <Search />
-            <Link to={routeConstants.login.route}>
-              <IconLabelButton
-                className="inline-grid items-center grid-rows-1 mx-16 text-lg font-medium text-white grid-cols-icon"
-                icon={<BiLogIn />}
-                label="Login"
-              />
-            </Link>
-            <Link to={routeConstants.register.route}>
-              <IconLabelButton
-                className="inline-grid items-center grid-rows-1 mx-16 text-lg font-medium text-white grid-cols-icon"
-                icon={<FiUserPlus />}
-                label="Register"
-              />
-            </Link>
+
+            <UserAvatar />
+
+
+
           </div>
         </header>
         <header className="top-0 left-0 w-full h-12 border-b border-white shadow-md navbarColor relarive">
