@@ -1,6 +1,4 @@
 import { combineReducers } from 'redux'
-import { connectRouter } from 'connected-react-router'
-import { History } from 'history'
 
 import { alert } from './alert.reducer'
 import { auth } from './auth.reducer'
@@ -15,7 +13,7 @@ import { brand } from './brand.reducer'
 import { productFilter } from './productFilter.reducer'
 
 
-export const rootReducer = (history: History) => combineReducers({
+export const rootReducer = () => combineReducers({
     alert,
     auth,
     brand,
@@ -29,7 +27,6 @@ export const rootReducer = (history: History) => combineReducers({
     discountResourceIds,
     featuredResourceIds,
     slider,
-    router: connectRouter(history)
 });
 
 export type RootState = ReturnType<typeof rootReducer>

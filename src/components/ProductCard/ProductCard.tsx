@@ -15,6 +15,7 @@ const ProductCard = ({ data }: any) => {
     id,
     name,
     description,
+    realPrice,
     priceValue,
     currencySymbol,
     image,
@@ -80,7 +81,7 @@ const ProductCard = ({ data }: any) => {
         >
           {discount && (
             <p className="mx-4 text-sm text-justify text-gray-400 line-through">
-              {priceValue} {currencySymbol}
+              {realPrice} {currencySymbol}
             </p>
           )}
 

@@ -4,7 +4,6 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom'
 
 import { IconLabelButton } from 'common/IconLabelButton';
-// import { history } from 'sapredux/helpers';
 import { routeConstants } from 'navigation/routeConstants';
 import { Transition } from '@headlessui/react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -31,7 +30,6 @@ export const Search: React.FC = (props: any) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (search_tag) {
-      // history.push(`${routeConstants.vGrid.route}?search=${search_tag}`);
       navigate(`${routeConstants.vGrid.route}?search=${search_tag}`);
     }
   };

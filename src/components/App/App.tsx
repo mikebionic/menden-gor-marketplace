@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom'
-import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import { connect } from 'react-redux';
 import 'i18n';
 import { useTranslation } from 'react-i18next';
@@ -13,8 +13,7 @@ import { ErrorBoundary } from 'modules/errors';
 import { Navbar } from 'components/Navbar';
 import { Footer } from 'components/Footer';
 
-import { history } from 'sapredux/helpers';
-import { alertActions } from 'sapredux/actions';
+// import { alertActions } from 'sapredux/actions';
 import { fetchCategories, fetchBrands } from 'sapredux/actions';
 import { getCategories } from 'sapredux/selectors';
 
@@ -22,7 +21,7 @@ const App: React.FC = (props: any) => {
   const { t } = useTranslation();
   const { onHeaderUpdate }: any = useHeader();
   const page_data_list = getTitle(t);
-  var current_path = history.location.pathname;
+  var current_path = window.location.pathname
 
   useEffect(() => {
     let pageData: any = fetchPageData(page_data_list, current_path);
@@ -48,19 +47,19 @@ const App: React.FC = (props: any) => {
   }, [fetchCategories, fetchBrands]);
 
   const alert = useSelector((state: RootStateOrAny) => state.alert);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    history.listen((location: any) => {
-      dispatch(alertActions.clear());
-    });
-  }, [dispatch]);
+  // useEffect(() => {
+  //   history.listen((location: any) => {
+  //     dispatch(alertActions.clear());
+  //   });
+  // }, [dispatch]);
 
   return (
     <ErrorBoundary>
       <Router>
         <Navbar categories={categories} />
-        {alert.message && (
+        {alert && alert.message && (
           <div className={`alert ${alert.type}`}>{alert.message}</div>
         )}
         <div className={`App bg-fullPageColor p-main-content pt-40 pb-8 overflow-x-hidden`}>

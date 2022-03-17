@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import {
   applyFilters,
@@ -9,13 +10,10 @@ import {
 } from 'sapredux/actions';
 import { getResources } from 'sapredux/selectors';
 
-import { ErrorBoundary } from 'modules/errors';
+import { ErrorBoundary, ErrorIndicator } from 'modules/errors';
 import { ProductList } from 'components/ProductList';
-import { ErrorIndicator } from 'modules/errors';
 import { Spinner } from 'modules/loaders';
 import { ProductsFilterPanel } from 'components/ProductsFilterPanel';
-import { history } from 'sapredux/helpers';
-// import { setTimeout } from 'timers';
 
 const VGrid: React.FC = (props: any) => {
   const {
@@ -27,6 +25,10 @@ const VGrid: React.FC = (props: any) => {
     loadMoreResources,
   } = props;
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location)
+
   const [query_string, set_query_string] = useState('');
   useEffect(() => {
     setTimeout(() => {
@@ -36,7 +38,7 @@ const VGrid: React.FC = (props: any) => {
   }, [query_string]);
 
   useEffect(() => {
-    const params = new URLSearchParams(history.location.search);
+    const params = new URLSearchParams(location.search);
     const history_filters: any = {
       category: params.get('category'),
       brand: params.get('brand'),
@@ -54,8 +56,8 @@ const VGrid: React.FC = (props: any) => {
       }
     });
     set_query_string(search_querystring);
-    // history.push(search_querystring)
-  }, [history.location]);
+    navigate(search_querystring)
+  }, [location]);
 
   const productsList =
     !resource_loading && !resource_error ? (

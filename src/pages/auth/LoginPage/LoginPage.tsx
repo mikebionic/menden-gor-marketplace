@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { authActions } from 'sapredux/actions';
@@ -7,9 +7,14 @@ import { RootState } from 'sapredux/reducers';
 
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router';
+import { routeConstants } from 'navigation/routeConstants';
 
-export const LoginPage: React.FC = () => {
+const LoginPage: React.FC = (props:any) => {
+
+  const { loggedIn } = props
   const { t } = useTranslation();
+  const navigate = useNavigate()
 
   const [inputs, setInputs] = useState({
     username: '',
@@ -19,11 +24,13 @@ export const LoginPage: React.FC = () => {
   const loading = useSelector((state: RootState | any) => {
     return state.auth.loading;
   });
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(authActions.logout());
   }, [dispatch]);
+
+  if (!!loggedIn) {navigate(routeConstants.root.route)}
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -43,7 +50,7 @@ export const LoginPage: React.FC = () => {
           <div className="overflow-hidden shadow-loginShadow bg-glass rounded-2xl backdrop-filter backdrop-blur-glass">
             {loading && (
               <span className="mr-1 spinner-border spinner-border-sm">
-                Loading spinner))) ....
+                Loading spinner :D ....
               </span>
             )}
             <Form
@@ -110,3 +117,11 @@ export const LoginPage: React.FC = () => {
     </div>
   );
 };
+
+const mapStateToProps = (state: any) => ({
+  loggedIn: state.auth.loggedIn
+});
+
+export default connect(
+  mapStateToProps
+)(LoginPage)

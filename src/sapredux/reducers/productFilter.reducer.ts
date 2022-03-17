@@ -1,6 +1,5 @@
 import * as R from 'ramda'
 import { productFilterConstants as actionConstants } from 'sapredux/constants'
-// import { history } from 'sapredux/helpers';
 
 const initialState = {
 	search: null,

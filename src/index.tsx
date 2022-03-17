@@ -1,9 +1,8 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-// import { ConnectedRouter } from 'connected-react-router';
 
-import { store, history } from 'sapredux/helpers';
+import { store } from 'sapredux/helpers';
 import { Spinner } from 'modules/loaders';
 
 import './tailwind.css';
@@ -19,12 +18,10 @@ const App = React.lazy(() =>
 ReactDOM.render(
   <React.Suspense fallback={<Spinner />}>
     <Provider store={store}>
-      {/* <ConnectedRouter history={history}> */}
-        <HeaderProvider>
-          <AppHeader />
-          <App />
-        </HeaderProvider>
-      {/* </ConnectedRouter> */}
+      <HeaderProvider>
+        <AppHeader />
+        <App />
+      </HeaderProvider>
     </Provider>
   </React.Suspense>,
   document.getElementById('root'),

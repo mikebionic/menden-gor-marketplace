@@ -1,7 +1,7 @@
 import * as R from 'ramda'
 
 import { serviceConfig } from 'configs';
-import { handleResponse, authBearerHeader } from 'sapredux/helpers';
+import { handleResponse } from 'sapredux/helpers';
 import { all_brands } from './mock_data/brand.mock';
 import { transformBrands as transformResponse } from './transform_data';
 import { fetch_with_data } from '../helpers/fetch_with_data';
@@ -16,11 +16,7 @@ const fetchAll = async () => {
 		});
 	}
 
-	const requestOptions = {
-		method: 'GET',
-		// headers: authBearerHeader()
-	};
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_brands}`, requestOptions).then(handleResponse);
+	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_brands}`).then(handleResponse);
 }
 
 const fetchById = async (id:number) => {
