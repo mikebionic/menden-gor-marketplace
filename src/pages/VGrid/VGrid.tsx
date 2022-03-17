@@ -27,15 +27,8 @@ const VGrid: React.FC = (props: any) => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location)
 
   const [query_string, set_query_string] = useState('');
-  useEffect(() => {
-    setTimeout(() => {
-      console.log("fetching resources", query_string);
-      fetchResources(query_string);
-    }, 200);
-  }, [query_string]);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -49,7 +42,7 @@ const VGrid: React.FC = (props: any) => {
       sortType: params.get('sortType'),
     };
     onFiltersApply(history_filters);
-    let search_querystring = '?'; //`${history.location.pathname}?`
+    let search_querystring = `?`
     Object.keys(history_filters).map((key) => {
       if (history_filters[key]) {
         search_querystring += `${key}=${history_filters[key]}&`;
@@ -57,7 +50,11 @@ const VGrid: React.FC = (props: any) => {
     });
     set_query_string(search_querystring);
     navigate(search_querystring)
-  }, [location]);
+  }, [location.search]);
+
+  useEffect(() => {
+    (query_string.length > 2) && fetchResources(query_string);
+  }, [query_string]);
 
   const productsList =
     !resource_loading && !resource_error ? (

@@ -1,9 +1,10 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom'
 
 import { ErrorBoundary } from 'modules/errors';
-import { Input, InputNumber, Switch, Radio, Space } from 'antd';
+import { Input, InputNumber, Switch } from 'antd';
 import { IconLabelButton } from 'common/IconLabelButton';
 
 import { getCategories, getBrands } from 'sapredux/selectors';
@@ -11,6 +12,9 @@ import { applyFilters, clearFilters } from 'sapredux/actions';
 
 const ProductsFilterPanel: React.FC = (props: any) => {
   const { categories, brands, filters, onFiltersApply, onFiltersClear } = props;
+
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const handlePriceChange = (priceType: string, value: any) => {
     try {
@@ -24,6 +28,16 @@ const ProductsFilterPanel: React.FC = (props: any) => {
       console.log(err);
     }
   };
+
+  const onNavigate = () => {
+    let search_querystring = `?`
+    Object.keys(filters).map((key) => {
+      if (filters[key]) {
+        search_querystring += `${key}=${filters[key]}&`;
+      }
+    });
+    navigate(`${location.pathname}${search_querystring}`)
+  }
 
   return (
     <ErrorBoundary>
@@ -197,6 +211,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
           <IconLabelButton
             className="w-24 mx-auto my-0 rounded-full bg-gradientSecondColor"
             label="Search"
+            onClick={() => onNavigate()}
           />
           <IconLabelButton
             className="w-24 mx-auto my-0 rounded-full bg-gradientFirstColor"
