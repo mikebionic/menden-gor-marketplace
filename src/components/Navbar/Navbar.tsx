@@ -16,7 +16,7 @@ import { Transition } from '@headlessui/react';
 import { DropdownMenu } from 'common/DropdownMenu';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import UserAvatar from 'components/UserAvatar';
+import NavbarProfileDropdown from 'components/NavbarProfileDropdown';
 import { MdSort } from 'react-icons/md';
 
 const mobileResponsive = {
@@ -83,9 +83,7 @@ export const Navbar = (props: any) => {
             </div>
             <Search />
 
-            <UserAvatar />
-
-
+            <NavbarProfileDropdown />
 
           </div>
         </header>

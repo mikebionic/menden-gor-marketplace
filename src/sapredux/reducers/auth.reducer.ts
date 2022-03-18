@@ -12,7 +12,7 @@ export const auth = (state = initialState, action: {[name: string]: string}) => 
 			return {
 				loggedIn: false,
 				loading: true,
-				user: action.payload
+				user: {}
 			};
 		case authConstants.LOGIN_SUCCESS:
 			return {
@@ -21,9 +21,17 @@ export const auth = (state = initialState, action: {[name: string]: string}) => 
 				user: action.payload
 			};
 		case authConstants.LOGIN_FAILURE:
-			return {};
+			return {
+				loggedIn: false,
+				loading: false,
+				user: {}
+			};;
 		case authConstants.LOGOUT:
-			return {};
+			return {
+				loggedIn: false,
+				loading: false,
+				user: {}
+			};;
 		default:
 			return state
 	}

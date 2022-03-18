@@ -1,3 +1,4 @@
+export * from './auth.selector'
 export * from './brand.selector'
 export * from './category.selector'
 export * from './resource.selector'

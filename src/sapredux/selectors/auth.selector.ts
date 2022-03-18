@@ -1,4 +1,4 @@
 
 export const getCurrentUserInfo = (state:any) => {
-	return state.user.rp_acc 
+	return state.user.rp_acc
 }
