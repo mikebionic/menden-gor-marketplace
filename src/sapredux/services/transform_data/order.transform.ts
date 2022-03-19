@@ -39,7 +39,7 @@ export const transformOrderInv = (data:any) => {
 		orderModifyCount: data.OInvModifyCount,
 		orderPaymAmount: data.OInvPaymAmount,
 		orderPrintCount: data.OInvPrintCount,
-		orderRegNo: data.OInvRegNo,
+		regNo: data.OInvRegNo,
 		orderTaxAmount: data.OInvTaxAmount,
 		orderTotal: data.OInvTotal,
 		orderTypeId: data.OInvTypeId,
