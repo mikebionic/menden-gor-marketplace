@@ -1,5 +1,6 @@
 export * from './auth.service'
 export * from './brand.service'
 export * from './category.service'
+export * from './order.service'
 export * from './resource.service'
 export * from './slider.service'

@@ -1,4 +1,4 @@
-import { authService } from 'sapredux/services'
+// import { authService } from 'sapredux/services'
 
 export const handleResponse = (response: any) => {
 	return response.text().then((text: string) => {
@@ -6,7 +6,7 @@ export const handleResponse = (response: any) => {
 		if (!response.ok) {
 			if (response.status === 401) {
 				// auto logout if 401 response returned from api
-				authService.logout();
+				// authService.logout();
 			}
 
 			const error = (data && data.message) || response.statusText;

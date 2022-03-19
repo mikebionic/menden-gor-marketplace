@@ -16,7 +16,7 @@ const dropdownItems = {
     {
       icon: <FiSettings className="text-xl" />,
       label: 'Settings',
-      route: routeConstants.profile.route,
+      route: routeConstants.profileEdit.route,
     }
   ],
   unauthRows: [

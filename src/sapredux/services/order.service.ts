@@ -15,7 +15,11 @@ const fetchAll = async () => {
 		});
 	}
 
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_orders}`).then(handleResponse);
+	const requestOptions = {
+		method: 'GET',
+		headers: authBearerHeader()
+	};
+	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_orders}`, requestOptions).then(handleResponse);
 }
 
 const fetchById = async (guid:string) => {

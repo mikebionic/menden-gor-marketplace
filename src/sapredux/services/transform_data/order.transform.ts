@@ -20,8 +20,8 @@ export const transformOrderInv = (data:any) => {
 		divId: data.DivId,
 		empId: data.EmpId,
 		deleted: data.GCRecord,
-		stausId: data.InvStatId,
-		stausName: data.InvStatName,
+		statusId: data.InvStatId,
+		statusName: data.InvStatName,
 		modifiedDate: data.ModifiedDate,
 		modifiedUId: data.ModifiedUId,
 		orderCreditDays: data.OInvCreditDays,
@@ -57,7 +57,8 @@ export const transformOrderInv = (data:any) => {
 		warehouseGuid: data.WhGuid,
 		warehouseId: data.WhId,
 		workPeriodId: data.WpId,
-		rp_acc: transformRpAcc(data.Rp_acc)
+		rp_acc: transformRpAcc(data.Rp_acc),
+		order_inv_lines: data.Order_inv_lines.map(transformOrderInvLine)
 	}
 }
 
