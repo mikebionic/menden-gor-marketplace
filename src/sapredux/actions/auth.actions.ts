@@ -1,17 +1,20 @@
 import { authConstants } from 'sapredux/constants';
 import { authService } from 'sapredux/services';
+import { showToastMessage } from "sapredux/helpers"
+import { transformRpAcc } from 'sapredux/services/transform_data';
 import { alertActions } from '.';
 
 const login = (username: string, password: string) => {
 	return (dispatch: any) => {
 		dispatch(request({ username }));
-
 		authService.login(username, password).then(
-			(user: any) => {
-				dispatch(success(user));
+			(response: any) => {
+				dispatch(success(transformRpAcc(response)));
+				showToastMessage({type:"success", message:"You have successfully logged in!"})
 			},
 			(error: any) => {
 				dispatch(failure(error.toString()));
+				showToastMessage({type:"error", message:error.toString()})
 				dispatch(alertActions.error(error.toString()));
 			}
 		);
@@ -24,6 +27,7 @@ const login = (username: string, password: string) => {
 
 const logout = () => {
 	authService.logout();
+	showToastMessage({type:"success", message:"You have successfully logged out!"})
 	return { type: authConstants.LOGOUT };
 }
 

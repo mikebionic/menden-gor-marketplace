@@ -1,16 +1,16 @@
 import { alertConstants } from 'sapredux/constants';
 
-export const alert = (state = {}, action: any) => {
-	switch (action.type) {
+export const alert = (state = {}, {type, message}: any) => {
+	switch (type) {
 		case alertConstants.SUCCESS:
 			return {
 				type: 'alert-success',
-				message: action.message
+				message: message
 			};
 		case alertConstants.ERROR:
 			return {
 				type: 'alert-danger',
-				message: action.message
+				message: message
 			};
 		case alertConstants.CLEAR:
 			return {} as any

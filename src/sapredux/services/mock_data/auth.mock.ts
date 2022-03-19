@@ -124,5 +124,5 @@ export const rp_acc_basic_login_success = {
     },
     "WpId": null
   },
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MzI4ODk3NTAsImlhdCI6MTYzMjgyOTc1MCwibmJmIjoxNjMyODI5NzUwLCJScEFjY0lkIjo0NX0.oyBpeouJoVd03NKIB4orLzr1K1zUIRXdEe4DVetar_Q"
+  "token": "somesecrethasheddata"
 }

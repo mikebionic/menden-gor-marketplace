@@ -1,7 +1,4 @@
-
-import * as R from 'ramda'
 import { resourceConstants } from 'sapredux/constants';
-
 
 export const cart = (state = [], {type, payload}: any) => {
   let doesItemExist;
