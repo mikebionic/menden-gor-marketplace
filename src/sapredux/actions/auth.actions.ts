@@ -1,7 +1,7 @@
 import { authConstants } from 'sapredux/constants';
 import { authService } from 'sapredux/services';
 import { showToastMessage } from "sapredux/helpers"
-import { transformRpAcc } from 'sapredux/services/transform_data';
+import { transformAuth } from 'sapredux/services/transform_data';
 import { alertActions } from '.';
 
 const login = (username: string, password: string) => {
@@ -9,7 +9,7 @@ const login = (username: string, password: string) => {
 		dispatch(request({ username }));
 		authService.login(username, password).then(
 			(response: any) => {
-				dispatch(success(transformRpAcc(response)));
+				dispatch(success(transformAuth(response)));
 				showToastMessage({type:"success", message:"You have successfully logged in!"})
 			},
 			(error: any) => {

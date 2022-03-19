@@ -9,7 +9,6 @@ import {
 
 
 const login = (username='', password='') => {
-
 	if (serviceConfig.useMockApi){
 		if (username === rp_acc_basic_login_credentials.username
 			&& password === rp_acc_basic_login_credentials.password){
@@ -37,7 +36,7 @@ const login = (username='', password='') => {
 		}
 	};
 
-	return fetch(`${serviceConfig.apiUrl}/login/?type=rp_acc`, requestOptions).then(handleResponse)
+	return fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.login}?type=rp_acc`, requestOptions).then(handleResponse)
 }
 	
 const logout = () => {

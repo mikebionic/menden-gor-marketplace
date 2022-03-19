@@ -4,7 +4,7 @@ import { serviceConfig } from 'configs';
 import { handleResponse } from 'sapredux/helpers';
 import { all_brands } from './mock_data/brand.mock';
 import { transformBrands as transformResponse } from './transform_data';
-import { fetch_with_data } from '../helpers/fetch_with_data';
+import { fetch_with_data } from 'sapredux/helpers';
 
 const fetchAll = async () => {
 
@@ -27,11 +27,7 @@ const fetchById = async (id:number) => {
 		});
 	}
 
-	const requestOptions = {
-		method: 'GET',
-		// headers: authBearerHeader()
-	};
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_brands}${id}/`, requestOptions).then(handleResponse);
+	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_brands}${id}/`).then(handleResponse);
 }
 
 const fetchAll_data = async() => {
