@@ -57,8 +57,8 @@ export const transformOrderInv = (data:any) => {
 		warehouseGuid: data.WhGuid,
 		warehouseId: data.WhId,
 		workPeriodId: data.WpId,
-		rp_acc: transformRpAcc(data.Rp_acc),
-		order_inv_lines: data.Order_inv_lines.map(transformOrderInvLine)
+		rp_acc: data.Rp_acc && transformRpAcc(data.Rp_acc),
+		order_inv_lines: data.Order_inv_lines && data.Order_inv_lines.map(transformOrderInvLine)
 	}
 }
 
@@ -98,6 +98,6 @@ export const transformOrderInvLine = (data:any) => {
 		resRegNo: data.ResRegNo,
 		syncDateTime: data.SyncDateTime,
 		unitId: data.UnitId,
-		resource: transformResources(data.Resources),
+		resource: data.Resource && transformResources(data.Resource),
 	}
 }

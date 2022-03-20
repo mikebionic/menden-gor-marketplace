@@ -13,10 +13,6 @@ const login = (username='', password='') => {
 		if (username === rp_acc_basic_login_credentials.username
 			&& password === rp_acc_basic_login_credentials.password){
 			return Promise.resolve(rp_acc_basic_login_success)
-				.then(user => {
-					set_local_data_by_key('user', user)
-					return user;
-				});
 		} else {
 			return Promise.reject(rp_acc_basic_login_failure.message)
 		}

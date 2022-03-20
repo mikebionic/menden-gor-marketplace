@@ -5,8 +5,8 @@ import { get_local_data_by_key, set_local_data_by_key } from 'sapredux/helpers'
 
 const user = get_local_data_by_key('user');
 const initialState = !R.isEmpty(user)
-	? { loggedIn: true, loading: false, error:false, user: user }
-	: { loggedIn: false, loading: false, error:false, user: {} };
+	? { loggedIn: true, loading: false, error:false, data: user }
+	: { loggedIn: false, loading: false, error:false, data: {} };
 
 
 export const auth = (state = initialState, {type, payload}:any) => {
@@ -15,6 +15,7 @@ export const auth = (state = initialState, {type, payload}:any) => {
 			return {
 				loggedIn: false,
 				loading: true,
+				error: false,
 				data: {}
 			};
 		case authConstants.LOGIN_SUCCESS:
@@ -22,20 +23,30 @@ export const auth = (state = initialState, {type, payload}:any) => {
 			return {
 				loggedIn: true,
 				loading: false,
+				error: false,
 				data: payload
 			};
 		case authConstants.LOGIN_FAILURE:
 			return {
 				loggedIn: false,
 				loading: false,
-				data: {}
+				error: true,
+				data: payload ?? {}
 			};
 		case authConstants.LOGOUT:
 			return {
 				loggedIn: false,
 				loading: false,
+				error: false,
 				data: {}
-			};;
+			};
+		// case authConstants.UPDATE_REDUCER:
+		// 	set_local_data_by_key('user', payload)
+		// 	return {
+		// 		loggedIn: true,
+		// 		loading: false,
+		// 		data: payload
+		// 	};
 		default:
 			return state
 	}
