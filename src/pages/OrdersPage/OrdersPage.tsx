@@ -1,20 +1,30 @@
+import * as R from 'ramda'
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
-import { Badge, Progress } from 'antd';
-import { OrderLine } from 'pages/OrdersPage';
-
+import { OrderLine, OrderBlock } from 'pages/OrdersPage';
 import { orderService } from 'sapredux/services'
+import { routeConstants } from 'navigation/routeConstants';
+import { Spinner } from 'modules/loaders';
 
 export const OrdersPage: React.FC = () => {
 
+  const [loading, set_loading] = useState(true)
   const [order_invoices_list, set_order_invoices_list] = useState([])
   const get_order_invoices = async() => {
+    set_loading(true)
     const order_invoices_list = await orderService.fetchAll_data()
-    order_invoices_list && set_order_invoices_list(order_invoices_list)
+    order_invoices_list && set_order_invoices_list(order_invoices_list); set_loading(false)
   }
 
+  const location = useLocation()
   const [current_order_inv, set_current_order_inv] = useState({})
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const regNo = params.get('regNo')
+    const inv_data = regNo && R.find(R.propEq('regNo', regNo), order_invoices_list)
+    inv_data ? set_current_order_inv(inv_data) : set_current_order_inv({})
+  }, [location.search, order_invoices_list])
 
   useEffect(() => {
     get_order_invoices();
@@ -22,30 +32,15 @@ export const OrdersPage: React.FC = () => {
 
   return (
     <>
-      {order_invoices_list.map((order_inv:any, idx:number) =>
-        <Link to={order_inv.regNo} key={idx} >
-          <div key={idx} className="relative grid mx-4 my-4 bg-white cursor-pointer w-ResGroup h-52 shadow-ResGroupShadow rounded-xl">
-            <Badge.Ribbon text={`${order_inv.orderFTotal}${order_inv.currencySymbol}`} color="red" placement="end" className="mt-1">
-              <div className="inline-grid w-full h-full gap-3 p-4 mt-2">
-                <p className="text-base font-semibold">Order {order_inv.regNo}</p>
-                <Progress
-                  percent={70}
-                  status="active"
-                  strokeColor="rgba(254, 159, 118)"
-                  showInfo={false}
-                />
-              </div>
-            </Badge.Ribbon>
-            <p>{order_inv.orderDesc}</p>
-            <p>Date: {order_inv.orderDate}</p>
-            <Badge.Ribbon
-              text={order_inv.statusName}
-              color="orange"
-              placement="start"
-            ></Badge.Ribbon>
-          </div>
-        </Link>
-      )}
+      { loading && <Spinner /> }
+      {
+        !R.isEmpty(current_order_inv) ? <OrderLine {...current_order_inv} /> :
+        order_invoices_list.map((order_inv:any, idx:number) =>
+          <Link to={`${routeConstants.orders.route}?regNo=${order_inv.regNo}`} key={idx} >
+            <OrderBlock {...order_inv} />
+          </Link>
+        )
+      }
     </>
   );
 };

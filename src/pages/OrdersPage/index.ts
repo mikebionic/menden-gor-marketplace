@@ -1,2 +1,3 @@
-export * from './OrdersPage'
 export * from './OrderLine'
+export * from './OrderBlock'
+export * from './OrdersPage'

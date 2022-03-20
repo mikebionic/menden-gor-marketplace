@@ -1,14 +1,22 @@
-import React from 'react';
 import { Progress } from 'antd';
-import { TableComponent } from 'common/Table';
+import { OrderLinesTable } from 'common/Table';
 import { IconLabelButton } from 'common/IconLabelButton';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
-export const OrderLine: React.FC = () => {
+export const OrderLine = (props:any) => {
+  const {
+    regNo,
+    orderDate,
+    orderFTotal,
+    currencySymbol,
+    orderDesc,
+    statusName,
+    order_inv_lines
+  } = props
   return (
     <div className="grid w-11/12 h-auto gap-4 p-6 mx-auto my-4 bg-white cursor-default shadow-ResGroupShadow rounded-xl">
       <div className="inline-grid grid-cols-2">
-        <h3 className="text-2xl font-semibold">Sargyt-PWSSFK703210136</h3>
+        <h3 className="text-2xl font-semibold">Sargyt-{regNo}</h3>
         <Progress
           percent={70}
           status="active"
@@ -26,7 +34,7 @@ export const OrderLine: React.FC = () => {
           </div>
           <div className="col-span-2 row-span-2">
             <IconLabelButton
-              label="Waiting"
+              label={statusName}
               className="px-3 text-white bg-yellow-500 rounded"
             />
           </div>
@@ -36,10 +44,10 @@ export const OrderLine: React.FC = () => {
             <IconLabelButton icon={<AiOutlineLoading3Quarters />} />
           </div>
           <div className="col-span-2 mx-0 my-auto">
-            <h3 className="text-sm font-semibold">Order data</h3>
+            <h3 className="text-sm font-semibold">Order date</h3>
           </div>
           <div className="col-span-2 row-span-2">
-            <p>2022-02-22 12:00:05</p>
+            <p>{orderDate}</p>
           </div>
         </div>
         <div className="grid grid-flow-col gap-1 grid-rows-OrderLine grid-cols-OrderLine">
@@ -50,16 +58,16 @@ export const OrderLine: React.FC = () => {
             <h3 className="text-sm font-semibold">Total</h3>
           </div>
           <div className="col-span-2 row-span-2">
-            <p className="text-sm font-semibold">2583.76 TMT</p>
+            <p className="text-sm font-semibold">{orderFTotal} {currencySymbol}</p>
           </div>
         </div>
       </div>
       <div>
-        <TableComponent />
+        <OrderLinesTable data={order_inv_lines}/>
       </div>
       <div>
         <p className="text-base font-semibold">Bellik:</p>
-        <p>test</p>
+        <p>{orderDesc}</p>
       </div>
     </div>
   );

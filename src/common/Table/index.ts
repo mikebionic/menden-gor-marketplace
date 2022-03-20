@@ -1,1 +1,1 @@
-export * from './TableComponent'
+export * from './OrderLinesTable'
