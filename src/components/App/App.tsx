@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
 import { RootStateOrAny, useSelector } from 'react-redux';
 import { connect } from 'react-redux';
 import 'i18n';
@@ -21,7 +21,7 @@ const App: React.FC = (props: any) => {
   const { t } = useTranslation();
   const { onHeaderUpdate }: any = useHeader();
   const page_data_list = getTitle(t);
-  var current_path = window.location.pathname
+  var current_path = window.location.pathname;
 
   useEffect(() => {
     let pageData: any = fetchPageData(page_data_list, current_path);
@@ -62,7 +62,9 @@ const App: React.FC = (props: any) => {
         {alert && alert.message && (
           <div className={`alert ${alert.type}`}>{alert.message}</div>
         )}
-        <div className={`App bg-fullPageColor p-main-content pt-40 pb-8 overflow-x-hidden`}>
+        <div
+          className={`App bg-fullPageColor p-main-content pt-40 pb-8 overflow-x-hidden`}
+        >
           <AppRoutes />
         </div>
 

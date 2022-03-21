@@ -48,6 +48,7 @@ module.exports = {
         defaultHover: '#f5f5f5',
         borderColor: '#E2E1E1',
         borderBrands: '#e6e6e6',
+        textColorOrange: "#F9704E",
         gray: {
           50: '#f9fafb',
           100: '#f3f4f6',

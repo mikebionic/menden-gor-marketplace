@@ -108,6 +108,24 @@
   outline: 0;
 }
 
+.ant-steps-item-finish
+  > .ant-steps-item-container
+  > .ant-steps-item-content
+  > .ant-steps-item-title::after {
+  background: #f9704e;
+}
+
+.ant-steps-item-icon {
+  margin: 0 8px 6px 0 !important;
+}
+
+.ant-steps-item-container {
+  display: grid !important;
+  grid-auto-columns: max-content !important;
+  grid-auto-flow: column !important;
+  place-items: center !important;
+}
+
 .avatar {
   line-height: 1.42857;
   background-color: rgb(255, 255, 255);
