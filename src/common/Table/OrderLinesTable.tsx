@@ -2,7 +2,16 @@
 import { useState } from 'react'
 import { Table, Form, Space } from 'antd';
 
+import { Image } from 'common/Image'
+
 const columns = [
+  {
+    title: 'Image',
+    align: 'center',
+    dataIndex: 'image',
+    render: (image:string) =>
+      <Image src={image} alt={image} />
+  },
   {
     title: 'Product Name',
     align: 'center',
