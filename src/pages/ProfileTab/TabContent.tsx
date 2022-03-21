@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { ProfilePage } from 'pages/ProfilePage';
 import { OrdersPage } from 'pages/OrdersPage';
 import { WishlistPage } from 'pages/Wishlist';
-import { ProfileEdit } from 'pages/ProfileEdit';
+import { ProfileEditPage } from 'pages/ProfileEditPage';
 import { routeConstants } from 'navigation/routeConstants';
 
 export const TabContent = () => {
@@ -20,7 +20,7 @@ export const TabContent = () => {
       return <OrdersPage />;
 
     case routeConstants.profileEdit.route:
-      return <ProfileEdit />;
+      return <ProfileEditPage />;
 
     default:
       return <ProfilePage />;

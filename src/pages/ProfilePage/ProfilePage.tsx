@@ -36,7 +36,7 @@ const ProfilePage: React.FC = ({current_user}:any) => {
       </div>
       <div className="inline-grid gap-2">
         <b>Poçta kody</b>
-        <p className="text-gray-400">{current_user.postalCode ?? "Email not registered"}</p>
+        <p className="text-gray-400">{current_user.zipCode ?? "Zip code not registered"}</p>
       </div>
       <div className="inline-grid gap-2">
         <b>Doly ady</b>
