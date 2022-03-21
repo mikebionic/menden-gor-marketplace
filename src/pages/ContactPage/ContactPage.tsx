@@ -5,7 +5,7 @@ import { ImLocation } from 'react-icons/im';
 
 export const ContactPage: React.FC = () => {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen md:px-24 md:py-12 min-phone:p-10">
+    <section className="relative flex flex-col items-center justify-center min-h-[100vh] md:px-24 md:py-12 min-phone:p-10">
       <div className="max-w-3xl text-center md:mt-12">
         <h2 className="text-3xl font-bold text-black">Contact Us</h2>
         <p className="font-light text-black">
@@ -16,7 +16,7 @@ export const ContactPage: React.FC = () => {
       <div className="grid justify-center w-full mt-8 min-phone:mb-12 md:mb-0 min-phone:grid-cols-1 align-center md:grid-cols-2 min-phone:grid-rows-2">
         <div className="flex flex-col w-full">
           <div className="relative flex px-0 py-5">
-            <div className="flex flex-col flex-wrap items-center justify-center text-3xl bg-yellow-200 rounded-semifull min-w-60 h-14">
+            <div className="flex flex-col flex-wrap items-center justify-center text-3xl bg-yellow-200 rounded-[50%] min-w-[60px] h-14">
               <ImLocation />
             </div>
             <div className="flex flex-col ml-5 text-xl font-light text-black">
@@ -29,7 +29,7 @@ export const ContactPage: React.FC = () => {
             </div>
           </div>
           <div className="relative flex px-0 py-5">
-            <div className="flex flex-col flex-wrap items-center justify-center text-3xl bg-yellow-200 rounded-semifull min-w-60 h-14">
+            <div className="flex flex-col flex-wrap items-center justify-center text-3xl bg-yellow-200 rounded-[50%] min-w-[60px] h-14">
               <CgPhone />
             </div>
             <div className="flex flex-col ml-5 text-xl font-light text-black">
@@ -40,7 +40,7 @@ export const ContactPage: React.FC = () => {
             </div>
           </div>
           <div className="relative flex px-0 py-5">
-            <div className="flex flex-col flex-wrap items-center justify-center text-3xl bg-yellow-200 rounded-semifull min-w-60 h-14">
+            <div className="flex flex-col flex-wrap items-center justify-center text-3xl bg-yellow-200 rounded-[50%] min-w-[60px] h-14">
               <HiOutlineMail />
             </div>
             <div className="flex flex-col ml-5 text-xl font-light text-black">

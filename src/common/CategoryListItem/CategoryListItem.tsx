@@ -16,7 +16,7 @@ export const CategoryListItem: React.FC<ICategoryListItem> = ({
   return (
     <button className="inline-grid items-center w-full cursor-pointer hover:relative hover:shadow-BannerCategory hover:text-socialBarItemHover bg-fullwhite grid-cols-search h-11">
       <Image src={icon} alt={name} className="w-6 h-6 pl-1" />
-      <h4 className="ml-4 text-left text-textColorParagraph">{name}</h4>
+      <h4 className="ml-4 text-left text-[#5B5B5B]">{name}</h4>
       <MdOutlineKeyboardArrowRight className="mr-2" />
     </button>
   );

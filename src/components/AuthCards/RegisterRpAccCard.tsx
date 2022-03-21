@@ -92,14 +92,14 @@ export const RegisterRpAccCard: React.FC = () => {
             <div className="grid grid-flow-col gap-4 auto-cols-max">
               <div className="grid grid-flow-col gap-2 auto-cols-max">
                 <input
-                  className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-gradientFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange"
+                  className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-firstColorGradientFromDark focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange"
                   type="radio"
                 />
                 <p>Alyjy</p>
               </div>
               <div className="grid grid-flow-col gap-2 auto-cols-max">
                 <input
-                  className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-gradientFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange"
+                  className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-firstColorGradientFromDark focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange"
                   type="radio"
                 />
                 <p>Satyjy</p>
@@ -120,7 +120,7 @@ export const RegisterRpAccCard: React.FC = () => {
               },
             ]}
           >
-            <Input className="rounded-lg min-h-32px border-[#E6E6E6] hover:border-textColorOrange" />
+            <Input className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange" />
           </Form.Item>
 
           <Form.Item

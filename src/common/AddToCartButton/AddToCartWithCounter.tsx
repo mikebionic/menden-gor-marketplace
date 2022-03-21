@@ -27,27 +27,27 @@ export const AddToCartWithCounter: React.FC<ICountryButton> = ({
     return (
       <>
         {coloredCountry ? (
-          <div className="grid items-center w-24 grid-cols-3 p-1 text-center border border-solid rounded-lg h-11 border-borderColor navbarColor">
+          <div className="grid items-center w-24 grid-cols-3 p-1 text-center border border-solid rounded-lg h-11 border-[#E2E1E1] bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight">
             <button onClick={onDecrease}>
-              <BiMinus className="w-full h-full text-white hover:text-gradientSecondColor" />
+              <BiMinus className="w-full h-full text-white hover:text-secondColorGradientToLight" />
             </button>
             <p className="inline-grid w-full h-full text-lg text-white navbarColor place-content-around">
               {count}
             </p>
             <button onClick={onIncrease}>
-              <BiPlus className="w-full h-full text-white hover:text-gradientSecondColor" />
+              <BiPlus className="w-full h-full text-white hover:text-secondColorGradientToLight" />
             </button>
           </div>
         ) : (
-          <div className="grid items-center w-24 grid-cols-3 p-1 text-center border border-solid rounded-lg h-11 border-borderColor">
+          <div className="grid items-center w-24 grid-cols-3 p-1 text-center border border-solid rounded-lg h-11 border-[#E2E1E1]">
             <button onClick={onDecrease}>
-              <BiMinus className="w-full h-full text-gradientFirstColor hover:text-gradientSecondColor" />
+              <BiMinus className="w-full h-full text-firstColorGradientFromDark hover:text-secondColorGradientToLight" />
             </button>
-            <p className="inline-grid w-full h-full text-lg shadow-InnerCountryShadow text-gradientFirstColor bg-fullwhite place-content-around">
+            <p className="inline-grid w-full h-full text-lg shadow-InnerCountryShadow text-firstColorGradientFromDark bg-fullwhite place-content-around">
               {count}
             </p>
             <button onClick={onIncrease}>
-              <BiPlus className="w-full h-full text-gradientFirstColor hover:text-gradientSecondColor" />
+              <BiPlus className="w-full h-full text-firstColorGradientFromDark hover:text-secondColorGradientToLight" />
             </button>
           </div>
         )}

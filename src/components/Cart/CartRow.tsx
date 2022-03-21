@@ -40,7 +40,7 @@ export const CartRow = ({ item, onIncrease, onDecrease, onDelete }: any) => {
                 className="font-medium text-indigo-600 hover:text-indigo-500"
                 onClick={() => onDelete(item.id)}
               >
-                <AiOutlineDelete className="w-7 h-7 text-gradientSecondColor hover:text-socialBarItemHover" />
+                <AiOutlineDelete className="w-7 h-7 text-secondColorGradientToLight hover:text-socialBarItemHover" />
               </button>
             </div>
             <ProductAddToCart resourceId={item.id} withCounter={true} />

@@ -27,13 +27,13 @@ export const AuthInputCard: React.FC = () => {
           <p>Giris usulyny saylan:</p>
         </div>
         <div className="inline-grid grid-flow-col gap-4 auto-cols-max place-content-center">
-          <div className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
+          <div className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
             <AiOutlineMail className="w-full h-full p-2 text-textColorOrange" />
           </div>
-          <div className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
+          <div className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
             <FaSms className="w-full h-full p-2 text-textColorOrange" />
           </div>
-          <div className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
+          <div className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]">
             <GrGooglePlus className="w-full h-full p-2 text-textColorOrange" />
           </div>
         </div>

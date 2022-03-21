@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { ErrorBoundary } from 'modules/errors';
 import { Input, InputNumber, Switch } from 'antd';
@@ -13,8 +13,8 @@ import { applyFilters, clearFilters } from 'sapredux/actions';
 const ProductsFilterPanel: React.FC = (props: any) => {
   const { categories, brands, filters, onFiltersApply, onFiltersClear } = props;
 
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handlePriceChange = (priceType: string, value: any) => {
     try {
@@ -30,14 +30,14 @@ const ProductsFilterPanel: React.FC = (props: any) => {
   };
 
   const onNavigate = () => {
-    let search_querystring = `?`
+    let search_querystring = `?`;
     Object.keys(filters).map((key) => {
       if (filters[key]) {
         search_querystring += `${key}=${filters[key]}&`;
       }
     });
-    navigate(`${location.pathname}${search_querystring}`)
-  }
+    navigate(`${location.pathname}${search_querystring}`);
+  };
 
   return (
     <ErrorBoundary>
@@ -86,7 +86,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                 value === true && onFiltersApply({ sort_type: 'discounts' })
               }
             />
-          </div>          
+          </div>
         </div>
 
         <div className="grid w-56 h-60 px-2 py-2 my-4 rounded-lg bg-fullwhite gap-y-1">
@@ -145,7 +145,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
             <li className="h-full pl-2">
               <label className="flex my-1 cursor-pointer">
                 <input
-                  className="w-3 h-3 my-auto transform scale-125 text-gradientFirstColor active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
+                  className="w-3 h-3 my-auto transform scale-125 text-firstColorGradientFromDark active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
                   type="radio"
                   name="radio-brand-null"
                   onChange={() => onFiltersApply({ brand: null })}
@@ -156,13 +156,17 @@ const ProductsFilterPanel: React.FC = (props: any) => {
               {brands.map((data: any, idx: number) => (
                 <label className="flex my-1 cursor-pointer" key={idx}>
                   <input
-                    className="w-3 h-3 my-auto transform scale-125 outline-none text-gradientFirstColor form-radio active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
+                    className="w-3 h-3 my-auto transform scale-125 outline-none text-firstColorGradientFromDark form-radio active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
                     type="radio"
                     name={`radio-brand-${data.name}-${data.id}`}
                     value={data.id}
                     key={idx}
                     onChange={() => onFiltersApply({ brand: data.id })}
-                    checked={parseInt(filters.brand) === parseInt(data.id) ? true : false}
+                    checked={
+                      parseInt(filters.brand) === parseInt(data.id)
+                        ? true
+                        : false
+                    }
                   />
                   <p className="px-2 text-sm">{data.name}</p>
                 </label>
@@ -182,7 +186,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
             <li className="h-full pl-2">
               <label className="flex my-1 cursor-pointer">
                 <input
-                  className="w-3 h-3 my-auto transform scale-125 text-gradientFirstColor active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
+                  className="w-3 h-3 my-auto transform scale-125 text-firstColorGradientFromDark active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
                   type="radio"
                   name="radio-category-null"
                   onChange={() => onFiltersApply({ category: null })}
@@ -193,12 +197,16 @@ const ProductsFilterPanel: React.FC = (props: any) => {
               {categories.map((data: any, idx: number) => (
                 <label className="flex my-1 cursor-pointer" key={idx}>
                   <input
-                    className="w-3 h-3 my-auto transform scale-125 outline-none text-gradientFirstColor form-radio active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
+                    className="w-3 h-3 my-auto transform scale-125 outline-none text-firstColorGradientFromDark form-radio active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
                     type="radio"
                     name={`radio-category-${data.name}-${data.id}`}
                     value={data.id}
                     onChange={() => onFiltersApply({ category: data.id })}
-                    checked={parseInt(filters.category) === parseInt(data.id) ? true : false}
+                    checked={
+                      parseInt(filters.category) === parseInt(data.id)
+                        ? true
+                        : false
+                    }
                   />
                   <p className="px-2 text-sm">{data.name}</p>
                 </label>
@@ -213,12 +221,12 @@ const ProductsFilterPanel: React.FC = (props: any) => {
         </div>
         <div className="inline-grid w-56 grid-cols-2 rounded-lg h-9">
           <IconLabelButton
-            className="w-24 mx-auto my-0 rounded-full bg-gradientSecondColor"
+            className="w-24 mx-auto my-0 rounded-full bg-secondColorGradientToLight"
             label="Search"
             onClick={() => onNavigate()}
           />
           <IconLabelButton
-            className="w-24 mx-auto my-0 rounded-full bg-gradientFirstColor"
+            className="w-24 mx-auto my-0 rounded-full bg-firstColorGradientFromDark"
             label="Clear"
             onClick={() => onFiltersClear()}
           />
