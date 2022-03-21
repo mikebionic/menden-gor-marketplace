@@ -57,7 +57,7 @@ export const AuthInputCard: React.FC = () => {
           />
         </div>
       </div>
-      <div className="w-[60%] mt-12 mx-auto cursor-default">
+      <div className="w-[60%] my-12 mx-auto cursor-default">
         <Steps>
           <Step
             status="process"
