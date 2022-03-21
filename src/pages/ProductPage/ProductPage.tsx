@@ -23,9 +23,11 @@ const ProductPage: React.FC = (props: any) => {
     }
   }, [params.id, fetchResourceById]);
 
+  const slidesToShow = resource.related_resources && 
+    resource.related_resources.length < 5 ? resource.related_resources.length : 5
   const productsList =
     resource && !!resource.related_resources ? (
-      <SlickSlider settings={{ slidesToShow: 3 }}>
+      <SlickSlider settings={{ slidesToShow: slidesToShow }}>
         {resource.related_resources.map((resource: any, idx: number) => (
           <ProductCard key={idx} data={resource} />
         ))}

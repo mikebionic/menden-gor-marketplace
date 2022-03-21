@@ -40,6 +40,7 @@ const VGrid: React.FC = (props: any) => {
       to_price: params.get('to_price'),
       division: params.get('division'),
       sort: params.get('sort'),
+      showDiscounts: params.get('showDiscounts'),
     };
     let search_querystring = `?`
     Object.keys(history_filters).map((key) => {

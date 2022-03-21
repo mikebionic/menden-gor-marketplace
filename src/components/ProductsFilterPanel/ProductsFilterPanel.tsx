@@ -81,9 +81,9 @@ const ProductsFilterPanel: React.FC = (props: any) => {
           <div className="grid grid-cols-iconReverse">
             <p>Arzanladysh</p>
             <Switch
-              checked={filters.sort === 'discounts' ? true : false}
+              checked={parseInt(filters.showDiscounts) === 1 ? true : false}
               onChange={(value: boolean) =>
-                value === true && onFiltersApply({ sort: 'discounts' })
+                value === true ? onFiltersApply({ showDiscounts: 1 }) : onFiltersApply({ showDiscounts: 0 })
               }
             />
           </div>

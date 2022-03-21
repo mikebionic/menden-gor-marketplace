@@ -9,6 +9,7 @@ const initialState = {
 	to_price: null,
 	sort: "date_new",
 	division: null,
+	showDiscounts: 0,
  };
 
 export const productFilter = (state = initialState, action: {[name: string]: any}) => {
