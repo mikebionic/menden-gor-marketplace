@@ -36,18 +36,19 @@ const VGrid: React.FC = (props: any) => {
       category: params.get('category'),
       brand: params.get('brand'),
       search: params.get('search'),
-      fromPrice: params.get('fromPrice'),
-      toPrice: params.get('toPrice'),
+      from_price: params.get('from_price'),
+      to_price: params.get('to_price'),
       division: params.get('division'),
-      sortType: params.get('sortType'),
+      sort: params.get('sort'),
     };
-    onFiltersApply(history_filters);
     let search_querystring = `?`
     Object.keys(history_filters).map((key) => {
+      console.log("HISTORY ", key, history_filters[key])
       if (history_filters[key]) {
         search_querystring += `${key}=${history_filters[key]}&`;
       }
     });
+    onFiltersApply(history_filters)
     set_query_string(search_querystring);
     navigate(search_querystring)
   }, [location.search]);

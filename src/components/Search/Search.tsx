@@ -1,37 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { useNavigate, useLocation } from 'react-router-dom'
+
 import { IoIosArrowDown } from 'react-icons/io';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom'
-
-import { IconLabelButton } from 'common/IconLabelButton';
-import { routeConstants } from 'navigation/routeConstants';
 import { Transition } from '@headlessui/react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
-export const Search: React.FC = (props: any) => {
+import { IconLabelButton } from 'common/IconLabelButton';
+import { applyFilters } from 'sapredux/actions';
+
+const Search: React.FC = (props: any) => {
+
+  const { filters, onFiltersApply } = props
   const [dropdownState, onDropdownStateChange] = useState(false);
   const navigate = useNavigate()
+  const location = useLocation()
 
   const handleClickAway = () => {
     onDropdownStateChange(false);
   };
 
+  const params = new URLSearchParams(location.search)
   const [inputs, setInputs] = useState({
-    search_tag: '',
+    search_tag: params.get('search') ?? '',
     categoryId: 0,
   });
   const { search_tag, categoryId } = inputs;
-
+  useEffect(() => {
+    onFiltersApply({search: inputs.search_tag})
+  }, [inputs])
+ 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
   };
-
+  
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (search_tag) {
-      navigate(`${routeConstants.vGrid.route}?search=${search_tag}`);
-    }
+    let search_querystring = `?`
+    Object.keys(filters).map((key) => {
+      if (filters[key]) {
+        search_querystring += `${key}=${filters[key]}&`;
+      }
+    });
+    navigate(`${location.pathname}${search_querystring}`)
   };
 
   const search_types = [
@@ -129,3 +143,10 @@ export const Search: React.FC = (props: any) => {
     </form>
   );
 };
+
+const mapStateToProps = (state:any) => ({filters: state.productFilter})
+const mapDispatchToProps = (dispatch: any) => (
+  bindActionCreators({onFiltersApply: applyFilters}, dispatch)
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

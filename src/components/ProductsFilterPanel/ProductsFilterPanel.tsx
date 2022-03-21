@@ -19,10 +19,10 @@ const ProductsFilterPanel: React.FC = (props: any) => {
   const handlePriceChange = (priceType: string, value: any) => {
     try {
       const val = parseFloat(value);
-      if (priceType === 'fromPrice') {
-        onFiltersApply({ fromPrice: val });
+      if (priceType === 'from_price') {
+        onFiltersApply({ from_price: val });
       } else {
-        onFiltersApply({ toPrice: val });
+        onFiltersApply({ to_price: val });
       }
     } catch (err) {
       console.log(err);
@@ -57,8 +57,8 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                   borderRadius: 5,
                 }}
                 placeholder="Minimum"
-                value={filters.fromPrice}
-                onChange={(value: any) => handlePriceChange('fromPrice', value)}
+                value={filters.from_price}
+                onChange={(value: any) => handlePriceChange('from_price', value)}
                 status="warning"
                 type="number"
               />
@@ -72,8 +72,8 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                   borderRadius: 5,
                 }}
                 placeholder="Maximum"
-                value={filters.toPrice}
-                onChange={(value: any) => handlePriceChange('toPrice', value)}
+                value={filters.to_price}
+                onChange={(value: any) => handlePriceChange('to_price', value)}
                 status="warning"
               />
             </Input.Group>
@@ -81,9 +81,9 @@ const ProductsFilterPanel: React.FC = (props: any) => {
           <div className="grid grid-cols-iconReverse">
             <p>Arzanladysh</p>
             <Switch
-              checked={filters.sort_type === 'discounts' ? true : false}
+              checked={filters.sort === 'discounts' ? true : false}
               onChange={(value: boolean) =>
-                value === true && onFiltersApply({ sort_type: 'discounts' })
+                value === true && onFiltersApply({ sort: 'discounts' })
               }
             />
           </div>          
@@ -94,18 +94,18 @@ const ProductsFilterPanel: React.FC = (props: any) => {
           <div className="grid grid-cols-iconReverse">
             <p>Baha uludan kica</p>
             <Switch
-              checked={filters.sort_type === 'price_high' ? true : false}
+              checked={filters.sort === 'price_high' ? true : false}
               onChange={(value: boolean) =>
-                value === true && onFiltersApply({ sort_type: 'price_high' })
+                value === true && onFiltersApply({ sort: 'price_high' })
               }
             />
           </div>
           <div className="grid grid-cols-iconReverse">
             <p>Baha kiciden ula</p>
             <Switch
-              checked={filters.sort_type === 'price_low' ? true : false}
+              checked={filters.sort === 'price_low' ? true : false}
               onChange={(value: boolean) =>
-                value === true && onFiltersApply({ sort_type: 'price_low' })
+                value === true && onFiltersApply({ sort: 'price_low' })
               }
             />
           </div>
@@ -113,27 +113,27 @@ const ProductsFilterPanel: React.FC = (props: any) => {
           <div className="grid grid-cols-iconReverse ">
             <p>In taze</p>
             <Switch
-              checked={filters.sort_type === 'date_new' ? true : false}
+              checked={filters.sort === 'date_new' ? true : false}
               onChange={(value: boolean) =>
-                value === true && onFiltersApply({ sort_type: 'date_new' })
+                value === true && onFiltersApply({ sort: 'date_new' })
               }
             />
           </div>
           <div className="grid grid-cols-iconReverse">
             <p>In kone</p>
             <Switch
-              checked={filters.sort_type === 'date_old' ? true : false}
+              checked={filters.sort === 'date_old' ? true : false}
               onChange={(value: boolean) =>
-                value === true && onFiltersApply({ sort_type: 'date_old' })
+                value === true && onFiltersApply({ sort: 'date_old' })
               }
             />
           </div>
           <div className="grid grid-cols-iconReverse">
             <p>Kop satylanlar</p>
             <Switch
-              checked={filters.sort_type === 'rated' ? true : false}
+              checked={filters.sort === 'rated' ? true : false}
               onChange={(value: boolean) =>
-                value === true && onFiltersApply({ sort_type: 'rated' })
+                value === true && onFiltersApply({ sort: 'rated' })
               }
             />
           </div>

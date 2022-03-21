@@ -5,9 +5,9 @@ const initialState = {
 	search: null,
 	brand: null,
 	category: null,
-	fromPrice: null,
-	toPrice: null,
-	sort_type: "date_new",
+	from_price: null,
+	to_price: null,
+	sort: "date_new",
 	division: null,
  };
 

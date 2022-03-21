@@ -8,8 +8,9 @@ import CircleBrands from 'common/CircleBrands';
 const SlickBrandsSlider: React.FC = (props: any) => {
   const { brands } = props;
 
+  const slidesToShow = brands.length < 5 ? brands.length : 5
   return (
-    <SlickSlider>
+    <SlickSlider settings={{slidesToShow: slidesToShow}}>
       {brands.map((item: any, idx: number) => (
         <CircleBrands {...item} key={idx} />
       ))}

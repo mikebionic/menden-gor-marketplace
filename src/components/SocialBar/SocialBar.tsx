@@ -35,9 +35,9 @@ export const SocialBar: React.FC = () => {
       {
         socialBarLinks.map(({icon, url, active}:any) =>
           active && 
-          // <a to={url}>
+          <a href={url}>
             <IconLabelButton icon={icon} />
-          // </a>
+          </a>
         )
       }
     </div>

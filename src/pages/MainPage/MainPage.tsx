@@ -56,21 +56,18 @@ const MainPage: React.FC = (props: any) => {
       <div className="max-w-2xl px-4 py-16 mx-auto sm:py-24 lg:pb-24 lg:pt-12 sm:px-6 lg:max-w-7xl lg:px-8 md:pt-8 min-phone:pt-4">
         <BannerWithCategory />
 
-        <Divider title="Featured products" />
-        {featuredList}
+        <div className="my-8"><SlickBrandsSlider /></div>
 
-        <Divider title="Discounts!" />
-        {discountList}
+        {featuredList && <><Divider title="Featured products" />{featuredList}</>}
+        {discountList && <><Divider title="Discounts!" />{discountList}</>}
 
         <div className="grid grid-cols-ResGroup">
           <ResGroup />
           <ResGroup />
           <ResGroup />
         </div>
-
         <SocialBar />
 
-        <SlickBrandsSlider />
       </div>
     </ErrorBoundary>
   );
