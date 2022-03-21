@@ -6,11 +6,10 @@ import { getCurrentUserInfo } from 'sapredux/selectors'
 
 const NavbarProfileDropdown: React.FC = (props:any) => {
   const { user, loggedIn } = props
-  console.log("++++++++++++++++++++++++++++++++", loggedIn)
   return <ProfileCircleDropdown 
     loggedIn={loggedIn}
-    username={user && user.RpAccUName}
-    image={user && user.FilePathS}
+    username={user && user.username}
+    image={user && user.image}
   />
 };
 

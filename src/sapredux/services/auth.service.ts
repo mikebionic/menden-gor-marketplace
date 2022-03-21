@@ -9,15 +9,10 @@ import {
 
 
 const login = (username='', password='') => {
-
 	if (serviceConfig.useMockApi){
 		if (username === rp_acc_basic_login_credentials.username
 			&& password === rp_acc_basic_login_credentials.password){
 			return Promise.resolve(rp_acc_basic_login_success)
-				.then(user => {
-					set_local_data_by_key('user', user)
-					return user;
-				});
 		} else {
 			return Promise.reject(rp_acc_basic_login_failure.message)
 		}
@@ -37,12 +32,7 @@ const login = (username='', password='') => {
 		}
 	};
 
-	return fetch(`${serviceConfig.apiUrl}/login/?type=rp_acc`, requestOptions)
-	.then(handleResponse)
-	.then(user => {
-		set_local_data_by_key('user', user)
-		return user;
-	});
+	return fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.login}?type=rp_acc`, requestOptions).then(handleResponse)
 }
 	
 const logout = () => {

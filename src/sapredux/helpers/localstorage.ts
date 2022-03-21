@@ -1,9 +1,8 @@
 import { ecnrypt_data, decrypt_data } from 'sapredux/helpers'
 
 export const get_local_data_by_key = (key:string, parse_json = true) => {
-	var local_data: any
-	var data: any = parse_json ? {} : ""
-	local_data = localStorage.getItem(key);
+	let data: any = parse_json ? {} : ""
+	let local_data: any = localStorage.getItem(key);
 	if(local_data !== undefined){
 		local_data = decrypt_data(local_data)
 		if (local_data.length > 1){

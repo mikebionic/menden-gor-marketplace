@@ -10,7 +10,7 @@ import { NotFoundPage } from 'pages/error';
 import { UserRoutes } from 'navigation';
 import { VGrid } from 'pages/VGrid';
 import { ProductPage } from 'pages/ProductPage';
-import { LoginPage, RegisterPage } from 'pages/auth';
+import { LoginPage, LogoutPage, RegisterPage } from 'pages/auth';
 
 export const AppRoutes: React.FC = ({ props }: any) => {
   return (
@@ -18,6 +18,7 @@ export const AppRoutes: React.FC = ({ props }: any) => {
       <Route path={routeConstants.root.route} element={<MainPage />} />
 
       <Route path={routeConstants.login.route} element={<LoginPage />} />
+      <Route path={routeConstants.logout.route} element={<LogoutPage />} />
       <Route
         path={routeConstants.register.route}
         element={<RegisterPage />}

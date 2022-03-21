@@ -43,6 +43,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
     <ErrorBoundary>
       <div>
         <div className="grid w-56 h-40 px-2 py-2 my-4 rounded-lg bg-fullwhite gap-y-1">
+          <b className="relative text-base text-black bottom-1">Filters:</b>
           <div>
             <p>Baha aralyk: </p>
           </div>
@@ -85,7 +86,11 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                 value === true && onFiltersApply({ sort_type: 'discounts' })
               }
             />
-          </div>
+          </div>          
+        </div>
+
+        <div className="grid w-56 h-60 px-2 py-2 my-4 rounded-lg bg-fullwhite gap-y-1">
+          <b className="relative text-base text-black bottom-1">Sort:</b>
           <div className="grid grid-cols-iconReverse">
             <p>Baha uludan kica</p>
             <Switch
@@ -104,8 +109,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
               }
             />
           </div>
-        </div>
-        <div className="grid w-56 h-24 px-2 py-2 my-4 rounded-lg bg-fullwhite gap-y-1">
+
           <div className="grid grid-cols-iconReverse ">
             <p>In taze</p>
             <Switch

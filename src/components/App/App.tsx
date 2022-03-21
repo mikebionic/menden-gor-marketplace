@@ -4,9 +4,10 @@ import { RootStateOrAny, useSelector } from 'react-redux';
 import { connect } from 'react-redux';
 import 'i18n';
 import { useTranslation } from 'react-i18next';
+import { Toaster } from 'react-hot-toast';
 
 import getTitle from 'components/App/getTitle';
-import { useHeader } from '../HeaderProvider';
+import { useHeader } from 'components/HeaderProvider';
 
 import { AppRoutes } from 'navigation';
 import { ErrorBoundary } from 'modules/errors';
@@ -62,6 +63,7 @@ const App: React.FC = (props: any) => {
         {alert && alert.message && (
           <div className={`alert ${alert.type}`}>{alert.message}</div>
         )}
+        <Toaster />
         <div
           className={`App bg-fullPageColor p-main-content pt-40 pb-8 overflow-x-hidden`}
         >

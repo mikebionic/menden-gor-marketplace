@@ -8,4 +8,5 @@ export const authConstants = {
 	LOGIN_FAILURE: 'AUTH_LOGIN_FAILURE',
 
 	LOGOUT: 'AUTH_LOGOUT',
+	UPDATE_REDUCER: 'AUTH_UPDATE_REDUCER',
 };

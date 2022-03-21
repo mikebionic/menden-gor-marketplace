@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector, connect } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { authActions } from 'sapredux/actions';
-import { RootState } from 'sapredux/reducers';
 
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
@@ -12,7 +11,7 @@ import { routeConstants } from 'navigation/routeConstants';
 
 const LoginPage: React.FC = (props:any) => {
 
-  const { loggedIn } = props
+  const { loggedIn, loading } = props
   const { t } = useTranslation();
   const navigate = useNavigate()
 
@@ -21,14 +20,7 @@ const LoginPage: React.FC = (props:any) => {
     password: '',
   });
   const { username, password } = inputs;
-  const loading = useSelector((state: RootState | any) => {
-    return state.auth.loading;
-  });
-
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(authActions.logout());
-  }, [dispatch]);
 
   if (!!loggedIn) {navigate(routeConstants.root.route)}
 
@@ -119,9 +111,8 @@ const LoginPage: React.FC = (props:any) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  loggedIn: state.auth.loggedIn
+  loggedIn: state.auth.loggedIn,
+  loading: state.auth.loading
 });
 
-export default connect(
-  mapStateToProps
-)(LoginPage)
+export default connect(mapStateToProps)(LoginPage)

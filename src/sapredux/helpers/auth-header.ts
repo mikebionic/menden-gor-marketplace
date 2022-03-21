@@ -6,10 +6,11 @@ export const authBearerHeader = (key = 'user') => {
 
 	if (user && user.token) {
 		return {'Authorization': `Bearer ${user.token}`};
-	} else {
-		// !!!TODO: retry login to refresh token here
-		// window.location.pathname = '/logout'
-	}
+	} 
+	// else {
+	// 	// !!!TODO: retry login to refresh token here
+	// 	// window.location.pathname = '/logout'
+	// }
 }
 
 export const authBasicHeader = (key = 'user') => {
