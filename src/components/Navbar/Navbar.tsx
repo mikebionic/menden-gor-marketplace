@@ -20,8 +20,8 @@ import NavbarProfileDropdown from 'components/NavbarProfileDropdown';
 import { MdSort } from 'react-icons/md';
 
 const mobileResponsive = {
-  mobileView: 'fixed bottom-0 z-100 w-full bg-white',
-  desktopView: 'fixed z-100 min-w-screen bg-white',
+  mobileView: 'fixed bottom-0 z-[100] w-full bg-white',
+  desktopView: 'fixed z-[100] min-w-[100vw] bg-white',
 };
 
 const classes =
@@ -59,7 +59,10 @@ export const Navbar = (props: any) => {
     return (
       <div className="absolute grid w-full p-2 overflow-x-hidden overflow-y-auto shadow-lg h-80 mt-2px left-12 bg-fullwhite">
         {categories.map((category: any, idx: number) => (
-          <Link to={`${routeConstants.vGrid.route}?category=${category.id}`} key={idx}>
+          <Link
+            to={`${routeConstants.vGrid.route}?category=${category.id}`}
+            key={idx}
+          >
             <CategoryListItem {...category} />
           </Link>
         ))}
@@ -69,7 +72,7 @@ export const Navbar = (props: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="fixed w-full z-navbar">
+      <div className="fixed w-full z-[999]">
         <header className="top-0 left-0 grid w-full h-20 grid-rows-1 navbarColor">
           {/* first row */}
           <div className="inline-grid items-center w-full grid-rows-1 mx-auto my-2 grid-cols-firstRowNavbar">
@@ -84,14 +87,13 @@ export const Navbar = (props: any) => {
             <Search />
 
             <NavbarProfileDropdown />
-
           </div>
         </header>
         <header className="top-0 left-0 w-full h-12 border-b border-white shadow-md navbarColor relarive">
           {/* second row */}
           <div className="w-full border-t border-white">
             <ClickAwayListener onClickAway={handleClickAway}>
-              <div className="absolute float-left border-r border-white h-46">
+              <div className="absolute float-left border-r border-white h-[46px]">
                 <IconLabelButton
                   className="inline-grid items-center grid-rows-1 px-0 py-2 mx-16 text-lg font-medium text-white grid-cols-icon"
                   icon={<MdSort className="text-2xl" />}
@@ -149,7 +151,7 @@ export const Navbar = (props: any) => {
                             <BsWallet2 className="w-6 h-6 mx-3 text-2xl text-white" />
                           }
                         />
-                        <span className="absolute top-0 font-semibold text-white left-70 text-10">
+                        <span className="absolute top-0 font-semibold text-white left[70%] text-[10px]">
                           TMT
                         </span>
                       </>

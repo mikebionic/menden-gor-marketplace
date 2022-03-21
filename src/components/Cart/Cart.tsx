@@ -40,7 +40,7 @@ export const Cart: React.FC<ICartProps> = ({
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 overflow-hidden z-navbar"
+          className="fixed inset-0 overflow-hidden z-[999]"
           onClose={setOpen}
         >
           <div className="absolute inset-0 overflow-hidden">
@@ -117,7 +117,7 @@ export const Cart: React.FC<ICartProps> = ({
                       <div className="mt-6">
                         <Link
                           to="/checkoutCart"
-                          className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-gradientFirstColor hover:bg-socialBarItemHover hover:text-white"
+                          className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark hover:bg-socialBarItemHover hover:text-white"
                         >
                           Checkout
                         </Link>

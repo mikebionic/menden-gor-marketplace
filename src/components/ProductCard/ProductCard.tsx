@@ -34,11 +34,11 @@ const ProductCard = ({ data }: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="relative grid items-center w-64 grid-cols-1 mt-4 bg-white rounded grid-rows-Card h-Card shadow-ResGroupShadow">
+      <div className="relative grid items-center w-64 grid-cols-1 mt-4 bg-white rounded grid-rows-Card h-[26rem] shadow-ResGroupShadow">
         <Badge.Ribbon
           text={discount}
           placement="start"
-          className={`cursor-default top-DiscountRibbon discount-left ${
+          className={`cursor-default top-[82%] discount-left ${
             discount ?? 'hidden'
           }`}
           color="red"

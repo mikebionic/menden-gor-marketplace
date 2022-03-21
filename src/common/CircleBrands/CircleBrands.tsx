@@ -1,9 +1,9 @@
 import { Image } from 'common/Image';
 
 const CircleBrands = ({ icon, name }: any) => (
-  <div className="flex flex-col items-center m-auto w-brands banner-container">
+  <div className="flex flex-col items-center m-auto w-[115px] banner-container">
     <Image
-      className="w-16 h-16 border border-solid border-borderBrands rounded-semifull transition_animation"
+      className="object-contain w-16 h-16 border border-solid border-[#e6e6e6] rounded-[50%] transition_animation"
       src={icon}
       alt={name}
     />
@@ -13,4 +13,4 @@ const CircleBrands = ({ icon, name }: any) => (
   </div>
 );
 
-export default CircleBrands
+export default CircleBrands;

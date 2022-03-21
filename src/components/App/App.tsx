@@ -65,7 +65,7 @@ const App: React.FC = (props: any) => {
         )}
         <Toaster />
         <div
-          className={`App bg-fullPageColor p-main-content pt-40 pb-8 overflow-x-hidden`}
+          className={`App bg-[#F3F4F8] p-[24px_60px_0_60px;] pt-40 pb-8 overflow-x-hidden`}
         >
           <AppRoutes />
         </div>

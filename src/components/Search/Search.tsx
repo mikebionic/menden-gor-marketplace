@@ -93,7 +93,7 @@ const Search: React.FC = (props: any) => {
 
   return (
     <form name="navbar_search" action="" onSubmit={handleSubmit}>
-      <div className="grid grid-rows-1 mx-auto my-0 w-search grid-cols-search">
+      <div className="grid grid-rows-1 mx-auto my-0 w-[728px] grid-cols-search">
         <ClickAwayListener onClickAway={handleClickAway}>
           <div
             className="w-32 h-12 bg-white border-2 border-white border-solid rounded-l-full cursor-pointer productColor gap-x-8"
@@ -123,18 +123,19 @@ const Search: React.FC = (props: any) => {
         <div className="w-full h-12 bg-white">
           <input
             type="text"
-            className="w-full h-full text-sm border-0 border-white outline-none placeholder-c8 ring-0 ring-offset-0 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
+            className="w-full h-full text-sm border-0 border-white outline-none placeholder-[#c8c8c8] ring-0 ring-offset-0 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
             placeholder="What are you looking for..."
             name="search_tag"
             value={search_tag}
             onChange={handleChange}
           />
         </div>
-        <button className="w-32 h-12 bg-white border-2 border-white border-solid rounded-r-full cursor-pointer rsearch_tagotate-180 productColor gap-x-8"
-          type="submit">
+        <button
+          className="w-32 h-12 bg-white border-2 border-white border-solid rounded-r-full cursor-pointer rsearch_tagotate-180 productColor gap-x-8"
+          type="submit"
+        >
           <IconLabelButton
-            className="
-            flex items-center w-20 h-4 pl-1 mx-auto my-3 text-sm text-center text-white"
+            className="flex items-center w-20 h-4 pl-1 mx-auto my-3 text-sm text-center text-white "
             icon={<AiOutlineSearch />}
             label="Search"
           />

@@ -25,7 +25,7 @@ const ProductPage: React.FC = (props: any) => {
 
   const productsList =
     resource && !!resource.related_resources ? (
-      <SlickSlider settings={{slidesToShow: 3}}>
+      <SlickSlider settings={{ slidesToShow: 3 }}>
         {resource.related_resources.map((resource: any, idx: number) => (
           <ProductCard key={idx} data={resource} />
         ))}
@@ -43,7 +43,7 @@ const ProductPage: React.FC = (props: any) => {
   }: any) => {
     // const  = resource
     return (
-      <div className="grid gap-8 p-4 mx-auto my-8 grid-cols-VGrid w-Product h-Product bg-fullwhite place-content-center">
+      <div className="grid gap-8 p-4 mx-auto my-8 grid-cols-VGrid w-[1150px] h-[450px] bg-fullwhite place-content-center">
         <div className="bg-gray-200 w-96 h-96">
           <Image
             src={image}

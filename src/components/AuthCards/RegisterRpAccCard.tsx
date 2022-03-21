@@ -5,6 +5,7 @@ import {
   SolutionOutlined,
   FileTextOutlined,
 } from '@ant-design/icons';
+import { IconLabelButton } from 'common/IconLabelButton';
 
 const { Option } = Select;
 
@@ -42,14 +43,12 @@ export const RegisterRpAccCard: React.FC = () => {
 
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
-      <Select style={{ width: 80 }}>
-        <Option value="993">+993</Option>
-      </Select>
+      <p className="w-auto px-2 text-center cursor-default">+993</p>
     </Form.Item>
   );
   return (
     <>
-      <div className="w-[510px] h-full m-auto grid grid-flow-row place-content-center auto-cols-auto place-items-center gap-6 p-8 overflow-hidden shadow-[1px_1px_4px_rgba(0,0,0,0.25)] bg-fullwhite rounded-lg">
+      <div className="w-[610px] h-full m-auto grid grid-flow-row place-content-center auto-cols-auto place-items-center gap-6 p-8 overflow-hidden shadow-[1px_1px_4px_rgba(0,0,0,0.25)] bg-fullwhite rounded-lg">
         <div>
           <p className="text-lg font-semibold text-textColorOrange">
             Registrasiya
@@ -67,6 +66,47 @@ export const RegisterRpAccCard: React.FC = () => {
           className="max-w-lg mx-auto "
         >
           <Form.Item
+            name="Welayat"
+            label="Welayat"
+            rules={[{ required: true, message: 'Please select Welayat!' }]}
+          >
+            <Select placeholder="Welayatynyzy saylan">
+              <Option value="Ashgabat">Ashgabat</Option>
+              <Option value="Ahal">Ahal</Option>
+              <Option value="Mary">Mary</Option>
+              <Option value="Lebap">Lebap</Option>
+              <Option value="Dashoguz">Dashoguz</Option>
+              <Option value="Balkan">Balkan</Option>
+            </Select>
+          </Form.Item>
+          <Form.Item
+            name="role"
+            label="Sowda roly"
+            rules={[
+              {
+                required: true,
+                message: 'Please select your role!',
+              },
+            ]}
+          >
+            <div className="grid grid-flow-col gap-4 auto-cols-max">
+              <div className="grid grid-flow-col gap-2 auto-cols-max">
+                <input
+                  className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-firstColorGradientFromDark focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange"
+                  type="radio"
+                />
+                <p>Alyjy</p>
+              </div>
+              <div className="grid grid-flow-col gap-2 auto-cols-max">
+                <input
+                  className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-firstColorGradientFromDark focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange"
+                  type="radio"
+                />
+                <p>Satyjy</p>
+              </div>
+            </div>
+          </Form.Item>
+          <Form.Item
             name="email"
             label="E-mail"
             rules={[
@@ -80,7 +120,7 @@ export const RegisterRpAccCard: React.FC = () => {
               },
             ]}
           >
-            <Input className="rounded-lg min-h-32px" />
+            <Input className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange" />
           </Form.Item>
 
           <Form.Item
@@ -125,9 +165,22 @@ export const RegisterRpAccCard: React.FC = () => {
           </Form.Item>
 
           <Form.Item
+            name="company"
+            label="Company"
+            rules={[
+              {
+                required: false,
+                message: 'Please input your company name!',
+                whitespace: true,
+              },
+            ]}
+          >
+            <Input className="rounded-lg border-[#E6E6E6] hover:border-textColorOrange" />
+          </Form.Item>
+
+          <Form.Item
             name="Name"
             label="Name"
-            tooltip="What do you want others to call you?"
             rules={[
               {
                 required: true,
@@ -136,7 +189,7 @@ export const RegisterRpAccCard: React.FC = () => {
               },
             ]}
           >
-            <Input className="rounded-lg" />
+            <Input className="rounded-lg border-[#E6E6E6] hover:border-textColorOrange" />
           </Form.Item>
 
           <Form.Item
@@ -156,42 +209,16 @@ export const RegisterRpAccCard: React.FC = () => {
             />
           </Form.Item>
 
-          <Form.Item
-            name="gender"
-            label="Gender"
-            rules={[{ required: true, message: 'Please select gender!' }]}
-          >
-            <Select placeholder="select your gender">
-              <Option value="male">Male</Option>
-              <Option value="female">Female</Option>
-            </Select>
-          </Form.Item>
-
-          <Form.Item
-            name="agreement"
-            valuePropName="checked"
-            rules={[
-              {
-                validator: (_: any, value: any) =>
-                  value
-                    ? Promise.resolve()
-                    : Promise.reject(new Error('Should accept agreement')),
-              },
-            ]}
-            {...tailFormItemLayout}
-          >
-            <Checkbox>
-              I have read the <a href="/">agreement</a>
-            </Checkbox>
-          </Form.Item>
           <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit">
-              Register
-            </Button>
+            <IconLabelButton
+              label="Hasaba al"
+              className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] m-auto"
+              labelClassName="m-auto text-white"
+            />
           </Form.Item>
         </Form>
       </div>
-      <div className="w-[60%] mt-12 mx-auto cursor-default">
+      <div className="w-[60%] my-12 mx-auto cursor-default">
         <Steps>
           <Step
             status="finish"

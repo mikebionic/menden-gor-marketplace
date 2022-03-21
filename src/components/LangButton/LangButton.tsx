@@ -59,7 +59,7 @@ const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
             onDropdownStateChange(!dropdownState);
           }}
         />
-        <span className="absolute top-0 right-0 font-semibold text-white text-10">
+        <span className="absolute top-0 right-0 font-semibold text-white text-[10px]">
           {currentLanguage.label}
         </span>
         <Transition

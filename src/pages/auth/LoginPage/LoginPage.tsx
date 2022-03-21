@@ -9,11 +9,10 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router';
 import { routeConstants } from 'navigation/routeConstants';
 
-const LoginPage: React.FC = (props:any) => {
-
-  const { loggedIn, loading } = props
+const LoginPage: React.FC = (props: any) => {
+  const { loggedIn, loading } = props;
   const { t } = useTranslation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [inputs, setInputs] = useState({
     username: '',
@@ -22,7 +21,9 @@ const LoginPage: React.FC = (props:any) => {
   const { username, password } = inputs;
   const dispatch = useDispatch();
 
-  if (!!loggedIn) {navigate(routeConstants.root.route)}
+  if (!!loggedIn) {
+    navigate(routeConstants.root.route);
+  }
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -112,7 +113,7 @@ const LoginPage: React.FC = (props:any) => {
 
 const mapStateToProps = (state: any) => ({
   loggedIn: state.auth.loggedIn,
-  loading: state.auth.loading
+  loading: state.auth.loading,
 });
 
-export default connect(mapStateToProps)(LoginPage)
+export default connect(mapStateToProps)(LoginPage);
