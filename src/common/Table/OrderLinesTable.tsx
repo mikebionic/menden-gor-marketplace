@@ -1,13 +1,12 @@
 
 import { useState } from 'react'
 import { Table, Form, Space } from 'antd';
-import { resource } from 'sapredux/reducers/resource.reducer';
 
 const columns = [
   {
     title: 'Product Name',
-    dataIndex: 'name',
     align: 'center',
+    dataIndex: 'name',
   },
   {
     title: 'Amount',
@@ -16,8 +15,8 @@ const columns = [
   },
   {
     title: 'Price',
-    dataIndex: 'orderLinePrice',
     align: 'center',
+    dataIndex: 'orderLinePrice',
     className: 'text-gray-500',
   },
   {
@@ -34,7 +33,6 @@ const columns = [
 
 export const OrderLinesTable = ({data}:any) => {
 
-  console.log(data)
   const order_lines = data.map((item:any, idx:number) => ({
     ...item,
     key: idx,

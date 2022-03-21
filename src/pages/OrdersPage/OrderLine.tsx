@@ -11,16 +11,17 @@ export const OrderLine = (props:any) => {
     currencySymbol,
     orderDesc,
     statusName,
-    order_inv_lines
+		status_ui,
+    order_inv_lines,
   } = props
   return (
     <div className="grid w-11/12 h-auto gap-4 p-6 mx-auto my-4 bg-white cursor-default shadow-ResGroupShadow rounded-xl">
       <div className="inline-grid grid-cols-2">
         <h3 className="text-2xl font-semibold">Sargyt-{regNo}</h3>
         <Progress
-          percent={70}
+          percent={status_ui.percentage}
           status="active"
-          strokeColor="rgba(254, 159, 118)"
+          strokeColor={status_ui.color_hash}
           showInfo={false}
         />
       </div>
@@ -35,7 +36,7 @@ export const OrderLine = (props:any) => {
           <div className="col-span-2 row-span-2">
             <IconLabelButton
               label={statusName}
-              className="px-3 text-white bg-yellow-500 rounded"
+              className={`px-3 text-white bg-[${status_ui.color_hash}] rounded`}
             />
           </div>
         </div>
