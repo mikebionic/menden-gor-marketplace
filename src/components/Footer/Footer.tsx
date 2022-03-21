@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { AiOutlineGlobal } from 'react-icons/ai';
@@ -11,10 +11,12 @@ import { routeConstants } from 'navigation/routeConstants';
 export const Footer: React.FC = () => {
   return (
     <div className="relative">
-      <div className="relative bottom-0 grid w-full h-56 grid-cols-5 grid-rows-2 gap-4 px-32 pt-8 absolte shadow-Footer">
+      <div className="bottom-0 grid w-full h-56 grid-cols-5 grid-rows-2 gap-4 px-32 pt-8 shadow-Footer">
         <div className="mx-auto my-0">
           <Link to={routeConstants.about.route}>
-            <h1 className="text-xl font-semibold">{routeConstants.about.name}</h1>
+            <h1 className="text-xl font-semibold">
+              {routeConstants.about.name}
+            </h1>
           </Link>
           <Link to={routeConstants.about.route}>
             <p>{routeConstants.about.name}</p>
@@ -42,7 +44,9 @@ export const Footer: React.FC = () => {
         </div>
         <div className="mx-auto my-0">
           <Link to={routeConstants.contact.route}>
-            <h1 className="text-xl font-semibold text-gradient">{routeConstants.contact.name}</h1>
+            <h1 className="text-xl font-semibold text-gradient">
+              {routeConstants.contact.name}
+            </h1>
           </Link>
           <a href="tel:+99364045600">
             <IconLabelButton
