@@ -50,6 +50,11 @@ export const RegisterRpAccCard: React.FC = () => {
   return (
     <>
       <div className="w-[510px] h-full m-auto grid grid-flow-row place-content-center auto-cols-auto place-items-center gap-6 p-8 overflow-hidden shadow-[1px_1px_4px_rgba(0,0,0,0.25)] bg-fullwhite rounded-lg">
+        <div>
+          <p className="text-lg font-semibold text-textColorOrange">
+            Registrasiya
+          </p>
+        </div>
         <Form
           {...formItemLayout}
           form={form}
