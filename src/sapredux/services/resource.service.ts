@@ -14,7 +14,7 @@ const fetchAll = async (query_string="") => {
 			}, 200);
 		});
 	}
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.paginated_resources}${query_string}`).then(handleResponse);
+	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.paginated_resources}${query_string}`,{credentials:'include'}).then(handleResponse);
 }
 
 const fetchById = async (id:number) => {
@@ -24,18 +24,18 @@ const fetchById = async (id:number) => {
 			resolve(resource)
 		});
 	}
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_resources}${id}/?showRelated=1`).then(handleResponse);
+	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_resources}${id}/?showRelated=1`,{credentials:'include'}).then(handleResponse);
 }
 
 const fetchFeatured_data = async () => {
 	return await fetch_with_data(
-		() => fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.featured_resources}`).then(handleResponse),
+		() => fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.featured_resources}`,{credentials:'include'}).then(handleResponse),
 		transformResponse
 	)
 }
 const fetchDiscount_data = async () => {
 	return await fetch_with_data(
-		() => fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.discount_resources}`).then(handleResponse),
+		() => fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.discount_resources}`,{credentials:'include'}).then(handleResponse),
 		transformResponse
 	)
 }
@@ -49,7 +49,7 @@ const fetchById_data = async(id:number) => {
 }
 
 const loadMore = async({next_url}:any) => {
-	return await fetch(`${serviceConfig.apiHost}${next_url}`).then(handleResponse);
+	return await fetch(`${serviceConfig.apiHost}${next_url}`,{credentials:'include'}).then(handleResponse);
 }
 
 export const resourceService = {
