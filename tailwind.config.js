@@ -14,6 +14,9 @@ module.exports = {
         socialBarItemHover: '#FE9F76', //mnogo hz cto delat,
         textColorOrange: "#F9704E",
       },
+      fontFamily: {
+        'test': ['Hurricane', 'cursive']
+      },
       screens: {
         'min-phone': '320px',
         'max-phone': '550px',
@@ -70,5 +73,8 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/line-clamp'),
   ],
 }

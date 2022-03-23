@@ -19,7 +19,7 @@ export const AboutPage: React.FC = () => {
           <h5 className="mb-6 text-2xl font-semibold tracking-wider text-black capitalize">
             Marketplace
           </h5>
-          <p className="mb-12 text-lg leading-7 tracking-wider text-justify">
+          <p className="mb-12 text-lg leading-7 tracking-wider text-justify font-test">
             The e-commerce program is primarily designed for merchants, making
             it easy to manage their goods, customers and orders. This software
             is state-of-the-art and is designed to automate trading for trading
