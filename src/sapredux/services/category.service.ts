@@ -1,6 +1,7 @@
 import { serviceConfig } from 'configs';
 import { handleResponse } from 'sapredux/helpers';
 import { all_categories } from './mock_data/category.mock';
+import { fetchWithCred } from 'sapredux/helpers'
 
 const fetchAll = async () => {
 
@@ -12,7 +13,7 @@ const fetchAll = async () => {
 		});
 	}
 
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_categories}`).then(handleResponse);
+	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.all_categories}`).then(handleResponse);
 
 }
 

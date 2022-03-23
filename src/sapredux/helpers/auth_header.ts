@@ -16,7 +16,7 @@ export const checkLoginAndGetToken = (key = 'user') => {
 	if (user && user.token){
 		const current_date = new Date()
 		const exp_date = new Date(user.exp)
-		console.log(exp_date > current_date, exp_date, current_date)
+		// console.log(exp_date > current_date, exp_date, current_date)
 		if (exp_date > current_date){
 			return user.token
 		} else {
@@ -29,7 +29,7 @@ export const checkLoginAndGetToken = (key = 'user') => {
 	} else {
 		//show toast unauth and remove local data
 	}
-	return user.token
+	return null
 }
 
 export const authBasicHeader = (key = 'user') => {

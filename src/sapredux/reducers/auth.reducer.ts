@@ -40,13 +40,6 @@ export const auth = (state = initialState, {type, payload}:any) => {
 				error: false,
 				data: {}
 			};
-		// case authConstants.UPDATE_REDUCER:
-		// 	set_local_data_by_key('user', payload)
-		// 	return {
-		// 		loggedIn: true,
-		// 		loading: false,
-		// 		data: payload
-		// 	};
 		default:
 			return state
 	}

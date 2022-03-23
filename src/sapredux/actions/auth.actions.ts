@@ -31,8 +31,21 @@ const logout = () => {
 	return { type: authConstants.LOGOUT };
 }
 
-const update_login = (data:any) => {
-	return { type: authConstants.UPDATE_REDUCER, payload: data }
+const update_login = (username: string, password: string) => {
+	return (dispatch: any) => {
+		authService.login(username, password).then(
+			(response: any) => {
+				dispatch(success({ ...transformAuth(response), username: username, password: password }));
+				// showToastMessage({type:"success", message:`${username}, You have successfully logged in!`})
+			}
+			// (error: any) => {
+			// 	dispatch(failure(error.toString()));
+			// 	dispatch(alertActions.error(error.toString()));
+			// }
+		);
+	};
+
+	function success(user: any) { return { type: authConstants.LOGIN_SUCCESS, payload: user } }
 }
 
 export const authActions = {
