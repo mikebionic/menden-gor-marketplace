@@ -8,7 +8,6 @@ export const handleResponse = (response: any) => {
 				// auto logout if 401 response returned from api
 				// authService.logout();
 			}
-
 			const error = (data && data.message) || response.statusText;
 			return Promise.reject(error);
 		}

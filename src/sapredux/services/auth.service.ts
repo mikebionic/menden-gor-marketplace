@@ -1,5 +1,5 @@
 import { serviceConfig } from 'configs';
-import { set_local_data_by_key } from 'sapredux/helpers'
+
 import { handleResponse } from 'sapredux/helpers';
 import {
 	rp_acc_basic_login_credentials,
@@ -25,11 +25,12 @@ const login = (username='', password='') => {
 		return Promise.reject("Fill the required fields!");
 	}
 
-	const requestOptions = {
+	const requestOptions: any = {
 		method: 'GET',
 		headers: {
 			"Authorization": `Basic ${auth_header}`,
-		}
+		},
+		credentials:'include',
 	};
 
 	return fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.login}?type=rp_acc`, requestOptions).then(handleResponse)
