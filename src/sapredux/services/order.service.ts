@@ -4,7 +4,7 @@ import { serviceConfig } from 'configs';
 import { authBearerHeader, handleResponse } from 'sapredux/helpers';
 import { all_orders } from './mock_data/orders.mock';
 import { transformOrderInv as transformResponse } from './transform_data';
-import { fetch_with_data } from 'sapredux/helpers';
+import { transformFetch, fetchWithCred } from 'sapredux/helpers';
 
 const fetchAll = async () => {
 	if (serviceConfig.useMockApi){
@@ -15,11 +15,8 @@ const fetchAll = async () => {
 		});
 	}
 
-	const requestOptions = {
-		method: 'GET',
-		headers: authBearerHeader()
-	};
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_orders}?limit=15`, requestOptions).then(handleResponse);
+	const requestOptions = { headers: authBearerHeader() };
+	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.all_orders}?limit=15`, requestOptions).then(handleResponse);
 }
 
 const fetchById = async (guid:string) => {
@@ -30,19 +27,16 @@ const fetchById = async (guid:string) => {
 		});
 	}
 
-	const requestOptions = {
-		method: 'GET',
-		headers: authBearerHeader()
-	};
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_orders}${guid}/`, requestOptions).then(handleResponse);
+	const requestOptions = { headers: authBearerHeader() };
+	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.all_orders}${guid}/`, requestOptions).then(handleResponse);
 }
 
 const fetchAll_data = async() => {
-	return await fetch_with_data(fetchAll, transformResponse)
+	return await transformFetch(fetchAll, transformResponse)
 }
 
 const fetchById_data = async(guid:string) => {
-	return await fetch_with_data((() => fetchById(guid)), transformResponse, false)
+	return await transformFetch((() => fetchById(guid)), transformResponse, false)
 }
 
 

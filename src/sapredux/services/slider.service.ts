@@ -1,6 +1,7 @@
 import { serviceConfig } from 'configs';
-import { handleResponse, authBearerHeader } from 'sapredux/helpers';
+import { handleResponse } from 'sapredux/helpers';
 import { all_sliders } from './mock_data/slider.mock';
+import { fetchWithCred } from 'sapredux/helpers'
 
 const fetchAll = async () => {
 
@@ -12,12 +13,7 @@ const fetchAll = async () => {
 		});
 	}
 
-	const requestOptions = {
-		method: 'GET',
-		// headers: authBearerHeader()
-	};
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_sliders}`, requestOptions).then(handleResponse);
-
+	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.all_sliders}`).then(handleResponse);
 }
 
 export const sliderService = {

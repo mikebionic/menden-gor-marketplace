@@ -4,7 +4,7 @@ import { serviceConfig } from 'configs';
 import { handleResponse } from 'sapredux/helpers';
 import { all_brands } from './mock_data/brand.mock';
 import { transformBrands as transformResponse } from './transform_data';
-import { fetch_with_data } from 'sapredux/helpers';
+import { transformFetch, fetchWithCred } from 'sapredux/helpers';
 
 const fetchAll = async () => {
 
@@ -16,7 +16,7 @@ const fetchAll = async () => {
 		});
 	}
 
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_brands}`).then(handleResponse);
+	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.all_brands}`).then(handleResponse);
 }
 
 const fetchById = async (id:number) => {
@@ -27,15 +27,15 @@ const fetchById = async (id:number) => {
 		});
 	}
 
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_brands}${id}/`).then(handleResponse);
+	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.all_brands}${id}/`).then(handleResponse);
 }
 
 const fetchAll_data = async() => {
-	return await fetch_with_data(fetchAll, transformResponse)
+	return await transformFetch(fetchAll, transformResponse)
 }
 
 const fetchById_data = async(id:number) => {
-	return await fetch_with_data((() => fetchById(id)), transformResponse, false)
+	return await transformFetch((() => fetchById(id)), transformResponse, false)
 }
 
 
