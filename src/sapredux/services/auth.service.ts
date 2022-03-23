@@ -6,6 +6,7 @@ import {
 	rp_acc_basic_login_success,
 	rp_acc_basic_login_failure
 } from './mock_data/auth.mock'
+import { fetchWithCred } from 'sapredux/helpers'
 
 
 const login = (username='', password='') => {
@@ -26,14 +27,12 @@ const login = (username='', password='') => {
 	}
 
 	const requestOptions: any = {
-		method: 'GET',
 		headers: {
 			"Authorization": `Basic ${auth_header}`,
 		},
-		credentials:'include',
 	};
 
-	return fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.login}?type=rp_acc`, requestOptions).then(handleResponse)
+	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.login}?type=rp_acc`, requestOptions).then(handleResponse)
 }
 	
 const logout = () => {

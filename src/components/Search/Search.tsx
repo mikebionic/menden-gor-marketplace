@@ -10,6 +10,7 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import { IconLabelButton } from 'common/IconLabelButton';
 import { applyFilters } from 'sapredux/actions';
+import { routeConstants } from 'navigation/routeConstants';
 
 const Search: React.FC = (props: any) => {
 
@@ -45,7 +46,7 @@ const Search: React.FC = (props: any) => {
         search_querystring += `${key}=${filters[key]}&`;
       }
     });
-    navigate(`${location.pathname}${search_querystring}`)
+    navigate(`${routeConstants.vGrid.route}${search_querystring}`)
   };
 
   const search_types = [

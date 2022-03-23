@@ -4,7 +4,7 @@ import { serviceConfig } from 'configs';
 import { authBearerHeader, handleResponse } from 'sapredux/helpers';
 import { all_orders } from './mock_data/orders.mock';
 import { transformOrderInv as transformResponse } from './transform_data';
-import { fetch_with_data } from 'sapredux/helpers';
+import { transformFetch } from 'sapredux/helpers';
 
 const fetchAll = async () => {
 	if (serviceConfig.useMockApi){
@@ -38,11 +38,11 @@ const fetchById = async (guid:string) => {
 }
 
 const fetchAll_data = async() => {
-	return await fetch_with_data(fetchAll, transformResponse)
+	return await transformFetch(fetchAll, transformResponse)
 }
 
 const fetchById_data = async(guid:string) => {
-	return await fetch_with_data((() => fetchById(guid)), transformResponse, false)
+	return await transformFetch((() => fetchById(guid)), transformResponse, false)
 }
 
 

@@ -1,5 +1,5 @@
 
-export const fetch_with_data = async(fetchFunc:any, transformFunc:any, data_list=true) => {
+export const transformFetch = async(fetchFunc:any, transformFunc:any, data_list=true) => {
 	const response = await fetchFunc()
 	const response_data = response ?
 		data_list ? response.data.map(transformFunc) : transformFunc(response.data)
@@ -13,3 +13,11 @@ export const fetch_with_data = async(fetchFunc:any, transformFunc:any, data_list
 		}
 	}
 }
+
+const requestOptions: any = {
+	method: 'GET',
+	credentials:'include',
+};
+
+export const fetchWithCred = async(url:string, credentials:any={}) =>
+	fetch(url, {...requestOptions, ...credentials})

@@ -4,7 +4,7 @@ import { serviceConfig } from 'configs';
 import { handleResponse } from 'sapredux/helpers';
 import { all_brands } from './mock_data/brand.mock';
 import { transformBrands as transformResponse } from './transform_data';
-import { fetch_with_data } from 'sapredux/helpers';
+import { transformFetch } from 'sapredux/helpers';
 
 const fetchAll = async () => {
 
@@ -31,11 +31,11 @@ const fetchById = async (id:number) => {
 }
 
 const fetchAll_data = async() => {
-	return await fetch_with_data(fetchAll, transformResponse)
+	return await transformFetch(fetchAll, transformResponse)
 }
 
 const fetchById_data = async(id:number) => {
-	return await fetch_with_data((() => fetchById(id)), transformResponse, false)
+	return await transformFetch((() => fetchById(id)), transformResponse, false)
 }
 
 

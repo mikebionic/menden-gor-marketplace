@@ -26,7 +26,7 @@ const socialBarLinks = [
     icon: (
       <GrAppleAppStore className="w-6 h-6 mx-auto my-1 text-white transition-all duration-300 border border-white border-solid rounded hover:text-socialBarItemHover hover:border-socialBarItemHover" />
     ),
-    active: false,
+    active: true,
   },
   {
     url: 'https://play.google.com/sapcozgut',
@@ -43,9 +43,9 @@ export const SocialBar: React.FC = () => {
       {
         socialBarLinks.map(({icon, url, active}:any) =>
           active && 
-          <a href={url}>
+          // <a href={url}>
             <IconLabelButton icon={icon} />
-          </a>
+          // </a>
         )
       }
     </div>

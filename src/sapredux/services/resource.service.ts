@@ -4,7 +4,7 @@ import { serviceConfig } from 'configs';
 import { handleResponse } from 'sapredux/helpers';
 import { paginated_resources } from './mock_data/resource.mock';
 import { transformResources as transformResponse } from './transform_data';
-import { fetch_with_data } from 'sapredux/helpers/fetch_with_data';
+import { transformFetch, fetchWithCred } from 'sapredux/helpers';
 
 const fetchAll = async (query_string="") => {
 	if (serviceConfig.useMockApi){
@@ -14,7 +14,7 @@ const fetchAll = async (query_string="") => {
 			}, 200);
 		});
 	}
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.paginated_resources}${query_string}`,{credentials:'include'}).then(handleResponse);
+	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.paginated_resources}${query_string}`).then(handleResponse);
 }
 
 const fetchById = async (id:number) => {
@@ -24,32 +24,32 @@ const fetchById = async (id:number) => {
 			resolve(resource)
 		});
 	}
-	return await fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.all_resources}${id}/?showRelated=1`,{credentials:'include'}).then(handleResponse);
+	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.all_resources}${id}/?showRelated=1`).then(handleResponse);
 }
 
 const fetchFeatured_data = async () => {
-	return await fetch_with_data(
-		() => fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.featured_resources}`,{credentials:'include'}).then(handleResponse),
+	return await transformFetch(
+		() => fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.featured_resources}`).then(handleResponse),
 		transformResponse
 	)
 }
 const fetchDiscount_data = async () => {
-	return await fetch_with_data(
-		() => fetch(`${serviceConfig.apiUrl}${serviceConfig.routes.discount_resources}`,{credentials:'include'}).then(handleResponse),
+	return await transformFetch(
+		() => fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.discount_resources}`).then(handleResponse),
 		transformResponse
 	)
 }
 
 const fetchAll_data = async() => {
-	return await fetch_with_data(fetchAll, transformResponse)
+	return await transformFetch(fetchAll, transformResponse)
 }
 
 const fetchById_data = async(id:number) => {
-	return await fetch_with_data((() => fetchById(id)), transformResponse, false)
+	return await transformFetch((() => fetchById(id)), transformResponse, false)
 }
 
 const loadMore = async({next_url}:any) => {
-	return await fetch(`${serviceConfig.apiHost}${next_url}`,{credentials:'include'}).then(handleResponse);
+	return await fetchWithCred(`${serviceConfig.apiHost}${next_url}`).then(handleResponse);
 }
 
 export const resourceService = {
