@@ -1,107 +1,30 @@
-import React from 'react';
-import { Table, Form, Space } from 'antd';
-import noimage from 'common/images/noimage.png';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 
-const columns = [
-  {
-    title: 'Image',
-    dataIndex: 'image',
-    align: 'center',
-  },
-  {
-    title: 'Description',
-    align: 'center',
-    render: () => (
-      <Space size="small" className="grid grid-rows-3 text-left text-gray-500">
-        <p>Name: CRAFERS - DELUXE MILK CHOCOLATE ( PEACH & VANILLA )</p>
-        <p>Category: CRAFERS</p>
-        <p>Barcode: 4780059600807</p>
-      </Space>
-    ),
-  },
-  {
-    title: 'Price',
-    dataIndex: 'price',
-    align: 'center',
-    className: 'text-gray-500',
-  },
-  {
-    title: 'Action',
-    align: 'center',
-    render: () => (
-      <Space size="middle">
-        <button>Add to Cart</button>
-        <button>wishlist</button>
-      </Space>
-    ),
-  },
-];
+import { WishlistTable } from 'common/Table';
+import { wishlistService } from 'sapredux/services'
+import { routeConstants } from 'navigation/routeConstants';
+import { Spinner } from 'modules/loaders';
 
-const data: any = [];
-for (let i = 1; i <= 10; i++) {
-  data.push({
-    key: i,
-    image: <img src={noimage} alt="" className="w-24 m-auto" />,
-    price: `${i}2 TMT`,
-  });
-}
 
-export class WishlistPage extends React.Component {
-  state: any = {
-    bordered: false,
-    loading: false,
-    size: 'default',
-    title: undefined,
-    showHeader: true,
-    footer: false,
-    rowSelection: false,
-    hasData: true,
-    tableLayout: undefined,
-    pagination: false,
-    xScroll: false,
-  };
+export const WishlistPage: React.FC = () => {
 
-  handleYScrollChange = (enable: any) => {
-    this.setState({ yScroll: enable });
-  };
-
-  handleXScrollChange = (e: any) => {
-    this.setState({ xScroll: e.target.value });
-  };
-
-  render() {
-    const { xScroll, yScroll, ...state }: any = this.state;
-
-    const scroll: any = {};
-    if (yScroll) {
-      scroll.y = 240;
-    }
-    if (xScroll) {
-      scroll.x = '100vw';
-    }
-
-    const tableColumns: any = columns.map((item) => ({
-      ...item,
-    }));
-    if (xScroll === 'fixed') {
-      tableColumns[0].fixed = true;
-      tableColumns[tableColumns.length - 1].fixed = 'right';
-    }
-
-    return (
-      <>
-        <Form
-          layout="inline"
-          className="shadow-loginShadow components-table-demo-control-bar"
-          style={{ marginBottom: 16 }}
-        ></Form>
-        <Table
-          {...this.state}
-          columns={tableColumns}
-          dataSource={state.hasData ? data : null}
-          scroll={scroll}
-        />
-      </>
-    );
+  const [loading, set_loading] = useState(true)
+  const [wishlist_items, set_wishlist_items] = useState([])
+  const get_wishlist_data = async() => {
+    set_loading(true)
+    const wishlist_items = await wishlistService.fetchAll_data()
+    wishlist_items && set_wishlist_items(wishlist_items); set_loading(false)
   }
-}
+
+  useEffect(() => {
+    get_wishlist_data();
+  }, []);
+
+  return (
+    <>
+      { loading && <Spinner /> }
+      { <WishlistTable data={wishlist_items} /> }
+    </>
+  );
+};
