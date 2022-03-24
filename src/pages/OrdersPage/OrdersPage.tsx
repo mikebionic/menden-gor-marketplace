@@ -29,7 +29,6 @@ export const OrdersPage: React.FC = () => {
   useEffect(() => {
     get_order_invoices();
   }, []);
-  console.log(order_invoices_list)
 
   return (
     <>

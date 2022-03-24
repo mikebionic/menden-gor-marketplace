@@ -1,7 +1,8 @@
 import * as R from 'ramda'
 
-import { authConstants } from 'sapredux/constants';
 import { get_local_data_by_key, set_local_data_by_key } from 'sapredux/helpers'
+import { authConstants } from 'sapredux/constants';
+import { authService } from 'sapredux/services'
 
 const user = get_local_data_by_key('user');
 const initialState = !R.isEmpty(user)
@@ -27,6 +28,7 @@ export const auth = (state = initialState, {type, payload}:any) => {
 				data: payload
 			};
 		case authConstants.LOGIN_FAILURE:
+			authService.logout()
 			return {
 				loggedIn: false,
 				loading: false,
@@ -34,6 +36,7 @@ export const auth = (state = initialState, {type, payload}:any) => {
 				data: payload ?? {}
 			};
 		case authConstants.LOGOUT:
+			authService.logout()
 			return {
 				loggedIn: false,
 				loading: false,
