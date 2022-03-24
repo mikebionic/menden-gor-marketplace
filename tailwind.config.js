@@ -7,15 +7,16 @@ module.exports = {
       colors: {
         firstColorGradientFromDark: '#ff8d73',
         secondColorGradientToLight: '#feb37b',
+        textColorOrange: "#F9704E",
         white: '#f7f6fb', //hz cto delat
         fullwhite: '#fff', //toje
         glass: 'rgba(255,255,255,0.1)',
         black: '#000',
         socialBarItemHover: '#FE9F76', //mnogo hz cto delat,
-        textColorOrange: "#F9704E",
+        textLightGray: '#606060'
       },
       fontFamily: {
-        'test': ['Hurricane', 'cursive']
+        'oxygen': ['Oxygen', 'sans-serif']
       },
       screens: {
         'min-phone': '320px',

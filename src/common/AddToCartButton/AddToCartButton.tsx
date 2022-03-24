@@ -14,7 +14,7 @@ export const AddToCartButton: React.FC<IAddToCartButtonProps> = ({
   count,
 }) => (
   <IconLabelButton
-    className="relative bottom-0 right-0 float-right mb-2 mr-2 bg-white border border-white rounded-md shadow-sm transition_animation w-9 h-9"
+    className={`relative bottom-0 right-0 mb-2 mr-2 float-right bg-fullwhite border border-white rounded-md hover:shadow-sm transition_animation w-9 h-9`}
     icon={
       count ? (
         <CheckOutlined className="w-full h-full mx-auto my-0 text-2xl text-red-500" />
