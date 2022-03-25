@@ -62,31 +62,7 @@ export const OrderLinesTable = ({ data }: any) => {
     xScroll: false,
   });
 
-  const handleYScrollChange = (enable: any) => {
-    set_table_config({ ...table_config, yScroll: enable });
-  };
-
-  const handleXScrollChange = (e: any) => {
-    set_table_config({ ...table_config, xScroll: e.target.value });
-  };
-
-  const { xScroll, yScroll, ...state }: any = table_config;
-
-  const scroll: any = {};
-  if (yScroll) {
-    scroll.y = 240;
-  }
-  if (xScroll) {
-    scroll.x = '100vw';
-  }
-
-  const tableColumns: any = columns.map((item) => ({
-    ...item,
-  }));
-  if (xScroll === 'fixed') {
-    tableColumns[0].fixed = true;
-    tableColumns[tableColumns.length - 1].fixed = 'right';
-  }
+  const tableColumns: any = columns.map((item) => ({...item}));
 
   return (
     <>
@@ -98,8 +74,7 @@ export const OrderLinesTable = ({ data }: any) => {
       <Table
         {...table_config}
         columns={tableColumns}
-        dataSource={state.hasData ? order_lines : null}
-        scroll={scroll}
+        dataSource={table_config.hasData ? order_lines : null}
       />
     </>
   );
