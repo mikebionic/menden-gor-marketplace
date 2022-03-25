@@ -24,7 +24,7 @@ const fetchById = async (id:number) => {
 			resolve(resource)
 		});
 	}
-	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.all_resources}${id}/?showRelated=1`).then(handleResponse);
+	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.all_resources}${id}/?showRelated=1&showRatings=1`).then(handleResponse);
 }
 
 const fetchFeatured_data = async () => {

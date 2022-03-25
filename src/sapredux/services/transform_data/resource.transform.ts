@@ -1,4 +1,4 @@
-import { transformImage } from "./image.transform";
+import { transformImage, transformReview } from "sapredux/services/transform_data";
 
 export const transformResources = (data: any) => ({
 	id: data.ResId,
@@ -104,4 +104,7 @@ export const transformResources = (data: any) => ({
 	})) : [],
 	images: data.Images ?
 	data.Images.map((image:any) => transformImage(image)) : [],
+	reviews: data.Rating ?
+	data.Rating.map((review:any) => transformReview(review)) : [],
 })
+

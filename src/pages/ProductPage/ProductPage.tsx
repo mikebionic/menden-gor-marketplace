@@ -14,7 +14,7 @@ import { PriceButton } from 'common/PriceButton';
 
 import { ImEye } from 'react-icons/im';
 import { WishlistButton } from 'common/WishlistButton';
-import { ProductReviewComponent } from 'components/ProductReview';
+import { ProductInfoTabs } from 'components/ProductInfoTabs';
 
 
 const RenderProuct = ({
@@ -28,6 +28,8 @@ const RenderProuct = ({
   totBalance,
   realPrice,
   wishlist,
+  viewCnt,
+  ratingValue,
 }: any) => (
   <ErrorBoundary>
   <div className="grid gap-8 p-4 mx-auto my-8 grid-cols-VGrid w-[1150px] h-[450px] bg-fullwhite place-content-center">
@@ -57,13 +59,13 @@ const RenderProuct = ({
         </p>
       </div>
       <div className="grid grid-flow-col gap-4 auto-cols-max">
-        <StarRate className="px-0" />
-        <p className="text-base text-[#6B6B6B] cursor-default">
+        <StarRate className="px-0" value={ratingValue} />
+        {/* <p className="text-base text-[#6B6B6B] cursor-default">
           100 Teswir
-        </p>
+        </p> */}
         <div className="inline-grid grid-flow-col gap-1 cursor-default auto-cols-max place-content-center place-items-center">
           <ImEye className="text-xl text-textColorOrange" />
-          205
+          {viewCnt}
         </div>
       </div>
       <p className="text-base text-justify text-gray-400 line-through">
@@ -116,7 +118,7 @@ const ProductPage: React.FC = (props: any) => {
     <ErrorBoundary>
       <div className="py-8">
         <RenderProuct {...resource} />
-        <ProductReviewComponent />
+        <ProductInfoTabs {...resource} />
         <Divider title="Similar products" />
         {productsList}
       </div>

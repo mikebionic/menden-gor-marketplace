@@ -3,7 +3,7 @@ import {
 	transformUser,
 	transformRpAccType,
 	transFormRpAccStatus
-} from './user.transform'
+} from "sapredux/services/transform_data";
 
 export const transformAuth = (data:any) => {
 	return {

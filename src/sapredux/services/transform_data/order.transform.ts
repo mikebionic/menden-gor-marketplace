@@ -1,5 +1,4 @@
-import { transformResources } from "."
-import { transformRpAcc } from "./user.transform"
+import { transformResources, transformRpAcc } from "sapredux/services/transform_data";
 
 import { BiLoader } from 'react-icons/bi'
 import { BsCurrencyDollar } from 'react-icons/bs'
