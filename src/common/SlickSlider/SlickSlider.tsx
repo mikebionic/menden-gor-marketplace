@@ -3,12 +3,10 @@ import Slider from 'react-slick';
 
 interface ISlickSlider {
   settings?: any;
-	children?: any;
+  children?: any;
 }
 
-const SlickSlider: React.FC<ISlickSlider> = (
-  {settings, children}
-  ) => {
+const SlickSlider: React.FC<ISlickSlider> = ({ settings, children }) => {
   const configured_settings = {
     className: 'center',
     infinite: true,
@@ -20,12 +18,13 @@ const SlickSlider: React.FC<ISlickSlider> = (
     swipeToSlide: true,
     ...settings,
   };
-  const slidesToShow = window.innerWidth < 768 ? 2 : configured_settings.slidesToShow
-  
+  const slidesToShow =
+    window.innerWidth < 768 ? 2 : configured_settings.slidesToShow;
+
   return (
     <div className="cursor-pointer">
       <Slider {...configured_settings} slidesToShow={slidesToShow}>
-				{children}
+        {children}
       </Slider>
     </div>
   );
