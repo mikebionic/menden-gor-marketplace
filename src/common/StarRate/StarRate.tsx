@@ -6,6 +6,7 @@ interface IRateStarProps {
   value?: number;
   className?: string;
   starSize?: string;
+  allowHalf?: boolean;
 }
 
 export const StarRate: React.FC<IRateStarProps> = ({
@@ -13,11 +14,12 @@ export const StarRate: React.FC<IRateStarProps> = ({
   value = 0,
   className = 'px-4',
   starSize = 'text-xs',
+  allowHalf = true,
 }) => {
   return (
     <div className={className}>
       <Rate
-        allowHalf
+        allowHalf={allowHalf}
         defaultValue={2.5}
         value={value > 0 ? value : 2.5}
         className={starSize}

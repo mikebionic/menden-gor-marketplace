@@ -1,5 +1,6 @@
+import React, { useState, useEffect } from 'react';
+
 import { IconLabelButton } from 'common/IconLabelButton';
-import React, { useState } from 'react';
 import { HeartOutlined } from '@ant-design/icons';
 import { HeartFilled } from '@ant-design/icons';
 
@@ -9,10 +10,13 @@ interface IWishlistProps {
 }
 
 export const WishlistButton: React.FC<IWishlistProps> = ({
-  wishlist,
+  wishlist = false,
   margin = 'mt-2 mb-2 mr-2',
 }) => {
   const [active, setActive] = useState(wishlist);
+  useEffect(() => {
+    setActive(wishlist)
+  }, [wishlist])
 
   return (
     <IconLabelButton

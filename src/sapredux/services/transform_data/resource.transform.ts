@@ -45,7 +45,7 @@ export const transformResources = (data: any) => ({
 	unitName: data.UnitName,
 	usageStatusId: data.UsageStatusId,
 	usageStatusName: data.UsageStatusName,
-	wishlist: data.Wishlist ?? true,
+	wishlist: data.Wishlist ?? false,
 	realPrice: data.RealPrice ?? null,
 	discountValue: data.DiscValue ?? null,
 	discountType: data.DiscType ?? null,
