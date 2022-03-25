@@ -1,6 +1,6 @@
 import { serviceConfig } from 'configs';
 
-import { handleResponse } from 'sapredux/helpers';
+import { authBearerHeaderAsync, handleResponse } from 'sapredux/helpers';
 import {
 	rp_acc_basic_login_credentials,
 	rp_acc_basic_login_success,
@@ -42,10 +42,26 @@ const login = async(username:string, password:string) => {
 
 const logout = () => {
 	localStorage.removeItem('user');
+	// !!! Warning: session is not removing
 	document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
 }
 
+
+const editProfile = async (payload:any) => {
+	const requestOptions = {
+		method: 'POST',
+		body: JSON.stringify(payload),
+		headers: {
+			"Content-Type": "application/json; charset=UTF-8",
+			...await authBearerHeaderAsync()
+		},
+	}
+	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.profile_edit}`, requestOptions).then(handleResponse);
+}
+
+
 export const authService = {
 	login,
-	logout
+	logout,
+	editProfile,
 };

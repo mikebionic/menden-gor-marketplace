@@ -7,6 +7,19 @@ import { PlusOutlined } from '@ant-design/icons';
 import { getCurrentUserInfo } from 'sapredux/selectors';
 import { Image } from 'common/Image'
 import { ErrorBoundary } from 'modules/errors'
+import { authService as service } from 'sapredux/services'
+import { showToastMessage } from 'sapredux/helpers';
+import { toJsonRpAcc } from 'sapredux/services/transform_data';
+
+const post_editProfile = async (payload: any) => {
+  await service.editProfile(payload)
+    .then(
+      (response: any) => showToastMessage({ type:"success", message:response.message }),
+      (error: any) => showToastMessage({ type:"error", message:error })
+    )
+}
+const onSave = (data:any) => post_editProfile(toJsonRpAcc(data))
+
 
 const ProfileEditPage: React.FC = ({current_user}:any) => {
   return (
