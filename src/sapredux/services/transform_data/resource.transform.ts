@@ -108,3 +108,6 @@ export const transformResources = (data: any) => ({
 	data.Rating.map((review:any) => transformReview(review)) : [],
 })
 
+export const toJsonWishlist = (data: any) => ({
+	ResId: data.id ?? null
+})

@@ -79,7 +79,7 @@ const RenderProuct = ({
       <hr className="w-auto my-4" />
       <div className="inline-grid grid-flow-col gap-4 auto-cols-max place-content-end place-items-center">
         <ProductAddToCart resourceId={id} withCounter={true} margin="m-0" />
-        <WishlistButton wishlist={wishlist} margin="m-0" />
+        <WishlistButton resId={id} wishlist={wishlist} margin="m-0" />
       </div>
     </div>
   </div>
