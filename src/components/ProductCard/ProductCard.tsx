@@ -47,7 +47,7 @@ const ProductCard = ({ data }: any) => {
             <div className="relative">
               {isNew ? <Ribbon /> : null}
               <span className="absolute top-0 right-0">
-                <WishlistButton wishlist={wishlist} />
+                <WishlistButton resId={id} wishlist={wishlist} />
               </span>
               <span className="absolute right-0 top-52">
                 <ProductAddToCart resourceId={id} />

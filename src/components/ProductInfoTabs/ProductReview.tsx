@@ -1,5 +1,3 @@
-import { Form, Input } from 'antd';
-
 import { IconLabelButton } from 'common/IconLabelButton';
 import { StarRate } from 'common/StarRate';
 import { ErrorBoundary } from 'modules/errors'
@@ -40,52 +38,21 @@ export const ProductReview = ({reviews}:any) => {
 
       <div className="grid grid-flow-row gap-2 auto-rows-max">
         <p className="text-xl font-semibold font-oxygen">Your rating</p>
-        <StarRate className="px-1" starSize="text-base" />
+        <StarRate className="px-1" starSize="text-base" allowHalf={false} />
       </div>
       <textarea
         className="font-oxygen border-[#E6E6E6] mx-1 resize-none h-56"
-        placeholder="Type your message..."
+        placeholder="Type your remark..."
       />
-
-      <Form className="grid grid-flow-col gap-24 auto-cols-auto place-content-stretch place-items-stretch place-self-stretch">
-        <Form.Item
-          name="Name"
-          rules={[
-            {
-              required: false,
-              message: 'Please input your name!',
-              whitespace: true,
-            },
-          ]}
-        >
-          <Input
-            className="rounded-lg border-[#E6E6E6] hover:border-textColorOrange"
-            placeholder="Name..."
-          />
-        </Form.Item>
-        <Form.Item
-          name="Sirname"
-          rules={[
-            {
-              required: false,
-              message: 'Please input your sirname!',
-              whitespace: true,
-            },
-          ]}
-        >
-          <Input
-            className="rounded-lg border-[#E6E6E6] hover:border-textColorOrange"
-            placeholder="Sirname..."
-          />
-        </Form.Item>
-      </Form>
       <div className="grid place-content-start">
         <IconLabelButton
-          label="Hasaba al"
+          label="Send"
           className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] m-auto"
           labelClassName="m-auto text-white"
         />
       </div>
+
+
     </div>
     </ErrorBoundary>
   );

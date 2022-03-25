@@ -7,6 +7,7 @@ interface ICountryButton {
   onIncrease: () => void;
   onDecrease: () => void;
   count: number;
+  margin?: string;
 }
 
 export const AddToCartWithCounter: React.FC<ICountryButton> = ({
@@ -14,10 +15,11 @@ export const AddToCartWithCounter: React.FC<ICountryButton> = ({
   onDecrease,
   count,
   coloredCountry = false,
-}: any) => {
-  const OnlyButton = () => (
+  margin = 'mb-2 mr-2'
+}) => {
+  const OnlyButton = ({margin}:any) => (
     <IconLabelButton
-      className={`relative bottom-0 right-0 float-right border border-white mb-2 mr-2 rounded-md hover:shadow-sm bg-fullwhite w-9 h-9`}
+      className={`relative bottom-0 right-0 float-right border border-white ${margin} rounded-md hover:shadow-sm bg-fullwhite w-9 h-9`}
       icon={<BiPlus className="w-full h-full mx-auto my-0 text-red-500" />}
       label=""
       onClick={onIncrease}
@@ -54,5 +56,5 @@ export const AddToCartWithCounter: React.FC<ICountryButton> = ({
       </>
     );
   };
-  return <div>{count > 0 ? <CountButtons /> : <OnlyButton />}</div>;
+  return <div>{count > 0 ? <CountButtons /> : <OnlyButton margin={margin} />}</div>;
 };
