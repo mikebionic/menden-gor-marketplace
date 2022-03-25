@@ -1,16 +1,16 @@
-
-import { useState } from 'react'
+import { useState } from 'react';
 import { Table, Form, Space } from 'antd';
 
-import { Image } from 'common/Image'
+import { Image } from 'common/Image';
 
 const columns = [
   {
     title: 'Image',
     align: 'center',
     dataIndex: 'image',
-    render: (image:string) =>
-      <Image src={image} alt={image} />
+    render: (image: string) => (
+      <Image src={image} alt={image} className="object-cover w-16 m-auto" />
+    ),
   },
   {
     title: 'Product Name',
@@ -40,14 +40,13 @@ const columns = [
   },
 ];
 
-export const OrderLinesTable = ({data}:any) => {
-
-  const order_lines = data.map((item:any, idx:number) => ({
+export const OrderLinesTable = ({ data }: any) => {
+  const order_lines = data.map((item: any, idx: number) => ({
     ...item,
     key: idx,
     name: item.resource.name,
     image: item.resource.image,
-  }) )
+  }));
 
   const [table_config, set_table_config]: any = useState({
     bordered: false,
@@ -61,7 +60,7 @@ export const OrderLinesTable = ({data}:any) => {
     tableLayout: undefined,
     pagination: false,
     xScroll: false,
-  })
+  });
 
   const handleYScrollChange = (enable: any) => {
     set_table_config({ ...table_config, yScroll: enable });
@@ -104,4 +103,4 @@ export const OrderLinesTable = ({data}:any) => {
       />
     </>
   );
-}
+};
