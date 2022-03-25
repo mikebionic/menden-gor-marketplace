@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import { Button } from 'antd';
 import { getCurrentUserInfo } from 'sapredux/selectors';
 import { Image } from 'common/Image'
+import { ErrorBoundary } from 'modules/errors'
 
 const ProfilePage: React.FC = ({current_user}:any) => {
   return current_user ? (
+    <ErrorBoundary>
     <div className="grid grid-cols-2 gap-8 text-center grid-rows-Profile">
       <div className="inline-grid col-start-1 col-end-3 gap-2 mx-auto grid-rows-Avatar">
         <Image className="m-auto avatar object-cover"
@@ -59,6 +61,7 @@ const ProfilePage: React.FC = ({current_user}:any) => {
         <p className="text-gray-400">{current_user.workFaxNumber ?? ""}</p>
       </div>
     </div>
+    </ErrorBoundary>
   )
   : null
 };

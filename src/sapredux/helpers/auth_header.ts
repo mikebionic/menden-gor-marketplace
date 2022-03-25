@@ -26,7 +26,7 @@ export const getTokenWithAuth = async (key='user', secondCheck=false) => {
 			if (!secondCheck) {
 					if (user.auth_username && user.auth_password){
 						console.log("login request with credentials", user.auth_username)
-						await authService.login(user.auth_username," user.auth_password")
+						await authService.login(user.auth_username, user.auth_password)
 							.then(
 								(response:any) => {
 									store.dispatch({ type: authConstants.LOGIN_SUCCESS, payload: response })

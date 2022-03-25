@@ -16,100 +16,100 @@ import { FaAward } from 'react-icons/fa'
 
 const invStatSelector:any = {
 	//# Waiting
-	1: {
-		"class": "warning",
-		"color_hash": "amber-500",
-		"percentage": 10,
-		"icon": {BiLoader},
+	1:{
+		class: "warning",
+		color_hash: "amber-500",
+		percentage: 10,
+		icon: BiLoader,
 	},
 	//# Received (not order maybe, discuss with dovlet)
 	2:{
-		"class": "success",
-		"color_hash": "emerald-500", 
-		"percentage": 30,
-		"icon": {BsCurrencyDollar},
+		class: "success",
+		color_hash: "emerald-500", 
+		percentage: 30,
+		icon: BsCurrencyDollar,
 	},
 	//# Talked with a client
 	3:{
-		"class": "success",
-		"color_hash": "emerald-500", 
-		"percentage": 30,
-		"icon": {HiOutlineThumbUp},
+		class: "success",
+		color_hash: "emerald-500", 
+		percentage: 30,
+		icon: HiOutlineThumbUp,
 	},
 	//# Approved
 	4:{
-		"class": "success",
-		"color_hash": "emerald-500", 
-		"percentage": 30,
-		"icon": {CgCheckO},
+		class: "success",
+		color_hash: "emerald-500", 
+		percentage: 30,
+		icon: CgCheckO,
 	},
 	//# Not approved
 	5:{
-		"class": "danger",
-		"color_hash": "red-400", 
-		"percentage": 30,
-		"icon": {AiOutlineCloseCircle},
+		class: "danger",
+		color_hash: "red-400", 
+		percentage: 30,
+		icon: AiOutlineCloseCircle,
 	},
 	//# Collecting goods
 	6:{
-		"class": "success",
-		"color_hash": "emerald-500", 
-		"percentage": 40,
-		"icon": {FiPackage},
+		class: "success",
+		color_hash: "emerald-500", 
+		percentage: 40,
+		icon: FiPackage,
 	},
 	//# Order sent
 	7:{
-		"class": "info",
-		"color_hash": "cyan-300", 
-		"percentage": 65,
-		"icon": {FiTruck},
+		class: "info",
+		color_hash: "cyan-300", 
+		percentage: 65,
+		icon: FiTruck,
 	},
 	//# Transfered to customer
 	8:{
-		"class": "info",
-		"color_hash": "cyan-300", 
-		"percentage": 88,
-		"icon": {GoGift},
+		class: "info",
+		color_hash: "cyan-300", 
+		percentage: 88,
+		icon: GoGift,
 	},
 	//# Returned
 	9:{
-		"class": "danger",
-		"color_hash": "red-400", 
-		"percentage": 60,
-		"icon": {FiCornerLeftUp},
+		class: "danger",
+		color_hash: "red-400", 
+		percentage: 60,
+		icon: FiCornerLeftUp,
 	},
 	//# Note
 	10:{
-		"class": "warning",
-		"color_hash": "amber-500", 
-		"percentage": 50,
-		"icon": {FiAlertCircle},
+		class: "warning",
+		color_hash: "amber-500", 
+		percentage: 50,
+		icon: FiAlertCircle,
 	},
 	//# Modified
 	11:{
-		"class": "warning",
-		"color_hash": "amber-500", 
-		"percentage": 60,
-		"icon": {BiEditAlt},
+		class: "warning",
+		color_hash: "amber-500", 
+		percentage: 60,
+		icon: BiEditAlt,
 	},
 	//# Complete
 	12:{
-		"class": "primary",
-		"color_hash": "blue-700", 
-		"percentage": 100,
-		"icon": {FaAward},
+		class: "primary",
+		color_hash: "blue-700", 
+		percentage: 100,
+		icon: FaAward,
 	},
 	13:{
-		"class": "warning",
-		"color_hash": "amber-500", 
-		"percentage": 20,
-		"icon": {BsCurrencyDollar},
+		class: "warning",
+		color_hash: "amber-500", 
+		percentage: 20,
+		icon: BsCurrencyDollar,
 	},
 	14:{
-		"class": "danger",
-		"color_hash": "red-400", 
-		"percentage": 40,
-		"icon": {BsCurrencyDollar},
+		class: "danger",
+		color_hash: "red-400", 
+		percentage: 40,
+		icon: BsCurrencyDollar,
 	},
 }
 
@@ -170,7 +170,7 @@ export const transformOrderInv = (data: any) => ({
 	workPeriodId: data.WpId,
 	rp_acc: data.Rp_acc && transformRpAcc(data.Rp_acc),
 	order_inv_lines: data.Order_inv_lines && data.Order_inv_lines.map(transformOrderInvLine),
-	status_ui: invStatSelector[parseInt(data.InvStatId)]
+	status_ui: invStatSelector[parseInt(data.InvStatId)],
 })
 
 

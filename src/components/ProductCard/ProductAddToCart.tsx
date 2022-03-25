@@ -1,5 +1,6 @@
 import { AddToCartButton, AddToCartWithCounter } from 'common/AddToCartButton';
 import { getTotalCount } from 'sapredux/selectors';
+import { ErrorBoundary } from 'modules/errors'
 
 import { connect } from 'react-redux';
 
@@ -18,22 +19,26 @@ const ProductAddToCart = ({
   totalCount,
   totalPrice,
   onDelete,
-}: any) => {
-  return withCounter ? (
-    <AddToCartWithCounter
-      onIncrease={() => onIncrease(resourceId)}
-      onDecrease={() => onDecrease(resourceId)}
-      count={totalCount || 0}
-      // coloredCountry={true}
-    />
-  ) : (
-    <AddToCartButton
-      onIncrease={() => onIncrease(resourceId)}
-      count={totalCount || 0}
-      onDelete={() => onDelete(resourceId)}
-    />
-  );
-};
+}: any) => (
+  <ErrorBoundary>
+    {
+      withCounter ? (
+        <AddToCartWithCounter
+          onIncrease={() => onIncrease(resourceId)}
+          onDecrease={() => onDecrease(resourceId)}
+          count={totalCount || 0}
+          // coloredCountry={true}
+        />
+      ) : (
+        <AddToCartButton
+          onIncrease={() => onIncrease(resourceId)}
+          count={totalCount || 0}
+          onDelete={() => onDelete(resourceId)}
+        />
+      )
+    }
+  </ErrorBoundary>
+)
 
 const mapStateToProps = (state: any, props: any) => {
   const { resourceId } = props;
@@ -44,15 +49,12 @@ const mapStateToProps = (state: any, props: any) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators(
+const mapDispatchToProps = (dispatch: any) => 
+  bindActionCreators(
     {
       onIncrease: resourceAddedToCart,
       onDecrease: resourceRemovedFromCart,
       onDelete: resourceAllRemovedFromCart,
-    },
-    dispatch,
-  );
-};
+    }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductAddToCart);

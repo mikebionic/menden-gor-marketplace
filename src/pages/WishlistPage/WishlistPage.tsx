@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { WishlistTable } from 'common/Table';
 import { wishlistService } from 'sapredux/services'
 import { Spinner } from 'modules/loaders';
+import { ErrorBoundary } from 'modules/errors'
 
 
 export const WishlistPage: React.FC = () => {
@@ -20,9 +21,9 @@ export const WishlistPage: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <ErrorBoundary>
       { loading && <Spinner /> }
       { <WishlistTable data={wishlist_items} /> }
-    </>
+    </ErrorBoundary>
   );
 };

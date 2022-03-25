@@ -6,6 +6,7 @@ import { OrderLine, OrderBlock } from 'pages/OrdersPage';
 import { orderService } from 'sapredux/services';
 import { routeConstants } from 'navigation/routeConstants';
 import { Spinner } from 'modules/loaders';
+import { ErrorBoundary } from 'modules/errors'
 
 export const OrdersPage: React.FC = () => {
   const [loading, set_loading] = useState(true);
@@ -32,7 +33,7 @@ export const OrdersPage: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <ErrorBoundary>
       {loading && <Spinner />}
       {!R.isEmpty(current_order_inv) ? (
         <div>
@@ -51,6 +52,6 @@ export const OrdersPage: React.FC = () => {
           ))}
         </div>
       )}
-    </>
+    </ErrorBoundary>
   );
 };

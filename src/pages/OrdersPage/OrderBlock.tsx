@@ -1,19 +1,19 @@
 import { Badge, Progress } from 'antd';
 import { IconLabelButton } from 'common/IconLabelButton';
+import { ErrorBoundary } from 'modules/errors'
 
 export const OrderBlock = (props: any) => {
   const {
     orderFTotal,
     currencySymbol,
     regNo,
-    orderDesc,
     orderDate,
     statusName,
     status_ui,
   } = props;
 
   return (
-    <>
+    <ErrorBoundary>
       <div className="relative grid w-[380px] m-4 bg-white cursor-pointer h-52 shadow-ResGroupShadow rounded-xl">
         <Badge.Ribbon
           text={`${orderFTotal}${currencySymbol}`}
@@ -30,12 +30,12 @@ export const OrderBlock = (props: any) => {
                 strokeColor={status_ui.color_hash}
                 showInfo={false}
               />
-              <IconLabelButton icon={status_ui.icon} />
+              <IconLabelButton icon={<status_ui.icon />} />
             </div>
             <div className="inline-grid grid-flow-col auto-cols-[50%_50%]">
               <div className="grid grid-flow-col gap-0 grid-rows-OrderLine grid-cols-OrderLine">
                 <div className="row-span-3 p-4 m-auto">
-                  <IconLabelButton icon={status_ui.icon} />
+                  <IconLabelButton icon={<status_ui.icon />} />
                 </div>
                 <div className="col-span-2 mx-0 my-auto">
                   <h3 className="text-sm font-semibold">Status</h3>
@@ -49,7 +49,7 @@ export const OrderBlock = (props: any) => {
               </div>
               <div className="grid grid-flow-col gap-0 grid-rows-OrderLine grid-cols-OrderLine">
                 <div className="row-span-3 p-4 m-auto">
-                  <IconLabelButton icon={status_ui.icon} />
+                  <IconLabelButton icon={<status_ui.icon />} />
                 </div>
                 <div className="col-span-2 mx-0 my-auto">
                   <h3 className="text-sm font-semibold">Total</h3>
@@ -65,6 +65,6 @@ export const OrderBlock = (props: any) => {
           </div>
         </Badge.Ribbon>
       </div>
-    </>
+    </ErrorBoundary>
   );
 };

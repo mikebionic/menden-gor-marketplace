@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, connect } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
-
-import { authActions } from 'sapredux/actions';
-
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router';
+
+import { authActions } from 'sapredux/actions';
 import { routeConstants } from 'navigation/routeConstants';
+import { ErrorBoundary } from 'modules/errors'
 
 const LoginPage: React.FC = (props: any) => {
   const { loggedIn, loading } = props;
@@ -37,6 +37,7 @@ const LoginPage: React.FC = (props: any) => {
   };
 
   return (
+    <ErrorBoundary>
     <div className="font-sans text-gray-700">
       <div className="container flex p-12 mx-auto">
         <div className="w-full max-w-md mx-auto">
@@ -108,6 +109,7 @@ const LoginPage: React.FC = (props: any) => {
         </div>
       </div>
     </div>
+    </ErrorBoundary>
   );
 };
 

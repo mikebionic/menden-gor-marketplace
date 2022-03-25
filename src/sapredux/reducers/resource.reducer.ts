@@ -39,13 +39,7 @@ export const resource = (state = initialState, {type, payload}: any) => {
 			return R.mergeRight(state, moreValues)
 			
 		case actionConstants.FETCH_BY_ID_SUCCESS:
-			// const updated_data = R.assoc(payload.id, payload, state)
-			moreValues = {
-				...state,
-				data: R.mergeRight(state.data, R.indexBy(R.prop<string, string>('id'), payload))
-			}
-			console.log(moreValues)
-			return R.mergeRight(state, moreValues)
+			return R.mergeRight(state, {...state, data: R.assoc(payload.id, payload, state.data)})
 
 		case actionConstants.FETCH_START:
 			return R.mergeRight(state, { loading: true, error: false })

@@ -41,11 +41,11 @@ export const SocialBar: React.FC = () => {
   return (
     <div className="fixed left-0 grid w-8 grid-cols-1 grid-rows-SocialBar top-2/4 socialBarColor backdrop-blur-glass ">
       {
-        socialBarLinks.map(({icon, url, active}:any) =>
+        socialBarLinks.map(({icon, url, active}:any, idx:number) =>
           active && 
-          // <a href={url}>
+          <a href={url} key={idx}>
             <IconLabelButton icon={icon} />
-          // </a>
+          </a>
         )
       }
     </div>

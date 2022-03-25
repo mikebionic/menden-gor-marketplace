@@ -1,7 +1,7 @@
 import { Progress } from 'antd';
 import { OrderLinesTable } from 'common/Table';
 import { IconLabelButton } from 'common/IconLabelButton';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { ErrorBoundary } from 'modules/errors'
 
 export const OrderLine = (props: any) => {
   const {
@@ -15,6 +15,7 @@ export const OrderLine = (props: any) => {
     order_inv_lines,
   } = props;
   return (
+    <ErrorBoundary>
     <div className="grid w-11/12 h-auto gap-4 p-6 mx-auto my-4 bg-white cursor-default shadow-ResGroupShadow rounded-xl">
       <div className="inline-grid grid-cols-2">
         <h3 className="text-2xl font-semibold">Sargyt-{regNo}</h3>
@@ -28,7 +29,7 @@ export const OrderLine = (props: any) => {
       <div className="inline-grid grid-cols-3">
         <div className="grid grid-flow-col gap-1 grid-rows-OrderLine grid-cols-OrderLine">
           <div className="row-span-3 p-4 m-auto">
-            <IconLabelButton icon={status_ui.icon} />
+            { status_ui.icon && <IconLabelButton icon={<status_ui.icon />} /> }
           </div>
           <div className="col-span-2 mx-0 my-auto">
             <h3 className="text-sm font-semibold">Status</h3>
@@ -42,7 +43,7 @@ export const OrderLine = (props: any) => {
         </div>
         <div className="grid grid-flow-col gap-1 grid-rows-OrderLine grid-cols-OrderLine">
           <div className="row-span-3 p-4 m-auto">
-            <IconLabelButton icon={status_ui.icon} />
+            { status_ui.icon && <IconLabelButton icon={<status_ui.icon />} /> }
           </div>
           <div className="col-span-2 mx-0 my-auto">
             <h3 className="text-sm font-semibold">Order date</h3>
@@ -53,7 +54,7 @@ export const OrderLine = (props: any) => {
         </div>
         <div className="grid grid-flow-col gap-1 grid-rows-OrderLine grid-cols-OrderLine">
           <div className="row-span-3 p-4 m-auto">
-            <IconLabelButton icon={status_ui.icon} />
+            { status_ui.icon && <IconLabelButton icon={<status_ui.icon />} /> }
           </div>
           <div className="col-span-2 mx-0 my-auto">
             <h3 className="text-sm font-semibold">Total</h3>
@@ -73,5 +74,6 @@ export const OrderLine = (props: any) => {
         <p>{orderDesc}</p>
       </div>
     </div>
+    </ErrorBoundary>
   );
 };

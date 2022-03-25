@@ -6,9 +6,11 @@ import { Input } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { getCurrentUserInfo } from 'sapredux/selectors';
 import { Image } from 'common/Image'
+import { ErrorBoundary } from 'modules/errors'
 
 const ProfileEditPage: React.FC = ({current_user}:any) => {
   return (
+    <ErrorBoundary>
     <div className="grid grid-cols-2 gap-8 p-4 text-start grid-rows-Profile">
       <div className="inline-grid col-start-1 col-end-3 gap-2 mx-auto grid-rows-Avatar">
         <div className="relative m-auto cursor-pointer">
@@ -62,6 +64,7 @@ const ProfileEditPage: React.FC = ({current_user}:any) => {
         <Input className="w-11/12 inputProfileEdit" value={current_user.workFaxNumber}/>
       </div>
     </div>
+    </ErrorBoundary>
   );
 };
 
