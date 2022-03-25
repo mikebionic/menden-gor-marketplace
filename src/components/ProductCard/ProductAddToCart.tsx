@@ -19,6 +19,7 @@ const ProductAddToCart = ({
   totalCount,
   totalPrice,
   onDelete,
+  ...props
 }: any) => (
   <ErrorBoundary>
     {
@@ -27,13 +28,14 @@ const ProductAddToCart = ({
           onIncrease={() => onIncrease(resourceId)}
           onDecrease={() => onDecrease(resourceId)}
           count={totalCount || 0}
-          // coloredCountry={true}
+          {...props}
         />
       ) : (
         <AddToCartButton
           onIncrease={() => onIncrease(resourceId)}
           count={totalCount || 0}
           onDelete={() => onDelete(resourceId)}
+          {...props}
         />
       )
     }
