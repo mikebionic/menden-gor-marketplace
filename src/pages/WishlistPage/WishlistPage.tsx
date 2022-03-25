@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
 
 import { WishlistTable } from 'common/Table';
 import { wishlistService } from 'sapredux/services'
-import { routeConstants } from 'navigation/routeConstants';
 import { Spinner } from 'modules/loaders';
 
 

@@ -1,16 +1,16 @@
 import { resourceConstants as actionConstants } from 'sapredux/constants'
 import * as R from 'ramda'
 
-const initialState = { loading: false, error: false, data: [] };
+const initialState = { loading: false, error: false, data: {} };
 
-export const resource = (state = initialState, action: {[name: string]: any}) => {
+export const resource = (state = initialState, {type, payload}: any) => {
 	let moreValues = {}
-	switch (action.type){
+	switch (type){
 		case actionConstants.FETCH_SUCCESS:
 			const newState = {
 				loading: false,
 				error: false,
-				data: R.mergeRight(state.data, R.indexBy(R.prop<string, string>('id'), action.payload))
+				data: R.mergeRight(state.data, R.indexBy(R.prop<string, string>('id'), payload))
 			}
 			return R.mergeRight(state, newState)
 
@@ -18,7 +18,7 @@ export const resource = (state = initialState, action: {[name: string]: any}) =>
 			moreValues = {
 				loading: false,
 				error:false,
-				data: R.mergeRight(state.data, R.indexBy(R.prop<string, string>('id'), action.payload))
+				data: R.mergeRight(state.data, R.indexBy(R.prop<string, string>('id'), payload))
 			}
 			return R.mergeRight(state, moreValues)
 
@@ -26,7 +26,7 @@ export const resource = (state = initialState, action: {[name: string]: any}) =>
 			moreValues = {
 				loading: false,
 				error:false,
-				data: R.mergeRight(state.data, R.indexBy(R.prop<string, string>('id'), action.payload))
+				data: R.mergeRight(state.data, R.indexBy(R.prop<string, string>('id'), payload))
 			}
 			return R.mergeRight(state, moreValues)
 		
@@ -34,12 +34,18 @@ export const resource = (state = initialState, action: {[name: string]: any}) =>
 			moreValues = {
 				loading: false,
 				error:false,
-				data: R.mergeRight(state.data, R.indexBy(R.prop<string, string>('id'), action.payload))
+				data: R.mergeRight(state.data, R.indexBy(R.prop<string, string>('id'), payload))
 			}
 			return R.mergeRight(state, moreValues)
 			
 		case actionConstants.FETCH_BY_ID_SUCCESS:
-			return R.assoc(action.payload.id, action.payload, state)
+			// const updated_data = R.assoc(payload.id, payload, state)
+			moreValues = {
+				...state,
+				data: R.mergeRight(state.data, R.indexBy(R.prop<string, string>('id'), payload))
+			}
+			console.log(moreValues)
+			return R.mergeRight(state, moreValues)
 
 		case actionConstants.FETCH_START:
 			return R.mergeRight(state, { loading: true, error: false })

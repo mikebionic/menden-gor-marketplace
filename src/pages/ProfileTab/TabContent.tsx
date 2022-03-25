@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 
 import { ProfilePage } from 'pages/ProfilePage';
 import { OrdersPage } from 'pages/OrdersPage';
-import { WishlistPage } from 'pages/Wishlist';
+import { WishlistPage } from 'pages/WishlistPage';
 import { ProfileEditPage } from 'pages/ProfileEditPage';
 import { routeConstants } from 'navigation/routeConstants';
 

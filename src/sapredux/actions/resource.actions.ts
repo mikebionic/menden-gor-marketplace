@@ -36,6 +36,10 @@ export const fetchResourceById = (id:number) => async (dispatch:any) => {
 			type: actionConstants.FETCH_BY_ID_SUCCESS,
 			payload: data
 		})
+		data.related_resources && dispatch({
+			type: actionConstants.LOAD_MORE_SUCCESS,
+			payload: data.related_resources
+		})
 	} catch (err:any) {
 		dispatch({
 			type: actionConstants.FETCH_BY_ID_FAILURE,
