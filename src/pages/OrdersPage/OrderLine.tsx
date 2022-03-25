@@ -3,7 +3,7 @@ import { OrderLinesTable } from 'common/Table';
 import { IconLabelButton } from 'common/IconLabelButton';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
-export const OrderLine = (props:any) => {
+export const OrderLine = (props: any) => {
   const {
     regNo,
     orderDate,
@@ -11,9 +11,9 @@ export const OrderLine = (props:any) => {
     currencySymbol,
     orderDesc,
     statusName,
-		status_ui,
+    status_ui,
     order_inv_lines,
-  } = props
+  } = props;
   return (
     <div className="grid w-11/12 h-auto gap-4 p-6 mx-auto my-4 bg-white cursor-default shadow-ResGroupShadow rounded-xl">
       <div className="inline-grid grid-cols-2">
@@ -28,7 +28,7 @@ export const OrderLine = (props:any) => {
       <div className="inline-grid grid-cols-3">
         <div className="grid grid-flow-col gap-1 grid-rows-OrderLine grid-cols-OrderLine">
           <div className="row-span-3 p-4 m-auto">
-            <IconLabelButton icon={<AiOutlineLoading3Quarters />} />
+            <IconLabelButton icon={status_ui.icon} />
           </div>
           <div className="col-span-2 mx-0 my-auto">
             <h3 className="text-sm font-semibold">Status</h3>
@@ -42,7 +42,7 @@ export const OrderLine = (props:any) => {
         </div>
         <div className="grid grid-flow-col gap-1 grid-rows-OrderLine grid-cols-OrderLine">
           <div className="row-span-3 p-4 m-auto">
-            <IconLabelButton icon={<AiOutlineLoading3Quarters />} />
+            <IconLabelButton icon={status_ui.icon} />
           </div>
           <div className="col-span-2 mx-0 my-auto">
             <h3 className="text-sm font-semibold">Order date</h3>
@@ -53,18 +53,20 @@ export const OrderLine = (props:any) => {
         </div>
         <div className="grid grid-flow-col gap-1 grid-rows-OrderLine grid-cols-OrderLine">
           <div className="row-span-3 p-4 m-auto">
-            <IconLabelButton icon={<AiOutlineLoading3Quarters />} />
+            <IconLabelButton icon={status_ui.icon} />
           </div>
           <div className="col-span-2 mx-0 my-auto">
             <h3 className="text-sm font-semibold">Total</h3>
           </div>
           <div className="col-span-2 row-span-2">
-            <p className="text-sm font-semibold">{orderFTotal} {currencySymbol}</p>
+            <p className="text-sm font-semibold">
+              {orderFTotal} {currencySymbol}
+            </p>
           </div>
         </div>
       </div>
       <div>
-        <OrderLinesTable data={order_inv_lines}/>
+        <OrderLinesTable data={order_inv_lines} />
       </div>
       <div>
         <p className="text-base font-semibold">Bellik:</p>
