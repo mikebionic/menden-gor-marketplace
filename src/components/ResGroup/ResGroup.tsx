@@ -4,7 +4,7 @@ import { MdOutlineWebAsset } from 'react-icons/md';
 
 export const ResGroup: React.FC = () => {
   return (
-    <div className="grid mt-4 bg-white w-[380px] h-52 shadow-ResGroupShadow rounded-xl">
+    <div className="grid mt-4 bg-white w-[380px] h-52 shadow-defaultShadow rounded-xl">
       <IconLabelButton
         icon={<MdOutlineWebAsset />}
         label="New Arrives"

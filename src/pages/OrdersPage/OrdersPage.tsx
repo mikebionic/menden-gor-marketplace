@@ -6,7 +6,7 @@ import { OrderLine, OrderBlock } from 'pages/OrdersPage';
 import { orderService } from 'sapredux/services';
 import { routeConstants } from 'navigation/routeConstants';
 import { Spinner } from 'modules/loaders';
-import { ErrorBoundary } from 'modules/errors'
+import { ErrorBoundary } from 'modules/errors';
 
 export const OrdersPage: React.FC = () => {
   const [loading, set_loading] = useState(true);
@@ -40,7 +40,7 @@ export const OrdersPage: React.FC = () => {
           <OrderLine {...current_order_inv} />
         </div>
       ) : (
-        <div className="grid grid-cols-3">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2">
           {order_invoices_list.map((order_inv: any, idx: number) => (
             <Link
               to={`${routeConstants.orders.route}?regNo=${order_inv.regNo}`}

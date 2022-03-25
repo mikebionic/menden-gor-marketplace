@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { IoIosArrowDown } from 'react-icons/io';
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -13,40 +13,39 @@ import { applyFilters } from 'sapredux/actions';
 import { routeConstants } from 'navigation/routeConstants';
 
 const Search: React.FC = (props: any) => {
-
-  const { filters, onFiltersApply } = props
+  const { filters, onFiltersApply } = props;
   const [dropdownState, onDropdownStateChange] = useState(false);
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleClickAway = () => {
     onDropdownStateChange(false);
   };
 
-  const params = new URLSearchParams(location.search)
+  const params = new URLSearchParams(location.search);
   const [inputs, setInputs] = useState({
     search_tag: params.get('search') ?? '',
     categoryId: 0,
   });
   const { search_tag, categoryId } = inputs;
   useEffect(() => {
-    onFiltersApply({search: inputs.search_tag})
-  }, [inputs])
- 
+    onFiltersApply({ search: inputs.search_tag });
+  }, [inputs]);
+
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
   };
-  
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    let search_querystring = `?`
+    let search_querystring = `?`;
     Object.keys(filters).map((key) => {
       if (filters[key]) {
         search_querystring += `${key}=${filters[key]}&`;
       }
     });
-    navigate(`${routeConstants.vGrid.route}${search_querystring}`)
+    navigate(`${routeConstants.vGrid.route}${search_querystring}`);
   };
 
   const search_types = [
@@ -97,7 +96,7 @@ const Search: React.FC = (props: any) => {
       <div className="grid grid-rows-1 mx-auto my-0 w-[728px] grid-cols-search">
         <ClickAwayListener onClickAway={handleClickAway}>
           <div
-            className="w-32 h-12 bg-white border-2 border-white border-solid rounded-l-full cursor-pointer productColor gap-x-8"
+            className="w-32 h-12 bg-white border-2 border-white border-solid rounded-l-full cursor-pointer bg-gradient-to-l from-firstColorGradientFromDark to-secondColorGradientToLight gap-x-8"
             onClick={() =>
               onDropdownStateChange((dropdownState) => !dropdownState)
             }
@@ -132,7 +131,7 @@ const Search: React.FC = (props: any) => {
           />
         </div>
         <button
-          className="w-32 h-12 bg-white border-2 border-white border-solid rounded-r-full cursor-pointer rsearch_tagotate-180 productColor gap-x-8"
+          className="w-32 h-12 bg-white border-2 border-white border-solid rounded-r-full cursor-pointer rsearch_tagotate-180 bg-gradient-to-l from-firstColorGradientFromDark to-secondColorGradientToLight gap-x-8"
           type="submit"
         >
           <IconLabelButton
@@ -146,9 +145,8 @@ const Search: React.FC = (props: any) => {
   );
 };
 
-const mapStateToProps = (state:any) => ({filters: state.productFilter})
-const mapDispatchToProps = (dispatch: any) => (
-  bindActionCreators({onFiltersApply: applyFilters}, dispatch)
-)
+const mapStateToProps = (state: any) => ({ filters: state.productFilter });
+const mapDispatchToProps = (dispatch: any) =>
+  bindActionCreators({ onFiltersApply: applyFilters }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

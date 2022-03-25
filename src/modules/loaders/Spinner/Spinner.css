@@ -1,61 +1,75 @@
-.loader {
-  position: absolute;
-  left: 50%;
-  top: 48%;
-  margin-left: -3em;
+main {
+  padding: 1.5em 0;
 }
 
-.loader div {
-  position: absolute;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: linear-gradient(56deg, rgb(255 99 63) 20%, rgb(247 144 65) 76%);
+.ap {
+  width: 8em;
+  height: 16em;
+}
+.ap__ring {
+  stroke: hsla(var(--hue), 10%, 10%, 0.15);
+  transition: stroke 0.3s;
+}
+.ap__worm1,
+.ap__worm2 {
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+}
+.ap__worm1 {
+  animation-name: worm1;
+  stroke: #ff8d73;
+}
+.ap__worm2 {
+  animation-name: worm2;
+  visibility: hidden;
+  stroke: #feb37b;
 }
 
-.loader div:nth-child(1) {
-  left: 8px;
-  animation: loader1 0.6s infinite;
-}
-
-.loader div:nth-child(2) {
-  left: 8px;
-  animation: loader2 0.6s infinite;
-}
-
-.loader div:nth-child(3) {
-  left: 32px;
-  animation: loader2 0.6s infinite;
-}
-
-.loader div:nth-child(4) {
-  left: 56px;
-  animation: loader3 0.6s infinite;
-}
-
-@keyframes loader {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  .ap__ring {
+    stroke: hsla(var(--hue), 10%, 90%, 0.1);
   }
 }
 
-@keyframes loader2 {
-  0% {
-    transform: translate(0,0);
+/* Animtions */
+@keyframes worm1 {
+  from {
+    animation-timing-function: ease-in-out;
+    stroke-dashoffset: -87.96;
   }
-  100% {
-    transform: translate(24px, 0);
+  20% {
+    animation-timing-function: ease-in;
+    stroke-dashoffset: 0;
+  }
+  60% {
+    stroke-dashoffset: -791.68;
+    visibility: visible;
+  }
+  60.1%,
+  to {
+    stroke-dashoffset: -791.68;
+    visibility: hidden;
   }
 }
-
-@keyframes loader3 {
-  0% {
-    transform: scale(1);
+@keyframes worm2 {
+  from,
+  60% {
+    stroke-dashoffset: -87.96;
+    visibility: hidden;
   }
-  100% {
-    transform: scale(0);
+  60.1% {
+    animation-timing-function: cubic-bezier(0, 0, 0.5, 0.75);
+    stroke-dashoffset: -87.96;
+    visibility: visible;
+  }
+  77% {
+    animation-timing-function: cubic-bezier(0.5, 0.25, 0.5, 0.88);
+    stroke-dashoffset: -340;
+    visibility: visible;
+  }
+  to {
+    stroke-dashoffset: -669.92;
+    visibility: visible;
   }
 }

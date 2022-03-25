@@ -62,13 +62,13 @@ export const OrderLinesTable = ({ data }: any) => {
     xScroll: false,
   });
 
-  const tableColumns: any = columns.map((item) => ({...item}));
+  const tableColumns: any = columns.map((item) => ({ ...item }));
 
   return (
     <>
       <Form
         layout="inline"
-        className="shadow-loginShadow components-table-demo-control-bar"
+        className="shadow-defaultShadow components-table-demo-control-bar"
         style={{ marginBottom: 16 }}
       ></Form>
       <Table

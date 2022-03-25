@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
   applyFilters,
@@ -42,20 +42,20 @@ const VGrid: React.FC = (props: any) => {
       sort: params.get('sort'),
       showDiscounts: params.get('showDiscounts'),
     };
-    let search_querystring = `?`
+    let search_querystring = `?`;
     Object.keys(history_filters).map((key) => {
-      console.log("HISTORY ", key, history_filters[key])
+      console.log('HISTORY ', key, history_filters[key]);
       if (history_filters[key]) {
         search_querystring += `${key}=${history_filters[key]}&`;
       }
     });
-    onFiltersApply(history_filters)
+    onFiltersApply(history_filters);
     set_query_string(search_querystring);
-    navigate(search_querystring)
+    navigate(search_querystring);
   }, [location.search]);
 
   useEffect(() => {
-    (query_string.length > 2) && fetchResources(query_string);
+    query_string.length > 2 && fetchResources(query_string);
   }, [query_string]);
 
   const productsList =
@@ -69,7 +69,7 @@ const VGrid: React.FC = (props: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="grid pb-8 text-base grid-cols-VGrid">
+      <div className="grid pb-8 text-base grid-cols-[auto_1fr]">
         {/* first column */}
         <ProductsFilterPanel />
         {/* second column */}

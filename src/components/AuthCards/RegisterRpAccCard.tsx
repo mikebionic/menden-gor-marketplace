@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Select, Checkbox, Button, Steps } from 'antd';
+import { Form, Input, Select, Steps } from 'antd';
 import {
   UserOutlined,
   SolutionOutlined,

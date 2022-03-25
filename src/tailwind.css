@@ -28,26 +28,6 @@ body {
   transform: translateY(-20px);
 }
 
-.navbarColor {
-  background-image: linear-gradient(to right, #ff8d73, #feb37b);
-}
-
-.productColor {
-  background: linear-gradient(263.41deg, #ff8d73 6.94%, #feb37a 100%);
-}
-
-.searchColor {
-  background: linear-gradient(266.08deg, #ff8d73 1%, #feb37a 100%);
-}
-
-.socialBarColor {
-  background: linear-gradient(
-    180deg,
-    rgba(172, 172, 172, 0.3) 0%,
-    rgba(172, 172, 172, 0.3) 100%
-  );
-}
-
 .banner-container:hover span {
   color: #f28232;
 }
@@ -247,4 +227,11 @@ select:focus {
   opacity: 0.9;
   transition: all 0.3s ease;
   stroke: #0023ff;
+}
+
+.ant-form input[type='file']:focus,
+.ant-form input[type='radio']:focus,
+.ant-form input[type='checkbox']:focus {
+  outline: 0px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }

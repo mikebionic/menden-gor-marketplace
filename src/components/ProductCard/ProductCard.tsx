@@ -34,7 +34,7 @@ const ProductCard = ({ data }: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="relative grid items-center w-64 grid-cols-1 mt-4 bg-white rounded grid-rows-Card h-[26rem] shadow-ResGroupShadow">
+      <div className="relative grid items-center w-64 grid-cols-1 mt-4 bg-white rounded grid-rows-[max-content_30px_auto_auto_auto] h-[26rem] shadow-defaultShadow">
         <Badge.Ribbon
           text={discount}
           placement="start"
@@ -95,7 +95,7 @@ const ProductCard = ({ data }: any) => {
           </p>
         </div>
         {/* <p className="mx-4 mb-2 text-sm text-justify">{resource_description}</p> */}
-        {/* <h3 className="w-auto px-3 mx-auto my-0 rounded-full navbarColor">
+        {/* <h3 className="w-auto px-3 mx-auto my-0 rounded-full bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight">
           {priceValue} {currencySymbol} */}
         {/* </h3> */}
       </div>

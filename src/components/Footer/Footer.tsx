@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
           </a>
         </div>
         <IconLabelButton
-          className="absolute w-8 h-8 rounded navbarColor bottom-8 right-8"
+          className="absolute w-8 h-8 rounded bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight bottom-8 right-8"
           icon={
             <BsArrowUpShort className="w-full h-full text-white hover:bg-socialBarItemHover hover:rounded" />
           }

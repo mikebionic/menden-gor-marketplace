@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { ErrorBoundary } from 'modules/errors'
+import { ErrorBoundary } from 'modules/errors';
 import { Divider } from 'components/Divider';
 import { fetchResourceById } from 'sapredux/actions';
 import { getResourceById } from 'sapredux/selectors';
@@ -15,7 +15,6 @@ import { PriceButton } from 'common/PriceButton';
 import { ImEye } from 'react-icons/im';
 import { WishlistButton } from 'common/WishlistButton';
 import { ProductInfoTabs } from 'components/ProductInfoTabs';
-
 
 const RenderProuct = ({
   id,
@@ -32,60 +31,59 @@ const RenderProuct = ({
   ratingValue,
 }: any) => (
   <ErrorBoundary>
-  <div className="grid gap-8 p-4 mx-auto my-8 grid-cols-VGrid w-[1150px] h-[450px] bg-fullwhite place-content-center">
-    <div className="bg-gray-200 w-96 h-96">
-      <Image
-        src={image}
-        alt={`${name} - ${description}`}
-        className="object-contain object-center w-full h-full lg:w-full lg:h-full"
-      />
-    </div>
-    <div className="inline-grid gap-2 grid-flow-rows auto-rows-max place-items-stretch">
-      <div>
-        <h1 className="py-4 text-3xl font-bold text-center text-black text-gradient">
-          {name}
-        </h1>
-        <p className="py-1 text-xl font-medium text-black place-self-start">
-          Kategoriya: {categoryName}
-        </p>
-        <p className="py-1 text-xl font-medium text-black place-self-start">
-          Bahasy: {priceValue} {currencySymbol}
-        </p>
-        <p className="py-1 text-xl font-medium text-black place-self-start">
-          Sany: {totBalance}
-        </p>
-        <p className="py-1 text-xl font-medium text-black place-self-start">
-          {description}
-        </p>
+    <div className="grid gap-8 p-4 mx-auto my-8 grid-cols-[auto_1fr] w-[1150px] h-[450px] bg-fullwhite place-content-center">
+      <div className="bg-gray-200 w-96 h-96">
+        <Image
+          src={image}
+          alt={`${name} - ${description}`}
+          className="object-contain object-center w-full h-full lg:w-full lg:h-full"
+        />
       </div>
-      <div className="grid grid-flow-col gap-4 auto-cols-max">
-        <StarRate className="px-0" value={ratingValue} />
-        {/* <p className="text-base text-[#6B6B6B] cursor-default">
+      <div className="inline-grid gap-2 grid-flow-rows auto-rows-max place-items-stretch">
+        <div>
+          <h1 className="py-4 text-3xl font-bold text-center text-black text-gradient">
+            {name}
+          </h1>
+          <p className="py-1 text-xl font-medium text-black place-self-start">
+            Kategoriya: {categoryName}
+          </p>
+          <p className="py-1 text-xl font-medium text-black place-self-start">
+            Bahasy: {priceValue} {currencySymbol}
+          </p>
+          <p className="py-1 text-xl font-medium text-black place-self-start">
+            Sany: {totBalance}
+          </p>
+          <p className="py-1 text-xl font-medium text-black place-self-start">
+            {description}
+          </p>
+        </div>
+        <div className="grid grid-flow-col gap-4 auto-cols-max">
+          <StarRate className="px-0" value={ratingValue} />
+          {/* <p className="text-base text-[#6B6B6B] cursor-default">
           100 Teswir
         </p> */}
-        <div className="inline-grid grid-flow-col gap-1 cursor-default auto-cols-max place-content-center place-items-center">
-          <ImEye className="text-xl text-textColorOrange" />
-          {viewCnt}
+          <div className="inline-grid grid-flow-col gap-1 cursor-default auto-cols-max place-content-center place-items-center">
+            <ImEye className="text-xl text-textColorOrange" />
+            {viewCnt}
+          </div>
+        </div>
+        <p className="text-base text-justify text-gray-400 line-through">
+          {realPrice} {currencySymbol}
+        </p>
+        <PriceButton
+          priceValue={priceValue}
+          currencySymbol={currencySymbol}
+          coloredButton={false}
+        />
+        <hr className="w-auto my-4" />
+        <div className="inline-grid grid-flow-col gap-4 auto-cols-max place-content-end place-items-center">
+          <ProductAddToCart resourceId={id} withCounter={true} margin="m-0" />
+          <WishlistButton wishlist={wishlist} margin="m-0" />
         </div>
       </div>
-      <p className="text-base text-justify text-gray-400 line-through">
-        {realPrice} {currencySymbol}
-      </p>
-      <PriceButton
-        priceValue={priceValue}
-        currencySymbol={currencySymbol}
-        coloredButton={false}
-      />
-      <hr className="w-auto my-4" />
-      <div className="inline-grid grid-flow-col gap-4 auto-cols-max place-content-end place-items-center">
-        <ProductAddToCart resourceId={id} withCounter={true} margin="m-0" />
-        <WishlistButton wishlist={wishlist} margin="m-0" />
-      </div>
     </div>
-  </div>
   </ErrorBoundary>
 );
-
 
 const ProductPage: React.FC = (props: any) => {
   const { fetchResourceById, resource } = props;

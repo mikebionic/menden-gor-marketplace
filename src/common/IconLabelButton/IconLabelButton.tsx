@@ -7,6 +7,7 @@ interface IButtonProps {
   className?: any;
   type?: any;
   labelClassName?: string;
+  htmlType?: string;
 }
 
 export const IconLabelButton: React.FC<IButtonProps> = ({

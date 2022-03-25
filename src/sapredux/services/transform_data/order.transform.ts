@@ -17,98 +17,112 @@ const invStatSelector:any = {
 	//# Waiting
 	1:{
 		class: "warning",
-		color_hash: "amber-500",
+		tailwind_hash: "amber-500",
 		percentage: 10,
 		icon: BiLoader,
+		hash_colors: "#eda514",
 	},
 	//# Received (not order maybe, discuss with dovlet)
 	2:{
 		class: "success",
-		color_hash: "emerald-500", 
+		tailwind_hash: "emerald-500", 
 		percentage: 30,
 		icon: BsCurrencyDollar,
+		hash_colors: "#00b289",
 	},
 	//# Talked with a client
 	3:{
 		class: "success",
-		color_hash: "emerald-500", 
+		tailwind_hash: "emerald-500", 
 		percentage: 30,
 		icon: HiOutlineThumbUp,
+		hash_colors: "#00b289",
 	},
 	//# Approved
 	4:{
 		class: "success",
-		color_hash: "emerald-500", 
+		tailwind_hash: "emerald-500", 
 		percentage: 30,
 		icon: CgCheckO,
+		hash_colors: "#00b289",
 	},
 	//# Not approved
 	5:{
 		class: "danger",
-		color_hash: "red-400", 
+		tailwind_hash: "red-400", 
 		percentage: 30,
 		icon: AiOutlineCloseCircle,
+		hash_colors: "#FF7273",
 	},
 	//# Collecting goods
 	6:{
 		class: "success",
-		color_hash: "emerald-500", 
+		tailwind_hash: "emerald-500", 
 		percentage: 40,
 		icon: FiPackage,
+		hash_colors: "#00b289",
 	},
 	//# Order sent
 	7:{
 		class: "info",
-		color_hash: "cyan-300", 
+		tailwind_hash: "cyan-300", 
 		percentage: 65,
 		icon: FiTruck,
+		hash_colors: "#63d3fa",
 	},
 	//# Transfered to customer
 	8:{
 		class: "info",
-		color_hash: "cyan-300", 
+		tailwind_hash: "cyan-300", 
 		percentage: 88,
 		icon: GoGift,
+		hash_colors: "#63d3fa",
 	},
 	//# Returned
 	9:{
 		class: "danger",
-		color_hash: "red-400", 
+		tailwind_hash: "red-400", 
 		percentage: 60,
 		icon: FiCornerLeftUp,
+		hash_colors: "#FF7273",
 	},
 	//# Note
 	10:{
 		class: "warning",
-		color_hash: "amber-500", 
+		tailwind_hash: "amber-500", 
 		percentage: 50,
 		icon: FiAlertCircle,
+		hash_colors: "#eda514",
 	},
 	//# Modified
 	11:{
 		class: "warning",
-		color_hash: "amber-500", 
+		tailwind_hash: "amber-500", 
 		percentage: 60,
 		icon: BiEditAlt,
+		hash_colors: "#eda514",
 	},
 	//# Complete
 	12:{
 		class: "primary",
-		color_hash: "blue-700", 
+		tailwind_hash: "blue-700", 
 		percentage: 100,
 		icon: FaAward,
+		hash_colors: "#0023ff",
 	},
 	13:{
 		class: "warning",
-		color_hash: "amber-500", 
+		tailwind_hash: "amber-500", 
 		percentage: 20,
 		icon: BsCurrencyDollar,
+		hash_colors: "#eda514",
 	},
 	14:{
 		class: "danger",
-		color_hash: "red-400", 
+		tailwind_hash: "red-400", 
 		percentage: 40,
 		icon: BsCurrencyDollar,
+		hash_colors: "#ff7273",
 	},
 }
 

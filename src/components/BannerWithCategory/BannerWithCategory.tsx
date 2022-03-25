@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 import { CarouselSlider } from 'components/Carousel';
 import { CategoryListItem } from 'common/CategoryListItem';
@@ -21,10 +21,13 @@ const BannerWithCategory: React.FC = (props: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="grid w-full h-auto gap-4 px-4 mx-auto bg-fullwhite grid-rows-auto grid-cols-Banner sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-4 lg:pt-8">
+      <div className="grid w-full h-auto gap-4 px-4 mx-auto bg-fullwhite grid-rows-auto grid-cols-[30%_70%] sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-4 lg:pt-8">
         <CategoryList>
           {categories.map((category: any, idx: number) => (
-            <Link key={idx} to={`${routeConstants.vGrid.route}?category=${category.id}&`}>
+            <Link
+              key={idx}
+              to={`${routeConstants.vGrid.route}?category=${category.id}&`}
+            >
               <CategoryListItem key={idx} {...category} />
             </Link>
           ))}

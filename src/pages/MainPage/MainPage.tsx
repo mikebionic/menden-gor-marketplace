@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchFeaturedResources, fetchDiscountResources } from 'sapredux/actions';
+import {
+  fetchFeaturedResources,
+  fetchDiscountResources,
+} from 'sapredux/actions';
 import { getFeaturedResources, getDiscountResources } from 'sapredux/selectors';
 
 import { ErrorBoundary } from 'modules/errors';
@@ -16,7 +19,7 @@ import BannerWithCategory from 'components/BannerWithCategory';
 import { SlickBrandsSlider } from 'components/SlickBrandsSlider';
 
 const MainPage: React.FC = (props: any) => {
-  const { 
+  const {
     featured_resources,
     discount_resources,
     fetchFeaturedResources,
@@ -25,13 +28,12 @@ const MainPage: React.FC = (props: any) => {
     discount_resource_error,
     featured_resource_loading,
     featured_resource_error,
-} = props;
+  } = props;
 
   useEffect(() => {
     fetchFeaturedResources();
     fetchDiscountResources();
   }, []);
-
 
   const featuredList =
     !featured_resource_loading && !featured_resource_error ? (
@@ -56,18 +58,29 @@ const MainPage: React.FC = (props: any) => {
       <div className="max-w-2xl px-4 py-16 mx-auto sm:py-24 lg:pb-24 lg:pt-12 sm:px-6 lg:max-w-7xl lg:px-8 md:pt-8 min-phone:pt-4">
         <BannerWithCategory />
 
-        <div className="my-8"><SlickBrandsSlider /></div>
+        <div className="my-8">
+          <SlickBrandsSlider />
+        </div>
 
-        {featuredList && <><Divider title="Featured products" />{featuredList}</>}
-        {discountList && <><Divider title="Discounts!" />{discountList}</>}
+        {featuredList && (
+          <>
+            <Divider title="Featured products" />
+            {featuredList}
+          </>
+        )}
+        {discountList && (
+          <>
+            <Divider title="Discounts!" />
+            {discountList}
+          </>
+        )}
 
-        <div className="grid grid-cols-ResGroup">
+        <div className="grid grid-cols-[1fr_1fr_1fr]">
           <ResGroup />
           <ResGroup />
           <ResGroup />
         </div>
         <SocialBar />
-
       </div>
     </ErrorBoundary>
   );
@@ -86,7 +99,7 @@ const mapDispatchToProps = (dispatch: any) => {
   return bindActionCreators(
     {
       fetchFeaturedResources,
-      fetchDiscountResources
+      fetchDiscountResources,
     },
     dispatch,
   );

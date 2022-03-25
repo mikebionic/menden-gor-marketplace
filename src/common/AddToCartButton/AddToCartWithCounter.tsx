@@ -31,7 +31,7 @@ export const AddToCartWithCounter: React.FC<ICountryButton> = ({
             <button onClick={onDecrease}>
               <BiMinus className="w-full h-full text-white hover:text-secondColorGradientToLight" />
             </button>
-            <p className="inline-grid w-full h-full text-lg text-white navbarColor place-content-around">
+            <p className="inline-grid w-full h-full text-lg text-white bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight place-content-around">
               {count}
             </p>
             <button onClick={onIncrease}>

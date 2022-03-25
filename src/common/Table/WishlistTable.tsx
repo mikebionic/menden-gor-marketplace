@@ -1,28 +1,39 @@
-
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Table, Form, Space } from 'antd';
 
-import { Image } from 'common/Image'
+import { Image } from 'common/Image';
 import { routeConstants } from 'navigation/routeConstants';
-
 
 const columns = [
   {
     title: 'Image',
     align: 'center',
-		render: ({id, name, image}:any) => 
-			<Link to={`${routeConstants.product.route}${id}/${name}`} >
-				<Image src={image} alt={name} className="w-16 object-cover m-auto" />
-			</Link>
+    render: ({ id, name, image }: any) => (
+      <Link to={`${routeConstants.product.route}${id}/${name}`}>
+        <Image src={image} alt={name} className="object-cover w-16 m-auto" />
+      </Link>
+    ),
   },
   {
     title: 'Description',
     align: 'center',
-    render: (data:any) => (
+    render: (data: any) => (
       <Space size="small" className="grid grid-rows-3 text-left text-gray-500">
-				<p>Name: <Link to={`${routeConstants.product.route}${data.id}/${data.name}`} >{data.name}</Link></p>
-        <p>Category: <Link to={`${routeConstants.vGrid.route}?category=${data.categoryId}&`} >{data.categoryName}</Link></p>
+        <p>
+          Name:{' '}
+          <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
+            {data.name}
+          </Link>
+        </p>
+        <p>
+          Category:{' '}
+          <Link
+            to={`${routeConstants.vGrid.route}?category=${data.categoryId}&`}
+          >
+            {data.categoryName}
+          </Link>
+        </p>
         <p>Barcode: {data.barcodeValue}</p>
       </Space>
     ),
@@ -31,7 +42,11 @@ const columns = [
     title: 'Price',
     align: 'center',
     className: 'text-gray-500',
-		render: ({priceValue, currencySymbol}:any) => (<p>{priceValue} {currencySymbol}</p>)
+    render: ({ priceValue, currencySymbol }: any) => (
+      <p>
+        {priceValue} {currencySymbol}
+      </p>
+    ),
   },
   // {
   //   title: 'Action',
@@ -45,13 +60,11 @@ const columns = [
   // },
 ];
 
-
-export const WishlistTable = ({data}:any) => {
-
-  const wishlist_data = data.map((item:any, idx:number) => ({
+export const WishlistTable = ({ data }: any) => {
+  const wishlist_data = data.map((item: any, idx: number) => ({
     ...item,
     key: idx,
-  }) )
+  }));
 
   const [table_config, set_table_config]: any = useState({
     bordered: false,
@@ -65,22 +78,22 @@ export const WishlistTable = ({data}:any) => {
     tableLayout: undefined,
     pagination: false,
     xScroll: false,
-  })
+  });
 
-	const tableColumns: any = columns.map((item) => ({...item}));
+  const tableColumns: any = columns.map((item) => ({ ...item }));
 
   return (
     <>
-			<Form
-				layout="inline"
-				className="shadow-loginShadow components-table-demo-control-bar"
-				style={{ marginBottom: 16 }}
-			></Form>
-			<Table
-				{...table_config}
-				columns={tableColumns}
-				dataSource={table_config.hasData ? wishlist_data : null}
-			/>
-		</>
+      <Form
+        layout="inline"
+        className="shadow-defaultShadow components-table-demo-control-bar"
+        style={{ marginBottom: 16 }}
+      ></Form>
+      <Table
+        {...table_config}
+        columns={tableColumns}
+        dataSource={table_config.hasData ? wishlist_data : null}
+      />
+    </>
   );
-}
+};
