@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import * as R from 'ramda'
 
 import { Button } from 'antd';
 import { Input } from 'antd';
@@ -10,18 +11,31 @@ import { ErrorBoundary } from 'modules/errors';
 import { authService as service } from 'sapredux/services';
 import { showToastMessage } from 'sapredux/helpers';
 import { toJsonRpAcc } from 'sapredux/services/transform_data';
+import { ErrorIndicator } from 'modules/errors';
+import { profileUpdate } from 'sapredux/actions';
 
-const post_editProfile = async (payload: any) => {
-  await service.editProfile(payload).then(
-    (response: any) =>
-      showToastMessage({ type: 'success', message: response.message }),
-    (error: any) => showToastMessage({ type: 'error', message: error }),
-  );
-};
-const onSave = (data: any) => post_editProfile(toJsonRpAcc(data));
 
-const ProfileEditPage: React.FC = ({ current_user }: any) => {
-  return (
+const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
+
+  const post_editProfile = async (payload: any) => {
+    await service.editProfile(payload).then(
+      (response: any) =>
+        showToastMessage({ type: 'success', message: response.message }),
+      (error: any) => showToastMessage({ type: 'error', message: error }),
+    );
+  };
+  const onSave = (data: any) => post_editProfile(toJsonRpAcc(data)).then(
+    (response:any) => {console.log(response); profileUpdate(data)},
+    (error: any) => console.log(error)
+  ) ;
+
+  const [inputs, setInputs] = useState(current_user);
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setInputs((inputs:any) => ({ ...inputs, [name]: value }));
+  };
+
+  return !R.isEmpty(current_user) ? (
     <ErrorBoundary>
       <div className="grid grid-cols-2 gap-8 p-4 text-start grid-rows-[1fr_max-content_max-content_max-content_max-content_max-content]">
         <div className="inline-grid col-start-1 col-end-3 gap-2 mx-auto grid-rows-[1fr_max-content_max-content_auto]">
@@ -42,7 +56,8 @@ const ProfileEditPage: React.FC = ({ current_user }: any) => {
           <small className="text-center">
             Hasaba alnan senesi: {current_user.createdDate}
           </small>
-          <Button type="ghost" shape="round">
+          <Button type="ghost" shape="round"
+            onClick={() => onSave(inputs)}>
             Save
           </Button>
         </div>
@@ -50,72 +65,90 @@ const ProfileEditPage: React.FC = ({ current_user }: any) => {
           <b>Ulanyjy ady</b>
           <Input
             className="w-11/12 inputProfileEdit"
-            value={current_user.username}
+            name="username"
+            value={inputs.username}
           />
         </div>
         <div className="inline-grid gap-2">
           <b>Öý telefony</b>
           <Input
             className="w-11/12 inputProfileEdit"
-            value={current_user.homePhoneNumber}
+            name="homePhoneNumber"
+            value={inputs.homePhoneNumber}
+            onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
           <b>Salgy</b>
           <Input
             className="w-11/12 inputProfileEdit"
-            value={current_user.address}
+            name="address"
+            value={inputs.address}
+            onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
           <b>Poçta kody</b>
           <Input
             className="w-11/12 inputProfileEdit"
-            value={current_user.zipCode}
+            name="zipCode"
+            value={inputs.zipCode}
+            onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
           <b>Doly ady</b>
           <Input
             className="w-11/12 inputProfileEdit"
-            value={current_user.name}
+            name="name"
+            value={inputs.name}
+            onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
           <b>El telefony</b>
           <Input
             className="w-11/12 inputProfileEdit"
-            value={current_user.mobilePhoneNumber}
+            name="mobilePhoneNumber"
+            value={inputs.mobilePhoneNumber}
+            onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
           <b>Iş telefony</b>
           <Input
             className="w-11/12 inputProfileEdit"
-            value={current_user.workPhoneNumber}
+            name="workPhoneNumber"
+            value={inputs.workPhoneNumber}
+            onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
           <b>Web salgysy</b>
           <Input
             className="w-11/12 inputProfileEdit"
-            value={current_user.webAddress}
+            name="webAddress"
+            value={inputs.webAddress}
+            onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
           <b>Faks</b>
           <Input
             className="w-11/12 inputProfileEdit"
-            value={current_user.workFaxNumber}
+            name="workFaxNumber"
+            value={inputs.workFaxNumber}
+            onChange={handleChange}
           />
         </div>
       </div>
     </ErrorBoundary>
-  );
+  ) : <ErrorIndicator />;
 };
 
 const mapStateToProps = (state: any) => ({
   current_user: getCurrentUserInfo(state.auth),
 });
+const mapDispatchToProps = { profileUpdate }
 
-export default connect(mapStateToProps)(ProfileEditPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileEditPage);
