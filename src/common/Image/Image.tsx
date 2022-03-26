@@ -7,12 +7,14 @@ interface IImage {
   src: string;
   alt?: string;
   className?: string;
+  imageType?: string;
 }
 
 export const Image: React.FC<IImage> = ({
   src = '',
   alt = '',
   className = '',
+  imageType = 'default',
 }) => {
   const image_src = src
     ? !src.includes('http') && serviceConfig.useMockApi === 0
@@ -25,7 +27,7 @@ export const Image: React.FC<IImage> = ({
       src={image_src}
       alt={alt}
       onLoad={handleLoadingImage}
-      onError={handleImageError}
+      onError={(e:any) => handleImageError(e, imageType)}
       className={className}
     />
   );

@@ -2,8 +2,6 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Image } from 'common/Image';
-import defaultAvatar from 'common/images/defaultAvatar.png';
-
 import { Menu, Transition } from '@headlessui/react';
 
 import dropdownItems from './dropdownItems';
@@ -73,11 +71,12 @@ const ProfileCircleDropdown: React.FC<IProfileCircleDropdown> = ({
       className="relative items-center justify-center inline-block w-64 m-auto"
     >
       <Menu.Button className="flex items-center justify-center space-x-3 cursor-pointer">
-        <div className="w-12 h-12 overflow-hidden border-2 border-white rounded-full ">
+        <div className="w-12 h-12 overflow-hidden border-[1.2px] border-white rounded-full shadow-defaultShadow">
           <Image
-            src={image ?? defaultAvatar}
+            src={image}
             alt={username ?? 'avatar-icon'}
             className="object-cover w-full h-full"
+            imageType='avatar'
           />
         </div>
       </Menu.Button>

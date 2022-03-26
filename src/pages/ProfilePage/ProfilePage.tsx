@@ -15,6 +15,7 @@ const ProfilePage: React.FC = ({ current_user }: any) => {
             className="object-cover m-auto avatar"
             src={current_user.image}
             alt={current_user.username}
+            imageType='avatar'
           />
           <span className="text-center">{current_user.name}</span>
           <small className="text-center">

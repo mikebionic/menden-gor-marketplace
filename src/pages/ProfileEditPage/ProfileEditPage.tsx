@@ -36,6 +36,7 @@ const ProfileEditPage: React.FC = ({ current_user }: any) => {
               className="object-cover m-auto avatar"
               src={current_user.image}
               alt={current_user.username}
+              imageType='avatar'
             />
           </div>
           <small className="text-center">
