@@ -4,7 +4,6 @@ import { ErrorBoundary } from 'modules/errors'
 
 import { connect } from 'react-redux';
 
-import { bindActionCreators } from 'redux';
 import {
   resourceAddedToCart,
   resourceRemovedFromCart,
@@ -51,12 +50,10 @@ const mapStateToProps = (state: any, props: any) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => 
-  bindActionCreators(
-    {
-      onIncrease: resourceAddedToCart,
-      onDecrease: resourceRemovedFromCart,
-      onDelete: resourceAllRemovedFromCart,
-    }, dispatch);
+const mapDispatchToProps = {
+  onIncrease: resourceAddedToCart,
+  onDecrease: resourceRemovedFromCart,
+  onDelete: resourceAllRemovedFromCart,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductAddToCart);

@@ -1,54 +1,113 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Image } from 'common/Image';
+import { connect } from 'react-redux';
 
-export const CheckoutPage: React.FC = () => {
+import { getCartItems, getTotalCount } from 'sapredux/selectors';
+import { CartRow } from 'components/Cart';
+import { PaymentMethods } from 'components/Payment'
+import { resourceAddedToCart, resourceAllRemovedFromCart, resourceRemovedFromCart } from 'sapredux/actions';
+import { ErrorBoundary } from 'modules/errors';
+import Input from 'rc-input';
+
+interface ICheckoutPage {
+  items?: any;
+  totalCount?: any;
+  totalPrice?: any;
+  onIncrease?: any;
+  onDecrease?: any;
+  onDelete?: any;
+}
+
+const CheckoutPage: React.FC<ICheckoutPage> = (props:any) => {
+  const {
+    items,
+    totalCount,
+    totalPrice,
+    onIncrease,
+    onDecrease,
+    onDelete,
+  } = props
   return (
+    <ErrorBoundary>
     <div className="grid grid-cols-[60%_40%] my-8">
-      <div>Table</div>
+      <div>
+        <ul
+          role="list"
+          className="-my-6 divide-y divide-gray-200"
+        >
+          {items.map((item: any, idx: number) => (
+            <li key={idx}>
+              <CartRow
+                key={idx}
+                item={item}
+                onIncrease={onIncrease}
+                onDecrease={onDecrease}
+                onDelete={onDelete}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
       <div className="grid w-full grid-flow-row gap-4 p-4 auto-rows-max shadow-defaultShadow bg-fullwhite ">
         <div className="grid grid-flow-col auto-cols-max place-content-between">
           <p className="text-base font-oxygen">Jemi</p>
-          <p className="text-base font-semibold font-oxygen">0.00TMT</p>
+          <p className="text-base font-semibold font-oxygen">{totalPrice} m</p>
         </div>
-        {/* for mapping row */}
-        <div className="grid grid-flow-col gap-0 grid-rows-OrderLine grid-cols-OrderLine">
-          <div className="row-span-3 p-4 m-auto">
-            <input
-              className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-firstColorGradientFromDark focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange"
-              type="radio"
-            />
-          </div>
-          <div className="col-span-2 mx-0 my-auto">
-            <h3 className="text-sm font-semibold">Nagt</h3>
-          </div>
-          <div className="col-span-2 row-span-2">
-            Harydy alanynyzda nagt pul bilen hasaplashmak
-          </div>
-        </div>
-        {/* For online payments banks */}
-        {/* <div className="grid grid-flow-col gap-2 ml-10 auto-cols-auto place-items-center">
-          <input
-            className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-firstColorGradientFromDark focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange"
-            type="radio"
-          />
-          <p className="ml-4 text-sm text-start font-oxygen">
-            Halkbank - Türkmenistanyň paýdarlar täjirçilik banky
-          </p>
-          <Image src={''} className="w-24 h-24" />
-        </div> */}
+
+        <PaymentMethods />
+
+        <p className="text-base font-semibold font-oxygen">Name:</p>
+        <Input
+          placeholder="Type your name"
+          autoFocus
+          type="text"
+          name="name"
+          // value=""
+          onChange={()=>{}}
+          inputMode="text"
+          className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange"
+        />
+        <p className="text-base font-semibold font-oxygen">Phone number:</p>
+        <Input
+          placeholder="+993"
+          type="number"
+          name="phoneNumber"
+          // value=""
+          onChange={()=>{}}
+          inputMode="text"
+          className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange"
+        />
         <p className="text-base font-semibold font-oxygen">Bellik:</p>
         <textarea
           className="font-oxygen border-[#E6E6E6] w-full rounded resize-none h-24"
-          placeholder="Type your remark..."
+          placeholder="Note: type your address or any additional information."
         />
-        <Link
-          to="/checkoutCart"
+        <button
+          onClick={() => {}}
           className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark hover:bg-socialBarItemHover hover:text-white"
         >
           Checkout
-        </Link>
+        </button>
       </div>
     </div>
+    </ErrorBoundary>
   );
 };
+
+
+const mapStateToProps = (state: any) => {
+  const totalData = getTotalCount(state);
+  return {
+    items: getCartItems(state),
+    // totalPrice: getTotalPrice(state),
+    totalCount: totalData.totalCount,
+    totalPrice: totalData.totalPrice,
+  };
+};
+
+const mapDispatchToProps = {
+  onIncrease: resourceAddedToCart,
+  onDecrease: resourceRemovedFromCart,
+  onDelete: resourceAllRemovedFromCart,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutPage);

@@ -56,7 +56,7 @@ export const getCartItems = (state: any) => {
 		R.map((cartItem: any) => getResourceById(state.resource.data, cartItem.id))
 	)(state.cart)
 
-	return items
+	return items ?? []
 }
 
 export const getResourceNextUrl = (state:any) => state.productFilter.next_url ?? ''

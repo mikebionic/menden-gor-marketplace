@@ -11,6 +11,7 @@ import { UserRoutes } from 'navigation';
 import { VGrid } from 'pages/VGrid';
 import { ProductPage } from 'pages/ProductPage';
 import { LoginPage, LogoutPage, RegisterPage } from 'pages/auth';
+import { CheckoutPage } from 'pages/CheckoutPage';
 
 export const AppRoutes: React.FC = ({ props }: any) => {
   return (
@@ -37,6 +38,7 @@ export const AppRoutes: React.FC = ({ props }: any) => {
       />
 
       <Route path={routeConstants.vGrid.route} element={<VGrid />} />
+      <Route path={routeConstants.checkout.route} element={<CheckoutPage />} />
 
       <Route path="*" element={<UserRoutes />} />
       {/* <Route path="*" element={<PrivateRoute component={UserRoutes} {...props} />} /> */}

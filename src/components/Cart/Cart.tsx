@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Dialog, Transition } from '@headlessui/react';
 import { BsX } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 
 import { CartRow } from 'components/Cart';
 import {
@@ -11,8 +10,9 @@ import {
   resourceRemovedFromCart,
   resourceAllRemovedFromCart,
 } from 'sapredux/actions';
-import { getTotalCount, getTotalPrice, getCartItems } from 'sapredux/selectors';
+import { getTotalCount, getCartItems } from 'sapredux/selectors';
 import { ErrorBoundary } from 'modules/errors';
+import { routeConstants } from 'navigation/routeConstants';
 
 interface ICartProps {
   open?: any;
@@ -116,7 +116,7 @@ export const Cart: React.FC<ICartProps> = ({
                       </div>
                       <div className="mt-6">
                         <Link
-                          to="/checkoutCart"
+                          to={routeConstants.checkout.route}
                           className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark hover:bg-socialBarItemHover hover:text-white"
                         >
                           Checkout
@@ -138,21 +138,15 @@ const mapStateToProps = (state: any) => {
   const totalData = getTotalCount(state);
   return {
     items: getCartItems(state),
-    // totalPrice: getTotalPrice(state),
     totalCount: totalData.totalCount,
     totalPrice: totalData.totalPrice,
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators(
-    {
-      onIncrease: resourceAddedToCart,
-      onDecrease: resourceRemovedFromCart,
-      onDelete: resourceAllRemovedFromCart,
-    },
-    dispatch,
-  );
+const mapDispatchToProps = {
+  onIncrease: resourceAddedToCart,
+  onDecrease: resourceRemovedFromCart,
+  onDelete: resourceAllRemovedFromCart,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

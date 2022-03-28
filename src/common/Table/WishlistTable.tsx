@@ -4,6 +4,7 @@ import { Table, Form, Space } from 'antd';
 
 import { Image } from 'common/Image';
 import { routeConstants } from 'navigation/routeConstants';
+import { WishlistButton } from 'common/WishlistButton';
 
 const columns = [
   {
@@ -42,10 +43,11 @@ const columns = [
     title: 'Price',
     align: 'center',
     className: 'text-gray-500',
-    render: ({ priceValue, currencySymbol }: any) => (
-      <p>
-        {priceValue} {currencySymbol}
-      </p>
+    render: ({ priceValue, currencySymbol, id, wishlist }: any) => (
+      <>
+        <p>{priceValue} {currencySymbol}</p>
+        <WishlistButton resId={id} wishlist={wishlist}/>
+      </>
     ),
   },
   // {

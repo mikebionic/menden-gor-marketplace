@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -86,15 +85,10 @@ const mapStateToProps = (state: any) => ({
   resource_error: state.resource.error,
 });
 
-const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators(
-    {
-      fetchResources,
-      loadMoreResources,
-      onFiltersApply: applyFilters,
-    },
-    dispatch,
-  );
-};
+const mapDispatchToProps = {
+  fetchResources,
+  loadMoreResources,
+  onFiltersApply: applyFilters,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(VGrid);

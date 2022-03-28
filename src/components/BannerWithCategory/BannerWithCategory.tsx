@@ -50,13 +50,6 @@ const mapStateToProps = (state: any) => ({
   ),
 });
 
-const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators(
-    {
-      fetchSliders,
-    },
-    dispatch,
-  );
-};
+const mapDispatchToProps = { fetchSliders };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BannerWithCategory);

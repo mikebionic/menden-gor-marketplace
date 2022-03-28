@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { IoIosArrowDown } from 'react-icons/io';
@@ -146,7 +145,6 @@ const Search: React.FC = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => ({ filters: state.productFilter });
-const mapDispatchToProps = (dispatch: any) =>
-  bindActionCreators({ onFiltersApply: applyFilters }, dispatch);
+const mapDispatchToProps = { onFiltersApply: applyFilters }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

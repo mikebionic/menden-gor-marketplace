@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import {
@@ -97,14 +96,9 @@ const mapStateToProps = (state: any) => ({
   featured_resource_error: state.featuredResourceIds.error,
 });
 
-const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators(
-    {
-      fetchFeaturedResources,
-      fetchDiscountResources,
-    },
-    dispatch,
-  );
-};
+const mapDispatchToProps = {
+  fetchFeaturedResources,
+  fetchDiscountResources,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

@@ -1,5 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -242,15 +241,10 @@ const mapStateToProps = (state: any) => ({
   filters: state.productFilter,
 });
 
-const mapDispatchToProps = (dispatch: any) => {
-  return bindActionCreators(
-    {
-      onFiltersApply: applyFilters,
-      onFiltersClear: clearFilters,
-    },
-    dispatch,
-  );
-};
+const mapDispatchToProps = {
+  onFiltersApply: applyFilters,
+  onFiltersClear: clearFilters,
+}
 
 export default connect(
   mapStateToProps,

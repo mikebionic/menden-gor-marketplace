@@ -22,6 +22,8 @@ export const serviceConfig = {
 		wishlist: process.env.REACT_APP_API_WISHLIST_ROUTE ?? '/v1/v-wishlist/',
 		setCurrency: process.env.REACT_APP_API_SET_CURRENCY_ROUTE ?? '/v1/set-session-currency/',
 		setLanguage: process.env.REACT_APP_API_SET_LANGUAGE_ROUTE ?? '/v1/set-session-language/',
+		payment_methods: process.env.REACT_APP_API_PAYMENT_METHODS ?? '/tbl-dk-payment-methods/',
+		payment_types: process.env.REACT_APP_API_PAYMENT_TYPES ?? '/tbl-dk-payment-types/',
 	},
 }
 
