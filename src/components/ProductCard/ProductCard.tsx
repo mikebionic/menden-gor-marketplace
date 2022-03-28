@@ -26,10 +26,16 @@ const ProductCard = ({ data }: any) => {
     categoryName,
   } = data;
 
-  var resource_description = description
+  let resource_description = description
     ? description.length > 50
       ? `${description.slice(0, 50)}...`
       : description
+    : '';
+
+  let resource_name = name
+    ? name.length > 25
+      ? `${name.slice(0, 50)}...`
+      : name
     : '';
 
   return (
@@ -65,7 +71,7 @@ const ProductCard = ({ data }: any) => {
         </Badge.Ribbon>
         <Link to={`${routeConstants.product.route}${id}/${name}`}>
           <div className="mx-auto my-0 text-center w-max">
-            <h3 className="mx-auto my-0 font-semibold">{name}</h3>
+            <h3 className="mx-auto my-0 font-semibold">{resource_name}</h3>
             <hr className="w-full" />
           </div>
         </Link>

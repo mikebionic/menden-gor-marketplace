@@ -17,6 +17,7 @@ import { SocialBar } from 'components/SocialBar';
 import { Divider } from 'components/Divider';
 import BannerWithCategory from 'components/BannerWithCategory';
 import { SlickBrandsSlider } from 'components/SlickBrandsSlider';
+import { CheckoutPage } from 'pages/CheckoutPage';
 
 const MainPage: React.FC = (props: any) => {
   const {
@@ -80,6 +81,7 @@ const MainPage: React.FC = (props: any) => {
           <ResGroup />
           <ResGroup />
         </div>
+        <CheckoutPage />
         <SocialBar />
       </div>
     </ErrorBoundary>
