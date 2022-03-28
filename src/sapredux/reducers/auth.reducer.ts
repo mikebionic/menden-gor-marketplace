@@ -43,6 +43,14 @@ export const auth = (state = initialState, {type, payload}:any) => {
 				error: false,
 				data: {}
 			};
+		case authConstants.PROFILE_UPDATE:
+			set_local_data_by_key('user', payload)
+			return {
+				loggedIn: true,
+				loading: false,
+				error: false,
+				data: {...state.data, ...payload}
+			};
 		default:
 			return state
 	}

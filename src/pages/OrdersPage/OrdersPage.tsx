@@ -6,15 +6,20 @@ import { OrderLine, OrderBlock } from 'pages/OrdersPage';
 import { orderService } from 'sapredux/services';
 import { routeConstants } from 'navigation/routeConstants';
 import { Spinner } from 'modules/loaders';
-import { ErrorBoundary } from 'modules/errors';
+import { ErrorBoundary, ErrorIndicator } from 'modules/errors';
 
 export const OrdersPage: React.FC = () => {
   const [loading, set_loading] = useState(true);
+  const [error, set_error] = useState(false);
   const [order_invoices_list, set_order_invoices_list] = useState([]);
   const get_order_invoices = async () => {
     set_loading(true);
-    const order_invoices_list = await orderService.fetchAll_data();
-    order_invoices_list && set_order_invoices_list(order_invoices_list);
+    set_error(false)
+    await orderService.fetchAll_data()
+      .then(
+        (response:any) => set_order_invoices_list(response),
+        (error:any) => set_error(true)
+      )
     set_loading(false);
   };
 
@@ -35,6 +40,7 @@ export const OrdersPage: React.FC = () => {
   return (
     <ErrorBoundary>
       {loading && <Spinner />}
+      {error && <ErrorIndicator />}
       {!R.isEmpty(current_order_inv) ? (
         <div>
           <OrderLine {...current_order_inv} />

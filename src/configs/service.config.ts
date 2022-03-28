@@ -20,6 +20,8 @@ export const serviceConfig = {
 		register: process.env.REACT_APP_API_REGISTER_ROUTE ?? '/register/',
 		profile_edit: process.env.REACT_APP_API_PROFILE_EDIT_ROUTE ?? '/v1/v-rp-accs/profile-edit/',
 		wishlist: process.env.REACT_APP_API_WISHLIST_ROUTE ?? '/v1/v-wishlist/',
+		setCurrency: process.env.REACT_APP_API_SET_CURRENCY_ROUTE ?? '/v1/set-session-currency/',
+		setLanguage: process.env.REACT_APP_API_SET_LANGUAGE_ROUTE ?? '/v1/set-session-language/',
 	},
 }
 

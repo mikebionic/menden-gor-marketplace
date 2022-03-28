@@ -30,7 +30,10 @@ const logout = (withToastMessage:boolean = true) => {
 	return { type: authConstants.LOGOUT };
 }
 
+export const profileUpdate = (data:any) => ({type: authConstants.PROFILE_UPDATE, payload: data})
+
 export const authActions = {
 	login,
 	logout,
+	profileUpdate,
 };

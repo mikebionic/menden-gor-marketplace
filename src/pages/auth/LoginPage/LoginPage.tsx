@@ -9,6 +9,7 @@ import { authActions } from 'sapredux/actions';
 import { routeConstants } from 'navigation/routeConstants';
 import { ErrorBoundary } from 'modules/errors';
 import { IconLabelButton } from 'common/IconLabelButton';
+import { Spinner } from 'modules/loaders';
 
 const LoginPage: React.FC = (props: any) => {
   const { loggedIn, loading } = props;
@@ -43,11 +44,7 @@ const LoginPage: React.FC = (props: any) => {
         <div className="container flex p-12 mx-auto">
           <div className="w-full max-w-md mx-auto">
             <div className="overflow-hidden shadow-defaultShadow bg-glass rounded-2xl backdrop-filter backdrop-blur-glass">
-              {loading && (
-                <span className="mr-1 spinner-border spinner-border-sm">
-                  Loading spinner :D ....
-                </span>
-              )}
+              { loading && <Spinner /> }
               <Form
                 name="normal_login"
                 className="max-w-full p-8"
