@@ -1,22 +1,13 @@
-import React from 'react';
-import { Steps } from 'antd';
-import {
-  UserOutlined,
-  SolutionOutlined,
-  FileTextOutlined,
-} from '@ant-design/icons';
-
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaSms } from 'react-icons/fa';
 import { GrGooglePlus } from 'react-icons/gr';
-
 import { IconLabelButton } from 'common/IconLabelButton';
+import { ErrorBoundary } from 'modules/errors';
 
-const { Step } = Steps;
 
-export const AuthInputCard: React.FC = () => {
+export const AuthInputCard = ({onStageChange}:any) => {
   return (
-    <>
+    <ErrorBoundary>
       <div className="grid w-full grid-flow-row gap-4 place-content-center auto-cols-max">
         <div className="text-center cursor-default">
           <h2 className="text-3xl font-semibold text-textColorOrange">
@@ -54,28 +45,10 @@ export const AuthInputCard: React.FC = () => {
             label="Next"
             className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] m-auto"
             labelClassName="m-auto text-white"
+            onClick={() => onStageChange(2)}
           />
         </div>
       </div>
-      <div className="w-[60%] my-12 mx-auto cursor-default">
-        <Steps>
-          <Step
-            status="process"
-            title="Choose Method"
-            icon={<UserOutlined className="text-textColorOrange" />}
-          />
-          <Step
-            status="wait"
-            title="Verification"
-            icon={<SolutionOutlined className="text-textColorOrange" />}
-          />
-          <Step
-            status="wait"
-            title="Fill the blank"
-            icon={<FileTextOutlined className="text-textColorOrange" />}
-          />
-        </Steps>
-      </div>
-    </>
+    </ErrorBoundary>
   );
 };

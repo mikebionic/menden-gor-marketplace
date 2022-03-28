@@ -1,15 +1,8 @@
-import React from 'react';
-import { Form, Input, Select, Steps } from 'antd';
-import {
-  UserOutlined,
-  SolutionOutlined,
-  FileTextOutlined,
-} from '@ant-design/icons';
+import { Form, Input, Select } from 'antd';
+
 import { IconLabelButton } from 'common/IconLabelButton';
-
+import { ErrorBoundary } from 'modules/errors';
 const { Option } = Select;
-
-const { Step } = Steps;
 
 const formItemLayout = {
   labelCol: {
@@ -34,7 +27,7 @@ const tailFormItemLayout = {
   },
 };
 
-export const RegisterRpAccCard: React.FC = () => {
+export const RegisterRpAccCard = ({onStageChange}:any) => {
   const [form] = Form.useForm();
 
   const onFinish = (values: any) => {
@@ -47,7 +40,7 @@ export const RegisterRpAccCard: React.FC = () => {
     </Form.Item>
   );
   return (
-    <>
+    <ErrorBoundary>
       <div className="w-[610px] h-full m-auto grid grid-flow-row place-content-center auto-cols-auto place-items-center gap-6 p-8 overflow-hidden shadow-[1px_1px_4px_rgba(0,0,0,0.25)] bg-fullwhite rounded-lg">
         <div>
           <p className="text-lg font-semibold text-textColorOrange">
@@ -218,25 +211,6 @@ export const RegisterRpAccCard: React.FC = () => {
           </Form.Item>
         </Form>
       </div>
-      <div className="w-[60%] my-12 mx-auto cursor-default">
-        <Steps>
-          <Step
-            status="finish"
-            title="Choose Method"
-            icon={<UserOutlined className="text-textColorOrange" />}
-          />
-          <Step
-            status="finish"
-            title="Verification"
-            icon={<SolutionOutlined className="text-textColorOrange" />}
-          />
-          <Step
-            status="process"
-            title="Fill the blank"
-            icon={<FileTextOutlined className="text-textColorOrange" />}
-          />
-        </Steps>
-      </div>
-    </>
+    </ErrorBoundary>
   );
 };

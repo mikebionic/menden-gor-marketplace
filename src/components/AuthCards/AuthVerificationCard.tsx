@@ -1,13 +1,7 @@
 import React from 'react';
-import { IconLabelButton } from 'common/IconLabelButton';
-import { Steps } from 'antd';
-import {
-  UserOutlined,
-  SolutionOutlined,
-  FileTextOutlined,
-} from '@ant-design/icons';
 
-const { Step } = Steps;
+import { IconLabelButton } from 'common/IconLabelButton';
+import { ErrorBoundary } from 'modules/errors';
 
 export class AuthVerificationCard extends React.Component {
   constructor(props: any) {
@@ -53,7 +47,7 @@ export class AuthVerificationCard extends React.Component {
 
   render() {
     return (
-      <>
+      <ErrorBoundary>
         <div className="w-[450px] h-full p-9 place-items-center bg-fullwhite shadow-[1px_1px_4px_rgba(0,0,0,0.25)] rounded-lg grid grid-flow-row m-auto gap-6 place-content-center auto-cols-auto">
           <div>
             <h2 className="text-lg font-semibold text-textColorOrange">
@@ -157,26 +151,7 @@ export class AuthVerificationCard extends React.Component {
             />
           </div>
         </div>
-        <div className="w-[60%] my-12 mx-auto cursor-default">
-          <Steps>
-            <Step
-              status="finish"
-              title="Choose Method"
-              icon={<UserOutlined className="text-textColorOrange" />}
-            />
-            <Step
-              status="process"
-              title="Verification"
-              icon={<SolutionOutlined className="text-textColorOrange" />}
-            />
-            <Step
-              status="wait"
-              title="Fill the blank"
-              icon={<FileTextOutlined className="text-textColorOrange" />}
-            />
-          </Steps>
-        </div>
-      </>
+      </ErrorBoundary>
     );
   }
 }
