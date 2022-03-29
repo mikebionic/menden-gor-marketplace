@@ -75,7 +75,7 @@ export const Navbar = (props: any) => {
       <div className="fixed w-full z-[999]">
         <header className="top-0 left-0 grid w-full h-20 grid-rows-1 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight">
           {/* first row */}
-          <div className="inline-grid items-center w-full grid-rows-1 mx-auto my-2 grid-cols-[15rem_50rem_8rem_8rem]">
+          <div className="inline-grid items-center w-full grid-flow-col grid-rows-1 gap-4 mx-auto my-2 auto-cols-auto">
             <div className="w-24 h-5 mx-auto my-0">
               <Link to={routeConstants.root.route}>
                 <img
@@ -85,11 +85,10 @@ export const Navbar = (props: any) => {
               </Link>
             </div>
             <Search />
-
             <NavbarProfileDropdown />
           </div>
         </header>
-        <header className="top-0 left-0 w-full h-12 border-b border-white shadow-md bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight relarive">
+        <header className="relative top-0 left-0 w-full h-12 border-b border-white shadow-md bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight">
           {/* second row */}
           <div className="w-full border-t border-white">
             <ClickAwayListener onClickAway={handleClickAway}>
@@ -118,7 +117,7 @@ export const Navbar = (props: any) => {
                 </Transition>
               </div>
             </ClickAwayListener>
-            <div className="relative grid float-right grid-rows-1 gap-2 mr-4 grid-cols-[42px_50px_50px_42px_50px_auto]">
+            <div className="relative grid float-right grid-flow-col grid-rows-1 gap-2 mr-4 auto-cols-min">
               <div>
                 <IconLabelButton
                   className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid "

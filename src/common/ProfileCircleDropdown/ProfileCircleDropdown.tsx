@@ -76,7 +76,7 @@ const ProfileCircleDropdown: React.FC<IProfileCircleDropdown> = ({
             src={image}
             alt={username ?? 'avatar-icon'}
             className="object-cover w-full h-full"
-            imageType='avatar'
+            imageType="avatar"
           />
         </div>
       </Menu.Button>

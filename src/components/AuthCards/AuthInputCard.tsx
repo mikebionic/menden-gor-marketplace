@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaSms } from 'react-icons/fa';
@@ -6,9 +6,8 @@ import { GrGooglePlus } from 'react-icons/gr';
 import { IconLabelButton } from 'common/IconLabelButton';
 import { ErrorBoundary } from 'modules/errors';
 
-
-export const AuthInputCard = ({onStageChange}:any) => {
-  const [authType, set_authType] = useState('email')
+export const AuthInputCard = ({ onStageChange }: any) => {
+  const [authType, set_authType] = useState('email');
 
   return (
     <ErrorBoundary>
@@ -22,22 +21,27 @@ export const AuthInputCard = ({onStageChange}:any) => {
           <p>Giris usulyny saylan:</p>
         </div>
         <div className="inline-grid grid-flow-col gap-4 auto-cols-max place-content-center">
-          <div className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
-            onClick={() => set_authType('email')}>
+          <div
+            className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
+            onClick={() => set_authType('email')}
+          >
             <AiOutlineMail className="w-full h-full p-2 text-textColorOrange" />
           </div>
-          <div className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
-            onClick={() => set_authType('phone_number')}>
+          <div
+            className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
+            onClick={() => set_authType('phone_number')}
+          >
             <FaSms className="w-full h-full p-2 text-textColorOrange" />
           </div>
-          <div className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
-            onClick={() => set_authType('google')}>
+          <div
+            className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
+            onClick={() => set_authType('google')}
+          >
             <GrGooglePlus className="w-full h-full p-2 text-textColorOrange" />
           </div>
         </div>
         <div className="w-[450px] h-[217px] rounded-lg shadow-[1px_1px_4px_rgba(0,0,0,0.3)] p-9 grid grid-flow-row auto-rows-auto gap-4">
-
-          {(authType === 'email') && (
+          {authType === 'email' && (
             <div className="inline-grid grid-flow-row gap-1 auto-rows-auto">
               <p className="text-base ml-1 text-[#606060] cursor-default">
                 Email address:
@@ -52,7 +56,7 @@ export const AuthInputCard = ({onStageChange}:any) => {
               />
             </div>
           )}
-          {(authType === 'phone_number') && (
+          {authType === 'phone_number' && (
             <div className="inline-grid grid-flow-row gap-1 auto-rows-auto">
               <p className="text-base ml-1 text-[#606060] cursor-default">
                 Phone number:
@@ -66,7 +70,7 @@ export const AuthInputCard = ({onStageChange}:any) => {
                 required
               />
             </div>
-          )}          
+          )}
 
           <IconLabelButton
             label="Next"

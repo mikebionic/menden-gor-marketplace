@@ -80,7 +80,6 @@ const MainPage: React.FC = (props: any) => {
           <ResGroup />
           <ResGroup />
         </div>
-        <CheckoutPage />
         <SocialBar />
       </div>
     </ErrorBoundary>
@@ -99,6 +98,6 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = {
   fetchFeaturedResources,
   fetchDiscountResources,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
