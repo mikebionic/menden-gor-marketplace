@@ -13,7 +13,7 @@ export const RegisterPage: React.FC = () => {
     <>
       <div>
         { stage === 1 && <AuthInputCard onStageChange={(stage:number)=>set_stage(stage)} /> }
-        { stage === 2 && <AuthVerificationCard /> }
+        { stage === 2 && <AuthVerificationCard onStageChange={(stage:number)=>set_stage(stage)} /> }
         { stage === 3 && <RegisterRpAccCard onStageChange={(stage:number)=>set_stage(stage)} /> }
         <hr className="my-8" />
       </div>

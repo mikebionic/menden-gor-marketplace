@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { IconLabelButton } from 'common/IconLabelButton';
 import { ErrorBoundary } from 'modules/errors';
 
-export const AuthVerificationCard = () => {
+export const AuthVerificationCard = ({onStageChange}:any) => {
 
 	const boxes_list = [
 		{id: 1,	name:'opt1'},
@@ -39,6 +39,14 @@ export const AuthVerificationCard = () => {
 	return (
 		<ErrorBoundary>
 			<div className="w-[450px] h-full p-9 place-items-center bg-fullwhite shadow-[1px_1px_4px_rgba(0,0,0,0.25)] rounded-lg grid grid-flow-row m-auto gap-6 place-content-center auto-cols-auto">
+				<div>
+					<IconLabelButton
+						label="Back"
+						className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)]"
+						labelClassName="m-auto left-0 text-white"
+						onClick={() => onStageChange(1)}
+					/>
+				</div>
 				<div>
 					<h2 className="text-lg font-semibold text-textColorOrange">
 						Tassyklayys kody girizin.
