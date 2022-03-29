@@ -43,23 +43,17 @@ const columns = [
     title: 'Price',
     align: 'center',
     className: 'text-gray-500',
-    render: ({ priceValue, currencySymbol, id, wishlist }: any) => (
-      <>
-        <p>{priceValue} {currencySymbol}</p>
-        <WishlistButton resId={id} wishlist={wishlist}/>
-      </>
-    ),
+    render: ({ priceValue, currencySymbol}: any) => <p>{priceValue} {currencySymbol}</p>
   },
-  // {
-  //   title: 'Action',
-  //   align: 'center',
-  //   render: () => (
-  //     <Space size="middle">
-  //       <button>Add to Cart</button>
-  //       <button>wishlist</button>
-  //     </Space>
-  //   ),
-  // },
+  {
+    title: 'Action',
+    align: 'center',
+    render: ({ id, wishlist }:any) => 
+    <div className="inline-grid place-content-center">
+      <WishlistButton resId={id} wishlist={wishlist}/>
+    </div>
+      
+  },
 ];
 
 export const WishlistTable = ({ data }: any) => {

@@ -81,19 +81,6 @@ const RenderProuct = ({
           <WishlistButton wishlist={wishlist} margin="m-0" />
         </div>
       </div>
-      <p className="text-base text-justify text-gray-400 line-through">
-        {realPrice} {currencySymbol}
-      </p>
-      <PriceButton
-        priceValue={priceValue}
-        currencySymbol={currencySymbol}
-        coloredButton={false}
-      />
-      <hr className="w-auto my-4" />
-      <div className="inline-grid grid-flow-col gap-4 auto-cols-max place-content-end place-items-center">
-        <ProductAddToCart resourceId={id} withCounter={true} margin="m-0" />
-        <WishlistButton resId={id} wishlist={wishlist} margin="m-0" />
-      </div>
     </div>
   </ErrorBoundary>
 );

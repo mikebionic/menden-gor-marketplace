@@ -46,6 +46,15 @@ const logout = () => {
 	document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
 }
 
+const registerRequest = async (method:string, payload:string) => {
+	let requestOptions
+	if (method === 'email') {
+		requestOptions = { Email: payload }
+	} else if (method === 'phone_number'){
+		requestOptions = { PhoneNumber: payload }
+	}
+	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.register_request}?method=${method}`,requestOptions).then(handleResponse)
+}
 
 const editProfile = async (payload:any) => {
 	const requestOptions = {

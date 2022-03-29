@@ -18,6 +18,8 @@ export const serviceConfig = {
 		all_orders: process.env.REACT_APP_API_ALL_ORDERS_ROUTE ?? '/v-order-invoices/',
 		login: process.env.REACT_APP_API_LOGIN_ROUTE ?? '/login/',
 		register: process.env.REACT_APP_API_REGISTER_ROUTE ?? '/register/',
+		register_request: process.env.REACT_APP_API_REGISTER_REQUEST_ROUTE ?? '/register-request/',
+		verify_register: process.env.REACT_APP_API_VERIFY_REGISTER_ROUTE ?? '/verify-register/',
 		profile_edit: process.env.REACT_APP_API_PROFILE_EDIT_ROUTE ?? '/v1/v-rp-accs/profile-edit/',
 		wishlist: process.env.REACT_APP_API_WISHLIST_ROUTE ?? '/v1/v-wishlist/',
 		setCurrency: process.env.REACT_APP_API_SET_CURRENCY_ROUTE ?? '/v1/set-session-currency/',
