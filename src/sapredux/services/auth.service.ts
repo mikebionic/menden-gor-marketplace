@@ -47,13 +47,10 @@ const logout = () => {
 }
 
 const registerRequest = async (method:string, payload:string) => {
-	let requestOptions
-	if (method === 'email') {
-		requestOptions = { Email: payload }
-	} else if (method === 'phone_number'){
-		requestOptions = { PhoneNumber: payload }
-	}
-	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.register_request}?method=${method}`,requestOptions).then(handleResponse)
+	let headers = method === 'email' ? { Email: payload }
+		: method === 'phone_number' && { PhoneNumber: payload }
+
+	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.register_request}?method=${method}`,{headers:headers}).then(handleResponse)
 }
 
 const editProfile = async (payload:any) => {
@@ -72,5 +69,6 @@ const editProfile = async (payload:any) => {
 export const authService = {
 	login,
 	logout,
+	registerRequest,
 	editProfile,
 };
