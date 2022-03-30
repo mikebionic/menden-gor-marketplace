@@ -9,11 +9,14 @@ import {
 
 export const RegisterPage: React.FC = () => {
   const [stage, set_stage] = useState(1)
+  const [validationData, set_validationData] = useState({})
   return (
     <>
       <div>
-        { stage === 1 && <AuthInputCard onStageChange={(stage:number)=>set_stage(stage)} /> }
-        { stage === 2 && <AuthVerificationCard onStageChange={(stage:number)=>set_stage(stage)} /> }
+        { stage === 1 && <AuthInputCard onStageChange={(stage:number)=>set_stage(stage)}
+          handleValidationData={(data:any) => set_validationData(data)} /> }
+        { stage === 2 && <AuthVerificationCard onStageChange={(stage:number)=>set_stage(stage)}
+          validationData={validationData} /> }
         { stage === 3 && <RegisterRpAccCard onStageChange={(stage:number)=>set_stage(stage)} /> }
         <hr className="my-8" />
       </div>
