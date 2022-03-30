@@ -8,7 +8,7 @@ import { ErrorBoundary } from 'modules/errors';
 import { authService } from 'sapredux/services';
 import { showToastMessage } from 'sapredux/helpers';
 
-export const AuthInputCard = ({ onStageChange }: any) => {
+export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
   const [authMethod, set_authMethod] = useState('email');
   const [credentials, set_credentials] = useState('');
   const [validationData, set_validationData] = useState({
@@ -24,12 +24,10 @@ export const AuthInputCard = ({ onStageChange }: any) => {
       credentials: credentials,
     });
   }, [authMethod, credentials]);
-  console.log(validationData);
 
   const handleSubmit = (e: any) => {
     authService.registerRequest(authMethod, credentials).then(
       (response: any) => {
-        console.log(response);
         response.status === 1
           ? handleSuccess(response)
           : showToastMessage({
@@ -50,17 +48,19 @@ export const AuthInputCard = ({ onStageChange }: any) => {
   const handleSuccess = (response: any) => {
     showToastMessage({
       type: 'success',
-      message: response.message,
+      message: 'Request successfully sent!',
       position: 'center-top',
     });
-    set_validationData({
+    const newValidationData = {
       ...validationData,
       responseMessage: response.message,
       validator_phone_number:
         authMethod === 'phone_number'
           ? response.data.validator_phone_number
           : '',
-    });
+    };
+    set_validationData(newValidationData);
+    handleValidationData(newValidationData);
     onStageChange(2);
   };
 
