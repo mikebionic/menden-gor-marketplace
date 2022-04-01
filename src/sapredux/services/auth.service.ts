@@ -53,6 +53,18 @@ const registerRequest = async (method:string, payload:string) => {
 	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.register_request}?method=${method}`,{headers:headers}).then(handleResponse)
 }
 
+const verifyRegister = async (method:string, payload:any) => {
+	const requestOptions = {
+		method: 'POST',
+		body: JSON.stringify(payload),
+		headers: {
+			"Content-Type": "application/json; charset=UTF-8",
+		},
+	}
+	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.verify_register}?method=${method}`,requestOptions).then(handleResponse)
+}
+
+
 const editProfile = async (payload:any) => {
 	const requestOptions = {
 		method: 'POST',
@@ -70,5 +82,6 @@ export const authService = {
 	login,
 	logout,
 	registerRequest,
+	verifyRegister,
 	editProfile,
 };
