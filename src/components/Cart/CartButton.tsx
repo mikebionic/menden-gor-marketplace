@@ -13,22 +13,24 @@ const CartButton = (props: any) => {
   const { cartOpen, setCartOpen, totalCount, totalPrice } = props;
   return (
     <ErrorBoundary>
-      <a
-        className="flex flex-row-reverse mr-1"
-        onClick={() => setCartOpen(!cartOpen)}
-      >
-        <IconLabelButton
-          className="items-center h-6 grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid "
-          icon={
-            <RiShoppingBasketLine className="w-6 h-6 mx-3 text-2xl text-white" />
-          }
-        />
-        <span className="absolute text-sm font-semibold text-white ">
-          {totalCount}
-        </span>
-      </a>
-      <div className="mt-3 text-sm font-semibold text-white ">
-        {totalPrice} TMT
+      <div className="grid grid-flow-col auto-cols-max">
+        <a
+          className="flex flex-row-reverse mr-1"
+          onClick={() => setCartOpen(!cartOpen)}
+        >
+          <IconLabelButton
+            className="items-center h-6 grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid "
+            icon={
+              <RiShoppingBasketLine className="w-6 h-6 mx-3 text-2xl text-white" />
+            }
+          />
+          <span className="absolute text-sm font-semibold text-white ">
+            {totalCount}
+          </span>
+        </a>
+        <div className="mt-3 text-sm font-semibold text-white ">
+          {totalPrice} TMT
+        </div>
       </div>
     </ErrorBoundary>
   );

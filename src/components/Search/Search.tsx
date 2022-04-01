@@ -92,7 +92,7 @@ const Search: React.FC = (props: any) => {
 
   return (
     <form name="navbar_search" action="" onSubmit={handleSubmit}>
-      <div className="grid grid-rows-1 mx-auto my-0 w-[728px] grid-cols-search">
+      <div className="grid grid-rows-1 mx-auto my-0 w-auto min-w-[520px] lg:w-[728px] grid-cols-search z-[9999]">
         <ClickAwayListener onClickAway={handleClickAway}>
           <div
             className="w-32 h-12 bg-white border-2 border-white border-solid rounded-l-full cursor-pointer bg-gradient-to-l from-firstColorGradientFromDark to-secondColorGradientToLight gap-x-8"
@@ -145,6 +145,6 @@ const Search: React.FC = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => ({ filters: state.productFilter });
-const mapDispatchToProps = { onFiltersApply: applyFilters }
+const mapDispatchToProps = { onFiltersApply: applyFilters };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

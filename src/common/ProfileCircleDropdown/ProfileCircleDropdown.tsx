@@ -68,7 +68,7 @@ const ProfileCircleDropdown: React.FC<IProfileCircleDropdown> = ({
   return (
     <Menu
       as="div"
-      className="relative items-center justify-center inline-block w-64 m-auto"
+      className="relative items-center justify-center inline-block w-full m-auto min-w-[4rem]"
     >
       <Menu.Button className="flex items-center justify-center space-x-3 cursor-pointer">
         <div className="w-12 h-12 overflow-hidden border-[1.2px] border-white rounded-full shadow-defaultShadow">
@@ -91,7 +91,11 @@ const ProfileCircleDropdown: React.FC<IProfileCircleDropdown> = ({
         leaveTo="transform opacity-0 scale-95"
       >
         <div className="absolute px-5 py-3 mt-2 bg-white border rounded-lg shadow w-60 z-[999]">
-          {loggedIn && <p>{username}</p>}
+          {loggedIn && (
+            <p className="w-full py-1 text-base font-oxygen text-textColorOrange">
+              {username}
+            </p>
+          )}
           <ul className="space-y-3 text-white">
             {loggedIn && userRows}
             {loggedIn && <hr className="border-gray-700" />}

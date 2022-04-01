@@ -21,7 +21,7 @@ const BannerWithCategory: React.FC = (props: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="grid w-full h-auto gap-4 px-4 mx-auto bg-fullwhite grid-rows-auto grid-cols-[30%_70%] sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-4 lg:pt-8">
+      <div className="grid w-full h-auto gap-4 px-4 mx-auto bg-fullwhite grid-rows-auto grid-cols-[30%_70%] sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-4 lg:pt-8 md:pt-6 md:pb-2">
         <CategoryList>
           {categories.map((category: any, idx: number) => (
             <Link

@@ -33,11 +33,14 @@ export const CarouselSlider = ({ images }: any) => {
       hasAutoplayProgress
     >
       {images.map((image: any, idx: number) => (
-        <SplideSlide className="h-full p-[0_0_56.23%_0]" key={idx}>
+        <SplideSlide
+          className="h-full p-[0_0_56.23%_0] grid place-content-center place-items-center"
+          key={idx}
+        >
           <Image
             src={image.filePathM}
             alt={image.title}
-            className="absolute w-full h-full"
+            className="absolute w-full h-auto"
           />
         </SplideSlide>
       ))}

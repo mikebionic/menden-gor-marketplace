@@ -77,7 +77,7 @@ export const Footer: React.FC = () => {
           }
           label=""
         />
-        <div className="absolute bottom-0 w-full col-start-1 col-end-6 text-center border-t-2">
+        <div className="absolute bottom-0 w-[80%] col-start-1 col-end-6 text-center border-t-2">
           <a href="https://saphasap.com">
             <IconLabelButton
               className="py-3 text-gray-400 cursor-default"
