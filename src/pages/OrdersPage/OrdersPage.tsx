@@ -14,12 +14,11 @@ export const OrdersPage: React.FC = () => {
   const [order_invoices_list, set_order_invoices_list] = useState([]);
   const get_order_invoices = async () => {
     set_loading(true);
-    set_error(false)
-    await orderService.fetchAll_data()
-      .then(
-        (response:any) => set_order_invoices_list(response),
-        (error:any) => set_error(true)
-      )
+    set_error(false);
+    await orderService.fetchAll_data().then(
+      (response: any) => set_order_invoices_list(response),
+      (error: any) => set_error(true),
+    );
     set_loading(false);
   };
 
@@ -46,7 +45,7 @@ export const OrdersPage: React.FC = () => {
           <OrderLine {...current_order_inv} />
         </div>
       ) : (
-        <div className="grid lg:grid-cols-3 md:grid-cols-2">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-x-8">
           {order_invoices_list.map((order_inv: any, idx: number) => (
             <Link
               to={`${routeConstants.orders.route}?regNo=${order_inv.regNo}`}

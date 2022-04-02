@@ -40,7 +40,7 @@ const ProductCard = ({ data }: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="relative grid items-center w-64 grid-cols-1 mt-4 bg-white rounded grid-rows-[max-content_30px_auto_auto_auto] h-[26rem] shadow-defaultShadow">
+      <div className="relative grid items-center xl:w-64 md:w-52 md:h-96 grid-cols-1 mt-4 bg-white rounded grid-rows-[max-content_30px_auto_auto_auto] xl:h-[26rem] shadow-defaultShadow">
         <Badge.Ribbon
           text={discount}
           placement="start"
@@ -49,7 +49,7 @@ const ProductCard = ({ data }: any) => {
           }`}
           color="red"
         >
-          <div className="items-center justify-center w-56 h-64 mx-auto my-3 overflow-hidden bg-gray-200 ">
+          <div className="items-center justify-center mx-auto my-3 overflow-hidden bg-gray-200 xl:w-56 xl:h-64 md:w-44 md:h-52 ">
             <div className="relative">
               {isNew ? <Ribbon /> : null}
               <span className="absolute top-0 right-0">

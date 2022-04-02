@@ -16,7 +16,7 @@ export const OrderBlock = (props: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="relative grid w-[380px] m-4 bg-white cursor-pointer h-52 shadow-defaultShadow rounded-xl">
+      <div className="relative grid xl:w-[380px] md:w-[320px] m-4 bg-white cursor-pointer h-52 shadow-defaultShadow rounded-xl">
         <Badge.Ribbon
           text={`${orderFTotal}${currencySymbol}`}
           color="red"

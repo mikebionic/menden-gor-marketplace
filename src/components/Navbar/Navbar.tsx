@@ -75,7 +75,7 @@ export const Navbar = (props: any) => {
       <div className="fixed w-full z-[999]">
         <header className="top-0 left-0 grid w-full h-20 grid-rows-1 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight">
           {/* first row */}
-          <div className="inline-grid items-center w-full grid-rows-1 mx-auto my-2 grid-cols-[15rem_50rem_8rem]">
+          <div className="inline-grid items-center w-full grid-rows-1 mx-auto my-2 xl:grid-cols-[15rem_50rem_8rem] md:grid-cols-[auto_auto_auto]">
             <div className="w-24 h-5 mx-auto my-0">
               <Link to={routeConstants.root.route}>
                 <img
@@ -118,7 +118,7 @@ export const Navbar = (props: any) => {
                 </Transition>
               </div>
             </ClickAwayListener>
-            <div className="relative grid float-right grid-cols-[42px_50px_50px_42px_50px_25px_25px] grid-rows-1 gap-2 mr-4">
+            <div className="relative grid float-right grid-flow-col gap-2 mr-4 auto-cols-maxgrid-rows-1">
               <div>
                 <IconLabelButton
                   className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid "

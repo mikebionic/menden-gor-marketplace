@@ -55,7 +55,7 @@ const MainPage: React.FC = (props: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="max-w-2xl py-16 mx-auto sm:py-24 lg:pb-24 lg:pt-12 lg:max-w-7xl lg:px-8 md:pt-8 min-phone:pt-4">
+      <div className="py-16 mx-auto sm:py-24 lg:pb-24 lg:pt-12 lg:px-8 md:pt-8 min-phone:pt-4">
         <BannerWithCategory />
 
         <div className="my-8">
