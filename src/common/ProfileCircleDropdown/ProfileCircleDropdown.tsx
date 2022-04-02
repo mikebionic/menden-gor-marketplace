@@ -92,13 +92,16 @@ const ProfileCircleDropdown: React.FC<IProfileCircleDropdown> = ({
       >
         <div className="absolute px-5 py-3 mt-2 bg-white border rounded-lg shadow w-60 z-[999]">
           {loggedIn && (
-            <p className="w-full py-1 text-base font-oxygen text-textColorOrange">
-              {username}
-            </p>
+            <>
+              <p className="w-full py-1 text-base font-oxygen text-textColorOrange">
+                {username}
+              </p>
+              <hr className="mb-2 border-gray-700 opacity-20" />
+            </>
           )}
           <ul className="space-y-3 text-white">
             {loggedIn && userRows}
-            {loggedIn && <hr className="border-gray-700" />}
+            {loggedIn && <hr className="border-gray-700 opacity-20" />}
             {loggedIn ? authRows : unauthRows}
           </ul>
         </div>

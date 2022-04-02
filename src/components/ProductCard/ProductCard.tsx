@@ -44,7 +44,7 @@ const ProductCard = ({ data }: any) => {
         <Badge.Ribbon
           text={discount}
           placement="start"
-          className={`cursor-default top-[82%] discount-left ${
+          className={`cursor-default xl:top-[82%] md:top-[79%] discount-left ${
             discount ?? 'hidden'
           }`}
           color="red"
@@ -55,7 +55,7 @@ const ProductCard = ({ data }: any) => {
               <span className="absolute top-0 right-0">
                 <WishlistButton resId={id} wishlist={wishlist} />
               </span>
-              <span className="absolute right-0 top-52">
+              <span className="absolute right-0 top-52 md:top-40">
                 <ProductAddToCart resourceId={id} />
               </span>
             </div>

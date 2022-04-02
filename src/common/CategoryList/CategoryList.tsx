@@ -6,7 +6,7 @@ export const CategoryList = (props: any) => {
           Categories
         </h1>
       </div>
-      <div className="pl-1 overflow-auto h-[400px] max-h-[80%]">
+      <div className="pl-1 overflow-auto h-[400px] max-h-[80%] relative">
         {props.children}
       </div>
     </div>
