@@ -15,10 +15,9 @@ module.exports = {
         glass: 'rgba(255,255,255,0.1)',
         black: '#000',
         socialBarItemHover: '#FE9F76', //mnogo hz cto delat,
-        darkFirstColor: "#4b72ff",
-        darkSecondColor: "#f791518",
-        darkThirdColor: "f8b551",
-        darkTextColor: "#fffbf4"
+        darkFirstColor: "#2A0B46",
+        darkSecondColor: "#D86ADA",
+        darkThirdColor: "8F6BD7",
       },
       fontFamily: {
         'oxygen': ['Oxygen', 'sans-serif']
