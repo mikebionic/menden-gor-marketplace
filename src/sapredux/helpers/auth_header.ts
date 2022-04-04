@@ -15,10 +15,8 @@ export const getTokenWithAuth = async (key='user', secondCheck=false) => {
 	const user = get_local_data_by_key(key);
 	let token:string = ''
 	if (user && user.token){
-		// specify a date with a minute of delay
 		const current_date = new Date()
 		const exp_date = new Date(user.exp)
-		// console.log("validating date ", exp_date > current_date, exp_date, current_date)
 		if (exp_date > current_date){
 			token = user.token
 			return token

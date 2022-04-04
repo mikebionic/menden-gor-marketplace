@@ -16,6 +16,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
     credentials: credentials,
     validator_phone_number: '',
     responseMessage: '',
+    registerToken: '',
   });
   useEffect(() => {
     set_validationData({

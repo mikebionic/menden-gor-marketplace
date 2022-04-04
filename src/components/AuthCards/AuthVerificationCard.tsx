@@ -5,7 +5,7 @@ import { ErrorBoundary } from 'modules/errors';
 import { authService } from 'sapredux/services';
 import { showToastMessage } from 'sapredux/helpers';
 
-export const AuthVerificationCard = ({onStageChange, validationData}:any) => {
+export const AuthVerificationCard = ({onStageChange, validationData, handleValidationData}:any) => {
 
 	const [codeAttempts, set_codeAttempts] = useState(0);
 	const retryTimeoutSeconds = 60
@@ -121,8 +121,14 @@ export const AuthVerificationCard = ({onStageChange, validationData}:any) => {
 	const handleSuccess = (response:any) => {
     showToastMessage({
       type: 'success',
-      message: response ? response.message : 'Successfully verified!',
+      message: response.message ? response.message : 'Successfully verified!',
       position: 'center-top',
+    });
+
+    handleValidationData({
+      ...validationData,
+      responseMessage: response.message,
+			registerToken: response.data && response.data.token
     });
     onStageChange(3);
   };

@@ -1,3 +1,5 @@
+import * as R from 'ramda'
+
 import { serviceConfig } from 'configs';
 import { authBearerHeaderAsync, handleResponse } from 'sapredux/helpers';
 import { all_wishlist } from './mock_data/wishlist.mock';
@@ -21,13 +23,19 @@ const fetchAll_data = async() => {
 }
 
 const postData = async (payload:any, deleteMode=false) => {
+	let bearerHeader = await authBearerHeaderAsync()
 	const requestOptions = {
 		method: !deleteMode ? 'POST' : 'DELETE',
 		body: JSON.stringify(payload),
 		headers: {
 			"Content-Type": "application/json; charset=UTF-8",
-			...await authBearerHeaderAsync()
+			...bearerHeader
 		},
+	}
+	if (R.isEmpty(bearerHeader)){
+		return new Promise((resolve, reject) => {
+			reject("Unauthorized!");
+		});
 	}
 	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.wishlist}`, requestOptions).then(handleResponse);
 }
