@@ -16,7 +16,7 @@ export const IconLabelButton: React.FC<IButtonProps> = ({
   label,
   className,
   type,
-  labelClassName = 'px-1',
+  labelClassName = 'px-1 text-white dark:text-darkTextWhiteColor',
 }) => {
   return (
     <button onClick={onClick} className={className} type={type ?? 'button'}>

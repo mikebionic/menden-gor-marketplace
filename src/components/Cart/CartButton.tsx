@@ -19,16 +19,16 @@ const CartButton = (props: any) => {
           onClick={() => setCartOpen(!cartOpen)}
         >
           <IconLabelButton
-            className="items-center h-6 grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid "
+            className="items-center h-6 grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid dark:text-darkTextWhiteColor dark:border-darkFirstColor "
             icon={
-              <RiShoppingBasketLine className="w-6 h-6 mx-3 text-2xl text-white" />
+              <RiShoppingBasketLine className="w-6 h-6 mx-3 text-2xl text-white dark:text-darkTextWhiteColor" />
             }
           />
-          <span className="absolute text-sm font-semibold text-white ">
+          <span className="absolute text-sm font-semibold text-white dark:text-darkTextWhiteColor">
             {totalCount}
           </span>
         </a>
-        <div className="mt-3 text-sm font-semibold text-white ">
+        <div className="mt-3 text-sm font-semibold text-white dark:text-darkTextWhiteColor">
           {totalPrice} TMT
         </div>
       </div>

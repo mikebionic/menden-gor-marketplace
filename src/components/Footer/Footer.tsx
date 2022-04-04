@@ -13,12 +13,18 @@ export const Footer: React.FC = () => {
     <div className="relative">
       <div className="bottom-0 grid w-full h-56 grid-flow-col grid-rows-1 gap-4 pt-8 auto-cols-auto xl:px-32 md:px-24 shadow-Footer">
         <div className="mx-auto my-0">
-          <Link to={routeConstants.about.route}>
+          <Link
+            to={routeConstants.about.route}
+            className="hover:text-textColorOrange"
+          >
             <h1 className="font-semibold xl:text-xl md:text-base">
               {routeConstants.about.name}
             </h1>
           </Link>
-          <Link to={routeConstants.about.route}>
+          <Link
+            to={routeConstants.about.route}
+            className="hover:text-textColorOrange"
+          >
             <p>{routeConstants.about.name}</p>
           </Link>
           <p>Delivery and payment</p>
@@ -40,12 +46,18 @@ export const Footer: React.FC = () => {
         <div className="mx-auto my-0">
           <h1 className="font-semibold xl:text-xl md:text-base">Help</h1>
           <p>Help & support</p>
-          <Link to={routeConstants.contact.route}>
+          <Link
+            to={routeConstants.contact.route}
+            className="hover:text-textColorOrange"
+          >
             <p>{routeConstants.contact.name}</p>
           </Link>
         </div>
         <div className="mx-auto my-0">
-          <Link to={routeConstants.contact.route}>
+          <Link
+            to={routeConstants.contact.route}
+            className="hover:text-textColorOrange"
+          >
             <h1 className="font-semibold xl:text-xl md:text-base text-gradient">
               {routeConstants.contact.name}
             </h1>

@@ -73,7 +73,7 @@ export const Navbar = (props: any) => {
   return (
     <ErrorBoundary>
       <div className="fixed w-full z-[999]">
-        <header className="top-0 left-0 grid w-full h-20 grid-rows-1 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight">
+        <header className="top-0 left-0 grid w-full h-20 grid-rows-1 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight dark:bg-gradient-to-r dark:from-darkComponentColor dark:to-darkComponentColor">
           {/* first row */}
           <div className="inline-grid items-center w-full grid-rows-1 mx-auto my-2 xl:grid-cols-[15rem_50rem_8rem] md:grid-cols-[auto_auto_auto]">
             <div className="w-24 h-5 mx-auto my-0">
@@ -89,14 +89,16 @@ export const Navbar = (props: any) => {
             <NavbarProfileDropdown />
           </div>
         </header>
-        <header className="top-0 left-0 w-full h-12 border-b border-white shadow-md bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight relarive">
+        <header className="top-0 left-0 w-full h-12 border-b border-white shadow-md dark:border-darkFirstColor bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight relarive dark:bg-gradient-to-r dark:from-darkComponentColor dark:to-darkComponentColor">
           {/* second row */}
-          <div className="w-full border-t border-white">
+          <div className="w-full border-t border-white dark:border-darkFirstColor">
             <ClickAwayListener onClickAway={handleClickAway}>
-              <div className="absolute float-left border-r border-white h-[46px]">
+              <div className="absolute float-left border-r border-white dark:border-darkFirstColor h-[46px]">
                 <IconLabelButton
-                  className="inline-grid items-center grid-rows-1 px-0 py-2 mx-16 text-lg font-medium text-white grid-cols-icon"
-                  icon={<MdSort className="text-2xl" />}
+                  className="inline-grid items-center grid-rows-1 px-0 py-2 mx-16 text-lg font-medium text-white dark:text-darkTextWhiteColor grid-cols-icon"
+                  icon={
+                    <MdSort className="text-2xl text-white dark:text-darkTextWhiteColor" />
+                  }
                   label="Categories"
                   onClick={() =>
                     onCategoryDropdownStateChange(
@@ -121,8 +123,10 @@ export const Navbar = (props: any) => {
             <div className="relative grid float-right grid-flow-col gap-2 mr-4 auto-cols-maxgrid-rows-1">
               <div>
                 <IconLabelButton
-                  className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid "
-                  icon={<BsMoon className="w-6 h-6 ml-3 mr-1 text-2xl" />}
+                  className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid dark:text-darkTextWhiteColor dark:border-darkFirstColor "
+                  icon={
+                    <BsMoon className="w-6 h-6 ml-3 mr-1 text-2xl text-white dark:text-darkTextWhiteColor" />
+                  }
                   label=""
                 />
               </div>
@@ -139,19 +143,19 @@ export const Navbar = (props: any) => {
                     items={currencyItems}
                     menuButtonLabel="Options"
                     menuButtonIcon={
-                      <ChevronDownIcon className="w-full h-full" />
+                      <ChevronDownIcon className="w-full h-full text-white dark:text-darkTextWhiteColor" />
                     }
                     className="w-20"
                     activeClassName="hover:bg-gray-100 text-white"
                     menuButton={
                       <>
                         <IconLabelButton
-                          className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid"
+                          className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid dark:text-darkTextWhiteColor dark:border-darkFirstColor"
                           icon={
-                            <BsWallet2 className="w-6 h-6 mx-3 text-2xl text-white" />
+                            <BsWallet2 className="w-6 h-6 mx-3 text-2xl text-white dark:text-darkTextWhiteColor" />
                           }
                         />
-                        <span className="absolute top-0 font-semibold text-white left-[70%] text-[10px]">
+                        <span className="absolute top-0 font-semibold text-white dark:text-darkTextWhiteColor left-[70%] text-[10px]">
                           TMT
                         </span>
                       </>
@@ -161,9 +165,9 @@ export const Navbar = (props: any) => {
               </div>
               <Link to={`${routeConstants.wishlist.route}`}>
                 <IconLabelButton
-                  className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid"
+                  className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid dark:text-darkTextWhiteColor dark:border-darkFirstColor"
                   icon={
-                    <FaRegHeart className="w-6 h-6 ml-3 mr-1 text-2xl text-white" />
+                    <FaRegHeart className="w-6 h-6 ml-3 mr-1 text-2xl text-white dark:text-darkTextWhiteColor" />
                   }
                 />
               </Link>

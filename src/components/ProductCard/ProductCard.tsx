@@ -40,7 +40,7 @@ const ProductCard = ({ data }: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="relative grid items-center xl:w-64 md:w-52 md:h-96 grid-cols-1 mt-4 bg-white rounded grid-rows-[max-content_30px_auto_auto_auto] xl:h-[26rem] shadow-defaultShadow">
+      <div className="relative grid items-center xl:w-64 md:w-52 md:h-96 grid-cols-1 mt-4 bg-white dark:bg-darkComponentColor rounded grid-rows-[max-content_30px_auto_auto_auto] xl:h-[26rem] shadow-defaultShadow">
         <Badge.Ribbon
           text={discount}
           placement="start"
@@ -55,7 +55,7 @@ const ProductCard = ({ data }: any) => {
               <span className="absolute top-0 right-0">
                 <WishlistButton resId={id} wishlist={wishlist} />
               </span>
-              <span className="absolute right-0 top-52 md:top-40">
+              <span className="absolute right-0 xl:top-52 md:top-40">
                 <ProductAddToCart resourceId={id} />
               </span>
             </div>
@@ -71,12 +71,14 @@ const ProductCard = ({ data }: any) => {
         </Badge.Ribbon>
         <Link to={`${routeConstants.product.route}${id}/${name}`}>
           <div className="mx-auto my-0 text-center w-max">
-            <h3 className="mx-auto my-0 font-semibold">{resource_name}</h3>
+            <h3 className="mx-auto my-0 font-semibold text-black dark:text-darkTextWhiteColor">
+              {resource_name}
+            </h3>
             <hr className="w-full" />
           </div>
         </Link>
 
-        <p className="mx-4 text-sm text-justify text-gray-400">
+        <p className="mx-4 text-sm text-justify text-gray-400 dark:text-darkText">
           {categoryName}
         </p>
         <StarRate disabled={true} value={ratingValue} />

@@ -90,7 +90,7 @@ const ProfileCircleDropdown: React.FC<IProfileCircleDropdown> = ({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <div className="absolute px-5 py-3 mt-2 bg-white border rounded-lg shadow w-60 z-[999]">
+        <div className="absolute px-5 py-3 mt-2 bg-white border rounded-lg md:right-4 xl:left-0 shadow w-60 z-[999]">
           {loggedIn && (
             <>
               <p className="w-full py-1 text-base font-oxygen text-textColorOrange">

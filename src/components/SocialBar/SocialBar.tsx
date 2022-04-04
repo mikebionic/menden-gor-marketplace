@@ -39,7 +39,7 @@ const socialBarLinks = [
 
 export const SocialBar: React.FC = () => {
   return (
-    <div className="fixed left-0 grid w-8 grid-flow-row auto-rows-max place-items-center top-2/4 bg-[#acacac4d] backdrop-blur-glass ">
+    <div className="fixed left-0 grid w-8 grid-flow-row auto-rows-max place-items-center top-2/4 bg-[#acacac4d] dark:bg-darkComponentColor backdrop-blur-glass ">
       {socialBarLinks.map(
         ({ icon, url, active }: any, idx: number) =>
           active && (

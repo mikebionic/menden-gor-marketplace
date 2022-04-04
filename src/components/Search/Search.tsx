@@ -76,7 +76,7 @@ const Search: React.FC = (props: any) => {
 
   const SearchType = () => {
     return (
-      <div className="grid w-32 h-auto mt-4 overflow-x-hidden overflow-y-auto text-base font-medium rounded-md shadow-lg left-12 bg-fullwhite">
+      <div className="z-50 grid w-32 h-auto mt-4 overflow-x-hidden overflow-y-auto text-base font-medium rounded-md shadow-lg left-12 bg-fullwhite">
         {search_types.map((s_type: any, idx: number) => (
           <div
             key={idx}
@@ -95,13 +95,13 @@ const Search: React.FC = (props: any) => {
       <div className="grid grid-rows-1 mx-auto my-0 w-auto min-w-[520px] md:w-[550px] lg:w-[728px] grid-cols-search z-[9999]">
         <ClickAwayListener onClickAway={handleClickAway}>
           <div
-            className="w-32 h-12 bg-white border-2 border-white border-solid rounded-l-full cursor-pointer bg-gradient-to-l from-firstColorGradientFromDark to-secondColorGradientToLight gap-x-8"
+            className="z-10 w-32 h-12 bg-white border-2 border-white border-solid rounded-l-full cursor-pointer dark:border-darkFirstColor bg-gradient-to-l from-firstColorGradientFromDark to-secondColorGradientToLight gap-x-8 dark:bg-gradient-to-l dark:from-darkFirstColor dark:to-darkFirstColor"
             onClick={() =>
               onDropdownStateChange((dropdownState) => !dropdownState)
             }
           >
             <IconLabelButton
-              className="flex flex-row-reverse items-center w-20 h-4 pl-1 mx-auto my-3 text-sm text-center text-white cursor-pointer"
+              className="flex flex-row-reverse items-center w-20 h-4 pl-1 mx-auto my-3 text-sm text-center text-white cursor-pointer dark:text-darkTextWhiteColor"
               icon={<IoIosArrowDown className="" />}
               label={current_search_type.name}
             />
@@ -122,7 +122,7 @@ const Search: React.FC = (props: any) => {
         <div className="w-full h-12 bg-white">
           <input
             type="text"
-            className="w-full h-full text-sm border-0 border-white outline-none placeholder-[#c8c8c8] ring-0 ring-offset-0 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
+            className="w-full h-full text-sm border dark:bg-darkBgColor border-white dark:border-darkFirstColor outline-none placeholder-[#c8c8c8] ring-0 ring-offset-0 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
             placeholder="What are you looking for..."
             name="search_tag"
             value={search_tag}
@@ -130,11 +130,11 @@ const Search: React.FC = (props: any) => {
           />
         </div>
         <button
-          className="w-32 h-12 bg-white border-2 border-white border-solid rounded-r-full cursor-pointer rsearch_tagotate-180 bg-gradient-to-l from-firstColorGradientFromDark to-secondColorGradientToLight gap-x-8"
+          className="w-32 h-12 bg-white border-2 border-white border-solid rounded-r-full cursor-pointer dark:border-darkFirstColor rsearch_tagotate-180 bg-gradient-to-l from-firstColorGradientFromDark to-secondColorGradientToLight gap-x-8 dark:bg-gradient-to-l dark:from-darkFirstColor dark:to-darkFirstColor"
           type="submit"
         >
           <IconLabelButton
-            className="flex items-center w-20 h-4 pl-1 mx-auto my-3 text-sm text-center text-white "
+            className="flex items-center w-20 h-4 pl-1 mx-auto my-3 text-sm text-center text-white dark:text-darkTextWhiteColor"
             icon={<AiOutlineSearch />}
             label="Search"
           />

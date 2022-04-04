@@ -53,13 +53,15 @@ const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
     >
       <div className="relative grid">
         <IconLabelButton
-          className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid"
-          icon={<MdLanguage className="w-6 h-6 mx-3 text-2xl text-white" />}
+          className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid dark:border-darkFirstColor dark:text-darkTextWhiteColor"
+          icon={
+            <MdLanguage className="w-6 h-6 mx-3 text-2xl text-white dark:text-darkTextWhiteColor" />
+          }
           onClick={() => {
             onDropdownStateChange(!dropdownState);
           }}
         />
-        <span className="absolute top-0 right-0 font-semibold text-white text-[10px]">
+        <span className="absolute top-0 right-0 font-semibold text-white dark:text-darkTextWhiteColor text-[10px]">
           {currentLanguage.label}
         </span>
         <Transition
@@ -71,7 +73,7 @@ const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <div className="grid w-32 h-auto mt-1 overflow-x-hidden overflow-y-auto text-base font-medium rounded-md shadow-lg left-12 bg-fullwhite">
+          <div className="grid w-32 h-auto mt-1 overflow-x-hidden overflow-y-auto text-base font-medium rounded-md shadow-lg left-12 bg-fullwhite dark:bg-darkComponentColor">
             {dropdownState ? filtered_data : null}
           </div>
         </Transition>

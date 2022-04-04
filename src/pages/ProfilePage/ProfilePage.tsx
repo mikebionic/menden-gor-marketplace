@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as R from 'ramda'
+import * as R from 'ramda';
 
 import { Button } from 'antd';
 import { getCurrentUserInfo } from 'sapredux/selectors';
@@ -10,13 +10,13 @@ import { ErrorBoundary, ErrorIndicator } from 'modules/errors';
 const ProfilePage: React.FC = ({ current_user }: any) => {
   return !R.isEmpty(current_user) ? (
     <ErrorBoundary>
-      <div className="grid grid-cols-2 gap-8 text-center grid-rows-[1fr_max-content_max-content_max-content_max-content_max-content]">
+      <div className="grid grid-cols-2 p-4 gap-8 text-center grid-rows-[1fr_max-content_max-content_max-content_max-content_max-content]">
         <div className="inline-grid col-start-1 col-end-3 gap-2 mx-auto grid-rows-[1fr_max-content_max-content_auto]">
           <Image
             className="object-cover m-auto avatar"
             src={current_user.image}
             alt={current_user.username}
-            imageType='avatar'
+            imageType="avatar"
           />
           <span className="text-center">{current_user.name}</span>
           <small className="text-center">
@@ -76,7 +76,9 @@ const ProfilePage: React.FC = ({ current_user }: any) => {
         </div>
       </div>
     </ErrorBoundary>
-  ) : <ErrorIndicator />;
+  ) : (
+    <ErrorIndicator />
+  );
 };
 
 const mapStateToProps = (state: any) => ({
