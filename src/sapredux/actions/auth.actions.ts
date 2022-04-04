@@ -32,8 +32,39 @@ const logout = (withToastMessage:boolean = true) => {
 
 export const profileUpdate = (data:any) => ({type: authConstants.PROFILE_UPDATE, payload: data})
 
+
+export const register_rp_acc = (authMethod: string, registerToken: string, payload:any, withToastMessage:boolean = true, set_loading:any) => {
+	return (dispatch: any) => {
+		authService.register_rp_acc(authMethod, registerToken, payload).then(
+			(response: any) => {
+				set_loading(false)
+				response.status === 1 && dispatch(success(response));
+				withToastMessage && showToastMessage({
+					type: response.status === 1 ? 'success' : 'error',
+					message: response.message,
+					position: 'center-top',
+				})
+			},
+			(error: any) => {
+				set_loading(false)
+				dispatch(failure(error.toString()));
+				withToastMessage && showToastMessage({
+					type: 'error',
+					message: error.toString(),
+					position: 'center-top'}
+					)
+				dispatch(alertActions.error(error.toString()));
+			}
+		);
+	};
+
+	function success(user: any) { return { type: authConstants.LOGIN_SUCCESS, payload: user } }
+	function failure(error: any) { return { type: authConstants.LOGIN_FAILURE, payload: error } }
+}
+
 export const authActions = {
 	login,
 	logout,
 	profileUpdate,
+	register_rp_acc,
 };

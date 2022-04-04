@@ -62,7 +62,7 @@ const verifyRegister = async (authMethod:string, payload:any) => {
 	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.verify_register}?method=${authMethod}`,requestOptions).then(handleResponse)
 }
 
-const register_rp_acc = async (authMethod:string, registerToken:string, payload:any) => {
+const register_rp_acc = async(authMethod:string, registerToken:string, payload:any) => {
 	const requestOptions = {
 		method: 'POST',
 		body: JSON.stringify(payload),
@@ -71,9 +71,14 @@ const register_rp_acc = async (authMethod:string, registerToken:string, payload:
 			"Token": registerToken
 		},
 	}
-	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.register}?method=${authMethod}&type=rp_acc`,requestOptions).then(handleResponse)
+	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.register}?method=${authMethod}&type=rp_acc`,requestOptions)
+		.then(handleResponse)
+		.then((response:any) => ({
+			status: response.status,
+			message: response.message,
+			...transformResponse(response.data),
+		}))
 }
-
 
 const editProfile = async (payload:any) => {
 	const requestOptions = {
