@@ -46,22 +46,32 @@ const logout = () => {
 	document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
 }
 
-const registerRequest = async (method:string, payload:string) => {
-	let headers = method === 'email' ? { Email: payload }
-		: method === 'phone_number' && { PhoneNumber: payload }
+const registerRequest = async (authMethod:string, payload:string) => {
+	let headers = authMethod === 'email' ? { Email: payload }
+		: authMethod === 'phone_number' && { PhoneNumber: payload }
 
-	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.register_request}?method=${method}`,{headers:headers}).then(handleResponse)
+	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.register_request}?method=${authMethod}`,{headers:headers}).then(handleResponse)
 }
 
-const verifyRegister = async (method:string, payload:any) => {
+const verifyRegister = async (authMethod:string, payload:any) => {
+	const requestOptions = {
+		method: 'POST',
+		body: JSON.stringify(payload),
+		headers: {"Content-Type": "application/json; charset=UTF-8"},
+	}
+	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.verify_register}?method=${authMethod}`,requestOptions).then(handleResponse)
+}
+
+const register_rp_acc = async (authMethod:string, registerToken:string, payload:any) => {
 	const requestOptions = {
 		method: 'POST',
 		body: JSON.stringify(payload),
 		headers: {
 			"Content-Type": "application/json; charset=UTF-8",
+			"Token": registerToken
 		},
 	}
-	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.verify_register}?method=${method}`,requestOptions).then(handleResponse)
+	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.register}?method=${authMethod}&type=rp_acc`,requestOptions).then(handleResponse)
 }
 
 
@@ -84,4 +94,5 @@ export const authService = {
 	registerRequest,
 	verifyRegister,
 	editProfile,
+	register_rp_acc,
 };

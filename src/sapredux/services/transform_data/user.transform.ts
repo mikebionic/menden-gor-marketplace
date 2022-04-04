@@ -60,7 +60,7 @@ export const transformRpAcc = (data:any) => ({
 	unusedDeviceQty: data.UnusedDeviceQty,
 })
 
-export const toJsonRpAcc = (data: any) => ({
+export const toJsonRpAcc = (data: any, allData: boolean = false) => ({
 	AddInf1: data.addInf1 ?? null,
 	AddInf2: data.addInf2 ?? null,
 	AddInf3: data.addInf3 ?? null,
@@ -87,6 +87,8 @@ export const toJsonRpAcc = (data: any) => ({
 	RpAccWorkFaxNumber: data.workFaxNumber ?? null,
 	RpAccWorkPhoneNumber: data.workPhoneNumber ?? null,
 	RpAccZipCode: data.zipCode ?? null,
+	RpAccTypeId: allData && (data.typeId ?? null),
+	RpAccUPass: allData && (data.password ?? null),
 })
 
 export const transformUser = (data:any) => ({
