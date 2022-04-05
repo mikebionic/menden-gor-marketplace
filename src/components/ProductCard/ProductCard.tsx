@@ -5,7 +5,7 @@ import { Image } from 'common/Image';
 import { ProductAddToCart } from 'components/ProductCard';
 import { Ribbon } from 'common/Ribbon';
 import { ErrorBoundary } from 'modules/errors';
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 import { StarRate } from 'common/StarRate';
 import { PriceButton } from 'common/PriceButton';
 import { WishlistButton } from 'common/WishlistButton';

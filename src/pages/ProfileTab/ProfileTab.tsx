@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import { TabContent } from 'pages/ProfileTab/TabContent';
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 
 const styles = {
   isActiveClass:

@@ -1,4 +1,3 @@
-import * as R from 'ramda';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router';
@@ -9,7 +8,6 @@ import { ErrorBoundary } from 'modules/errors';
 import { toJsonRpAcc } from 'sapredux/services/transform_data';
 import { register_rp_acc } from 'sapredux/actions';
 import { Spinner } from 'modules/loaders';
-import { get_local_data_by_key } from 'sapredux/helpers';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 
 const { Option } = Select;

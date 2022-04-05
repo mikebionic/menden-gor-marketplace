@@ -9,7 +9,7 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 import { IconLabelButton } from 'common/IconLabelButton';
 import { applyFilters } from 'sapredux/actions';
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 
 const Search: React.FC = (props: any) => {
   const { filters, onFiltersApply } = props;

@@ -29,3 +29,25 @@ export const transformReview = (data:any) => (data.Rp_acc ? {
 	syncDateTime: data.SyncDateTime,
 	userId: data.UId,  
 } : {})
+
+
+export const toJsonReview = (data: any, allData: boolean = false) => ({
+	AddInf1: data.addInf1 ?? null,
+	AddInf2: data.addInf2 ?? null,
+	AddInf3: data.addInf3 ?? null,
+	AddInf4: data.addInf4 ?? null,
+	AddInf5: data.addInf5 ?? null,
+	AddInf6: data.addInf6 ?? null,
+	CId: allData && (data.companyId ?? null),
+	DivId: allData && (data.divId ?? null),
+	EmpId: allData && (data.empId ?? null),
+	ResId: data.resId ?? null,
+	RpAccId: data.rpAccId ?? null,
+	Rp_acc: data.rp_acc ?? null,
+	RtGuid: data.guid ?? null,
+	RtRatingValue: data.ratingValue ?? null,
+	RtRemark: data.remark ?? null,
+	RtValidated: allData && (data.validated ?? null),
+	SyncDateTime: data.syncDateTime ?? null,
+	UId: data.userId ?? null,
+})

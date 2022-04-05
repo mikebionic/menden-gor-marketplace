@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { MainPage } from 'pages/MainPage';
 import { PrivateRoute } from 'navigation/PrivateRoute';
 
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 import { AboutPage } from 'pages/AboutPage';
 import { ContactPage } from 'pages/ContactPage';
 import { NotFoundPage } from 'pages/error';

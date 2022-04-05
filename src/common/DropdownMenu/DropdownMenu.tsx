@@ -8,6 +8,7 @@ interface IDropdownProps {
   activeClassName?: string;
   className?: string;
   menuButton?: any;
+  onItemClick?: any;
 }
 
 export const DropdownMenu: React.FC<IDropdownProps> = ({
@@ -17,6 +18,7 @@ export const DropdownMenu: React.FC<IDropdownProps> = ({
   menuButton,
   activeClassName = 'bg-violet-500 text-white',
   className = 'w-44',
+  onItemClick,
 }) => {
   return (
     <div className="w-auto">
@@ -49,7 +51,7 @@ export const DropdownMenu: React.FC<IDropdownProps> = ({
           >
             <div className="px-1 py-1">
               {items.map((item: any, idx: number) => (
-                <Menu.Item key={idx}>
+                <Menu.Item key={idx} onClick={()=>onItemClick(item)}>
                   {({ active }) => (
                     <button
                       className={`${

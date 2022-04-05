@@ -9,16 +9,18 @@ import { IconLabelButton } from 'common/IconLabelButton';
 
 import Languages from './Languages';
 import { Transition } from '@headlessui/react';
+import { otherService } from 'sapredux/services';
 
 const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
   const { i18n } = useTranslation();
 
   const [currentLanguage, setLanguage]: any = useState(
-    filterLang(i18n.language, Languages),
+    filterLang(i18n.language, Languages)
   );
 
   const handleClick = (lang: any) => {
     i18n.changeLanguage(lang);
+    otherService.setLanguage(lang)
   };
 
   const LanguageItem = ({ icon, data }: any) => {

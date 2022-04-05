@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Image } from 'common/Image';
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 import { ProductAddToCart } from 'components/ProductCard';
 import { AiOutlineDelete } from 'react-icons/ai';
 

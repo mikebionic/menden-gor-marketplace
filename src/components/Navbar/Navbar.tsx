@@ -1,20 +1,18 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsMoon } from 'react-icons/bs';
-import { BsWallet2 } from 'react-icons/bs';
 import { FaRegHeart } from 'react-icons/fa';
 
 import { Cart, CartButton } from 'components/Cart';
 import { ErrorBoundary } from 'modules/errors';
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 import { Search } from 'components/Search';
 import { IconLabelButton } from 'common/IconLabelButton';
 import LangButton from 'components/LangButton';
+import CurrencyButton from 'components/CurrencyButton';
 import { CategoryList } from 'common/CategoryList';
 import { CategoryListItem } from 'common/CategoryListItem';
 import { Transition } from '@headlessui/react';
-import { DropdownMenu } from 'common/DropdownMenu';
-import { ChevronDownIcon } from '@heroicons/react/solid';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import NavbarProfileDropdown from 'components/NavbarProfileDropdown';
 import { MdSort } from 'react-icons/md';
@@ -28,15 +26,6 @@ const classes =
   window.innerWidth < 768
     ? mobileResponsive.mobileView
     : mobileResponsive.desktopView;
-
-const currencyItems = [
-  {
-    name: 'TMT',
-  },
-  {
-    name: 'USD',
-  },
-];
 
 export const Navbar = (props: any) => {
   const { categories } = props;
@@ -135,7 +124,6 @@ export const Navbar = (props: any) => {
                       // onClick={toggleDarkMode}
                     />
                   }
-                  label=""
                   id="darkButton"
                 />
               </div>
@@ -147,30 +135,7 @@ export const Navbar = (props: any) => {
                 />
               </div>
               <div className="relative grid">
-                <div>
-                  <DropdownMenu
-                    items={currencyItems}
-                    menuButtonLabel="Options"
-                    menuButtonIcon={
-                      <ChevronDownIcon className="w-full h-full text-white dark:text-darkTextWhiteColor" />
-                    }
-                    className="w-20"
-                    activeClassName="hover:bg-gray-100 text-white"
-                    menuButton={
-                      <>
-                        <IconLabelButton
-                          className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid dark:text-darkTextWhiteColor dark:border-darkFirstColor"
-                          icon={
-                            <BsWallet2 className="w-6 h-6 mx-3 text-2xl text-white dark:text-darkTextWhiteColor" />
-                          }
-                        />
-                        <span className="absolute top-0 font-semibold text-white dark:text-darkTextWhiteColor left-[70%] text-[10px]">
-                          TMT
-                        </span>
-                      </>
-                    }
-                  />
-                </div>
+                <CurrencyButton />
               </div>
               <Link to={`${routeConstants.wishlist.route}`}>
                 <IconLabelButton

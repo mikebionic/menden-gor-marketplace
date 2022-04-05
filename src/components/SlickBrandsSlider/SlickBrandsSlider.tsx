@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getBrands } from 'sapredux/selectors';
 import SlickSlider from 'common/SlickSlider';
 import CircleBrands from 'common/CircleBrands';
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 
 const SlickBrandsSlider: React.FC = (props: any) => {
   const { brands } = props;
