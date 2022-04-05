@@ -6,7 +6,7 @@ import { AiOutlineGlobal } from 'react-icons/ai';
 import { BsArrowUpShort } from 'react-icons/bs';
 
 import { IconLabelButton } from 'common/IconLabelButton';
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 
 export const Footer: React.FC = () => {
   return (

@@ -6,7 +6,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import { authActions } from 'sapredux/actions';
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 import { ErrorBoundary } from 'modules/errors';
 import { IconLabelButton } from 'common/IconLabelButton';
 import { Spinner } from 'modules/loaders';

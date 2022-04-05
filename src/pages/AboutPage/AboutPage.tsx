@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 import { Link } from 'react-router-dom';
 
 export const AboutPage: React.FC = () => {

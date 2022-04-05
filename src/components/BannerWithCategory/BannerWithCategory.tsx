@@ -10,7 +10,7 @@ import { fetchSliders } from 'sapredux/actions';
 import { getCategories, getSliderByName } from 'sapredux/selectors';
 import { ErrorBoundary } from 'modules/errors';
 import { namesConfig } from 'configs';
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 
 const BannerWithCategory: React.FC = (props: any) => {
   const { categories, fetchSliders, header_slider } = props;

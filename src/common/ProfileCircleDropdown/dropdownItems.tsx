@@ -4,7 +4,7 @@ import { BiLogIn } from 'react-icons/bi';
 import { FiUserPlus } from 'react-icons/fi';
 import { FiLogOut } from 'react-icons/fi';
 
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 
 const dropdownItems = {
   userRows: [

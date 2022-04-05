@@ -4,7 +4,7 @@ import {
   Routes,
 } from 'react-router-dom';
 
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 import { ProfileTab } from 'pages/ProfileTab';
 
 export const UserRoutes = () => {

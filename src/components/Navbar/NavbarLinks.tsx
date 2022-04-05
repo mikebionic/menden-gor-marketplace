@@ -1,4 +1,4 @@
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 
 export const navigation = {
   categories: [

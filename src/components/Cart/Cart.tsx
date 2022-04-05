@@ -12,7 +12,7 @@ import {
 } from 'sapredux/actions';
 import { getTotalCount, getCartItems } from 'sapredux/selectors';
 import { ErrorBoundary } from 'modules/errors';
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 
 interface ICartProps {
   open?: any;

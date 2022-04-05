@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { OrderLine, OrderBlock } from 'pages/OrdersPage';
 import { orderService } from 'sapredux/services';
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 import { Spinner } from 'modules/loaders';
 import { ErrorBoundary, ErrorIndicator } from 'modules/errors';
 

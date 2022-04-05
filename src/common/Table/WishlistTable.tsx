@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Table, Form, Space } from 'antd';
 
 import { Image } from 'common/Image';
-import { routeConstants } from 'navigation/routeConstants';
+import { routeConstants } from 'navigation';
 import { WishlistButton } from 'common/WishlistButton';
 
 const columns = [

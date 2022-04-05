@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router"
 
-import { routeConstants } from "navigation/routeConstants"
+import { routeConstants } from "navigation"
 import { authActions } from "sapredux/actions"
 
 export const LogoutPage = () => {
