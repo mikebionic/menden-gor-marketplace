@@ -49,7 +49,7 @@ const ProductCard = ({ data }: any) => {
           }`}
           color="red"
         >
-          <div className="items-center justify-center mx-auto my-3 overflow-hidden bg-gray-200 xl:w-56 xl:h-64 md:w-44 md:h-52 ">
+          <div className="items-center justify-center mx-auto my-3 overflow-hidden bg-gray-200 dark:bg-darkBgColor xl:w-56 xl:h-64 md:w-44 md:h-52 ">
             <div className="relative">
               {isNew ? <Ribbon /> : null}
               <span className="absolute top-0 right-0">
@@ -74,7 +74,7 @@ const ProductCard = ({ data }: any) => {
             <h3 className="mx-auto my-0 font-semibold text-black dark:text-darkTextWhiteColor">
               {resource_name}
             </h3>
-            <hr className="w-full" />
+            <hr className="w-full dark:border-darkFirstColor" />
           </div>
         </Link>
 
@@ -83,7 +83,7 @@ const ProductCard = ({ data }: any) => {
         </p>
         <StarRate disabled={true} value={ratingValue} />
         <div
-          className={`flex items-center py-1 border-t border-gray-300 ${
+          className={`flex items-center py-1 border-t border-gray-300 dark:border-darkFirstColor ${
             discount ? 'justify-between' : 'justify-end'
           }`}
         >

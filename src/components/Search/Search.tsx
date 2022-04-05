@@ -101,8 +101,8 @@ const Search: React.FC = (props: any) => {
             }
           >
             <IconLabelButton
-              className="flex flex-row-reverse items-center w-20 h-4 pl-1 mx-auto my-3 text-sm text-center text-white cursor-pointer dark:text-darkTextWhiteColor"
-              icon={<IoIosArrowDown className="" />}
+              className="flex flex-row-reverse items-center w-auto h-4 pl-1 mx-auto my-3 text-sm text-center text-white cursor-pointer dark:text-darkTextWhiteColor"
+              icon={<IoIosArrowDown className="text-sm" />}
               label={current_search_type.name}
             />
             <Transition
@@ -134,8 +134,8 @@ const Search: React.FC = (props: any) => {
           type="submit"
         >
           <IconLabelButton
-            className="flex items-center w-20 h-4 pl-1 mx-auto my-3 text-sm text-center text-white dark:text-darkTextWhiteColor"
-            icon={<AiOutlineSearch />}
+            className="flex items-center w-auto h-4 pl-1 mx-auto my-3 text-sm text-center text-white dark:text-darkTextWhiteColor"
+            icon={<AiOutlineSearch className="text-base" />}
             label="Search"
           />
         </button>

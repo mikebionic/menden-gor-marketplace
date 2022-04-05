@@ -49,6 +49,11 @@ export const Navbar = (props: any) => {
     onCategoryDropdownStateChange(false);
   };
 
+  // const toggleDarkMode = () => {
+  //   let element: any = document.getElementById('darkButton');
+  //   element.classList.toggle('dark');
+  // };
+
   // const filtered_currency = currencyItems.map((data: any) => {
   //   if (data !== currentCurrency) {
   //     return <LanguageItem icon={data.icon} key={data.name} data={data} />;
@@ -125,9 +130,13 @@ export const Navbar = (props: any) => {
                 <IconLabelButton
                   className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid dark:text-darkTextWhiteColor dark:border-darkFirstColor "
                   icon={
-                    <BsMoon className="w-6 h-6 ml-3 mr-1 text-2xl text-white dark:text-darkTextWhiteColor" />
+                    <BsMoon
+                      className="w-6 h-6 ml-3 mr-1 text-2xl text-white dark:text-darkTextWhiteColor"
+                      // onClick={toggleDarkMode}
+                    />
                   }
                   label=""
+                  id="darkButton"
                 />
               </div>
               <div>

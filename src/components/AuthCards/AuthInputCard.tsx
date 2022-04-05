@@ -69,40 +69,40 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
     <ErrorBoundary>
       <div className="grid w-full grid-flow-row gap-4 place-content-center auto-cols-max">
         <div className="text-center cursor-default">
-          <h2 className="text-3xl font-semibold text-textColorOrange">
+          <h2 className="text-3xl font-semibold text-textColorOrange dark:text-darkFirstColor">
             Welcome!!!
           </h2>
         </div>
-        <div className="text-center text-lg text-[#606060] cursor-default">
+        <div className="text-center text-lg text-[#606060] dark:text-darkText cursor-default">
           <p>Giris usulyny saylan:</p>
         </div>
         <div className="inline-grid grid-flow-col gap-4 auto-cols-max place-content-center">
           <div
-            className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
+            className="w-11 h-11 bg-fullwhite dark:bg-darkComponentColor rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
             onClick={() => set_authMethod('email')}
           >
-            <AiOutlineMail className="w-full h-full p-2 text-textColorOrange" />
+            <AiOutlineMail className="w-full h-full p-2 text-textColorOrange dark:text-darkFirstColor" />
           </div>
           <div
-            className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
+            className="w-11 h-11 bg-fullwhite dark:bg-darkComponentColor rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
             onClick={() => set_authMethod('phone_number')}
           >
-            <FaSms className="w-full h-full p-2 text-textColorOrange" />
+            <FaSms className="w-full h-full p-2 text-textColorOrange dark:text-darkFirstColor" />
           </div>
           <div
-            className="w-11 h-11 bg-fullwhite rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
+            className="w-11 h-11 bg-fullwhite dark:bg-darkComponentColor rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
             onClick={() => set_authMethod('google')}
           >
-            <GrGooglePlus className="w-full h-full p-2 text-textColorOrange" />
+            <GrGooglePlus className="w-full h-full p-2 text-textColorOrange dark:text-darkFirstColor" />
           </div>
         </div>
         <form
-          className="w-[450px] h-[217px] rounded-lg shadow-[1px_1px_4px_rgba(0,0,0,0.3)] p-9 grid grid-flow-row auto-rows-auto gap-4"
+          className="w-[450px] h-[217px] rounded-lg shadow-[1px_1px_4px_rgba(0,0,0,0.3)] p-9 grid grid-flow-row auto-rows-auto gap-4 bg-fullwhite dark:bg-darkComponentColor"
           onSubmit={(e) => handleSubmit(e)}
         >
           {authMethod === 'email' && (
             <div className="inline-grid grid-flow-row gap-1 auto-rows-auto">
-              <p className="text-base ml-1 text-[#606060] cursor-default">
+              <p className="text-base ml-1 text-[#606060] dark:text-darkTextWhiteColor cursor-default">
                 Email address:
               </p>
               <input
@@ -111,7 +111,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
                 autoFocus
                 required
                 placeholder="Enter your email address"
-                className="rounded-lg border border-solid border-[#E6E6E6] focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent focus:border-textColorOrange"
+                className="rounded-lg border dark:text-darkTextWhiteColor border-solid border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent focus:border-textColorOrange dark:focus:border-darkFirstColor dark:placeholder-darkText"
                 onChange={(e) => set_credentials(e.target.value)}
               />
             </div>
@@ -127,7 +127,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
                 autoFocus
                 required
                 placeholder="+993"
-                className="rounded-lg border border-solid border-[#E6E6E6] focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent focus:border-textColorOrange"
+                className="rounded-lg border dark:text-darkTextWhiteColor border-solid border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent focus:border-textColorOrange dark:focus:border-darkFirstColor dark:placeholder-darkText"
                 onChange={(e) => set_credentials(e.target.value)}
               />
             </div>
@@ -135,7 +135,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 
           <IconLabelButton
             label="Next"
-            className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] m-auto"
+            className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] dark:bg-[linear-gradient(266.08deg,#6366f1_1%,#6366f1_100%)] m-auto"
             labelClassName="m-auto text-white"
             type="submit"
           />

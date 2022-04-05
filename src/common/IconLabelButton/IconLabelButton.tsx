@@ -8,6 +8,7 @@ interface IButtonProps {
   type?: any;
   labelClassName?: string;
   htmlType?: string;
+  id?: string | number;
 }
 
 export const IconLabelButton: React.FC<IButtonProps> = ({
@@ -16,7 +17,7 @@ export const IconLabelButton: React.FC<IButtonProps> = ({
   label,
   className,
   type,
-  labelClassName = 'px-1 text-white dark:text-darkTextWhiteColor',
+  labelClassName = 'px-2 text-white dark:text-darkTextWhiteColor',
 }) => {
   return (
     <button onClick={onClick} className={className} type={type ?? 'button'}>
