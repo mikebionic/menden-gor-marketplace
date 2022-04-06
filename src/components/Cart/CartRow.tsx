@@ -8,7 +8,7 @@ export const CartRow = ({ item, onIncrease, onDecrease, onDelete }: any) => {
   return (
     item && (
       <div className="flex py-6">
-        <div className="flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
+        <div className="flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md dark:border-darkText">
           <Image
             src={item.image}
             alt={item.name}
@@ -22,16 +22,18 @@ export const CartRow = ({ item, onIncrease, onDecrease, onDelete }: any) => {
               <h3>
                 <Link
                   to={`${routeConstants.product.route}${item.id}/${item.name}`}
-                  className="text-black hover:text-gray-600"
+                  className="text-black hover:text-gray-600 dark:text-darkTextWhiteColor dark:hover:text-darkText"
                 >
                   {item.name}
                 </Link>
               </h3>
-              <p className="ml-4">
+              <p className="ml-4 text-black dark:text-darkTextWhiteColor">
                 {item.priceValue} {item.currencySymbol}
               </p>
             </div>
-            <p className="mt-1 text-sm text-gray-500">{item.description}</p>
+            <p className="mt-1 text-sm text-gray-500 dark:text-darkText">
+              {item.description}
+            </p>
           </div>
           <div className="flex items-end justify-between flex-1 mt-4 text-sm">
             <div className="flex w-full h-full">
@@ -40,7 +42,7 @@ export const CartRow = ({ item, onIncrease, onDecrease, onDelete }: any) => {
                 className="font-medium text-indigo-600 hover:text-indigo-500"
                 onClick={() => onDelete(item.id)}
               >
-                <AiOutlineDelete className="w-7 h-7 text-secondColorGradientToLight hover:text-socialBarItemHover" />
+                <AiOutlineDelete className="w-7 h-7 text-secondColorGradientToLight dark:text-darkFirstColor dark:hover:text-darkFirstColor dark:hover:opacity-80 hover:text-socialBarItemHover" />
               </button>
             </div>
             <ProductAddToCart resourceId={item.id} withCounter={true} />

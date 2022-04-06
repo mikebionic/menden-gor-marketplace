@@ -15,9 +15,9 @@ export const AddToCartWithCounter: React.FC<ICountryButton> = ({
   onDecrease,
   count,
   coloredCountry = false,
-  margin = 'mb-2 mr-2'
+  margin = 'mb-2 mr-2',
 }) => {
-  const OnlyButton = ({margin}:any) => (
+  const OnlyButton = ({ margin }: any) => (
     <IconLabelButton
       className={`relative bottom-0 right-0 float-right border border-white ${margin} rounded-md hover:shadow-sm bg-fullwhite w-9 h-9`}
       icon={<BiPlus className="w-full h-full mx-auto my-0 text-red-500" />}
@@ -41,20 +41,22 @@ export const AddToCartWithCounter: React.FC<ICountryButton> = ({
             </button>
           </div>
         ) : (
-          <div className="grid items-center w-24 grid-cols-3 p-1 text-center border border-solid rounded-lg h-11 border-[#E2E1E1]">
+          <div className="grid items-center w-24 grid-cols-3 p-1 text-center border border-solid rounded-lg h-11 border-[#E2E1E1] dark:border-darkBgColor">
             <button onClick={onDecrease}>
-              <BiMinus className="w-full h-full text-firstColorGradientFromDark hover:text-secondColorGradientToLight" />
+              <BiMinus className="w-full h-full text-firstColorGradientFromDark dark:text-darkFirstColor hover:text-secondColorGradientToLight dark:hover:text-darkFirstColor dark:hover:opacity-80" />
             </button>
-            <p className="inline-grid w-full h-full text-lg shadow-InnerCountryShadow text-firstColorGradientFromDark bg-fullwhite place-content-around">
+            <p className="inline-grid w-full h-full text-lg dark:shadow-none shadow-InnerCountryShadow text-firstColorGradientFromDark dark:text-darkFirstColor bg-fullwhite dark:bg-darkBgColor place-content-around">
               {count}
             </p>
             <button onClick={onIncrease}>
-              <BiPlus className="w-full h-full text-firstColorGradientFromDark hover:text-secondColorGradientToLight" />
+              <BiPlus className="w-full h-full text-firstColorGradientFromDark dark:text-darkFirstColor hover:text-secondColorGradientToLight dark:hover:text-darkFirstColor dark:hover:opacity-80" />
             </button>
           </div>
         )}
       </>
     );
   };
-  return <div>{count > 0 ? <CountButtons /> : <OnlyButton margin={margin} />}</div>;
+  return (
+    <div>{count > 0 ? <CountButtons /> : <OnlyButton margin={margin} />}</div>
+  );
 };

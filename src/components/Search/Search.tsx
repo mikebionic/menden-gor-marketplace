@@ -122,7 +122,7 @@ const Search: React.FC = (props: any) => {
         <div className="w-full h-12 bg-white">
           <input
             type="text"
-            className="w-full h-full text-sm border dark:bg-darkBgColor border-white dark:border-darkFirstColor outline-none placeholder-[#c8c8c8] ring-0 ring-offset-0 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
+            className="w-full h-full text-sm border dark:bg-darkBgColor dark:text-darkTextWhiteColor border-white dark:border-darkFirstColor outline-none placeholder-[#c8c8c8] ring-0 ring-offset-0 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
             placeholder="What are you looking for..."
             name="search_tag"
             value={search_tag}

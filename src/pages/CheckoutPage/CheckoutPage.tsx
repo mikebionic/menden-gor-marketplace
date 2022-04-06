@@ -26,7 +26,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
     props;
   return (
     <ErrorBoundary>
-      <div className="grid md:grid-flow-row auto-rows-max xl:grid-cols-[60%_40%] my-8">
+      <div className="grid md:grid-flow-row gap-6 auto-rows-max xl:grid-cols-[60%_40%] my-8">
         <div>
           <ul role="list" className="-my-6 divide-y divide-gray-200">
             {items.map((item: any, idx: number) => (
@@ -42,17 +42,21 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
             ))}
           </ul>
         </div>
-        <div className="grid w-full grid-flow-row gap-4 p-4 auto-rows-max shadow-defaultShadow bg-fullwhite ">
+        <div className="grid w-full grid-flow-row gap-4 p-4 auto-rows-max shadow-defaultShadow bg-fullwhite dark:bg-darkComponentColor">
           <div className="grid grid-flow-col auto-cols-max place-content-between">
-            <p className="text-base font-semibold font-oxygen">Jemi</p>
-            <p className="text-base font-semibold font-oxygen">
+            <p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
+              Jemi
+            </p>
+            <p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
               {totalPrice} m
             </p>
           </div>
 
           <PaymentMethods />
 
-          <p className="text-base font-semibold font-oxygen">Name:</p>
+          <p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
+            Name:
+          </p>
           <Input
             placeholder="Type your name"
             autoFocus
@@ -61,9 +65,11 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
             // value=""
             onChange={() => {}}
             inputMode="text"
-            className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange"
+            className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
           />
-          <p className="text-base font-semibold font-oxygen">Phone number:</p>
+          <p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
+            Phone number:
+          </p>
           <Input
             placeholder="+993"
             type="number"
@@ -71,16 +77,18 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
             // value=""
             onChange={() => {}}
             inputMode="text"
-            className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange"
+            className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
           />
-          <p className="text-base font-semibold font-oxygen">Bellik:</p>
+          <p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
+            Bellik:
+          </p>
           <textarea
-            className="font-oxygen border-[#E6E6E6] w-full rounded resize-none h-24"
+            className="font-oxygen border-[#E6E6E6] w-full rounded resize-none h-24 dark:border-darkBgColor dark:bg-darkBgColor"
             placeholder="Note: type your address or any additional information."
           />
           <button
             onClick={() => {}}
-            className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark hover:bg-socialBarItemHover hover:text-white"
+            className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:bg-socialBarItemHover hover:text-white"
           >
             Checkout
           </button>

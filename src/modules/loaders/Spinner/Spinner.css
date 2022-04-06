@@ -1,5 +1,11 @@
 main {
-  padding: 1.5em 0;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  place-self: center;
+  margin: auto;
+  height: 100vh;
+  weight: 100vw;
 }
 
 .ap {
@@ -27,8 +33,22 @@ main {
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
+  main {
+    background: #0f172a;
+    height: 100vh;
+    weight: 100vw;
+  }
   .ap__ring {
     stroke: hsla(var(--hue), 10%, 90%, 0.1);
+  }
+  .ap__worm1 {
+    animation-name: worm1;
+    stroke: #6366f1;
+  }
+  .ap__worm2 {
+    animation-name: worm2;
+    visibility: hidden;
+    stroke: #6366f1;
   }
 }
 

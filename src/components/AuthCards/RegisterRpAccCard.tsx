@@ -101,7 +101,7 @@ const RegisterRpAccCard = ({
     <Spinner />
   ) : (
     <ErrorBoundary>
-      <div className="w-[610px] h-full m-auto p-8 overflow-hidden shadow-[1px_1px_4px_rgba(0,0,0,0.25)] bg-fullwhite rounded-lg">
+      <div className="w-[610px] h-full m-auto p-8 overflow-hidden shadow-[1px_1px_4px_rgba(0,0,0,0.25)] bg-fullwhite dark:bg-darkComponentColor rounded-lg">
         <IoMdArrowRoundBack
           className="text-xl cursor-pointer text-textColorOrange hover:opacity-80 dark:text-darkFirstColor"
           onClick={() => onStageChange(1)}
@@ -137,7 +137,7 @@ const RegisterRpAccCard = ({
 
             <Form.Item name="Address" label="Address">
               <Input
-                className="rounded-lg border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9"
+                className="rounded-lg border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
                 name="address"
                 onChange={handleChange}
               />
@@ -150,24 +150,28 @@ const RegisterRpAccCard = ({
                   onClick={() => handleKeyValueChange('typeId', 2)}
                 >
                   <input
-                    className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-firstColorGradientFromDark focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange"
+                    className="w-3 h-3 my-auto transform scale-125 cursor-pointer dark:bg-darkTextWhiteColor text-firstColorGradientFromDark dark:text-darkFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange dark:border-darkFirstColor"
                     type="radio"
                     checked={inputs.typeId === 2 && true}
                     onChange={() => {}}
                   />
-                  <p>Alyjy</p>
+                  <p className="text-sm text-black dark:text-darkTextWhiteColor">
+                    Alyjy
+                  </p>
                 </div>
                 <div
                   className="grid grid-flow-col gap-2 auto-cols-max"
                   onClick={() => handleKeyValueChange('typeId', 1)}
                 >
                   <input
-                    className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-firstColorGradientFromDark focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange"
+                    className="w-3 h-3 my-auto transform scale-125 cursor-pointer dark:bg-darkTextWhiteColor text-firstColorGradientFromDark dark:text-darkFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange dark:border-darkFirstColor"
                     type="radio"
                     checked={inputs.typeId === 1 && true}
                     onChange={() => {}}
                   />
-                  <p>Satyjy</p>
+                  <p className="text-sm text-black dark:text-darkTextWhiteColor">
+                    Satyjy
+                  </p>
                 </div>
               </div>
             </Form.Item>
@@ -178,7 +182,7 @@ const RegisterRpAccCard = ({
               initialValue={inputs.webAddress}
             >
               <Input
-                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9"
+                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
                 name="webAddress"
                 onChange={handleChange}
               />
@@ -237,7 +241,7 @@ const RegisterRpAccCard = ({
               ]}
             >
               <Input
-                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9"
+                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
                 name="username"
                 onChange={handleChange}
               />
@@ -248,7 +252,7 @@ const RegisterRpAccCard = ({
               initialValue={inputs.firstName}
             >
               <Input
-                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9"
+                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
                 name="firstName"
                 onChange={handleChange}
               />
@@ -259,7 +263,7 @@ const RegisterRpAccCard = ({
               initialValue={inputs.lastName}
             >
               <Input
-                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9"
+                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
                 name="lastName"
                 onChange={handleChange}
               />
@@ -278,7 +282,7 @@ const RegisterRpAccCard = ({
             >
               <Input
                 style={{ width: '100%' }}
-                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9"
+                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
                 type="number"
                 name="homePhoneNumber"
                 onChange={handleChange}
@@ -291,7 +295,7 @@ const RegisterRpAccCard = ({
             >
               <Input
                 style={{ width: '100%' }}
-                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9"
+                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
                 type="number"
                 name="workPhoneNumber"
                 onChange={handleChange}
@@ -304,7 +308,7 @@ const RegisterRpAccCard = ({
             >
               <Input
                 style={{ width: '100%' }}
-                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9"
+                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
                 type="text"
                 name="workFaxNumber"
                 onChange={handleChange}
@@ -313,7 +317,7 @@ const RegisterRpAccCard = ({
             <Form.Item name="zip" label="Zip" initialValue={inputs.zipCode}>
               <Input
                 style={{ width: '100%' }}
-                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9"
+                className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
                 type="text"
                 name="zipCode"
                 onChange={handleChange}
@@ -323,7 +327,7 @@ const RegisterRpAccCard = ({
             <Form.Item {...tailFormItemLayout}>
               <IconLabelButton
                 label="Hasaba al"
-                className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] m-auto"
+                className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] dark:bg-[linear-gradient(266.08deg,#6366f1_1%,#6366f1_100%)] hover:opacity-90 m-auto"
                 labelClassName="m-auto text-white"
                 type="primary"
                 htmlType="submit"

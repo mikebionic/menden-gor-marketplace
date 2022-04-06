@@ -67,10 +67,10 @@ export const Cart: React.FC<ICartProps> = ({
                 leaveTo="translate-x-full"
               >
                 <div className="w-screen max-w-md">
-                  <div className="flex flex-col h-full overflow-y-scroll bg-white shadow-xl">
+                  <div className="flex flex-col h-full overflow-y-scroll bg-white shadow-xl dark:bg-darkComponentColor">
                     <div className="flex-1 px-4 py-6 overflow-y-auto sm:px-6">
                       <div className="flex items-start justify-between">
-                        <Dialog.Title className="text-lg font-medium text-gray-900">
+                        <Dialog.Title className="text-lg font-medium text-gray-900 dark:text-darkTextWhiteColor">
                           Shopping cart
                         </Dialog.Title>
                         <div className="flex items-center ml-3 h-7">
@@ -110,14 +110,20 @@ export const Cart: React.FC<ICartProps> = ({
 
                     <div className="px-4 py-6 border-t border-gray-200 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
-                        <p>Subtotal</p>
-                        <p>{totalPrice}</p>
-                        <p>Count: {totalCount}</p>
+                        <p className="text-black dark:text-darkTextWhiteColor">
+                          Subtotal
+                        </p>
+                        <p className="text-black dark:text-darkTextWhiteColor">
+                          {totalPrice}
+                        </p>
+                        <p className="text-black dark:text-darkTextWhiteColor">
+                          Count: {totalCount}
+                        </p>
                       </div>
                       <div className="mt-6">
                         <Link
                           to={routeConstants.checkout.route}
-                          className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark hover:bg-socialBarItemHover hover:text-white"
+                          className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark hover:bg-socialBarItemHover dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:text-white"
                         >
                           Checkout
                         </Link>

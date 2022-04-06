@@ -13,13 +13,13 @@ export const AboutPage: React.FC = () => {
           alt=""
         />
         <div className="w-auto px-8 py-0 mx-auto my-0 font-serif">
-          <h1 className="mb-5 font-bold text-black capitalize text-7xl">
+          <h1 className="mb-5 font-bold text-black capitalize dark:text-darkTextWhiteColor text-7xl">
             About us
           </h1>
-          <h5 className="mb-6 text-2xl font-semibold tracking-wider text-black capitalize">
+          <h5 className="mb-6 text-2xl font-semibold tracking-wider text-black capitalize dark:text-darkTextWhiteColor">
             Marketplace
           </h5>
-          <p className="mb-12 text-lg leading-7 tracking-wider text-justify font-oxygen">
+          <p className="mb-12 text-lg leading-7 tracking-wider text-justify dark:text-darkText font-oxygen">
             The e-commerce program is primarily designed for merchants, making
             it easy to manage their goods, customers and orders. This software
             is state-of-the-art and is designed to automate trading for trading
@@ -33,7 +33,7 @@ export const AboutPage: React.FC = () => {
           <Link to={routeConstants.contact.route}>
             <button
               type="button"
-              className="px-8 py-3 font-bold text-black transition-all border-2 border-transparent border-solid cursor-pointer delay-400 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight rounded-3xl hover:bg-gradient-to-r hover:from-transparent hover:to-transparent transition_animation hover:border-textColorOrange"
+              className="px-8 py-3 font-bold text-black transition-all border-2 border-transparent border-solid cursor-pointer delay-400 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight rounded-3xl hover:bg-gradient-to-r hover:from-transparent hover:to-transparent dark:bg-[linear-gradient(266.08deg,#6366f1_1%,#6366f1_100%)] dark:border-darkFirstColor dark:text-darkTextWhiteColor dark:hover:border-darkFirstColor transition_animation hover:border-textColorOrange"
             >
               {routeConstants.contact.name}
             </button>

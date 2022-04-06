@@ -10,28 +10,28 @@ const socialBarLinks = [
   {
     url: 'https://instagram.com/sapcozgut',
     icon: (
-      <BsInstagram className="w-6 h-6 mx-auto my-1 text-white transition-all duration-300 hover:text-socialBarItemHover" />
+      <BsInstagram className="w-6 h-6 mx-auto my-1 text-white transition-all duration-300 hover:text-socialBarItemHover dark:hover:text-darkFirstColor" />
     ),
     active: true,
   },
   {
     url: 'mailto:sapcozgut@gmail.com',
     icon: (
-      <AiOutlineMail className="w-6 h-6 mx-auto my-1 text-white transition-all duration-300 hover:text-socialBarItemHover" />
+      <AiOutlineMail className="w-6 h-6 mx-auto my-1 text-white transition-all duration-300 hover:text-socialBarItemHover dark:hover:text-darkFirstColor" />
     ),
     active: true,
   },
   {
     url: 'https://store.apple.com/sapcozgut',
     icon: (
-      <GrAppleAppStore className="w-6 h-6 mx-auto my-1 text-white transition-all duration-300 border border-white border-solid rounded hover:text-socialBarItemHover hover:border-socialBarItemHover" />
+      <GrAppleAppStore className="w-6 h-6 mx-auto my-1 text-white transition-all duration-300 border border-white border-solid rounded hover:text-socialBarItemHover dark:hover:text-darkFirstColor hover:border-socialBarItemHover dark:hover:border-darkFirstColor" />
     ),
     active: true,
   },
   {
     url: 'https://play.google.com/sapcozgut',
     icon: (
-      <FaGooglePlay className="w-6 h-6 mx-auto my-1 text-white transition-all duration-300 hover:text-socialBarItemHover" />
+      <FaGooglePlay className="w-6 h-6 mx-auto my-1 text-white transition-all duration-300 hover:text-socialBarItemHover dark:hover:text-darkFirstColor" />
     ),
     active: true,
   },

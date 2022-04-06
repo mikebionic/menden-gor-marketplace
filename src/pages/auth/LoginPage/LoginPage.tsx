@@ -44,10 +44,10 @@ const LoginPage: React.FC = (props: any) => {
         <div className="container flex p-12 mx-auto">
           <div className="w-full max-w-md mx-auto">
             <div className="overflow-hidden shadow-defaultShadow bg-glass rounded-2xl backdrop-filter backdrop-blur-glass">
-              { loading && <Spinner /> }
+              {loading && <Spinner />}
               <Form
                 name="normal_login"
-                className="max-w-full p-8"
+                className="max-w-full p-8 dark:bg-darkComponentColor"
                 initialValues={{ remember: true }}
                 onFinish={handleSubmit}
                 method="GET"
@@ -69,7 +69,7 @@ const LoginPage: React.FC = (props: any) => {
                     value={username}
                     onChange={handleChange}
                     inputMode="text"
-                    className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange"
+                    className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor dark:text-darkTextWhiteColor hover:border-textColorOrange dark:hover:border-darkFirstColor"
                   />
                 </Form.Item>
                 <Form.Item
@@ -87,7 +87,7 @@ const LoginPage: React.FC = (props: any) => {
                     name="password"
                     value={password}
                     onChange={handleChange}
-                    className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange"
+                    className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor dark:text-darkTextWhiteColor hover:border-textColorOrange dark:hover:border-darkFirstColor"
                   />
                 </Form.Item>
                 <Form.Item>
@@ -95,14 +95,16 @@ const LoginPage: React.FC = (props: any) => {
                     <input
                       name="remember"
                       type="checkbox"
-                      className="w-4 h-4 bg-gray-100 cursor-pointer text-textColorOrange focus:outline-none focus:ring-0 focus:ring-offset-0 border-[#E6E6E6] text-center focus:ring-offset-transparent focus:ring-transparent"
+                      className="w-4 h-4 bg-gray-100 cursor-pointer text-textColorOrange dark:text-darkFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 border-[#E6E6E6] dark:border-darkFirstColor text-center focus:ring-offset-transparent focus:ring-transparent"
                     />
-                    <p className="cursor-default">Remember me</p>
+                    <p className="cursor-default dark:text-darkTextWhiteColor">
+                      Remember me
+                    </p>
                   </div>
 
                   <a
                     href="/"
-                    className="float-right hover:text-textColorOrange"
+                    className="float-right hover:text-textColorOrange dark:hover:text-darkFirstColor dark:text-darkTextWhiteColor"
                   >
                     Forgot password
                   </a>
@@ -111,14 +113,17 @@ const LoginPage: React.FC = (props: any) => {
                 <Form.Item className="h-auto">
                   <IconLabelButton
                     label={t('auth.login')}
-                    className="h-11 rounded-lg w-full bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] m-auto"
+                    className="h-11 rounded-lg w-full bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] dark:bg-[linear-gradient(266.08deg,#6366f1_1%,#6366f1_100%)] hover:opacity-90 m-auto"
                     labelClassName="m-auto text-white"
                     type="primary"
                     htmlType="submit"
                   />
-                  <div className="mt-2">
+                  <div className="mt-2 dark:text-darkTextWhiteColor">
                     Or{' '}
-                    <a href="/" className="hover:text-textColorOrange">
+                    <a
+                      href="/"
+                      className="hover:text-textColorOrange dark:hover:text-darkFirstColor"
+                    >
                       register now!
                     </a>
                   </div>

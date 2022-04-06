@@ -135,7 +135,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 
           <IconLabelButton
             label="Next"
-            className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] dark:bg-[linear-gradient(266.08deg,#6366f1_1%,#6366f1_100%)] m-auto"
+            className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] dark:bg-[linear-gradient(266.08deg,#6366f1_1%,#6366f1_100%)] hover:opacity-90 m-auto"
             labelClassName="m-auto text-white"
             type="submit"
           />
