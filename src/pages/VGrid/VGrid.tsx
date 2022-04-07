@@ -74,7 +74,12 @@ const VGrid: React.FC = (props: any) => {
         {/* second column */}
         <div className="gap-4 ml-4 ">{productsList}</div>
       </div>
-      <button onClick={() => loadMoreResources()}>Load more</button>
+      <button
+        onClick={() => loadMoreResources()}
+        className="m-auto dark:text-darkTextWhiteColor"
+      >
+        Load more
+      </button>
     </ErrorBoundary>
   );
 };
@@ -89,6 +94,6 @@ const mapDispatchToProps = {
   fetchResources,
   loadMoreResources,
   onFiltersApply: applyFilters,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(VGrid);

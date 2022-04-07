@@ -407,9 +407,37 @@ select:focus {
     border-color: #6366f1;
   }
   .ant-switch-checked {
-    background-color: #6366f1;
+    background-color: #6366f1 !important;
   }
   .ant-switch-checked:focus {
-    box-shadow: 0 0 0 2px #6366f1;
+    box-shadow: 0 0 0 2px #6366f1 !important;
+  }
+  .ant-switch {
+    background-color: #ffffff2b;
+  }
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #6366f1;
+    text-shadow: 0 0 0.25px currentcolor;
+  }
+  .ant-tabs-tab {
+    color: #e1e8f0;
+  }
+  .ant-tabs-tab:hover {
+    color: #6366f1;
+  }
+  .ant-tabs-tab-btn:focus,
+  .ant-tabs-tab-remove:focus,
+  .ant-tabs-tab-btn:active,
+  .ant-tabs-tab-remove:active {
+    color: #6366f1;
+  }
+  .ant-tabs-ink-bar {
+    background: #6366f1;
+  }
+  .ant-tabs-top > .ant-tabs-nav::before,
+  .ant-tabs-bottom > .ant-tabs-nav::before,
+  .ant-tabs-top > div > .ant-tabs-nav::before,
+  .ant-tabs-bottom > div > .ant-tabs-nav::before {
+    border-bottom: 1px solid #94a3b8;
   }
 }
