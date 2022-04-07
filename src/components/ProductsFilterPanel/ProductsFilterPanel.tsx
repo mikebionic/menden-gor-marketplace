@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { ErrorBoundary } from 'modules/errors';
-import { Input, InputNumber, Switch } from 'antd';
+import { Input, InputNumber, Switch, Form } from 'antd';
 import { IconLabelButton } from 'common/IconLabelButton';
 
 import { getCategories, getBrands } from 'sapredux/selectors';
@@ -50,40 +50,31 @@ const ProductsFilterPanel: React.FC = (props: any) => {
               Baha aralyk:{' '}
             </p>
           </div>
-          <div className="grid">
-            <Input.Group compact>
-              <InputNumber
-                style={{
-                  width: 100,
-                  textAlign: 'center',
-                  height: 30,
-                  borderRadius: 5,
-                }}
-                placeholder="Minimum"
+
+          <Form className="grid grid-flow-col gap-2 auto-cols-max">
+            <Form.Item name="phone">
+              <Input
+                className="rounded-lg min-h-[32px] w-[100px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+                type="number"
+                name="minimum"
+                placeholder="Min"
                 value={filters.from_price}
                 onChange={(value: any) =>
                   handlePriceChange('from_price', value)
                 }
-                status="warning"
-                // type="number"
               />
-              {/* !!!TODO: Merri, this (type="number") creates a form around input */}
-              <InputNumber
-                className="ml-1 site-input-right"
-                style={{
-                  width: 100,
-                  textAlign: 'center',
-                  height: 30,
-                  borderRadius: 5,
-                }}
-                placeholder="Maximum"
+            </Form.Item>
+            <Form.Item name="workPhone">
+              <Input
+                className="rounded-lg min-h-[32px] w-[100px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+                type="number"
+                name="maximum"
+                placeholder="Max"
                 value={filters.to_price}
                 onChange={(value: any) => handlePriceChange('to_price', value)}
-                status="warning"
-                // type="number"
               />
-            </Input.Group>
-          </div>
+            </Form.Item>
+          </Form>
           <div className="grid grid-cols-iconReverse">
             <p className="text-black dark:text-darkTextWhiteColor">
               Arzanladysh
@@ -251,12 +242,12 @@ const ProductsFilterPanel: React.FC = (props: any) => {
         </div>
         <div className="inline-grid w-56 grid-cols-2 rounded-lg h-9">
           <IconLabelButton
-            className="w-24 mx-auto my-0 rounded-full bg-secondColorGradientToLight"
+            className="w-24 mx-auto my-0 rounded-full bg-secondColorGradientToLight dark:bg-darkFirstColor hover:opacity-80"
             label="Search"
             onClick={() => onNavigate()}
           />
           <IconLabelButton
-            className="w-24 mx-auto my-0 rounded-full bg-firstColorGradientFromDark"
+            className="w-24 mx-auto my-0 rounded-full bg-firstColorGradientFromDark dark:bg-darkButtonColor hover:opacity-80"
             label="Clear"
             onClick={() => onFiltersClear()}
           />

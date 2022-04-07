@@ -31,29 +31,29 @@ const RenderProuct = ({
   ratingValue,
 }: any) => (
   <ErrorBoundary>
-    <div className="grid gap-8 p-4 mx-auto my-8 grid-cols-[auto_1fr] w-[1150px] h-[450px] bg-fullwhite place-content-center">
-      <div className="bg-gray-200 w-96 h-96">
+    <div className="grid gap-8 p-4 mx-auto my-8 grid-cols-[auto_1fr] lg:w-[auto] h-[450px] bg-fullwhite dark:bg-darkComponentColor place-content-center place-items-center">
+      <div className="bg-gray-200 dark:bg-darkBgColor lg:w-96 md:w-80 lg:h-96 md:h-80">
         <Image
           src={image}
           alt={`${name} - ${description}`}
           className="object-contain object-center w-full h-full lg:w-full lg:h-full"
         />
       </div>
-      <div className="inline-grid gap-2 grid-flow-rows auto-rows-max place-items-stretch">
+      <div className="inline-grid lg:gap-2 md:gap-1 grid-flow-rows auto-rows-max place-items-stretch">
         <div>
-          <h1 className="py-4 text-3xl font-bold text-center text-black text-gradient">
+          <h1 className="py-4 font-bold text-center text-black lg:text-3xl md:text-2xl text-gradient">
             {name}
           </h1>
-          <p className="py-1 text-xl font-medium text-black place-self-start">
+          <p className="py-1 font-medium text-black lg:text-xl md:text-lg place-self-start dark:text-darkTextWhiteColor">
             Kategoriya: {categoryName}
           </p>
-          <p className="py-1 text-xl font-medium text-black place-self-start">
+          <p className="py-1 font-medium text-black lg:text-xl md:text-lg place-self-start dark:text-darkTextWhiteColor">
             Bahasy: {priceValue} {currencySymbol}
           </p>
-          <p className="py-1 text-xl font-medium text-black place-self-start">
+          <p className="py-1 font-medium text-black lg:text-xl md:text-lg place-self-start dark:text-darkTextWhiteColor">
             Sany: {totBalance}
           </p>
-          <p className="py-1 text-xl font-medium text-black place-self-start">
+          <p className="py-1 font-medium text-black lg:text-xl md:text-lg place-self-start dark:text-darkTextWhiteColor">
             {description}
           </p>
         </div>
@@ -62,8 +62,8 @@ const RenderProuct = ({
           {/* <p className="text-base text-[#6B6B6B] cursor-default">
           100 Teswir
         </p> */}
-          <div className="inline-grid grid-flow-col gap-1 cursor-default auto-cols-max place-content-center place-items-center">
-            <ImEye className="text-xl text-textColorOrange" />
+          <div className="inline-grid grid-flow-col gap-1 cursor-default auto-cols-max place-content-center place-items-center dark:text-darkTextWhiteColor">
+            <ImEye className="text-xl text-textColorOrange dark:text-darkFirstColor" />
             {viewCnt}
           </div>
         </div>
@@ -75,7 +75,7 @@ const RenderProuct = ({
           currencySymbol={currencySymbol}
           coloredButton={false}
         />
-        <hr className="w-auto my-4" />
+        <hr className="w-auto lg:my-4 md:my-2" />
         <div className="inline-grid grid-flow-col gap-4 auto-cols-max place-content-end place-items-center">
           <ProductAddToCart resourceId={id} withCounter={true} margin="m-0" />
           <WishlistButton wishlist={wishlist} margin="m-0" />
@@ -97,12 +97,24 @@ const ProductPage: React.FC = (props: any) => {
     }
   }, [params.id, fetchResourceById]);
 
-  const slidesToShow =
-    resource &&
-    resource.related_resources &&
-    resource.related_resources.length < 5
-      ? resource.related_resources.length
-      : 4;
+  // let slidesToShow =
+  //   resource &&
+  //   resource.related_resources &&
+  //   resource.related_resources.length < 5
+  //     ? resource.related_resources.length
+  //     : 4;
+
+  let slidesToShow =
+    window.innerWidth > 1800
+      ? 6
+      : window.innerWidth > 1500
+      ? 5
+      : window.innerWidth > 1000
+      ? 4
+      : window.innerWidth > 700
+      ? 3
+      : 2;
+
   const productsList =
     resource && resource.related_resources && !!resource.related_resources ? (
       <SlickSlider settings={{ slidesToShow: slidesToShow }}>

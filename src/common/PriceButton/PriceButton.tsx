@@ -25,7 +25,7 @@ export const PriceButton: React.FC<IPriceButtonProps> = ({
         </div>
       ) : (
         <div
-          className={`${width} ${padding} rounded-md cursor-default bg-fullwhite shadow-InnerCountryShadow`}
+          className={`${width} ${padding} rounded-md cursor-default bg-fullwhite dark:bg-darkBgColor dark:shadow-none shadow-InnerCountryShadow`}
         >
           <p className="text-base font-semibold text-center text-firstColorGradientFromDark dark:text-darkFirstColor">
             {priceValue} {currencySymbol ?? 'm'}
