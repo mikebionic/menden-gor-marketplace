@@ -61,7 +61,7 @@ const sendReview = async(payload:any, method='POST') => {
 			...await authBearerHeaderAsync()
 		},
 	}
-	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.v_reviews}`,requestOptions)
+	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.v_ratings}`,requestOptions)
 		.then(handleResponse)
 		// .then((response:any) => ({
 		// 	status: response.status,

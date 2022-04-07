@@ -26,6 +26,7 @@ export const StarRate: React.FC<IRateStarProps> = ({
         value={value > 0 ? value : 2.5}
         className={starSize}
         disabled={disabled}
+        // onChange={(e:any) => console.log(e)}
         onClick={(e:any) => console.log("clicked ", e)}
       />
     </div>

@@ -26,7 +26,7 @@ export const serviceConfig = {
 		setLanguage: process.env.REACT_APP_API_SET_LANGUAGE_ROUTE ?? '/v1/set-session-language/',
 		payment_methods: process.env.REACT_APP_API_PAYMENT_METHODS ?? '/tbl-dk-payment-methods/',
 		payment_types: process.env.REACT_APP_API_PAYMENT_TYPES ?? '/tbl-dk-payment-types/',
-		v_reviews: process.env.REACT_APP_V_RATINGS = '/v1/v-ratings/',
+		v_ratings: process.env.REACT_APP_API_V_RATINGS ?? '/v1/v-ratings/',
 	},
 }
 
