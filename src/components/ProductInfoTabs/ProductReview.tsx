@@ -8,18 +8,32 @@ import { ErrorBoundary } from 'modules/errors';
 import { Image } from 'common/Image';
 import { routeConstants } from 'navigation'
 import { toJsonReview } from 'sapredux/services/transform_data';
+import { showToastMessage } from 'sapredux/helpers';
+import { resourceService } from 'sapredux/services';
 
-const AddReviewField = () => {
+const AddReviewField = ({resId}:any) => {
   const [inputs, setInputs] = useState({
     'ratingValue': 2,
     'remark': '',
+    'resId': resId,
   })
   const handleChange = (e: any) => {
     let { name, value } = e.target;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
   };
   const handleSubmit = () => {
-    console.log(toJsonReview(inputs))
+    inputs.remark.length < 1 
+    ? showToastMessage({ type: 'error', message: "Type your remark!", position: "center-top" })
+    : resourceService.sendReview([toJsonReview(inputs)]).then(
+      (response:any) => handleResponse(response)
+    )
+  }
+  const handleResponse = (response:any) => {
+    showToastMessage({
+      type: response.status === 1 ? 'success' : 'error',
+      message: response.status === 1 ? response.data[0].message : response.fails[0].message,
+      position: "center-top"
+    })
   }
   // const handleKeyValueChange = (name:string = '', value:any = '') => {
   //   setInputs((inputs) => ({...inputs, [name]:value}))
@@ -30,17 +44,22 @@ const AddReviewField = () => {
     <div className="grid grid-flow-row gap-2 auto-rows-max">
       <p className="text-xl font-semibold font-oxygen">Your rating</p>
       <StarRate className="px-1" starSize="text-base"
-        // name='ratingValue' 
+        // name='ratingValue'
         allowHalf={false} value={inputs.ratingValue}
         onClick={(e:any) => console.log(e)} />
     </div>
     <textarea
       className="font-oxygen border-[#E6E6E6] mx-1 resize-none h-56"
       placeholder="Type your remark..."
+      name='remark'
+      onChange={handleChange}
+      required
     />
     <div className="grid place-content-start">
       <IconLabelButton
         label="Send"
+        type="submit"
+        onClick={handleSubmit}
         className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] m-auto"
         labelClassName="m-auto text-white"
       />
@@ -61,7 +80,7 @@ const PleaseLoginField = () => (
   </>
 )
 
-const ProductReview = ({ reviews, loggedIn }: any) => {
+const ProductReview = ({ resId, reviews, loggedIn }: any) => {
   return (
     <ErrorBoundary>
       <div className="grid w-full grid-flow-row gap-6 px-3 py-6 auto-rows-max">
@@ -111,7 +130,7 @@ const ProductReview = ({ reviews, loggedIn }: any) => {
           </div>
         ))}
 
-        {loggedIn ? <AddReviewField /> : <PleaseLoginField />}
+        {loggedIn ? <AddReviewField resId={resId} /> : <PleaseLoginField />}
 
       </div>
     </ErrorBoundary>

@@ -87,8 +87,8 @@ export const toJsonRpAcc = (data: any, allData: boolean = false) => ({
 	RpAccWorkFaxNumber: data.workFaxNumber ?? null,
 	RpAccWorkPhoneNumber: data.workPhoneNumber ?? null,
 	RpAccZipCode: data.zipCode ?? null,
-	RpAccTypeId: allData && (data.typeId ?? null),
-	RpAccUPass: allData && (data.password ?? null),
+	RpAccTypeId: allData ? (data.typeId ?? null) : null,
+	RpAccUPass: allData ? (data.password ?? null) : null,
 })
 
 export const transformUser = (data:any) => ({

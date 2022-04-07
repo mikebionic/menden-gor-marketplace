@@ -1,7 +1,7 @@
 import * as R from 'ramda'
 
 import { serviceConfig } from 'configs';
-import { handleResponse } from 'sapredux/helpers';
+import { authBearerHeaderAsync, handleResponse } from 'sapredux/helpers';
 import { paginated_resources } from './mock_data/resource.mock';
 import { transformResources as transformResponse } from './transform_data';
 import { transformFetch, fetchWithCred } from 'sapredux/helpers';
@@ -52,6 +52,24 @@ const loadMore = async({next_url}:any) => {
 	return await fetchWithCred(`${serviceConfig.apiHost}${next_url}`).then(handleResponse);
 }
 
+const sendReview = async(payload:any, method='POST') => {
+	const requestOptions = {
+		method: method,
+		body: JSON.stringify(payload),
+		headers: {
+			"Content-Type": "application/json; charset=UTF-8",
+			...await authBearerHeaderAsync()
+		},
+	}
+	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.v_reviews}`,requestOptions)
+		.then(handleResponse)
+		// .then((response:any) => ({
+		// 	status: response.status,
+		// 	message: response.message,
+		// 	...transformResponse(response.data),
+		// }))
+}
+
 export const resourceService = {
 	fetchAll,
 	fetchById,
@@ -60,4 +78,5 @@ export const resourceService = {
 	fetchFeatured_data,
 	fetchDiscount_data,
 	loadMore,
+	sendReview,
 };

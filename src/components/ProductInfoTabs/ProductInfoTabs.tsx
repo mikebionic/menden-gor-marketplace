@@ -11,7 +11,7 @@ export const ProductInfoTabs: React.FC = (props:any) => {
         <ProductDesc {...props} />
       </TabPane>
       <TabPane tab="Review" key="2">
-        <ProductReview reviews={props.reviews}/>
+        <ProductReview resId={props.id} reviews={props.reviews}/>
       </TabPane>
     </Tabs>
   );
