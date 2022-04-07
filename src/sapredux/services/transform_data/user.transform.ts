@@ -78,6 +78,8 @@ export const toJsonRpAcc = (data: any, allData: boolean = false) => ({
 	RpAccLastName: data.lastName ?? null,
 	RpAccHomePhoneNumber: data.homePhoneNumber ?? null,
 	RpAccMobilePhoneNumber: data.mobilePhoneNumber ?? null,
+	RpAccLatitude: data.latitude ?? null,
+	RpAccLongitude: data.longitude ?? null,
 	RpAccId: data.id ?? null,
 	RpAccPassportNo: data.passportNo ?? null,
 	RpAccPatronomic: data.patronomic ?? null,

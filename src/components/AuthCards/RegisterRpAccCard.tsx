@@ -66,6 +66,8 @@ const RegisterRpAccCard = ({
     workFaxNumber: '',
     workPhoneNumber: '',
     zipCode: '',
+    latitude: '',
+    logitude: '',
   });
 
   const handleChange = (e: any) => {
@@ -78,6 +80,16 @@ const RegisterRpAccCard = ({
   const handleKeyValueChange = (name: string = '', value: any = '') => {
     setInputs((inputs) => ({ ...inputs, [name]: value }));
   };
+
+  useEffect(() => {
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        handleKeyValueChange('latitude', position.coords.latitude)
+        handleKeyValueChange('longitude', position.coords.longitude)
+        console.log("successs location ", inputs)
+      });
+    }
+  }, [navigator.geolocation])
 
   useEffect(() => {
     setInputs((inputs) => ({

@@ -7,10 +7,12 @@ import { IconLabelButton } from 'common/IconLabelButton';
 import { ErrorBoundary } from 'modules/errors';
 import { authService } from 'sapredux/services';
 import { showToastMessage } from 'sapredux/helpers';
+import { Spinner } from 'modules/loaders';
 
 export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
   const [authMethod, set_authMethod] = useState('email');
   const [credentials, set_credentials] = useState('');
+  const [loading, set_loading] = useState(false)
   const [validationData, set_validationData] = useState({
     authMethod: authMethod,
     credentials: credentials,
@@ -27,6 +29,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
   }, [authMethod, credentials]);
 
   const handleSubmit = (e: any) => {
+    set_loading(true)
     authService.registerRequest(authMethod, credentials).then(
       (response: any) => {
         response.status === 1
@@ -43,7 +46,8 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
           message: error,
           position: 'center-top',
         }),
-    );
+    )
+    .finally(() => set_loading(false))
     e.preventDefault();
   };
   const handleSuccess = (response: any) => {
@@ -100,6 +104,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
           className="w-[450px] h-[217px] rounded-lg shadow-[1px_1px_4px_rgba(0,0,0,0.3)] p-9 grid grid-flow-row auto-rows-auto gap-4 bg-fullwhite dark:bg-darkComponentColor"
           onSubmit={(e) => handleSubmit(e)}
         >
+          { loading && <Spinner /> }
           {authMethod === 'email' && (
             <div className="inline-grid grid-flow-row gap-1 auto-rows-auto">
               <p className="text-base ml-1 text-[#606060] dark:text-darkTextWhiteColor cursor-default">
