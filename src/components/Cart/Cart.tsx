@@ -48,7 +48,6 @@ export const Cart: React.FC<ICartProps> = ({
               as={Fragment}
               enter="ease-in-out duration-500"
               enterFrom="opacity-0"
-              enterTo="opacity-100"
               leave="ease-in-out duration-500"
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
@@ -56,7 +55,7 @@ export const Cart: React.FC<ICartProps> = ({
               <Dialog.Overlay className="absolute inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
             </Transition.Child>
 
-            <div className="fixed inset-y-0 right-0 flex max-w-full pl-10 md:w-[400px] 2xl:w-[500px]">
+            <div className="fixed inset-y-0 right-0 flex max-w-full pl-10 md:w-[400px] 2xl:w-[550px]">
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -66,7 +65,7 @@ export const Cart: React.FC<ICartProps> = ({
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <div className="w-screen max-w-md">
+                <div className="w-screen md:max-w-md 2xl:max-w-2xl">
                   <div className="flex flex-col h-full overflow-y-scroll bg-white shadow-xl dark:bg-darkComponentColor">
                     <div className="flex-1 px-4 py-6 overflow-y-auto sm:px-6">
                       <div className="flex items-start justify-between">
