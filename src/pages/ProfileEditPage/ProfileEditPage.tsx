@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import * as R from 'ramda'
+import * as R from 'ramda';
 
 import { Button } from 'antd';
 import { Input } from 'antd';
@@ -14,9 +14,7 @@ import { toJsonRpAcc } from 'sapredux/services/transform_data';
 import { ErrorIndicator } from 'modules/errors';
 import { profileUpdate } from 'sapredux/actions';
 
-
 const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
-
   const post_editProfile = async (payload: any) => {
     await service.editProfile(payload).then(
       (response: any) =>
@@ -24,15 +22,19 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
       (error: any) => showToastMessage({ type: 'error', message: error }),
     );
   };
-  const onSave = (data: any) => post_editProfile(toJsonRpAcc(data)).then(
-    (response:any) => {console.log(response); profileUpdate(data)},
-    (error: any) => console.log(error)
-  ) ;
+  const onSave = (data: any) =>
+    post_editProfile(toJsonRpAcc(data)).then(
+      (response: any) => {
+        console.log(response);
+        profileUpdate(data);
+      },
+      (error: any) => console.log(error),
+    );
 
   const [inputs, setInputs] = useState(current_user);
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    setInputs((inputs:any) => ({ ...inputs, [name]: value }));
+    setInputs((inputs: any) => ({ ...inputs, [name]: value }));
   };
 
   return !R.isEmpty(current_user) ? (
@@ -50,92 +52,96 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
               className="object-cover m-auto avatar"
               src={current_user.image}
               alt={current_user.username}
-              imageType='avatar'
+              imageType="avatar"
             />
           </div>
-          <small className="text-center">
+          <small className="text-center text-black dark:text-darkTextWhiteColor">
             Hasaba alnan senesi: {current_user.createdDate}
           </small>
-          <Button type="ghost" shape="round"
-            onClick={() => onSave(inputs)}>
+          <Button
+            type="ghost"
+            shape="round"
+            onClick={() => onSave(inputs)}
+            className="dark:text-darkTextWhiteColor dark:hover:text-darkFirstColor dark:hover:border-darkFirstColor"
+          >
             Save
           </Button>
         </div>
         <div className="inline-grid gap-2">
-          <b>Ulanyjy ady</b>
+          <b className="text-black dark:text-darkTextWhiteColor">Ulanyjy ady</b>
           <Input
-            className="w-11/12 inputProfileEdit"
+            className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
             name="username"
             value={inputs.username}
           />
         </div>
         <div className="inline-grid gap-2">
-          <b>Öý telefony</b>
+          <b className="text-black dark:text-darkTextWhiteColor">Öý telefony</b>
           <Input
-            className="w-11/12 inputProfileEdit"
+            className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
             name="homePhoneNumber"
             value={inputs.homePhoneNumber}
             onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
-          <b>Salgy</b>
+          <b className="text-black dark:text-darkTextWhiteColor">Salgy</b>
           <Input
-            className="w-11/12 inputProfileEdit"
+            className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
             name="address"
             value={inputs.address}
             onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
-          <b>Poçta kody</b>
+          <b className="text-black dark:text-darkTextWhiteColor">Poçta kody</b>
           <Input
-            className="w-11/12 inputProfileEdit"
+            className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
             name="zipCode"
             value={inputs.zipCode}
             onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
-          <b>Doly ady</b>
+          <b className="text-black dark:text-darkTextWhiteColor">Doly ady</b>
           <Input
-            className="w-11/12 inputProfileEdit"
+            className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
             name="name"
             value={inputs.name}
             onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
-          <b>El telefony</b>
+          <b className="text-black dark:text-darkTextWhiteColor">El telefony</b>
           <Input
-            className="w-11/12 inputProfileEdit"
+            className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
             name="mobilePhoneNumber"
             value={inputs.mobilePhoneNumber}
             onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
-          <b>Iş telefony</b>
+          <b className="text-black dark:text-darkTextWhiteColor">Iş telefony</b>
           <Input
-            className="w-11/12 inputProfileEdit"
+            className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
             name="workPhoneNumber"
             value={inputs.workPhoneNumber}
             onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
-          <b>Web salgysy</b>
+          <b className="text-black dark:text-darkTextWhiteColor">Web salgysy</b>
           <Input
-            className="w-11/12 inputProfileEdit"
+            className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
             name="webAddress"
             value={inputs.webAddress}
             onChange={handleChange}
           />
         </div>
         <div className="inline-grid gap-2">
-          <b>Faks</b>
+          <b className="text-black dark:text-darkTextWhiteColor">Faks</b>
           <Input
-            className="w-11/12 inputProfileEdit"
+            className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
             name="workFaxNumber"
             value={inputs.workFaxNumber}
             onChange={handleChange}
@@ -143,12 +149,14 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
         </div>
       </div>
     </ErrorBoundary>
-  ) : <ErrorIndicator />;
+  ) : (
+    <ErrorIndicator />
+  );
 };
 
 const mapStateToProps = (state: any) => ({
   current_user: getCurrentUserInfo(state.auth),
 });
-const mapDispatchToProps = { profileUpdate }
+const mapDispatchToProps = { profileUpdate };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileEditPage);

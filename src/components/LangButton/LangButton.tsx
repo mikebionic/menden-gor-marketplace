@@ -15,18 +15,18 @@ const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
   const { i18n } = useTranslation();
 
   const [currentLanguage, setLanguage]: any = useState(
-    filterLang(i18n.language, Languages)
+    filterLang(i18n.language, Languages),
   );
 
   const handleClick = (lang: any) => {
     i18n.changeLanguage(lang);
-    otherService.setLanguage(lang)
+    otherService.setLanguage(lang);
   };
 
   const LanguageItem = ({ icon, data }: any) => {
     return (
       <div
-        className={`w-full p-2 hover:text-socialBarItemHover flex cursor-pointer place-items-center hover:bg-gray-100`}
+        className={`w-full relative p-2 hover:text-socialBarItemHover dark:hover:text-darkFirstColor flex cursor-pointer place-items-center hover:bg-gray-100 dark:hover:bg-darkComponentColor text-black dark:text-darkTextWhiteColor`}
         onClick={() => {
           setLanguage(data);
           onDropdownStateChange(false);
@@ -53,7 +53,7 @@ const LangButton = ({ onDropdownStateChange, dropdownState, data }: any) => {
         }
       }}
     >
-      <div className="relative grid">
+      <div className="relative grid grid-cols-[3.5rem]">
         <IconLabelButton
           className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid dark:border-darkFirstColor dark:text-darkTextWhiteColor"
           icon={

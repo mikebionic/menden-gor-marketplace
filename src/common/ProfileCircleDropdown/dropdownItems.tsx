@@ -24,7 +24,8 @@ const dropdownItems = {
       route: routeConstants.login.route,
       label: routeConstants.login.name,
       color: 'orange-600',
-      design: 'hover:border-orange-500 hover:text-orange-500',
+      design:
+        'hover:border-orange-500 hover:text-orange-500 dark:hover:border-darkFirstColor dark:hover:text-darkFirstColor',
       icon: <BiLogIn className="text-xl" />,
     },
     {

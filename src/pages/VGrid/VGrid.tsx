@@ -59,7 +59,10 @@ const VGrid: React.FC = (props: any) => {
 
   const productsList =
     !resource_loading && !resource_error ? (
-      <ProductList data={resources} />
+      <ProductList
+        data={resources}
+        gridClassName="md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 3xl:grid-cols-6"
+      />
     ) : resource_loading && !resource_error ? (
       <Spinner />
     ) : (

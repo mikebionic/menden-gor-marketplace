@@ -75,7 +75,7 @@ const MainPage: React.FC = (props: any) => {
           </>
         )}
 
-        <div className="grid gap-4 mt-8 xl:grid-cols-3 md:grid-cols-2 place-content-start place-items-center">
+        <div className="grid gap-4 mt-8 xl:grid-cols-3 md:grid-cols-2 place-content-start 2xl:place-items-center">
           <ResGroup />
           <ResGroup />
           <ResGroup />

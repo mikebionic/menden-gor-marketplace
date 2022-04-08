@@ -20,10 +20,16 @@ const columns = [
     title: 'Description',
     align: 'center',
     render: (data: any) => (
-      <Space size="small" className="grid grid-rows-3 text-left text-gray-500">
+      <Space
+        size="small"
+        className="grid grid-rows-3 text-left text-gray-500 dark:text-darkText"
+      >
         <p>
           Name:{' '}
-          <Link to={`${routeConstants.product.route}${data.id}/${data.name}`}>
+          <Link
+            to={`${routeConstants.product.route}${data.id}/${data.name}`}
+            className="hover:text-firstColorGradientFromDark dark:hover:text-darkFirstColor"
+          >
             {data.name}
           </Link>
         </p>
@@ -31,6 +37,7 @@ const columns = [
           Category:{' '}
           <Link
             to={`${routeConstants.vGrid.route}?category=${data.categoryId}&`}
+            className="hover:text-firstColorGradientFromDark dark:hover:text-darkFirstColor"
           >
             {data.categoryName}
           </Link>
@@ -42,17 +49,21 @@ const columns = [
   {
     title: 'Price',
     align: 'center',
-    className: 'text-gray-500',
-    render: ({ priceValue, currencySymbol}: any) => <p>{priceValue} {currencySymbol}</p>
+    className: 'text-gray-500 dark:text-darkText',
+    render: ({ priceValue, currencySymbol }: any) => (
+      <p>
+        {priceValue} {currencySymbol}
+      </p>
+    ),
   },
   {
     title: 'Action',
     align: 'center',
-    render: ({ id, wishlist }:any) => 
-    <div className="inline-grid place-content-center">
-      <WishlistButton resId={id} wishlist={wishlist}/>
-    </div>
-      
+    render: ({ id, wishlist }: any) => (
+      <div className="inline-grid place-content-center">
+        <WishlistButton resId={id} wishlist={wishlist} />
+      </div>
+    ),
   },
 ];
 

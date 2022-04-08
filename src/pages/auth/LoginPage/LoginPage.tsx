@@ -41,8 +41,8 @@ const LoginPage: React.FC = (props: any) => {
   return (
     <ErrorBoundary>
       <div className="font-sans text-gray-700">
-        <div className="container flex p-12 mx-auto">
-          <div className="w-full max-w-md mx-auto">
+        <div className="container flex p-12 mx-auto 2xl:h-[50rem]">
+          <div className="w-full max-w-md m-auto">
             <div className="overflow-hidden shadow-defaultShadow bg-glass rounded-2xl backdrop-filter backdrop-blur-glass">
               {loading && <Spinner />}
               <Form

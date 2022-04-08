@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
             to={routeConstants.about.route}
             className="hover:text-textColorOrange dark:hover:text-darkFirstColor"
           >
-            <h1 className="font-semibold text-black xl:text-xl md:text-base dark:text-darkTextWhiteColor">
+            <h1 className="font-semibold text-black xl:text-xl 2xl:text-2xl md:text-base dark:text-darkTextWhiteColor">
               {routeConstants.about.name}
             </h1>
           </Link>
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
           <p className="text-black dark:text-darkText">Order now!</p>
         </div>
         <div className="mx-auto my-0">
-          <h1 className="font-semibold text-black xl:text-xl md:text-base dark:text-darkTextWhiteColor">
+          <h1 className="font-semibold text-black xl:text-xl 2xl:text-2xl md:text-base dark:text-darkTextWhiteColor">
             Partnership
           </h1>
           <p className="text-black dark:text-darkText">Collaboration</p>
@@ -41,14 +41,14 @@ export const Footer: React.FC = () => {
           <p className="text-black dark:text-darkText">Vacancies</p>
         </div>
         <div className="mx-auto my-0">
-          <h1 className="font-semibold text-black xl:text-xl md:text-base dark:text-darkTextWhiteColor">
+          <h1 className="font-semibold text-black xl:text-xl 2xl:text-2xl md:text-base dark:text-darkTextWhiteColor">
             Our Services
           </h1>
           <p className="text-black dark:text-darkText">Terms and conditions</p>
           <p className="text-black dark:text-darkText">Conspiracy</p>
         </div>
         <div className="mx-auto my-0">
-          <h1 className="font-semibold text-black xl:text-xl md:text-base dark:text-darkTextWhiteColor">
+          <h1 className="font-semibold text-black xl:text-xl 2xl:text-2xl md:text-base dark:text-darkTextWhiteColor">
             Help
           </h1>
           <p className="text-black dark:text-darkText">Help & support</p>
@@ -66,7 +66,7 @@ export const Footer: React.FC = () => {
             to={routeConstants.contact.route}
             className="hover:text-textColorOrange dark:hover:text-darkFirstColor"
           >
-            <h1 className="font-semibold xl:text-xl md:text-base text-gradient">
+            <h1 className="font-semibold xl:text-xl 2xl:text-2xl md:text-base text-gradient">
               {routeConstants.contact.name}
             </h1>
           </Link>
