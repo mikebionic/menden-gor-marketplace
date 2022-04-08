@@ -4,9 +4,9 @@ import { payment_methods } from 'sapredux/services/mock_data/payment.mock';
 import { transformPaymentMethod } from 'sapredux/services/transform_data';
 import { ErrorBoundary } from 'modules/errors';
 
-export const PaymentMethods = () => {
+export const PaymentMethods = ({id, onChange}:any) => {
   const methods_list = payment_methods.data.map(transformPaymentMethod);
-  const [current_method_id, set_current_method_id] = useState(1);
+  const [current_method_id, set_current_method_id] = useState(id || 1);
   return (
     <ErrorBoundary>
       {methods_list.map(({ id, name, description }: any) => (
@@ -20,7 +20,7 @@ export const PaymentMethods = () => {
               type="radio"
               name={id}
               checked={id === current_method_id ? true : false}
-              onClick={() => set_current_method_id(id)}
+              onClick={() => {set_current_method_id(id); onChange(id)}}
             />
           </div>
           <div className="col-span-2 mx-0 my-auto">

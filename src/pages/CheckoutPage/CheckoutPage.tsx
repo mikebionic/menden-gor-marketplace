@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { getCartItems, getTotalCount } from 'sapredux/selectors';
+import Input from 'rc-input';
+import { getCartItems, getCurrentUserInfo, getTotalCount } from 'sapredux/selectors';
+import { showToastMessage } from 'sapredux/helpers';
 import { CartRow } from 'components/Cart';
 import { PaymentMethods } from 'components/Payment';
+import { ErrorBoundary } from 'modules/errors';
 import {
   resourceAddedToCart,
   resourceAllRemovedFromCart,
   resourceRemovedFromCart,
 } from 'sapredux/actions';
-import { ErrorBoundary } from 'modules/errors';
-import Input from 'rc-input';
 
 interface ICheckoutPage {
   items?: any;
@@ -19,11 +20,45 @@ interface ICheckoutPage {
   onIncrease?: any;
   onDecrease?: any;
   onDelete?: any;
+  user?: any;
+  loggedIn?: boolean
 }
 
 const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
-  const { items, totalCount, totalPrice, onIncrease, onDecrease, onDelete } =
+  const {
+    items,
+    totalPrice,
+    onIncrease,
+    onDecrease,
+    onDelete,
+    user,
+    loggedIn,
+  } =
     props;
+  
+  const [inputs, setInputs] = useState({
+    'name': loggedIn ? `${user.username} - ${user.name}` : '',
+    'phoneNumber': loggedIn ? `${user.mobilePhoneNumber || user.homePhoneNumber}` : '',
+    'note': '',
+    'paymentType': 1,
+    'paymentMethod': 3,
+  })
+  const handleChange = (e: any) => {
+    let { name, value } = e.target;
+    setInputs((inputs) => ({ ...inputs, [name]: value }));
+  };
+  const handleKeyValueChange = (name:string = '', value:any = '') => {
+    setInputs((inputs) => ({...inputs, [name]:value}))
+  }
+  const handleSubmit = () => {
+    inputs.note.length < 1 || inputs.name.length < 1 || inputs.phoneNumber.length < 1
+    ? showToastMessage({ type: 'error', message: "Fill the required fields!", position: "center-top" })
+    // : orderService.checkoutSaleOrderInv([toJsonCheckoutOrderInv(inputs)]).then(
+    //   (response:any) => handleResponse(response)
+    // )
+    : console.log(inputs)
+  }
+
   return (
     <ErrorBoundary>
       <div className="grid md:grid-flow-row gap-6 auto-rows-max xl:grid-cols-[60%_40%] my-8">
@@ -52,7 +87,8 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
             </p>
           </div>
 
-          <PaymentMethods />
+          <PaymentMethods id={inputs.paymentMethod}
+            onChange={(id:any) => handleKeyValueChange('paymentMethod', id)} />
 
           <p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
             Name:
@@ -62,8 +98,8 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
             autoFocus
             type="text"
             name="name"
-            // value=""
-            onChange={() => {}}
+            value={inputs.name}
+            onChange={handleChange}
             inputMode="text"
             className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
           />
@@ -74,8 +110,8 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
             placeholder="+993"
             type="number"
             name="phoneNumber"
-            // value=""
-            onChange={() => {}}
+            value={inputs.phoneNumber}
+            onChange={handleChange}
             inputMode="text"
             className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
           />
@@ -85,9 +121,12 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
           <textarea
             className="font-oxygen border-[#E6E6E6] w-full rounded resize-none h-24 dark:border-darkBgColor dark:bg-darkBgColor"
             placeholder="Note: type your address or any additional information."
+            name='note'
+            value={inputs.note}
+            onChange={handleChange}
           />
           <button
-            onClick={() => {}}
+            onClick={handleSubmit}
             className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:bg-socialBarItemHover hover:text-white"
           >
             Checkout
@@ -102,9 +141,9 @@ const mapStateToProps = (state: any) => {
   const totalData = getTotalCount(state);
   return {
     items: getCartItems(state),
-    // totalPrice: getTotalPrice(state),
-    totalCount: totalData.totalCount,
     totalPrice: totalData.totalPrice,
+    user: getCurrentUserInfo(state.auth),
+    loggedIn: state.auth.loggedIn,
   };
 };
 
