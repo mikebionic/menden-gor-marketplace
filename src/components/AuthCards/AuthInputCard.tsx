@@ -67,7 +67,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 
   return (
     <ErrorBoundary>
-      <div className="grid w-full grid-flow-row gap-4 place-content-center auto-cols-max">
+      <div className="grid w-full grid-flow-row gap-4 2xl:my-32 place-content-center auto-cols-max">
         <div className="text-center cursor-default">
           <h2 className="text-3xl font-semibold text-textColorOrange dark:text-darkFirstColor">
             Welcome!!!

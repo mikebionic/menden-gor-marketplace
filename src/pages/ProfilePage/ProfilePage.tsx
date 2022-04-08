@@ -18,61 +18,79 @@ const ProfilePage: React.FC = ({ current_user }: any) => {
             alt={current_user.username}
             imageType="avatar"
           />
-          <span className="text-center">{current_user.name}</span>
-          <small className="text-center">
+          <span className="text-center text-black dark:text-darkTextWhiteColor">
+            {current_user.name}
+          </span>
+          <small className="text-center text-black dark:text-darkTextWhiteColor">
             Hasaba alnan senesi: {current_user.createdDate}
           </small>
-          <Button type="ghost" shape="round">
+          <Button
+            type="ghost"
+            shape="round"
+            className="text-black dark:text-darkTextWhiteColor dark:hover:text-darkFirstColor dark:hover:border-darkFirstColor"
+          >
             Change password
           </Button>
         </div>
         <div className="inline-grid gap-2">
-          <b>Ulanyjy ady</b>
-          <p className="text-gray-400">{current_user.username}</p>
+          <b className="text-black dark:text-darkTextWhiteColor">Ulanyjy ady</b>
+          <p className="text-gray-400 dark:text-darkText">
+            {current_user.username}
+          </p>
         </div>
         <div className="inline-grid gap-2">
-          <b>E-poçta</b>
-          <p className="text-gray-400">
+          <b className="text-black dark:text-darkTextWhiteColor">E-poçta</b>
+          <p className="text-gray-400 dark:text-darkText">
             {current_user.email ?? 'Email not registered'}
           </p>
         </div>
         <div className="inline-grid gap-2">
-          <b>El telefony</b>
-          <p className="text-gray-400">
+          <b className="text-black dark:text-darkTextWhiteColor">El telefony</b>
+          <p className="text-gray-400 dark:text-darkText">
             {current_user.mobilePhoneNumber ?? 'Phone number not specified'}
           </p>
         </div>
         <div className="inline-grid gap-2">
-          <b>Salgy</b>
-          <p className="text-gray-400">
+          <b className="text-black dark:text-darkTextWhiteColor">Salgy</b>
+          <p className="text-gray-400 dark:text-darkText">
             {current_user.address ?? 'Address not specified'}
           </p>
         </div>
         <div className="inline-grid gap-2">
-          <b>Poçta kody</b>
-          <p className="text-gray-400">
+          <b className="text-black dark:text-darkTextWhiteColor">Poçta kody</b>
+          <p className="text-gray-400 dark:text-darkText">
             {current_user.zipCode ?? 'Zip code not registered'}
           </p>
         </div>
         <div className="inline-grid gap-2">
-          <b>Doly ady</b>
-          <p className="text-gray-400">{current_user.name ?? ''}</p>
+          <b className="text-black dark:text-darkTextWhiteColor">Doly ady</b>
+          <p className="text-gray-400 dark:text-darkText">
+            {current_user.name ?? ''}
+          </p>
         </div>
         <div className="inline-grid gap-2">
-          <b>Öý telefony</b>
-          <p className="text-gray-400">{current_user.homePhoneNumber ?? ''}</p>
+          <b className="text-black dark:text-darkTextWhiteColor">Öý telefony</b>
+          <p className="text-gray-400 dark:text-darkText">
+            {current_user.homePhoneNumber ?? ''}
+          </p>
         </div>
         <div className="inline-grid gap-2">
-          <b>Iş telefony</b>
-          <p className="text-gray-400">{current_user.workPhoneNumber ?? ''}</p>
+          <b className="text-black dark:text-darkTextWhiteColor">Iş telefony</b>
+          <p className="text-gray-400 dark:text-darkText">
+            {current_user.workPhoneNumber ?? ''}
+          </p>
         </div>
         <div className="inline-grid gap-2">
-          <b>Web salgysy</b>
-          <p className="text-gray-400">{current_user.webAddress ?? ''}</p>
+          <b className="text-black dark:text-darkTextWhiteColor">Web salgysy</b>
+          <p className="text-gray-400 dark:text-darkText">
+            {current_user.webAddress ?? ''}
+          </p>
         </div>
         <div className="inline-grid gap-2">
-          <b>Faks</b>
-          <p className="text-gray-400">{current_user.workFaxNumber ?? ''}</p>
+          <b className="text-black dark:text-darkTextWhiteColor">Faks</b>
+          <p className="text-gray-400 dark:text-darkText">
+            {current_user.workFaxNumber ?? ''}
+          </p>
         </div>
       </div>
     </ErrorBoundary>

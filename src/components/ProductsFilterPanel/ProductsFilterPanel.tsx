@@ -51,7 +51,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
             </p>
           </div>
 
-          <Form className="grid grid-flow-col gap-2 auto-cols-max">
+          <Form className="grid h-10 grid-flow-col gap-2 auto-cols-max">
             <Form.Item name="phone">
               <Input
                 className="rounded-lg min-h-[32px] w-[100px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"

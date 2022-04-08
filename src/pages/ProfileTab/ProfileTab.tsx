@@ -6,9 +6,9 @@ import { routeConstants } from 'navigation';
 
 const styles = {
   isActiveClass:
-    'text-firstColorGradientFromDark cursor-pointer border-b-2 border-firstColorGradientFromDark hover:text-firstColorGradientFromDark pb-2',
+    'text-firstColorGradientFromDark dark:text-darkFirstColor cursor-pointer border-b-2 border-firstColorGradientFromDark dark:border-darkFirstColor hover:text-firstColorGradientFromDark dark:hover:text-darkFirstColor pb-2',
   defaultClass:
-    'cursor-pointer text-black hover:text-firstColorGradientFromDark',
+    'cursor-pointer text-black hover:text-firstColorGradientFromDark dark:hover:text-darkFirstColor dark:text-darkTextWhiteColor',
 };
 
 export const ProfileTab: React.FC = () => {

@@ -76,12 +76,12 @@ const Search: React.FC = (props: any) => {
 
   const SearchType = () => {
     return (
-      <div className="z-50 grid w-32 h-auto mt-4 overflow-x-hidden overflow-y-auto text-base font-medium rounded-md shadow-lg left-12 bg-fullwhite">
+      <div className="z-50 grid w-32 h-auto mt-4 overflow-x-hidden overflow-y-auto text-base font-medium rounded-md shadow-lg left-12 bg-fullwhite dark:bg-darkComponentColor">
         {search_types.map((s_type: any, idx: number) => (
           <div
             key={idx}
             onClick={() => handleSearchTypeChange(s_type.id)}
-            className="w-full p-2 text-center hover:bg-gray-100 hover:text-socialBarItemHover"
+            className="w-full p-2 text-center text-black hover:bg-gray-100 hover:text-socialBarItemHover dark:hover:text-darkFirstColor dark:hover:opacity-80 dark:hover:bg-darkComponentColor dark:text-darkTextWhiteColor"
           >
             {s_type.name}
           </div>

@@ -10,12 +10,12 @@ const DropdownRow = (props: any) => {
   const { route, label, icon, design, color } = props;
   const thisStyle =
     design ??
-    'hover:border-firstColorGradientFromDark hover:text-firstColorGradientFromDark';
+    'hover:border-firstColorGradientFromDark hover:text-firstColorGradientFromDark dark:hover:border-darkFirstColor dark:hover:text-darkFirstColor';
   return (
     <li className="font-medium">
       <Link
         to={route}
-        className={`flex items-center text-black transition-colors duration-200 transform border-r-2 border-transparent ${thisStyle}`}
+        className={`flex items-center text-black dark:text-darkTextWhiteColor transition-colors duration-200 transform border-r-2 border-transparent ${thisStyle}`}
       >
         <div className={`mr-3 text-${color}`}>{icon}</div>
         {label}
@@ -90,10 +90,10 @@ const ProfileCircleDropdown: React.FC<IProfileCircleDropdown> = ({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <div className="absolute px-5 py-3 mt-2 bg-white border rounded-lg md:right-4 xl:left-0 shadow w-60 z-[999]">
+        <div className="absolute px-5 py-3 mt-2 bg-white dark:bg-darkComponentColor dark:border-darkComponentColor border rounded-lg md:right-4 xl:left-0 shadow w-60 z-[999]">
           {loggedIn && (
             <>
-              <p className="w-full py-1 text-base font-oxygen text-textColorOrange">
+              <p className="w-full py-1 text-base font-oxygen text-textColorOrange dark:text-darkFirstColor">
                 {username}
               </p>
               <hr className="mb-2 border-gray-700 opacity-20" />

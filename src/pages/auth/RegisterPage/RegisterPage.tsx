@@ -8,7 +8,7 @@ import {
 } from 'components/AuthCards';
 
 export const RegisterPage: React.FC = () => {
-  const [stage, set_stage] = useState(1);
+  const [stage, set_stage] = useState(3);
   const [validationData, set_validationData] = useState({
     authMethod: '',
     credentials: '',
@@ -18,7 +18,7 @@ export const RegisterPage: React.FC = () => {
   });
 
   return (
-    <>
+    <div className="grid grid-flow-row place-items-center auto-rows-auto">
       <div>
         {stage === 1 && (
           <AuthInputCard
@@ -39,11 +39,11 @@ export const RegisterPage: React.FC = () => {
             validationData={validationData}
           />
         )}
-        <hr className="my-8 dark:border-darkText" />
+        {/* <hr className="my-8 dark:border-darkText" /> */}
       </div>
       <div className="w-[60%] my-12 mx-auto cursor-default">
         <RegisterSteps stage={stage} />
       </div>
-    </>
+    </div>
   );
 };

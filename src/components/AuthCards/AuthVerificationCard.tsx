@@ -158,7 +158,7 @@ export const AuthVerificationCard = ({
 
   return (
     <ErrorBoundary>
-      <div className="w-[450px] h-full p-9 m-auto bg-fullwhite dark:bg-darkComponentColor shadow-[1px_1px_4px_rgba(0,0,0,0.25)] rounded-lg ">
+      <div className="w-[450px] h-full p-9 m-auto 2xl:my-32 bg-fullwhite dark:bg-darkComponentColor shadow-[1px_1px_4px_rgba(0,0,0,0.25)] rounded-lg ">
         <IoMdArrowRoundBack
           className="text-xl cursor-pointer text-textColorOrange hover:opacity-80 dark:text-darkFirstColor"
           onClick={() => onStageChange(1)}

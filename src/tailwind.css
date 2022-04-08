@@ -440,4 +440,20 @@ select:focus {
   .ant-tabs-bottom > div > .ant-tabs-nav::before {
     border-bottom: 1px solid #94a3b8;
   }
+  .ant-ribbon-color-red {
+    color: #6366f1 !important;
+    background: #6366f1 !important;
+  }
+  .ant-table-thead > tr > th {
+    color: #e1e8f0;
+    background: #1e293b;
+    border-bottom: 1px solid #94a3b8;
+  }
+  .ant-table-row {
+    background: #1e293b;
+  }
+  .ant-table-tbody > tr.ant-table-row:hover > td,
+  .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+    background: #313c4d;
+  }
 }

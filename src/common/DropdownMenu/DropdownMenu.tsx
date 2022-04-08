@@ -47,16 +47,16 @@ export const DropdownMenu: React.FC<IDropdownProps> = ({
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items
-            className={`absolute right-0 ${className} mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+            className={`absolute right-0 ${className} mt-2 origin-top-right bg-white dark:bg-darkComponentColor divide-y divide-gray-100 dark:divide-darkText rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
           >
             <div className="px-1 py-1">
               {items.map((item: any, idx: number) => (
-                <Menu.Item key={idx} onClick={()=>onItemClick(item)}>
+                <Menu.Item key={idx} onClick={() => onItemClick(item)}>
                   {({ active }) => (
                     <button
                       className={`${
                         active ? activeClassName : 'text-gray-900'
-                      } group flex rounded-md items-center w-full px-2 py-2 text-sm p-2 hover:text-socialBarItemHover place-content-center`}
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm p-2 hover:text-socialBarItemHover text-black dark:text-darkTextWhiteColor dark:hover:text-darkFirstColor place-content-center dark:hover:bg-darkComponentColor`}
                     >
                       {item.icon && (
                         <i className="w-5 h-5 mr-2" aria-hidden="true">
