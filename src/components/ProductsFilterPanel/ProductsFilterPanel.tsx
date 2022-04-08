@@ -17,12 +17,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 
   const handlePriceChange = (priceType: string, value: any) => {
     try {
-      const val = parseFloat(value);
-      if (priceType === 'from_price') {
-        onFiltersApply({ from_price: val });
-      } else {
-        onFiltersApply({ to_price: val });
-      }
+      onFiltersApply({ [priceType]: parseFloat(value) });
     } catch (err) {
       console.log(err);
     }
@@ -59,8 +54,8 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                 name="minimum"
                 placeholder="Min"
                 value={filters.from_price}
-                onChange={(value: any) =>
-                  handlePriceChange('from_price', value)
+                onChange={(e: any) =>
+                  handlePriceChange('from_price', e.target.value)
                 }
               />
             </Form.Item>
@@ -71,7 +66,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
                 name="maximum"
                 placeholder="Max"
                 value={filters.to_price}
-                onChange={(value: any) => handlePriceChange('to_price', value)}
+                onChange={(e: any) => handlePriceChange('to_price', e.target.value)}
               />
             </Form.Item>
           </Form>
