@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -17,6 +17,9 @@ const AddReviewField = ({resId}:any) => {
     'remark': '',
     'resId': resId,
   })
+  useEffect(() => {
+    setInputs((inputs) => ({ ...inputs, resId: resId }))
+  }, [resId])
   const handleChange = (e: any) => {
     let { name, value } = e.target;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
@@ -35,9 +38,9 @@ const AddReviewField = ({resId}:any) => {
       position: "center-top"
     })
   }
-  // const handleKeyValueChange = (name:string = '', value:any = '') => {
-  //   setInputs((inputs) => ({...inputs, [name]:value}))
-  // }
+  const handleKeyValueChange = (name:string = '', value:any = '') => {
+    setInputs((inputs) => ({...inputs, [name]:value}))
+  }
 
   return (
     <>
@@ -48,10 +51,9 @@ const AddReviewField = ({resId}:any) => {
         <StarRate
           className="px-1"
           starSize="text-base"
-          // name='ratingValue'
           allowHalf={false}
           value={inputs.ratingValue}
-          onClick={(e: any) => console.log(e)}
+          onChange={(e: any) => e !== 0 && handleKeyValueChange('ratingValue',e)}
         />
       </div>
       <textarea

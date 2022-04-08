@@ -7,7 +7,7 @@ interface IRateStarProps {
   className?: string;
   starSize?: string;
   allowHalf?: boolean;
-  onClick?: any;
+  onChange?: any;
 }
 
 export const StarRate: React.FC<IRateStarProps> = ({
@@ -16,18 +16,16 @@ export const StarRate: React.FC<IRateStarProps> = ({
   className = 'px-4',
   starSize = 'text-xs',
   allowHalf = true,
-  onClick,
+  onChange,
 }) => {
   return (
     <div className={className}>
       <Rate
         allowHalf={allowHalf}
-        defaultValue={2.5}
         value={value > 0 ? value : 2.5}
         className={starSize}
         disabled={disabled}
-        // onChange={(e:any) => console.log(e)}
-        onClick={(e:any) => console.log("clicked ", e)}
+        onChange={onChange}
       />
     </div>
   );
