@@ -8,8 +8,9 @@ import { ErrorBoundary } from 'modules/errors';
 import { Image } from 'common/Image';
 import { routeConstants } from 'navigation';
 import { toJsonReview } from 'sapredux/services/transform_data';
-import { showToastMessage } from 'sapredux/helpers';
+import { showToastMessage, sapswal } from 'sapredux/helpers';
 import { resourceService } from 'sapredux/services';
+
 
 const AddReviewField = ({resId}:any) => {
   const [inputs, setInputs] = useState({
@@ -26,12 +27,14 @@ const AddReviewField = ({resId}:any) => {
   };
   const handleSubmit = () => {
     inputs.remark.length < 1
-    ? showToastMessage({ type: 'error', message: "Type your remark!", position: "center-top" })
+    ? sapswal.fire(<p>Type your remark!</p>)
+    // showToastMessage({ type: 'error', message: "Type your remark!", position: "center-top" })
     : resourceService.sendReview([toJsonReview(inputs)]).then(
       (response:any) => handleResponse(response)
     )
   }
   const handleResponse = (response:any) => {
+    sapswal.fire(<p>{response.status === 1 ? response.data[0].message : response.fails[0].message}</p>)
     showToastMessage({
       type: response.status === 1 ? 'success' : 'error',
       message: response.status === 1 ? response.data[0].message : response.fails[0].message,
