@@ -27,18 +27,19 @@ const AddReviewField = ({resId}:any) => {
   };
   const handleSubmit = () => {
     inputs.remark.length < 1
-    ? sapswal.fire(<p>Type your remark!</p>)
-    // showToastMessage({ type: 'error', message: "Type your remark!", position: "center-top" })
+    ? sapswal.fire({
+      title: "Error",
+      text: "Type your remark!",
+      icon: "warning"
+    })
     : resourceService.sendReview([toJsonReview(inputs)]).then(
       (response:any) => handleResponse(response)
     )
   }
   const handleResponse = (response:any) => {
-    sapswal.fire(<p>{response.status === 1 ? response.data[0].message : response.fails[0].message}</p>)
-    showToastMessage({
-      type: response.status === 1 ? 'success' : 'error',
-      message: response.status === 1 ? response.data[0].message : response.fails[0].message,
-      position: "center-top"
+    sapswal.fire({
+      text: response.status === 1 ? response.data[0].message : response.fails[0].message,
+      icon: response.status === 1 ? "success" : "error"
     })
   }
   const handleKeyValueChange = (name:string = '', value:any = '') => {
