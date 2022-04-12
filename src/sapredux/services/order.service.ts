@@ -39,10 +39,23 @@ const fetchById_data = async(guid:string) => {
 	return await transformFetch((() => fetchById(guid)), transformResponse, false)
 }
 
+const checkoutSaleOrderInv = async(payload:any) => {
+	const requestOptions = {
+		method: 'POST',
+		body: JSON.stringify(payload),
+		headers: {
+			"Content-Type": "application/json; charset=UTF-8",
+			...await authBearerHeaderAsync()
+		},
+	}
+	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.checkout_order}`,requestOptions)
+		.then(handleResponse)
+}
 
 export const orderService = {
 	fetchAll,
 	fetchById,
 	fetchAll_data,
 	fetchById_data,
+	checkoutSaleOrderInv,
 };

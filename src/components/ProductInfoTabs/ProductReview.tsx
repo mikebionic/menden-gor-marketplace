@@ -8,7 +8,7 @@ import { ErrorBoundary } from 'modules/errors';
 import { Image } from 'common/Image';
 import { routeConstants } from 'navigation';
 import { toJsonReview } from 'sapredux/services/transform_data';
-import { showToastMessage } from 'sapredux/helpers';
+import { showToastMessage, sapswal } from 'sapredux/helpers';
 import { resourceService } from 'sapredux/services';
 
 const AddReviewField = ({ resId }: any) => {
@@ -17,6 +17,7 @@ const AddReviewField = ({ resId }: any) => {
     remark: '',
     resId: resId,
   });
+
   useEffect(() => {
     setInputs((inputs) => ({ ...inputs, resId: resId }));
   }, [resId]);
@@ -26,23 +27,22 @@ const AddReviewField = ({ resId }: any) => {
   };
   const handleSubmit = () => {
     inputs.remark.length < 1
-      ? showToastMessage({
-          type: 'error',
-          message: 'Type your remark!',
-          position: 'center-top',
+      ? sapswal.fire({
+          title: 'Error',
+          text: 'Type your remark!',
+          icon: 'warning',
         })
       : resourceService
           .sendReview([toJsonReview(inputs)])
           .then((response: any) => handleResponse(response));
   };
   const handleResponse = (response: any) => {
-    showToastMessage({
-      type: response.status === 1 ? 'success' : 'error',
-      message:
+    sapswal.fire({
+      text:
         response.status === 1
           ? response.data[0].message
           : response.fails[0].message,
-      position: 'center-top',
+      icon: response.status === 1 ? 'success' : 'error',
     });
   };
   const handleKeyValueChange = (name: string = '', value: any = '') => {

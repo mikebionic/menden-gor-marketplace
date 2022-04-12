@@ -7,7 +7,7 @@ import {
   getCurrentUserInfo,
   getTotalCount,
 } from 'sapredux/selectors';
-import { showToastMessage } from 'sapredux/helpers';
+import { sapswal } from 'sapredux/helpers';
 import { CartRow } from 'components/Cart';
 import { PaymentMethods } from 'components/Payment';
 import { ErrorBoundary } from 'modules/errors';
@@ -16,6 +16,8 @@ import {
   resourceAllRemovedFromCart,
   resourceRemovedFromCart,
 } from 'sapredux/actions';
+import { toJsonCheckoutOrderInv } from 'sapredux/services/transform_data';
+import { orderService } from 'sapredux/services';
 
 interface ICheckoutPage {
   items?: any;
@@ -44,9 +46,9 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
     phoneNumber: loggedIn
       ? `${user.mobilePhoneNumber || user.homePhoneNumber}`
       : '',
-    note: '',
-    paymentType: 1,
-    paymentMethod: 3,
+    note: loggedIn ? `Address: ${user.address || ''}` : '',
+    ptId: 1,
+    pmId: 1,
   });
   const handleChange = (e: any) => {
     let { name, value } = e.target;
@@ -59,15 +61,33 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
     inputs.note.length < 1 ||
     inputs.name.length < 1 ||
     inputs.phoneNumber.length < 1
-      ? showToastMessage({
-          type: 'error',
-          message: 'Fill the required fields!',
-          position: 'center-top',
+      ? sapswal.fire({
+          text: 'Fill the required fields!',
+          icon: 'error',
         })
-      : // : orderService.checkoutSaleOrderInv([toJsonCheckoutOrderInv(inputs)]).then(
-        //   (response:any) => handleResponse(response)
-        // )
-        console.log(inputs);
+      : orderService
+          .checkoutSaleOrderInv([toJsonCheckoutOrderInv(inputs)])
+          .then(
+            (response: any) => handleResponse(response),
+            (error: any) =>
+              sapswal.fire({
+                icon: 'error',
+                text: `Failed to checkout order: ${error.toString()}`,
+              }),
+          );
+    // : console.log(inputs)
+  };
+  const handleResponse = (response: any) => {
+    console.log(response);
+    sapswal.fire({
+      icon: response.status === 1 ? 'success' : 'error',
+      text: response.message,
+    });
+    if (response.status === 1) {
+      console.log(
+        'clear cart redux and move to orders page, or just move to main page timeout',
+      );
+    }
   };
 
   return (
@@ -99,8 +119,8 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
           </div>
 
           <PaymentMethods
-            id={inputs.paymentMethod}
-            onChange={(id: any) => handleKeyValueChange('paymentMethod', id)}
+            id={inputs.pmId}
+            onChange={(id: any) => handleKeyValueChange('pmId', id)}
           />
 
           <p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
