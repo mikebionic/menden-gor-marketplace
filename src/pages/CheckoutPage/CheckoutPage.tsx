@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Input from 'rc-input';
 import { getCartItems, getCurrentUserInfo, getTotalCount } from 'sapredux/selectors';
-import { sapswal } from 'sapredux/helpers';
+import { getCurrentCurrency, sapswal } from 'sapredux/helpers';
 import { CartRow } from 'components/Cart';
 import { PaymentMethods } from 'components/Payment';
 import { ErrorBoundary } from 'modules/errors';
@@ -99,7 +99,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
               Jemi
             </p>
             <p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
-              {totalPrice} m
+              {totalPrice} {getCurrentCurrency().symbol}
             </p>
           </div>
 

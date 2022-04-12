@@ -13,6 +13,7 @@ import {
 import { getTotalCount, getCartItems } from 'sapredux/selectors';
 import { ErrorBoundary } from 'modules/errors';
 import { routeConstants } from 'navigation';
+import { getCurrentCurrency } from 'sapredux/helpers';
 
 interface ICartProps {
   open?: any;
@@ -113,7 +114,7 @@ export const Cart: React.FC<ICartProps> = ({
                           Subtotal
                         </p>
                         <p className="text-black dark:text-darkTextWhiteColor">
-                          {totalPrice}
+                          {totalPrice} {getCurrentCurrency().symbol}
                         </p>
                         <p className="text-black dark:text-darkTextWhiteColor">
                           Count: {totalCount}
