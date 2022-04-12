@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import Input from 'rc-input'
@@ -33,6 +33,7 @@ interface ICheckoutPage {
 const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 	const {
 		items,
+		orderInvLines,
 		totalPrice,
 		onIncrease,
 		onDecrease,
@@ -49,7 +50,12 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 		note: loggedIn ? `Address: ${user.address || ''}` : '',
 		ptId: 1,
 		pmId: 1,
+		orderInvLines: orderInvLines,
 	})
+	useEffect(() => {
+		handleKeyValueChange('orderInvLine', orderInvLines)
+		console.log(orderInvLines)
+	}, [orderInvLines])
 	const handleChange = (e: any) => {
 		let { name, value } = e.target
 		setInputs((inputs) => ({ ...inputs, [name]: value }))
@@ -172,8 +178,15 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 
 const mapStateToProps = (state: any) => {
 	const totalData = getTotalCount(state)
+	const items = getCartItems(state)
+	const orderInvLines = items.map((item: any) => ({
+		resId: item.id,
+		...getTotalCount(state, item.id),
+	}))
+
 	return {
-		items: getCartItems(state),
+		items: items,
+		orderInvLines: orderInvLines,
 		totalPrice: totalData.totalPrice,
 		user: getCurrentUserInfo(state.auth),
 		loggedIn: state.auth.loggedIn,
