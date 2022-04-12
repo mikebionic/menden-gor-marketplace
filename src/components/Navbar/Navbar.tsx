@@ -70,7 +70,7 @@ export const Navbar = (props: any) => {
       </div>
     );
   };
-
+  
   return (
     <ErrorBoundary>
       <div className="fixed w-full z-[999]">
