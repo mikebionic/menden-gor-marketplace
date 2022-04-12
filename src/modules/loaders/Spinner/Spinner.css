@@ -4,8 +4,6 @@ main {
   place-items: center;
   place-self: center;
   margin: auto;
-  height: 100vh;
-  weight: 100vw;
 }
 
 .ap {

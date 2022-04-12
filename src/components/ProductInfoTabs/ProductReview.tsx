@@ -11,40 +11,43 @@ import { toJsonReview } from 'sapredux/services/transform_data';
 import { showToastMessage, sapswal } from 'sapredux/helpers';
 import { resourceService } from 'sapredux/services';
 
-
-const AddReviewField = ({resId}:any) => {
+const AddReviewField = ({ resId }: any) => {
   const [inputs, setInputs] = useState({
-    'ratingValue': 2,
-    'remark': '',
-    'resId': resId,
-  })
+    ratingValue: 2,
+    remark: '',
+    resId: resId,
+  });
+
   useEffect(() => {
-    setInputs((inputs) => ({ ...inputs, resId: resId }))
-  }, [resId])
+    setInputs((inputs) => ({ ...inputs, resId: resId }));
+  }, [resId]);
   const handleChange = (e: any) => {
     let { name, value } = e.target;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
   };
   const handleSubmit = () => {
     inputs.remark.length < 1
-    ? sapswal.fire({
-      title: "Error",
-      text: "Type your remark!",
-      icon: "warning"
-    })
-    : resourceService.sendReview([toJsonReview(inputs)]).then(
-      (response:any) => handleResponse(response)
-    )
-  }
-  const handleResponse = (response:any) => {
+      ? sapswal.fire({
+          title: 'Error',
+          text: 'Type your remark!',
+          icon: 'warning',
+        })
+      : resourceService
+          .sendReview([toJsonReview(inputs)])
+          .then((response: any) => handleResponse(response));
+  };
+  const handleResponse = (response: any) => {
     sapswal.fire({
-      text: response.status === 1 ? response.data[0].message : response.fails[0].message,
-      icon: response.status === 1 ? "success" : "error"
-    })
-  }
-  const handleKeyValueChange = (name:string = '', value:any = '') => {
-    setInputs((inputs) => ({...inputs, [name]:value}))
-  }
+      text:
+        response.status === 1
+          ? response.data[0].message
+          : response.fails[0].message,
+      icon: response.status === 1 ? 'success' : 'error',
+    });
+  };
+  const handleKeyValueChange = (name: string = '', value: any = '') => {
+    setInputs((inputs) => ({ ...inputs, [name]: value }));
+  };
 
   return (
     <>
@@ -57,13 +60,15 @@ const AddReviewField = ({resId}:any) => {
           starSize="text-base"
           allowHalf={false}
           value={inputs.ratingValue}
-          onChange={(e: any) => e !== 0 && handleKeyValueChange('ratingValue',e)}
+          onChange={(e: any) =>
+            e !== 0 && handleKeyValueChange('ratingValue', e)
+          }
         />
       </div>
       <textarea
         className="font-oxygen border-[#E6E6E6] dark:border-darkComponentColor dark:bg-darkComponentColor rounded dark:text-darkTextWhiteColor mx-1 resize-none h-56"
         placeholder="Type your remark..."
-        name='remark'
+        name="remark"
         onChange={handleChange}
         required
       />
@@ -81,9 +86,21 @@ const AddReviewField = ({resId}:any) => {
 
 const PleaseLoginField = () => (
   <>
-    <p>You should login to leave a review</p>
-    <Link to={routeConstants.login.route}>Login</Link>
-    <Link to={routeConstants.register.route}>Register</Link>
+    <p className="text-base text-black dark:text-darkTextWhiteColor 2xl:text-lg">
+      You should login to leave a review
+    </p>
+    <Link
+      className="text-base text-black dark:text-darkTextWhiteColor 2xl:text-lg hover:text-socialBarItemHover dark:hover:text-darkFirstColor"
+      to={routeConstants.login.route}
+    >
+      Login
+    </Link>
+    <Link
+      className="text-base text-black dark:text-darkTextWhiteColor 2xl:text-lg hover:text-socialBarItemHover dark:hover:text-darkFirstColor"
+      to={routeConstants.register.route}
+    >
+      Register
+    </Link>
   </>
 );
 
@@ -141,7 +158,6 @@ const ProductReview = ({ resId, reviews, loggedIn }: any) => {
         ))}
 
         {loggedIn ? <AddReviewField resId={resId} /> : <PleaseLoginField />}
-
       </div>
     </ErrorBoundary>
   );
