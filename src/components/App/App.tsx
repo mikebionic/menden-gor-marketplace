@@ -17,6 +17,7 @@ import { Footer } from 'components/Footer';
 // import { alertActions } from 'sapredux/actions';
 import { fetchCategories, fetchBrands } from 'sapredux/actions';
 import { getCategories } from 'sapredux/selectors';
+import { Spinner } from 'modules/loaders';
 
 const App: React.FC = (props: any) => {
   const { t } = useTranslation();

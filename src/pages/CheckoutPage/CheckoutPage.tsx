@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import Input from 'rc-input';
-import { getCartItems, getCurrentUserInfo, getTotalCount } from 'sapredux/selectors';
+import {
+  getCartItems,
+  getCurrentUserInfo,
+  getTotalCount,
+} from 'sapredux/selectors';
 import { showToastMessage } from 'sapredux/helpers';
 import { CartRow } from 'components/Cart';
 import { PaymentMethods } from 'components/Payment';
@@ -21,7 +25,7 @@ interface ICheckoutPage {
   onDecrease?: any;
   onDelete?: any;
   user?: any;
-  loggedIn?: boolean
+  loggedIn?: boolean;
 }
 
 const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
@@ -33,35 +37,42 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
     onDelete,
     user,
     loggedIn,
-  } =
-    props;
-  
+  } = props;
+
   const [inputs, setInputs] = useState({
-    'name': loggedIn ? `${user.username} - ${user.name}` : '',
-    'phoneNumber': loggedIn ? `${user.mobilePhoneNumber || user.homePhoneNumber}` : '',
-    'note': '',
-    'paymentType': 1,
-    'paymentMethod': 3,
-  })
+    name: loggedIn ? `${user.username} - ${user.name}` : '',
+    phoneNumber: loggedIn
+      ? `${user.mobilePhoneNumber || user.homePhoneNumber}`
+      : '',
+    note: '',
+    paymentType: 1,
+    paymentMethod: 3,
+  });
   const handleChange = (e: any) => {
     let { name, value } = e.target;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
   };
-  const handleKeyValueChange = (name:string = '', value:any = '') => {
-    setInputs((inputs) => ({...inputs, [name]:value}))
-  }
+  const handleKeyValueChange = (name: string = '', value: any = '') => {
+    setInputs((inputs) => ({ ...inputs, [name]: value }));
+  };
   const handleSubmit = () => {
-    inputs.note.length < 1 || inputs.name.length < 1 || inputs.phoneNumber.length < 1
-    ? showToastMessage({ type: 'error', message: "Fill the required fields!", position: "center-top" })
-    // : orderService.checkoutSaleOrderInv([toJsonCheckoutOrderInv(inputs)]).then(
-    //   (response:any) => handleResponse(response)
-    // )
-    : console.log(inputs)
-  }
+    inputs.note.length < 1 ||
+    inputs.name.length < 1 ||
+    inputs.phoneNumber.length < 1
+      ? showToastMessage({
+          type: 'error',
+          message: 'Fill the required fields!',
+          position: 'center-top',
+        })
+      : // : orderService.checkoutSaleOrderInv([toJsonCheckoutOrderInv(inputs)]).then(
+        //   (response:any) => handleResponse(response)
+        // )
+        console.log(inputs);
+  };
 
   return (
     <ErrorBoundary>
-      <div className="grid md:grid-flow-row gap-6 auto-rows-max xl:grid-cols-[60%_40%] my-8">
+      <div className="grid md:grid-flow-row gap-6 auto-rows-max xl:grid-cols-[60%_40%] my-8 2xl:my-28 3xl:my-40">
         <div>
           <ul role="list" className="-my-6 divide-y divide-gray-200">
             {items.map((item: any, idx: number) => (
@@ -87,8 +98,10 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
             </p>
           </div>
 
-          <PaymentMethods id={inputs.paymentMethod}
-            onChange={(id:any) => handleKeyValueChange('paymentMethod', id)} />
+          <PaymentMethods
+            id={inputs.paymentMethod}
+            onChange={(id: any) => handleKeyValueChange('paymentMethod', id)}
+          />
 
           <p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
             Name:
@@ -121,7 +134,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
           <textarea
             className="font-oxygen border-[#E6E6E6] w-full rounded resize-none h-24 dark:border-darkBgColor dark:bg-darkBgColor"
             placeholder="Note: type your address or any additional information."
-            name='note'
+            name="note"
             value={inputs.note}
             onChange={handleChange}
           />

@@ -6,6 +6,7 @@ interface IPriceButtonProps {
   priceValue: number;
   currencySymbol?: string;
   coloredButton?: boolean;
+  fontSize?: string;
 }
 
 export const PriceButton: React.FC<IPriceButtonProps> = ({
@@ -14,12 +15,15 @@ export const PriceButton: React.FC<IPriceButtonProps> = ({
   priceValue,
   currencySymbol,
   coloredButton = false,
+  fontSize = 'text-base',
 }: any) => {
   return (
     <>
       {coloredButton ? (
         <div className={`${width} ${padding} rounded-md cursor-default`}>
-          <p className="text-base font-semibold text-center text-firstColorGradientFromDark dark:text-darkFirstColor">
+          <p
+            className={`${fontSize} font-semibold text-center text-firstColorGradientFromDark dark:text-darkFirstColor`}
+          >
             {priceValue} {currencySymbol ?? 'm'}
           </p>
         </div>
@@ -27,7 +31,9 @@ export const PriceButton: React.FC<IPriceButtonProps> = ({
         <div
           className={`${width} ${padding} rounded-md cursor-default bg-fullwhite dark:bg-darkBgColor dark:shadow-none shadow-InnerCountryShadow`}
         >
-          <p className="text-base font-semibold text-center text-firstColorGradientFromDark dark:text-darkFirstColor">
+          <p
+            className={`${fontSize} font-semibold text-center text-firstColorGradientFromDark dark:text-darkFirstColor`}
+          >
             {priceValue} {currencySymbol ?? 'm'}
           </p>
         </div>
