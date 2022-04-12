@@ -1,24 +1,25 @@
-import { useState } from 'react';
-import { BsWallet2 } from 'react-icons/bs';
-import { ChevronDownIcon } from '@heroicons/react/solid';
+import { useState } from 'react'
+import { BsWallet2 } from 'react-icons/bs'
+import { ChevronDownIcon } from '@heroicons/react/solid'
 
-import { DropdownMenu } from 'common/DropdownMenu';
-import { IconLabelButton } from 'common/IconLabelButton';
-import { otherService } from 'sapredux/services';
-import { get_local_data_by_key } from 'sapredux/helpers';
-
+import { DropdownMenu } from 'common/DropdownMenu'
+import { IconLabelButton } from 'common/IconLabelButton'
+import { otherService } from 'sapredux/services'
+import { get_local_data_by_key } from 'sapredux/helpers'
 
 const CurrencyButton = () => {
-	const [current_currency, set_current_currency] = useState(get_local_data_by_key("currency", false, false) || 'TMT')
-	const updateCurrency = ({name}:any) => {
+	const [current_currency, set_current_currency] = useState(
+		get_local_data_by_key('currency', false, false) || 'TMT',
+	)
+	const updateCurrency = ({ name }: any) => {
 		set_current_currency(name)
 		otherService.setCurrency(name)
 	}
 
 	const currencyItems = [
-		{name: 'TMT', symbol: 'm',},
-		{name: 'USD', symbol: '$',},
-	];
+		{ name: 'TMT', symbol: 'm' },
+		{ name: 'USD', symbol: '$' },
+	]
 
 	return (
 		<div>
@@ -30,7 +31,7 @@ const CurrencyButton = () => {
 				}
 				className="w-20"
 				activeClassName="hover:bg-gray-100 text-white"
-				onItemClick={(e:any)=>updateCurrency(e)}
+				onItemClick={(e: any) => updateCurrency(e)}
 				menuButton={
 					<>
 						<IconLabelButton
@@ -48,6 +49,5 @@ const CurrencyButton = () => {
 		</div>
 	)
 }
-
 
 export default CurrencyButton

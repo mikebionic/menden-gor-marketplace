@@ -8,6 +8,7 @@ import { IconLabelButton } from 'common/IconLabelButton';
 import { connect } from 'react-redux';
 import { getTotalCount } from 'sapredux/selectors';
 import { ErrorBoundary } from 'modules/errors';
+import { getCurrentCurrency } from 'sapredux/helpers';
 
 const CartButton = (props: any) => {
   const { cartOpen, setCartOpen, totalCount, totalPrice } = props;
@@ -29,7 +30,7 @@ const CartButton = (props: any) => {
           </span>
         </a>
         <div className="mt-3 text-sm font-semibold text-white dark:text-darkTextWhiteColor">
-          {totalPrice} TMT
+          {totalPrice} {getCurrentCurrency().symbol}
         </div>
       </div>
     </ErrorBoundary>
