@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BsMoon } from 'react-icons/bs';
 import { FaRegHeart } from 'react-icons/fa';
@@ -16,6 +16,8 @@ import { Transition } from '@headlessui/react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import NavbarProfileDropdown from 'components/NavbarProfileDropdown';
 import { MdSort } from 'react-icons/md';
+import { BsSun } from 'react-icons/bs';
+import { get_local_data_by_key, set_local_data_by_key } from 'sapredux/helpers';
 
 const mobileResponsive = {
   mobileView: 'fixed bottom-0 z-[100] w-full bg-white',
@@ -29,25 +31,30 @@ const classes =
 
 export const Navbar = (props: any) => {
   const { categories } = props;
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem('dark-theme') || '0',
+  );
   const [cartOpen, setCartOpen] = useState(false);
   const [dropdownState, onDropdownStateChange] = useState(false);
   const [categoryDropdownState, onCategoryDropdownStateChange] =
     useState(false);
 
+  useEffect(() => {
+    if (parseInt(darkMode)) {
+      localStorage.setItem('dark-theme', "1");
+      document.documentElement.classList.add('dark');
+    } else {
+      localStorage.setItem('dark-theme', '0');
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+  useEffect(() => {
+    parseInt(darkMode) && document.documentElement.classList.add('dark');
+  });
+
   const handleClickAway = () => {
     onCategoryDropdownStateChange(false);
   };
-
-  // const toggleDarkMode = () => {
-  //   let element: any = document.getElementById('darkButton');
-  //   element.classList.toggle('dark');
-  // };
-
-  // const filtered_currency = currencyItems.map((data: any) => {
-  //   if (data !== currentCurrency) {
-  //     return <LanguageItem icon={data.icon} key={data.name} data={data} />;
-  //   }
-  // });
 
   const CategoryItem = () => {
     return (
@@ -115,18 +122,25 @@ export const Navbar = (props: any) => {
               </div>
             </ClickAwayListener>
             <div className="relative grid float-right grid-flow-col gap-2 mr-4 auto-cols-maxgrid-rows-1">
-              <div>
-                <IconLabelButton
-                  className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid dark:text-darkTextWhiteColor dark:border-darkFirstColor "
-                  icon={
-                    <BsMoon
-                      className="w-6 h-6 ml-3 mr-1 text-2xl text-white dark:text-darkTextWhiteColor"
-                      // onClick={toggleDarkMode}
-                    />
-                  }
-                  id="darkButton"
-                />
-              </div>
+              <button onClick={() => setDarkMode(parseInt(darkMode) ? '0' : '1')}>
+                {parseInt(darkMode) ? (
+                  <IconLabelButton
+                    className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid dark:text-darkTextWhiteColor dark:border-darkFirstColor "
+                    icon={
+                      <BsSun className="w-6 h-6 ml-3 mr-1 text-2xl text-white dark:text-darkTextWhiteColor" />
+                    }
+                    id="darkButton"
+                  />
+                ) : (
+                  <IconLabelButton
+                    className="items-center h-auto grid-rows-1 px-0 my-3 text-lg font-medium text-white border-l border-white border-solid dark:text-darkTextWhiteColor dark:border-darkFirstColor "
+                    icon={
+                      <BsMoon className="w-6 h-6 ml-3 mr-1 text-2xl text-white dark:text-darkTextWhiteColor" />
+                    }
+                    id="darkButton"
+                  />
+                )}
+              </button>
               <div>
                 <LangButton
                   className="absolute"
