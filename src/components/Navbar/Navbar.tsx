@@ -58,7 +58,7 @@ export const Navbar = (props: any) => {
 
   const CategoryItem = () => {
     return (
-      <div className="absolute grid w-full grid-flow-row p-2 overflow-x-hidden overflow-y-auto shadow-lg auto-rows-max h-80 mt-[2px] left-12 bg-fullwhite dark:bg-darkComponentColor">
+      <div className="absolute grid w-full grid-flow-row p-2 overflow-x-hidden overflow-y-auto shadow-lg auto-rows-max h-80 2xl:h-96 mt-[2px] left-12 bg-fullwhite dark:bg-darkComponentColor">
         {categories.map((category: any, idx: number) => (
           <Link
             to={`${routeConstants.vGrid.route}?category=${category.id}`}
@@ -76,7 +76,7 @@ export const Navbar = (props: any) => {
       <div className="fixed w-full z-[999]">
         <header className="top-0 left-0 grid w-full h-20 grid-rows-1 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight dark:bg-gradient-to-r dark:from-darkComponentColor dark:to-darkComponentColor">
           {/* first row */}
-          <div className="inline-grid items-center w-full grid-rows-1 mx-auto my-2 xl:grid-cols-[15rem_50rem_8rem] md:grid-cols-[auto_auto_auto] 2xl::grid-cols-[auto_auto_auto] 3xl:grid-cols-[auto_auto_auto] 3xl:grid-cols- 3xl:gap-24 2xl:gap-16">
+          <div className="inline-grid items-center w-full grid-rows-1 mx-auto my-2 xl:grid-cols-[15rem_50rem_8rem] md:grid-cols-[auto_auto_auto] 2xl:grid-cols-[auto_auto_auto] 3xl:grid-cols-[auto_auto_auto] 3xl:grid-cols- 3xl:gap-24 2xl:gap-16">
             <div className="w-24 h-5 mx-auto my-0">
               <Link to={routeConstants.root.route}>
                 <img

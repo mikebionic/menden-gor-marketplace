@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
                 <BsFillTelephoneFill className="text-black dark:text-darkText group-hover:text-textColorOrange dark:group-hover:text-darkFirstColor" />
               }
               label="+99364045600"
-              labelClassName="text-white dark:text-darkText px-2 dark:group-hover:text-darkTextWhiteColor"
+              labelClassName="text-black dark:text-darkText px-2 dark:group-hover:text-darkTextWhiteColor"
             />
           </a>
           <a
@@ -93,7 +93,7 @@ export const Footer: React.FC = () => {
                 <MdOutlineAlternateEmail className="text-black dark:text-darkText group-hover:text-textColorOrange dark:group-hover:text-darkFirstColor" />
               }
               label="dowlpack@gmail.com"
-              labelClassName="text-white dark:text-darkText px-2 dark:group-hover:text-darkTextWhiteColor"
+              labelClassName="text-black dark:text-darkText px-2 dark:group-hover:text-darkTextWhiteColor"
             />
           </a>
           <a
@@ -106,7 +106,7 @@ export const Footer: React.FC = () => {
                 <AiOutlineGlobal className="text-black dark:text-darkText group-hover:text-textColorOrange dark:group-hover:text-darkFirstColor" />
               }
               label="www.saphasap.com"
-              labelClassName="text-white dark:text-darkText px-2 dark:group-hover:text-darkTextWhiteColor"
+              labelClassName="text-black dark:text-darkText px-2 dark:group-hover:text-darkTextWhiteColor"
             />
           </a>
         </div>
