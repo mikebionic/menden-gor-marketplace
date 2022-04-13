@@ -55,20 +55,20 @@ export const Navbar = (props: any) => {
 		onCategoryDropdownStateChange(false)
 	}
 
-	const CategoryItem = () => {
-		return (
-			<div className="absolute grid w-full grid-flow-row p-2 overflow-x-hidden overflow-y-auto shadow-lg auto-rows-max h-80 mt-[2px] left-12 bg-fullwhite dark:bg-darkComponentColor">
-				{categories.map((category: any, idx: number) => (
-					<Link
-						to={`${routeConstants.vGrid.route}?category=${category.id}`}
-						key={idx}
-					>
-						<CategoryListItem {...category} />
-					</Link>
-				))}
-			</div>
-		)
-	}
+  const CategoryItem = () => {
+    return (
+      <div className="absolute grid w-full grid-flow-row p-2 overflow-x-hidden overflow-y-auto shadow-lg auto-rows-max h-80 2xl:h-96 mt-[2px] left-12 bg-fullwhite dark:bg-darkComponentColor">
+        {categories.map((category: any, idx: number) => (
+          <Link
+            to={`${routeConstants.vGrid.route}?category=${category.id}`}
+            key={idx}
+          >
+            <CategoryListItem {...category} />
+          </Link>
+        ))}
+      </div>
+    );
+  };
 
 	return (
 		<ErrorBoundary>

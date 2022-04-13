@@ -28,10 +28,10 @@ body {
 	transform: translateY(-20px);
 }
 
-.banner-container:hover span {
+html:not(.dark) .banner-container:hover span {
 	color: #f28232;
 }
-.banner-container:hover img {
+html:not(.dark) .banner-container:hover img {
 	border-color: #f28232;
 }
 
@@ -49,7 +49,7 @@ body {
 	left: -2px;
 }
 
-.ribbon {
+html:not(.dark) .ribbon {
 	font: bold 13px Sans-Serif;
 	text-align: center;
 	-webkit-transform: rotate(315deg);
@@ -71,23 +71,25 @@ body {
 	left: 9px !important;
 }
 
-.text-gradient {
+html:not(.dark) .text-gradient {
 	background: linear-gradient(to right, #ff8d73, #feb37b);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
-.ant-switch-checked {
+html:not(.dark) .ant-switch-checked {
 	background-color: #feaf7a;
 }
 
-.ant-input-number-status-warning:not(.ant-input-number-disabled):not(.ant-input-number-borderless).ant-input-number,
+html:not(.dark)
+	.ant-input-number-status-warning:not(.ant-input-number-disabled):not(.ant-input-number-borderless).ant-input-number,
 .ant-input-number-status-warning:not(.ant-input-number-disabled):not(.ant-input-number-borderless).ant-input-number:hover {
 	background: #fff;
 	border-color: #d9d9d9;
 }
 
-.ant-input-number-status-warning:not(.ant-input-number-disabled):not(.ant-input-number-borderless).ant-input-number:focus,
+html:not(.dark)
+	.ant-input-number-status-warning:not(.ant-input-number-disabled):not(.ant-input-number-borderless).ant-input-number:focus,
 .ant-input-number-status-warning:not(.ant-input-number-disabled):not(.ant-input-number-borderless).ant-input-number-focused {
 	border-color: rgb(255 141 115 / 70%);
 	box-shadow: 0 0 0 2px rgb(255 141 115 / 30%);
@@ -95,7 +97,8 @@ body {
 	outline: 0;
 }
 
-.ant-steps-item-finish
+html:not(.dark)
+	.ant-steps-item-finish
 	> .ant-steps-item-container
 	> .ant-steps-item-content
 	> .ant-steps-item-title::after {
@@ -113,13 +116,16 @@ body {
 	place-items: center !important;
 }
 
-.ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+html:not(.dark)
+	.ant-select:not(.ant-select-disabled):hover
+	.ant-select-selector {
 	border-color: #f9704e !important;
 	border-right-width: 1px;
 	box-shadow: 0 0 0 2px rgb(255 141 115 / 30%) !important;
 }
 
-.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
+html:not(.dark)
+	.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
 	.ant-select-selector {
 	border-color: #f9704e !important;
 	border-right-width: 1px !important;
@@ -127,18 +133,18 @@ body {
 	outline: 0 !important;
 }
 
-.ant-tabs-ink-bar {
+html:not(.dark) .ant-tabs-ink-bar {
 	background: #f9704e;
 }
 
-.ant-tabs-tab-btn:focus,
+html:not(.dark) .ant-tabs-tab-btn:focus,
 .ant-tabs-tab-remove:focus,
 .ant-tabs-tab-btn:active,
 .ant-tabs-tab-remove:active {
 	color: #f9704e;
 }
 
-[type='text']:focus,
+html:not(.dark) [type='text']:focus,
 [type='email']:focus,
 [type='url']:focus,
 [type='password']:focus,
@@ -168,20 +174,21 @@ select:focus {
 	border-color: #f9704e;
 }
 
-#register_phone {
+html:not(.dark) #register_phone {
 	border: 1px solid #e6e6e6 !important;
 }
-#register_phone:hover {
+html:not(.dark) #register_phone:hover {
 	border: 1px solid #f9704e !important;
 }
 
-.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+html:not(.dark)
+	.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
 	border-color: #f9704e;
 	border-right-width: 1px;
 	z-index: 1;
 }
 
-.ant-input-affix-wrapper:focus,
+html:not(.dark) .ant-input-affix-wrapper:focus,
 .ant-input-affix-wrapper-focused {
 	border-color: #f9704e;
 	box-shadow: 0 0 0 2px rgb(255 141 115 / 30%) !important;
@@ -189,20 +196,20 @@ select:focus {
 	outline: 0;
 }
 
-.ant-rate {
+html:not(.dark) .ant-rate {
 	color: #f9704e;
 }
 
-.ant-tabs-tab:hover {
+html:not(.dark) .ant-tabs-tab:hover {
 	color: #f9704e;
 }
 
-.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+html:not(.dark) .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
 	color: #f9704e;
 	text-shadow: 0 0 0.25px currentcolor;
 }
 
-.avatar {
+html:not(.dark) .avatar {
 	line-height: 1.42857;
 	background-color: rgb(255, 255, 255);
 	display: inline-block;
@@ -219,7 +226,7 @@ select:focus {
 	box-shadow: rgba(0, 0, 0, 0.18) 0px 5px 43px !important;
 }
 
-.inputProfileEdit {
+html:not(.dark) .inputProfileEdit {
 	padding: 9px;
 	background-color: #fff;
 	color: #444;
@@ -234,23 +241,27 @@ select:focus {
 	height: 35px;
 }
 
-.uploadPhoto {
+html:not(.dark) .uploadPhoto {
 	opacity: 0.9;
 	transition: all 0.3s ease;
 	stroke: #0023ff;
 }
 
-.ant-form input[type='file']:focus,
+html:not(.dark) .ant-form input[type='file']:focus,
 .ant-form input[type='radio']:focus,
 .ant-form input[type='checkbox']:focus {
 	outline: 0px auto -webkit-focus-ring-color;
 	outline-offset: -2px;
 }
 
-/* --------------------------------------- DARK MODE STYLES --------------------------------------- */
+html:not(.dark) .ant-ribbon-color-red {
+	color: red !important;
+	background: red !important;
+}
 
+/* --------------------------------------- DARK MODE SYSTEM STYLES --------------------------------------- */
 @media (prefers-color-scheme: dark) {
-	[type='text']:focus,
+	html.dark [type='text']:focus,
 	[type='email']:focus,
 	[type='url']:focus,
 	[type='password']:focus,
@@ -314,7 +325,7 @@ select:focus {
 	.ant-form-item-label > label {
 		color: #94a3b8;
 	}
-	.ant-input {
+	html.dark .ant-input {
 		background: #0f172a;
 		color: #e1e8f0;
 	}
