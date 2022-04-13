@@ -235,25 +235,22 @@ export const transformOrderInvLine = (data: any) => ({
 	resource: data.Resource && transformResources(data.Resource),
 })
 
-export const toJsonCheckoutOrderInv = (data: any) => {
-	console.log(data)
-	return {
-		orderInv: {
-			OInvTypeId: 2,
-			InvStatId: 1,
-			RpAccGuid: data.rpAccGuid || '',
-			PtId: data.ptId || 1,
-			PmId: data.pmId || 1,
-			PaymStatusId: data.paymStatusId || 1,
-			OrderInvRegNo: data.orderInvRegNo || '',
-			OInvDesc: data.description || '',
-			CurrencyCode: data.currency_code || 'TMT',
-			OrderInvLines: data.orderInvLines.map((item: any) => ({
-				UnitId: 1,
-				ResId: item.resId,
-				OInvLineAmount: item.totalCount,
-				OInvLinePrice: item.priceValue,
-			})),
-		},
-	}
-}
+export const toJsonCheckoutOrderInv = (data: any) => ({
+	orderInv: {
+		OInvTypeId: 2,
+		InvStatId: 1,
+		RpAccGuid: data.rpAccGuid || '',
+		PtId: data.ptId || 1,
+		PmId: data.pmId || 1,
+		PaymStatusId: data.paymStatusId || 1,
+		OrderInvRegNo: data.orderInvRegNo || '',
+		OInvDesc: data.description || '',
+		CurrencyCode: data.currency_code || 'TMT',
+		OrderInvLines: data.orderInvLines.map((item: any) => ({
+			UnitId: 1,
+			ResId: item.resId,
+			OInvLineAmount: item.totalCount,
+			OInvLinePrice: item.priceValue,
+		})),
+	},
+})
