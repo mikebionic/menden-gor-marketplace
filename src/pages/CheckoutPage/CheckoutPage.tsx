@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import Input from 'rc-input'
@@ -33,6 +33,7 @@ interface ICheckoutPage {
 const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 	const {
 		items,
+		orderInvLines,
 		totalPrice,
 		onIncrease,
 		onDecrease,
@@ -46,10 +47,15 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 		phoneNumber: loggedIn
 			? `${user.mobilePhoneNumber || user.homePhoneNumber}`
 			: '',
-		note: loggedIn ? `Address: ${user.address || ''}` : '',
+		description: loggedIn ? `Address: ${user.address || ''}` : '',
 		ptId: 1,
 		pmId: 1,
+		currency_code: getCurrentCurrency().name,
+		orderInvLines: orderInvLines,
 	})
+	useEffect(() => {
+		handleKeyValueChange('orderInvLines', orderInvLines)
+	}, [orderInvLines])
 	const handleChange = (e: any) => {
 		let { name, value } = e.target
 		setInputs((inputs) => ({ ...inputs, [name]: value }))
@@ -58,23 +64,21 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 		setInputs((inputs) => ({ ...inputs, [name]: value }))
 	}
 	const handleSubmit = () => {
-		inputs.note.length < 1 ||
+		inputs.description.length < 1 ||
 		inputs.name.length < 1 ||
 		inputs.phoneNumber.length < 1
 			? sapswal.fire({
 					text: 'Fill the required fields!',
 					icon: 'error',
 			  })
-			: orderService
-					.checkoutSaleOrderInv([toJsonCheckoutOrderInv(inputs)])
-					.then(
-						(response: any) => handleResponse(response),
-						(error: any) =>
-							sapswal.fire({
-								icon: 'error',
-								text: `Failed to checkout order: ${error.toString()}`,
-							}),
-					)
+			: orderService.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs)).then(
+					(response: any) => handleResponse(response),
+					(error: any) =>
+						sapswal.fire({
+							icon: 'error',
+							text: `Failed to checkout order: ${error.toString()}`,
+						}),
+			  )
 		// : console.log(inputs)
 	}
 	const handleResponse = (response: any) => {
@@ -153,9 +157,9 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 					</p>
 					<textarea
 						className="font-oxygen border-[#E6E6E6] w-full rounded resize-none h-24 dark:border-darkBgColor dark:bg-darkBgColor"
-						placeholder="Note: type your address or any additional information."
-						name="note"
-						value={inputs.note}
+						placeholder="Description: type your address or any additional information."
+						name="description"
+						value={inputs.description}
 						onChange={handleChange}
 					/>
 					<button
@@ -172,8 +176,16 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 
 const mapStateToProps = (state: any) => {
 	const totalData = getTotalCount(state)
+	const items = getCartItems(state)
+	const orderInvLines = items.map((item: any) => ({
+		resId: item.id,
+		priceValue: item.priceValue,
+		...getTotalCount(state, item.id),
+	}))
+
 	return {
-		items: getCartItems(state),
+		items: items,
+		orderInvLines: orderInvLines,
 		totalPrice: totalData.totalPrice,
 		user: getCurrentUserInfo(state.auth),
 		loggedIn: state.auth.loggedIn,
