@@ -14,7 +14,7 @@ export const PaymentTypes = ({ id, onChange }: any) => {
 		<ErrorBoundary>
 			{data.map(({ id, name, description }: any, idx: number) => (
 				<div
-					className="grid grid-flow-col gap-0 grid-rows-OrderLine grid-cols-OrderLine"
+					className="grid grid-flow-col gap-0 cursor-pointer grid-rows-OrderLine grid-cols-OrderLine"
 					key={idx}
 					onClick={() => set_current_type_id(id)}
 				>
@@ -31,11 +31,11 @@ export const PaymentTypes = ({ id, onChange }: any) => {
 						/>
 					</div>
 					<div className="col-span-2 mx-0 my-auto">
-						<h3 className="text-sm font-semibold dark:text-darkTextWhiteColor">
+						<h3 className="text-sm font-semibold font-oxygen dark:text-darkTextWhiteColor">
 							{name}
 						</h3>
 					</div>
-					<div className="col-span-2 row-span-2 dark:text-darkText">
+					<div className="col-span-2 row-span-2 font-oxygen dark:text-darkText">
 						{description}
 					</div>
 				</div>

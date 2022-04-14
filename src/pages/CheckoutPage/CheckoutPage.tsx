@@ -122,13 +122,13 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 						</p>
 					</div>
 
-					<p>Payment type</p>
+					<p className="text-base font-semibold text-black font-oxygen dark:text-darkTextWhiteColor">Payment type</p>
 					<PaymentTypes
 						id={inputs.ptId}
 						onChange={(id: any) => handleKeyValueChange('ptId', id)}
 					/>
 
-					<p>Payment method</p>
+					<p className="text-base font-semibold text-black font-oxygen dark:text-darkTextWhiteColor">Payment method</p>
 					<PaymentMethods
 						id={inputs.pmId}
 						onChange={(id: any) => handleKeyValueChange('pmId', id)}

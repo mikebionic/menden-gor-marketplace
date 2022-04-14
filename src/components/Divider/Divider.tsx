@@ -7,7 +7,7 @@ interface IPropsDivider {
 	mobile?: boolean;
 }
 
-export const Divider:React.FC<IPropsDivider> = ({ title = 'Just for you', mobile }) => {
+export const Divider:React.FC<IPropsDivider> = ({ title = 'Just for you', mobile}) => {
 	return (
 			mobile ? (
 				<div className="grid gap-4 my-4 grid-cols-[max-content_1fr_max-content] grid-rows-[2rem]">
