@@ -1,4 +1,4 @@
-export const transformPaymentMethod = (data:any) => ({
+export const transformPaymentMethod = (data: any) => ({
 	addInf1: data.AddInf1,
 	addInf2: data.AddInf2,
 	addInf3: data.AddInf3,
@@ -15,5 +15,25 @@ export const transformPaymentMethod = (data:any) => ({
 	id: data.PmId,
 	name: data.PmName,
 	visibleIndex: data.PmVisibleIndex,
+	syncDateTime: data.SyncDateTime,
+})
+
+export const transformPaymentType = (data: any) => ({
+	addInf1: data.AddInf1,
+	addInf2: data.AddInf2,
+	addInf3: data.AddInf3,
+	addInf4: data.AddInf4,
+	addInf5: data.AddInf5,
+	addInf6: data.AddInf6,
+	createdDate: data.CreatedDate,
+	createdUId: data.CreatedUId,
+	deleted: data.GCRecord,
+	modifiedDate: data.ModifiedDate,
+	modifiedUId: data.ModifiedUId,
+	description: data.PtDesc,
+	guid: data.PtGuid,
+	id: data.PtId,
+	name: data.PtName,
+	visibleIndex: data.PtVisibleIndex,
 	syncDateTime: data.SyncDateTime,
 })
