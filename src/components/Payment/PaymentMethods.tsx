@@ -10,7 +10,6 @@ export const PaymentMethods = ({ id, onChange }: any) => {
 	const [online_pm_data, set_online_pm_data] = useState([])
 	useEffect(() => {
 		otherService.fetch_payment_methods().then((response: any) => {
-			console.log(response)
 			set_data(response)
 		})
 		if (serviceConfig.onlinePaymentMethods) {
