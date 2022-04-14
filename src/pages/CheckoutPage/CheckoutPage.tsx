@@ -9,7 +9,11 @@ import {
 } from 'sapredux/selectors'
 import { getCurrentCurrency, sapswal } from 'sapredux/helpers'
 import { CartRow } from 'components/Cart'
-import { PaymentMethods, PaymentTypes } from 'components/Payment'
+import {
+	PaymentMethods,
+	PaymentTypes,
+	OnlinePaymentMethods,
+} from 'components/Payment'
 import { ErrorBoundary } from 'modules/errors'
 import {
 	resourceAddedToCart,
@@ -52,6 +56,8 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 		pmId: 1,
 		currency_code: getCurrentCurrency().name,
 		orderInvLines: orderInvLines,
+		online_payment_id: 1,
+		online_payment_name: 1,
 	})
 	useEffect(() => {
 		handleKeyValueChange('orderInvLines', orderInvLines)
@@ -79,7 +85,6 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 							text: `Failed to checkout order: ${error.toString()}`,
 						}),
 			  )
-		// : console.log(inputs)
 	}
 	const handleResponse = (response: any) => {
 		console.log(response)
@@ -122,17 +127,32 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 						</p>
 					</div>
 
-					<p className="text-base font-semibold text-black font-oxygen dark:text-darkTextWhiteColor">Payment type</p>
+					<p className="text-base font-semibold text-black font-oxygen dark:text-darkTextWhiteColor">
+						Payment type
+					</p>
 					<PaymentTypes
 						id={inputs.ptId}
 						onChange={(id: any) => handleKeyValueChange('ptId', id)}
 					/>
 
-					<p className="text-base font-semibold text-black font-oxygen dark:text-darkTextWhiteColor">Payment method</p>
+					<p className="text-base font-semibold text-black font-oxygen dark:text-darkTextWhiteColor">
+						Payment method
+					</p>
 					<PaymentMethods
 						id={inputs.pmId}
 						onChange={(id: any) => handleKeyValueChange('pmId', id)}
 					/>
+
+					{inputs.pmId === 2 && (
+						<OnlinePaymentMethods
+							id={inputs.online_payment_id}
+							name={inputs.online_payment_name}
+							onChange={({ id, name }: any) => {
+								handleKeyValueChange('online_payment_id', id)
+								handleKeyValueChange('online_payment_name', name)
+							}}
+						/>
+					)}
 
 					<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
 						Name:

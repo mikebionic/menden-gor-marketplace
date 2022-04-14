@@ -16,17 +16,20 @@ export const PaymentTypes = ({ id, onChange }: any) => {
 				<div
 					className="grid grid-flow-col gap-0 cursor-pointer grid-rows-OrderLine grid-cols-OrderLine"
 					key={idx}
-					onClick={() => set_current_type_id(id)}
+					onClick={() => {
+						set_current_type_id(id)
+						onChange(id)
+					}}
 				>
 					<div className="row-span-3 p-4 m-auto">
 						<input
 							className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-firstColorGradientFromDark dark:text-darkFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange dark:border-darkFirstColor"
 							type="radio"
-							name={id}
+							name={`type-${name}`}
 							checked={id === current_type_id ? true : false}
 							onClick={() => {
 								set_current_type_id(id)
-								onChange(id)
+								onChange(() => id)
 							}}
 						/>
 					</div>
