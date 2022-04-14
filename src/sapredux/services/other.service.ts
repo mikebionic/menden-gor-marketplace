@@ -38,9 +38,10 @@ const fetch_payment_types = async () => {
 	}
 
 	return await transformFetch(
-		fetchWithCred(
-			`${serviceConfig.apiUrl}${serviceConfig.routes.payment_types}`,
-		).then(handleResponse),
+		async () =>
+			fetchWithCred(
+				`${serviceConfig.apiUrl}${serviceConfig.routes.payment_types}`,
+			).then(handleResponse),
 		transformPaymentType,
 	)
 }
@@ -55,9 +56,10 @@ const fetch_payment_methods = async () => {
 	}
 
 	return await transformFetch(
-		fetchWithCred(
-			`${serviceConfig.apiUrl}${serviceConfig.routes.payment_methods}`,
-		).then(handleResponse),
+		async () =>
+			fetchWithCred(
+				`${serviceConfig.apiUrl}${serviceConfig.routes.payment_methods}`,
+			).then(handleResponse),
 		transformPaymentMethod,
 	)
 }

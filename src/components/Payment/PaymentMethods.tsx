@@ -9,15 +9,16 @@ export const PaymentMethods = ({ id, onChange }: any) => {
 	const [data, set_data] = useState([])
 	const [online_pm_data, set_online_pm_data] = useState([])
 	useEffect(() => {
-		otherService
-			.fetch_payment_methods()
-			.then((response: any) => set_data(response))
+		otherService.fetch_payment_methods().then((response: any) => {
+			console.log(response)
+			set_data(response)
+		})
+		if (serviceConfig.onlinePaymentMethods) {
+			set_online_pm_data(online_payment_methods)
+		}
 	}, [])
 	const [current_method_id, set_current_method_id] = useState(id || 1)
 
-	if (serviceConfig.onlinePaymentMethods) {
-		set_online_pm_data(online_payment_methods)
-	}
 	return (
 		<ErrorBoundary>
 			{data.map(({ id, name, description }: any, idx: number) => (
@@ -54,7 +55,7 @@ export const PaymentMethods = ({ id, onChange }: any) => {
 					online_pm_data.map(({ id, name, image }: any, idx: number) => (
 						<div key={idx}>
 							<p>{name}</p>
-							<Image src={image} alt={name} />
+							<Image src={image} alt={name} forceSrc={true} />
 						</div>
 					))}
 			</ErrorBoundary>
