@@ -70,7 +70,7 @@ const MainPage: React.FC = (props: any) => {
         )}
         {discountList && (
           <>
-            <Divider title="Discounts!" />
+            <Divider title="Discounts!" mobile={true} />
             {discountList}
           </>
         )}
