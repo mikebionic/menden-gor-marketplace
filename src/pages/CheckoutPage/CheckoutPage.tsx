@@ -9,15 +9,19 @@ import {
 } from 'sapredux/selectors'
 import { getCurrentCurrency, sapswal } from 'sapredux/helpers'
 import { CartRow } from 'components/Cart'
-import { PaymentMethods, PaymentTypes } from 'components/Payment'
+import {
+	PaymentMethods,
+	PaymentTypes,
+	OnlinePaymentMethods,
+} from 'components/Payment'
 import { ErrorBoundary } from 'modules/errors'
 import {
 	resourceAddedToCart,
 	resourceAllRemovedFromCart,
 	resourceRemovedFromCart,
 } from 'sapredux/actions'
+import { orderService, otherService } from 'sapredux/services'
 import { toJsonCheckoutOrderInv } from 'sapredux/services/transform_data'
-import { orderService } from 'sapredux/services'
 
 interface ICheckoutPage {
 	items?: any
@@ -50,37 +54,31 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 		description: loggedIn ? `Address: ${user.address || ''}` : '',
 		ptId: 1,
 		pmId: 1,
+		typeId: 2,
+		orderInvRegNo: '',
 		currency_code: getCurrentCurrency().name,
 		orderInvLines: orderInvLines,
+		online_payment_id: 1,
+		online_payment_method: 'halkbank',
+		totalPrice: totalPrice,
+		orderId: '',
+		payment_window_url: '',
 	})
 	useEffect(() => {
 		handleKeyValueChange('orderInvLines', orderInvLines)
-	}, [orderInvLines])
+		handleKeyValueChange('totalPrice', totalPrice)
+	}, [orderInvLines, totalPrice])
 	const handleChange = (e: any) => {
 		let { name, value } = e.target
 		setInputs((inputs) => ({ ...inputs, [name]: value }))
 	}
-	const handleKeyValueChange = (name: string = '', value: any = '') => {
-		setInputs((inputs) => ({ ...inputs, [name]: value }))
+	const handleKeyValueChange: any = async (
+		name: string = '',
+		value: any = '',
+	) => {
+		await setInputs((inputs) => ({ ...inputs, [name]: value }))
 	}
-	const handleSubmit = () => {
-		inputs.description.length < 1 ||
-		inputs.name.length < 1 ||
-		inputs.phoneNumber.length < 1
-			? sapswal.fire({
-					text: 'Fill the required fields!',
-					icon: 'error',
-			  })
-			: orderService.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs)).then(
-					(response: any) => handleResponse(response),
-					(error: any) =>
-						sapswal.fire({
-							icon: 'error',
-							text: `Failed to checkout order: ${error.toString()}`,
-						}),
-			  )
-		// : console.log(inputs)
-	}
+
 	const handleResponse = (response: any) => {
 		console.log(response)
 		sapswal.fire({
@@ -93,6 +91,111 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 			)
 		}
 	}
+
+	const handleSubmit = () => {
+		inputs.description.length < 1 ||
+		inputs.name.length < 1 ||
+		inputs.phoneNumber.length < 1
+			? inputs.pmId !== 2
+				? sapswal.fire({
+						text: 'Fill the required fields!',
+						icon: 'error',
+				  })
+				: orderService
+						.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs))
+						.then(
+							(response: any) => handleResponse(response),
+							(error: any) =>
+								sapswal.fire({
+									icon: 'error',
+									text: `Failed to checkout order: ${error.toString()}`,
+								}),
+						)
+			: handleOnlineCheckout(inputs)
+	}
+
+	const handleOnlineCheckout = async (inputs: any) => {
+		let regNo_response = await otherService.generate_reg_no()
+		console.log(regNo_response)
+		if (regNo_response.status === 1) {
+			await handleKeyValueChange('orderInvRegNo', regNo_response.data)
+			await handleKeyValueChange('typeId', regNo_response.data)
+		}
+		inputs.orderInvRegNo.length > 1
+			? orderService.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs)).then(
+					(response: any) => handle_payment_register(response),
+					(error: any) => errorSwal(error.toString()),
+			  )
+			: errorSwal()
+	}
+
+	const handle_payment_register = (response: any) => {
+		if (response.status === 1) {
+			orderService
+				.request_payment_register(
+					inputs.orderInvRegNo,
+					inputs.totalPrice,
+					inputs.online_payment_method,
+					inputs.description,
+				)
+				.then(
+					(response: any) =>
+						handleKeyValueChange(
+							'payment_window_url',
+							response.data.checkout_url,
+						)
+							.then(handleKeyValueChange('orderId', response.data.OrderId))
+							.then(open_payment_window),
+					(error: any) => errorSwal(error.toString()),
+				)
+		} else {
+			errorSwal('Payment register failed, contact administrators or try again')
+		}
+	}
+
+	function open_payment_window(url: string) {
+		let window_properties = 'width=600,height=400,resizable=yes,location=no'
+		let paymentWin: any = window.open(url, 'Payment', window_properties)
+		try {
+			paymentWin.addEventListener('unload', function () {
+				setTimeout(() => {
+					detect_window_close(paymentWin)
+				}, 5000)
+			})
+		} catch {
+			errorSwal()
+		}
+	}
+	var payment_validated_times = 0
+	function detect_window_close(current_window: any) {
+		//$('#cover-spin').show()
+		let win_closed_interval = setInterval(() => {
+			try {
+				if (current_window.closed) {
+					clearInterval(win_closed_interval)
+					console.log('payment closed')
+					setTimeout(() => {
+						$('#cover-spin').hide()
+						if (payment_validated_times < 1) {
+							//validate_oinv_payment()
+							payment_validated_times++
+						} else {
+							clearInterval(win_closed_interval)
+						}
+					}, 300)
+				}
+			} catch {
+				clearInterval(win_closed_interval)
+			}
+		}, 500)
+	}
+
+	const errorSwal = (text?: string) =>
+		sapswal.fire({
+			icon: 'error',
+			title: 'Error',
+			text: text || 'Failed to checkout order: server exchange error.',
+		})
 
 	return (
 		<ErrorBoundary>
@@ -122,17 +225,32 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 						</p>
 					</div>
 
-					<p className="text-base font-semibold text-black font-oxygen dark:text-darkTextWhiteColor">Payment type</p>
+					<p className="text-base font-semibold text-black font-oxygen dark:text-darkTextWhiteColor">
+						Payment type
+					</p>
 					<PaymentTypes
 						id={inputs.ptId}
 						onChange={(id: any) => handleKeyValueChange('ptId', id)}
 					/>
 
-					<p className="text-base font-semibold text-black font-oxygen dark:text-darkTextWhiteColor">Payment method</p>
+					<p className="text-base font-semibold text-black font-oxygen dark:text-darkTextWhiteColor">
+						Payment method
+					</p>
 					<PaymentMethods
 						id={inputs.pmId}
 						onChange={(id: any) => handleKeyValueChange('pmId', id)}
 					/>
+
+					{inputs.pmId === 2 && (
+						<OnlinePaymentMethods
+							id={inputs.online_payment_id}
+							name={inputs.online_payment_method}
+							onChange={({ id, name }: any) => {
+								handleKeyValueChange('online_payment_id', id)
+								handleKeyValueChange('online_payment_method', name)
+							}}
+						/>
+					)}
 
 					<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
 						Name:

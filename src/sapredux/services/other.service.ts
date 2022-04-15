@@ -64,9 +64,35 @@ const fetch_payment_methods = async () => {
 	)
 }
 
+const generate_reg_no = async (typeId: number = 9, random: number = 1) => {
+	let payload = {
+		RegNumTypeId: typeId,
+		random_mode: random,
+	}
+
+	const requestOptions = {
+		method: 'POST',
+		body: JSON.stringify(payload),
+		headers: {
+			'Content-Type': 'application/json; charset=UTF-8',
+		},
+	}
+	return fetchWithCred(
+		`${serviceConfig.apiUrl}${serviceConfig.routes.gen_reg_no}`,
+		requestOptions,
+	).then(handleResponse)
+
+	//res = {
+	//	"status": 1,
+	//	"data": "ANSSFK09381",
+	//	"message": "Pred Reg_no generation"
+	//}
+}
+
 export const otherService = {
 	setCurrency,
 	setLanguage,
 	fetch_payment_types,
 	fetch_payment_methods,
+	generate_reg_no,
 }

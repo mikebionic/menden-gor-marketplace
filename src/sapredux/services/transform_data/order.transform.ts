@@ -237,7 +237,7 @@ export const transformOrderInvLine = (data: any) => ({
 
 export const toJsonCheckoutOrderInv = (data: any) => ({
 	orderInv: {
-		OInvTypeId: 2,
+		OInvTypeId: data.typeId || 2,
 		InvStatId: 1,
 		RpAccGuid: data.rpAccGuid || '',
 		PtId: data.ptId || 1,
