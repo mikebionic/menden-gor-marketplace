@@ -1,39 +1,39 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 
-import { fetchSliders } from 'sapredux/actions';
-import { getSliderByName } from 'sapredux/selectors';
-import { ErrorBoundary } from 'modules/errors';
-import { namesConfig } from 'configs';
-import { MobileCarouselSlider } from 'mobile/components/MobileCarouselSlider';
+import { fetchSliders } from 'sapredux/actions'
+import { getSliderByName } from 'sapredux/selectors'
+import { ErrorBoundary } from 'modules/errors'
+import { namesConfig } from 'configs'
+import { MobileCarouselSlider } from 'mobile/components/MobileCarouselSlider'
 
 const BannerWithCategory: React.FC = (props: any) => {
-  const {  fetchSliders, header_slider } = props;
+	const { fetchSliders, header_slider } = props
 
-  useEffect(() => {
-    fetchSliders();
-  }, [fetchSliders]);
+	useEffect(() => {
+		fetchSliders()
+	}, [fetchSliders])
 
-  return (
-    <ErrorBoundary>
-      <div className="pt-[35%]">
-        <div>
-          {!!header_slider ? (
-            <MobileCarouselSlider images={header_slider.images} /> 
-          ) : null}
-        </div>
-      </div>
-    </ErrorBoundary>
-  );
-};
+	return (
+		<ErrorBoundary>
+			<div className="pt-[35%]">
+				<div>
+					{!!header_slider ? (
+						<MobileCarouselSlider images={header_slider.images} />
+					) : null}
+				</div>
+			</div>
+		</ErrorBoundary>
+	)
+}
 
 const mapStateToProps = (state: any) => ({
-  header_slider: getSliderByName(
-    state.slider.data,
-    namesConfig.main_page_slider_name,
-  ),
-});
+	header_slider: getSliderByName(
+		state.slider.data,
+		namesConfig.main_page_slider_name,
+	),
+})
 
-const mapDispatchToProps = { fetchSliders };
+const mapDispatchToProps = { fetchSliders }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BannerWithCategory);
+export default connect(mapStateToProps, mapDispatchToProps)(BannerWithCategory)

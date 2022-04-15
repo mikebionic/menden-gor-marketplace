@@ -1,7 +1,5 @@
-import React from "react";
+import React from 'react'
 
 export const MobileBottomNavigation: React.FC = () => {
-  return (
-    <div>FUCK</div>
-  )
+	return <div>FUCK</div>
 }
