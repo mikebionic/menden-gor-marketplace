@@ -11,12 +11,16 @@ import { UserRoutes } from 'navigation';
 import { VGrid } from 'pages/VGrid';
 import { ProductPage } from 'pages/ProductPage';
 import { LoginPage, LogoutPage, RegisterPage } from 'pages/auth';
-import { CheckoutPage } from 'pages/CheckoutPage';
+import { CheckoutPage } from 'pages/CheckoutPage'; 
+
+import { MobileMainPage } from 'mobile/pages/MobileMainPage';
+
+const chooseMainPage = window.innerWidth < 768 ? <MobileMainPage /> : <MainPage />
 
 export const AppRoutes: React.FC = ({ props }: any) => {
   return (
     <Routes>
-      <Route path={routeConstants.root.route} element={<MainPage />} />
+      <Route path={routeConstants.root.route} element={chooseMainPage} />
 
       <Route path={routeConstants.login.route} element={<LoginPage />} />
       <Route path={routeConstants.logout.route} element={<LogoutPage />} />

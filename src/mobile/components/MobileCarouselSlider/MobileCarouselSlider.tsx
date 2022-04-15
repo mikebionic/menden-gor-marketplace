@@ -3,7 +3,7 @@ import '@splidejs/splide/dist/css/splide.min.css';
 import { Image } from 'common/Image';
 
 
-export const CarouselSlider = ({ images }: any) => {
+export const MobileCarouselSlider = ({ images }: any) => {
   return (
     <Splide
       className={`mb-8`}
@@ -15,8 +15,7 @@ export const CarouselSlider = ({ images }: any) => {
         resetProgress: false,
         lazyLoad: true,
         speed: 700,
-        arrows: 'slider',
-        height: '25rem',
+        arrows: false,
       }}
       hasSliderWrapper
       hasAutoplayProgress

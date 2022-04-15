@@ -19,7 +19,7 @@ const SlickSlider: React.FC<ISlickSlider> = ({ settings, children }) => {
     ...settings,
   };
   const slidesToShow =
-    window.innerWidth < 768 ? 2 : configured_settings.slidesToShow;
+    window.innerWidth < 768 ? 4 : configured_settings.slidesToShow;
 
   return (
     <div className="cursor-pointer">

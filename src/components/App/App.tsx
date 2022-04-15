@@ -18,6 +18,8 @@ import { Footer } from 'components/Footer'
 import { fetchCategories, fetchBrands } from 'sapredux/actions'
 import { getCategories } from 'sapredux/selectors'
 import { Spinner } from 'modules/loaders'
+import { MobileNavbar } from 'mobile/components/MobileNavbar'
+import { MobileBottomNavigation } from 'mobile/components/MobileBottomNavigation'
 
 const App: React.FC = (props: any) => {
 	const { t } = useTranslation()
@@ -57,21 +59,31 @@ const App: React.FC = (props: any) => {
 	//   });
 	// }, [dispatch]);
 
+	const chooseNavbar = window.innerWidth < 768 ? <MobileNavbar /> : <Navbar categories={categories} />
+	const chooseFooter = window.innerWidth < 768 ? <MobileBottomNavigation /> : <Footer />
+
+	const appResponsive = {
+		mobileView: 'p-[0px_30px]',
+		desktopView: 'p-[160px_60px_32px_60px]',
+	}
+
+	const appClasses = window.innerWidth < 768 ? appResponsive.mobileView : appResponsive.desktopView
+
 	return (
 		<ErrorBoundary>
 			<Router>
-				<Navbar categories={categories} />
+				{chooseNavbar}
 				{alert && alert.message && (
 					<div className={`alert ${alert.type}`}>{alert.message}</div>
 				)}
 				<Toaster />
 				<div
-					className={`App bg-[#F3F4F8] dark:bg-darkBgColor p-[160px_60px_32px_60px;]`}
+					className={`App bg-[#F3F4F8] dark:bg-darkBgColor ${appClasses}`}
 				>
 					<AppRoutes />
 				</div>
 
-				<Footer />
+				{chooseFooter}
 			</Router>
 		</ErrorBoundary>
 	)
