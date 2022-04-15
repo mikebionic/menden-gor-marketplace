@@ -1,97 +1,144 @@
-import { serviceConfig } from 'configs';
+import { serviceConfig } from 'configs'
 
-import { authBearerHeaderAsync, handleResponse } from 'sapredux/helpers';
+import { authBearerHeaderAsync, handleResponse } from 'sapredux/helpers'
 import {
 	rp_acc_basic_login_credentials,
 	rp_acc_basic_login_success,
-	rp_acc_basic_login_failure
+	rp_acc_basic_login_failure,
 } from './mock_data/auth.mock'
 import { fetchWithCred } from 'sapredux/helpers'
-import { transformAuth as transformResponse } from './transform_data';
+import { transformAuth as transformResponse } from './transform_data'
 
-
-const login_request = (username='', password='') => {
-	if (serviceConfig.useMockApi){
-		if (username === rp_acc_basic_login_credentials.username
-			&& password === rp_acc_basic_login_credentials.password){
+const login_request = (username = '', password = '') => {
+	if (serviceConfig.useMockApi) {
+		if (
+			username === rp_acc_basic_login_credentials.username &&
+			password === rp_acc_basic_login_credentials.password
+		) {
 			return Promise.resolve(rp_acc_basic_login_success)
 		} else {
 			return Promise.reject(rp_acc_basic_login_failure.message)
 		}
 	}
 
-	const auth_header = (username.length > 0 && password.length > 0) ?
-		btoa(`${username}:${password}`) : ""
+	const auth_header =
+		username.length > 0 && password.length > 0
+			? btoa(`${username}:${password}`)
+			: ''
 	if (!auth_header) {
-		return Promise.reject("Fill the required fields!");
+		return Promise.reject('Fill the required fields!')
 	}
 
 	const requestOptions: any = {
 		headers: {
-			"Authorization": `Basic ${auth_header}`,
+			Authorization: `Basic ${auth_header}`,
 		},
-	};
+	}
 
-	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.login}?type=rp_acc`, requestOptions).then(handleResponse)
+	return fetchWithCred(
+		`${serviceConfig.apiUrl}${serviceConfig.routes.login}?type=rp_acc`,
+		requestOptions,
+	).then(handleResponse)
 }
 
-const login = async(username:string, password:string) => {
-	return await login_request(username, password)
-		.then((response:any) => ({ ...transformResponse(response), auth_username: username, auth_password: password }))
+const login = async (username: string, password: string) => {
+	return await login_request(username, password).then((response: any) => ({
+		...transformResponse(response),
+		auth_username: username,
+		auth_password: password,
+	}))
 }
 
 const logout = () => {
-	localStorage.removeItem('user');
+	localStorage.removeItem('user')
 	// !!! Warning: session is not removing
-	document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+	document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
 }
 
-const registerRequest = async (authMethod:string, payload:string) => {
-	let headers = authMethod === 'email' ? { Email: payload }
-		: authMethod === 'phone_number' && { PhoneNumber: payload }
+const registerRequest = async (authMethod: string, payload: string) => {
+	let headers =
+		authMethod === 'email'
+			? { Email: payload }
+			: authMethod === 'phone_number' && { PhoneNumber: payload }
 
-	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.register_request}?method=${authMethod}`,{headers:headers}).then(handleResponse)
+	return fetchWithCred(
+		`${serviceConfig.apiUrl}${serviceConfig.routes.register_request}?method=${authMethod}`,
+		{ headers: headers },
+	).then(handleResponse)
 }
 
-const verifyRegister = async (authMethod:string, payload:any) => {
+const verifyRegister = async (authMethod: string, payload: any) => {
 	const requestOptions = {
 		method: 'POST',
 		body: JSON.stringify(payload),
-		headers: {"Content-Type": "application/json; charset=UTF-8"},
+		headers: { 'Content-Type': 'application/json; charset=UTF-8' },
 	}
-	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.verify_register}?method=${authMethod}`,requestOptions).then(handleResponse)
+	return fetchWithCred(
+		`${serviceConfig.apiUrl}${serviceConfig.routes.verify_register}?method=${authMethod}`,
+		requestOptions,
+	).then(handleResponse)
 }
 
-const register_rp_acc = async(authMethod:string, registerToken:string, payload:any) => {
+const register_rp_acc = async (
+	authMethod: string,
+	registerToken: string,
+	payload: any,
+) => {
 	const requestOptions = {
 		method: 'POST',
 		body: JSON.stringify(payload),
 		headers: {
-			"Content-Type": "application/json; charset=UTF-8",
-			"Token": registerToken
+			'Content-Type': 'application/json; charset=UTF-8',
+			Token: registerToken,
 		},
 	}
-	return fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.register}?method=${authMethod}&type=rp_acc`,requestOptions)
+	return fetchWithCred(
+		`${serviceConfig.apiUrl}${serviceConfig.routes.register}?method=${authMethod}&type=rp_acc`,
+		requestOptions,
+	)
 		.then(handleResponse)
-		.then((response:any) => ({
+		.then((response: any) => ({
 			status: response.status,
 			message: response.message,
 			...transformResponse(response.data),
 		}))
 }
 
-const editProfile = async (payload:any) => {
+const editProfile = async (payload: any) => {
 	const requestOptions = {
 		method: 'POST',
 		body: JSON.stringify(payload),
 		headers: {
-			"Content-Type": "application/json; charset=UTF-8",
-			...await authBearerHeaderAsync()
+			'Content-Type': 'application/json; charset=UTF-8',
+			...(await authBearerHeaderAsync()),
 		},
 	}
-	return await fetchWithCred(`${serviceConfig.apiUrl}${serviceConfig.routes.profile_edit}`, requestOptions).then(handleResponse);
+	return await fetchWithCred(
+		`${serviceConfig.apiUrl}${serviceConfig.routes.profile_edit}`,
+		requestOptions,
+	).then(handleResponse)
 }
 
+const googleAuth = async (payload: any) => {
+	const requestOptions = {
+		method: 'POST',
+		body: JSON.stringify(payload),
+		headers: {
+			'Content-Type': 'application/json; charset=UTF-8',
+		},
+	}
+
+	return await fetchWithCred(
+		`${serviceConfig.apiUrl}${serviceConfig.routes.google_auth}?type=rp_acc`,
+		requestOptions,
+	)
+		.then(handleResponse)
+		.then((response: any) => ({
+			status: response.status,
+			message: response.message,
+			...transformResponse(response),
+		}))
+}
 
 export const authService = {
 	login,
@@ -100,4 +147,5 @@ export const authService = {
 	verifyRegister,
 	editProfile,
 	register_rp_acc,
-};
+	googleAuth,
+}

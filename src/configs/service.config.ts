@@ -32,6 +32,7 @@ export const serviceConfig = {
 			'/v1/checkout-sale-order-inv/',
 		all_orders:
 			process.env.REACT_APP_API_ALL_ORDERS_ROUTE ?? '/v-order-invoices/',
+		google_auth: process.env.REACT_APP_API_GOOGLE_AUTH ?? '/google-auth/',
 		login: process.env.REACT_APP_API_LOGIN_ROUTE ?? '/login/',
 		register: process.env.REACT_APP_API_REGISTER_ROUTE ?? '/register/',
 		register_request:
