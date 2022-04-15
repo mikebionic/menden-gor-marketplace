@@ -53,6 +53,13 @@ export const serviceConfig = {
 		payment_types:
 			process.env.REACT_APP_API_PAYMENT_TYPES ?? '/tbl-dk-payment-types/',
 		v_ratings: process.env.REACT_APP_API_V_RATINGS ?? '/v1/v-ratings/',
+		gen_reg_no: process.env.REACT_APP_API_GEN_REG_NO ?? '/v1/gen-reg-no/',
+		payment_register_request:
+			process.env.REACT_APP_API_PAYMENT_REGISTER_REQUEST ??
+			'/v1/order-payment-register-request/',
+		order_inv_validation:
+			process.env.REACT_APP_API_ORDER_INV_VALIDATION ??
+			'/v1/order-inv-validation/',
 	},
 }
 
