@@ -1,18 +1,18 @@
 import React from 'react'
-import SlickSlider from 'common/SlickSlider';
-import { MobileProductCard } from 'mobile/components/MobileProductCard';
+import SlickSlider from 'common/SlickSlider'
+import { MobileProductCard } from 'mobile/components/MobileProductCard'
 
 interface IPropsProductList {
-  data?: any;
+	data?: any
 }
-const MobileProductSlick: React.FC<IPropsProductList> = ({
-  data
-}) => (
-    <SlickSlider>
-      {data.map((product: any, idx: number) => (
-        <MobileProductCard {...product} key={idx} />
-      ))}
-    </SlickSlider>
-  );
+const MobileProductSlick: React.FC<IPropsProductList> = ({ data }) => {
+	return (
+		<SlickSlider>
+			{data.map((resource: any, idx: number) => (
+				<MobileProductCard key={idx} data={resource} />
+			))}
+		</SlickSlider>
+	)
+}
 
-export default MobileProductSlick;
+export default MobileProductSlick
