@@ -93,40 +93,60 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 	}
 
 	const handleSubmit = () => {
-		inputs.description.length < 1 ||
-		inputs.name.length < 1 ||
-		inputs.phoneNumber.length < 1
-			? inputs.pmId !== 2
-				? sapswal.fire({
-						text: 'Fill the required fields!',
-						icon: 'error',
-				  })
-				: orderService
+		try {
+			if (inputs.totalPrice < 0.1) {
+				throw 'Cannot checkout an empty cart!'
+			}
+			inputs.description.length < 1 ||
+			inputs.name.length < 1 ||
+			inputs.phoneNumber.length < 1
+				? errorSwal('Fill the required fields!')
+				: inputs.pmId !== 2
+				? orderService
 						.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs))
 						.then(
 							(response: any) => handleResponse(response),
 							(error: any) =>
-								sapswal.fire({
-									icon: 'error',
-									text: `Failed to checkout order: ${error.toString()}`,
-								}),
+								errorSwal(`Failed to checkout order: ${error.toString()}`),
 						)
-			: handleOnlineCheckout(inputs)
+				: handleOnlineCheckout(inputs)
+		} catch (e: any) {
+			errorSwal(e.toString())
+		}
 	}
 
 	const handleOnlineCheckout = async (inputs: any) => {
-		let regNo_response = await otherService.generate_reg_no()
-		console.log(regNo_response)
-		if (regNo_response.status === 1) {
-			await handleKeyValueChange('orderInvRegNo', regNo_response.data)
-			await handleKeyValueChange('typeId', regNo_response.data)
+		try {
+			let regNo_response = await otherService.generate_reg_no()
+			if (regNo_response.status !== 1) {
+				throw 'error'
+			}
+
+			//await handleKeyValueChange('orderInvRegNo', regNo_response.data)
+			//await handleKeyValueChange('typeId', 13)
+			setInputs((inputs) => ({
+				...inputs,
+				orderInvRegNo: regNo_response.data,
+				typeId: 13,
+			}))
+			console.log(
+				'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+				regNo_response.data,
+				inputs.orderInvRegNo,
+				inputs.typeId,
+				inputs.orderInvRegNo.length > 1,
+			)
+			//inputs.orderInvRegNo.length > 1
+			//	? orderService
+			//			.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs))
+			//			.then(
+			//				(response: any) => handle_payment_register(response),
+			//				(error: any) => errorSwal(error.toString()),
+			//			)
+			//	: errorSwal()
+		} catch {
+			errorSwal()
 		}
-		inputs.orderInvRegNo.length > 1
-			? orderService.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs)).then(
-					(response: any) => handle_payment_register(response),
-					(error: any) => errorSwal(error.toString()),
-			  )
-			: errorSwal()
 	}
 
 	const handle_payment_register = (response: any) => {

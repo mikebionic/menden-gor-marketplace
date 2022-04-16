@@ -237,15 +237,15 @@ export const transformOrderInvLine = (data: any) => ({
 
 export const toJsonCheckoutOrderInv = (data: any) => ({
 	orderInv: {
-		OInvTypeId: data.typeId || 2,
+		OInvTypeId: data.typeId ?? 2,
 		InvStatId: 1,
-		RpAccGuid: data.rpAccGuid || '',
-		PtId: data.ptId || 1,
-		PmId: data.pmId || 1,
-		PaymStatusId: data.paymStatusId || 1,
-		OrderInvRegNo: data.orderInvRegNo || '',
-		OInvDesc: data.description || '',
-		CurrencyCode: data.currency_code || 'TMT',
+		RpAccGuid: data.rpAccGuid ?? '',
+		PtId: data.ptId ?? 1,
+		PmId: data.pmId ?? 1,
+		PaymStatusId: data.paymStatusId ?? 1,
+		OrderInvRegNo: data.orderInvRegNo ?? '',
+		OInvDesc: data.description ?? '',
+		CurrencyCode: data.currency_code ?? 'TMT',
 		OrderInvLines: data.orderInvLines.map((item: any) => ({
 			UnitId: 1,
 			ResId: item.resId,

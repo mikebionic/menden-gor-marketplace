@@ -1,4 +1,5 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Dialog, Transition } from '@headlessui/react'
 import { BsX } from 'react-icons/bs'
@@ -36,6 +37,11 @@ export const Cart: React.FC<ICartProps> = ({
 	onDecrease,
 	onDelete,
 }) => {
+	const location = useLocation()
+	useEffect(() => {
+		setOpen(false)
+	}, [location.pathname])
+
 	return (
 		<ErrorBoundary>
 			<Transition.Root show={open} as={Fragment}>

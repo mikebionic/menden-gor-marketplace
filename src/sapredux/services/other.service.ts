@@ -1,5 +1,6 @@
 import { serviceConfig } from 'configs'
 import {
+	authBearerHeaderAsync,
 	fetchWithCred,
 	handleResponse,
 	set_local_data_by_key,
@@ -75,6 +76,7 @@ const generate_reg_no = async (typeId: number = 9, random: number = 1) => {
 		body: JSON.stringify(payload),
 		headers: {
 			'Content-Type': 'application/json; charset=UTF-8',
+			...(await authBearerHeaderAsync()),
 		},
 	}
 	return fetchWithCred(
