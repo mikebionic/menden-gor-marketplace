@@ -9,7 +9,8 @@ export const ImageUpload = ({
 	className = '',
 	imageType = 'default',
 	forceSrc = false,
-}) => {
+	onChange,
+}: any) => {
 	const [selectedFile, setSelectedFile] = useState()
 	const [preview, setPreview]: any = useState()
 
@@ -24,11 +25,12 @@ export const ImageUpload = ({
 	useEffect(() => {
 		if (!selectedFile) {
 			setPreview(undefined)
+			onChange(undefined)
 			return
 		}
 		const objectUrl = URL.createObjectURL(selectedFile)
 		setPreview(objectUrl)
-		// free memory when ever this component is unmounted
+		onChange(selectedFile)
 		return () => URL.revokeObjectURL(objectUrl)
 	}, [selectedFile])
 
@@ -51,16 +53,17 @@ export const ImageUpload = ({
 					className="hidden"
 					type="file"
 					onChange={onSelectFile}
+					accept="image/*"
 				/>
 				<PlusOutlined className="uploadPhoto" style={{ fontSize: '30px' }} />
 			</label>
-			{/*{preview && <button onClick={setPreview('')}>x</button>}*/}
 			<img
 				src={image_src}
 				alt={alt}
 				onError={(e: any) => handleImageError(e, imageType)}
 				className={className}
 			/>
+			{preview && <button onClick={() => setPreview('')}>x</button>}
 		</div>
 	)
 }

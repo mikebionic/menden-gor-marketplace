@@ -15,7 +15,18 @@ import { ErrorIndicator } from 'modules/errors'
 import { profileUpdate } from 'sapredux/actions'
 
 const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
+	const [avatar, set_avatar]: any = useState(undefined)
 	const post_editProfile = async (payload: any) => {
+		let formData = new FormData()
+		if (avatar) {
+			formData.append('file', avatar)
+			console.log(formData)
+			await service.updateAvatar(formData).then(
+				(response: any) =>
+					showToastMessage({ type: 'success', message: response.message }),
+				(error: any) => showToastMessage({ type: 'error', message: error }),
+			)
+		}
 		await service.editProfile(payload).then(
 			(response: any) =>
 				showToastMessage({ type: 'success', message: response.message }),
@@ -59,6 +70,7 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 							src={current_user.image}
 							alt={current_user.username}
 							imageType="avatar"
+							onChange={(file: any) => set_avatar(file)}
 						/>
 					</div>
 
