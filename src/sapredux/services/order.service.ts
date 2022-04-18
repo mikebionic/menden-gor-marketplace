@@ -67,7 +67,7 @@ const request_payment_register = async (
 	description?: string,
 ) => {
 	let payload = {
-		RegNo: regNo,
+		OInvRegNo: regNo,
 		TotalPrice: totalPrice,
 		OrderDesc: description,
 	}
@@ -77,6 +77,7 @@ const request_payment_register = async (
 		body: JSON.stringify(payload),
 		headers: {
 			'Content-Type': 'application/json; charset=UTF-8',
+			...(await authBearerHeaderAsync()),
 		},
 	}
 	return fetchWithCred(
@@ -114,6 +115,7 @@ const validate_order_inv = async (
 		body: JSON.stringify(payload),
 		headers: {
 			'Content-Type': 'application/json; charset=UTF-8',
+			...(await authBearerHeaderAsync()),
 		},
 	}
 	return fetchWithCred(
