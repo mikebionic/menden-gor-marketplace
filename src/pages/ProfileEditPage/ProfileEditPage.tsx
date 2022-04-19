@@ -15,6 +15,13 @@ import { profileUpdate } from 'sapredux/actions'
 
 const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 	const [avatar, set_avatar]: any = useState(undefined)
+
+	const [inputs, setInputs] = useState(current_user)
+	const handleChange = (e: any) => {
+		const { name, value } = e.target
+		setInputs((inputs: any) => ({ ...inputs, [name]: value }))
+	}
+
 	const post_editProfile = async (payload: any) => {
 		if (avatar) {
 			let formData = new FormData()
@@ -50,18 +57,17 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 			message: response.message,
 		})
 	}
-	const onSave = async (data: any) =>
-		await post_editProfile(toJsonRpAcc(data, false)).then(
+	const onSave = async (data: any) => {
+		delete data.filePathS
+		delete data.filePathM
+		delete data.filePathR
+		delete data.image
+		await post_editProfile(toJsonRpAcc(data)).then(
 			(response: any) => {
 				profileUpdate(data)
 			},
 			(error: any) => console.log(error),
 		)
-
-	const [inputs, setInputs] = useState(current_user)
-	const handleChange = (e: any) => {
-		const { name, value } = e.target
-		setInputs((inputs: any) => ({ ...inputs, [name]: value }))
 	}
 
 	return !R.isEmpty(current_user) ? (
