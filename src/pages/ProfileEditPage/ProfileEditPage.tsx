@@ -4,9 +4,8 @@ import * as R from 'ramda'
 
 import { Button } from 'antd'
 import { Input } from 'antd'
-import { PlusOutlined } from '@ant-design/icons'
 import { getCurrentUserInfo } from 'sapredux/selectors'
-import { Image, ImageUpload } from 'common/Image'
+import { ImageUpload } from 'common/Image'
 import { ErrorBoundary } from 'modules/errors'
 import { authService as service } from 'sapredux/services'
 import { showToastMessage } from 'sapredux/helpers'
@@ -17,15 +16,12 @@ import { profileUpdate } from 'sapredux/actions'
 const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 	const [avatar, set_avatar]: any = useState(undefined)
 	const post_editProfile = async (payload: any) => {
-		let formData = new FormData()
 		if (avatar) {
-			formData.append('file', avatar)
-			console.log(formData)
-			await service.updateAvatar(formData).then(
-				(response: any) =>
-					showToastMessage({ type: 'success', message: response.message }),
-				(error: any) => showToastMessage({ type: 'error', message: error }),
-			)
+			let formData = new FormData()
+			formData.append('image', avatar)
+			await service
+				.updateAvatar(formData)
+				.then((response: any) => onPictureUpdate(response))
 		}
 		await service.editProfile(payload).then(
 			(response: any) =>
@@ -33,10 +29,30 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 			(error: any) => showToastMessage({ type: 'error', message: error }),
 		)
 	}
-	const onSave = (data: any) =>
-		post_editProfile(toJsonRpAcc(data)).then(
+	const onPictureUpdate = async (response: any) => {
+		if (response.status === 1) {
+			await setInputs((inputs: any) => ({
+				...inputs,
+				filePathM: response.data.FilePathM ?? null,
+				filePathR: response.data.FilePathR ?? null,
+				filePathS: response.data.FilePathS ?? null,
+				image: response.data.FilePathS ?? null,
+			}))
+			await profileUpdate({
+				filePathM: response.data.FilePathM ?? null,
+				filePathR: response.data.FilePathR ?? null,
+				filePathS: response.data.FilePathS ?? null,
+				image: response.data.FilePathS ?? null,
+			})
+		}
+		showToastMessage({
+			type: response.status === 1 ? 'success' : 'error',
+			message: response.message,
+		})
+	}
+	const onSave = async (data: any) =>
+		await post_editProfile(toJsonRpAcc(data, false)).then(
 			(response: any) => {
-				console.log(response)
 				profileUpdate(data)
 			},
 			(error: any) => console.log(error),
@@ -53,18 +69,6 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 			<div className="grid grid-cols-2 gap-8 p-4 text-start grid-rows-[1fr_max-content_max-content_max-content_max-content_max-content]">
 				<div className="inline-grid col-start-1 col-end-3 gap-2 mx-auto grid-rows-[1fr_max-content_max-content_auto]">
 					<div className="relative m-auto cursor-pointer">
-						{/*<div className="absolute grid grid-flow-row rounded-full hover:opacity-70 opacity-60 hover:bg-gray-50 bg-gray-50 w-36 h-36 left-1 bottom-1 auto-cols-max place-items-center place-content-center">
-							<PlusOutlined
-								className="uploadPhoto"
-								style={{ fontSize: '30px' }}
-							/>
-						</div>*/}
-						{/*<Image
-							className="object-cover m-auto avatar"
-							src={current_user.image}
-							alt={current_user.username}
-							imageType="avatar"
-						/>*/}
 						<ImageUpload
 							className="object-cover m-auto avatar"
 							src={current_user.image}

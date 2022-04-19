@@ -124,14 +124,11 @@ const updateAvatar = async (formData: any) => {
 		method: 'POST',
 		body: formData,
 		headers: {
-			//'Content-Type': 'application/json; charset=UTF-8',
-			//'Content-Type': 'application/json; multipart/form-data',
-			'Content-Type': 'multipart/form-data',
 			...(await authBearerHeaderAsync()),
 		},
 	}
 	return await fetchWithCred(
-		`${serviceConfig.apiUrl}/v1/v-rp-accs/update-avatar/`,
+		`${serviceConfig.apiUrl}/v1/update-avatar/`,
 		requestOptions,
 	).then(handleResponse)
 }

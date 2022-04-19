@@ -1,4 +1,4 @@
-export const transformRpAcc = (data:any) => ({
+export const transformRpAcc = (data: any) => ({
 	addInf1: data.AddInf1 ?? null,
 	addInf2: data.AddInf2 ?? null,
 	addInf3: data.AddInf3 ?? null,
@@ -89,11 +89,11 @@ export const toJsonRpAcc = (data: any, allData: boolean = false) => ({
 	RpAccWorkFaxNumber: data.workFaxNumber ?? null,
 	RpAccWorkPhoneNumber: data.workPhoneNumber ?? null,
 	RpAccZipCode: data.zipCode ?? null,
-	RpAccTypeId: allData ? (data.typeId ?? null) : null,
-	RpAccUPass: allData ? (data.password ?? null) : null,
+	RpAccTypeId: allData ? data.typeId ?? null : null,
+	RpAccUPass: allData ? data.password ?? null : null,
 })
 
-export const transformUser = (data:any) => ({
+export const transformUser = (data: any) => ({
 	addInf1: data.AddInf1,
 	addInf2: data.AddInf2,
 	addInf3: data.AddInf3,
@@ -123,7 +123,7 @@ export const transformUser = (data:any) => ({
 	typeId: data.UTypeId,
 })
 
-export const transFormRpAccStatus = (data:any) => ({
+export const transFormRpAccStatus = (data: any) => ({
 	createdDate: data.CreatedDate ?? null,
 	createdUId: data.CreatedUId ?? null,
 	deleted: data.GCRecord ?? null,
@@ -136,7 +136,7 @@ export const transFormRpAccStatus = (data:any) => ({
 	syncDateTime: data.SyncDateTime ?? null,
 })
 
-export const transformRpAccType = (data:any) => ({
+export const transformRpAccType = (data: any) => ({
 	createdDate: data.CreatedDate ?? null,
 	createdUId: data.CreatedUId ?? null,
 	deleted: data.GCRecord ?? null,
