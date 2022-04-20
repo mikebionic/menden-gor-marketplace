@@ -45,7 +45,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 		user,
 		loggedIn,
 	} = props
-
+	const [loading, set_loading] = useState(false)
 	const [inputs, setInputs] = useState({
 		name: loggedIn ? `${user.username} - ${user.name}` : '',
 		phoneNumber: loggedIn
@@ -81,37 +81,48 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 
 	const handleResponse = (response: any) => {
 		console.log(response)
+		let text = `${response.message} \n ${
+			response.status === 1 && 'You can view your order in profile page'
+		}`
 		sapswal.fire({
 			icon: response.status === 1 ? 'success' : 'error',
-			text: response.message,
+			text: text,
 		})
 		if (response.status === 1) {
-			console.log(
-				'clear cart redux and move to orders page, or just move to main page timeout',
-			)
+			clearCart()
 		}
 	}
+	const clearCart = () => items.map((item: any) => onDelete(item.id))
 
 	const handleSubmit = () => {
 		try {
 			if (inputs.totalPrice < 0.1) {
 				throw 'Cannot checkout an empty cart!'
 			}
-			inputs.description.length < 1 ||
-			inputs.name.length < 1 ||
-			inputs.phoneNumber.length < 1
-				? errorSwal('Fill the required fields!')
-				: inputs.pmId !== 2
-				? orderService
-						.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs))
-						.then(
-							(response: any) => handleResponse(response),
-							(error: any) =>
-								errorSwal(`Failed to checkout order: ${error.toString()}`),
-						)
-				: handleOnlineCheckout(inputs)
+			if (
+				inputs.description.length < 1 ||
+				inputs.name.length < 1 ||
+				inputs.phoneNumber.length < 1
+			) {
+				throw 'Fill the required fields!'
+			}
+			set_loading(true)
+			if (inputs.pmId !== 2) {
+				inputs.description = `${inputs.description} ${inputs.name} ${inputs.phoneNumber}`
+				orderService
+					.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs))
+					.then(
+						(response: any) => handleResponse(response),
+						(error: any) =>
+							errorSwal(`Failed to checkout order: ${error.toString()}`),
+					)
+					.finally(() => set_loading(false))
+			} else {
+				handleOnlineCheckout(inputs).finally(() => set_loading(false))
+			}
 		} catch (e: any) {
 			errorSwal(e.toString())
+			set_loading(false)
 		}
 	}
 
