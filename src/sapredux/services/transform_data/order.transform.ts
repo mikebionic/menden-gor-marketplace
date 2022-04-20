@@ -246,6 +246,7 @@ export const toJsonCheckoutOrderInv = (data: any) => ({
 		OrderInvRegNo: data.orderInvRegNo ?? '',
 		OInvDesc: data.description ?? '',
 		CurrencyCode: data.currency_code ?? 'TMT',
+		OInvTotal: data.totalPrice ?? 0.0,
 		OrderInvLines: data.orderInvLines.map((item: any) => ({
 			UnitId: 1,
 			ResId: item.resId,

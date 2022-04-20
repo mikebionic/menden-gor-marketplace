@@ -117,28 +117,29 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 
 	const handleOnlineCheckout = async (inputs: any) => {
 		try {
-			let regNo_response = await otherService.generate_reg_no()
-			if (regNo_response.status !== 1) {
-				throw 'error'
-			}
-
+			//let regNo_response = await otherService.generate_reg_no()
+			//if (regNo_response.status !== 1) {
+			//	throw 'error'
+			//}
 			//await handleKeyValueChange('orderInvRegNo', regNo_response.data)
 			//await handleKeyValueChange('typeId', 13)
-			setInputs((inputs) => ({
-				...inputs,
-				orderInvRegNo: regNo_response.data,
-				typeId: 13,
-			}))
-			console.log(
-				'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-				regNo_response.data,
-				inputs.orderInvRegNo,
-				inputs.typeId,
-				inputs.orderInvRegNo.length > 1,
-			)
-			//inputs.orderInvRegNo.length > 1
+			//await setInputs((inputs) => ({
+			//	...inputs,
+			//	orderInvRegNo: regNo_response.data,
+			//	typeId: 13,
+			//}))
+			//let payload = {
+			//	...inputs,
+			//	orderInvRegNo: regNo_response.data,
+			//	typeId: 13,
+			//}
+			otherService
+				.generate_reg_no()
+				.then((response: any) => handle_Reg_no_gen_response(response))
+
+			//regNo_response.data.length > 1
 			//	? orderService
-			//			.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs))
+			//			.checkoutSaleOrderInv(toJsonCheckoutOrderInv(payload))
 			//			.then(
 			//				(response: any) => handle_payment_register(response),
 			//				(error: any) => errorSwal(error.toString()),
@@ -147,6 +148,28 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 		} catch {
 			errorSwal()
 		}
+	}
+
+	const handle_Reg_no_gen_response = async (response: any) => {
+		if (response.status !== 1) {
+			throw 'error'
+		}
+		console.log(inputs.orderInvRegNo)
+		await handleKeyValueChange('orderInvRegNo', response.data)
+		await handleKeyValueChange('typeId', 13)
+		console.log(inputs.orderInvRegNo)
+		await setInputs((inputs) => ({
+			...inputs,
+			orderInvRegNo: response.data,
+			typeId: 13,
+		}))
+		console.log('++++++ ', response.data, inputs.orderInvRegNo)
+		response.data.length > 1
+			? orderService.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs)).then(
+					(response: any) => handle_payment_register(response),
+					(error: any) => errorSwal(error.toString()),
+			  )
+			: errorSwal()
 	}
 
 	const handle_payment_register = (response: any) => {

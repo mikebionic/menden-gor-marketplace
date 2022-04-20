@@ -119,6 +119,20 @@ const editProfile = async (payload: any) => {
 	).then(handleResponse)
 }
 
+const updateAvatar = async (formData: any) => {
+	const requestOptions = {
+		method: 'POST',
+		body: formData,
+		headers: {
+			...(await authBearerHeaderAsync()),
+		},
+	}
+	return await fetchWithCred(
+		`${serviceConfig.apiUrl}/v1/update-avatar/`,
+		requestOptions,
+	).then(handleResponse)
+}
+
 const googleAuth = async (payload: any) => {
 	const requestOptions = {
 		method: 'POST',
@@ -148,4 +162,5 @@ export const authService = {
 	editProfile,
 	register_rp_acc,
 	googleAuth,
+	updateAvatar,
 }
