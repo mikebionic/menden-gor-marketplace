@@ -12,9 +12,11 @@ import { showToastMessage } from 'sapredux/helpers'
 import { toJsonRpAcc } from 'sapredux/services/transform_data'
 import { ErrorIndicator } from 'modules/errors'
 import { profileUpdate } from 'sapredux/actions'
+import { Spinner } from 'modules/loaders'
 
 const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 	const [avatar, set_avatar]: any = useState(undefined)
+	const [loading, set_loading] = useState(false)
 
 	const [inputs, setInputs] = useState(current_user)
 	const handleChange = (e: any) => {
@@ -58,20 +60,24 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 		})
 	}
 	const onSave = async (data: any) => {
+		set_loading(true)
 		delete data.filePathS
 		delete data.filePathM
 		delete data.filePathR
 		delete data.image
-		await post_editProfile(toJsonRpAcc(data)).then(
-			(response: any) => {
-				profileUpdate(data)
-			},
-			(error: any) => console.log(error),
-		)
+		await post_editProfile(toJsonRpAcc(data))
+			.then(
+				(response: any) => {
+					profileUpdate(data)
+				},
+				(error: any) => console.log(error),
+			)
+			.finally(() => set_loading(false))
 	}
 
 	return !R.isEmpty(current_user) ? (
 		<ErrorBoundary>
+			{loading && <Spinner />}
 			<div className="grid grid-cols-2 gap-8 p-4 text-start grid-rows-[1fr_max-content_max-content_max-content_max-content_max-content]">
 				<div className="inline-grid col-start-1 col-end-3 gap-2 mx-auto grid-rows-[1fr_max-content_max-content_auto]">
 					<div className="relative m-auto cursor-pointer">
