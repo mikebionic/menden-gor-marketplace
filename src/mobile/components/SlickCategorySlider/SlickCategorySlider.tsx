@@ -11,7 +11,7 @@ const SlickCategorySlider: React.FC = (props: any) => {
 	const { categories } = props
 
 	return (
-		<SlickSlider>
+		<SlickSlider settings={{ slidesToShow: 4 }}>
 			{categories.map((category: any, idx: number) => (
 				<Link
 					to={`${routeConstants.vGrid.route}?category=${category.id}&`}

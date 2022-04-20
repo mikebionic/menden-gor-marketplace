@@ -7,7 +7,7 @@ interface IPropsProductList {
 }
 const MobileProductSlick: React.FC<IPropsProductList> = ({ data }) => {
 	return (
-		<SlickSlider>
+		<SlickSlider settings={{ slidesToShow: 2 }}>
 			{data.map((resource: any, idx: number) => (
 				<MobileProductCard key={idx} data={resource} />
 			))}

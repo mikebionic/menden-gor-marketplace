@@ -39,22 +39,22 @@ export const MobileProductCard = ({ data }: any) => {
 
 	return (
 		<ErrorBoundary>
-			<div className="relative grid items-center xl:w-64 md:w-52 md:h-96 grid-cols-1 mt-4 bg-white dark:bg-darkComponentColor rounded grid-rows-[max-content_30px_auto_auto_auto] xl:h-[26rem] shadow-defaultShadow">
+			<div className="relative grid w-40 h-72 items-center grid-cols-1 mt-4 bg-white dark:bg-darkComponentColor rounded-lg grid-rows-[max-content_30px_auto_auto_auto] shadow-defaultShadow">
 				<Badge.Ribbon
 					text={discount}
 					placement="start"
-					className={`cursor-default xl:top-[82%] md:top-[79%] discount-left ${
+					className={`cursor-default absolute top-[72%] -ml-2 text-[11px] discount-left ${
 						discount ?? 'hidden'
 					}`}
 					color="red"
 				>
-					<div className="items-center justify-center mx-auto my-3 overflow-hidden bg-gray-200 dark:bg-darkBgColor xl:w-56 xl:h-64 md:w-44 md:h-52 ">
+					<div className="items-center justify-center mx-auto my-3 overflow-hidden bg-gray-200 w-36 h-36 dark:bg-darkBgColor ">
 						<div className="relative">
 							{isNew ? <Ribbon /> : null}
 							<span className="absolute top-0 right-0">
 								<WishlistButton resId={id} wishlist={wishlist} />
 							</span>
-							<span className="absolute right-0 xl:top-52 md:top-40">
+							<span className="absolute right-0 top-[6.5rem]">
 								<ProductAddToCart resourceId={id} />
 							</span>
 						</div>
@@ -70,24 +70,24 @@ export const MobileProductCard = ({ data }: any) => {
 				</Badge.Ribbon>
 				<Link to={`${routeConstants.product.route}${id}/${name}`}>
 					<div className="mx-auto my-0 text-center w-max">
-						<h3 className="mx-auto my-0 font-semibold text-black dark:text-darkTextWhiteColor">
+						<h3 className="mx-auto my-0 text-sm font-semibold text-black dark:text-darkTextWhiteColor">
 							{resource_name}
 						</h3>
 						<hr className="w-full dark:border-darkFirstColor" />
 					</div>
 				</Link>
 
-				<p className="mx-4 text-sm text-justify text-gray-400 dark:text-darkText">
+				<p className="mx-2 text-xs text-justify text-gray-400 dark:text-darkText">
 					{categoryName}
 				</p>
-				<StarRate disabled={true} value={ratingValue} />
+				<StarRate disabled={true} value={ratingValue} starSize="text-[10px]" />
 				<div
-					className={`flex items-center py-1 border-t border-gray-300 dark:border-darkFirstColor ${
+					className={`grid grid-flow-col auto-cols-max items-center py-1 border-t border-gray-300 dark:border-darkFirstColor ${
 						discount ? 'justify-between' : 'justify-end'
 					}`}
 				>
 					{discount && (
-						<p className="mx-4 text-sm text-justify text-gray-400 line-through">
+						<p className="ml-2 text-sm text-justify text-gray-400 line-through">
 							{realPrice} {currencySymbol}
 						</p>
 					)}
@@ -98,6 +98,7 @@ export const MobileProductCard = ({ data }: any) => {
 							currencySymbol={currencySymbol}
 							width="w-auto"
 							coloredButton={true}
+							fontSize="text-sm"
 						/>
 					</p>
 				</div>

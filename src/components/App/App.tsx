@@ -59,15 +59,24 @@ const App: React.FC = (props: any) => {
 	//   });
 	// }, [dispatch]);
 
-	const chooseNavbar = window.innerWidth < 768 ? <MobileNavbar /> : <Navbar categories={categories} />
-	const chooseFooter = window.innerWidth < 768 ? <MobileBottomNavigation /> : <Footer />
+	const chooseNavbar =
+		window.innerWidth < 768 ? (
+			<MobileNavbar />
+		) : (
+			<Navbar categories={categories} />
+		)
+	const chooseFooter =
+		window.innerWidth < 768 ? <MobileBottomNavigation /> : <Footer />
 
 	const appResponsive = {
-		mobileView: 'p-[0px_30px]',
+		mobileView: 'p-[0px_30px_80px_30px]',
 		desktopView: 'p-[160px_60px_32px_60px]',
 	}
 
-	const appClasses = window.innerWidth < 768 ? appResponsive.mobileView : appResponsive.desktopView
+	const appClasses =
+		window.innerWidth < 768
+			? appResponsive.mobileView
+			: appResponsive.desktopView
 
 	return (
 		<ErrorBoundary>
@@ -77,9 +86,7 @@ const App: React.FC = (props: any) => {
 					<div className={`alert ${alert.type}`}>{alert.message}</div>
 				)}
 				<Toaster />
-				<div
-					className={`App bg-[#F3F4F8] dark:bg-darkBgColor ${appClasses}`}
-				>
+				<div className={`App bg-[#F3F4F8] dark:bg-darkBgColor ${appClasses}`}>
 					<AppRoutes />
 				</div>
 
