@@ -69,7 +69,7 @@ const App: React.FC = (props: any) => {
 		window.innerWidth < 768 ? <MobileBottomNavigation /> : <Footer />
 
 	const appResponsive = {
-		mobileView: 'p-[0px_30px_80px_30px]',
+		mobileView: 'p-[6rem_30px_50vh_30px]',
 		desktopView: 'p-[160px_60px_32px_60px]',
 	}
 

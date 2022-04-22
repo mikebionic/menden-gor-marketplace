@@ -26,7 +26,7 @@ export const MobileBottomNavigation: React.FC = () => {
 		},
 		{
 			name: 'Categories',
-			route: routeConstants.profile.route,
+			route: routeConstants.categories.route,
 			icon: <AiOutlineUser className="w-7 h-7" />,
 		},
 		{
@@ -41,16 +41,16 @@ export const MobileBottomNavigation: React.FC = () => {
 		},
 		{
 			name: 'Settings',
-			route: routeConstants.login.route,
+			route: routeConstants.settings.route,
 			icon: <FiSettings className="w-7 h-7" />,
 		},
 	]
 	const routesList = [
 		routeConstants.root.route,
-		routeConstants.profile.route,
+		routeConstants.categories.route,
 		routeConstants.checkout.route,
 		routeConstants.wishlist.route,
-		routeConstants.login.route,
+		routeConstants.settings.route,
 	]
 
 	let location = useLocation()

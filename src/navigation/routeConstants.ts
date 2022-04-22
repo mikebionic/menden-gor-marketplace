@@ -52,5 +52,17 @@ export const routeConstants = {
 	checkout: {
 		route: `${ route_prefix }/checkout/`,
 		name: 'Checkout'
+	},
+	categories: {
+		route: `${ route_prefix }/categories/`,
+		name: 'Categories'
+	},
+	settings: {
+		route: `${ route_prefix }/settings`,
+		name: 'Settings'
+	},
+	brands: {
+		route: `${ route_prefix }/brands/`,
+		name: 'Brands'
 	}
 }

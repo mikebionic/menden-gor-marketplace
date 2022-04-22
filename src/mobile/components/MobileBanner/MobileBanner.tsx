@@ -16,7 +16,7 @@ const BannerWithCategory: React.FC = (props: any) => {
 
 	return (
 		<ErrorBoundary>
-			<div className="pt-[35%]">
+			<div>
 				<div>
 					{!!header_slider ? (
 						<MobileCarouselSlider images={header_slider.images} />
