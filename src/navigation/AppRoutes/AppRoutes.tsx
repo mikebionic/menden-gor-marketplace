@@ -15,9 +15,13 @@ import { CheckoutPage } from 'pages/CheckoutPage'
 
 import { MobileMainPage } from 'mobile/pages/MobileMainPage'
 import { MobileCategoryPage } from 'mobile/pages/MobileCategoryPage'
+import MobileVGridPage from 'mobile/pages/MobileVGridPage'
 
 const chooseMainPage =
 	window.innerWidth < 768 ? <MobileMainPage /> : <MainPage />
+
+const chooseVGridPage =
+	window.innerWidth < 768 ? <MobileVGridPage /> : <VGrid />
 
 export const AppRoutes: React.FC = ({ props }: any) => {
 	return (
@@ -46,7 +50,7 @@ export const AppRoutes: React.FC = ({ props }: any) => {
 
 			<Route path={routeConstants.contact.route} element={<ContactPage />} />
 
-			<Route path={routeConstants.vGrid.route} element={<VGrid />} />
+			<Route path={routeConstants.vGrid.route} element={chooseVGridPage} />
 			<Route path={routeConstants.checkout.route} element={<CheckoutPage />} />
 
 			<Route path="*" element={<UserRoutes />} />

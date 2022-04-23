@@ -1,0 +1,121 @@
+$cAccent: #3978EF;
+$cBlack: #121212;
+$cGray: #e6e6e6;
+$cLightGray: rgba(#e6e6e6, 0.1);
+$whiteColor: #fff;
+
+li {
+  list-style: none!important;
+}
+.accordion-list{
+	cursor: pointer;
+  list-style: none!important;
+  margin: 0;
+  padding: 0;
+  background-color: #e6e6e6;
+  max-width: 67rem;
+	width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  // box-shadow:
+  //   0 0 0.8rem 0.1rem rgba(darken($cAccent, 20%), 0.06),
+  //   0 20px 30px -10px rgba(darken($cAccent, 20%), 0.2);
+  
+  &__item{
+    &+&{
+      border-top: 1px solid $cLightGray;
+    }
+  }
+}
+
+.accordion-item{
+  $self: &;
+
+  &--opened{    
+    #{ $self }__icon{
+      transform: rotate(180deg);
+    }
+        
+    #{ $self }__inner{
+      max-height: 100rem;
+      transition-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+      transition-duration: 0.5s;
+      transition-property: max-height;
+    }
+    
+    #{ $self }__content{
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.2s;
+      transition-timing-function: ease-in-out;
+      transition-duration: 0.2s;
+      transition-property: opacity, transform;
+    }
+  }
+
+  &__line{
+    display: block;
+    padding: 0.8rem 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f6fb;
+    z-index: 2;
+    position: relative;
+    &:hover {
+      background-color: #f7f6fb;
+    }
+  }
+  
+  &__title{
+    font-size: 16px;
+    margin: 0;
+    // font-weight: 700;
+    color: $cBlack;
+    &:hover {
+      color: $cBlack;
+    }
+  }
+  
+  &__icon{
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: transform 0.3s ease-in-out;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('./icon/arrow.png');
+    filter: invert(0.8);
+     &:hover {
+      filter: drop-shadow(0 0 8px $cBlack);
+     }
+  }
+  
+  &__inner{
+    max-height: 0;
+    overflow: hidden;
+    text-transform: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    transition-duration: 0.5s;
+    transition-property: max-height;
+    z-index: 1;
+    position: relative;
+    background-color: #f7f6fb;
+  }
+  
+  &__content{
+    opacity: 0;
+    transform: translateY(-1rem);
+    transition-timing-function: linear, ease;
+    transition-duration: 0.1s;
+    transition-property: opacity, transform;
+    transition-delay: 0.5s;
+    padding: 0 1.2rem 1.2rem;
+  }
+  
+  &__paragraph{
+    margin: 0;
+    font-size: 14px;
+    color: $cBlack;
+    font-weight: 300;
+    line-height: 1.3;
+  }
+}
