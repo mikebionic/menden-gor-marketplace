@@ -21,12 +21,16 @@ interface IWishlistProps {
 	resId?: number
 	wishlist?: boolean
 	margin?: string
+	size?: string
+	iconSize?: string
 }
 
 export const WishlistButton: React.FC<IWishlistProps> = ({
 	resId = 0,
 	wishlist = false,
 	margin = 'md:mt-2 md:mr-2 min-phone:mt-1 min-phone:mr-1',
+	size = 'min-phone:h-8 min-phone:w-8 md:h-9 md:w-9',
+	iconSize = 'min-phone:text-xl md:text-2xl',
 }) => {
 	const [active, setActive] = useState(wishlist)
 	useEffect(() => {
@@ -35,16 +39,20 @@ export const WishlistButton: React.FC<IWishlistProps> = ({
 
 	return (
 		<IconLabelButton
-			className={`relative right-0 float-right border border-white dark:border-darkComponentColor min-phone:rounded-full md:rounded-md hover:shadow-sm bg-fullwhite dark:bg-darkComponentColor min-phone:h-8 min-phone:w-8 md:h-9 md:w-9 ${margin}`}
+			className={`relative right-0 float-right border border-white dark:border-darkComponentColor min-phone:rounded-full md:rounded-md hover:shadow-sm bg-fullwhite dark:bg-darkComponentColor ${size} ${margin}`}
 			onClick={() => {
 				setActive(!active)
 				onSave(resId, active)
 			}}
 			icon={
 				active ? (
-					<HeartFilled className="h-full mx-auto my-0 text-red-500 min-phone:text-xl md:text-2xl min-phone:w-full md:w-6 dark:text-darkFirstColor" />
+					<HeartFilled
+						className={`h-full mx-auto my-0 text-red-500 ${iconSize} min-phone:w-full md:w-6 dark:text-darkFirstColor`}
+					/>
 				) : (
-					<HeartOutlined className="h-full mx-auto my-0 text-red-500 min-phone:text-xl md:text-2xl min-phone:w-full md:w-6 dark:text-darkFirstColor" />
+					<HeartOutlined
+						className={`h-full mx-auto my-0 text-red-500 ${iconSize} min-phone:w-full md:w-6 dark:text-darkFirstColor`}
+					/>
 				)
 			}
 		/>

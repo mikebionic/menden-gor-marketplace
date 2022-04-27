@@ -16,12 +16,20 @@ import { CheckoutPage } from 'pages/CheckoutPage'
 import { MobileMainPage } from 'mobile/pages/MobileMainPage'
 import { MobileCategoryPage } from 'mobile/pages/MobileCategoryPage'
 import MobileVGridPage from 'mobile/pages/MobileVGridPage'
+import { MobileCheckoutPage } from 'mobile/pages/MobileCheckoutPage'
+import MobileProductPage from 'mobile/pages/MobileProductPage'
 
 const chooseMainPage =
 	window.innerWidth < 768 ? <MobileMainPage /> : <MainPage />
 
 const chooseVGridPage =
 	window.innerWidth < 768 ? <MobileVGridPage /> : <VGrid />
+
+const chooseCheckoutPage =
+	window.innerWidth < 768 ? <MobileCheckoutPage /> : <CheckoutPage />
+
+const chooseProductPage =
+	window.innerWidth < 768 ? <MobileProductPage /> : <ProductPage />
 
 export const AppRoutes: React.FC = ({ props }: any) => {
 	return (
@@ -43,7 +51,12 @@ export const AppRoutes: React.FC = ({ props }: any) => {
 
 			<Route
 				path={`${routeConstants.product.route}:id/*`}
-				element={<ProductPage />}
+				element={chooseProductPage}
+			/>
+
+			<Route
+				path={routeConstants.cart.route}
+				element={<MobileCheckoutPage />}
 			/>
 
 			<Route path={routeConstants.about.route} element={<AboutPage />} />
@@ -51,7 +64,10 @@ export const AppRoutes: React.FC = ({ props }: any) => {
 			<Route path={routeConstants.contact.route} element={<ContactPage />} />
 
 			<Route path={routeConstants.vGrid.route} element={chooseVGridPage} />
-			<Route path={routeConstants.checkout.route} element={<CheckoutPage />} />
+			<Route
+				path={routeConstants.checkout.route}
+				element={chooseCheckoutPage}
+			/>
 
 			<Route path="*" element={<UserRoutes />} />
 			{/* <Route path="*" element={<PrivateRoute component={UserRoutes} {...props} />} /> */}

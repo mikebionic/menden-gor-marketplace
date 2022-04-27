@@ -58,11 +58,15 @@ export const routeConstants = {
 		name: 'Categories'
 	},
 	settings: {
-		route: `${ route_prefix }/settings`,
+		route: `${ route_prefix }/settings/`,
 		name: 'Settings'
 	},
 	brands: {
 		route: `${ route_prefix }/brands/`,
 		name: 'Brands'
+	},
+	cart: {
+		route: `${ route_prefix }/cart/`,
+		name: 'Cart'
 	}
 }
