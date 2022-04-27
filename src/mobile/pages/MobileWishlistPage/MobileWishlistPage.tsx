@@ -4,7 +4,6 @@ import { Image } from 'common/Image'
 import { StarRate } from 'common/StarRate'
 import { PriceButton } from 'common/PriceButton'
 import { ProductAddToCart } from 'components/ProductCard'
-import { MdClose } from 'react-icons/md'
 
 const styles = {
 	isActiveClass:

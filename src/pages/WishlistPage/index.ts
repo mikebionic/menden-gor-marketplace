@@ -1,1 +1,3 @@
-export * from './WishlistPage'
+import WishlistPage from './WishlistPage'
+
+export { WishlistPage }

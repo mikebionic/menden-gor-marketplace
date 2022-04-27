@@ -5,25 +5,28 @@ import { resourceConstants as actionConstants } from 'sapredux/constants'
 const initialState = {
 	loading: false,
 	error: false,
-	ids: []
+	ids: [],
 }
 
 interface IAction {
-	type: string,
+	type: string
 	payload: Array<any>
 }
 
-export const resourcesPage = (state = initialState, {type, payload}: IAction) => {
+export const resourcesPage = (
+	state = initialState,
+	{ type, payload }: IAction,
+) => {
 	switch (type) {
 		case actionConstants.FETCH_SUCCESS:
 			return R.mergeRight(state, {
-				ids: R.pluck('id', payload)
+				ids: R.pluck('id', payload),
 			})
 
 		case actionConstants.LOAD_MORE_SUCCESS:
 			const ids = R.pluck('id', payload)
 			return R.mergeRight(state, {
-				ids: R.concat(state.ids, ids)
+				ids: R.concat(state.ids, ids),
 			})
 
 		default:
@@ -31,13 +34,16 @@ export const resourcesPage = (state = initialState, {type, payload}: IAction) =>
 	}
 }
 
-export const discountResourceIds = (state = initialState, {type, payload}: IAction) => {
+export const discountResourceIds = (
+	state = initialState,
+	{ type, payload }: IAction,
+) => {
 	switch (type) {
 		case actionConstants.DISCOUNT_FETCH_SUCCESS:
 			return R.mergeRight(state, {
 				loading: false,
 				error: false,
-				ids: R.pluck('id', payload)
+				ids: R.pluck('id', payload),
 			})
 
 		case actionConstants.DISCOUNT_FETCH_START:
@@ -51,19 +57,45 @@ export const discountResourceIds = (state = initialState, {type, payload}: IActi
 	}
 }
 
-export const featuredResourceIds = (state = initialState, {type, payload}: IAction) => {
+export const featuredResourceIds = (
+	state = initialState,
+	{ type, payload }: IAction,
+) => {
 	switch (type) {
 		case actionConstants.FEATURED_FETCH_SUCCESS:
 			return R.mergeRight(state, {
 				loading: false,
 				error: false,
-				ids: R.pluck('id', payload)
+				ids: R.pluck('id', payload),
 			})
 
 		case actionConstants.FEATURED_FETCH_START:
 			return R.mergeRight(state, { loading: true, error: false })
 
 		case actionConstants.FEATURED_FETCH_FAILURE:
+			return R.mergeRight(state, { loading: false, error: true })
+
+		default:
+			return state
+	}
+}
+
+export const wishlistResourceIds = (
+	state = initialState,
+	{ type, payload }: IAction,
+) => {
+	switch (type) {
+		case actionConstants.WISHLIST_FETCH_SUCCESS:
+			return R.mergeRight(state, {
+				loading: false,
+				error: false,
+				ids: R.pluck('id', payload),
+			})
+
+		case actionConstants.WISHLIST_FETCH_START:
+			return R.mergeRight(state, { loading: true, error: false })
+
+		case actionConstants.WISHLIST_FETCH_FAILURE:
 			return R.mergeRight(state, { loading: false, error: true })
 
 		default:

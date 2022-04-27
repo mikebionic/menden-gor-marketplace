@@ -18,7 +18,7 @@ export const GoogleAuth = () => {
 
 			let payload = {
 				email: googleData.profileObj.email,
-				username: googleData.profileObj.givenName,
+				username: googleData.profileObj.email.split('@')[0],
 				fullName: googleData.profileObj.name,
 				firstName: googleData.profileObj.givenName,
 				lastName: googleData.profileObj.familyName,

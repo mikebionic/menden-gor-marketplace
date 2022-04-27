@@ -5,16 +5,41 @@
 		"categories": "Categories",
 		"users": "Users",
 		"orders": "Orders",
+		"order": "Order",
 		"products": "Products",
 		"settings": "Settings",
 		"pictures": "Pictures",
 		"status": "Status",
+		"profile": "Profile",
+		"wishlist": "Wishlist",
+		"contact": "Contact",
+		"profile_edit": "Profile Edit",
+		"cart": "Cart",
 		"login": "Login",
-		"logout": "Logout"
+		"logout": "Logout",
+		"home": "Home",
+		"brands": "Brands",
+		"featured_products": "Featured products",
+		"discount_products": "Discount products",
+
+		"price": "Price",
+		"action": "Action",
+		"image": "Image",
+		"name": "Name",
+		"description": "Description",
+		"search": "Search",
+		"save": "Save"
 	},
 	"auth": {
 		"username": "Username",
 		"password": "Password",
-		"login": "Login"
+		"email": "E-mail",
+		"phone_number": "Phone number",
+		"name": "Name",
+		"address": "Address",
+		"full_name": "Full name",
+		"zip": "Zip",
+		"web_address": "Web Address",
+		"fax": "Fax"
 	}
 }
