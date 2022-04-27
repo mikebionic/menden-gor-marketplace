@@ -1,14 +1,9 @@
-import { routeConstants } from 'navigation'
-import { NavLink } from 'react-router-dom'
 import { ErrorBoundary } from 'modules/errors'
 
 import { Image } from 'common/Image'
 import { StarRate } from 'common/StarRate'
 import { PriceButton } from 'common/PriceButton'
 import { ProductAddToCart } from 'components/ProductCard'
-import { connect } from 'react-redux'
-import { fetchResourceById } from 'sapredux/actions'
-import { getResourceById } from 'sapredux/selectors'
 
 const styles = {
 	isActiveClass:
