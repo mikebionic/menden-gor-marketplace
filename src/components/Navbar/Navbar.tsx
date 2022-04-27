@@ -1,23 +1,23 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { BsMoon } from 'react-icons/bs'
 import { FaRegHeart } from 'react-icons/fa'
-
-import { Cart, CartButton } from 'components/Cart'
-import { ErrorBoundary } from 'modules/errors'
-import { routeConstants } from 'navigation'
-import { Search } from 'components/Search'
-import { IconLabelButton } from 'common/IconLabelButton'
-import LangButton from 'components/LangButton'
-import CurrencyButton from 'components/CurrencyButton'
-import { CategoryList } from 'common/CategoryList'
-import { CategoryListItem } from 'common/CategoryListItem'
-import { Transition } from '@headlessui/react'
-import ClickAwayListener from '@material-ui/core/ClickAwayListener'
-import NavbarProfileDropdown from 'components/NavbarProfileDropdown'
 import { MdSort } from 'react-icons/md'
 import { BsSun } from 'react-icons/bs'
-import { get_local_data_by_key, set_local_data_by_key } from 'sapredux/helpers'
+import { Transition } from '@headlessui/react'
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+
+import { routeConstants } from 'navigation'
+import { Cart, CartButton } from 'components/Cart'
+import { Search } from 'components/Search'
+import LangButton from 'components/LangButton'
+import CurrencyButton from 'components/CurrencyButton'
+import NavbarProfileDropdown from 'components/NavbarProfileDropdown'
+import { ErrorBoundary } from 'modules/errors'
+import { IconLabelButton } from 'common/IconLabelButton'
+import { CategoryListItem } from 'common/CategoryListItem'
+import logo_white from 'common/images/logo_white.svg'
+import { useTranslation } from 'react-i18next'
 
 const mobileResponsive = {
 	mobileView: 'fixed bottom-0 z-[100] w-full bg-white',
@@ -30,6 +30,7 @@ const classes =
 		: mobileResponsive.desktopView
 
 export const Navbar = (props: any) => {
+	const { t } = useTranslation()
 	const { categories } = props
 	const [darkMode, setDarkMode] = useState(
 		localStorage.getItem('dark-theme') || '0',
@@ -37,6 +38,12 @@ export const Navbar = (props: any) => {
 	const [cartOpen, setCartOpen] = useState(false)
 	const [dropdownState, onDropdownStateChange] = useState(false)
 	const [categoryDropdownState, onCategoryDropdownStateChange] = useState(false)
+
+	const location = useLocation()
+	useEffect(() => {
+		onCategoryDropdownStateChange(false)
+		setCartOpen(false)
+	}, [location.pathname])
 
 	useEffect(() => {
 		if (parseInt(darkMode)) {
@@ -76,12 +83,9 @@ export const Navbar = (props: any) => {
 				<header className="top-0 left-0 grid w-full h-20 grid-rows-1 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight dark:bg-gradient-to-r dark:from-darkComponentColor dark:to-darkComponentColor">
 					{/* first row */}
 					<div className="inline-grid items-center w-full grid-rows-1 mx-auto my-2 xl:grid-cols-[15rem_50rem_8rem] md:grid-cols-[auto_auto_auto] 2xl::grid-cols-[auto_auto_auto] 3xl:grid-cols-[auto_auto_auto] 3xl:grid-cols- 3xl:gap-24 2xl:gap-16">
-						<div className="w-24 h-5 mx-auto my-0">
+						<div className="w-36 h-5 mx-auto my-0">
 							<Link to={routeConstants.root.route}>
-								<img
-									src="https://w7.pngwing.com/pngs/925/348/png-transparent-logo-online-and-offline-e-online-design-text-logo-online-and-offline.png"
-									alt="logo"
-								/>
+								<img src={logo_white} alt="logo" />
 							</Link>
 						</div>
 						<Search />
@@ -99,7 +103,7 @@ export const Navbar = (props: any) => {
 									icon={
 										<MdSort className="text-2xl text-white dark:text-darkTextWhiteColor" />
 									}
-									label="Categories"
+									label={t('common.categories')}
 									onClick={() =>
 										onCategoryDropdownStateChange(
 											(categoryDropdownState) => !categoryDropdownState,

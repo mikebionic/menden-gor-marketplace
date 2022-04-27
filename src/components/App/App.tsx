@@ -14,10 +14,8 @@ import { ErrorBoundary } from 'modules/errors'
 import { Navbar } from 'components/Navbar'
 import { Footer } from 'components/Footer'
 
-// import { alertActions } from 'sapredux/actions';
 import { fetchCategories, fetchBrands } from 'sapredux/actions'
 import { getCategories } from 'sapredux/selectors'
-import { Spinner } from 'modules/loaders'
 import { MobileNavbar } from 'mobile/components/MobileNavbar'
 import { MobileBottomNavigation } from 'mobile/components/MobileBottomNavigation'
 
@@ -51,14 +49,6 @@ const App: React.FC = (props: any) => {
 	}, [fetchCategories, fetchBrands])
 
 	const alert = useSelector((state: RootStateOrAny) => state.alert)
-	// const dispatch = useDispatch();
-
-	// useEffect(() => {
-	//   history.listen((location: any) => {
-	//     dispatch(alertActions.clear());
-	//   });
-	// }, [dispatch]);
-
 	const chooseNavbar =
 		window.innerWidth < 768 ? (
 			<MobileNavbar />
