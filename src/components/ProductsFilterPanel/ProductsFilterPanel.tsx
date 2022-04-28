@@ -44,7 +44,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 					</b>
 					<div>
 						<p className="text-black dark:text-darkTextWhiteColor">
-							Baha aralyk:{' '}
+							{t('common.price_range')}:{' '}
 						</p>
 					</div>
 
@@ -95,7 +95,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 					</b>
 					<div className="grid grid-cols-iconReverse">
 						<p className="text-black dark:text-darkTextWhiteColor">
-							Baha uludan kica
+							{t('common.price_high')}
 						</p>
 						<Switch
 							checked={filters.sort === 'price_high' ? true : false}
@@ -106,7 +106,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 					</div>
 					<div className="grid grid-cols-iconReverse">
 						<p className="text-black dark:text-darkTextWhiteColor">
-							Baha kiciden ula
+							{t('common.price_low')}
 						</p>
 						<Switch
 							checked={filters.sort === 'price_low' ? true : false}
@@ -136,7 +136,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 					</div>
 					<div className="grid grid-cols-iconReverse">
 						<p className="text-black dark:text-darkTextWhiteColor">
-							Kop satylanlar
+							{t('common.top_sale')}
 						</p>
 						<Switch
 							checked={filters.sort === 'rated' ? true : false}
@@ -148,7 +148,7 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 				</div>
 				<div className="w-56 px-2 py-2 my-4 rounded-lg bg-fullwhite dark:bg-darkComponentColor h-80">
 					<b className="relative text-base text-black bottom-1 dark:text-darkTextWhiteColor">
-						Brands:
+						{t('common.brands')}:
 					</b>
 					<br />
 					<ul className="inline-block w-full h-full pl-0 overflow-y-scroll list-none max-h-60">
