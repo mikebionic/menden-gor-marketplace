@@ -63,12 +63,6 @@ const MobileWishlistPage = ({ data }: any) => {
 										discount ? 'justify-between' : 'justify-between'
 									}`}
 								>
-									{discount && (
-										<p className="mx-4 text-xs text-justify text-gray-400 line-through">
-											{realPrice} {currencySymbol}
-										</p>
-									)}
-
 									<p className="mx-4 text-sm text-justify">
 										<PriceButton
 											priceValue={priceValue}
