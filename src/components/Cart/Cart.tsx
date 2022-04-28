@@ -44,6 +44,8 @@ export const Cart: React.FC<ICartProps> = ({
 		setOpen(false)
 	}, [location.pathname])
 
+	console.log('ITEMMSSSSSS', items)
+
 	return (
 		<ErrorBoundary>
 			<Transition.Root show={open} as={Fragment}>

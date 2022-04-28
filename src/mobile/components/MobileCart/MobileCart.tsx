@@ -1,92 +1,92 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import { PriceButton } from 'common/PriceButton'
-import { StarRate } from 'common/StarRate'
-import { ProductAddToCart } from 'components/ProductCard'
 import { ErrorBoundary } from 'modules/errors'
-import { MdClose } from 'react-icons/md'
-import { Image } from 'common/Image'
+import { getCartItems, getTotalCount } from 'sapredux/selectors'
+import {
+	resourceAddedToCart,
+	resourceAllRemovedFromCart,
+	resourceRemovedFromCart,
+} from 'sapredux/actions'
+import { connect } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { Link, useLocation } from 'react-router-dom'
+import { MobileCartRow } from 'mobile/components/MobileCart'
+import { routeConstants } from 'navigation'
+import { getCurrentCurrency } from 'sapredux/helpers'
 
-const MobileCart = ({ data }: any) => {
-	console.log('FUCKKKKKKKKKKKK', data)
+interface IMobileCartProps {
+	open?: any
+	setOpen?: any
+	items?: any
+	totalCount?: any
+	totalPrice?: any
+	onIncrease?: any
+	onDecrease?: any
+	onDelete?: any
+}
+
+const MobileCart: React.FC<IMobileCartProps> = ({
+	items,
+	totalCount,
+	totalPrice,
+	onIncrease,
+	onDecrease,
+	onDelete,
+}) => {
+	const { t } = useTranslation()
+	const location = useLocation()
+
 	return (
 		<ErrorBoundary>
-			<div className="grid grid-flow-row gap-4 pt-4 auto-rows-max">
-				{data.map(
-					(
-						{
-							id,
-							name,
-							description,
-							image,
-							priceValue,
-							ratingValue,
-							discount,
-							realPrice,
-							discountValue,
-							currencySymbol,
-						}: any,
-						idx: number,
-					) => (
-						<div className="relative grid grid-cols-[auto_1fr] items-center gap-2 w-full h-28 p-2 rounded-md bg-fullwhite dark:bg-darkComponentColor shadow-defaultShadow">
-							<MdClose className="absolute text-base text-gray-400 top-2 right-2" />
-							<div className="w-20 h-20 bg-gray-200 dark:bg-darkBgColor">
-								<Image
-									src={image}
-									alt={`${name} - ${description}`}
-									className="object-contain object-center w-full h-full"
-								/>
-							</div>
-							<div className="grid grid-flow-row gap-1 auto-rows-max">
-								<div>
-									<h1 className="font-bold text-center text-black text-gradient">
-										{name}
-									</h1>
-									<div className="grid grid-flow-col gap-2 auto-cols-max">
-										<StarRate
-											className="px-0"
-											starSize="text-[9px]"
-											value={4}
-										/>
-										{/* <p className="text-base text-[#6B6B6B] cursor-default">
-                      100 Teswir
-                    </p> */}
-									</div>
-								</div>
-								<div
-									className={`grid grid-flow-col pt-1 auto-cols-max items-center border-t border-gray-300 dark:border-darkFirstColor ${
-										discount ? 'justify-between' : 'justify-between'
-									}`}
-								>
-									{discount && (
-										<p className="mx-4 text-xs text-justify text-gray-400 line-through">
-											{realPrice} {currencySymbol}
-										</p>
-									)}
-
-									<p className="mx-4 text-sm text-justify">
-										<PriceButton
-											priceValue={priceValue}
-											currencySymbol={currencySymbol}
-											width="w-auto"
-											coloredButton={true}
-											fontSize="text-sm"
-										/>
-									</p>
-									<ProductAddToCart
-										resourceId={id}
-										withCounter={true}
-										margin="m-0"
-										size="w-8 h-8"
+			<div className="">
+				<div className="mt-8">
+					<div className="flow-root">
+						<ul role="list" className="-my-6 divide-y divide-gray-200">
+							{items.map((item: any, idx: number) => (
+								<li key={idx}>
+									<MobileCartRow
+										key={idx}
+										item={item}
+										onIncrease={onIncrease}
+										onDecrease={onDecrease}
+										onDelete={onDelete}
 									/>
-								</div>
-							</div>
-						</div>
-					),
-				)}
+								</li>
+							))}
+						</ul>
+					</div>
+				</div>
+				<div className="px-4 py-6 border-t border-gray-200 sm:px-6">
+					<div className="mt-6">
+						<Link
+							to={routeConstants.checkout.route}
+							className="grid items-center justify-between grid-flow-col px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm auto-cols-max dark:text-darkTextWhiteColor bg-firstColorGradientFromDark hover:bg-socialBarItemHover dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:text-white"
+						>
+							{t('common.checkout')}
+							<p className="">
+								{totalPrice} {getCurrentCurrency().symbol}
+							</p>
+						</Link>
+					</div>
+				</div>
 			</div>
 		</ErrorBoundary>
 	)
 }
 
-export default MobileCart
+const mapStateToProps = (state: any) => {
+	const totalData = getTotalCount(state)
+	return {
+		items: getCartItems(state),
+		totalCount: totalData.totalCount,
+		totalPrice: totalData.totalPrice,
+	}
+}
+
+const mapDispatchToProps = {
+	onIncrease: resourceAddedToCart,
+	onDecrease: resourceRemovedFromCart,
+	onDelete: resourceAllRemovedFromCart,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MobileCart)
