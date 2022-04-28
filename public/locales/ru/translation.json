@@ -31,6 +31,8 @@
 		"didnt_receive_code": "Didn't receive code?",
 		"verify_success": "Successfully verified!",
 		"enter_email_address": "Введите адрес эл.почты",
+		"input_phone_number": "Please input your phone number!",
+		"passwords_dont_match": "The two passwords that you entered do not match!",
 		"attempts_exceeded": "Попытки закончились!",
 		"resend": "Resend",
 		"error": "Error",

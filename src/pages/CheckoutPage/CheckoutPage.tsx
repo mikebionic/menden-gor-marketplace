@@ -118,7 +118,8 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 					)
 					.finally(() => set_loading(false))
 			} else {
-				handleOnlineCheckout(inputs).finally(() => set_loading(false))
+				//!!!TODO: online checout
+				//handleOnlineCheckout(inputs).finally(() => set_loading(false))
 			}
 		} catch (e: any) {
 			errorSwal(e.toString())
@@ -295,7 +296,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 						onChange={(id: any) => handleKeyValueChange('pmId', id)}
 					/>
 
-					{inputs.pmId === 2 && (
+					{/*{inputs.pmId === 2 && (
 						<OnlinePaymentMethods
 							id={inputs.online_payment_id}
 							name={inputs.online_payment_method}
@@ -304,7 +305,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 								handleKeyValueChange('online_payment_method', name)
 							}}
 						/>
-					)}
+					)}*/}
 
 					<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
 						Name:

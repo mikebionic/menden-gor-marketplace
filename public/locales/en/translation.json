@@ -25,6 +25,8 @@
 		"fill_the_blank": "Fill the blank",
 		"input_password": "Please input your Password!",
 		"input_username": "Please input your Username!",
+		"input_phone_number": "Please input your phone number!",
+		"passwords_dont_match": "The two passwords that you entered do not match!",
 		"attempts_exceeded": "Attempts exceeded!",
 		"or": "Or",
 		"request_sent": "Request successfully sent",
