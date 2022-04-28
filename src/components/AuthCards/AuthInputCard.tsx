@@ -9,8 +9,10 @@ import { authService } from 'sapredux/services'
 import { showToastMessage } from 'sapredux/helpers'
 import { Spinner } from 'modules/loaders'
 import { GoogleAuth } from 'components/GoogleAuth'
+import { useTranslation } from 'react-i18next'
 
 export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
+	const { t } = useTranslation()
 	const [authMethod, set_authMethod] = useState('email')
 	const [credentials, set_credentials] = useState('')
 	const [loading, set_loading] = useState(false)
@@ -56,7 +58,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 	const handleSuccess = (response: any) => {
 		showToastMessage({
 			type: 'success',
-			message: 'Request successfully sent!',
+			message: t('common.request_sent'),
 			position: 'center-top',
 		})
 		const newValidationData = {
@@ -77,11 +79,11 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 			<div className="grid w-full grid-flow-row gap-4 2xl:my-32 place-content-center auto-cols-max">
 				<div className="text-center cursor-default">
 					<h2 className="text-3xl font-semibold text-textColorOrange dark:text-darkFirstColor">
-						Welcome!!!
+						{t('common.welcome')}!
 					</h2>
 				</div>
 				<div className="text-center text-lg text-[#606060] dark:text-darkText cursor-default">
-					<p>Giris usulyny saylan:</p>
+					<p>{t('common.choose_method')}:</p>
 				</div>
 				<div className="inline-grid grid-flow-col gap-4 auto-cols-max place-content-center">
 					<div
@@ -112,14 +114,14 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 					{authMethod === 'email' && (
 						<div className="inline-grid grid-flow-row gap-1 auto-rows-auto">
 							<p className="text-base ml-1 text-[#606060] dark:text-darkTextWhiteColor cursor-default">
-								Email address:
+								{t('auth.email')}:
 							</p>
 							<input
 								type="email"
 								name="email"
 								autoFocus
 								required
-								placeholder="Enter your email address"
+								placeholder={t('common.enter_email_address')}
 								className="rounded-lg border dark:text-darkTextWhiteColor border-solid border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent focus:border-textColorOrange dark:focus:border-darkFirstColor dark:placeholder-darkText"
 								onChange={(e) => set_credentials(e.target.value)}
 							/>
@@ -128,7 +130,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 					{authMethod === 'phone_number' && (
 						<div className="inline-grid grid-flow-row gap-1 auto-rows-auto">
 							<p className="text-base ml-1 text-[#606060] cursor-default">
-								Phone number:
+								{t('common.phone_number')}:
 							</p>
 							<input
 								type="number"
@@ -143,7 +145,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 					)}
 
 					<IconLabelButton
-						label="Next"
+						label={t('common.next')}
 						className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] dark:bg-[linear-gradient(266.08deg,#6366f1_1%,#6366f1_100%)] hover:opacity-90 m-auto"
 						labelClassName="m-auto text-white"
 						type="submit"

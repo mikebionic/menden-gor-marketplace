@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, connect } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { useTranslation } from 'react-i18next'
-import { Form, Input, Button, Checkbox } from 'antd'
+import { Form, Input } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
 import { authActions } from 'sapredux/actions'
@@ -42,6 +42,11 @@ const LoginPage: React.FC = (props: any) => {
 	return (
 		<ErrorBoundary>
 			<div className="font-sans text-gray-700">
+				<div className="text-center cursor-default">
+					<h2 className="text-3xl font-semibold text-textColorOrange dark:text-darkFirstColor">
+						{t('common.welcome')}!
+					</h2>
+				</div>
 				<div className="container flex p-12 mx-auto 2xl:h-[50rem]">
 					<div className="w-full max-w-md m-auto">
 						<div className="overflow-hidden shadow-defaultShadow bg-glass rounded-2xl backdrop-filter backdrop-blur-glass">
@@ -56,7 +61,7 @@ const LoginPage: React.FC = (props: any) => {
 								<Form.Item
 									name="username"
 									rules={[
-										{ required: true, message: 'Please input your Username!' },
+										{ required: true, message: t('common.input_username') },
 									]}
 								>
 									<Input
@@ -76,7 +81,7 @@ const LoginPage: React.FC = (props: any) => {
 								<Form.Item
 									name="password"
 									rules={[
-										{ required: true, message: 'Please input your Password!' },
+										{ required: true, message: t('common.input_username') },
 									]}
 								>
 									<Input
@@ -91,44 +96,33 @@ const LoginPage: React.FC = (props: any) => {
 										className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor dark:text-darkTextWhiteColor hover:border-textColorOrange dark:hover:border-darkFirstColor"
 									/>
 								</Form.Item>
+								<GoogleAuth />
 								<Form.Item>
-									<div className="grid grid-flow-col gap-2 auto-cols-max place-items-center">
-										<input
-											name="remember"
-											type="checkbox"
-											className="w-4 h-4 bg-gray-100 cursor-pointer text-textColorOrange dark:text-darkFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 border-[#E6E6E6] dark:border-darkFirstColor text-center focus:ring-offset-transparent focus:ring-transparent"
-										/>
-										<p className="cursor-default dark:text-darkTextWhiteColor">
-											Remember me
-										</p>
-									</div>
-
 									<a
 										href="/"
 										className="float-right hover:text-textColorOrange dark:hover:text-darkFirstColor dark:text-darkTextWhiteColor"
 									>
-										Forgot password
+										{t('auth.forgot_password')}
 									</a>
 								</Form.Item>
 
 								<Form.Item className="h-auto">
 									<IconLabelButton
-										label={t('auth.login')}
+										label={t('common.login')}
 										className="h-11 rounded-lg w-full bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] dark:bg-[linear-gradient(266.08deg,#6366f1_1%,#6366f1_100%)] hover:opacity-90 m-auto"
 										labelClassName="m-auto text-white"
 										type="primary"
 										htmlType="submit"
 									/>
 									<div className="mt-2 dark:text-darkTextWhiteColor">
-										Or{' '}
+										{t('common.or')}{' '}
 										<a
 											href="/"
 											className="hover:text-textColorOrange dark:hover:text-darkFirstColor"
 										>
-											register now!
+											{t('auth.register_now')}
 										</a>
 									</div>
-									<GoogleAuth />
 								</Form.Item>
 							</Form>
 						</div>

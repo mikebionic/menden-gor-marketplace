@@ -15,6 +15,7 @@ import { getTotalCount, getCartItems } from 'sapredux/selectors'
 import { ErrorBoundary } from 'modules/errors'
 import { routeConstants } from 'navigation'
 import { getCurrentCurrency } from 'sapredux/helpers'
+import { useTranslation } from 'react-i18next'
 
 interface ICartProps {
 	open?: any
@@ -37,6 +38,7 @@ export const Cart: React.FC<ICartProps> = ({
 	onDecrease,
 	onDelete,
 }) => {
+	const { t } = useTranslation()
 	const location = useLocation()
 	useEffect(() => {
 		setOpen(false)
@@ -77,7 +79,7 @@ export const Cart: React.FC<ICartProps> = ({
 										<div className="flex-1 px-4 py-6 overflow-y-auto sm:px-6">
 											<div className="flex items-start justify-between">
 												<Dialog.Title className="text-lg font-medium text-gray-900 dark:text-darkTextWhiteColor">
-													Shopping cart
+													{t('common.shopping_cart')}
 												</Dialog.Title>
 												<div className="flex items-center ml-3 h-7">
 													<button
@@ -117,13 +119,13 @@ export const Cart: React.FC<ICartProps> = ({
 										<div className="px-4 py-6 border-t border-gray-200 sm:px-6">
 											<div className="flex justify-between text-base font-medium text-gray-900">
 												<p className="text-black dark:text-darkTextWhiteColor">
-													Subtotal
+													{t('common.subtotal')}
 												</p>
 												<p className="text-black dark:text-darkTextWhiteColor">
 													{totalPrice} {getCurrentCurrency().symbol}
 												</p>
 												<p className="text-black dark:text-darkTextWhiteColor">
-													Count: {totalCount}
+													{t('common.subtotal')}: {totalCount}
 												</p>
 											</div>
 											<div className="mt-6">
@@ -131,7 +133,7 @@ export const Cart: React.FC<ICartProps> = ({
 													to={routeConstants.checkout.route}
 													className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark hover:bg-socialBarItemHover dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:text-white"
 												>
-													Checkout
+													{t('common.checkout')}
 												</Link>
 											</div>
 										</div>
