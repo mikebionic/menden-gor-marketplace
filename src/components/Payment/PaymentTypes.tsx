@@ -14,14 +14,14 @@ export const PaymentTypes = ({ id, onChange }: any) => {
 		<ErrorBoundary>
 			{data.map(({ id, name, description }: any, idx: number) => (
 				<div
-					className="grid grid-flow-col gap-0 cursor-pointer grid-rows-OrderLine grid-cols-OrderLine"
+					className="grid grid-flow-col gap-0 text-justify cursor-pointer place-content-start md:grid-rows-OrderLine md:grid-cols-OrderLine"
 					key={idx}
 					onClick={() => {
 						set_current_type_id(id)
 						onChange(id)
 					}}
 				>
-					<div className="row-span-3 p-4 m-auto">
+					<div className="row-span-3 m-auto md:p-4 min-phone:p-3">
 						<input
 							className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-firstColorGradientFromDark dark:text-darkFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange dark:border-darkFirstColor"
 							type="radio"

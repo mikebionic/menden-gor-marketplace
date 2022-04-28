@@ -22,14 +22,14 @@ export const PaymentMethods = ({ id, onChange }: any) => {
 				({ id, name, description }: any, idx: number) =>
 					!(currency_code === 'USD' && id === 2) && (
 						<div
-							className="grid grid-flow-col gap-0 cursor-pointer grid-rows-OrderLine grid-cols-OrderLine"
+							className="grid grid-flow-col gap-0 text-justify cursor-pointer place-content-start md:grid-rows-OrderLine md:grid-cols-OrderLine"
 							key={idx}
 							onClick={() => {
 								set_current_method_id(id)
 								onChange(id)
 							}}
 						>
-							<div className="row-span-3 p-4 m-auto">
+							<div className="row-span-3 m-auto md:p-4 min-phone:p-3">
 								<input
 									className="w-3 h-3 my-auto transform scale-125 cursor-pointer text-firstColorGradientFromDark dark:text-darkFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange dark:border-darkFirstColor"
 									type="radio"
@@ -67,7 +67,7 @@ export const OnlinePaymentMethods = ({ id, name, onChange }: any) => {
 				online_pm_data.map(({ id, name, image }: any, idx: number) => (
 					<div
 						key={idx}
-						className="grid md:grid-flow-col auto-cols-max xl:grid-cols-[max-content_1fr_max-content] gap-4 place-items-center ml-10 cursor-pointer"
+						className="grid grid-flow-col xl:grid-cols-[max-content_1fr_max-content] text-justify gap-4 place-content-start place-items-center md:ml-10 min-phone:ml-6 cursor-pointer"
 						onClick={() => {
 							set_online_method_id(id)
 							onChange({ id, name })

@@ -31,7 +31,7 @@ export const MobileBottomNavigation: React.FC = () => {
 		},
 		{
 			name: 'Cart',
-			route: routeConstants.checkout.route,
+			route: routeConstants.cart.route,
 			icon: <BiMessageDetail className="w-7 h-7" />,
 		},
 		{
@@ -48,7 +48,7 @@ export const MobileBottomNavigation: React.FC = () => {
 	const routesList = [
 		routeConstants.root.route,
 		routeConstants.categories.route,
-		routeConstants.checkout.route,
+		routeConstants.cart.route,
 		routeConstants.wishlist.route,
 		routeConstants.settings.route,
 	]

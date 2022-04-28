@@ -1,19 +1,14 @@
-import { ErrorBoundary } from 'modules/errors'
+import React from 'react'
 
-import { Image } from 'common/Image'
-import { StarRate } from 'common/StarRate'
 import { PriceButton } from 'common/PriceButton'
+import { StarRate } from 'common/StarRate'
 import { ProductAddToCart } from 'components/ProductCard'
+import { ErrorBoundary } from 'modules/errors'
 import { MdClose } from 'react-icons/md'
+import { Image } from 'common/Image'
 
-const styles = {
-	isActiveClass:
-		'text-firstColorGradientFromDark font-semibold dark:text-darkFirstColor cursor-pointer border-b-2 border-firstColorGradientFromDark dark:border-darkFirstColor hover:text-firstColorGradientFromDark dark:hover:text-darkFirstColor pb-2',
-	defaultClass:
-		'cursor-pointer text-[#C4C4C4] hover:text-firstColorGradientFromDark dark:hover:text-darkFirstColor dark:text-darkTextWhiteColor',
-}
-
-const MobileWishlistPage = ({ data }: any) => {
+const MobileCart = ({ data }: any) => {
+	console.log('FUCKKKKKKKKKKKK', data)
 	return (
 		<ErrorBoundary>
 			<div className="grid grid-flow-row gap-4 pt-4 auto-rows-max">
@@ -93,4 +88,5 @@ const MobileWishlistPage = ({ data }: any) => {
 		</ErrorBoundary>
 	)
 }
-export default MobileWishlistPage
+
+export default MobileCart
