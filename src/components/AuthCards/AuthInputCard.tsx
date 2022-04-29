@@ -98,12 +98,12 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 					>
 						<FaSms className="w-full h-full p-2 text-textColorOrange dark:text-darkFirstColor" />
 					</div>
-					<div
+					{/*<div
 						className="w-11 h-11 bg-fullwhite dark:bg-darkComponentColor rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
 						onClick={() => set_authMethod('google')}
 					>
 						<GrGooglePlus className="w-full h-full p-2 text-textColorOrange dark:text-darkFirstColor" />
-					</div>
+					</div>*/}
 				</div>
 				<GoogleAuth />
 				<form

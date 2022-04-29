@@ -133,7 +133,7 @@ const RegisterRpAccCard = ({
 						scrollToFirstError
 						className="max-w-lg mx-auto"
 					>
-						<Form.Item name="Welayat" label="Welayat">
+						<Form.Item name="Welayat" label={t('auth.district')}>
 							<Select
 								placeholder={t('common.choose_district')}
 								name="district"
@@ -149,7 +149,7 @@ const RegisterRpAccCard = ({
 							</Select>
 						</Form.Item>
 
-						<Form.Item name="Address" label="Address">
+						<Form.Item name="Address" label={t('auth.address')}>
 							<Input
 								className="rounded-lg border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
 								name="address"
@@ -157,7 +157,7 @@ const RegisterRpAccCard = ({
 							/>
 						</Form.Item>
 
-						<Form.Item name="role" label="Sowda roly">
+						<Form.Item name="role" label={t('auth.profile_type')}>
 							<div className="grid grid-flow-col gap-4 auto-cols-max">
 								<div
 									className="grid grid-flow-col gap-2 auto-cols-max"
@@ -170,7 +170,7 @@ const RegisterRpAccCard = ({
 										onChange={() => {}}
 									/>
 									<p className="text-sm text-black dark:text-darkTextWhiteColor">
-										Alyjy
+										{t('auth.customer')}
 									</p>
 								</div>
 								<div
@@ -184,7 +184,7 @@ const RegisterRpAccCard = ({
 										onChange={() => {}}
 									/>
 									<p className="text-sm text-black dark:text-darkTextWhiteColor">
-										Satyjy
+										{t('auth.salesman')}
 									</p>
 								</div>
 							</div>
@@ -192,7 +192,7 @@ const RegisterRpAccCard = ({
 
 						<Form.Item
 							name="webaddress"
-							label="E-mail / Web address"
+							label={`${t('auth.email')} / ${t('auth.web_address')}`}
 							initialValue={inputs.webAddress}
 						>
 							<Input
@@ -204,11 +204,11 @@ const RegisterRpAccCard = ({
 
 						<Form.Item
 							name="password"
-							label="Password"
+							label={t('auth.password')}
 							rules={[
 								{
 									required: true,
-									message: 'Please input your password!',
+									message: t('common.input_password'),
 								},
 							]}
 							hasFeedback
@@ -218,13 +218,13 @@ const RegisterRpAccCard = ({
 
 						<Form.Item
 							name="confirm"
-							label="Confirm Password"
+							label={t('auth.confirm_password')}
 							dependencies={['password']}
 							hasFeedback
 							rules={[
 								{
 									required: true,
-									message: 'Please confirm your password!',
+									message: t('common.confirm_password'),
 								},
 								({ getFieldValue }: any) => ({
 									validator(_: any, value: any) {
@@ -233,9 +233,7 @@ const RegisterRpAccCard = ({
 											return Promise.resolve()
 										}
 										return Promise.reject(
-											new Error(
-												'The two passwords that you entered do not match!',
-											),
+											new Error(t('common.passwords_dont_match')),
 										)
 									},
 								}),
@@ -246,11 +244,11 @@ const RegisterRpAccCard = ({
 
 						<Form.Item
 							name="username"
-							label="Username"
+							label={t('auth.username')}
 							rules={[
 								{
 									required: true,
-									message: 'Please input your username!',
+									message: t('common.input_username'),
 								},
 							]}
 						>
@@ -262,7 +260,7 @@ const RegisterRpAccCard = ({
 						</Form.Item>
 						<Form.Item
 							name="firstName"
-							label="First name"
+							label={t('auth.first_name')}
 							initialValue={inputs.firstName}
 						>
 							<Input
@@ -273,7 +271,7 @@ const RegisterRpAccCard = ({
 						</Form.Item>
 						<Form.Item
 							name="lastName"
-							label="Last name"
+							label={t('auth.last_name')}
 							initialValue={inputs.lastName}
 						>
 							<Input
@@ -285,12 +283,12 @@ const RegisterRpAccCard = ({
 
 						<Form.Item
 							name="phone"
-							label="Phone Number"
+							label={t('auth.phone_number')}
 							initialValue={inputs.homePhoneNumber}
 							rules={[
 								{
 									required: true,
-									message: 'Please input your phone number!',
+									message: t('common.input_phone_number'),
 								},
 							]}
 						>
@@ -304,7 +302,7 @@ const RegisterRpAccCard = ({
 						</Form.Item>
 						<Form.Item
 							name="workPhone"
-							label="Work phone number"
+							label={t('auth.work_phone')}
 							initialValue={inputs.workPhoneNumber}
 						>
 							<Input
@@ -317,7 +315,7 @@ const RegisterRpAccCard = ({
 						</Form.Item>
 						<Form.Item
 							name="Fax"
-							label="Fax"
+							label={t('auth.fax')}
 							initialValue={inputs.workFaxNumber}
 						>
 							<Input
@@ -328,7 +326,11 @@ const RegisterRpAccCard = ({
 								onChange={handleChange}
 							/>
 						</Form.Item>
-						<Form.Item name="zip" label="Zip" initialValue={inputs.zipCode}>
+						<Form.Item
+							name="zip"
+							label={t('auth.zip')}
+							initialValue={inputs.zipCode}
+						>
 							<Input
 								style={{ width: '100%' }}
 								className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
@@ -340,7 +342,7 @@ const RegisterRpAccCard = ({
 
 						<Form.Item {...tailFormItemLayout}>
 							<IconLabelButton
-								label="Hasaba al"
+								label={t('common.register')}
 								className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] dark:bg-[linear-gradient(266.08deg,#6366f1_1%,#6366f1_100%)] hover:opacity-90 m-auto"
 								labelClassName="m-auto text-white"
 								type="primary"

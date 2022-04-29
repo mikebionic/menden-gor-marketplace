@@ -31,6 +31,8 @@
 		"didnt_receive_code": "Barlag kody gelmedimi?",
 		"verify_success": "Üstünlikli barlandy!",
 		"enter_email_address": "E-poçta salgyňyzy giriziň",
+		"input_phone_number": "Please input your phone number!",
+		"passwords_dont_match": "The two passwords that you entered do not match!",
 		"attempts_exceeded": "Synançlaryňyz gutardy!",
 		"resend": "Täzeden iber",
 		"error": "Ýalňyşlyk",
