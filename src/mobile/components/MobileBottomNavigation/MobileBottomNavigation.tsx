@@ -2,10 +2,11 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 import { IoHomeOutline } from 'react-icons/io5'
-import { AiOutlineUser, AiOutlineHeart } from 'react-icons/ai'
-import { BiMessageDetail } from 'react-icons/bi'
+import { AiOutlineHeart } from 'react-icons/ai'
 import { FiSettings } from 'react-icons/fi'
 import { routeConstants } from 'navigation'
+import { RiShoppingBasketLine } from 'react-icons/ri'
+import { BiCategory } from 'react-icons/bi'
 
 import './style.css'
 import { link } from 'fs'
@@ -27,12 +28,12 @@ export const MobileBottomNavigation: React.FC = () => {
 		{
 			name: 'Categories',
 			route: routeConstants.categories.route,
-			icon: <AiOutlineUser className="w-7 h-7" />,
+			icon: <BiCategory className="w-7 h-7" />,
 		},
 		{
 			name: 'Cart',
 			route: routeConstants.cart.route,
-			icon: <BiMessageDetail className="w-7 h-7" />,
+			icon: <RiShoppingBasketLine className="w-7 h-7" />,
 		},
 		{
 			name: 'Wishlist',

@@ -18,6 +18,7 @@ import { MobileCategoryPage } from 'mobile/pages/MobileCategoryPage'
 import MobileVGridPage from 'mobile/pages/MobileVGridPage'
 import { MobileCheckoutPage } from 'mobile/pages/MobileCheckoutPage'
 import MobileProductPage from 'mobile/pages/MobileProductPage'
+import MobileSettingsPage from 'mobile/pages/MobileSettingsPage'
 
 const chooseMainPage =
 	window.innerWidth < 768 ? <MobileMainPage /> : <MainPage />
@@ -47,6 +48,10 @@ export const AppRoutes: React.FC = ({ props }: any) => {
 			<Route
 				path={routeConstants.categories.route}
 				element={<MobileCategoryPage />}
+			/>
+			<Route
+				path={routeConstants.settings.route}
+				element={<MobileSettingsPage />}
 			/>
 
 			<Route
