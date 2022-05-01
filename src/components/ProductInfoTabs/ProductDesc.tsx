@@ -1,19 +1,21 @@
-import React from 'react';
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 
-import { ErrorBoundary } from 'modules/errors';
+import { ErrorBoundary } from 'modules/errors'
 
 interface IProductDesc {
-  fullDescription?: string;
+	fullDescription?: string
 }
 
 export const ProductDesc: React.FC<IProductDesc> = ({ fullDescription }) => {
-  return (
-    <ErrorBoundary>
-      <div className="px-3 py-6">
-        <p className="text-base text-justify font-oxygen text-textLightGray dark:text-darkText">
-          {fullDescription ?? "Full description wasn't written yet..."}
-        </p>
-      </div>
-    </ErrorBoundary>
-  );
-};
+	const { t } = useTranslation()
+	return (
+		<ErrorBoundary>
+			<div className="px-3 py-6">
+				<p className="text-base text-justify font-oxygen text-textLightGray dark:text-darkText">
+					{fullDescription ?? t('common.full_description_empty')}
+				</p>
+			</div>
+		</ErrorBoundary>
+	)
+}
