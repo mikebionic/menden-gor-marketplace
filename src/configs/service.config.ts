@@ -13,7 +13,7 @@ export const serviceConfig = {
 		: 0,
 	routes: {
 		all_categories:
-			process.env.REACT_APP_API_ALL_CATEGORIES_ROUTE ?? '/tbl-dk-categories/',
+			process.env.REACT_APP_API_ALL_CATEGORIES_ROUTE ?? '/v-categories/',
 		all_sliders:
 			process.env.REACT_APP_API_ALL_SLIDERS_ROUTE ?? '/tbl-dk-sliders/',
 		paginated_resources:

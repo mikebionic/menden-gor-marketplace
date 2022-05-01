@@ -1,7 +1,8 @@
 import { serviceConfig } from 'configs'
 import { handleResponse } from 'sapredux/helpers'
 import { all_categories } from './mock_data/category.mock'
-import { fetchWithCred } from 'sapredux/helpers'
+import { transformCategories as transformResponse } from 'sapredux/services/transform_data'
+import { transformFetch, fetchWithCred } from 'sapredux/helpers'
 
 const fetchAll = async () => {
 	if (serviceConfig.useMockApi) {
@@ -16,7 +17,11 @@ const fetchAll = async () => {
 		`${serviceConfig.apiUrl}${serviceConfig.routes.all_categories}`,
 	).then(handleResponse)
 }
+const fetchAll_data = async () => {
+	return await transformFetch(fetchAll, transformResponse)
+}
 
 export const categoryService = {
 	fetchAll,
+	fetchAll_data,
 }

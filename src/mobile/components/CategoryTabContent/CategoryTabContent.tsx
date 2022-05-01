@@ -1,7 +1,8 @@
 import { useLocation } from 'react-router-dom'
 
 import Brands from 'mobile/components/Brands'
-import { Categories } from 'mobile/components/Categories'
+//!!!TODO: this is not a component.. it will work with redux and should be separated
+import Categories from 'mobile/components/Categories'
 
 import { routeConstants } from 'navigation'
 

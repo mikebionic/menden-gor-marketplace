@@ -1,5 +1,14 @@
 export const transformCategories = (data: any) => {
 	return {
+		...transformCategory(data),
+		categories: data.Categories
+			? data.Categories.map((category: any) => transformCategory(category))
+			: [],
+	}
+}
+
+export const transformCategory = (data: any) => {
+	return {
 		id: data.ResCatId,
 		name: data.ResCatName,
 		description: data.ResCatDesc,
