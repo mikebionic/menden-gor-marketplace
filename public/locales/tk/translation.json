@@ -75,7 +75,11 @@
 		"oldest": "Köneler",
 		"top_sale": "Kop satylanlar",
 		"clear": "Poz",
-		"load_more": "Ýene gözle"
+		"load_more": "Ýene gözle",
+		"payment_type": "Töleg tipy",
+		"payment_method": "Töleg usuly",
+		"type_your_name": "Adyňyzy ýazyň",
+		"type_your_description_additional_info": "Düşündiriş: Adresyňyzy ýa-da goşmaça maglumaltary ýazyň"
 	},
 
 	"auth": {
