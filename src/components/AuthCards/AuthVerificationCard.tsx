@@ -160,7 +160,7 @@ export const AuthVerificationCard = ({
 
 	return (
 		<ErrorBoundary>
-			<div className="w-[450px] h-full p-9 m-auto 2xl:my-32 bg-fullwhite dark:bg-darkComponentColor shadow-[1px_1px_4px_rgba(0,0,0,0.25)] rounded-lg ">
+			<div className="container min-phone:w-[350px] md:w-[450px] h-full min-phone:p-4 md:p-9 m-auto 2xl:my-32 bg-fullwhite dark:bg-darkComponentColor shadow-[1px_1px_4px_rgba(0,0,0,0.25)] rounded-lg ">
 				<IoMdArrowRoundBack
 					className="text-xl cursor-pointer text-textColorOrange hover:opacity-80 dark:text-darkFirstColor"
 					onClick={() => onStageChange(1)}
@@ -173,7 +173,7 @@ export const AuthVerificationCard = ({
 						<hr className="w-auto mt-2 h-auto border-[0.1px] border-solid bg-textColorOrange border-textColorOrange dark:border-darkFirstColor" />
 					</div>
 					<div className="text-justify">
-						<p className="text-base text-black dark:text-darkText">
+						<p className="text-black min-phone:text-sm md:text-base dark:text-darkText">
 							{authMethod && authMethod === 'email'
 								? // `Let’s make sure it’s really you. We’ve just sent a text message
 								  // with a fresh verification code to your email ending in
@@ -188,7 +188,7 @@ export const AuthVerificationCard = ({
 						onSubmit={handleSubmit}
 						className="grid w-full gap-4 place-items-center"
 					>
-						<div className="inline-grid grid-flow-col gap-2 auto-cols-max">
+						<div className="inline-grid grid-flow-col min-phone:gap-1 md:gap-2 auto-cols-max">
 							{boxes_list.map(({ id, name, value }: any, idx: number) => (
 								<input
 									key={idx}
@@ -196,7 +196,7 @@ export const AuthVerificationCard = ({
 									autoFocus={id === 1 && true}
 									type="text"
 									autoComplete="off"
-									className="w-[50px] h-[50px] bg-fullwhite focus:outline-none focus:ring-0 focus:ring-offset-0 border-[#E6E6E6] text-center focus:ring-offset-transparent focus:ring-transparent focus:border-textColorOrange border border-solid rounded-lg shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
+									className="min-phone:w-[45px] min-phone:h-[45px] md:w-[50px] md:h-[50px] bg-fullwhite focus:outline-none focus:ring-0 focus:ring-offset-0 border-[#E6E6E6] text-center focus:ring-offset-transparent focus:ring-transparent focus:border-textColorOrange border border-solid rounded-lg shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
 									onChange={(e) => handleVerificationCodeChange(e, id)}
 									value={value}
 									tabIndex={id}

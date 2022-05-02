@@ -46,6 +46,7 @@ export const GoogleAuth = () => {
 				onSuccess={handleLogin}
 				onFailure={handleLogin}
 				cookiePolicy={'single_host_origin'}
+				className="w-full"
 			/>
 		</>
 	)

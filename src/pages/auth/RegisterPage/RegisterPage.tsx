@@ -11,7 +11,7 @@ import {
 } from 'components/AuthCards'
 
 const RegisterPage: React.FC = ({ loggedIn }: any) => {
-	const [stage, set_stage] = useState(1)
+	const [stage, set_stage] = useState(3)
 	const [validationData, set_validationData] = useState({
 		authMethod: '',
 		credentials: '',

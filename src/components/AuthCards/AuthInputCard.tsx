@@ -107,7 +107,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 				</div>
 				<GoogleAuth />
 				<form
-					className="w-[450px] h-[217px] rounded-lg shadow-[1px_1px_4px_rgba(0,0,0,0.3)] p-9 grid grid-flow-row auto-rows-auto gap-4 bg-fullwhite dark:bg-darkComponentColor"
+					className="container min-phone:w-[300px] min-phone:h-[180px] md:w-[450px] md:h-[217px] rounded-lg shadow-[1px_1px_4px_rgba(0,0,0,0.3)] min-phone:p-4 md:p-9 grid grid-flow-row auto-rows-auto gap-4 bg-fullwhite dark:bg-darkComponentColor"
 					onSubmit={(e) => handleSubmit(e)}
 				>
 					{loading && <Spinner />}

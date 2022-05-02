@@ -47,13 +47,13 @@ const LoginPage: React.FC = (props: any) => {
 						{t('common.welcome')}!
 					</h2>
 				</div>
-				<div className="container flex p-12 mx-auto 2xl:h-[50rem]">
+				<div className="container flex min-phone:pt-8 md:p-12 mx-auto 2xl:h-[50rem]">
 					<div className="w-full max-w-md m-auto">
-						<div className="overflow-hidden shadow-defaultShadow bg-glass rounded-2xl backdrop-filter backdrop-blur-glass">
+						<div className="overflow-hidden md:shadow-defaultShadow md:bg-glass rounded-2xl md:backdrop-filter md:backdrop-blur-glass">
 							{loading && <Spinner />}
 							<Form
 								name="normal_login"
-								className="max-w-full p-8 dark:bg-darkComponentColor"
+								className="max-w-full min-phone:p-4 md:p-8 dark:bg-darkComponentColor"
 								initialValues={{ remember: true }}
 								onFinish={handleSubmit}
 								method="GET"

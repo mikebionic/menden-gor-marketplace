@@ -115,7 +115,7 @@ const RegisterRpAccCard = ({
 		<Spinner />
 	) : (
 		<ErrorBoundary>
-			<div className="w-[610px] h-full m-auto p-8 overflow-hidden shadow-[1px_1px_4px_rgba(0,0,0,0.25)] bg-fullwhite dark:bg-darkComponentColor rounded-lg">
+			<div className="container w-[610px] h-full m-auto p-8 overflow-hidden shadow-[1px_1px_4px_rgba(0,0,0,0.25)] bg-fullwhite dark:bg-darkComponentColor rounded-lg">
 				<IoMdArrowRoundBack
 					className="text-xl cursor-pointer text-textColorOrange hover:opacity-80 dark:text-darkFirstColor"
 					onClick={() => onStageChange(1)}

@@ -68,5 +68,9 @@ export const routeConstants = {
 	cart: {
 		route: `${ route_prefix }/cart/`,
 		name: 'Cart'
+	},
+	payment_and_delivery_info: {
+		route: `${ route_prefix }/payment_and_delivery_info/`,
+		name: 'Payment and delivery info'
 	}
 }
