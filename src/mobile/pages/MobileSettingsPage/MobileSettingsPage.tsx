@@ -9,8 +9,8 @@ const MobileSettingsPage = () => {
 	return (
 		<>
 			<div className="grid items-center justify-center grid-flow-col gap-4 text-center auto-cols-fr">
-				<div className="row-span-3 p-4 m-auto rounded-full w-28 h-28 bg-fullwhite shadow-defaultShadow">
-					<Image src="" alt="" imageType="avatar" />
+				<div className="row-span-3 m-auto rounded-full w-28 h-28 bg-fullwhite shadow-defaultShadow">
+					<Image src="" alt="" imageType="avatar" className="rounded-full" />
 				</div>
 				<Link
 					to={routeConstants.login.route}
