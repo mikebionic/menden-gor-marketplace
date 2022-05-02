@@ -75,7 +75,11 @@
 		"oldest": "Oldest",
 		"top_sale": "Top sale",
 		"clear": "Clear",
-		"load_more": "Load more"
+		"load_more": "Load more",
+		"payment_type": "Тип оплаты",
+		"payment_method": "Метод оплаты",
+		"type_your_name": "Напишите свое имя",
+		"type_your_description_additional_info": "Заметка: напишите свой адрес или другую дополнительную информацию"
 	},
 	"auth": {
 		"username": "Пользователь",

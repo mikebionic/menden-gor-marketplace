@@ -14,6 +14,7 @@ import { StarRate } from 'common/StarRate'
 import { Image } from 'common/Image'
 import { MobileProductCard } from 'mobile/components/MobileProductCard'
 import SlickSlider from 'common/SlickSlider'
+import { useTranslation } from 'react-i18next'
 
 const RenderProuct = ({
 	id,
@@ -28,77 +29,80 @@ const RenderProuct = ({
 	wishlist,
 	viewCnt,
 	ratingValue,
-}: any) => (
-	<ErrorBoundary>
-		<div className="grid gap-3 mx-auto grid-flow-row auto-rows-max h-[auto] place-content-center place-items-center">
-			<div className="bg-gray-200 dark:bg-darkBgColor">
-				<Image
-					src={image}
-					alt={`${name} - ${description}`}
-					className="object-contain object-center w-full h-full lg:w-full lg:h-full"
-				/>
-			</div>
-			<div className="inline-grid gap-1 grid-flow-rows auto-rows-max place-items-stretch">
-				<div>
-					<h1 className="py-4 font-bold text-center text-black text-gradient">
-						{name}
-					</h1>
-					<p className="py-1 font-medium text-black place-self-start dark:text-darkTextWhiteColor">
-						Kategoriya: {categoryName}
-					</p>
-					<p className="py-1 font-medium text-black place-self-start dark:text-darkTextWhiteColor">
-						Bahasy: {priceValue} {currencySymbol}
-					</p>
-					<p className="py-1 font-medium text-black place-self-start dark:text-darkTextWhiteColor">
-						Sany: {totBalance}
-					</p>
-					<p className="py-1 font-medium text-black place-self-start dark:text-darkTextWhiteColor">
-						{description}
-					</p>
+}: any) => {
+	const { t } = useTranslation()
+	return (
+		<ErrorBoundary>
+			<div className="grid gap-3 mx-auto grid-flow-row auto-rows-max h-[auto] place-content-center place-items-center">
+				<div className="bg-gray-200 dark:bg-darkBgColor">
+					<Image
+						src={image}
+						alt={`${name} - ${description}`}
+						className="object-contain object-center w-full h-full lg:w-full lg:h-full"
+					/>
 				</div>
-				<div className="grid grid-flow-col gap-4 auto-cols-max">
-					<StarRate className="px-0" starSize="text-sm" value={ratingValue} />
-					{/* <p className="text-base text-[#6B6B6B] cursor-default">
+				<div className="inline-grid gap-1 grid-flow-rows auto-rows-max place-items-stretch">
+					<div>
+						<h1 className="py-4 font-bold text-center text-black text-gradient">
+							{name}
+						</h1>
+						<p className="py-1 font-medium text-black place-self-start dark:text-darkTextWhiteColor">
+							{t('common.category')}: {categoryName}
+						</p>
+						<p className="py-1 font-medium text-black place-self-start dark:text-darkTextWhiteColor">
+							{t('common.price')}: {priceValue} {currencySymbol}
+						</p>
+						<p className="py-1 font-medium text-black place-self-start dark:text-darkTextWhiteColor">
+							{t('common.quantity')}: {totBalance}
+						</p>
+						<p className="py-1 font-medium text-black place-self-start dark:text-darkTextWhiteColor">
+							{description}
+						</p>
+					</div>
+					<div className="grid grid-flow-col gap-4 auto-cols-max">
+						<StarRate className="px-0" starSize="text-sm" value={ratingValue} />
+						{/* <p className="text-base text-[#6B6B6B] cursor-default">
           100 Teswir
         </p> */}
-					<div className="inline-grid grid-flow-col gap-1 cursor-default place-items-center auto-cols-max place-content-center dark:text-darkTextWhiteColor">
-						<ImEye className="text-sm text-textColorOrange dark:text-darkFirstColor" />
-						<p className="text-sm">{viewCnt}</p>
+						<div className="inline-grid grid-flow-col gap-1 cursor-default place-items-center auto-cols-max place-content-center dark:text-darkTextWhiteColor">
+							<ImEye className="text-sm text-textColorOrange dark:text-darkFirstColor" />
+							<p className="text-sm">{viewCnt}</p>
+						</div>
 					</div>
-				</div>
-				<div className="grid grid-flow-col auto-cols-max place-items-center">
-					<p className="text-base text-justify text-gray-400 line-through">
-						{realPrice} {currencySymbol}
-					</p>
-					<div className="w-32">
-						<PriceButton
-							priceValue={priceValue}
-							currencySymbol={currencySymbol}
-							coloredButton={true}
-							width="w-full"
-							padding="p-0"
-							fontSize="text-lg"
-						/>
+					<div className="grid grid-flow-col auto-cols-max place-items-center">
+						<p className="text-base text-justify text-gray-400 line-through">
+							{realPrice} {currencySymbol}
+						</p>
+						<div className="w-32">
+							<PriceButton
+								priceValue={priceValue}
+								currencySymbol={currencySymbol}
+								coloredButton={true}
+								width="w-full"
+								padding="p-0"
+								fontSize="text-lg"
+							/>
+						</div>
 					</div>
-				</div>
-				<hr className="w-auto" />
-				<div className="inline-grid grid-flow-col gap-4 auto-cols-max place-content-end place-items-center">
-					<div className="">
-						<ProductAddToCart
-							resourceId={id}
-							withCounter={true}
-							margin="m-0"
-							size="rounded-full"
-						/>
-					</div>
-					<div>
-						<WishlistButton wishlist={wishlist} margin="m-0" size="w-9 h-9" />
+					<hr className="w-auto" />
+					<div className="inline-grid grid-flow-col gap-4 auto-cols-max place-content-end place-items-center">
+						<div className="">
+							<ProductAddToCart
+								resourceId={id}
+								withCounter={true}
+								margin="m-0"
+								size="rounded-full"
+							/>
+						</div>
+						<div>
+							<WishlistButton wishlist={wishlist} margin="m-0" size="w-9 h-9" />
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</ErrorBoundary>
-)
+		</ErrorBoundary>
+	)
+}
 
 const MobileProductPage = (props: any) => {
 	const { fetchResourceById, resource } = props

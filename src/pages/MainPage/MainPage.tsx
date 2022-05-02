@@ -76,11 +76,11 @@ const MainPage: React.FC = (props: any) => {
 					</>
 				)}
 
-				<div className="grid gap-4 mt-8 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 place-content-start 2xl:place-items-center">
+				{/*<div className="grid gap-4 mt-8 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 place-content-start 2xl:place-items-center">
 					<ResGroup />
 					<ResGroup />
 					<ResGroup />
-				</div>
+				</div>*/}
 				<SocialBar />
 			</div>
 		</ErrorBoundary>

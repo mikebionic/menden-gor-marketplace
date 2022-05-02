@@ -13,8 +13,12 @@ import {
 } from 'sapredux/actions'
 import { getDiscountResources, getFeaturedResources } from 'sapredux/selectors'
 import { Spinner } from 'modules/loaders'
+import { useTranslation } from 'react-i18next'
+import { routeConstants } from 'navigation'
+import { SlickBrandsSlider } from 'components/SlickBrandsSlider'
 
 const MobileMainPage: React.FC = (props: any) => {
+	const { t } = useTranslation()
 	const {
 		featured_resources,
 		discount_resources,
@@ -40,17 +44,41 @@ const MobileMainPage: React.FC = (props: any) => {
 			<ErrorIndicator />
 		)
 
+	const discountProductSlick =
+		!discount_resource_loading && !discount_resource_error ? (
+			<MobileProductSlick data={discount_resources} />
+		) : discount_resource_loading && !discount_resource_error ? (
+			<Spinner />
+		) : (
+			<ErrorIndicator />
+		)
+
 	return (
 		<ErrorBoundary>
-			<div className="">
+			<div>
 				<MobileBanner />
-				<Divider title="Categories" mobile={true} />
+				<Divider title={t('common.categories')} mobile={true} />
 				<SlickCategorySlider />
+
+				<Divider title={t('common.brands')} mobile={true} />
+				<SlickBrandsSlider />
+
 				<div className="grid grid-flow-col gap-4 auto-cols-max">
-					<ResGroup mobile={true} />
-					<ResGroup mobile={true} />
+					{/*<ResGroup mobile={true} />
+					<ResGroup mobile={true} />*/}
 				</div>
-				<Divider title="Just for you" mobile={true} />
+				<Divider
+					title={t('common.just_for_you')}
+					mobile={true}
+					url={`${routeConstants.vGrid.route}/?showDiscounts=1&`}
+				/>
+				{discountProductSlick}
+
+				<Divider
+					title={t('common.new_arrival')}
+					mobile={true}
+					url={`${routeConstants.vGrid.route}`}
+				/>
 				{featuredProductSlick}
 			</div>
 		</ErrorBoundary>

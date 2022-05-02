@@ -22,6 +22,8 @@ import {
 } from 'sapredux/actions'
 import { orderService, otherService } from 'sapredux/services'
 import { toJsonCheckoutOrderInv } from 'sapredux/services/transform_data'
+import { T } from 'ramda'
+import { useTranslation } from 'react-i18next'
 
 interface ICheckoutPage {
 	items?: any
@@ -45,6 +47,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 		user,
 		loggedIn,
 	} = props
+	const { t } = useTranslation()
 	const [loading, set_loading] = useState(false)
 	const [inputs, setInputs] = useState({
 		name: loggedIn ? `${user.username} - ${user.name}` : '',
@@ -273,7 +276,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 				<div className="grid w-full grid-flow-row gap-4 p-4 auto-rows-max shadow-defaultShadow bg-fullwhite dark:bg-darkComponentColor">
 					<div className="grid grid-flow-col auto-cols-max place-content-between">
 						<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
-							Jemi
+							{T('common.total')}
 						</p>
 						<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
 							{totalPrice} {getCurrentCurrency().symbol}
@@ -281,7 +284,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 					</div>
 
 					<p className="text-base font-semibold text-black font-oxygen dark:text-darkTextWhiteColor">
-						Payment type
+						{t('common.payment_type')}
 					</p>
 					<PaymentTypes
 						id={inputs.ptId}
@@ -289,7 +292,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 					/>
 
 					<p className="text-base font-semibold text-black font-oxygen dark:text-darkTextWhiteColor">
-						Payment method
+						{t('common.payment_method')}
 					</p>
 					<PaymentMethods
 						id={inputs.pmId}
@@ -308,10 +311,10 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 					)}*/}
 
 					<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
-						Name:
+						{t('auth.name')}:
 					</p>
 					<Input
-						placeholder="Type your name"
+						placeholder={t('common.type_your_name')}
 						autoFocus
 						type="text"
 						name="name"
@@ -321,7 +324,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 						className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
 					/>
 					<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
-						Phone number:
+						{t('auth.phone_number')}:
 					</p>
 					<Input
 						placeholder="+993"
@@ -337,7 +340,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 					</p>
 					<textarea
 						className="font-oxygen border-[#E6E6E6] w-full rounded resize-none h-24 dark:border-darkBgColor dark:bg-darkBgColor"
-						placeholder="Description: type your address or any additional information."
+						placeholder={t('type_your_description_additional_info')}
 						name="description"
 						value={inputs.description}
 						onChange={handleChange}
@@ -346,7 +349,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 						onClick={handleSubmit}
 						className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:bg-socialBarItemHover hover:text-white"
 					>
-						Checkout
+						{t('common.checkout')}
 					</button>
 				</div>
 			</div>
