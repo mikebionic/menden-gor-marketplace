@@ -127,7 +127,7 @@ export const Cart: React.FC<ICartProps> = ({
 													{totalPrice} {getCurrentCurrency().symbol}
 												</p>
 												<p className="text-black dark:text-darkTextWhiteColor">
-													{t('common.subtotal')}: {totalCount}
+													{t('common.count')}: {totalCount}
 												</p>
 											</div>
 											<div className="mt-6">

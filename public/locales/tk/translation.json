@@ -23,6 +23,13 @@
 		"choose_method": "Görnüşi saýlaň",
 		"verification": "Barlag",
 		"fill_the_blank": "Meýdany dolduryň",
+		"fill_the_required_fields": "Wajyp meýdanlary dolduryň!",
+		"cannot_checkout_an_empty_cart": "Boş sebedi sargyt edip bolanok!",
+		"view_your_orders_in_profile": "Sargytlaryňyzy profil sahypaňyzda görüň",
+		"server_exchange_checkout_error": "Sargyt ýalňyşlygy: maglumat alyş-çalyş ýalňyşlygy",
+		"payment_fail_contact_admins": "Töleg hasabat alyş ýalňyşlygy, administratorlar bilen habarlaşyň ýa-da täzeden synanşyň",
+		"failed_to_checkout": "Sargyt ýalňyşlygy",
+
 		"input_password": "Açar sözi giriziň!",
 		"input_username": "Ulanyjy ady giriziň!",
 		"or": "Ya-da",
@@ -76,10 +83,11 @@
 		"top_sale": "Kop satylanlar",
 		"clear": "Poz",
 		"load_more": "Ýene gözle",
-		"payment_type": "Töleg tipy",
+		"payment_type": "Töleg görnüşi",
 		"payment_method": "Töleg usuly",
 		"type_your_name": "Adyňyzy ýazyň",
-		"type_your_description_additional_info": "Düşündiriş: Adresyňyzy ýa-da goşmaça maglumaltary ýazyň"
+		"type_your_description_additional_info": "Düşündiriş: Adresyňyzy ýa-da goşmaça maglumaltary ýazyň",
+		"note": "Bellik"
 	},
 
 	"auth": {
