@@ -80,7 +80,6 @@ const MobileCheckout: React.FC<IMobileCheckout> = (props: any) => {
 	}
 
 	const handleResponse = (response: any) => {
-		console.log(response)
 		let text = `${response.message} \n ${
 			response.status === 1 && 'You can view your order in profile page'
 		}`

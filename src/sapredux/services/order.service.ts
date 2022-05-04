@@ -49,7 +49,6 @@ const checkoutSaleOrderInv = async (
 	payload: any,
 	loggedIn: boolean = false,
 ) => {
-	console.log(loggedIn, loggedIn === true)
 	const auth_headers = loggedIn ? await authBearerHeaderAsync() : {}
 	const requestOptions = {
 		method: 'POST',

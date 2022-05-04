@@ -82,7 +82,6 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 	}
 
 	const handleResponse = (response: any) => {
-		console.log(response)
 		let text = `${response.message} \n ${
 			response.status === 1 && t('common.view_your_orders_in_profile')
 		}`
