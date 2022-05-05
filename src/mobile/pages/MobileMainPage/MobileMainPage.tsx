@@ -75,7 +75,7 @@ const MobileMainPage: React.FC = (props: any) => {
 				{discountProductSlick}
 
 				<Divider
-					title={t('common.new_arrival')}
+					title={t('common.new_arrives')}
 					mobile={true}
 					url={`${routeConstants.vGrid.route}`}
 				/>
