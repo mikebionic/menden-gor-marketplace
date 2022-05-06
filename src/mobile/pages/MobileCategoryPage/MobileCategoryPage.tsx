@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom'
 
 import { routeConstants } from 'navigation'
 import CategoryTabContent from 'mobile/components/CategoryTabContent'
+import { ErrorBoundary } from 'modules/errors'
+import { useTranslation } from 'react-i18next'
 
 const styles = {
 	isActiveClass:
@@ -12,8 +14,9 @@ const styles = {
 }
 
 export const MobileCategoryPage: React.FC = () => {
+	const { t } = useTranslation()
 	return (
-		<>
+		<ErrorBoundary>
 			<div className="grid grid-flow-col gap-4 cursor-pointer place-content-center auto-cols-fr">
 				<NavLink
 					to={routeConstants.categories.route}
@@ -21,7 +24,7 @@ export const MobileCategoryPage: React.FC = () => {
 						isActive ? styles.isActiveClass : styles.defaultClass
 					}
 				>
-					<p className="text-center font-oxygen">Categories</p>
+					<p className="text-center font-oxygen">{t('common.categories')}</p>
 				</NavLink>
 				<NavLink
 					to={routeConstants.brands.route}
@@ -29,12 +32,12 @@ export const MobileCategoryPage: React.FC = () => {
 						isActive ? styles.isActiveClass : styles.defaultClass
 					}
 				>
-					<p className="text-center font-oxygen">Brands</p>
+					<p className="text-center font-oxygen">{t('common.brands')}</p>
 				</NavLink>
 			</div>
 			<div>
 				<CategoryTabContent />
 			</div>
-		</>
+		</ErrorBoundary>
 	)
 }

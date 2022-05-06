@@ -44,8 +44,6 @@ export const Cart: React.FC<ICartProps> = ({
 		setOpen(false)
 	}, [location.pathname])
 
-	console.log('ITEMMSSSSSS', items)
-
 	return (
 		<ErrorBoundary>
 			<Transition.Root show={open} as={Fragment}>
@@ -127,7 +125,7 @@ export const Cart: React.FC<ICartProps> = ({
 													{totalPrice} {getCurrentCurrency().symbol}
 												</p>
 												<p className="text-black dark:text-darkTextWhiteColor">
-													{t('common.subtotal')}: {totalCount}
+													{t('common.count')}: {totalCount}
 												</p>
 											</div>
 											<div className="mt-6">

@@ -45,13 +45,17 @@ const fetchById_data = async (guid: string) => {
 	return await transformFetch(() => fetchById(guid), transformResponse, false)
 }
 
-const checkoutSaleOrderInv = async (payload: any) => {
+const checkoutSaleOrderInv = async (
+	payload: any,
+	loggedIn: boolean = false,
+) => {
+	const auth_headers = loggedIn ? await authBearerHeaderAsync() : {}
 	const requestOptions = {
 		method: 'POST',
 		body: JSON.stringify(payload),
 		headers: {
 			'Content-Type': 'application/json; charset=UTF-8',
-			...(await authBearerHeaderAsync()),
+			...auth_headers,
 		},
 	}
 	return fetchWithCred(

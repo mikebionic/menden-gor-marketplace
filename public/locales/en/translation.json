@@ -23,6 +23,13 @@
 		"choose_method": "Choose method",
 		"verification": "Verification",
 		"fill_the_blank": "Fill the blank",
+		"fill_the_required_fields": "Fill the required fields!",
+		"cannot_checkout_an_empty_cart": "Cannot checkout an empty cart!",
+		"view_your_orders_in_profile": "You can view your order in profile page",
+		"server_exchange_checkout_error": "Failed to checkout order: server exchange error",
+		"payment_fail_contact_admins": "Payment register failed, contact administrators or try again",
+		"failed_to_checkout": "Failed to checkout order",
+
 		"input_password": "Please input your Password!",
 		"input_username": "Please input your Username!",
 		"input_phone_number": "Please input your phone number!",
@@ -79,7 +86,8 @@
 		"payment_type": "Payment type",
 		"payment_method": "Payment method",
 		"type_your_name": "Type your name",
-		"type_your_description_additional_info": "Description: type your address or any additional information."
+		"type_your_description_additional_info": "Description: type your address or any additional information.",
+		"note": "Note"
 	},
 	"auth": {
 		"username": "Username",

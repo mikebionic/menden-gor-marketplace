@@ -99,13 +99,13 @@ const MobileProductFilter: React.FC<IProductFilterProps> = ({
 														<AccordionItem title="Brands">Hello</AccordionItem>
 														<AccordionItem title="Price">World</AccordionItem>
 														<AccordionItem title="Models">
-															Motherfucker
+															Ustunde ishlenilyar
 														</AccordionItem>
 														<AccordionItem title="Color">
-															Motherfucker
+															Ustunde ishlenilyar
 														</AccordionItem>
 														<AccordionItem title="Category">
-															Motherfucker
+															Ustunde ishlenilyar
 														</AccordionItem>
 													</AccordionWrapper>
 												</div>

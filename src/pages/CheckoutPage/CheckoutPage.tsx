@@ -22,7 +22,6 @@ import {
 } from 'sapredux/actions'
 import { orderService, otherService } from 'sapredux/services'
 import { toJsonCheckoutOrderInv } from 'sapredux/services/transform_data'
-import { T } from 'ramda'
 import { useTranslation } from 'react-i18next'
 
 interface ICheckoutPage {
@@ -83,9 +82,8 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 	}
 
 	const handleResponse = (response: any) => {
-		console.log(response)
 		let text = `${response.message} \n ${
-			response.status === 1 && 'You can view your order in profile page'
+			response.status === 1 && t('common.view_your_orders_in_profile')
 		}`
 		sapswal.fire({
 			icon: response.status === 1 ? 'success' : 'error',
@@ -100,24 +98,26 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 	const handleSubmit = () => {
 		try {
 			if (inputs.totalPrice < 0.1) {
-				throw 'Cannot checkout an empty cart!'
+				throw t('common.cannot_checkout_an_empty_cart')
 			}
 			if (
 				inputs.description.length < 1 ||
 				inputs.name.length < 1 ||
 				inputs.phoneNumber.length < 1
 			) {
-				throw 'Fill the required fields!'
+				throw t('common.fill_the_required_fields')
 			}
 			set_loading(true)
 			if (inputs.pmId !== 2) {
 				inputs.description = `${inputs.description} ${inputs.name} ${inputs.phoneNumber}`
 				orderService
-					.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs))
+					.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs), loggedIn)
 					.then(
 						(response: any) => handleResponse(response),
 						(error: any) =>
-							errorSwal(`Failed to checkout order: ${error.toString()}`),
+							errorSwal(
+								`${t('common.failed_to_checkout')}: ${error.toString()}`,
+							),
 					)
 					.finally(() => set_loading(false))
 			} else {
@@ -180,10 +180,12 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 		}))
 		console.log('++++++ ', response.data, inputs.orderInvRegNo)
 		response.data.length > 1
-			? orderService.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs)).then(
-					(response: any) => handle_payment_register(response),
-					(error: any) => errorSwal(error.toString()),
-			  )
+			? orderService
+					.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs), loggedIn)
+					.then(
+						(response: any) => handle_payment_register(response),
+						(error: any) => errorSwal(error.toString()),
+					)
 			: errorSwal()
 	}
 
@@ -207,7 +209,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 					(error: any) => errorSwal(error.toString()),
 				)
 		} else {
-			errorSwal('Payment register failed, contact administrators or try again')
+			errorSwal(t('common.payment_fail_contact_admins'))
 		}
 	}
 
@@ -251,8 +253,8 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 	const errorSwal = (text?: string) =>
 		sapswal.fire({
 			icon: 'error',
-			title: 'Error',
-			text: text || 'Failed to checkout order: server exchange error.',
+			title: t('common.error'),
+			text: text || t('common.server_exchange_checkout_error'),
 		})
 
 	return (
@@ -276,7 +278,7 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 				<div className="grid w-full grid-flow-row gap-4 p-4 auto-rows-max shadow-defaultShadow bg-fullwhite dark:bg-darkComponentColor">
 					<div className="grid grid-flow-col auto-cols-max place-content-between">
 						<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
-							{T('common.total')}
+							{t('common.total')}
 						</p>
 						<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
 							{totalPrice} {getCurrentCurrency().symbol}
@@ -336,11 +338,11 @@ const CheckoutPage: React.FC<ICheckoutPage> = (props: any) => {
 						className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
 					/>
 					<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
-						Bellik:
+						{t('common.note')}:
 					</p>
 					<textarea
 						className="font-oxygen border-[#E6E6E6] w-full rounded resize-none h-24 dark:border-darkBgColor dark:bg-darkBgColor"
-						placeholder={t('type_your_description_additional_info')}
+						placeholder={t('common.type_your_description_additional_info')}
 						name="description"
 						value={inputs.description}
 						onChange={handleChange}
