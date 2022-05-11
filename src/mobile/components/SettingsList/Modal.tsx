@@ -1,8 +1,8 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 
 export const Modal = ({ openModal, setOpenModal, data }: any) => {
-	// const [openModal, setOpenModal] = useState(false)
 	return (
 		<>
 			<Transition appear show={openModal}>
@@ -32,37 +32,40 @@ export const Modal = ({ openModal, setOpenModal, data }: any) => {
 								leaveFrom="opacity-100 scale-100"
 								leaveTo="opacity-0 scale-95"
 							>
-								<div className="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-									{/* <Dialog.Title
-										as="h3"
-										className="text-lg font-medium leading-6 text-gray-900"
-									>
-										Payment successful
-									</Dialog.Title>
-									<div className="mt-2">
-										<p className="text-sm text-gray-500">
-											Your payment has been successfully submitted. We’ve sent
-											you an email with all of the details of your order.
-										</p>
-									</div> */}
-									{data.map((item: any, idx: number) => (
-										<div onClick={() => item.onClick()}>
-											<p>
-												{item.label} {item.active}
-											</p>
-										</div>
-									))}
-
-									{/* <div className="mt-4">
-										<button
-											type="button"
-											className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-											onClick={() => setOpenModal(false)}
-										>
-											Got it, thanks!
-										</button>
-									</div> */}
-								</div>
+								<ClickAwayListener
+									onClickAway={() => {
+										if (openModal === true) {
+											setOpenModal(false)
+										}
+									}}
+								>
+									<div className="w-[11rem] p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+										{data.map((item: any, idx: number) => (
+											<div
+												onClick={() => item.onClick()}
+												key={idx}
+												className={`grid grid-flow-col ${
+													item.icon ? 'gap-3' : 'gap-0'
+												} mb-2 auto-cols-max place-items-center`}
+											>
+												<div
+													className={`w-full h-full ${
+														item.active ? 'text-textColorOrange' : 'text-black'
+													}`}
+												>
+													{item.icon}
+												</div>
+												<p
+													className={`text-base ${
+														item.active ? 'text-textColorOrange' : 'text-black'
+													}`}
+												>
+													{item.label}
+												</p>
+											</div>
+										))}
+									</div>
+								</ClickAwayListener>
 							</Transition.Child>
 						</div>
 					</div>

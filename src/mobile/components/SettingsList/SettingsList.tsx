@@ -1,12 +1,11 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { routeConstants } from 'navigation'
 
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
-import { Image } from 'common/Image'
 
 import { GoPackage } from 'react-icons/go'
-import { BsInfoCircle } from 'react-icons/bs'
+import { BsInfoCircle, BsMoon } from 'react-icons/bs'
 import { MdOutlineAlternateEmail } from 'react-icons/md'
 import { MdLanguage } from 'react-icons/md'
 import { BsSun } from 'react-icons/bs'
@@ -15,20 +14,13 @@ import { Modal } from './Modal'
 import { ErrorBoundary } from 'modules/errors'
 import { get_local_data_by_key } from 'sapredux/helpers'
 import { otherService } from 'sapredux/services'
+import { useTranslation } from 'react-i18next'
+
+import turkmen_icon from './flags/tm.svg'
+import english_icon from './flags/us.svg'
+import russian_icon from './flags/ru.svg'
 
 export const SettingsList = () => {
-	const [openModal, setOpenModal] = useState(false)
-	const [modalData, setModalData]: any = useState([])
-	const navigate = useNavigate()
-
-	const [current_currency, set_current_currency] = useState(
-		get_local_data_by_key('currency', false, false) || 'TMT',
-	)
-	const updateCurrency = ({ name }: any) => {
-		set_current_currency(name)
-		otherService.setCurrency(name)
-	}
-
 	const settingsItems: any = [
 		{
 			icon: <GoPackage />,
@@ -59,21 +51,42 @@ export const SettingsList = () => {
 				setModalData([
 					{
 						id: 1,
-						icon: '',
-						label: 'Turkmen',
-						active: true,
+						icon: <img src={turkmen_icon} alt="" className="w-8" />,
+						label: 'Türkmen',
+						active: i18n.language === 'tk',
+						short: 'TKM',
+						url: '/tk',
+						style: 'tk',
+						onClick: () => {
+							setOpenModal(false)
+							handleClick(`tk`)
+						},
 					},
 					{
 						id: 2,
-						icon: '',
+						icon: <img src={english_icon} alt="" className="w-8" />,
 						label: 'English',
-						active: false,
+						active: i18n.language === 'en',
+						short: 'ENG',
+						url: '/en',
+						style: 'en',
+						onClick: () => {
+							setOpenModal(false)
+							handleClick(`en`)
+						},
 					},
 					{
 						id: 3,
-						icon: '',
+						icon: <img src={russian_icon} alt="" className="w-8" />,
 						label: 'Russian',
-						active: false,
+						active: i18n.language === 'ru',
+						short: 'RUS',
+						url: '/ru',
+						style: 'ru',
+						onClick: () => {
+							setOpenModal(false)
+							handleClick(`ru`)
+						},
 					},
 				])
 			},
@@ -87,15 +100,23 @@ export const SettingsList = () => {
 				setModalData([
 					{
 						id: 1,
-						icon: '',
+						icon: <BsSun className="text-2xl" />,
 						label: 'Light',
-						active: true,
+						active: darkMode === '0',
+						onClick: () => {
+							setDarkMode(darkMode ? '0' : '1')
+							setOpenModal(false)
+						},
 					},
 					{
 						id: 2,
-						icon: '',
+						icon: <BsMoon className="text-2xl" />,
 						label: 'Dark',
-						active: false,
+						active: darkMode === '1',
+						onClick: () => {
+							setDarkMode(darkMode ? '1' : '0')
+							setOpenModal(false)
+						},
 					},
 				])
 			},
@@ -111,22 +132,53 @@ export const SettingsList = () => {
 						id: 1,
 						label: 'TMT',
 						active: current_currency === 'TMT',
-						onClick: () => {
-							updateCurrency('TMT')
-						},
+						onClick: () => updateCurrency('TMT'),
 					},
 					{
 						id: 2,
 						label: 'USD',
 						active: current_currency === 'USD',
-						onClick: () => {
-							updateCurrency('USD')
-						},
+						onClick: () => updateCurrency('USD'),
 					},
 				])
 			},
 		},
 	]
+
+	const { i18n } = useTranslation()
+	const [openModal, setOpenModal] = useState(false)
+	const [modalData, setModalData]: any = useState([])
+	const navigate = useNavigate()
+
+	const [darkMode, setDarkMode] = useState(
+		localStorage.getItem('dark-theme') || '0',
+	)
+
+	const [current_currency, set_current_currency] = useState(
+		get_local_data_by_key('currency', false, false) || 'TMT',
+	)
+	const updateCurrency = (name: any) => {
+		set_current_currency(name)
+		otherService.setCurrency(name)
+	}
+
+	const handleClick = (lang: any) => {
+		i18n.changeLanguage(lang)
+		otherService.setLanguage(lang)
+	}
+
+	useEffect(() => {
+		if (parseInt(darkMode)) {
+			localStorage.setItem('dark-theme', '1')
+			document.documentElement.classList.add('dark')
+		} else {
+			localStorage.setItem('dark-theme', '0')
+			document.documentElement.classList.remove('dark')
+		}
+	}, [darkMode])
+	useEffect(() => {
+		parseInt(darkMode) && document.documentElement.classList.add('dark')
+	})
 
 	return (
 		<div className="relative">

@@ -17,6 +17,7 @@
 
 body {
 	overflow-x: hidden;
+	background: #f3f4f8;
 }
 
 .inputbox input:focus ~ span,
