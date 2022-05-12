@@ -32,7 +32,7 @@ const chooseCheckoutPage =
 const chooseProductPage =
 	window.innerWidth < 768 ? <MobileProductPage /> : <ProductPage />
 
-export const AppRoutes: React.FC = ({ props }: any) => {
+export const AppRoutes: React.FC = () => {
 	return (
 		<Routes>
 			<Route path={routeConstants.root.route} element={chooseMainPage} />
@@ -65,9 +65,7 @@ export const AppRoutes: React.FC = ({ props }: any) => {
 			/>
 
 			<Route path={routeConstants.about.route} element={<AboutPage />} />
-
 			<Route path={routeConstants.contact.route} element={<ContactPage />} />
-
 			<Route path={routeConstants.vGrid.route} element={chooseVGridPage} />
 			<Route
 				path={routeConstants.checkout.route}

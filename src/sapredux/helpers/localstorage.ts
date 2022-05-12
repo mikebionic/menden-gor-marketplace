@@ -1,4 +1,3 @@
-import { any } from 'ramda'
 import { ecnrypt_data, decrypt_data } from 'sapredux/helpers'
 
 export const get_local_data_by_key = (
