@@ -32,7 +32,7 @@ const MobileSettingsPage: React.FC = ({ current_user, loggedIn }: any) => {
 							to={routeConstants.logout.route}
 							className="inline-grid h-8 col-span-2 row-span-2 rounded-lg place-items-center dark:text-darkText bg-fullwhite shadow-defaultShadow"
 						>
-							{t('common.logout')}
+							{t('auth.logout')}
 						</Link>
 					</>
 				) : (
