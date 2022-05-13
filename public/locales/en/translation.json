@@ -87,7 +87,10 @@
 		"payment_method": "Payment method",
 		"type_your_name": "Type your name",
 		"type_your_description_additional_info": "Description: type your address or any additional information.",
-		"note": "Note"
+		"note": "Note",
+		"language": "Language",
+		"currency": "Currency",
+		"theme": "Theme"
 	},
 	"auth": {
 		"username": "Username",

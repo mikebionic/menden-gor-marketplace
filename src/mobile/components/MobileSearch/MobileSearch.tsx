@@ -1,9 +1,11 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { IconLabelButton } from 'common/IconLabelButton'
 import { AiOutlineSearch } from 'react-icons/ai'
 
 export const MobileSearch: React.FC = () => {
+	const { t } = useTranslation()
 	return (
 		<div className="relative w-full h-11 min-w-[200px]">
 			<IconLabelButton
@@ -13,7 +15,7 @@ export const MobileSearch: React.FC = () => {
 			<input
 				type="text"
 				className="w-full px-9 h-full text-sm border rounded-full dark:bg-darkBgColor dark:text-darkTextWhiteColor border-white dark:border-darkFirstColor outline-none placeholder-[#c8c8c8] ring-0 ring-offset-0 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
-				placeholder="What are you looking for..."
+				placeholder={t('common.search_placeholder')}
 				name="search_tag"
 				// value={search_tag}
 				// onChange={handleChange}

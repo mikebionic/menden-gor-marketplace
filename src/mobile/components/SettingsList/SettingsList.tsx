@@ -1,9 +1,9 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { routeConstants } from 'navigation'
 
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
-import { Image } from 'common/Image'
+import { useTranslation } from 'react-i18next'
 
 import { GoPackage } from 'react-icons/go'
 import { BsInfoCircle } from 'react-icons/bs'
@@ -17,6 +17,7 @@ import { get_local_data_by_key } from 'sapredux/helpers'
 import { otherService } from 'sapredux/services'
 
 export const SettingsList = () => {
+	const { t } = useTranslation()
 	const [openModal, setOpenModal] = useState(false)
 	const [modalData, setModalData]: any = useState([])
 	const navigate = useNavigate()
@@ -52,7 +53,7 @@ export const SettingsList = () => {
 		},
 		{
 			icon: <MdLanguage />,
-			label: 'Language',
+			label: t('common.language'),
 			currentType: '',
 			onClick: () => {
 				setOpenModal(true)
@@ -80,7 +81,7 @@ export const SettingsList = () => {
 		},
 		{
 			icon: <BsSun />,
-			label: 'Theme',
+			label: t('common.theme'),
 			currentType: '',
 			onClick: () => {
 				setOpenModal(true)
@@ -102,7 +103,7 @@ export const SettingsList = () => {
 		},
 		{
 			icon: <BsWallet2 />,
-			label: 'Currency',
+			label: t('common.currency'),
 			currentType: '',
 			onClick: () => {
 				setOpenModal(true)
