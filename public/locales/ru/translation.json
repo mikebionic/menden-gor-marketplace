@@ -13,7 +13,7 @@
 		"status": "Статус",
 		"profile": "Профиль",
 		"wishlist": "Список желаний",
-		"contact": "Контакт",
+		"contact": "Контакты",
 		"profile_edit": "Изменить профиль",
 		"cart": "Корзина",
 		"login": "Войти",
@@ -91,7 +91,12 @@
 		"language": "Язык",
 		"currency": "Валюта",
 		"theme": "Тема",
-		"sort": "Сортировка"
+		"sort": "Сортировка",
+		"barcode": "Баркод",
+		"payment_and_delivery_info": "О платежах и доставке",
+		"about": "О нас",
+		"light": "Светлая",
+		"dark": "Тёмная"
 	},
 	"auth": {
 		"username": "Пользователь",

@@ -60,22 +60,22 @@ export const SettingsList = () => {
 	const settingsItems: any = [
 		{
 			icon: <GoPackage />,
-			label: routeConstants.orders.name,
+			label: t('common.orders'),
 			onClick: () => navigate(routeConstants.orders.route),
 		},
 		{
 			icon: <BsInfoCircle />,
-			label: routeConstants.payment_and_delivery_info.name,
+			label: t('common.payment_and_delivery_info'),
 			onClick: () => navigate(routeConstants.payment_and_delivery_info.route),
 		},
 		{
 			icon: <MdOutlineAlternateEmail />,
-			label: routeConstants.contact.name,
+			label: t('common.contact'),
 			onClick: () => navigate(routeConstants.contact.route),
 		},
 		{
 			icon: <BsInfoCircle />,
-			label: routeConstants.about.name,
+			label: t('common.about'),
 			onClick: () => navigate(routeConstants.about.route),
 		},
 		{
@@ -137,7 +137,7 @@ export const SettingsList = () => {
 					{
 						id: 1,
 						icon: <BsSun className="text-2xl" />,
-						label: 'Light',
+						label: t('common.light'),
 						active: darkMode === '0',
 						onClick: () => {
 							setDarkMode(darkMode ? '0' : '1')
@@ -147,7 +147,7 @@ export const SettingsList = () => {
 					{
 						id: 2,
 						icon: <BsMoon className="text-2xl" />,
-						label: 'Dark',
+						label: t('common.dark'),
 						active: darkMode === '1',
 						onClick: () => {
 							setDarkMode(darkMode ? '1' : '0')

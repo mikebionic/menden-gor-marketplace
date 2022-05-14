@@ -91,7 +91,12 @@
 		"language": "Language",
 		"currency": "Currency",
 		"theme": "Theme",
-		"sort": "Sort"
+		"sort": "Sort",
+		"barcode": "Barcode",
+		"payment_and_delivery_info": "Payment and delivery info",
+		"about": "About",
+		"light": "Light",
+		"dark": "Dark"
 	},
 	"auth": {
 		"username": "Username",

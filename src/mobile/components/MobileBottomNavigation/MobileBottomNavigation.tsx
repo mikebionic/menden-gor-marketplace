@@ -9,7 +9,7 @@ import { RiShoppingBasketLine } from 'react-icons/ri'
 import { BiCategory } from 'react-icons/bi'
 
 import './style.css'
-import { link } from 'fs'
+import { useTranslation } from 'react-i18next'
 
 const list = document.querySelectorAll('.list')
 function activeLink(this: any) {
@@ -19,29 +19,30 @@ function activeLink(this: any) {
 list.forEach((item) => item.addEventListener('click', activeLink))
 
 export const MobileBottomNavigation: React.FC = () => {
+	const { t } = useTranslation()
 	const navigationLinks = [
 		{
-			name: 'Home',
+			name: t('common.home'),
 			route: routeConstants.root.route,
 			icon: <IoHomeOutline className="w-7 h-7" />,
 		},
 		{
-			name: 'Categories',
+			name: t('common.categories'),
 			route: routeConstants.categories.route,
 			icon: <BiCategory className="w-7 h-7" />,
 		},
 		{
-			name: 'Cart',
+			name: t('common.cart'),
 			route: routeConstants.cart.route,
 			icon: <RiShoppingBasketLine className="w-7 h-7" />,
 		},
 		{
-			name: 'Wishlist',
+			name: t('common.wishlist'),
 			route: routeConstants.wishlist.route,
 			icon: <AiOutlineHeart className="w-7 h-7" />,
 		},
 		{
-			name: 'Settings',
+			name: t('common.settings'),
 			route: routeConstants.settings.route,
 			icon: <FiSettings className="w-7 h-7" />,
 		},

@@ -91,7 +91,12 @@
 		"language": "Dil",
 		"currency": "Walýuta",
 		"theme": "Tema",
-		"sort": "Sortlama"
+		"sort": "Sortlama",
+		"barcode": "Barkod",
+		"payment_and_delivery_info": "Töleg we eltip berme barada",
+		"about": "Biz barada",
+		"light": "Ýagty",
+		"dark": "Garaňky"
 	},
 
 	"auth": {

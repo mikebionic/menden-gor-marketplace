@@ -29,6 +29,7 @@ const RenderProuct = ({
 	wishlist,
 	viewCnt,
 	ratingValue,
+	discount,
 }: any) => {
 	const { t } = useTranslation()
 	return (
@@ -70,9 +71,11 @@ const RenderProuct = ({
 						</div>
 					</div>
 					<div className="grid grid-flow-col auto-cols-max place-items-center">
-						<p className="text-base text-justify text-gray-400 line-through">
-							{realPrice} {currencySymbol}
-						</p>
+						{discount && (
+							<p className="text-base text-justify text-gray-400 line-through">
+								{realPrice} {currencySymbol}
+							</p>
+						)}
 						<div className="w-32">
 							<PriceButton
 								priceValue={priceValue}
