@@ -17,7 +17,7 @@ const MobileSettingsPage: React.FC = ({ current_user, loggedIn }: any) => {
 						src={current_user.image}
 						alt={current_user.username || 'profile'}
 						imageType="avatar"
-						className="rounded-full"
+						className="object-cover h-full rounded-full"
 					/>
 				</div>
 				{loggedIn ? (
@@ -32,7 +32,7 @@ const MobileSettingsPage: React.FC = ({ current_user, loggedIn }: any) => {
 							to={routeConstants.logout.route}
 							className="inline-grid h-8 col-span-2 row-span-2 rounded-lg place-items-center dark:text-darkText bg-fullwhite shadow-defaultShadow"
 						>
-							{t('auth.logout')}
+							{t('common.logout')}
 						</Link>
 					</>
 				) : (

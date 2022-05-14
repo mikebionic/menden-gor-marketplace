@@ -16,7 +16,7 @@ export const ProfileTab: React.FC = () => {
 	const { t } = useTranslation()
 	return (
 		<>
-			<div className="grid grid-flow-col gap-4 py-2 cursor-pointer place-content-center auto-cols-max">
+			<div className="grid grid-flow-col gap-4 py-2 cursor-pointer place-content-center auto-cols-max min-phone:text-[12px]">
 				<NavLink
 					to={routeConstants.profile.route}
 					className={({ isActive }) =>
