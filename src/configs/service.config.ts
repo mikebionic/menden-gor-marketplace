@@ -67,4 +67,6 @@ export const serviceConfig = {
 export const namesConfig = {
 	main_page_slider_name:
 		process.env.REACT_APP_MAIN_PAGE_SLIDER_NAME ?? 'commerce_header',
+	company_name: process.env.REACT_APP_COMPANY_NAME ?? 'Marketplace',
+	company_email: process.env.REACT_APP_COMPANY_EMAIL ?? 'marketplace@mail.com',
 }
