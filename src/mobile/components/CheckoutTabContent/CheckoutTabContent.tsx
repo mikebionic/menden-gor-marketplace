@@ -1,9 +1,8 @@
 import { useLocation } from 'react-router-dom'
 
-import MobileCart from 'mobile/components/MobileCart'
-import MobileCheckout from 'mobile/components/MobileCheckout'
-
 import { routeConstants } from 'navigation'
+import MobileCart from 'mobile/components/MobileCart'
+import CheckoutForm from 'components/CheckoutForm'
 
 const CheckoutTabContent = () => {
 	const page_location = useLocation()
@@ -13,10 +12,10 @@ const CheckoutTabContent = () => {
 			return <MobileCart />
 
 		case routeConstants.checkout.route:
-			return <MobileCheckout />
+			return <CheckoutForm />
 
 		default:
-			return <MobileCheckout />
+			return <MobileCart />
 	}
 }
 

@@ -5,7 +5,6 @@ import { Dialog, Transition } from '@headlessui/react'
 import { BsX } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
-import { CartRow } from 'components/Cart'
 import {
 	resourceAddedToCart,
 	resourceRemovedFromCart,
@@ -16,27 +15,20 @@ import { ErrorBoundary } from 'modules/errors'
 import { routeConstants } from 'navigation'
 import { getCurrentCurrency } from 'sapredux/helpers'
 import { useTranslation } from 'react-i18next'
+import CartBody from './CartBody'
 
 interface ICartProps {
 	open?: any
 	setOpen?: any
-	items?: any
 	totalCount?: any
 	totalPrice?: any
-	onIncrease?: any
-	onDecrease?: any
-	onDelete?: any
 }
 
-export const Cart: React.FC<ICartProps> = ({
+const Cart: React.FC<ICartProps> = ({
 	open,
 	setOpen,
-	items,
 	totalCount,
 	totalPrice,
-	onIncrease,
-	onDecrease,
-	onDelete,
 }) => {
 	const { t } = useTranslation()
 	const location = useLocation()
@@ -96,22 +88,7 @@ export const Cart: React.FC<ICartProps> = ({
 
 											<div className="mt-8">
 												<div className="flow-root">
-													<ul
-														role="list"
-														className="-my-6 divide-y divide-gray-200"
-													>
-														{items.map((item: any, idx: number) => (
-															<li key={idx}>
-																<CartRow
-																	key={idx}
-																	item={item}
-																	onIncrease={onIncrease}
-																	onDecrease={onDecrease}
-																	onDelete={onDelete}
-																/>
-															</li>
-														))}
-													</ul>
+													<CartBody />
 												</div>
 											</div>
 										</div>

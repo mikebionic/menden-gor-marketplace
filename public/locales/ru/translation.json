@@ -87,13 +87,16 @@
 		"payment_method": "Метод оплаты",
 		"type_your_name": "Напишите свое имя",
 		"type_your_description_additional_info": "Заметка: напишите свой адрес или другую дополнительную информацию",
-		"note": "Заметка"
+		"note": "Заметка",
+		"language": "Язык",
+		"currency": "Валюта",
+		"theme": "Тема"
 	},
 	"auth": {
 		"username": "Пользователь",
 		"password": "Пароль",
 		"email": "E-mail",
-		"phone_number": "Phone number",
+		"phone_number": "Номер телефона",
 		"name": "Имя",
 		"address": "Адрес",
 		"full_name": "Полное имя",

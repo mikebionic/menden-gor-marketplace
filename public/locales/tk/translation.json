@@ -87,7 +87,10 @@
 		"payment_method": "Töleg usuly",
 		"type_your_name": "Adyňyzy ýazyň",
 		"type_your_description_additional_info": "Düşündiriş: Adresyňyzy ýa-da goşmaça maglumaltary ýazyň",
-		"note": "Bellik"
+		"note": "Bellik",
+		"language": "Dil",
+		"currency": "Walýuta",
+		"theme": "Tema"
 	},
 
 	"auth": {

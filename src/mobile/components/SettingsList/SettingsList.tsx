@@ -19,8 +19,44 @@ import { useTranslation } from 'react-i18next'
 import turkmen_icon from './flags/tm.svg'
 import english_icon from './flags/us.svg'
 import russian_icon from './flags/ru.svg'
+import { t } from 'i18next'
 
 export const SettingsList = () => {
+	const { i18n } = useTranslation()
+	const [openModal, setOpenModal] = useState(false)
+	const [modalData, setModalData]: any = useState([])
+	const navigate = useNavigate()
+
+	const [darkMode, setDarkMode] = useState(
+		localStorage.getItem('dark-theme') || '0',
+	)
+
+	const [current_currency, set_current_currency] = useState(
+		get_local_data_by_key('currency', false, false) || 'TMT',
+	)
+	const updateCurrency = (name: any) => {
+		set_current_currency(name)
+		otherService.setCurrency(name)
+	}
+
+	const handleClick = (lang: any) => {
+		i18n.changeLanguage(lang)
+		otherService.setLanguage(lang)
+	}
+
+	useEffect(() => {
+		if (parseInt(darkMode)) {
+			localStorage.setItem('dark-theme', '1')
+			document.documentElement.classList.add('dark')
+		} else {
+			localStorage.setItem('dark-theme', '0')
+			document.documentElement.classList.remove('dark')
+		}
+	}, [darkMode])
+	useEffect(() => {
+		parseInt(darkMode) && document.documentElement.classList.add('dark')
+	})
+
 	const settingsItems: any = [
 		{
 			icon: <GoPackage />,
@@ -44,7 +80,7 @@ export const SettingsList = () => {
 		},
 		{
 			icon: <MdLanguage />,
-			label: 'Language',
+			label: t('common.language'),
 			currentType: '',
 			onClick: () => {
 				setOpenModal(true)
@@ -93,7 +129,7 @@ export const SettingsList = () => {
 		},
 		{
 			icon: <BsSun />,
-			label: 'Theme',
+			label: t('common.theme'),
 			currentType: '',
 			onClick: () => {
 				setOpenModal(true)
@@ -123,7 +159,7 @@ export const SettingsList = () => {
 		},
 		{
 			icon: <BsWallet2 />,
-			label: 'Currency',
+			label: t('common.currency'),
 			currentType: '',
 			onClick: () => {
 				setOpenModal(true)
@@ -144,41 +180,6 @@ export const SettingsList = () => {
 			},
 		},
 	]
-
-	const { i18n } = useTranslation()
-	const [openModal, setOpenModal] = useState(false)
-	const [modalData, setModalData]: any = useState([])
-	const navigate = useNavigate()
-
-	const [darkMode, setDarkMode] = useState(
-		localStorage.getItem('dark-theme') || '0',
-	)
-
-	const [current_currency, set_current_currency] = useState(
-		get_local_data_by_key('currency', false, false) || 'TMT',
-	)
-	const updateCurrency = (name: any) => {
-		set_current_currency(name)
-		otherService.setCurrency(name)
-	}
-
-	const handleClick = (lang: any) => {
-		i18n.changeLanguage(lang)
-		otherService.setLanguage(lang)
-	}
-
-	useEffect(() => {
-		if (parseInt(darkMode)) {
-			localStorage.setItem('dark-theme', '1')
-			document.documentElement.classList.add('dark')
-		} else {
-			localStorage.setItem('dark-theme', '0')
-			document.documentElement.classList.remove('dark')
-		}
-	}, [darkMode])
-	useEffect(() => {
-		parseInt(darkMode) && document.documentElement.classList.add('dark')
-	})
 
 	return (
 		<div className="relative">
