@@ -90,7 +90,8 @@
 		"note": "Note",
 		"language": "Language",
 		"currency": "Currency",
-		"theme": "Theme"
+		"theme": "Theme",
+		"sort": "Sort"
 	},
 	"auth": {
 		"username": "Username",

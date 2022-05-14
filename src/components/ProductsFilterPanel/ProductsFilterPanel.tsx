@@ -146,6 +146,71 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 						/>
 					</div>
 				</div>
+
+				<div className="w-56 px-2 py-2 my-4 rounded-lg bg-fullwhite dark:bg-darkComponentColor h-80">
+					<b className="relative text-base text-black bottom-1 dark:text-darkTextWhiteColor">
+						{t('common.categories')}:
+					</b>
+					<br />
+					<ul className="inline-block w-full h-full pl-0 overflow-y-scroll list-none max-h-60">
+						<li className="h-full pl-2">
+							<label className="flex my-1 cursor-pointer">
+								<input
+									className="w-3 h-3 my-auto transform scale-125 text-firstColorGradientFromDark dark:text-darkFirstColor active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
+									type="radio"
+									name="radio-category-null"
+									onChange={() => onFiltersApply({ category: null })}
+									checked={filters.category === null ? true : false}
+								/>
+								<p className="px-2 text-sm text-black dark:text-darkTextWhiteColor">
+									{t('common.all')}
+								</p>
+							</label>
+							{categories.map((data: any, idx: number) => (
+								<>
+									<label className="flex my-1 cursor-pointer" key={idx}>
+										<input
+											className="w-3 h-3 my-auto transform scale-125 outline-none text-firstColorGradientFromDark dark:text-darkFirstColor form-radio active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
+											type="radio"
+											name={`radio-category-${data.name}-${data.id}`}
+											value={data.id}
+											onChange={() => onFiltersApply({ category: data.id })}
+											checked={
+												parseInt(filters.category) === parseInt(data.id)
+													? true
+													: false
+											}
+										/>
+										<p className="px-2 text-sm text-black dark:text-darkTextWhiteColor">
+											{data.name}
+										</p>
+									</label>
+
+									{data.categories.map((data: any, idx: number) => (
+										<label className="flex my-1 cursor-pointer ml-3" key={idx}>
+											<input
+												className="w-3 h-3 my-auto transform scale-125 outline-none text-firstColorGradientFromDark dark:text-darkFirstColor form-radio active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
+												type="radio"
+												name={`radio-category-${data.name}-${data.id}`}
+												value={data.id}
+												onChange={() => onFiltersApply({ category: data.id })}
+												checked={
+													parseInt(filters.category) === parseInt(data.id)
+														? true
+														: false
+												}
+											/>
+											<p className="px-2 text-sm text-black dark:text-darkTextWhiteColor">
+												{data.name}
+											</p>
+										</label>
+									))}
+								</>
+							))}
+						</li>
+					</ul>
+				</div>
+
 				<div className="w-56 px-2 py-2 my-4 rounded-lg bg-fullwhite dark:bg-darkComponentColor h-80">
 					<b className="relative text-base text-black bottom-1 dark:text-darkTextWhiteColor">
 						{t('common.brands')}:
@@ -187,58 +252,8 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 							))}
 						</li>
 					</ul>
-					{/* <a href="/" className="">
-						<div className="relative mt-4 text-base font-bold text-center text-black border-t border-gray-200 border-solid cursor-pointer -top-2">
-							Others
-						</div>
-					</a> */}
 				</div>
-				<div className="w-56 px-2 py-2 my-4 rounded-lg bg-fullwhite dark:bg-darkComponentColor h-80">
-					<b className="relative text-base text-black bottom-1 dark:text-darkTextWhiteColor">
-						{t('common.categories')}:
-					</b>
-					<br />
-					<ul className="inline-block w-full h-full pl-0 overflow-y-scroll list-none max-h-60">
-						<li className="h-full pl-2">
-							<label className="flex my-1 cursor-pointer">
-								<input
-									className="w-3 h-3 my-auto transform scale-125 text-firstColorGradientFromDark dark:text-darkFirstColor active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
-									type="radio"
-									name="radio-category-null"
-									onChange={() => onFiltersApply({ category: null })}
-									checked={filters.category === null ? true : false}
-								/>
-								<p className="px-2 text-sm text-black dark:text-darkTextWhiteColor">
-									{t('common.all')}
-								</p>
-							</label>
-							{categories.map((data: any, idx: number) => (
-								<label className="flex my-1 cursor-pointer" key={idx}>
-									<input
-										className="w-3 h-3 my-auto transform scale-125 outline-none text-firstColorGradientFromDark dark:text-darkFirstColor form-radio active:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent"
-										type="radio"
-										name={`radio-category-${data.name}-${data.id}`}
-										value={data.id}
-										onChange={() => onFiltersApply({ category: data.id })}
-										checked={
-											parseInt(filters.category) === parseInt(data.id)
-												? true
-												: false
-										}
-									/>
-									<p className="px-2 text-sm text-black dark:text-darkTextWhiteColor">
-										{data.name}
-									</p>
-								</label>
-							))}
-						</li>
-					</ul>
-					{/* <a href="/" className="">
-						<div className="relative mt-4 text-base font-bold text-center text-black border-t border-gray-200 border-solid cursor-pointer -top-2">
-							Others
-						</div>
-					</a> */}
-				</div>
+
 				<div className="inline-grid w-56 grid-cols-2 rounded-lg h-9">
 					<IconLabelButton
 						className="w-24 mx-auto my-0 rounded-full bg-secondColorGradientToLight dark:bg-darkFirstColor hover:opacity-80"

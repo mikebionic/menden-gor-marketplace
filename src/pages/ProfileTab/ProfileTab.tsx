@@ -47,7 +47,7 @@ export const ProfileTab: React.FC = () => {
 						isActive ? styles.isActiveClass : styles.defaultClass
 					}
 				>
-					<p>{t('common.profile_edit')}</p>
+					<p>{t('common.settings')}</p>
 				</NavLink>
 			</div>
 			<div>

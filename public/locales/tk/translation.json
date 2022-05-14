@@ -90,7 +90,8 @@
 		"note": "Bellik",
 		"language": "Dil",
 		"currency": "Walýuta",
-		"theme": "Tema"
+		"theme": "Tema",
+		"sort": "Sortlama"
 	},
 
 	"auth": {
