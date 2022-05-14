@@ -17,18 +17,10 @@ import { ErrorBoundary } from 'modules/errors'
 import { orderService, otherService } from 'sapredux/services'
 import { toJsonCheckoutOrderInv } from 'sapredux/services/transform_data'
 import { useTranslation } from 'react-i18next'
+import { resourceAllRemovedFromCart } from 'sapredux/actions'
 
 const CheckoutForm = (props: any) => {
-	const {
-		items,
-		orderInvLines,
-		totalPrice,
-		onIncrease,
-		onDecrease,
-		onDelete,
-		user,
-		loggedIn,
-	} = props
+	const { items, orderInvLines, totalPrice, onDelete, user, loggedIn } = props
 	const { t } = useTranslation()
 	const [loading, set_loading] = useState(false)
 	const [inputs, setInputs] = useState({
@@ -92,9 +84,14 @@ const CheckoutForm = (props: any) => {
 			}
 			set_loading(true)
 			if (inputs.pmId !== 2) {
-				inputs.description = `${inputs.description} ${inputs.name} ${inputs.phoneNumber}`
 				orderService
-					.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs), loggedIn)
+					.checkoutSaleOrderInv(
+						toJsonCheckoutOrderInv({
+							...inputs,
+							description: `${inputs.description} ${inputs.name} ${inputs.phoneNumber}`,
+						}),
+						loggedIn,
+					)
 					.then(
 						(response: any) => handleResponse(response),
 						(error: any) =>
@@ -343,4 +340,8 @@ const mapStateToProps = (state: any) => {
 	}
 }
 
-export default connect(mapStateToProps)(CheckoutForm)
+const mapDispatchToProps = {
+	onDelete: resourceAllRemovedFromCart,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutForm)
