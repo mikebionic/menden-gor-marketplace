@@ -123,5 +123,23 @@
 		"forgot_password": "Paroly ýatdan çykardyňyz?",
 		"change_password": "Açar söz tassykla",
 		"register_now": "Hasaba al!"
+	},
+	"title": {
+		"login": "Giriş",
+		"register": "Agza bolmak",
+		"profile": "Profil",
+		"about": "Biz barada",
+		"contact": "Habarlaşmak üçin",
+		"vGrid": "Harytlar",
+		"product": "Haryt",
+		"wishlist": "Halanlarym",
+		"profileEdit": "Profil üýtgetmeleri",
+		"orders": "Sargytlar",
+		"checkout": "Sargyt ibermek",
+		"categories": "Kategoriýalar",
+		"settings": "Sazlamalar",
+		"brands": "Brendlar",
+		"cart": "Sebedim",
+		"payment_and_delivery_info": "Töleg hem-de eltip bermek hyzmatlary"
 	}
 }

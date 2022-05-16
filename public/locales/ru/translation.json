@@ -122,5 +122,23 @@
 		"forgot_password": "Забыли пароль?",
 		"change_password": "Сменить пароль",
 		"register_now": "Зарегистрироваться!"
+	},
+	"title": {
+		"login": "Логин",
+		"register": "Регистрация",
+		"profile": "Профиль",
+		"about": "О нас",
+		"contact": "Свяжитесь с нами",
+		"vGrid": "Товары",
+		"product": "Товары",
+		"wishlist": "Список желаний",
+		"profileEdit": "Изменить профиль",
+		"orders": "Заказы",
+		"checkout": "Оформить заказ",
+		"categories": "Категорий",
+		"settings": "Настройки",
+		"brands": "Бренды",
+		"cart": "Корзина",
+		"payment_and_delivery_info": "Информация оплаты и доставки"
 	}
 }
