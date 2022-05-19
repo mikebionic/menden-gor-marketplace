@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { GoogleLogin } from 'react-google-login'
 import { authActions } from 'sapredux/actions'
 
-import { sapswal } from 'sapredux/helpers'
+//import { sapswal } from 'sapredux/helpers'
 import { Spinner } from 'modules/loaders'
 
 export const GoogleAuth = () => {
@@ -30,11 +30,11 @@ export const GoogleAuth = () => {
 			dispatch(authActions.googleAuth(payload, set_loading, true))
 		} catch (e: any) {
 			set_loading(false)
-			sapswal.fire({
-				title: 'Error',
-				text: `Error authorizing with Google, \n ${e.toString()} \n Try another method instead.`,
-				icon: 'error',
-			})
+			//sapswal.fire({
+			//	title: 'Error',
+			//	text: `Error authorizing with Google, \n ${e.toString()} \n Try another method instead.`,
+			//	icon: 'error',
+			//})
 		}
 	}
 	return (

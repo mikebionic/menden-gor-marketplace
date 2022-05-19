@@ -6,11 +6,12 @@ import { alertActions } from '.'
 const login = (
 	username: string,
 	password: string,
+	authMethod: string = 'email',
 	withToastMessage: boolean = true,
 ) => {
 	return (dispatch: any) => {
 		dispatch(request({ username }))
-		authService.login(username, password).then(
+		authService.login(username, password, authMethod).then(
 			(response: any) => {
 				dispatch(success(response))
 				withToastMessage &&

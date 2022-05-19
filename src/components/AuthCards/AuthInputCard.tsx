@@ -130,7 +130,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 					{authMethod === 'phone_number' && (
 						<div className="inline-grid grid-flow-row gap-1 auto-rows-auto">
 							<p className="text-base ml-1 text-[#606060] cursor-default">
-								{t('common.phone_number')}:
+								{t('auth.phone_number')}:
 							</p>
 							<input
 								type="number"

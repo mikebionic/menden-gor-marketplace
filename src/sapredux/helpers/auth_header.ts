@@ -22,21 +22,23 @@ export const getTokenWithAuth = async (key = 'user', secondCheck = false) => {
 			return token
 		} else {
 			if (!secondCheck) {
-				if (user.auth_username && user.auth_password) {
-					await authService.login(user.auth_username, user.auth_password).then(
-						(response: any) => {
-							store.dispatch({
-								type: authConstants.LOGIN_SUCCESS,
-								payload: response,
-							})
-						},
-						(error: any) => {
-							store.dispatch({
-								type: authConstants.LOGIN_FAILURE,
-								payload: error,
-							})
-						},
-					)
+				if (user.auth_username && user.auth_password && user.authMethod) {
+					await authService
+						.login(user.auth_username, user.auth_password, user.authMethod)
+						.then(
+							(response: any) => {
+								store.dispatch({
+									type: authConstants.LOGIN_SUCCESS,
+									payload: response,
+								})
+							},
+							(error: any) => {
+								store.dispatch({
+									type: authConstants.LOGIN_FAILURE,
+									payload: error,
+								})
+							},
+						)
 					token = await getTokenWithAuth(key, (secondCheck = true))
 				}
 			}

@@ -9,7 +9,7 @@ import {
 import { fetchWithCred } from 'sapredux/helpers'
 import { transformAuth as transformResponse } from './transform_data'
 
-const login_request = (username = '', password = '') => {
+const login_request = (username = '', password = '', authMethod = 'email') => {
 	if (serviceConfig.useMockApi) {
 		if (
 			username === rp_acc_basic_login_credentials.username &&
@@ -36,17 +36,24 @@ const login_request = (username = '', password = '') => {
 	}
 
 	return fetchWithCred(
-		`${serviceConfig.apiUrl}${serviceConfig.routes.login}?type=rp_acc`,
+		`${serviceConfig.apiUrl}${serviceConfig.routes.login}?type=rp_acc&method=${authMethod}`,
 		requestOptions,
 	).then(handleResponse)
 }
 
-const login = async (username: string, password: string) => {
-	return await login_request(username, password).then((response: any) => ({
-		...transformResponse(response),
-		auth_username: username,
-		auth_password: password,
-	}))
+const login = async (
+	username: string,
+	password: string,
+	authMethod: string,
+) => {
+	return await login_request(username, password, authMethod).then(
+		(response: any) => ({
+			...transformResponse(response),
+			auth_username: username,
+			auth_password: password,
+			authMethod: authMethod,
+		}),
+	)
 }
 
 const logout = () => {
