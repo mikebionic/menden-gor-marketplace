@@ -1,0 +1,39 @@
+// sc_marketplace colors
+
+firstColorGradientFromDark: '#ff8d73',
+secondColorGradientToLight: '#feb37b',
+textColorOrange: "#F9704E",
+thirdColor: '#ff0000',
+textLightGray: '#606060',
+textDarkGray: '#454545',
+white: '#f7f6fb',
+fullwhite: '#fff',
+glass: 'rgba(255,255,255,0.1)',
+black: '#000',
+socialBarItemHover: '#FE9F76',
+darkFirstColor: "#6366f1",
+darkButtonColor: "#c03f7f",
+darkComponentColor: "#1e293b",
+darkBgColor: "#0f172a",
+darkTextWhiteColor: "#e1e8f0",
+darkText : "#94a3b8"
+
+// ls_marketplace colors
+
+firstColorGradientFromDark: '#5e2bdb',
+secondColorGradientToLight: '#6f59f2',
+textColorOrange: "#653ee6",
+thirdColor: "#43D4CA"
+textLightGray: '#606060',
+textDarkGray: '#454545',
+white: '#f7f6fb',
+fullwhite: '#fff',
+glass: 'rgba(255,255,255,0.1)',
+black: '#000',
+socialBarItemHover: '#FE9F76', 
+darkFirstColor: "#6366f1",
+darkButtonColor: "#c03f7f",
+darkComponentColor: "#1e293b",
+darkBgColor: "#0f172a",
+darkTextWhiteColor: "#e1e8f0",
+darkText : "#94a3b8"

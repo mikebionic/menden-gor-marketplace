@@ -60,7 +60,7 @@ const MobileCart: React.FC<IMobileCartProps> = ({
 					<div className="mt-6">
 						<Link
 							to={routeConstants.checkout.route}
-							className="grid items-center justify-between grid-flow-col px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm auto-cols-max dark:text-darkTextWhiteColor bg-firstColorGradientFromDark hover:bg-socialBarItemHover dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:text-white"
+							className="grid items-center justify-between grid-flow-col px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm auto-cols-max dark:text-darkTextWhiteColor bg-firstColorGradientFromDark hover:bg-textColorOrange dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:text-white"
 						>
 							{t('common.checkout')}
 							<p className="">

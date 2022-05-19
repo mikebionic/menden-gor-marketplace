@@ -94,13 +94,13 @@ const PleaseLoginField = () => {
 				You should login to leave a review
 			</p>
 			<Link
-				className="text-base text-black dark:text-darkTextWhiteColor 2xl:text-lg hover:text-socialBarItemHover dark:hover:text-darkFirstColor"
+				className="text-base text-black dark:text-darkTextWhiteColor 2xl:text-lg hover:text-textColorOrange dark:hover:text-darkFirstColor"
 				to={routeConstants.login.route}
 			>
 				{t('auth.login')}
 			</Link>
 			<Link
-				className="text-base text-black dark:text-darkTextWhiteColor 2xl:text-lg hover:text-socialBarItemHover dark:hover:text-darkFirstColor"
+				className="text-base text-black dark:text-darkTextWhiteColor 2xl:text-lg hover:text-textColorOrange dark:hover:text-darkFirstColor"
 				to={routeConstants.register.route}
 			>
 				{t('auth.register')}

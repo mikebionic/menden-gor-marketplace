@@ -21,9 +21,9 @@ export const AddToCartButton: React.FC<IAddToCartButtonProps> = ({
 		className={`relative bottom-0 right-0 ${margin} ${size} float-right bg-fullwhite dark:bg-darkComponentColor border border-white dark:border-darkComponentColor min-phone:rounded-full md:rounded-md hover:shadow-sm transition_animation min-phone:w-8 md:w-9 min-phone:h-8 md:h-9`}
 		icon={
 			count ? (
-				<CheckOutlined className="w-full h-full mx-auto my-0 text-2xl text-red-500 dark:text-darkFirstColor" />
+				<CheckOutlined className="w-full h-full mx-auto my-0 text-2xl text-thirdColor dark:text-darkFirstColor" />
 			) : (
-				<BiPlus className="w-full h-full mx-auto my-0 text-red-500 dark:text-darkFirstColor" />
+				<BiPlus className="w-full h-full mx-auto my-0 text-thirdColor dark:text-darkFirstColor" />
 			)
 		}
 		onClick={count ? onDelete : onIncrease}

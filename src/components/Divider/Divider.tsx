@@ -28,7 +28,7 @@ export const Divider: React.FC<IPropsDivider> = ({
 					<p className="text-sm md:text-lg text-oxygen text-firstColorGradientFromDark dark:text-darkTextWhiteColor">
 						All
 					</p>
-					<MdOutlineKeyboardArrowRight className="mr-2 text-sm dark:text-darkTextWhiteColor text-firstColorGradientFromDark hover:text-socialBarItemHover 2xl:w-5 2xl:h-5" />
+					<MdOutlineKeyboardArrowRight className="mr-2 text-sm dark:text-darkTextWhiteColor text-firstColorGradientFromDark hover:text-textColorOrange 2xl:w-5 2xl:h-5" />
 				</div>
 			</Link>
 		</div>

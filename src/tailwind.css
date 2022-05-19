@@ -9,22 +9,22 @@
 @tailwind utilities;
 
 :root {
-	--firstColorGradientFromDark: '#ff8d73',
-	--secondColorGradientToLight: '#feb37b',
-	--textColorOrange: "#F9704E",
-	--textLightGray: '#606060',
-	--textDarkGray: '#454545',
-	--white: '#f7f6fb',
-	--fullwhite: '#fff',
-	--glass: 'rgba(255,255,255,0.1)',
-	--black: '#000',
-	--socialBarItemHover: '#FE9F76',
-	--darkFirstColor: "#6366f1",
-	--darkButtonColor: "#c03f7f",
-	--darkComponentColor: "#1e293b",
-	--darkBgColor: "#0f172a",
-	--darkTextWhiteColor: "#e1e8f0",
-	--darkText : "#94a3b8"
+	--firstColorGradientFromDark: #5e2bdb;
+	--secondColorGradientToLight: #6f59f2;
+	--textColorOrange: #653ee6;
+	--thirdColor: #43d4ca;
+	--textLightGray: #606060;
+	--textDarkGray: #454545;
+	--white: #f7f6fb;
+	--fullwhite: #fff;
+	--glass: rgba(255;255;255;0.1);
+	--black: #000;
+	--darkFirstColor: #6366f1;
+	--darkButtonColor: #c03f7f;
+	--darkComponentColor: #1e293b;
+	--darkBgColor: #0f172a;
+	--darkTextWhiteColor: #e1e8f0;
+	--darkText: #94a3b8;
 }
 
 * {
@@ -49,10 +49,10 @@ body {
 }
 
 html:not(.dark) .banner-container:hover span {
-	color: #f28232;
+	color: var(--secondColorGradientToLight);
 }
 html:not(.dark) .banner-container:hover img {
-	border-color: #f28232;
+	border-color: var(--secondColorGradientToLight);
 }
 
 .transition_animation {
@@ -92,7 +92,11 @@ html:not(.dark) .ribbon {
 }
 
 html:not(.dark) .text-gradient {
-	background: linear-gradient(to right, var(--firstColorGradientFromDark), var(--secondColorGradientToLight));
+	background: linear-gradient(
+		to right,
+		var(--firstColorGradientFromDark),
+		var(--secondColorGradientToLight)
+	);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
@@ -122,7 +126,7 @@ html:not(.dark)
 	> .ant-steps-item-container
 	> .ant-steps-item-content
 	> .ant-steps-item-title::after {
-	background: #f9704e;
+	background: var(--textColorOrange);
 }
 
 .ant-steps-item-icon {
@@ -139,7 +143,7 @@ html:not(.dark)
 html:not(.dark)
 	.ant-select:not(.ant-select-disabled):hover
 	.ant-select-selector {
-	border-color: #f9704e !important;
+	border-color: var(--textColorOrange) !important;
 	border-right-width: 1px;
 	box-shadow: 0 0 0 2px rgb(255 141 115 / 30%) !important;
 }
@@ -147,21 +151,21 @@ html:not(.dark)
 html:not(.dark)
 	.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
 	.ant-select-selector {
-	border-color: #f9704e !important;
+	border-color: var(--textColorOrange) !important;
 	border-right-width: 1px !important;
 	box-shadow: 0 0 0 2px rgb(255 141 115 / 30%) !important;
 	outline: 0 !important;
 }
 
 html:not(.dark) .ant-tabs-ink-bar {
-	background: #f9704e;
+	background: var(--textColorOrange);
 }
 
 html:not(.dark) .ant-tabs-tab-btn:focus,
 .ant-tabs-tab-remove:focus,
 .ant-tabs-tab-btn:active,
 .ant-tabs-tab-remove:active {
-	color: #f9704e;
+	color: var(--textColorOrange);
 }
 
 html:not(.dark) [type='text']:focus,
@@ -184,48 +188,48 @@ select:focus {
 	--tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
 	--tw-ring-offset-width: 0px;
 	--tw-ring-offset-color: var(--fullwhite);
-	--tw-ring-color: #f9704e;
+	--tw-ring-color: transparent;
 	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0
 		var(--tw-ring-offset-width) var(--tw-ring-offset-color);
 	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0
 		calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
 	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
 		var(--tw-shadow);
-	border-color: #f9704e;
+	border-color: var(--textColorOrange);
 }
 
 html:not(.dark) #register_phone {
 	border: 1px solid #e6e6e6 !important;
 }
 html:not(.dark) #register_phone:hover {
-	border: 1px solid #f9704e !important;
+	border: 1px solid var(--textColorOrange) !important;
 }
 
 html:not(.dark)
 	.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
-	border-color: #f9704e;
+	border-color: var(--textColorOrange);
 	border-right-width: 1px;
 	z-index: 1;
 }
 
 html:not(.dark) .ant-input-affix-wrapper:focus,
 .ant-input-affix-wrapper-focused {
-	border-color: #f9704e;
+	border-color: var(--textColorOrange);
 	box-shadow: 0 0 0 2px rgb(255 141 115 / 30%) !important;
 	border-right-width: 1px;
 	outline: 0;
 }
 
 html:not(.dark) .ant-rate {
-	color: #f9704e;
+	color: var(--textColorOrange);
 }
 
 html:not(.dark) .ant-tabs-tab:hover {
-	color: #f9704e;
+	color: var(--textColorOrange);
 }
 
 html:not(.dark) .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-	color: #f9704e;
+	color: var(--textColorOrange);
 	text-shadow: 0 0 0.25px currentcolor;
 }
 
@@ -275,8 +279,8 @@ html:not(.dark) .ant-form input[type='file']:focus,
 }
 
 html:not(.dark) .ant-ribbon-color-red {
-	color: red !important;
-	background: red !important;
+	color: var(--thirdColor) !important;
+	background: var(--thirdColor) !important;
 }
 
 /* --------------------------------------- DARK MODE SYSTEM STYLES --------------------------------------- */
@@ -314,7 +318,11 @@ html:not(.dark) .ant-ribbon-color-red {
 		color: var(--darkFirstColor);
 	}
 	.text-gradient {
-		background: linear-gradient(to right, var(--darkFirstColor), var(--darkFirstColor));
+		background: linear-gradient(
+			to right,
+			var(--darkFirstColor),
+			var(--darkFirstColor)
+		);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 	}

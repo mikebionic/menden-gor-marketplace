@@ -186,14 +186,14 @@ export const SettingsList = () => {
 			<div className="grid grid-flow-row gap-3 mt-4">
 				{settingsItems.map((item: any, idx: number) => (
 					<div className="relative group" onClick={item.onClick} key={idx}>
-						<button className="inline-grid items-center w-full rounded-md cursor-pointer hover:relative shadow-defaultShadow hover:text-socialBarItemHover bg-fullwhite dark:bg-darkComponentColor grid-cols-search h-11 2xl:h-14">
+						<button className="inline-grid items-center w-full rounded-md cursor-pointer hover:relative shadow-defaultShadow hover:text-textColorOrange bg-fullwhite dark:bg-darkComponentColor grid-cols-search h-11 2xl:h-14">
 							<div className="pl-2 text-lg text-textColorOrange dark:text-darkTextWhiteColor">
 								{item.icon}
 							</div>
 							<h4 className="ml-4 text-left text-base text-[#5B5B5B] dark:text-darkTextWhiteColor">
 								{item.label}
 							</h4>
-							<MdOutlineKeyboardArrowRight className="mr-2 dark:text-darkTextWhiteColor text-socialBarItemHover 2xl:w-5 2xl:h-5" />
+							<MdOutlineKeyboardArrowRight className="mr-2 dark:text-darkTextWhiteColor text-textColorOrange 2xl:w-5 2xl:h-5" />
 						</button>
 					</div>
 				))}

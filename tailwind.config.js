@@ -5,16 +5,16 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				firstColorGradientFromDark: '#ff8d73',
-				secondColorGradientToLight: '#feb37b',
-				textColorOrange: "#F9704E",
+				firstColorGradientFromDark: '#5e2bdb',
+				secondColorGradientToLight: '#6f59f2',
+				textColorOrange: "#653ee6",
+				thirdColor: '#43d4ca',
 				textLightGray: '#606060',
 				textDarkGray: '#454545',
-				white: '#f7f6fb', //hz cto delat
-				fullwhite: '#fff', //toje
+				white: '#f7f6fb',
+				fullwhite: '#fff',
 				glass: 'rgba(255,255,255,0.1)',
 				black: '#000',
-				socialBarItemHover: '#FE9F76', //mnogo hz cto delat,
 				darkFirstColor: "#6366f1",
 				darkButtonColor: "#c03f7f",
 				darkComponentColor: "#1e293b",

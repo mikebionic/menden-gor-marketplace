@@ -23,7 +23,7 @@ export const AddToCartWithCounter: React.FC<ICountryButton> = ({
 		<IconLabelButton
 			className={`relative bottom-0 right-0 float-right border border-white dark:border-darkComponentColor ${margin} ${size} rounded-md hover:shadow-sm bg-fullwhite dark:bg-darkComponentColor w-9 h-9`}
 			icon={
-				<BiPlus className="w-full h-full mx-auto my-0 text-red-500 dark:text-darkFirstColor" />
+				<BiPlus className="w-full h-full mx-auto my-0 text-thirdColor dark:text-darkFirstColor" />
 			}
 			label=""
 			onClick={onIncrease}
