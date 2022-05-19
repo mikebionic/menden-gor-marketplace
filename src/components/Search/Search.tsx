@@ -83,7 +83,7 @@ const Search: React.FC = (props: any) => {
 					<div
 						key={idx}
 						onClick={() => handleSearchTypeChange(s_type.id)}
-						className="w-full p-2 text-center text-black hover:bg-gray-100 hover:text-socialBarItemHover dark:hover:text-darkFirstColor dark:hover:opacity-80 dark:hover:bg-darkComponentColor dark:text-darkTextWhiteColor"
+						className="w-full p-2 text-center text-black hover:bg-gray-100 hover:text-textColorOrange dark:hover:text-darkFirstColor dark:hover:opacity-80 dark:hover:bg-darkComponentColor dark:text-darkTextWhiteColor"
 					>
 						{s_type.name}
 					</div>

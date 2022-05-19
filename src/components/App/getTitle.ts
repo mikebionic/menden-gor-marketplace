@@ -23,112 +23,216 @@ const getTitle = (t: any) => {
 			path: '/',
 			title: namesConfig.company_name,
 			description:
-				'Söwda awtomatlaşdyrma, Ynamdar hyzmat, Döwrebap internet sahypalary, Mobile programma üpjünçiligi',
+				'Öndürijiden sarp edija lomaý söwda',
 			keywords:
-				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service',
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
 			url: serviceConfig.apiHost,
-			type: 'website',
+			type: 'organisation',
 			// "img": SapCozgut
 			// "favicon": {SapCozgutIcon}
 		},
 		{
-			path: '/sapcozgut',
-			title: t('title.sapchozgut'),
+			path: '/login/',
+			title: t('title.login'),
 			description:
-				'Söwda awtomatlaşdyrma, Ynamdar hyzmat, Döwrebap internet sahypalary, Mobile programma üpjünçiligi',
+				'Öndürijiden sarp edija lomaý söwda',
 			keywords:
-				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service',
-			url: `${serviceConfig.apiHost}/sapchozgut`,
-			type: 'organisation',
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/login/`,
+			type: 'login',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
+		},
+		{
+			path: '/register/',
+			title: t('title.register'),
+			description:
+				'Öndürijiden sarp edija lomaý söwda',
+			keywords:
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/register/`,
+			type: 'register',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
+		},
+		{
+			path: '/profile/',
+			title: t('title.profile'),
+			description:
+				'Profil maglumatlary görmek',
+			keywords:
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/profile/`,
+			type: 'profile',
 			// "img": SapCozgut
 			// "favicon": {SapCozgutIcon}
 		},
 
 		{
-			path: '/contact',
+			path: '/about/',
+			title: t('title.about'),
+			description:
+				'Lomaý söwda - bölekleýin hem-de lomaýlaýyn söwda ulgamy',
+			keywords:
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/about/`,
+			type: 'about',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
+		},
+
+		{
+			path: '/contact/',
 			title: t('title.contact_us'),
 			description: 'Biz bilen habarlaşmak üçin...',
 			keywords:
 				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service',
-			url: `${serviceConfig.apiHost}/contact`,
+			url: `${serviceConfig.apiHost}/contact/`,
 			type: 'contact',
 			// "img": Contact
 			// "favicon": {SapCozgutIcon}
 		},
 
 		{
-			path: '/akhasap',
-			title: t('title.akhasap'),
+			path: '/v-grid/',
+			title: t('title.vGrid'),
 			description:
-				'Akhasap, Akhasap gurnamak, Akhasap hyzmatlaryna ýardam bermek ',
+				'Lomaý söwda önümler filterleri',
 			keywords:
-				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service',
-			url: `${serviceConfig.apiHost}/akhasap`,
-			type: 'desktop program',
-			// "img": AkHasap
-			// "favicon": ""
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/v-grid/`,
+			type: 'products',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
 		},
 
 		{
-			path: '/saphasap',
-			title: t('title.saphasap'),
-			description: '',
+			path: '/product/',
+			title: t('title.product'),
+			description:
+				'Harydy jikme-jik görmek',
 			keywords:
-				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service',
-			url: `${serviceConfig.apiHost}/saphasap`,
-			type: 'desktop program',
-			// "img": SapHasap
-			// "favicon": {SapHasapIcon}
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/product/`,
+			type: 'product',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
 		},
 
 		{
-			path: '/sapsargyt',
-			title: t('title.sapsargyt'),
+			path: '/wishlist/',
+			title: t('title.wishlist'),
 			description:
-				'Söwda agentligi üçin programma üpjünçiligi. Söwda aluw-satuw hyzmatlaryny awtomatlaşdyrma',
+				'Meniň halanlarym',
 			keywords:
-				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service',
-			url: `${serviceConfig.apiHost}/sapsargyt`,
-			type: 'mobile application',
-			// "img": SapSargyt
-			// "favicon": {SapSargytIcon}
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/wishlist/`,
+			type: 'wishlist',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
 		},
 
 		{
-			path: '/hilli',
-			title: t('title.hilli'),
+			path: '/profile-edit/',
+			title: t('title.profileEdit'),
 			description:
-				'Ýokary hilli kompýuter hyzmatlary, kompýuterleri şeýle hem kompýutere degişli gurallar bilen üpjün edilen',
+				'Profil üýtgeşmeleri girizmek',
 			keywords:
-				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service',
-			url: `${serviceConfig.apiHost}/hilli`,
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/profile-edit/`,
+			type: 'profile',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
+		},
+
+		{
+			path: '/orders/',
+			title: t('title.orders'),
+			description:
+				'Haryt sargytlaryň sanawlary',
+			keywords:
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/orders/`,
+			type: 'orders',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
+		},
+
+		{
+			path: '/checkout/',
+			title: t('title.checkout'),
+			description:
+				'Töleg görnüşleri hem-de töleg amala aşyrmak',
+			keywords:
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/checkout/`,
+			type: 'checkout',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
+		},
+
+		{
+			path: '/categories/',
+			title: t('title.categories'),
+			description:
+				'Haryt kategoriýalary',
+			keywords:
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/categories/`,
+			type: 'categories',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
+		},
+
+		{
+			path: '/settings/',
+			title: t('title.settings'),
+			description:
+				'Mobile sazlamalary amala aşyrmak',
+			keywords:
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/settings/`,
+			type: 'settings',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
+		},
+
+		{
+			path: '/brands/',
+			title: t('title.brands'),
+			description:
+				'Ähli brendleri görmek',
+			keywords:
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/brands/`,
+			type: 'brands',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
+		},
+
+		{
+			path: '/cart/',
+			title: t('title.cart'),
+			description:
+				'Meniň sebedimi görmek',
+			keywords:
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/cart/`,
+			type: 'cart',
+			// "img": SapCozgut
+			// "favicon": {SapCozgutIcon}
+		},
+
+		{
+			path: '/payment_and_delivery_info/',
+			title: t('title.payment_and_delivery_info'),
+			description:
+				'Töleg hem-de eltip bermek hyzmatlaryny amala aşyrmak maglumatlary',
+			keywords:
+				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+			url: `${serviceConfig.apiHost}/payment_and_delivery_info/`,
 			type: 'website',
-			// "img": Hilli
-			// "favicon": {HilliIcon}
-		},
-
-		{
-			path: '/lomaysowda',
-			title: t('title.ls'),
-			description: 'Lomaý söwdalar amatly bahadan amala aşyrylýar',
-			keywords:
-				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service',
-			url: `${serviceConfig.apiHost}/ls`,
-			type: 'website',
-			// "img": LS
-			// "favicon": {LsIcon}
-		},
-
-		{
-			path: '/service',
-			title: t('title.service'),
-			description:
-				'Ýokary hilli service hyzmatlaryny Sap Çözgüt kompaniýasy size üpjün eder.',
-			keywords:
-				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service',
-			url: `${serviceConfig.apiHost}/service`,
-			type: 'service',
-			// "img": Service,
+			// "img": SapCozgut
 			// "favicon": {SapCozgutIcon}
 		},
 	]

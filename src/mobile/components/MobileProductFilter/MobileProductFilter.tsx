@@ -116,7 +116,7 @@ const MobileProductFilter: React.FC<IProductFilterProps> = ({
 											<div className="mt-6">
 												<Link
 													to={routeConstants.checkout.route} //filter route
-													className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark hover:bg-socialBarItemHover dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:text-white"
+													className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark hover:bg-textColorOrange dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:text-white"
 												>
 													Search
 												</Link>

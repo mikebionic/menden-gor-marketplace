@@ -328,7 +328,7 @@ const MobileCheckout: React.FC<IMobileCheckout> = (props: any) => {
 				/>
 				<button
 					onClick={handleSubmit}
-					className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:bg-socialBarItemHover hover:text-white"
+					className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:bg-textColorOrange hover:text-white"
 				>
 					Checkout
 				</button>

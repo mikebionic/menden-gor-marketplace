@@ -1,3 +1,9 @@
+:root {
+	--firstColorGradientFromDark: #5e2bdb,
+	--secondColorGradientToLight: #6f59f2,
+	--darkFirstColor: #6366f1
+}
+
 main {
 	display: grid;
 	place-content: center;
@@ -21,12 +27,12 @@ html:not(.dark) .ap__ring {
 }
 html:not(.dark) .ap__worm1 {
 	animation-name: worm1;
-	stroke: #ff8d73;
+	stroke: var(--firstColorGradientFromDark);
 }
 html:not(.dark) .ap__worm2 {
 	animation-name: worm2;
 	visibility: hidden;
-	stroke: #feb37b;
+	stroke: var(--secondColorGradientToLight);
 }
 
 /* Dark theme */
@@ -41,12 +47,12 @@ html:not(.dark) .ap__worm2 {
 	}
 	.ap__worm1 {
 		animation-name: worm1;
-		stroke: #6366f1;
+		stroke: var(--darkFirstColor);
 	}
 	.ap__worm2 {
 		animation-name: worm2;
 		visibility: hidden;
-		stroke: #6366f1;
+		stroke: var(--darkFirstColor);
 	}
 }
 

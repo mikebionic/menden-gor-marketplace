@@ -47,11 +47,11 @@ export const WishlistButton: React.FC<IWishlistProps> = ({
 			icon={
 				active ? (
 					<HeartFilled
-						className={`h-full mx-auto my-0 text-red-500 ${iconSize} min-phone:w-full md:w-6 dark:text-darkFirstColor`}
+						className={`h-full mx-auto my-0 text-thirdColor ${iconSize} min-phone:w-full md:w-6 dark:text-darkFirstColor`}
 					/>
 				) : (
 					<HeartOutlined
-						className={`h-full mx-auto my-0 text-red-500 ${iconSize} min-phone:w-full md:w-6 dark:text-darkFirstColor`}
+						className={`h-full mx-auto my-0 text-thirdColor ${iconSize} min-phone:w-full md:w-6 dark:text-darkFirstColor`}
 					/>
 				)
 			}

@@ -122,5 +122,23 @@
 		"forgot_password": "Forgot password?",
 		"change_password": "Change password",
 		"register_now": "Register now!"
+	},
+	"title": {
+		"login": "Login",
+		"register": "Register",
+		"profile": "Profile",
+		"about": "About Us",
+		"contact": "Contact Us",
+		"vGrid": "v-grid",
+		"product": "Product",
+		"wishlist": "Wishlist",
+		"profileEdit": "Profile Edit",
+		"orders": "Orders",
+		"checkout": "Checkout",
+		"categories": "Categories",
+		"settings": "Settings",
+		"brands": "Brands",
+		"cart": "Cart",
+		"payment_and_delivery_info": "Payment and Delivery Information"
 	}
 }
