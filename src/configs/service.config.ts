@@ -61,6 +61,8 @@ export const serviceConfig = {
 		order_inv_validation:
 			process.env.REACT_APP_API_ORDER_INV_VALIDATION ??
 			'/v1/order-inv-validation/',
+		company_info:
+			process.env.REACT_APP_API_COMPANY_INFO_ROUTE ?? '/company-info/',
 	},
 }
 
@@ -68,5 +70,10 @@ export const namesConfig = {
 	main_page_slider_name:
 		process.env.REACT_APP_MAIN_PAGE_SLIDER_NAME ?? 'commerce_header',
 	company_name: process.env.REACT_APP_COMPANY_NAME ?? 'Marketplace',
-	company_email: process.env.REACT_APP_COMPANY_EMAIL ?? 'marketplace@mail.com',
+	company_email: process.env.REACT_APP_COMPANY_EMAIL ?? 'sapcozgut@gmail.com',
+	company_webAddress:
+		process.env.REACT_APP_COMPANY_WEBADDRESS ?? 'www.saphasap.com',
+	creator_webAddress:
+		process.env.REACT_APP_CREATOR_WEBADDRESS ?? 'www.saphasap.com',
+	company_phone: process.env.REACT_APP_COMPANY_PHONE ?? '+99364045600',
 }

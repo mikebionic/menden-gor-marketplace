@@ -117,7 +117,9 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 					</div>
 
 					<div className="grid grid-cols-iconReverse ">
-						<p className="text-black dark:text-darkTextWhiteColor">In taze</p>
+						<p className="text-black dark:text-darkTextWhiteColor">
+							{t('common.newest')}
+						</p>
 						<Switch
 							checked={filters.sort === 'date_new' ? true : false}
 							onChange={(value: boolean) =>
@@ -126,7 +128,9 @@ const ProductsFilterPanel: React.FC = (props: any) => {
 						/>
 					</div>
 					<div className="grid grid-cols-iconReverse">
-						<p className="text-black dark:text-darkTextWhiteColor">In kone</p>
+						<p className="text-black dark:text-darkTextWhiteColor">
+							{t('common.oldest')}
+						</p>
 						<Switch
 							checked={filters.sort === 'date_old' ? true : false}
 							onChange={(value: boolean) =>

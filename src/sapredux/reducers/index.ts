@@ -5,6 +5,7 @@ import { auth } from './auth.reducer'
 import { cart } from './cart.reducer'
 import { category } from './category.reducer'
 import { categoryPage } from './categoryPage.reducer'
+import { company } from './company.reducer'
 import { resource } from './resource.reducer'
 import { resourcePage } from './resourcePage.reducer'
 import {
@@ -25,6 +26,7 @@ export const rootReducer = () =>
 		cart,
 		category,
 		categoryPage,
+		company,
 		productFilter,
 		resource,
 		resourcePage,

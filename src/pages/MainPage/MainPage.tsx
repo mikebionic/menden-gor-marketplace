@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import * as R from 'ramda'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
@@ -63,13 +64,13 @@ const MainPage: React.FC = (props: any) => {
 					<SlickBrandsSlider />
 				</div>
 
-				{featuredList && (
+				{!R.isEmpty(featuredList) && (
 					<>
 						<Divider title={t('common.featured')} />
 						{featuredList}
 					</>
 				)}
-				{discountList && (
+				{!R.isEmpty(discountList) && (
 					<>
 						<Divider title={t('common.discounts')} />
 						{discountList}

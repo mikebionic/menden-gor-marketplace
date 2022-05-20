@@ -11,7 +11,12 @@ import {
 	payment_types,
 	payment_methods,
 } from 'sapredux/services/mock_data/payment.mock'
-import { transformPaymentMethod, transformPaymentType } from './transform_data'
+import { company_info } from 'sapredux/services/mock_data/other.mock'
+import {
+	transformPaymentMethod,
+	transformPaymentType,
+	transformCompanyInfo,
+} from './transform_data'
 
 const setCurrency = async (currency = 'TMT') => {
 	await fetchWithCred(
@@ -91,10 +96,30 @@ const generate_reg_no = async (typeId: number = 9, random: number = 1) => {
 	//}
 }
 
+const fetch_company_info = async () => {
+	if (serviceConfig.useMockApi) {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve(company_info)
+			}, 3000)
+		})
+	}
+
+	return await transformFetch(
+		async () =>
+			fetchWithCred(
+				`${serviceConfig.apiUrl}${serviceConfig.routes.company_info}`,
+			).then(handleResponse),
+		transformCompanyInfo,
+		false,
+	)
+}
+
 export const otherService = {
 	setCurrency,
 	setLanguage,
 	fetch_payment_types,
 	fetch_payment_methods,
 	generate_reg_no,
+	fetch_company_info,
 }

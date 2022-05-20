@@ -14,7 +14,11 @@ import { ErrorBoundary } from 'modules/errors'
 import { Navbar } from 'components/Navbar'
 import { Footer } from 'components/Footer'
 
-import { fetchCategories, fetchBrands } from 'sapredux/actions'
+import {
+	fetchCategories,
+	fetchBrands,
+	fetchCompanyInfo,
+} from 'sapredux/actions'
 import { getCategories } from 'sapredux/selectors'
 import { MobileNavbar } from 'mobile/components/MobileNavbar'
 import { MobileBottomNavigation } from 'mobile/components/MobileBottomNavigation'
@@ -41,12 +45,13 @@ const App: React.FC = (props: any) => {
 		return pageData
 	}
 
-	const { fetchCategories, categories, fetchBrands } = props
+	const { fetchCategories, categories, fetchBrands, fetchCompanyInfo } = props
 
 	useEffect(() => {
 		fetchCategories()
 		fetchBrands()
-	}, [fetchCategories, fetchBrands])
+		fetchCompanyInfo()
+	}, [fetchCategories, fetchBrands, fetchCompanyInfo])
 
 	const alert = useSelector((state: RootStateOrAny) => state.alert)
 	const chooseNavbar =
@@ -93,6 +98,7 @@ const mapStateToProps = (state: any) => ({
 const mapDispatchToProps = {
 	fetchCategories,
 	fetchBrands,
+	fetchCompanyInfo,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
