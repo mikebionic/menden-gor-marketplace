@@ -115,6 +115,25 @@ const fetch_company_info = async () => {
 	)
 }
 
+const request_view_counter = async () => {
+	if (serviceConfig.useMockApi) {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve({
+					status: true,
+					message: 'OK',
+					errors: null,
+					data: {},
+				})
+			}, 3000)
+		})
+	}
+
+	return fetchWithCred(
+		`${serviceConfig.goapiUrl}${serviceConfig.routes.view_counter}`,
+	).then(handleResponse)
+}
+
 export const otherService = {
 	setCurrency,
 	setLanguage,
@@ -122,4 +141,5 @@ export const otherService = {
 	fetch_payment_methods,
 	generate_reg_no,
 	fetch_company_info,
+	request_view_counter,
 }
