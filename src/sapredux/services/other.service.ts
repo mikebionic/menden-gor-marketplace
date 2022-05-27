@@ -115,7 +115,7 @@ const fetch_company_info = async () => {
 	)
 }
 
-const request_view_counter = async () => {
+const request_view_counter = async (guid:string, regNo:string) => {
 	if (serviceConfig.useMockApi) {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
@@ -128,10 +128,18 @@ const request_view_counter = async () => {
 			}, 3000)
 		})
 	}
-
-	return fetchWithCred(
-		`${serviceConfig.goapiUrl}${serviceConfig.routes.view_counter}`,
-	).then(handleResponse)
+	const requestOptions = {
+		headers: {
+			ResGuid: btoa(guid),
+			ResRegNo: btoa(regNo),
+		},
+	}
+	return setTimeout(() => {
+		fetchWithCred(
+			`${serviceConfig.goapiUrl}${serviceConfig.routes.view_counter}`,
+			requestOptions,
+		).then(handleResponse)
+	}, serviceConfig.viewCounterTimeout)
 }
 
 export const otherService = {

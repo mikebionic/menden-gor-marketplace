@@ -16,6 +16,7 @@ import { ImEye } from 'react-icons/im'
 import { WishlistButton } from 'common/WishlistButton'
 import { ProductInfoTabs } from 'components/ProductInfoTabs'
 import { useTranslation } from 'react-i18next'
+import { request_view_counter } from 'sapredux/services'
 
 const RenderProuct = ({
 	id,
@@ -120,6 +121,10 @@ const ProductPage: React.FC = (props: any) => {
 			console.log(err)
 		}
 	}, [params.id, fetchResourceById])
+
+	useEffect(() => {
+		request_view_counter(resource.guid, resource.regNo)
+	}, [])
 
 	let slidesToShow =
 		window.innerWidth > 1800

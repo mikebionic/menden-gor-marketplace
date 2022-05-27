@@ -17,6 +17,10 @@ export const serviceConfig = {
 	onlinePaymentMethods: process.env.REACT_APP_ONLINE_PAYMENT_METHODS
 		? parseInt(process.env.REACT_APP_ONLINE_PAYMENT_METHODS)
 		: 0,
+
+	viewCounterTimeout: process.env.REACT_APP_VIEW_COUNTER_TIMEOUT
+		? parseInt(process.env.REACT_APP_VIEW_COUNTER_TIMEOUT)
+		: 8000,
 	routes: {
 		all_categories:
 			process.env.REACT_APP_API_ALL_CATEGORIES_ROUTE ?? '/v-categories/',
