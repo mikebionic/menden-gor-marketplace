@@ -37,9 +37,12 @@ const Categories: React.FC = ({ categories }: any) => {
 									//add a Link or onclick here
 									<div
 										key={idx}
-										className="h-32 w-[120px] bg-fullwhite shadow-defaultShadow grid place-content-center"
+										className="h-32 w-[120px] bg-fullwhite dark:bg-darkComponentColor shadow-defaultShadow grid place-content-center"
 									>
-										<Image src={data.icon} className="w-16" />
+										<Image
+											src={data.icon}
+											className="w-16 dark:brightness-[3]"
+										/>
 									</div>
 							  ))
 							: 'Nothing here...'
@@ -51,10 +54,14 @@ const Categories: React.FC = ({ categories }: any) => {
 					{categories.map((data: any, idx: number) => (
 						<div
 							key={idx}
-							className="grid w-24 h-24 bg-fullwhite shadow-defaultShadow place-content-center"
+							className="grid w-24 h-24 bg-fullwhite dark:bg-darkComponentColor shadow-defaultShadow place-content-center"
 							onClick={() => set_selectedCategory(data)}
 						>
-							<Image src={data.icon} alt="category" className="w-16" />
+							<Image
+								src={data.icon}
+								alt="category"
+								className="w-16 brightness-[3]"
+							/>
 						</div>
 					))}
 				</div>

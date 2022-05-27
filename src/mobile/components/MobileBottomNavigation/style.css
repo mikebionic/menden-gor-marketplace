@@ -1,5 +1,33 @@
 :root {
 	--clr: #222327;
+	--firstColorGradientFromDark: #5e2bdb;
+	--secondColorGradientToLight: #6f59f2;
+	--textColorOrange: #653ee6;
+	--thirdColor: #43d4ca;
+	--textLightGray: #606060;
+	--textDarkGray: #454545;
+	--white: #f7f6fb;
+	--fullwhite: #fff;
+	--glass: rgba(255;255;255;0.1);
+	--black: #000;
+	--darkFirstColor: #6366f1;
+	--darkButtonColor: #c03f7f;
+	--darkComponentColor: #1e293b;
+	--darkBgColor: #0f172a;
+	--darkTextWhiteColor: #e1e8f0;
+	--darkText: #94a3b8;
+}
+
+html:not(.dark) .navigation {
+	position: fixed;
+	bottom: 0;
+	width: 400px;
+	height: 70px;
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
 }
 
 .navigation {
@@ -7,7 +35,7 @@
 	bottom: 0;
 	width: 400px;
 	height: 70px;
-	background: #fff;
+	background: var(--darkComponentColor);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -52,9 +80,19 @@
 	color: #fff;
 }
 
-.navigation ul li a .text {
+html:not(.dark) .navigation ul li a .text {
 	position: absolute;
 	color: var(--clr);
+	font-weight: 400;
+	font-size: 0.75em;
+	letter-spacing: 0.05em;
+	transition: 0.5s;
+	opacity: 0;
+}
+
+.navigation ul li a .text {
+	position: absolute;
+	color: var(--fullwhite);
 	font-weight: 400;
 	font-size: 0.75em;
 	letter-spacing: 0.05em;
@@ -67,18 +105,37 @@
 	transform: translateY(10px);
 }
 
-.indicator {
+html:not(.dark) .indicator {
 	position: absolute;
 	top: -50%;
 	width: 70px;
 	height: 70px;
-	background: linear-gradient(90deg, #ff8d73 0%, #feb27b 100%);
+	background: linear-gradient(
+		90deg,
+		var(--firstColorGradientFromDark) 0%,
+		var(--secondColorGradientToLight) 100%
+	);
 	border-radius: 50%;
 	border: 6px solid #f7f6fb;
 	transition: 0.5s;
 }
 
-.indicator::before {
+.indicator {
+	position: absolute;
+	top: -50%;
+	width: 70px;
+	height: 70px;
+	background: linear-gradient(
+		90deg,
+		var(--darkFirstColor) 0%,
+		var(--darkFirstColor) 100%
+	);
+	border-radius: 50%;
+	border: 6px solid var(--darkBgColor);
+	transition: 0.5s;
+}
+
+html:not(.dark) .indicator::before {
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -89,7 +146,19 @@
 	border-top-right-radius: 20px;
 	box-shadow: 1px -10px 0 0 #f7f6fb;
 }
-.indicator::after {
+.indicator::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: -22px;
+	width: 20px;
+	height: 20px;
+	background: transparent;
+	border-top-right-radius: 20px;
+	box-shadow: 1px -10px 0 0 var(--darkBgColor);
+}
+
+html:not(.dark) .indicator::after {
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -99,6 +168,17 @@
 	background: transparent;
 	border-top-left-radius: 20px;
 	box-shadow: -1px -10px 0 0 #f7f6fb;
+}
+.indicator::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: -22px;
+	width: 20px;
+	height: 20px;
+	background: transparent;
+	border-top-left-radius: 20px;
+	box-shadow: -1px -10px 0 0 var(--darkBgColor);
 }
 
 .navigation ul li:nth-child(1).active ~ .indicator {

@@ -34,9 +34,14 @@
 	font-family: 'Oxygen', sans-serif;
 }
 
-body {
+html:not(.dark) body {
 	overflow-x: hidden;
 	background: #f3f4f8;
+}
+
+body {
+	overflow-x: hidden;
+	background: var(--darkBgColor);
 }
 
 .inputbox input:focus ~ span,

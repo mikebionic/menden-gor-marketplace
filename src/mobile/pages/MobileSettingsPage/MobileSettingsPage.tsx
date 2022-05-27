@@ -24,30 +24,38 @@ const MobileSettingsPage: React.FC = ({ current_user, loggedIn }: any) => {
 					<>
 						<Link
 							to={routeConstants.profileEdit.route}
-							className="inline-grid w-full h-8 col-span-2 mx-0 my-auto rounded-lg place-items-center bg-fullwhite shadow-defaultShadow"
+							className="inline-grid w-full h-8 col-span-2 mx-0 my-auto rounded-lg place-items-center bg-fullwhite dark:bg-darkComponentColor shadow-defaultShadow"
 						>
-							{t('common.profile_edit')}
+							<p className="text-black dark:text-darkTextWhiteColor">
+								{t('common.profile_edit')}
+							</p>
 						</Link>
 						<Link
 							to={routeConstants.logout.route}
-							className="inline-grid h-8 col-span-2 row-span-2 rounded-lg place-items-center dark:text-darkText bg-fullwhite shadow-defaultShadow"
+							className="inline-grid h-8 col-span-2 row-span-2 rounded-lg place-items-center dark:text-darkText bg-fullwhite dark:bg-darkComponentColor shadow-defaultShadow"
 						>
-							{t('common.logout')}
+							<p className="text-black dark:text-darkTextWhiteColor">
+								{t('common.logout')}
+							</p>
 						</Link>
 					</>
 				) : (
 					<>
 						<Link
 							to={routeConstants.login.route}
-							className="inline-grid w-full h-8 col-span-2 mx-0 my-auto rounded-lg place-items-center bg-fullwhite shadow-defaultShadow"
+							className="inline-grid w-full h-8 col-span-2 mx-0 my-auto rounded-lg place-items-center bg-fullwhite dark:bg-darkComponentColor shadow-defaultShadow"
 						>
-							{t('common.login')}
+							<p className="text-black dark:text-darkTextWhiteColor">
+								{t('common.login')}
+							</p>
 						</Link>
 						<Link
 							to={routeConstants.register.route}
-							className="inline-grid h-8 col-span-2 row-span-2 rounded-lg place-items-center dark:text-darkText bg-fullwhite shadow-defaultShadow"
+							className="inline-grid h-8 col-span-2 row-span-2 rounded-lg place-items-center dark:text-darkText bg-fullwhite dark:bg-darkComponentColor shadow-defaultShadow"
 						>
-							{t('common.register')}
+							<p className="text-black dark:text-darkTextWhiteColor">
+								{t('common.register')}
+							</p>
 						</Link>
 					</>
 				)}

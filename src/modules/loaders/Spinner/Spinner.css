@@ -1,7 +1,7 @@
 :root {
-	--firstColorGradientFromDark: #5e2bdb,
-	--secondColorGradientToLight: #6f59f2,
-	--darkFirstColor: #6366f1
+	--firstColorGradientFromDark: #5e2bdb;
+	--secondColorGradientToLight: #6f59f2;
+	--darkFirstColor: #6366f1;
 }
 
 main {
