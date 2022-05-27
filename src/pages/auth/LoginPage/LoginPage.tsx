@@ -79,6 +79,8 @@ const LoginPage: React.FC = (props: any) => {
 					</div>*/}
 				</div>
 
+				<GoogleAuth />
+
 				<div className="container flex min-phone:pt-8 md:p-12 mx-auto 2xl:h-[50rem]">
 					<div className="w-full max-w-md m-auto">
 						<div className="overflow-hidden md:shadow-defaultShadow md:bg-glass rounded-2xl md:backdrop-filter md:backdrop-blur-glass">
@@ -156,7 +158,7 @@ const LoginPage: React.FC = (props: any) => {
 								<Form.Item
 									name="password"
 									rules={[
-										{ required: true, message: t('common.input_username') },
+										{ required: true, message: t('common.input_password') },
 									]}
 								>
 									<Input
@@ -171,7 +173,6 @@ const LoginPage: React.FC = (props: any) => {
 										className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor dark:text-darkTextWhiteColor hover:border-textColorOrange dark:hover:border-darkFirstColor"
 									/>
 								</Form.Item>
-								<GoogleAuth />
 								<Form.Item>
 									<a
 										href="/"

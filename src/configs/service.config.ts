@@ -1,10 +1,16 @@
-const _apiPrefix: string = process.env.REACT_APP_API_PREFIX ?? '/api'
+const _apiPrefix: string = process.env.REACT_APP_API_PREFIX ?? '/sap/api'
 const _apiHostUrl: string =
 	process.env.REACT_APP_API_HOST_URL ?? 'http://127.0.0.1:5000'
 
+const _prefix: string = process.env.REACT_APP_API_PREFIX ?? '/sap'
+const _goapiHostUrl: string =
+	process.env.REACT_APP_GOAPI_HOST_URL ?? 'http://127.0.0.1:8080'
+
 export const serviceConfig = {
 	apiHost: _apiHostUrl,
+	goapiHost: _goapiHostUrl,
 	apiUrl: `${_apiHostUrl}${_apiPrefix}`,
+	goapiUrl: `${_goapiHostUrl}${_prefix}`,
 	useMockApi: process.env.REACT_APP_USE_MOCK_API
 		? parseInt(process.env.REACT_APP_USE_MOCK_API)
 		: 1,
@@ -63,6 +69,8 @@ export const serviceConfig = {
 			'/v1/order-inv-validation/',
 		company_info:
 			process.env.REACT_APP_API_COMPANY_INFO_ROUTE ?? '/company-info/',
+		view_counter:
+			process.env.REACT_APP_API_VIEW_COUNTER_ROUTE ?? '/goapi/view-counter/',
 	},
 }
 
