@@ -15,6 +15,7 @@ import { Image } from 'common/Image'
 import { MobileProductCard } from 'mobile/components/MobileProductCard'
 import SlickSlider from 'common/SlickSlider'
 import { useTranslation } from 'react-i18next'
+import { otherService } from 'sapredux/services'
 
 const RenderProuct = ({
 	id,
@@ -118,6 +119,15 @@ const MobileProductPage = (props: any) => {
 			console.log(err)
 		}
 	}, [params.id, fetchResourceById])
+
+	useEffect(() => {
+		if (resource) {
+			otherService.request_view_counter({
+				ResGuid: btoa(resource.guid),
+				ResRegNo: btoa(resource.regNo),
+			})
+		}
+	}, [resource])
 
 	const productsList =
 		resource && resource.related_resources && !!resource.related_resources ? (

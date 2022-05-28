@@ -115,7 +115,10 @@ const fetch_company_info = async () => {
 	)
 }
 
-const request_view_counter = async (guid:string, regNo:string) => {
+const request_view_counter = async (
+	credentials: any,
+	type: string = 'resource',
+) => {
 	if (serviceConfig.useMockApi) {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
@@ -128,15 +131,10 @@ const request_view_counter = async (guid:string, regNo:string) => {
 			}, 3000)
 		})
 	}
-	const requestOptions = {
-		headers: {
-			ResGuid: btoa(guid),
-			ResRegNo: btoa(regNo),
-		},
-	}
+	const requestOptions = { headers: credentials }
 	return setTimeout(() => {
-		fetchWithCred(
-			`${serviceConfig.goapiUrl}${serviceConfig.routes.view_counter}`,
+		fetch(
+			`${serviceConfig.goapiUrl}${serviceConfig.routes.view_counter}?type=${type}`,
 			requestOptions,
 		).then(handleResponse)
 	}, serviceConfig.viewCounterTimeout)

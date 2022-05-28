@@ -16,13 +16,14 @@ import { ImEye } from 'react-icons/im'
 import { WishlistButton } from 'common/WishlistButton'
 import { ProductInfoTabs } from 'components/ProductInfoTabs'
 import { useTranslation } from 'react-i18next'
-import { request_view_counter } from 'sapredux/services'
+import { otherService } from 'sapredux/services'
 
 const RenderProuct = ({
 	id,
 	description,
 	name,
 	image,
+	filePathM,
 	priceValue,
 	currencySymbol,
 	categoryName,
@@ -39,7 +40,7 @@ const RenderProuct = ({
 			<div className="grid gap-8 3xl:gap-20 p-4 3xl:p-12 mx-auto my-8 grid-cols-[auto_1fr] lg:w-[auto] h-[450px] 3xl:h-[600px] bg-fullwhite dark:bg-darkComponentColor place-content-center place-items-center">
 				<div className="bg-gray-200 dark:bg-darkBgColor lg:w-96 md:w-80 lg:h-96 md:h-80 3xl:w-[35rem] 3xl:h-[30rem]">
 					<Image
-						src={image}
+						src={filePathM}
 						alt={`${name} - ${description}`}
 						className="object-contain object-center w-full h-full lg:w-full lg:h-full"
 					/>
@@ -123,8 +124,13 @@ const ProductPage: React.FC = (props: any) => {
 	}, [params.id, fetchResourceById])
 
 	useEffect(() => {
-		request_view_counter(resource.guid, resource.regNo)
-	}, [])
+		if (resource) {
+			otherService.request_view_counter({
+				ResGuid: btoa(resource.guid),
+				ResRegNo: btoa(resource.regNo),
+			})
+		}
+	}, [resource])
 
 	let slidesToShow =
 		window.innerWidth > 1800
