@@ -13,6 +13,10 @@ export const routeConstants = {
 		route: `${ route_prefix }/register/`,
 		name: 'Register'
 	},
+	reset: {
+		route: `${ route_prefix }/reset/`,
+		name: 'Reset Password'
+	},
 	logout: {
 		route: `${route_prefix}/logout/`,
 		name: 'Logout',

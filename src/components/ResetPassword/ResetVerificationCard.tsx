@@ -8,7 +8,7 @@ import { showToastMessage } from 'sapredux/helpers'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { useTranslation } from 'react-i18next'
 
-export const AuthVerificationCard = ({
+export const ResetVerificationCard = ({
 	onStageChange,
 	validationData,
 	handleValidationData,
@@ -123,7 +123,7 @@ export const AuthVerificationCard = ({
 			[authMethod]: credentials,
 		}
 
-		authService.verifyRegister(authMethod, payload).then(
+		authService.verifyResetPassword(authMethod, payload).then(
 			(response: any) => {
 				response.status === 1
 					? handleSuccess(response)
@@ -229,7 +229,7 @@ export const AuthVerificationCard = ({
 						<div>
 							<IconLabelButton
 								label={t('common.next')}
-								className="w-32 m-auto rounded-lg h-11 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight dark:bg-gradient-to-r dark:from-darkFirstColor dark:to-darkFirstColorhover:opacity-90"
+								className="w-32 m-auto rounded-lg h-11 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight dark:bg-gradient-to-r dark:from-darkFirstColor dark:to-darkFirstColor hover:opacity-90"
 								labelClassName="m-auto text-white"
 								type="submit"
 							/>

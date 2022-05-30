@@ -39,7 +39,7 @@ export const WishlistButton: React.FC<IWishlistProps> = ({
 
 	return (
 		<IconLabelButton
-			className={`relative right-0 float-right border border-white dark:border-darkComponentColor min-phone:rounded-full md:rounded-md hover:shadow-sm bg-fullwhite dark:bg-darkComponentColor ${size} ${margin}`}
+			className={`relative right-0 float-right border border-white dark:border-darkComponentColor min-phone:rounded-full md:!rounded-md hover:shadow-sm bg-fullwhite dark:bg-darkComponentColor ${size} ${margin}`}
 			onClick={() => {
 				setActive(!active)
 				onSave(resId, active)

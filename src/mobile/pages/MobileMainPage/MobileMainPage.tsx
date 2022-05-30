@@ -16,6 +16,7 @@ import { Spinner } from 'modules/loaders'
 import { useTranslation } from 'react-i18next'
 import { routeConstants } from 'navigation'
 import { SlickBrandsSlider } from 'components/SlickBrandsSlider'
+import * as R from 'ramda'
 
 const MobileMainPage: React.FC = (props: any) => {
 	const { t } = useTranslation()
@@ -61,25 +62,32 @@ const MobileMainPage: React.FC = (props: any) => {
 				<SlickCategorySlider />
 
 				<Divider title={t('common.brands')} mobile={true} />
-				<SlickBrandsSlider />
+				<SlickBrandsSlider mobile={true} />
 
 				<div className="grid grid-flow-col gap-4 auto-cols-max">
 					{/*<ResGroup mobile={true} />
 					<ResGroup mobile={true} />*/}
 				</div>
-				<Divider
-					title={t('common.just_for_you')}
-					mobile={true}
-					url={`${routeConstants.vGrid.route}/?showDiscounts=1&`}
-				/>
-				{discountProductSlick}
-
-				<Divider
-					title={t('common.new_arrives')}
-					mobile={true}
-					url={`${routeConstants.vGrid.route}`}
-				/>
-				{featuredProductSlick}
+				{!R.isEmpty(discountProductSlick) && (
+					<>
+						<Divider
+							title={t('common.just_for_you')}
+							mobile={true}
+							url={`${routeConstants.vGrid.route}/?showDiscounts=1&`}
+						/>
+						{discountProductSlick}
+					</>
+				)}
+				{!R.isEmpty(featuredProductSlick) && (
+					<>
+						<Divider
+							title={t('common.new_arrives')}
+							mobile={true}
+							url={`${routeConstants.vGrid.route}`}
+						/>
+						{featuredProductSlick}
+					</>
+				)}
 			</div>
 		</ErrorBoundary>
 	)

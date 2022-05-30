@@ -36,7 +36,7 @@ const tailFormItemLayout = {
 	},
 }
 
-const RegisterRpAccCard = ({
+const ResetPasswordCard = ({
 	onStageChange,
 	validationData,
 	loggedIn,
@@ -361,4 +361,4 @@ const mapStateToProps = (state: any) => ({
 })
 const mapDispatchToProps = { register_rp_acc }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterRpAccCard)
+export default connect(mapStateToProps, mapDispatchToProps)(ResetPasswordCard)

@@ -288,6 +288,14 @@ html:not(.dark) .ant-ribbon-color-red {
 	background: var(--thirdColor) !important;
 }
 
+html:not(.dark) .google-login > div {
+	background: var(--fullwhite) !important;
+}
+
+html:not(.dark) .google-login > span {
+	color: var(--black) !important;
+}
+
 /* --------------------------------------- DARK MODE SYSTEM STYLES --------------------------------------- */
 @media (prefers-color-scheme: dark) {
 	html.dark [type='text']:focus,
@@ -499,5 +507,11 @@ html:not(.dark) .ant-ribbon-color-red {
 	.ant-table-tbody > tr.ant-table-row:hover > td,
 	.ant-table-tbody > tr > td.ant-table-cell-row-hover {
 		background: #313c4d;
+	}
+	.google-login > div {
+		background: var(--darkComponentColor) !important;
+	}
+	.google-login > span {
+		color: var(--darkTextWhiteColor) !important;
 	}
 }

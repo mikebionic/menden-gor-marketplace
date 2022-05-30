@@ -111,6 +111,55 @@ const register_rp_acc = async (
 		}))
 }
 
+const resetPasswordRequest = async (authMethod: string, payload: string) => {
+	let headers =
+		authMethod === 'email'
+			? { Email: payload }
+			: authMethod === 'phone_number' && { PhoneNumber: payload }
+
+	return fetchWithCred(
+		`${serviceConfig.apiUrl}${serviceConfig.routes.reset_password}?method=${authMethod}`,
+		{ headers: headers },
+	).then(handleResponse)
+}
+
+const verifyResetPassword = async (authMethod: string, payload: any) => {
+	const requestOptions = {
+		method: 'POST',
+		body: JSON.stringify(payload),
+		headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+	}
+	return fetchWithCred(
+		`${serviceConfig.apiUrl}${serviceConfig.routes.verify_reset_password}?method=${authMethod}`,
+		requestOptions,
+	).then(handleResponse)
+}
+
+// const reset_password_rp_acc = async (
+// 	authMethod: string,
+// 	registerToken: string,
+// 	payload: any,
+// ) => {
+// 	const requestOptions = {
+// 		method: 'POST',
+// 		body: JSON.stringify(payload),
+// 		headers: {
+// 			'Content-Type': 'application/json; charset=UTF-8',
+// 			Token: registerToken,
+// 		},
+// 	}
+// 	return fetchWithCred(
+// 		`${serviceConfig.apiUrl}${serviceConfig.routes.reset_password}?method=${authMethod}&type=rp_acc`,
+// 		requestOptions,
+// 	)
+// 		.then(handleResponse)
+// 		.then((response: any) => ({
+// 			status: response.status,
+// 			message: response.message,
+// 			...transformResponse(response.data),
+// 		}))
+// }
+
 const editProfile = async (payload: any) => {
 	const requestOptions = {
 		method: 'POST',
@@ -170,4 +219,7 @@ export const authService = {
 	register_rp_acc,
 	googleAuth,
 	updateAvatar,
+	resetPasswordRequest,
+	verifyResetPassword,
+	// reset_password_rp_acc,
 }
