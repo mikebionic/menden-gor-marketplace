@@ -2,16 +2,17 @@ import { useState, useEffect } from 'react'
 
 import { AiOutlineMail } from 'react-icons/ai'
 import { FaSms } from 'react-icons/fa'
-// import { GrGooglePlus } from 'react-icons/gr'
 import { IconLabelButton } from 'common/IconLabelButton'
 import { ErrorBoundary } from 'modules/errors'
 import { authService } from 'sapredux/services'
 import { showToastMessage } from 'sapredux/helpers'
 import { Spinner } from 'modules/loaders'
-import { GoogleAuth } from 'components/GoogleAuth'
 import { useTranslation } from 'react-i18next'
 
-export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
+export const ResetInputCard = ({
+	onStageChange,
+	handleValidationData,
+}: any) => {
 	const { t } = useTranslation()
 	const [authMethod, set_authMethod] = useState('email')
 	const [credentials, set_credentials] = useState('')
@@ -35,7 +36,7 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 	const handleSubmit = (e: any) => {
 		set_loading(true)
 		authService
-			.registerRequest(authMethod, credentials)
+			.resetPasswordRequest(authMethod, credentials)
 			.then(
 				(response: any) => {
 					response.status === 1
@@ -99,16 +100,9 @@ export const AuthInputCard = ({ onStageChange, handleValidationData }: any) => {
 					>
 						<FaSms className="w-full h-full p-2 text-textColorOrange dark:text-darkFirstColor" />
 					</div>
-					{/*<div
-						className="w-11 h-11 bg-fullwhite dark:bg-darkComponentColor rounded-lg cursor-pointer hover:shadow-[0px_0px_4px_rgba(0,0,0,0.25)]"
-						onClick={() => set_authMethod('google')}
-					>
-						<GrGooglePlus className="w-full h-full p-2 text-textColorOrange dark:text-darkFirstColor" />
-					</div>*/}
 				</div>
-				<GoogleAuth />
 				<form
-					className="container min-phone:w-[300px] min-phone:h-[180px] md:w-[450px] md:h-[217px] rounded-lg min-phone:shadow-none md:shadow-[1px_1px_4px_rgba(0,0,0,0.3)] min-phone:p-4 md:p-9 grid grid-flow-row auto-rows-auto gap-4 min-phone:bg-transparent md:bg-fullwhite dark:bg-darkComponentColor"
+					className="container min-phone:w-[300px] min-phone:h-[180px] md:w-[450px] md:h-[217px] rounded-lg min-phone:shadow-none md:shadow-[1px_1px_4px_rgba(0,0,0,0.3)] min-phone:p-4 md:p-9 grid grid-flow-row auto-rows-auto gap-4 min-phone:bg-transparent md:!bg-fullwhite dark:bg-darkComponentColor"
 					onSubmit={(e) => handleSubmit(e)}
 				>
 					{loading && <Spinner />}

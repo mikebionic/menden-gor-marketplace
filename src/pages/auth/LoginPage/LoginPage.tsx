@@ -48,7 +48,7 @@ const LoginPage: React.FC = (props: any) => {
 
 	return (
 		<ErrorBoundary>
-			<div className="font-sans text-gray-700 grid w-full grid-flow-row gap-1 2xl:my-32 place-content-center auto-cols-max">
+			<div className="grid w-full grid-flow-row gap-4 font-sans text-gray-700 2xl:my-32 place-content-center place-items-center auto-cols-max">
 				<div className="text-center cursor-default">
 					<h2 className="text-3xl font-semibold text-textColorOrange dark:text-darkFirstColor">
 						{t('common.welcome')}!
@@ -81,7 +81,7 @@ const LoginPage: React.FC = (props: any) => {
 
 				<GoogleAuth />
 
-				<div className="container flex min-phone:pt-8 md:p-12 mx-auto 2xl:h-[50rem]">
+				<div className="container flex min-phone:pt-8 md:!pt-0 md:pb-12 mx-auto 2xl:h-[50rem]">
 					<div className="w-full max-w-md m-auto">
 						<div className="overflow-hidden md:shadow-defaultShadow md:bg-glass rounded-2xl md:backdrop-filter md:backdrop-blur-glass">
 							{loading && <Spinner />}
@@ -102,9 +102,9 @@ const LoginPage: React.FC = (props: any) => {
 											},
 										]}
 									>
-										<p className="text-base ml-1 text-[#606060] dark:text-darkTextWhiteColor cursor-default">
+										{/* <p className="text-base ml-1 text-[#606060] dark:text-darkTextWhiteColor cursor-default">
 											{t('auth.email')}:
-										</p>
+										</p> */}
 										<Input
 											prefix={
 												<UserOutlined className="pr-2 site-form-item-icon" />
@@ -119,7 +119,7 @@ const LoginPage: React.FC = (props: any) => {
 											required
 											placeholder={t('common.enter_email_address')}
 											inputMode="email"
-											className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor dark:text-darkTextWhiteColor hover:border-textColorOrange dark:hover:border-darkFirstColor"
+											className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor dark:text-darkTextWhiteColor hover:border-textColorOrange dark:hover:border-darkFirstColor w-[18rem]"
 										/>
 									</Form.Item>
 								)}
@@ -134,9 +134,9 @@ const LoginPage: React.FC = (props: any) => {
 											},
 										]}
 									>
-										<p className="text-base ml-1 text-[#606060] dark:text-darkTextWhiteColor cursor-default">
+										{/* <p className="text-base ml-1 text-[#606060] dark:text-darkTextWhiteColor cursor-default">
 											{t('auth.phone_number')}:
-										</p>
+										</p> */}
 										<Input
 											prefix={
 												<UserOutlined className="pr-2 site-form-item-icon" />
@@ -150,7 +150,7 @@ const LoginPage: React.FC = (props: any) => {
 											type="number"
 											name="phone_number"
 											placeholder="+993"
-											className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor dark:text-darkTextWhiteColor hover:border-textColorOrange dark:hover:border-darkFirstColor"
+											className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor dark:text-darkTextWhiteColor hover:border-textColorOrange dark:hover:border-darkFirstColor w-[18rem]"
 										/>
 									</Form.Item>
 								)}
@@ -160,6 +160,7 @@ const LoginPage: React.FC = (props: any) => {
 									rules={[
 										{ required: true, message: t('common.input_password') },
 									]}
+									className="mb-2"
 								>
 									<Input
 										prefix={
@@ -170,22 +171,22 @@ const LoginPage: React.FC = (props: any) => {
 										name="password"
 										value={password}
 										onChange={handleChange}
-										className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor dark:text-darkTextWhiteColor hover:border-textColorOrange dark:hover:border-darkFirstColor"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:border-darkBgColor dark:bg-darkBgColor dark:text-darkTextWhiteColor hover:border-textColorOrange dark:hover:border-darkFirstColor w-[18rem]"
 									/>
 								</Form.Item>
-								<Form.Item>
-									<a
-										href="/"
+								<Form.Item className="!mb-2">
+									<Link
+										to={routeConstants.reset.route}
 										className="float-right hover:text-textColorOrange dark:hover:text-darkFirstColor dark:text-darkTextWhiteColor"
 									>
 										{t('auth.forgot_password')}
-									</a>
+									</Link>
 								</Form.Item>
 
 								<Form.Item className="h-auto">
 									<IconLabelButton
 										label={t('common.login')}
-										className="h-11 rounded-lg w-full bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] dark:bg-[linear-gradient(266.08deg,#6366f1_1%,#6366f1_100%)] hover:opacity-90 m-auto"
+										className="w-full m-auto rounded-lg h-11 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight dark:bg-gradient-to-r dark:from-darkFirstColor dark:to-darkFirstColor hover:opacity-90"
 										labelClassName="m-auto text-white"
 										type="primary"
 										htmlType="submit"

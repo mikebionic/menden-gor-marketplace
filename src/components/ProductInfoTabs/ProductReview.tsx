@@ -78,7 +78,7 @@ const AddReviewField = ({ resId }: any) => {
 				<IconLabelButton
 					label="Send"
 					onClick={handleSubmit}
-					className="w-32 h-11 rounded-lg bg-[linear-gradient(266.08deg,#FF8D73_1%,#FEB37A_100%)] dark:bg-[linear-gradient(266.08deg,#6366f1_1%,#6366f1_100%)] hover:opacity-80 m-auto"
+					className="w-32 m-auto rounded-lg h-11 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight dark:bg-gradient-to-r dark:from-darkFirstColor dark:to-darkFirstColor hover:opacity-80"
 					labelClassName="m-auto text-white"
 				/>
 			</div>

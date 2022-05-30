@@ -19,6 +19,7 @@ import MobileVGridPage from 'mobile/pages/MobileVGridPage'
 import { MobileCheckoutPage } from 'mobile/pages/MobileCheckoutPage'
 import MobileProductPage from 'mobile/pages/MobileProductPage'
 import MobileSettingsPage from 'mobile/pages/MobileSettingsPage'
+import { ResetPasswordPage } from 'pages/auth/ResetPasswordPage'
 
 const chooseMainPage =
 	window.innerWidth < 768 ? <MobileMainPage /> : <MainPage />
@@ -40,6 +41,10 @@ export const AppRoutes: React.FC = () => {
 			<Route path={routeConstants.login.route} element={<LoginPage />} />
 			<Route path={routeConstants.logout.route} element={<LogoutPage />} />
 			<Route path={routeConstants.register.route} element={<RegisterPage />} />
+			<Route
+				path={routeConstants.reset.route}
+				element={<ResetPasswordPage />}
+			/>
 
 			<Route
 				path={routeConstants.brands.route}

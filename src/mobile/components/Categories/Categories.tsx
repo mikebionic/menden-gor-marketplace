@@ -30,23 +30,32 @@ const Categories: React.FC = ({ categories }: any) => {
 		<ErrorBoundary>
 			<div className="mt-2 grid grid-cols-[1fr_auto]">
 				<div className="grid grid-cols-2 gap-2 mt-6 place-items-center place-self-start">
-					{selectedCategory
-						? selectedCategory.categories &&
-						  selectedCategory.categories.length > 0
-							? selectedCategory.categories.map((data: any, idx: number) => (
-									//add a Link or onclick here
-									<div
-										key={idx}
-										className="h-32 w-[120px] bg-fullwhite dark:bg-darkComponentColor shadow-defaultShadow grid place-content-center"
-									>
-										<Image
-											src={data.icon}
-											className="w-16 dark:brightness-[3]"
-										/>
-									</div>
-							  ))
-							: 'Nothing here...'
-						: 'Select a category'}
+					{selectedCategory ? (
+						selectedCategory.categories &&
+						selectedCategory.categories.length > 0 ? (
+							selectedCategory.categories.map((data: any, idx: number) => (
+								//add a Link or onclick here
+								<div
+									key={idx}
+									className="h-32 w-[120px] gap-1 bg-fullwhite place-items-center dark:bg-darkComponentColor shadow-defaultShadow grid place-content-center grid-flow-row auto-rows-max"
+								>
+									<Image src={data.icon} className="w-16 dark:brightness-[3]" />
+									<hr className="w-full mt-1 dark:border-darkFirstColor" />
+									<p className="text-black dark:text-darkTextWhiteColor">
+										{data.name}
+									</p>
+								</div>
+							))
+						) : (
+							<p className="text-black dark:text-darkTextWhiteColor">
+								Nothing here...
+							</p>
+						)
+					) : (
+						<p className="text-black dark:text-darkTextWhiteColor">
+							Select a category
+						</p>
+					)}
 				</div>
 				<div
 					className={`grid grid-flow-row gap-[1px] auto-rows-max overflow-y-auto fixed right-0 ${scrollStyle}`}
@@ -60,7 +69,7 @@ const Categories: React.FC = ({ categories }: any) => {
 							<Image
 								src={data.icon}
 								alt="category"
-								className="w-16 brightness-[3]"
+								className="w-16 dark:brightness-[3]"
 							/>
 						</div>
 					))}
