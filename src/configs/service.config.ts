@@ -2,7 +2,7 @@ const _apiPrefix: string = process.env.REACT_APP_API_PREFIX ?? '/sap/api'
 const _apiHostUrl: string =
 	process.env.REACT_APP_API_HOST_URL ?? 'http://127.0.0.1:5000'
 
-const _prefix: string = process.env.REACT_APP_API_PREFIX ?? '/sap'
+const _prefix: string = process.env.REACT_APP_PREFIX ?? '/sap'
 const _goapiHostUrl: string =
 	process.env.REACT_APP_GOAPI_HOST_URL ?? 'http://127.0.0.1:8080'
 
@@ -17,6 +17,10 @@ export const serviceConfig = {
 	onlinePaymentMethods: process.env.REACT_APP_ONLINE_PAYMENT_METHODS
 		? parseInt(process.env.REACT_APP_ONLINE_PAYMENT_METHODS)
 		: 0,
+
+	viewCounterTimeout: process.env.REACT_APP_VIEW_COUNTER_TIMEOUT
+		? parseInt(process.env.REACT_APP_VIEW_COUNTER_TIMEOUT)
+		: 8000,
 	routes: {
 		all_categories:
 			process.env.REACT_APP_API_ALL_CATEGORIES_ROUTE ?? '/v-categories/',
