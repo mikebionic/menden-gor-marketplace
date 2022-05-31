@@ -32,6 +32,16 @@ export const getDiscountResources = (state: any) => {
 	return resources
 }
 
+export const getLatestResources = (state: any) => {
+	const resources = !!state.resource.data
+		? R.map(
+				(id: number) => getResourceById(state.resource.data, id),
+				state.latestResourceIds.ids,
+		  )
+		: []
+	return resources
+}
+
 export const getWishlistResources = (state: any) => {
 	const resources = !!state.resource.data
 		? R.map(

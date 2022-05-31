@@ -12,6 +12,7 @@ import {
 	resourcesPage,
 	discountResourceIds,
 	featuredResourceIds,
+	latestResourceIds,
 	wishlistResourceIds,
 } from './resourcesPage.reducer'
 import { slider } from './slider.reducer'
@@ -33,6 +34,7 @@ export const rootReducer = () =>
 		resourcesPage,
 		discountResourceIds,
 		featuredResourceIds,
+		latestResourceIds,
 		wishlistResourceIds,
 		slider,
 	})

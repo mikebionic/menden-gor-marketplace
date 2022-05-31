@@ -50,6 +50,17 @@ export const resource = (state = initialState, { type, payload }: any) => {
 			}
 			return R.mergeRight(state, moreValues)
 
+		case actionConstants.LATEST_FETCH_SUCCESS:
+			moreValues = {
+				loading: false,
+				error: false,
+				data: R.mergeRight(
+					state.data,
+					R.indexBy(R.prop<string, string>('id'), payload),
+				),
+			}
+			return R.mergeRight(state, moreValues)
+
 		case actionConstants.WISHLIST_FETCH_SUCCESS:
 			moreValues = {
 				loading: false,

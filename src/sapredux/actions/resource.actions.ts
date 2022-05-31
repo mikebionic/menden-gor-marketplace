@@ -119,6 +119,25 @@ export const fetchDiscountResources = () => async (dispatch: any) => {
 	}
 }
 
+export const fetchLatestResources = () => async (dispatch: any) => {
+	dispatch({
+		type: actionConstants.LATEST_FETCH_START,
+	})
+	try {
+		const data = await service.fetchLatest_data()
+		dispatch({
+			type: actionConstants.LATEST_FETCH_SUCCESS,
+			payload: data,
+		})
+	} catch (err) {
+		dispatch({
+			type: actionConstants.LATEST_FETCH_FAILURE,
+			payload: err,
+			error: true,
+		})
+	}
+}
+
 export const fetchWishlistResources = () => async (dispatch: any) => {
 	dispatch({
 		type: actionConstants.WISHLIST_FETCH_START,
