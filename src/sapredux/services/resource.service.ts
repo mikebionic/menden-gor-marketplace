@@ -1,10 +1,14 @@
 import * as R from 'ramda'
 
 import { serviceConfig } from 'configs'
-import { authBearerHeaderAsync, handleResponse } from 'sapredux/helpers'
+import {
+	authBearerHeaderAsync,
+	handleResponse,
+	transformFetch,
+	fetchWithCred,
+} from 'sapredux/helpers'
 import { paginated_resources } from './mock_data/resource.mock'
 import { transformResources as transformResponse } from './transform_data'
-import { transformFetch, fetchWithCred } from 'sapredux/helpers'
 
 const fetchAll = async (query_string = '') => {
 	if (serviceConfig.useMockApi) {
@@ -88,7 +92,7 @@ const fetchLatest_data = async () => {
 	return await transformFetch(
 		() =>
 			fetchWithCred(
-				`${serviceConfig.apiUrl}${serviceConfig.routes.paginated_resources}?sort=date_new`,
+				`${serviceConfig.apiUrl}${serviceConfig.routes.paginated_resources}?per_page=12&sort=date_new`,
 			).then(handleResponse),
 		transformResponse,
 	)

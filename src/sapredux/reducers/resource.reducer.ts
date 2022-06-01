@@ -1,4 +1,7 @@
-import { resourceConstants as actionConstants } from 'sapredux/constants'
+import {
+	resourceConstants as actionConstants,
+	resourceCollectionConstants,
+} from 'sapredux/constants'
 import * as R from 'ramda'
 
 const initialState = { loading: false, error: false, data: {} }
@@ -68,6 +71,22 @@ export const resource = (state = initialState, { type, payload }: any) => {
 				data: R.mergeRight(
 					state.data,
 					R.indexBy(R.prop<string, string>('id'), payload),
+				),
+			}
+			return R.mergeRight(state, moreValues)
+
+		case resourceCollectionConstants.FETCH_SUCCESS:
+			console.log(payload)
+			let resources: any = []
+			payload.map((item: any) => {
+				item.resources.map((resource: any) => resources.push(resource))
+			})
+			moreValues = {
+				loading: false,
+				error: false,
+				data: R.mergeRight(
+					state.data,
+					R.indexBy(R.prop<string, string>('id'), resources),
 				),
 			}
 			return R.mergeRight(state, moreValues)

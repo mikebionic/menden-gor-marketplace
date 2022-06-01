@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 
-import { MainPage } from 'pages/MainPage'
+import { MainPageWrapper } from 'pages/MainPage'
 import { PrivateRoute } from 'navigation/PrivateRoute'
 
 import { routeConstants } from 'navigation'
@@ -13,16 +13,12 @@ import { ProductPage } from 'pages/ProductPage'
 import { LoginPage, LogoutPage, RegisterPage } from 'pages/auth'
 import { CheckoutPage } from 'pages/CheckoutPage'
 
-import { MobileMainPage } from 'mobile/pages/MobileMainPage'
 import { MobileCategoryPage } from 'mobile/pages/MobileCategoryPage'
 import MobileVGridPage from 'mobile/pages/MobileVGridPage'
 import { MobileCheckoutPage } from 'mobile/pages/MobileCheckoutPage'
 import MobileProductPage from 'mobile/pages/MobileProductPage'
 import MobileSettingsPage from 'mobile/pages/MobileSettingsPage'
 import { ResetPasswordPage } from 'pages/auth/ResetPasswordPage'
-
-const chooseMainPage =
-	window.innerWidth < 768 ? <MobileMainPage /> : <MainPage />
 
 const chooseVGridPage =
 	window.innerWidth < 768 ? <MobileVGridPage /> : <VGrid />
@@ -36,7 +32,7 @@ const chooseProductPage =
 export const AppRoutes: React.FC = () => {
 	return (
 		<Routes>
-			<Route path={routeConstants.root.route} element={chooseMainPage} />
+			<Route path={routeConstants.root.route} element={<MainPageWrapper />} />
 
 			<Route path={routeConstants.login.route} element={<LoginPage />} />
 			<Route path={routeConstants.logout.route} element={<LogoutPage />} />
@@ -77,8 +73,8 @@ export const AppRoutes: React.FC = () => {
 				element={chooseCheckoutPage}
 			/>
 
-			<Route path="*" element={<UserRoutes />} />
-			{/* <Route path="*" element={<PrivateRoute component={UserRoutes} {...props} />} /> */}
+			{/*<Route path="*" element={<UserRoutes />} />*/}
+			<Route path="*" element={<PrivateRoute component={UserRoutes} />} />
 			<Route element={<NotFoundPage />} />
 		</Routes>
 	)

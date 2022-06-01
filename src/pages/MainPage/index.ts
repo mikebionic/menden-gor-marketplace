@@ -1,3 +1,4 @@
-import MainPage from "./MainPage";
+import MainPageWrapper from './MainPageWrapper'
+export * from './MainPage'
 
-export { MainPage }
+export { MainPageWrapper }

@@ -49,9 +49,11 @@ export const serviceConfig = {
 			process.env.REACT_APP_API_REGISTER_REQUEST_ROUTE ?? '/register-request/',
 		verify_register:
 			process.env.REACT_APP_API_VERIFY_REGISTER_ROUTE ?? '/verify-register/',
-		reset_password: process.env.REACT_APP_API_RESET_PASSWORD_ROUTE ?? '/reset-password/',
+		reset_password:
+			process.env.REACT_APP_API_RESET_PASSWORD_ROUTE ?? '/reset-password/',
 		verify_reset_password:
-			process.env.REACT_APP_API_VERIFY_RESET_PASSWORD_ROUTE ?? '/verify-reset=password/',
+			process.env.REACT_APP_API_VERIFY_RESET_PASSWORD_ROUTE ??
+			'/verify-reset=password/',
 		// reset_password_request:
 		// 	process.env.REACT_APP_API_RESET_PASSWORD_REQUEST_ROUTE ?? '/reset-password-request/',
 		profile_edit:
@@ -80,6 +82,9 @@ export const serviceConfig = {
 			process.env.REACT_APP_API_COMPANY_INFO_ROUTE ?? '/company-info/',
 		view_counter:
 			process.env.REACT_APP_API_VIEW_COUNTER_ROUTE ?? '/goapi/view-counter/',
+		resource_collections:
+			process.env.REACT_APP_API_RESOURCE_COLLECTIONS_ROUTE ??
+			'/v1/res-collections/',
 	},
 }
 

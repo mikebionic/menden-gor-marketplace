@@ -18,7 +18,15 @@ import {
 	fetchCategories,
 	fetchBrands,
 	fetchCompanyInfo,
+	fetchSliders,
 } from 'sapredux/actions'
+import {
+	fetchFeaturedResources,
+	fetchDiscountResources,
+	fetchLatestResources,
+	fetchResourceCollections,
+} from 'sapredux/actions'
+
 import { getCategories } from 'sapredux/selectors'
 import { MobileNavbar } from 'mobile/components/MobileNavbar'
 import { MobileBottomNavigation } from 'mobile/components/MobileBottomNavigation'
@@ -45,13 +53,37 @@ const App: React.FC = (props: any) => {
 		return pageData
 	}
 
-	const { fetchCategories, categories, fetchBrands, fetchCompanyInfo } = props
+	const {
+		fetchCategories,
+		categories,
+		fetchBrands,
+		fetchCompanyInfo,
+		fetchSliders,
+		fetchFeaturedResources,
+		fetchDiscountResources,
+		fetchLatestResources,
+		fetchResourceCollections,
+	} = props
 
 	useEffect(() => {
 		fetchCategories()
 		fetchBrands()
 		fetchCompanyInfo()
-	}, [fetchCategories, fetchBrands, fetchCompanyInfo])
+		fetchSliders()
+		fetchFeaturedResources()
+		fetchDiscountResources()
+		fetchLatestResources()
+		fetchResourceCollections()
+	}, [
+		fetchCategories,
+		fetchBrands,
+		fetchCompanyInfo,
+		fetchSliders,
+		fetchFeaturedResources,
+		fetchDiscountResources,
+		fetchLatestResources,
+		fetchResourceCollections,
+	])
 
 	const alert = useSelector((state: RootStateOrAny) => state.alert)
 	const chooseNavbar =
@@ -99,6 +131,11 @@ const mapDispatchToProps = {
 	fetchCategories,
 	fetchBrands,
 	fetchCompanyInfo,
+	fetchSliders,
+	fetchFeaturedResources,
+	fetchDiscountResources,
+	fetchLatestResources,
+	fetchResourceCollections,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
