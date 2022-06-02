@@ -80,6 +80,29 @@ export const featuredResourceIds = (
 	}
 }
 
+export const latestResourceIds = (
+	state = initialState,
+	{ type, payload }: IAction,
+) => {
+	switch (type) {
+		case actionConstants.LATEST_FETCH_SUCCESS:
+			return R.mergeRight(state, {
+				loading: false,
+				error: false,
+				ids: R.pluck('id', payload),
+			})
+
+		case actionConstants.LATEST_FETCH_START:
+			return R.mergeRight(state, { loading: true, error: false })
+
+		case actionConstants.LATEST_FETCH_FAILURE:
+			return R.mergeRight(state, { loading: false, error: true })
+
+		default:
+			return state
+	}
+}
+
 export const wishlistResourceIds = (
 	state = initialState,
 	{ type, payload }: IAction,

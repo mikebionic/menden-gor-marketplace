@@ -7,11 +7,13 @@ import { category } from './category.reducer'
 import { categoryPage } from './categoryPage.reducer'
 import { company } from './company.reducer'
 import { resource } from './resource.reducer'
+import { resourceCollection } from './resourceCollection.reducer'
 import { resourcePage } from './resourcePage.reducer'
 import {
 	resourcesPage,
 	discountResourceIds,
 	featuredResourceIds,
+	latestResourceIds,
 	wishlistResourceIds,
 } from './resourcesPage.reducer'
 import { slider } from './slider.reducer'
@@ -29,10 +31,12 @@ export const rootReducer = () =>
 		company,
 		productFilter,
 		resource,
+		resourceCollection,
 		resourcePage,
 		resourcesPage,
 		discountResourceIds,
 		featuredResourceIds,
+		latestResourceIds,
 		wishlistResourceIds,
 		slider,
 	})

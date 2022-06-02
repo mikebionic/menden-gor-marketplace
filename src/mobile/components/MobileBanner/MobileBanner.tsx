@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchSliders } from 'sapredux/actions'
 import { getSliderByName } from 'sapredux/selectors'
 import { ErrorBoundary } from 'modules/errors'
 import { namesConfig } from 'configs'
 import { MobileCarouselSlider } from 'mobile/components/MobileCarouselSlider'
 
 const BannerWithCategory: React.FC = (props: any) => {
-	const { fetchSliders, header_slider } = props
-
-	useEffect(() => {
-		fetchSliders()
-	}, [fetchSliders])
+	const { header_slider } = props
 
 	return (
 		<ErrorBoundary>
@@ -34,6 +29,4 @@ const mapStateToProps = (state: any) => ({
 	),
 })
 
-const mapDispatchToProps = { fetchSliders }
-
-export default connect(mapStateToProps, mapDispatchToProps)(BannerWithCategory)
+export default connect(mapStateToProps)(BannerWithCategory)
