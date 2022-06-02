@@ -13,6 +13,7 @@ import { toJsonRpAcc } from 'sapredux/services/transform_data'
 import { ErrorIndicator } from 'modules/errors'
 import { profileUpdate } from 'sapredux/actions'
 import { Spinner } from 'modules/loaders'
+import ResetPassword from './ResetPassword'
 
 const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 	const [avatar, set_avatar]: any = useState(undefined)
@@ -75,6 +76,7 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 			.finally(() => set_loading(false))
 	}
 
+	console.log('INPUTSSSSSSSSSS', inputs)
 	return !R.isEmpty(current_user) ? (
 		<ErrorBoundary>
 			{loading && <Spinner />}
@@ -93,6 +95,7 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 					<small className="text-center text-black dark:text-darkTextWhiteColor">
 						Hasaba alnan senesi: {current_user.createdDate}
 					</small>
+					<ResetPassword />
 					<Button
 						type="ghost"
 						shape="round"
@@ -155,6 +158,7 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 						onChange={handleChange}
 					/>
 				</div>
+
 				<div className="inline-grid gap-2">
 					<b className="text-black dark:text-darkTextWhiteColor">Iş telefony</b>
 					<Input

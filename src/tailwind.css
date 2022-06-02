@@ -296,6 +296,35 @@ html:not(.dark) .google-login > span {
 	color: var(--black) !important;
 }
 
+html:not(.dark)
+	.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper,
+.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover {
+	background: var(--fullwhite);
+	border-color: var(--fullwhite);
+}
+
+html:not(.dark)
+	.ant-select:not(.ant-select-customize-input)
+	.ant-select-selector {
+	background-color: var(--fullwhite);
+	border: 1px solid #e6e6e6;
+}
+
+html:not(.dark) .ant-table-thead > tr > th {
+	color: var(--black);
+	background: var(--fullwhite);
+	border-bottom: 1px solid #e6e6e6;
+}
+
+html:not(.dark) .ant-table-row {
+	background: var(--fullwhite);
+}
+
+html:not(.dark) .ant-table-tbody > tr.ant-table-row:hover > td,
+.ant-table-tbody > tr > td.ant-table-cell-row-hover {
+	background: #e6e6e6;
+}
+
 /* --------------------------------------- DARK MODE SYSTEM STYLES --------------------------------------- */
 @media (prefers-color-scheme: dark) {
 	html.dark [type='text']:focus,

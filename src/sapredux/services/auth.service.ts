@@ -135,30 +135,46 @@ const verifyResetPassword = async (authMethod: string, payload: any) => {
 	).then(handleResponse)
 }
 
-// const reset_password_rp_acc = async (
-// 	authMethod: string,
-// 	registerToken: string,
-// 	payload: any,
-// ) => {
-// 	const requestOptions = {
-// 		method: 'POST',
-// 		body: JSON.stringify(payload),
-// 		headers: {
-// 			'Content-Type': 'application/json; charset=UTF-8',
-// 			Token: registerToken,
-// 		},
-// 	}
-// 	return fetchWithCred(
-// 		`${serviceConfig.apiUrl}${serviceConfig.routes.reset_password}?method=${authMethod}&type=rp_acc`,
-// 		requestOptions,
-// 	)
-// 		.then(handleResponse)
-// 		.then((response: any) => ({
-// 			status: response.status,
-// 			message: response.message,
-// 			...transformResponse(response.data),
-// 		}))
-// }
+const reset_password_rp_acc = async (
+	authMethod: string,
+	registerToken: string,
+	payload: any,
+) => {
+	const requestOptions = {
+		method: 'POST',
+		body: JSON.stringify(payload),
+		headers: {
+			'Content-Type': 'application/json; charset=UTF-8',
+			Token: registerToken,
+		},
+	}
+	return fetchWithCred(
+		`${serviceConfig.apiUrl}${serviceConfig.routes.reset_password}?method=${authMethod}&type=rp_acc`,
+		requestOptions,
+	)
+		.then(handleResponse)
+		.then((response: any) => ({
+			status: response.status,
+			message: response.message,
+			...transformResponse(response.data),
+		}))
+}
+
+// working on
+const resetPassword = async (payload: any) => {
+	const requestOptions = {
+		method: 'POST',
+		body: JSON.stringify(payload),
+		headers: {
+			'Content-Type': 'application/json; charset=UTF-8',
+			...(await authBearerHeaderAsync()),
+		},
+	}
+	return await fetchWithCred(
+		`${serviceConfig.apiUrl}${serviceConfig.routes.reset_password}`,
+		requestOptions,
+	).then(handleResponse)
+}
 
 const editProfile = async (payload: any) => {
 	const requestOptions = {
@@ -221,5 +237,6 @@ export const authService = {
 	updateAvatar,
 	resetPasswordRequest,
 	verifyResetPassword,
-	// reset_password_rp_acc,
+	reset_password_rp_acc,
+	resetPassword,
 }

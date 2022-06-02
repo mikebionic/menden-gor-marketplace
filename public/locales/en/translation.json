@@ -33,7 +33,7 @@
 		"input_password": "Please input your Password!",
 		"input_username": "Please input your Username!",
 		"input_phone_number": "Please input your phone number!",
-		"passwords_dont_match": "The two passwords that you entered do not match!",
+		"passwords_dont_match": "The two passwords do not match!",
 		"attempts_exceeded": "Attempts exceeded!",
 		"or": "Or",
 		"request_sent": "Request successfully sent",
@@ -119,6 +119,7 @@
 		"last_name": "Last name",
 		"work_phone": "Work phone number",
 		"home_phone": "Home phone number",
+		"new_password": "New password",
 		"forgot_password": "Forgot password?",
 		"change_password": "Change password",
 		"register_now": "Register now!"

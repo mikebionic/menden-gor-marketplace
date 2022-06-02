@@ -24,13 +24,13 @@ const ProfilePage: React.FC = ({ current_user }: any) => {
 					<small className="text-center text-black dark:text-darkTextWhiteColor">
 						Hasaba alnan senesi: {current_user.createdDate}
 					</small>
-					<Button
+					{/* <Button
 						type="ghost"
 						shape="round"
 						className="text-black dark:text-darkTextWhiteColor dark:hover:text-darkFirstColor dark:hover:border-darkFirstColor"
 					>
 						Change password
-					</Button>
+					</Button> */}
 				</div>
 				<div className="inline-grid gap-2">
 					<b className="text-black dark:text-darkTextWhiteColor">Ulanyjy ady</b>

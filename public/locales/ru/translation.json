@@ -119,6 +119,7 @@
 		"last_name": "Фамилия",
 		"work_phone": "Рабочий номер",
 		"home_phone": "Домашний номер",
+		"new_password": "Новый пароль",
 		"forgot_password": "Забыли пароль?",
 		"change_password": "Сменить пароль",
 		"register_now": "Зарегистрироваться!"

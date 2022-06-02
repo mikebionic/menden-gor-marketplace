@@ -87,12 +87,6 @@ export const WishlistTable = ({ data }: any) => {
 							fontSize="text-sm"
 						/>
 					</p>
-					<ProductAddToCart
-						resourceId={id}
-						withCounter={true}
-						margin="m-0"
-						size="w-8 h-8"
-					/>
 				</div>
 			),
 		},
@@ -100,7 +94,13 @@ export const WishlistTable = ({ data }: any) => {
 			title: t('common.action'),
 			align: 'center',
 			render: ({ id, wishlist }: any) => (
-				<div className="inline-grid place-content-center">
+				<div className="grid grid-flow-col gap-2 auto-cols-max place-content-center place-items-end">
+					<ProductAddToCart
+						resourceId={id}
+						withCounter={false}
+						margin="m-0"
+						size="w-8 h-8"
+					/>
 					<WishlistButton resId={id} wishlist={wishlist} />
 				</div>
 			),

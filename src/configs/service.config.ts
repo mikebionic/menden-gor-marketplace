@@ -52,8 +52,8 @@ export const serviceConfig = {
 		reset_password: process.env.REACT_APP_API_RESET_PASSWORD_ROUTE ?? '/reset-password/',
 		verify_reset_password:
 			process.env.REACT_APP_API_VERIFY_RESET_PASSWORD_ROUTE ?? '/verify-reset=password/',
-		// reset_password_request:
-		// 	process.env.REACT_APP_API_RESET_PASSWORD_REQUEST_ROUTE ?? '/reset-password-request/',
+		reset_password_request:
+			process.env.REACT_APP_API_RESET_PASSWORD_REQUEST_ROUTE ?? '/reset-password-request/',
 		profile_edit:
 			process.env.REACT_APP_API_PROFILE_EDIT_ROUTE ??
 			'/v1/v-rp-accs/profile-edit/',
