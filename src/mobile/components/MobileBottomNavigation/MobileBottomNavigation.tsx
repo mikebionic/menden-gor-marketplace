@@ -71,9 +71,9 @@ export const MobileBottomNavigation: React.FC = () => {
 					</li>
 				))}
 
-				{routesList.map((route: string) => {
+				{routesList.map((route: string, idx: number) => {
 					if (route === location.pathname) {
-						return <div className="indicator"></div>
+						return <div className="indicator" key={idx}></div>
 					}
 				})}
 			</ul>

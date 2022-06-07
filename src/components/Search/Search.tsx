@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom'
-
 import { IoIosArrowDown } from 'react-icons/io'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { Transition } from '@headlessui/react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+import { useTranslation } from 'react-i18next'
 
 import { IconLabelButton } from 'common/IconLabelButton'
 import { applyFilters } from 'sapredux/actions'
 import { routeConstants } from 'navigation'
-import { useTranslation } from 'react-i18next'
 
-const Search: React.FC = (props: any) => {
+const Search: React.FC = ({ filters, onFiltersApply }: any) => {
 	const { t } = useTranslation()
-	const { filters, onFiltersApply } = props
 	const [dropdownState, onDropdownStateChange] = useState(false)
 	const navigate = useNavigate()
 	const location = useLocation()
