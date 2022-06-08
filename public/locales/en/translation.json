@@ -40,6 +40,7 @@
 		"enter_verification_code": "Enter verification code",
 		"didnt_receive_code": "Didn't receive code?",
 		"verify_success": "Successfully verified!",
+		"password_update_success": "Password was updated!",
 		"enter_email_address": "Enter your email address",
 		"resend": "Resend",
 		"error": "Error",

@@ -37,6 +37,7 @@
 		"enter_verification_code": "Введите проверочный код",
 		"didnt_receive_code": "Не получили код?",
 		"verify_success": "Успешно проверено!",
+		"password_update_success": "Пароль успешно обновлено!",
 		"enter_email_address": "Введите адрес эл.почты",
 		"input_phone_number": "Введите ваш номер телефона!",
 		"passwords_dont_match": "Ваши пароли не совпадают!",

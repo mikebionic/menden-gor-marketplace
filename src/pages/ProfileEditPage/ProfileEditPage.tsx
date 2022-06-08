@@ -76,7 +76,6 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 			.finally(() => set_loading(false))
 	}
 
-	console.log('INPUTSSSSSSSSSS', inputs)
 	return !R.isEmpty(current_user) ? (
 		<ErrorBoundary>
 			{loading && <Spinner />}

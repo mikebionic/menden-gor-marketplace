@@ -1,35 +1,74 @@
 import React, { useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { Button } from 'antd'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import { Form, Input } from 'antd'
 import { LockOutlined } from '@ant-design/icons'
-import { authActions } from 'sapredux/actions'
+import { resetPassword } from 'sapredux/actions'
+import { authService as service } from 'sapredux/services'
 import { useTranslation } from 'react-i18next'
 import { IconLabelButton } from 'common/IconLabelButton'
 import { MdClose } from 'react-icons/md'
+import { sapswal, showToastMessage } from 'sapredux/helpers'
 
-const ResetPassword = () => {
+const ResetPassword = ({ mapDispatchToProps }: any) => {
 	const [openModal, setOpenModal] = useState(false)
 	const [inputs, setInputs] = useState({
 		password: '',
 		confirm_password: '',
 	})
 	const { t } = useTranslation()
-	const { confirm_password, password } = inputs
-
-	const dispatch = useDispatch()
+	const { password, confirm_password } = inputs
 
 	const handleKeyValueChange = (name: string = '', value: any = '') => {
 		setInputs((inputs) => ({ ...inputs, [name]: value }))
 	}
 
-	// const handleSubmit = (e: any) => {
-	// 	if (password && confirm_password) {
-	// 		dispatch(authActions.login(password, confirm_password))
-	// 	}
-	// }
+	const errorSwal = (text?: string) =>
+		sapswal.fire({
+			icon: 'error',
+			title: 'Error',
+			text: text || t('common.passwords_dont_match'),
+		})
+
+	const successSwal = (text?: string) =>
+		sapswal.fire({
+			icon: 'success',
+			title: 'Success',
+			text: text || t('common.password_update_success'),
+		})
+
+	const handleSubmit = async () => {
+		if (password !== confirm_password) {
+			return errorSwal()
+		} else {
+			await service
+				.resetPassword({
+					password: password,
+					confirm_password: confirm_password,
+				})
+				.then(
+					(response: any) => {
+						response.status === 1 ? successSwal() : errorSwal()
+					},
+					(error: any) =>
+						showToastMessage({
+							type: 'error',
+							message: error,
+							position: 'center-top',
+						}),
+				)
+		}
+		// service request..
+		// check that response is success == 1
+		// from response take the info
+		// let password = '123'
+		// if (password && confirm_password) {
+		// 	resetPassword({ auth_password: password })
+		// }
+		// show sweetalert
+	}
 
 	return (
 		<>
@@ -82,7 +121,6 @@ const ResetPassword = () => {
 											onClickAway={() => {
 												if (openModal === true) {
 													setOpenModal(false)
-													console.log('MODALLLLLLL', openModal, setOpenModal)
 												}
 											}}
 										>
@@ -99,12 +137,15 @@ const ResetPassword = () => {
 													name="normal_login"
 													className="max-w-full min-phone:p-4 md:p-8 dark:bg-darkComponentColor"
 													initialValues={{ remember: true }}
-													// onFinish={handleSubmit}
+													onFinish={handleSubmit}
 												>
 													<Form.Item
 														name="password"
 														className="grid grid-flow-col auto-cols-max place-content-end"
 														label={t('auth.password')}
+														onChange={(e: any) =>
+															handleKeyValueChange('password', e.target.value)
+														}
 														rules={[
 															{
 																required: true,
@@ -117,11 +158,17 @@ const ResetPassword = () => {
 													</Form.Item>
 
 													<Form.Item
-														name="confirm"
+														name="confirm_password"
 														className="grid grid-flow-col auto-cols-max place-content-end"
 														label={t('auth.confirm_password')}
 														dependencies={['password']}
 														hasFeedback
+														onChange={(e: any) =>
+															handleKeyValueChange(
+																'confirm_password',
+																e.target.value,
+															)
+														}
 														rules={[
 															{
 																required: true,
@@ -133,7 +180,6 @@ const ResetPassword = () => {
 																		!value ||
 																		getFieldValue('password') === value
 																	) {
-																		handleKeyValueChange('password', value)
 																		return Promise.resolve()
 																	}
 																	return Promise.reject(
@@ -147,10 +193,10 @@ const ResetPassword = () => {
 													</Form.Item>
 
 													<IconLabelButton
-														label="OK"
+														label="Save"
 														className="grid w-24 m-auto rounded-lg place-content-center h-11 bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight dark:bg-gradient-to-r dark:from-darkFirstColor dark:to-darkFirstColor hover:opacity-90"
 														labelClassName="m-auto text-white"
-														type="primary"
+														type="submit"
 														htmlType="submit"
 													/>
 												</Form>
@@ -167,9 +213,8 @@ const ResetPassword = () => {
 	)
 }
 
-const mapStateToProps = (state: any) => ({
-	// current_user: getCurrentUserInfo(state.auth),
-})
-// const mapDispatchToProps = { profileUpdate }
+const mapDispatchToProps = {
+	resetPassword,
+}
 
-export default connect(mapStateToProps)(ResetPassword)
+export default connect(null, mapDispatchToProps)(ResetPassword)

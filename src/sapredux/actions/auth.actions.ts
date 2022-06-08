@@ -135,10 +135,18 @@ const googleAuth = (
 	}
 }
 
+
+export const resetPassword = (data: any) => ({
+	type: authConstants.RESET_PASSWORD,
+	payload: data,
+})
+// go to reducer and update user's password?
+
 export const authActions = {
 	login,
 	logout,
 	profileUpdate,
 	register_rp_acc,
 	googleAuth,
+	resetPassword,
 }

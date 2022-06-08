@@ -118,7 +118,7 @@ const resetPasswordRequest = async (authMethod: string, payload: string) => {
 			: authMethod === 'phone_number' && { PhoneNumber: payload }
 
 	return fetchWithCred(
-		`${serviceConfig.apiUrl}${serviceConfig.routes.reset_password}?method=${authMethod}`,
+		`${serviceConfig.apiUrl}${serviceConfig.routes.login}?method=${authMethod}`,
 		{ headers: headers },
 	).then(handleResponse)
 }
@@ -130,7 +130,7 @@ const verifyResetPassword = async (authMethod: string, payload: any) => {
 		headers: { 'Content-Type': 'application/json; charset=UTF-8' },
 	}
 	return fetchWithCred(
-		`${serviceConfig.apiUrl}${serviceConfig.routes.verify_reset_password}?method=${authMethod}`,
+		`${serviceConfig.apiUrl}${serviceConfig.routes.login}?method=${authMethod}`,
 		requestOptions,
 	).then(handleResponse)
 }
@@ -149,7 +149,7 @@ const reset_password_rp_acc = async (
 		},
 	}
 	return fetchWithCred(
-		`${serviceConfig.apiUrl}${serviceConfig.routes.reset_password}?method=${authMethod}&type=rp_acc`,
+		`${serviceConfig.apiUrl}${serviceConfig.routes.login}?method=${authMethod}&type=rp_acc`,
 		requestOptions,
 	)
 		.then(handleResponse)
