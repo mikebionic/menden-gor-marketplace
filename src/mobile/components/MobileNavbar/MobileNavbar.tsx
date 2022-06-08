@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MobileSearch } from 'mobile/components/MobileSearch'
+import MobileSearch from 'mobile/components/MobileSearch'
 import { routeConstants } from 'navigation'
 import { Link } from 'react-router-dom'
 import logo_white from 'common/images/logo_white.svg'

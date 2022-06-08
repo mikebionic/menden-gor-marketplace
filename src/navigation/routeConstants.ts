@@ -10,12 +10,12 @@ export const routeConstants = {
 		name: 'Login',
 	},
 	register: {
-		route: `${ route_prefix }/register/`,
-		name: 'Register'
+		route: `${route_prefix}/register/`,
+		name: 'Register',
 	},
 	reset: {
-		route: `${ route_prefix }/reset/`,
-		name: 'Reset Password'
+		route: `${route_prefix}/reset-password/`,
+		name: 'Reset Password',
 	},
 	logout: {
 		route: `${route_prefix}/logout/`,
@@ -27,54 +27,54 @@ export const routeConstants = {
 	},
 	about: {
 		route: `${route_prefix}/about/`,
-		name: 'About us'
+		name: 'About us',
 	},
 	contact: {
 		route: `${route_prefix}/contact/`,
-		name: 'Contact us'
+		name: 'Contact us',
 	},
 	vGrid: {
-		route: `${ route_prefix }/v-grid/`,
-		name: 'VGrid'
+		route: `${route_prefix}/v-grid/`,
+		name: 'VGrid',
 	},
 	product: {
-		route: `${ route_prefix }/product/`,
-		name: 'Product'
+		route: `${route_prefix}/product/`,
+		name: 'Product',
 	},
 	wishlist: {
-		route: `${ route_prefix }/wishlist/`,
-		name: 'Wishlist'
+		route: `${route_prefix}/wishlist/`,
+		name: 'Wishlist',
 	},
 	profileEdit: {
-		route: `${ route_prefix }/profile-edit/`,
-		name: 'Edit profile'
+		route: `${route_prefix}/profile-edit/`,
+		name: 'Edit profile',
 	},
 	orders: {
-		route: `${ route_prefix }/orders/`,
-		name: 'Orders'
+		route: `${route_prefix}/orders/`,
+		name: 'Orders',
 	},
 	checkout: {
-		route: `${ route_prefix }/checkout/`,
-		name: 'Checkout'
+		route: `${route_prefix}/checkout/`,
+		name: 'Checkout',
 	},
 	categories: {
-		route: `${ route_prefix }/categories/`,
-		name: 'Categories'
+		route: `${route_prefix}/categories/`,
+		name: 'Categories',
 	},
 	settings: {
-		route: `${ route_prefix }/settings/`,
-		name: 'Settings'
+		route: `${route_prefix}/settings/`,
+		name: 'Settings',
 	},
 	brands: {
-		route: `${ route_prefix }/brands/`,
-		name: 'Brands'
+		route: `${route_prefix}/brands/`,
+		name: 'Brands',
 	},
 	cart: {
-		route: `${ route_prefix }/cart/`,
-		name: 'Cart'
+		route: `${route_prefix}/cart/`,
+		name: 'Cart',
 	},
 	payment_and_delivery_info: {
-		route: `${ route_prefix }/payment_and_delivery_info/`,
-		name: 'Payment and delivery info'
-	}
+		route: `${route_prefix}/payment_and_delivery_info/`,
+		name: 'Payment and delivery info',
+	},
 }
