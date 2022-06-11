@@ -1,4 +1,3 @@
-import ResetPasswordCard from './ResetPasswordCard'
+import ResetVerificationCard from './ResetVerificationCard'
 export * from './ResetInputCard'
-export * from './ResetVerificationCard'
-export { ResetPasswordCard }
+export { ResetVerificationCard }

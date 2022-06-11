@@ -51,6 +51,15 @@ export const auth = (state = initialState, { type, payload }: any) => {
 				error: false,
 				data: { ...state.data, ...data },
 			}
+		case authConstants.RESET_PASSWORD:
+			let reset_pass_data = { ...state.data, auth_password: payload.auth_password }
+			set_local_data_by_key('user', reset_pass_data)
+			return {
+				loggedIn: true,
+				loading: false,
+				error: false,
+				data: reset_pass_data,
+			}
 		default:
 			return state
 	}

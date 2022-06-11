@@ -11,11 +11,17 @@ const SlickBrandsSlider = ({ brands, ...props }: any) => {
 	const slidesToShow = brands.length < 5 ? brands.length : 5
 	return (
 		<SlickSlider settings={{ slidesToShow: slidesToShow }}>
-			{brands.map((item: any, idx: number) => (
-				<Link to={`${routeConstants.vGrid.route}?brand=${item.id}&`} key={idx}>
-					<CircleBrands {...item} key={idx} {...props} />
-				</Link>
-			))}
+			{brands.map(
+				(item: any, idx: number) =>
+					item.isMain && (
+						<Link
+							to={`${routeConstants.vGrid.route}?brand=${item.id}&`}
+							key={idx}
+						>
+							<CircleBrands {...item} key={idx} {...props} />
+						</Link>
+					),
+			)}
 		</SlickSlider>
 	)
 }

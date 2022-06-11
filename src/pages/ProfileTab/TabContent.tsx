@@ -9,6 +9,9 @@ import { routeConstants } from 'navigation'
 export const TabContent = () => {
 	const page_location = useLocation()
 
+	if (page_location.pathname.indexOf(routeConstants.profileEdit.route) > -1) {
+		return <ProfileEditPage />
+	}
 	switch (page_location.pathname) {
 		case routeConstants.profile.route:
 			return <ProfilePage />

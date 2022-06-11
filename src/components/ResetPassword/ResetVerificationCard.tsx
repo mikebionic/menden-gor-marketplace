@@ -7,11 +7,16 @@ import { showToastMessage } from 'sapredux/helpers'
 
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router'
+import { connect } from 'react-redux'
+import { routeConstants } from 'navigation'
+import { verifyLogin } from 'sapredux/actions'
 
-export const ResetVerificationCard = ({
+const ResetVerificationCard = ({
 	onStageChange,
 	validationData,
-	handleValidationData,
+	loggedIn,
+	verifyLogin,
 }: any) => {
 	const { t } = useTranslation()
 	const [codeAttempts, set_codeAttempts] = useState(0)
@@ -19,6 +24,12 @@ export const ResetVerificationCard = ({
 	const { authMethod, credentials, responseMessage } = validationData
 	const [canRetrySend, set_canRetrySend] = useState(false)
 	const [retryClicked, set_retryClicked] = useState(false)
+
+	const navigate = useNavigate()
+
+	if (!!loggedIn) {
+		navigate(`${routeConstants.profileEdit.route}reset-password/`)
+	}
 
 	useEffect(() => {
 		if (!canRetrySend) {
@@ -32,7 +43,7 @@ export const ResetVerificationCard = ({
 	const handleResendCode = () => {
 		canRetrySend && set_retryClicked(true)
 		canRetrySend &&
-			authService.registerRequest(authMethod, credentials).then(
+			authService.loginRequest(authMethod, credentials).then(
 				(response: any) => {
 					response.status === 1
 						? handleSuccessRetry()
@@ -60,7 +71,7 @@ export const ResetVerificationCard = ({
 		set_canRetrySend(false)
 	}
 	useEffect(() => {
-		codeAttempts >= 3 &&
+		codeAttempts >= 22 &&
 			showToastMessage({
 				type: 'error',
 				message: t('common.attempts_exceeded'),
@@ -122,40 +133,9 @@ export const ResetVerificationCard = ({
 			verify_code: verificationCode,
 			[authMethod]: credentials,
 		}
-
-		authService.verifyResetPassword(authMethod, payload).then(
-			(response: any) => {
-				response.status === 1
-					? handleSuccess(response)
-					: showToastMessage({
-							type: 'error',
-							message: response.message,
-							position: 'center-top',
-					  })
-			},
-			(error: any) =>
-				showToastMessage({
-					type: 'error',
-					message: error,
-					position: 'center-top',
-				}),
-		)
+		verifyLogin(authMethod, payload, true)
 		set_codeAttempts(codeAttempts + 1)
 		e.preventDefault()
-	}
-	const handleSuccess = (response: any) => {
-		showToastMessage({
-			type: 'success',
-			message: response.message ? response.message : t('common.verify_success'),
-			position: 'center-top',
-		})
-
-		handleValidationData({
-			...validationData,
-			responseMessage: response.message,
-			registerToken: response.data && response.data.token,
-		})
-		onStageChange(3)
 	}
 
 	return (
@@ -240,3 +220,14 @@ export const ResetVerificationCard = ({
 		</ErrorBoundary>
 	)
 }
+
+const mapStateToProps = (state: any) => ({
+	loggedIn: state.auth.loggedIn,
+})
+
+const mapDispatchToProps = { verifyLogin }
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps,
+)(ResetVerificationCard)

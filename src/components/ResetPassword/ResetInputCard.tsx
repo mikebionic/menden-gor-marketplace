@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react'
 
 import { AiOutlineMail } from 'react-icons/ai'
@@ -30,13 +31,12 @@ export const ResetInputCard = ({
 			authMethod: authMethod,
 			credentials: credentials,
 		})
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [authMethod, credentials])
 
 	const handleSubmit = (e: any) => {
 		set_loading(true)
 		authService
-			.resetPasswordRequest(authMethod, credentials)
+			.loginRequest(authMethod, credentials)
 			.then(
 				(response: any) => {
 					response.status === 1

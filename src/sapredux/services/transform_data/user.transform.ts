@@ -1,4 +1,4 @@
-export const transformRpAcc = (data: any) => ({
+export const transformRpAcc = (data: any, authMethod:string = "username") => ({
 	addInf1: data.AddInf1 ?? null,
 	addInf2: data.AddInf2 ?? null,
 	addInf3: data.AddInf3 ?? null,
@@ -58,6 +58,8 @@ export const transformRpAcc = (data: any) => ({
 	workPeriodId: data.WpId ?? null,
 	syncDateTime: data.SyncDateTime ?? null,
 	unusedDeviceQty: data.UnusedDeviceQty ?? null,
+	auth_username: authMethod === "username" ? data.RpAccUName : authMethod === "email" ? data.RpAccEMail : authMethod === "phone_number" ? data.RpAccMobilePhoneNumber : null,
+	auth_password: data.RpAccUPass ?? null,
 })
 
 export const toJsonRpAcc = (data: any, allData: boolean = false) => ({

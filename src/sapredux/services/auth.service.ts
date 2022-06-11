@@ -7,7 +7,7 @@ import {
 	rp_acc_basic_login_failure,
 } from './mock_data/auth.mock'
 import { fetchWithCred } from 'sapredux/helpers'
-import { transformAuth as transformResponse } from './transform_data'
+import { transformAuth as transformResponse, transformRpAcc } from './transform_data'
 
 const login_request = (username = '', password = '', authMethod = 'email') => {
 	if (serviceConfig.useMockApi) {
@@ -48,11 +48,10 @@ const login = async (
 ) => {
 	return await login_request(username, password, authMethod).then(
 		(response: any) => ({
-			...transformResponse(response),
-			auth_username: username,
-			auth_password: password,
-			authMethod: authMethod,
-		}),
+			status: response.status,
+			message: response.message,
+			...transformResponse(response, authMethod)
+		})
 	)
 }
 
@@ -107,60 +106,40 @@ const register_rp_acc = async (
 		.then((response: any) => ({
 			status: response.status,
 			message: response.message,
-			...transformResponse(response.data),
+			...transformResponse(response, authMethod),
 		}))
 }
 
-const resetPasswordRequest = async (authMethod: string, payload: string) => {
+const loginRequest = async (authMethod: string, payload: string) => {
 	let headers =
 		authMethod === 'email'
 			? { Email: payload }
 			: authMethod === 'phone_number' && { PhoneNumber: payload }
 
 	return fetchWithCred(
-		`${serviceConfig.apiUrl}${serviceConfig.routes.login}?method=${authMethod}`,
+		`${serviceConfig.apiUrl}${serviceConfig.routes.login_request_route}?method=${authMethod}`,
 		{ headers: headers },
 	).then(handleResponse)
 }
 
-const verifyResetPassword = async (authMethod: string, payload: any) => {
+const verifyLogin = async (authMethod: string, payload: any) => {
 	const requestOptions = {
 		method: 'POST',
 		body: JSON.stringify(payload),
 		headers: { 'Content-Type': 'application/json; charset=UTF-8' },
 	}
 	return fetchWithCred(
-		`${serviceConfig.apiUrl}${serviceConfig.routes.login}?method=${authMethod}`,
-		requestOptions,
-	).then(handleResponse)
-}
-
-const reset_password_rp_acc = async (
-	authMethod: string,
-	registerToken: string,
-	payload: any,
-) => {
-	const requestOptions = {
-		method: 'POST',
-		body: JSON.stringify(payload),
-		headers: {
-			'Content-Type': 'application/json; charset=UTF-8',
-			Token: registerToken,
-		},
-	}
-	return fetchWithCred(
-		`${serviceConfig.apiUrl}${serviceConfig.routes.login}?method=${authMethod}&type=rp_acc`,
+		`${serviceConfig.apiUrl}${serviceConfig.routes.verify_login}?method=${authMethod}&type=rp_acc`,
 		requestOptions,
 	)
 		.then(handleResponse)
 		.then((response: any) => ({
 			status: response.status,
 			message: response.message,
-			...transformResponse(response.data),
+			...transformResponse(response, authMethod)	
 		}))
 }
 
-// working on
 const resetPassword = async (payload: any) => {
 	const requestOptions = {
 		method: 'POST',
@@ -171,9 +150,14 @@ const resetPassword = async (payload: any) => {
 		},
 	}
 	return await fetchWithCred(
-		`${serviceConfig.apiUrl}${serviceConfig.routes.reset_password}`,
+		`${serviceConfig.apiUrl}${serviceConfig.routes.reset_password}?type=rp_acc`,
 		requestOptions,
 	).then(handleResponse)
+	.then((response: any) => ({
+		status: response.status,
+		message: response.message,
+		...transformRpAcc(response.data)	
+	}))
 }
 
 const editProfile = async (payload: any) => {
@@ -222,7 +206,7 @@ const googleAuth = async (payload: any) => {
 		.then((response: any) => ({
 			status: response.status,
 			message: response.message,
-			...transformResponse(response),
+			...transformResponse(response,"email"),
 		}))
 }
 
@@ -235,8 +219,7 @@ export const authService = {
 	register_rp_acc,
 	googleAuth,
 	updateAvatar,
-	resetPasswordRequest,
-	verifyResetPassword,
-	reset_password_rp_acc,
+	loginRequest,
+	verifyLogin,
 	resetPassword,
 }

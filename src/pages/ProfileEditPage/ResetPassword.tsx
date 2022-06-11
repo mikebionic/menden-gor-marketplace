@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { connect } from 'react-redux'
 import { Button } from 'antd'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import { Form, Input } from 'antd'
-import { LockOutlined } from '@ant-design/icons'
 import { resetPassword } from 'sapredux/actions'
-import { authService as service } from 'sapredux/services'
 import { useTranslation } from 'react-i18next'
 import { IconLabelButton } from 'common/IconLabelButton'
 import { MdClose } from 'react-icons/md'
-import { sapswal, showToastMessage } from 'sapredux/helpers'
+import { sapswal } from 'sapredux/helpers'
 
-const ResetPassword = ({ mapDispatchToProps }: any) => {
-	const [openModal, setOpenModal] = useState(false)
+const ResetPassword = ({ reset_pass_modal = false, resetPassword }: any) => {
+	const [openModal, setOpenModal] = useState(reset_pass_modal)
 	const [inputs, setInputs] = useState({
 		password: '',
 		confirm_password: '',
@@ -24,50 +22,22 @@ const ResetPassword = ({ mapDispatchToProps }: any) => {
 	const handleKeyValueChange = (name: string = '', value: any = '') => {
 		setInputs((inputs) => ({ ...inputs, [name]: value }))
 	}
-
 	const errorSwal = (text?: string) =>
 		sapswal.fire({
 			icon: 'error',
 			title: 'Error',
 			text: text || t('common.passwords_dont_match'),
 		})
-
-	const successSwal = (text?: string) =>
-		sapswal.fire({
-			icon: 'success',
-			title: 'Success',
-			text: text || t('common.password_update_success'),
-		})
-
 	const handleSubmit = async () => {
 		if (password !== confirm_password) {
 			return errorSwal()
 		} else {
-			await service
-				.resetPassword({
-					password: password,
-					confirm_password: confirm_password,
-				})
-				.then(
-					(response: any) => {
-						response.status === 1 ? successSwal() : errorSwal()
-					},
-					(error: any) =>
-						showToastMessage({
-							type: 'error',
-							message: error,
-							position: 'center-top',
-						}),
-				)
+			await resetPassword({
+				password: password,
+				confirm_password: confirm_password,
+			})
+			setOpenModal(false)
 		}
-		// service request..
-		// check that response is success == 1
-		// from response take the info
-		// let password = '123'
-		// if (password && confirm_password) {
-		// 	resetPassword({ auth_password: password })
-		// }
-		// show sweetalert
 	}
 
 	return (
@@ -75,7 +45,7 @@ const ResetPassword = ({ mapDispatchToProps }: any) => {
 			<Button
 				type="ghost"
 				shape="round"
-				onClick={() => setOpenModal((openModal) => !openModal)}
+				onClick={() => setOpenModal(!openModal)}
 				className="dark:text-darkTextWhiteColor dark:hover:text-darkFirstColor dark:hover:border-darkFirstColor"
 			>
 				Reset Password

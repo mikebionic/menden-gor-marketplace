@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import * as R from 'ramda'
+import { useParams } from 'react-router'
 
 import { Button } from 'antd'
 import { Input } from 'antd'
@@ -18,6 +19,11 @@ import ResetPassword from './ResetPassword'
 const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 	const [avatar, set_avatar]: any = useState(undefined)
 	const [loading, set_loading] = useState(false)
+
+	const params: any = useParams()
+	const [reset_pass_modal, set_reset_pass_modal] = useState(
+		params.type === 'reset-password' ? true : false,
+	)
 
 	const [inputs, setInputs] = useState(current_user)
 	const handleChange = (e: any) => {
@@ -94,7 +100,7 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 					<small className="text-center text-black dark:text-darkTextWhiteColor">
 						Hasaba alnan senesi: {current_user.createdDate}
 					</small>
-					<ResetPassword />
+					<ResetPassword reset_pass_modal={reset_pass_modal} />
 					<Button
 						type="ghost"
 						shape="round"

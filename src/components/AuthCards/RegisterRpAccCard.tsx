@@ -88,7 +88,6 @@ const RegisterRpAccCard = ({
 			navigator.geolocation.getCurrentPosition(function (position) {
 				handleKeyValueChange('latitude', position.coords.latitude)
 				handleKeyValueChange('longitude', position.coords.longitude)
-				console.log('successs location ', inputs)
 			})
 		}
 	}, [navigator.geolocation])

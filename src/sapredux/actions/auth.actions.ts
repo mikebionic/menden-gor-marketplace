@@ -66,7 +66,7 @@ export const register_rp_acc = (
 		authService.register_rp_acc(authMethod, registerToken, payload).then(
 			(response: any) => {
 				set_loading(false)
-				response.status === 1 && dispatch(success(response))
+				response.status === 1 && dispatch(success({...response, authMethod: authMethod, auth_username: payload.username, auth_password: payload.password}))
 				withToastMessage &&
 					showToastMessage({
 						type: response.status === 1 ? 'success' : 'error',
@@ -136,11 +136,73 @@ const googleAuth = (
 }
 
 
-export const resetPassword = (data: any) => ({
-	type: authConstants.RESET_PASSWORD,
-	payload: data,
-})
-// go to reducer and update user's password?
+export const resetPassword = (payload: any) => {
+	return (dispatch: any) => {
+		authService
+			.resetPassword(payload)
+			.then(
+				(response: any) => {
+					response.status === 1 && dispatch(success(response))
+					sapswal.fire({
+						icon: response.status === 1 ? 'success' : 'error',
+						title: response.status === 1 ? 'Success' : "Error",
+						text: response.message,
+					})
+				},
+				(error: any) =>
+					showToastMessage({
+						type: 'error',
+						message: error.toString(),
+						position: 'center-top',
+					}),
+			)
+	}
+
+	function success(data: string) {
+		return { type: authConstants.RESET_PASSWORD, payload: data }
+	}
+
+}
+
+
+export const verifyLogin = (
+	authMethod: string,
+	payload: any,
+	withToastMessage: boolean = true,
+) => {
+	return (dispatch: any) => {
+		authService.verifyLogin(authMethod, payload).then(
+			(response: any) => {
+				response.status === 1 && dispatch(success(response))
+				withToastMessage &&
+					showToastMessage({
+						type: response.status === 1 ? 'success' : 'error',
+						message: response.message,
+						position: 'center-top',
+					})
+			},
+			(error: any) => {
+				dispatch(failure(error.toString()))
+				withToastMessage &&
+					showToastMessage({
+						type: 'error',
+						message: error.toString(),
+						position: 'center-top',
+					})
+				dispatch(alertActions.error(error.toString()))
+			},
+		)
+	}
+
+	function success(user: any) {
+		return { type: authConstants.LOGIN_SUCCESS, payload: user }
+	}
+	function failure(error: any) {
+		return { type: authConstants.LOGIN_FAILURE, payload: error }
+	}
+}
+
+
 
 export const authActions = {
 	login,
@@ -149,4 +211,5 @@ export const authActions = {
 	register_rp_acc,
 	googleAuth,
 	resetPassword,
+	verifyLogin,
 }

@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router'
 import {
 	ResetInputCard,
 	ResetVerificationCard,
-	ResetPasswordCard,
+	// ResetPasswordCard,
 } from 'components/ResetPassword'
+import { routeConstants } from 'navigation'
 
 const ResetPasswordPage: React.FC = ({ loggedIn }: any) => {
 	const [stage, set_stage] = useState(1)
@@ -19,7 +20,7 @@ const ResetPasswordPage: React.FC = ({ loggedIn }: any) => {
 	})
 
 	const navigate = useNavigate()
-	loggedIn && navigate('/')
+	loggedIn && navigate(`${routeConstants.profileEdit.route}reset-password/`)
 
 	return (
 		<div className="grid grid-flow-row place-items-center auto-rows-auto">
@@ -37,13 +38,6 @@ const ResetPasswordPage: React.FC = ({ loggedIn }: any) => {
 						handleValidationData={(data: any) => set_validationData(data)}
 					/>
 				)}
-				{stage === 3 && (
-					<ResetPasswordCard
-						onStageChange={(stage: number) => set_stage(stage)}
-						validationData={validationData}
-					/>
-				)}
-				{/* <hr className="my-8 dark:border-darkText" /> */}
 			</div>
 		</div>
 	)
