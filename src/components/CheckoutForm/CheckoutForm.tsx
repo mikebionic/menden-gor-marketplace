@@ -23,6 +23,7 @@ const CheckoutForm = (props: any) => {
 	const { items, orderInvLines, totalPrice, onDelete, user, loggedIn } = props
 	const { t } = useTranslation()
 	const [loading, set_loading] = useState(false)
+	const [orderInvRegNo, set_orderInvRegNo] = useState('')
 	const [inputs, setInputs] = useState({
 		name: loggedIn ? `${user.username} - ${user.name}` : '',
 		phoneNumber: loggedIn
@@ -102,7 +103,7 @@ const CheckoutForm = (props: any) => {
 					.finally(() => set_loading(false))
 			} else {
 				//!!!TODO: online checout
-				//handleOnlineCheckout(inputs).finally(() => set_loading(false))
+				handleOnlineCheckout(inputs).finally(() => set_loading(false))
 			}
 		} catch (e: any) {
 			errorSwal(e.toString())
@@ -112,34 +113,43 @@ const CheckoutForm = (props: any) => {
 
 	const handleOnlineCheckout = async (inputs: any) => {
 		try {
-			//let regNo_response = await otherService.generate_reg_no()
-			//if (regNo_response.status !== 1) {
-			//	throw 'error'
-			//}
-			//await handleKeyValueChange('orderInvRegNo', regNo_response.data)
-			//await handleKeyValueChange('typeId', 13)
-			//await setInputs((inputs) => ({
-			//	...inputs,
-			//	orderInvRegNo: regNo_response.data,
-			//	typeId: 13,
-			//}))
-			//let payload = {
-			//	...inputs,
-			//	orderInvRegNo: regNo_response.data,
-			//	typeId: 13,
-			//}
-			otherService
-				.generate_reg_no()
-				.then((response: any) => handle_Reg_no_gen_response(response))
+			let regNo_response = await otherService.generate_reg_no()
+			if (regNo_response.status !== 1) {
+				throw 'error'
+			}
+			console.log(regNo_response)
+			console.log('reg no brefore : ', inputs.orderInvRegNo)
+			await handleKeyValueChange('orderInvRegNo', regNo_response.data)
+			await handleKeyValueChange('typeId', 13)
+			console.log('Updated reg no to : ', inputs.orderInvRegNo)
+			//setInputs((inputs) => ({ ...inputs, []: value }))
+			setInputs((inputs) => ({
+				...inputs,
+				orderInvRegNo: regNo_response.data,
+				typeId: 13,
+			}))
+			console.log('Updated 2 reg no to : ', inputs.orderInvRegNo)
 
-			//regNo_response.data.length > 1
-			//	? orderService
-			//			.checkoutSaleOrderInv(toJsonCheckoutOrderInv(payload))
-			//			.then(
-			//				(response: any) => handle_payment_register(response),
-			//				(error: any) => errorSwal(error.toString()),
-			//			)
-			//	: errorSwal()
+			console.log('before update of reg no', orderInvRegNo)
+			await set_orderInvRegNo(regNo_response.data)
+			console.log('separate update of reg no', orderInvRegNo)
+			////let payload = {
+			////	...inputs,
+			////	orderInvRegNo: regNo_response.data,
+			////	typeId: 13,
+			////}
+			//otherService
+			//	.generate_reg_no()
+			//	.then((response: any) => handle_Reg_no_gen_response(response))
+
+			////regNo_response.data.length > 1
+			////	? orderService
+			////			.checkoutSaleOrderInv(toJsonCheckoutOrderInv(payload))
+			////			.then(
+			////				(response: any) => handle_payment_register(response),
+			////				(error: any) => errorSwal(error.toString()),
+			////			)
+			////	: errorSwal()
 		} catch {
 			errorSwal()
 		}
@@ -265,16 +275,16 @@ const CheckoutForm = (props: any) => {
 					onChange={(id: any) => handleKeyValueChange('pmId', id)}
 				/>
 
-				{/*{inputs.pmId === 2 && (
-			<OnlinePaymentMethods
-				id={inputs.online_payment_id}
-				name={inputs.online_payment_method}
-				onChange={({ id, name }: any) => {
-					handleKeyValueChange('online_payment_id', id)
-					handleKeyValueChange('online_payment_method', name)
-				}}
-			/>
-		)}*/}
+				{inputs.pmId === 2 && (
+					<OnlinePaymentMethods
+						id={inputs.online_payment_id}
+						name={inputs.online_payment_method}
+						onChange={({ id, name }: any) => {
+							handleKeyValueChange('online_payment_id', id)
+							handleKeyValueChange('online_payment_method', name)
+						}}
+					/>
+				)}
 
 				<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
 					{t('auth.name')}:

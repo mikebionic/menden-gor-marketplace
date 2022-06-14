@@ -76,7 +76,6 @@ export const resource = (state = initialState, { type, payload }: any) => {
 			return R.mergeRight(state, moreValues)
 
 		case resourceCollectionConstants.FETCH_SUCCESS:
-			console.log(payload)
 			let resources: any = []
 			payload.map((item: any) => {
 				item.resources.map((resource: any) => resources.push(resource))

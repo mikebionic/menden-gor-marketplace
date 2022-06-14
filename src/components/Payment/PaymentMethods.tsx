@@ -20,8 +20,7 @@ export const PaymentMethods = ({ id, onChange }: any) => {
 		<ErrorBoundary>
 			{data.map(
 				({ id, name, description }: any, idx: number) =>
-					!(currency_code === 'USD' && id === 2) &&
-					id !== 2 && (
+					!(currency_code === 'USD' && id === 2) && (
 						<div
 							className="grid grid-flow-col gap-0 text-justify cursor-pointer place-content-start md:grid-rows-OrderLine md:grid-cols-OrderLine"
 							key={idx}
