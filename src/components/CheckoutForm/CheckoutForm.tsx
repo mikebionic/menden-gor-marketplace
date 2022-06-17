@@ -7,7 +7,7 @@ import {
 	getCurrentUserInfo,
 	getTotalCount,
 } from 'sapredux/selectors'
-import { getCurrentCurrency, sapswal } from 'sapredux/helpers'
+import { getCurrentCurrency, sapswal, useSetState } from 'sapredux/helpers'
 import {
 	PaymentMethods,
 	PaymentTypes,
@@ -24,7 +24,7 @@ const CheckoutForm = (props: any) => {
 	const { t } = useTranslation()
 	const [loading, set_loading] = useState(false)
 	const [orderInvRegNo, set_orderInvRegNo] = useState('')
-	const [inputs, setInputs] = useState({
+	const [inputs, setInputs, getInputs] = useSetState({
 		name: loggedIn ? `${user.username} - ${user.name}` : '',
 		phoneNumber: loggedIn
 			? `${user.mobilePhoneNumber || user.homePhoneNumber}`
@@ -46,14 +46,12 @@ const CheckoutForm = (props: any) => {
 		handleKeyValueChange('orderInvLines', orderInvLines)
 		handleKeyValueChange('totalPrice', totalPrice)
 	}, [orderInvLines, totalPrice])
+
 	const handleChange = (e: any) => {
 		let { name, value } = e.target
 		setInputs((inputs) => ({ ...inputs, [name]: value }))
 	}
-	const handleKeyValueChange: any = async (
-		name: string = '',
-		value: any = '',
-	) => {
+	const handleKeyValueChange = async (name: string = '', value: any = '') => {
 		await setInputs((inputs) => ({ ...inputs, [name]: value }))
 	}
 
@@ -113,89 +111,63 @@ const CheckoutForm = (props: any) => {
 
 	const handleOnlineCheckout = async (inputs: any) => {
 		try {
-			let regNo_response = await otherService.generate_reg_no()
-			if (regNo_response.status !== 1) {
-				throw 'error'
-			}
-			console.log(regNo_response)
-			console.log('reg no brefore : ', inputs.orderInvRegNo)
-			await handleKeyValueChange('orderInvRegNo', regNo_response.data)
-			await handleKeyValueChange('typeId', 13)
-			console.log('Updated reg no to : ', inputs.orderInvRegNo)
-			//setInputs((inputs) => ({ ...inputs, []: value }))
-			setInputs((inputs) => ({
-				...inputs,
-				orderInvRegNo: regNo_response.data,
-				typeId: 13,
-			}))
-			console.log('Updated 2 reg no to : ', inputs.orderInvRegNo)
+			await otherService.generate_reg_no().then(
+				({ data, status }: any) => {
+					if (status !== 1 || data.length < 1) {
+						throw 'error'
+					}
+					setInputs((inputs) => ({
+						...inputs,
+						orderInvRegNo: data,
+						typeId: 13,
+					}))
+				},
+				(error: any) => errorSwal(error.toString()),
+			)
 
-			console.log('before update of reg no', orderInvRegNo)
-			await set_orderInvRegNo(regNo_response.data)
-			console.log('separate update of reg no', orderInvRegNo)
-			////let payload = {
-			////	...inputs,
-			////	orderInvRegNo: regNo_response.data,
-			////	typeId: 13,
-			////}
-			//otherService
-			//	.generate_reg_no()
-			//	.then((response: any) => handle_Reg_no_gen_response(response))
+			let updatedstate = await getInputs()
 
-			////regNo_response.data.length > 1
-			////	? orderService
-			////			.checkoutSaleOrderInv(toJsonCheckoutOrderInv(payload))
-			////			.then(
-			////				(response: any) => handle_payment_register(response),
-			////				(error: any) => errorSwal(error.toString()),
-			////			)
-			////	: errorSwal()
+			await orderService
+				.checkoutSaleOrderInv(
+					toJsonCheckoutOrderInv({
+						...updatedstate,
+						description: `${inputs.description} ${inputs.name} ${inputs.phoneNumber}`,
+					}),
+					loggedIn,
+				)
+				.then(
+					(response: any) => handle_payment_register(response),
+					(error: any) => errorSwal(error.toString()),
+				)
 		} catch {
 			errorSwal()
 		}
 	}
 
-	const handle_Reg_no_gen_response = async (response: any) => {
-		if (response.status !== 1) {
-			throw 'error'
-		}
-		console.log(inputs.orderInvRegNo)
-		await handleKeyValueChange('orderInvRegNo', response.data)
-		await handleKeyValueChange('typeId', 13)
-		console.log(inputs.orderInvRegNo)
-		await setInputs((inputs) => ({
-			...inputs,
-			orderInvRegNo: response.data,
-			typeId: 13,
-		}))
-		console.log('++++++ ', response.data, inputs.orderInvRegNo)
-		response.data.length > 1
-			? orderService
-					.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs), loggedIn)
-					.then(
-						(response: any) => handle_payment_register(response),
-						(error: any) => errorSwal(error.toString()),
-					)
-			: errorSwal()
-	}
-
-	const handle_payment_register = (response: any) => {
+	const handle_payment_register = async (response: any) => {
+		let updatedstate = await getInputs()
 		if (response.status === 1) {
 			orderService
 				.request_payment_register(
-					inputs.orderInvRegNo,
-					inputs.totalPrice,
-					inputs.online_payment_method,
-					inputs.description,
+					updatedstate.orderInvRegNo,
+					updatedstate.totalPrice,
+					updatedstate.online_payment_method,
+					updatedstate.description,
 				)
 				.then(
-					(response: any) =>
+					({ data }: any) => {
+						handleKeyValueChange('payment_window_url', data.checkout_url)
+						handleKeyValueChange('orderId', data.OrderId)
 						handleKeyValueChange(
-							'payment_window_url',
-							response.data.checkout_url,
+							'online_payment_type',
+							data.online_payment_type,
 						)
-							.then(handleKeyValueChange('orderId', response.data.OrderId))
-							.then(open_payment_window),
+						handleKeyValueChange('checkout_url', data.checkout_url)
+						if (data.checkout_url.length < 1) {
+							throw 'URL not returned'
+						}
+						open_payment_window(data.checkout_url)
+					},
 					(error: any) => errorSwal(error.toString()),
 				)
 		} else {
@@ -225,7 +197,7 @@ const CheckoutForm = (props: any) => {
 					clearInterval(win_closed_interval)
 					console.log('payment closed')
 					setTimeout(() => {
-						$('#cover-spin').hide()
+						//$('#cover-spin').hide()
 						if (payment_validated_times < 1) {
 							//validate_oinv_payment()
 							payment_validated_times++
