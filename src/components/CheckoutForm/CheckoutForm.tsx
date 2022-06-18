@@ -18,12 +18,12 @@ import { orderService, otherService } from 'sapredux/services'
 import { toJsonCheckoutOrderInv } from 'sapredux/services/transform_data'
 import { useTranslation } from 'react-i18next'
 import { resourceAllRemovedFromCart } from 'sapredux/actions'
+import { Spinner } from 'modules/loaders'
 
 const CheckoutForm = (props: any) => {
 	const { items, orderInvLines, totalPrice, onDelete, user, loggedIn } = props
 	const { t } = useTranslation()
 	const [loading, set_loading] = useState(false)
-	const [orderInvRegNo, set_orderInvRegNo] = useState('')
 	const [inputs, setInputs, getInputs] = useSetState({
 		name: loggedIn ? `${user.username} - ${user.name}` : '',
 		phoneNumber: loggedIn
@@ -100,7 +100,6 @@ const CheckoutForm = (props: any) => {
 					)
 					.finally(() => set_loading(false))
 			} else {
-				//!!!TODO: online checout
 				handleOnlineCheckout(inputs).finally(() => set_loading(false))
 			}
 		} catch (e: any) {
@@ -111,6 +110,7 @@ const CheckoutForm = (props: any) => {
 
 	const handleOnlineCheckout = async (inputs: any) => {
 		try {
+			set_loading(true)
 			await otherService.generate_reg_no().then(
 				({ data, status }: any) => {
 					if (status !== 1 || data.length < 1) {
@@ -145,8 +145,10 @@ const CheckoutForm = (props: any) => {
 	}
 
 	const handle_payment_register = async (response: any) => {
+		await handleKeyValueChange('orderInvRegNo', response.data.OInvRegNo)
 		let updatedstate = await getInputs()
 		if (response.status === 1) {
+			set_loading(true)
 			orderService
 				.request_payment_register(
 					updatedstate.orderInvRegNo,
@@ -172,10 +174,12 @@ const CheckoutForm = (props: any) => {
 				)
 		} else {
 			errorSwal(t('common.payment_fail_contact_admins'))
+			set_loading(false)
 		}
 	}
 
 	function open_payment_window(url: string) {
+		set_loading(true)
 		let window_properties = 'width=600,height=400,resizable=yes,location=no'
 		let paymentWin: any = window.open(url, 'Payment', window_properties)
 		try {
@@ -186,30 +190,36 @@ const CheckoutForm = (props: any) => {
 			})
 		} catch {
 			errorSwal()
+			set_loading(false)
 		}
 	}
-	var payment_validated_times = 0
+	//var payment_validated_times = 0
 	function detect_window_close(current_window: any) {
-		//$('#cover-spin').show()
 		let win_closed_interval = setInterval(() => {
 			try {
 				if (current_window.closed) {
 					clearInterval(win_closed_interval)
-					console.log('payment closed')
-					setTimeout(() => {
-						//$('#cover-spin').hide()
-						if (payment_validated_times < 1) {
-							//validate_oinv_payment()
-							payment_validated_times++
-						} else {
-							clearInterval(win_closed_interval)
-						}
-					}, 300)
+					set_loading(false)
+					validate_order_inv()
 				}
 			} catch {
 				clearInterval(win_closed_interval)
 			}
 		}, 500)
+	}
+	const validate_order_inv = async () => {
+		let { orderId, orderInvRegNo, online_payment_method } = await getInputs()
+		orderService
+			.validate_order_inv(
+				orderId,
+				orderInvRegNo,
+				online_payment_method,
+				user.RpAccGuid,
+			)
+			.then(
+				(response: any) => handleResponse(response),
+				(error: any) => errorSwal(error.toString()),
+			)
 	}
 
 	const errorSwal = (text?: string) =>
@@ -221,6 +231,7 @@ const CheckoutForm = (props: any) => {
 
 	return (
 		<ErrorBoundary>
+			{loading && <Spinner />}
 			<div className="grid w-full grid-flow-row gap-4 p-4 auto-rows-max shadow-defaultShadow bg-fullwhite dark:bg-darkComponentColor">
 				<div className="grid grid-flow-col auto-cols-max place-content-between">
 					<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">

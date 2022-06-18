@@ -4,13 +4,15 @@ import foreign_affairs_bank_logo from './foreign_affairs_bank_logo.png'
 export const online_payment_methods: any = [
 	{
 		id: 1,
-		name: 'Halkbank - Joint Stock Commercial Bank of Turkmenistan',
+		name: 'halkbank',
+		label: 'Halkbank - Joint Stock Commercial Bank of Turkmenistan',
 		url: '#',
 		image: halkbank_logo || '#',
 	},
 	{
 		id: 2,
-		name: 'The State Bank for Foreign Economic Affairs of Turkmenistan',
+		name: 'foreign_affairs_bank',
+		label: 'The State Bank for Foreign Economic Affairs of Turkmenistan',
 		url: '#',
 		image: foreign_affairs_bank_logo || '#',
 	},
