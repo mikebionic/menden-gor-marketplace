@@ -8,7 +8,7 @@ module.exports = {
 				firstColorGradientFromDark: '#2871cc',
 				secondColorGradientToLight: '#2871cc',
 				textColorOrange: '#2871cc',
-				thirdColor: '#43d4ca',
+				thirdColor: '#003f9a',
 				textLightGray: '#606060',
 				textDarkGray: '#454545',
 				white: '#f7f6fb',
