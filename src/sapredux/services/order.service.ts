@@ -106,11 +106,13 @@ const request_payment_register = async (
 const validate_order_inv = async (
 	orderId: string,
 	regNo: string,
+	online_payment_type: string,
 	rpAccGuid: string,
 ) => {
 	let payload = {
 		OrderId: orderId,
 		OInvRegNo: regNo,
+		online_payment_type: online_payment_type,
 		RpAccGuid: rpAccGuid,
 	}
 

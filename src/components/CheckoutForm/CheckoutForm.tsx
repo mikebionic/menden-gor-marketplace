@@ -7,7 +7,7 @@ import {
 	getCurrentUserInfo,
 	getTotalCount,
 } from 'sapredux/selectors'
-import { getCurrentCurrency, sapswal } from 'sapredux/helpers'
+import { getCurrentCurrency, sapswal, useSetState } from 'sapredux/helpers'
 import {
 	PaymentMethods,
 	PaymentTypes,
@@ -18,12 +18,13 @@ import { orderService, otherService } from 'sapredux/services'
 import { toJsonCheckoutOrderInv } from 'sapredux/services/transform_data'
 import { useTranslation } from 'react-i18next'
 import { resourceAllRemovedFromCart } from 'sapredux/actions'
+import { Spinner } from 'modules/loaders'
 
 const CheckoutForm = (props: any) => {
 	const { items, orderInvLines, totalPrice, onDelete, user, loggedIn } = props
 	const { t } = useTranslation()
 	const [loading, set_loading] = useState(false)
-	const [inputs, setInputs] = useState({
+	const [inputs, setInputs, getInputs] = useSetState({
 		name: loggedIn ? `${user.username} - ${user.name}` : '',
 		phoneNumber: loggedIn
 			? `${user.mobilePhoneNumber || user.homePhoneNumber}`
@@ -45,14 +46,12 @@ const CheckoutForm = (props: any) => {
 		handleKeyValueChange('orderInvLines', orderInvLines)
 		handleKeyValueChange('totalPrice', totalPrice)
 	}, [orderInvLines, totalPrice])
+
 	const handleChange = (e: any) => {
 		let { name, value } = e.target
 		setInputs((inputs) => ({ ...inputs, [name]: value }))
 	}
-	const handleKeyValueChange: any = async (
-		name: string = '',
-		value: any = '',
-	) => {
+	const handleKeyValueChange = async (name: string = '', value: any = '') => {
 		await setInputs((inputs) => ({ ...inputs, [name]: value }))
 	}
 
@@ -101,8 +100,7 @@ const CheckoutForm = (props: any) => {
 					)
 					.finally(() => set_loading(false))
 			} else {
-				//!!!TODO: online checout
-				//handleOnlineCheckout(inputs).finally(() => set_loading(false))
+				handleOnlineCheckout(inputs).finally(() => set_loading(false))
 			}
 		} catch (e: any) {
 			errorSwal(e.toString())
@@ -112,88 +110,76 @@ const CheckoutForm = (props: any) => {
 
 	const handleOnlineCheckout = async (inputs: any) => {
 		try {
-			//let regNo_response = await otherService.generate_reg_no()
-			//if (regNo_response.status !== 1) {
-			//	throw 'error'
-			//}
-			//await handleKeyValueChange('orderInvRegNo', regNo_response.data)
-			//await handleKeyValueChange('typeId', 13)
-			//await setInputs((inputs) => ({
-			//	...inputs,
-			//	orderInvRegNo: regNo_response.data,
-			//	typeId: 13,
-			//}))
-			//let payload = {
-			//	...inputs,
-			//	orderInvRegNo: regNo_response.data,
-			//	typeId: 13,
-			//}
-			otherService
-				.generate_reg_no()
-				.then((response: any) => handle_Reg_no_gen_response(response))
+			set_loading(true)
+			await otherService.generate_reg_no().then(
+				({ data, status }: any) => {
+					if (status !== 1 || data.length < 1) {
+						throw 'error'
+					}
+					setInputs((inputs) => ({
+						...inputs,
+						orderInvRegNo: data,
+						typeId: 13,
+					}))
+				},
+				(error: any) => errorSwal(error.toString()),
+			)
 
-			//regNo_response.data.length > 1
-			//	? orderService
-			//			.checkoutSaleOrderInv(toJsonCheckoutOrderInv(payload))
-			//			.then(
-			//				(response: any) => handle_payment_register(response),
-			//				(error: any) => errorSwal(error.toString()),
-			//			)
-			//	: errorSwal()
+			let updatedstate = await getInputs()
+
+			await orderService
+				.checkoutSaleOrderInv(
+					toJsonCheckoutOrderInv({
+						...updatedstate,
+						description: `${inputs.description} ${inputs.name} ${inputs.phoneNumber}`,
+					}),
+					loggedIn,
+				)
+				.then(
+					(response: any) => handle_payment_register(response),
+					(error: any) => errorSwal(error.toString()),
+				)
 		} catch {
 			errorSwal()
 		}
 	}
 
-	const handle_Reg_no_gen_response = async (response: any) => {
-		if (response.status !== 1) {
-			throw 'error'
-		}
-		console.log(inputs.orderInvRegNo)
-		await handleKeyValueChange('orderInvRegNo', response.data)
-		await handleKeyValueChange('typeId', 13)
-		console.log(inputs.orderInvRegNo)
-		await setInputs((inputs) => ({
-			...inputs,
-			orderInvRegNo: response.data,
-			typeId: 13,
-		}))
-		console.log('++++++ ', response.data, inputs.orderInvRegNo)
-		response.data.length > 1
-			? orderService
-					.checkoutSaleOrderInv(toJsonCheckoutOrderInv(inputs), loggedIn)
-					.then(
-						(response: any) => handle_payment_register(response),
-						(error: any) => errorSwal(error.toString()),
-					)
-			: errorSwal()
-	}
-
-	const handle_payment_register = (response: any) => {
+	const handle_payment_register = async (response: any) => {
+		await handleKeyValueChange('orderInvRegNo', response.data.OInvRegNo)
+		let updatedstate = await getInputs()
 		if (response.status === 1) {
+			set_loading(true)
 			orderService
 				.request_payment_register(
-					inputs.orderInvRegNo,
-					inputs.totalPrice,
-					inputs.online_payment_method,
-					inputs.description,
+					updatedstate.orderInvRegNo,
+					updatedstate.totalPrice,
+					updatedstate.online_payment_method,
+					updatedstate.description,
 				)
 				.then(
-					(response: any) =>
+					({ data }: any) => {
+						handleKeyValueChange('payment_window_url', data.checkout_url)
+						handleKeyValueChange('orderId', data.OrderId)
 						handleKeyValueChange(
-							'payment_window_url',
-							response.data.checkout_url,
+							'online_payment_type',
+							data.online_payment_type,
 						)
-							.then(handleKeyValueChange('orderId', response.data.OrderId))
-							.then(open_payment_window),
+						handleKeyValueChange('checkout_url', data.checkout_url)
+						if (data.checkout_url.length < 1) {
+							throw 'URL not returned'
+						}
+						open_payment_window(data.checkout_url)
+					},
 					(error: any) => errorSwal(error.toString()),
 				)
 		} else {
 			errorSwal(t('common.payment_fail_contact_admins'))
+			set_loading(false)
 		}
 	}
 
 	function open_payment_window(url: string) {
+		set_loading(true)
 		let window_properties = 'width=600,height=400,resizable=yes,location=no'
 		let paymentWin: any = window.open(url, 'Payment', window_properties)
 		try {
@@ -204,30 +190,36 @@ const CheckoutForm = (props: any) => {
 			})
 		} catch {
 			errorSwal()
+			set_loading(false)
 		}
 	}
-	var payment_validated_times = 0
+	//var payment_validated_times = 0
 	function detect_window_close(current_window: any) {
-		//$('#cover-spin').show()
 		let win_closed_interval = setInterval(() => {
 			try {
 				if (current_window.closed) {
 					clearInterval(win_closed_interval)
-					console.log('payment closed')
-					setTimeout(() => {
-						$('#cover-spin').hide()
-						if (payment_validated_times < 1) {
-							//validate_oinv_payment()
-							payment_validated_times++
-						} else {
-							clearInterval(win_closed_interval)
-						}
-					}, 300)
+					set_loading(false)
+					validate_order_inv()
 				}
 			} catch {
 				clearInterval(win_closed_interval)
 			}
 		}, 500)
+	}
+	const validate_order_inv = async () => {
+		let { orderId, orderInvRegNo, online_payment_method } = await getInputs()
+		orderService
+			.validate_order_inv(
+				orderId,
+				orderInvRegNo,
+				online_payment_method,
+				user.RpAccGuid,
+			)
+			.then(
+				(response: any) => handleResponse(response),
+				(error: any) => errorSwal(error.toString()),
+			)
 	}
 
 	const errorSwal = (text?: string) =>
@@ -239,6 +231,7 @@ const CheckoutForm = (props: any) => {
 
 	return (
 		<ErrorBoundary>
+			{loading && <Spinner />}
 			<div className="grid w-full grid-flow-row gap-4 p-4 auto-rows-max shadow-defaultShadow bg-fullwhite dark:bg-darkComponentColor">
 				<div className="grid grid-flow-col auto-cols-max place-content-between">
 					<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
@@ -265,16 +258,16 @@ const CheckoutForm = (props: any) => {
 					onChange={(id: any) => handleKeyValueChange('pmId', id)}
 				/>
 
-				{/*{inputs.pmId === 2 && (
-			<OnlinePaymentMethods
-				id={inputs.online_payment_id}
-				name={inputs.online_payment_method}
-				onChange={({ id, name }: any) => {
-					handleKeyValueChange('online_payment_id', id)
-					handleKeyValueChange('online_payment_method', name)
-				}}
-			/>
-		)}*/}
+				{inputs.pmId === 2 && (
+					<OnlinePaymentMethods
+						id={inputs.online_payment_id}
+						name={inputs.online_payment_method}
+						onChange={({ id, name }: any) => {
+							handleKeyValueChange('online_payment_id', id)
+							handleKeyValueChange('online_payment_method', name)
+						}}
+					/>
+				)}
 
 				<p className="text-base font-semibold font-oxygen dark:text-darkTextWhiteColor">
 					{t('auth.name')}:

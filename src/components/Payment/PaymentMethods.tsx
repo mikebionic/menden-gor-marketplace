@@ -20,8 +20,7 @@ export const PaymentMethods = ({ id, onChange }: any) => {
 		<ErrorBoundary>
 			{data.map(
 				({ id, name, description }: any, idx: number) =>
-					!(currency_code === 'USD' && id === 2) &&
-					id !== 2 && (
+					!(currency_code === 'USD' && id === 2) && (
 						<div
 							className="grid grid-flow-col gap-0 text-justify cursor-pointer place-content-start md:grid-rows-OrderLine md:grid-cols-OrderLine"
 							key={idx}
@@ -65,7 +64,7 @@ export const OnlinePaymentMethods = ({ id, name, onChange }: any) => {
 	return (
 		<ErrorBoundary>
 			{online_pm_data &&
-				online_pm_data.map(({ id, name, image }: any, idx: number) => (
+				online_pm_data.map(({ id, name, label, image }: any, idx: number) => (
 					<div
 						key={idx}
 						className="grid grid-flow-col xl:grid-cols-[max-content_1fr_max-content] text-justify gap-4 place-content-start place-items-center md:ml-10 min-phone:ml-6 cursor-pointer"
@@ -81,7 +80,7 @@ export const OnlinePaymentMethods = ({ id, name, onChange }: any) => {
 							checked={id === online_method_id ? true : false}
 						/>
 						<p className="font-semibold text-black dark:text-darkTextWhiteColor text-oxygen">
-							{name}
+							{label}
 						</p>
 						<Image
 							src={image}
