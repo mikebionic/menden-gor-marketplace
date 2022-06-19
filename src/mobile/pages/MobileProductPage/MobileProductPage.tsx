@@ -71,7 +71,7 @@ const RenderProuct = ({
 							<p className="text-sm">{viewCnt}</p>
 						</div>
 					</div>
-					<div className="grid grid-flow-col auto-cols-max place-items-center">
+					<div className="grid grid-flow-col my-2 auto-cols-max place-items-center place-content-end">
 						{discount && (
 							<p className="text-base text-justify text-gray-400 line-through">
 								{realPrice} {currencySymbol}

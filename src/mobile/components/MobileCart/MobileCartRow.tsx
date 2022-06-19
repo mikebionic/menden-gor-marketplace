@@ -53,7 +53,7 @@ export const MobileCartRow = ({
 										</p>
 									)} */}
 
-							<p className="mx-4 text-sm text-justify">
+							<div className="mx-4 text-sm text-justify">
 								<PriceButton
 									priceValue={item.priceValue}
 									currencySymbol={item.currencySymbol}
@@ -61,7 +61,7 @@ export const MobileCartRow = ({
 									coloredButton={true}
 									fontSize="text-sm"
 								/>
-							</p>
+							</div>
 							<ProductAddToCart
 								resourceId={item.id}
 								withCounter={true}

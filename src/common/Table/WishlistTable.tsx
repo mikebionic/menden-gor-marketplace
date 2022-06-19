@@ -77,16 +77,14 @@ export const WishlistTable = ({ data }: any) => {
 			align: 'center',
 			className: 'text-gray-500 dark:text-darkText',
 			render: ({ id, priceValue, currencySymbol }: any) => (
-				<div>
-					<p className="mx-4 text-sm text-justify">
-						<PriceButton
-							priceValue={priceValue}
-							currencySymbol={currencySymbol}
-							width="w-auto"
-							coloredButton={true}
-							fontSize="text-sm"
-						/>
-					</p>
+				<div className="mx-4 text-sm text-justify">
+					<PriceButton
+						priceValue={priceValue}
+						currencySymbol={currencySymbol}
+						width="w-auto"
+						coloredButton={true}
+						fontSize="text-sm"
+					/>
 				</div>
 			),
 		},

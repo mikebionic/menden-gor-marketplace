@@ -20,10 +20,10 @@ darkText : "#94a3b8"
 
 // ls_marketplace colors
 
-firstColorGradientFromDark: '#5e2bdb',
-secondColorGradientToLight: '#6f59f2',
-textColorOrange: "#653ee6",
-thirdColor: "#43D4CA"
+firstColorGradientFromDark: '#2871cc',
+secondColorGradientToLight: '#2871cc',
+textColorOrange: "#2871cc",
+thirdColor: "#003f9a"
 textLightGray: '#606060',
 textDarkGray: '#454545',
 white: '#f7f6fb',

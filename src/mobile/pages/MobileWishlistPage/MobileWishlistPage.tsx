@@ -64,7 +64,7 @@ const MobileWishlistPage = ({ data }: any) => {
 											discount ? 'justify-between' : 'justify-between'
 										}`}
 									>
-										<p className="mx-4 text-sm text-justify">
+										<div className="mx-4 text-sm text-justify">
 											<PriceButton
 												priceValue={priceValue}
 												currencySymbol={currencySymbol}
@@ -72,7 +72,7 @@ const MobileWishlistPage = ({ data }: any) => {
 												coloredButton={true}
 												fontSize="text-sm"
 											/>
-										</p>
+										</div>
 										<ProductAddToCart
 											resourceId={id}
 											withCounter={true}

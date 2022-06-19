@@ -93,14 +93,14 @@ const ProductCard = ({ data }: any) => {
 						</p>
 					)}
 
-					<p className="mx-4 text-sm text-justify">
+					<div className="mx-4 text-sm text-justify">
 						<PriceButton
 							priceValue={priceValue}
 							currencySymbol={currencySymbol}
 							width="w-auto"
 							coloredButton={true}
 						/>
-					</p>
+					</div>
 				</div>
 				{/* <p className="mx-4 mb-2 text-sm text-justify">{resource_description}</p> */}
 				{/* <h3 className="w-auto px-3 mx-auto my-0 rounded-full bg-gradient-to-r from-firstColorGradientFromDark to-secondColorGradientToLight">

@@ -92,7 +92,7 @@ export const MobileProductCard = ({ data }: any) => {
 						</p>
 					)}
 
-					<p className="mx-4 text-sm text-justify">
+					<div className="mx-4 text-sm text-justify">
 						<PriceButton
 							priceValue={priceValue}
 							currencySymbol={currencySymbol}
@@ -100,7 +100,7 @@ export const MobileProductCard = ({ data }: any) => {
 							coloredButton={true}
 							fontSize="text-sm"
 						/>
-					</p>
+					</div>
 				</div>
 			</div>
 		</ErrorBoundary>
