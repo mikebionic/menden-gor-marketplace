@@ -16,6 +16,7 @@ main {
 	width: 8em;
 	height: 16em;
 }
+
 html:not(.dark) .ap__ring {
 	stroke: hsla(var(--hue), 10%, 10%, 0.15);
 	transition: stroke 0.3s;
