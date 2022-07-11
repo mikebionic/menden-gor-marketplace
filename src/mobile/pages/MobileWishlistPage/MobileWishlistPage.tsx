@@ -34,7 +34,7 @@ const MobileWishlistPage = ({ data }: any) => {
 						idx: number,
 					) => (
 						<ErrorBoundary key={idx}>
-							<div className="relative grid grid-cols-[auto_1fr] items-center gap-2 w-full h-28 p-2 rounded-md bg-fullwhite dark:bg-darkComponentColor shadow-defaultShadow">
+							<div className="relative grid grid-cols-[auto_1fr] h-auto items-center gap-2 w-full h-28 p-2 rounded-md bg-fullwhite dark:bg-darkComponentColor shadow-defaultShadow">
 								<MdClose className="absolute text-base text-gray-400 top-2 right-2" />
 								<div className="w-20 h-20 bg-gray-200 dark:bg-darkBgColor">
 									<Image

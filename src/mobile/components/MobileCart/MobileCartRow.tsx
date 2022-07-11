@@ -17,7 +17,7 @@ export const MobileCartRow = ({
 	return (
 		item && (
 			<div className="grid grid-flow-row gap-4 pt-4 auto-rows-max">
-				<div className="relative grid grid-cols-[auto_1fr] items-center gap-2 w-full h-28 p-2 rounded-md bg-fullwhite dark:bg-darkComponentColor shadow-defaultShadow">
+				<div className="relative grid grid-cols-[auto_1fr] h-auto items-center gap-2 w-full p-2 rounded-md bg-fullwhite dark:bg-darkComponentColor shadow-defaultShadow">
 					<MdClose
 						className="absolute text-base text-gray-400 top-2 right-2"
 						onClick={() => onDelete(item.id)}

@@ -19,6 +19,9 @@ import { toJsonCheckoutOrderInv } from 'sapredux/services/transform_data'
 import { useTranslation } from 'react-i18next'
 import { resourceAllRemovedFromCart } from 'sapredux/actions'
 import { Spinner } from 'modules/loaders'
+import { Select } from 'antd'
+
+const { Option } = Select
 
 const CheckoutForm = (props: any) => {
 	const { items, orderInvLines, totalPrice, onDelete, user, loggedIn } = props
@@ -41,6 +44,23 @@ const CheckoutForm = (props: any) => {
 		totalPrice: totalPrice,
 		orderId: '',
 		payment_window_url: '',
+		lastname: loggedIn ? `${user.lastname}` : '',
+		patronymic: '',
+		gender: '',
+		dateBirthday: '',
+		placeOfBirth: '',
+		nationality: '',
+		passportNumber: '',
+		passportIssuePlace: '',
+		placeOfResidence: '',
+		placeOfRegistration: '',
+		suretyName: '',
+		suretyPlaceOfResidence: '',
+		suretyPassportNumber: '',
+		buyersSuretyRelationship: '',
+		homePhoneNumber: loggedIn ? `${user.homePhoneNumber}` : '',
+		suretyPhoneNumber1: '',
+		suretyPhoneNumber2: '',
 	})
 	useEffect(() => {
 		handleKeyValueChange('orderInvLines', orderInvLines)
@@ -87,7 +107,22 @@ const CheckoutForm = (props: any) => {
 					.checkoutSaleOrderInv(
 						toJsonCheckoutOrderInv({
 							...inputs,
-							description: `${inputs.description} ${inputs.name} ${inputs.phoneNumber}`,
+							description: `Desc: ${inputs.description}, Name: ${
+								inputs.name
+							}, Phone: ${inputs.phoneNumber}, ${
+								inputs.ptId === 2
+									? `Lastname: ${inputs.lastname}, Patranomic: ${inputs.patronymic}, 
+									Gender: ${inputs.gender}, Date Birthday: ${inputs.dateBirthday}, 
+									Place of Birthday: ${inputs.placeOfBirth}, Nationality: ${inputs.nationality}, 
+									Passport: ${inputs.passportNumber}, Passport Issue Place: ${inputs.passportIssuePlace}, 
+									Place of Residence: ${inputs.placeOfResidence}, Place of Registration: ${inputs.placeOfRegistration}, 
+									Surety Name: ${inputs.suretyName}, Surety Place of Residence: ${inputs.suretyPlaceOfResidence}, 
+									Surety Passport Number: ${inputs.suretyPassportNumber}, 
+									Buyers Surety Relationship: ${inputs.buyersSuretyRelationship}, 
+									Home Phone Number: ${inputs.homePhoneNumber}, 
+									Surety Phone Number 1: ${inputs.suretyPhoneNumber1}, Surety Phone Number 2: ${inputs.suretyPhoneNumber2}`
+									: ''
+							}`,
 						}),
 						loggedIn,
 					)
@@ -102,6 +137,7 @@ const CheckoutForm = (props: any) => {
 			} else {
 				handleOnlineCheckout(inputs).finally(() => set_loading(false))
 			}
+			console.log(inputs)
 		} catch (e: any) {
 			errorSwal(e.toString())
 			set_loading(false)
@@ -304,6 +340,165 @@ const CheckoutForm = (props: any) => {
 					value={inputs.description}
 					onChange={handleChange}
 				/>
+				{inputs.ptId === 2 && (
+					<>
+						<hr />
+						<Input
+							placeholder="Lastname:"
+							autoFocus
+							type="text"
+							name="lastname"
+							value={inputs.lastname}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Patronomic:"
+							type="text"
+							name="patronymic"
+							value={inputs.patronymic}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Select
+							placeholder="Gender:"
+							name="gender"
+							value={inputs.gender}
+							onChange={(e: any) => handleChange('gender')} //have to check
+						>
+							<Option value="Male">Male</Option>
+							<Option value="Female">Female</Option>
+						</Select>
+						<Input
+							placeholder="Birthday date:"
+							type="text"
+							name="dateBirthday"
+							value={inputs.dateBirthday}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Place of Birthday:"
+							type="text"
+							name="placeOfBirth"
+							value={inputs.placeOfBirth}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Nationality:"
+							type="text"
+							name="nationality"
+							value={inputs.nationality}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Passport Number:"
+							type="text"
+							name="passportNumber"
+							value={inputs.passportNumber}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Passport Issue Place:"
+							type="text"
+							name="passportIssuePlace"
+							value={inputs.passportIssuePlace}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Place of Residence:"
+							type="text"
+							name="placeOfResidence"
+							value={inputs.placeOfResidence}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Place of Registration:"
+							type="text"
+							name="placeOfRegistration"
+							value={inputs.placeOfRegistration}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Surety Name:"
+							type="text"
+							name="placeOfResidence"
+							value={inputs.placeOfResidence}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Surety Place of Residence:"
+							type="text"
+							name="suretyPlaceOfResidence"
+							value={inputs.suretyPlaceOfResidence}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Surety Passport Number:"
+							type="text"
+							name="suretyPassportNumber"
+							value={inputs.suretyPassportNumber}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Buyers surety relationship:"
+							type="text"
+							name="buyersSuretyRelationship"
+							value={inputs.buyersSuretyRelationship}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Home Phone Number:"
+							type="number"
+							name="homePhoneNumber"
+							value={inputs.homePhoneNumber}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Surety Phone Number 1:"
+							type="number"
+							name="suretyPhoneNumber1"
+							value={inputs.suretyPhoneNumber1}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+						<Input
+							placeholder="Surety Phone Number 2:"
+							type="number"
+							name="suretyPhoneNumber2"
+							value={inputs.suretyPhoneNumber2}
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
+					</>
+				)}
 				<button
 					onClick={handleSubmit}
 					className="flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-firstColorGradientFromDark dark:bg-darkFirstColor dark:hover:bg-darkFirstColor dark:hover:opacity-80 hover:bg-textColorOrange hover:text-white"
