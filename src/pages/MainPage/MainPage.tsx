@@ -81,13 +81,13 @@ export const MainPage = ({
 					</>
 				)}
 
-				{/* {!R.isEmpty(resource_collections) && (
+				{!R.isEmpty(resource_collections) && (
 					<div className="grid gap-4 mt-8 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 place-content-start 2xl:place-items-center">
 						{resource_collections.map((collection: any, idx: number) => (
 							<ResGroup {...collection} key={idx} />
 						))}
 					</div>
-				)} */}
+				)}
 				<SocialBar />
 			</div>
 		</ErrorBoundary>
