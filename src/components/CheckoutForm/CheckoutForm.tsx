@@ -19,9 +19,6 @@ import { toJsonCheckoutOrderInv } from 'sapredux/services/transform_data'
 import { useTranslation } from 'react-i18next'
 import { resourceAllRemovedFromCart } from 'sapredux/actions'
 import { Spinner } from 'modules/loaders'
-import { Select } from 'antd'
-
-const { Option } = Select
 
 const CheckoutForm = (props: any) => {
 	const { items, orderInvLines, totalPrice, onDelete, user, loggedIn } = props
@@ -111,16 +108,24 @@ const CheckoutForm = (props: any) => {
 								inputs.name
 							}, Phone: ${inputs.phoneNumber}, ${
 								inputs.ptId === 2
-									? `Lastname: ${inputs.lastname}, Patranomic: ${inputs.patronymic}, 
-									Gender: ${inputs.gender}, Date Birthday: ${inputs.dateBirthday}, 
-									Place of Birthday: ${inputs.placeOfBirth}, Nationality: ${inputs.nationality}, 
-									Passport: ${inputs.passportNumber}, Passport Issue Place: ${inputs.passportIssuePlace}, 
-									Place of Residence: ${inputs.placeOfResidence}, Place of Registration: ${inputs.placeOfRegistration}, 
-									Surety Name: ${inputs.suretyName}, Surety Place of Residence: ${inputs.suretyPlaceOfResidence}, 
-									Surety Passport Number: ${inputs.suretyPassportNumber}, 
-									Buyers Surety Relationship: ${inputs.buyersSuretyRelationship}, 
-									Home Phone Number: ${inputs.homePhoneNumber}, 
-									Surety Phone Number 1: ${inputs.suretyPhoneNumber1}, Surety Phone Number 2: ${inputs.suretyPhoneNumber2}`
+									? `
+								Lastname: ${inputs.lastname}, 
+								Patranomic: ${inputs.patronymic},
+								Gender: ${inputs.gender}, 
+								Date Birthday: ${inputs.dateBirthday},
+								Place of Birthday: ${inputs.placeOfBirth}, 
+								Nationality: ${inputs.nationality},
+								Passport: ${inputs.passportNumber}, 
+								Passport Issue Place: ${inputs.passportIssuePlace},
+								Place of Residence: ${inputs.placeOfResidence}, 
+								Place of Registration: ${inputs.placeOfRegistration},
+								Surety Name: ${inputs.suretyName}, 
+								Surety Place of Residence: ${inputs.suretyPlaceOfResidence},
+								Surety Passport Number: ${inputs.suretyPassportNumber}, 
+								Buyers Surety Relationship: ${inputs.buyersSuretyRelationship}, 
+								Home Phone Number: ${inputs.homePhoneNumber}, 
+								Surety Phone Number 1: ${inputs.suretyPhoneNumber1}, 
+								Surety Phone Number 2: ${inputs.suretyPhoneNumber2}`
 									: ''
 							}`,
 						}),
@@ -345,6 +350,7 @@ const CheckoutForm = (props: any) => {
 						<hr />
 						<Input
 							placeholder="Lastname:"
+							required
 							autoFocus
 							type="text"
 							name="lastname"
@@ -355,6 +361,7 @@ const CheckoutForm = (props: any) => {
 						/>
 						<Input
 							placeholder="Patronomic:"
+							required
 							type="text"
 							name="patronymic"
 							value={inputs.patronymic}
@@ -362,17 +369,19 @@ const CheckoutForm = (props: any) => {
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
 						/>
-						<Select
+						<Input
 							placeholder="Gender:"
+							required
+							type="text"
 							name="gender"
 							value={inputs.gender}
-							onChange={(e: any) => handleChange('gender')} //have to check
-						>
-							<Option value="Male">Male</Option>
-							<Option value="Female">Female</Option>
-						</Select>
+							onChange={handleChange}
+							inputMode="text"
+							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
+						/>
 						<Input
 							placeholder="Birthday date:"
+							required
 							type="text"
 							name="dateBirthday"
 							value={inputs.dateBirthday}
@@ -382,6 +391,7 @@ const CheckoutForm = (props: any) => {
 						/>
 						<Input
 							placeholder="Place of Birthday:"
+							required
 							type="text"
 							name="placeOfBirth"
 							value={inputs.placeOfBirth}
@@ -391,6 +401,7 @@ const CheckoutForm = (props: any) => {
 						/>
 						<Input
 							placeholder="Nationality:"
+							required
 							type="text"
 							name="nationality"
 							value={inputs.nationality}
@@ -400,6 +411,7 @@ const CheckoutForm = (props: any) => {
 						/>
 						<Input
 							placeholder="Passport Number:"
+							required
 							type="text"
 							name="passportNumber"
 							value={inputs.passportNumber}
@@ -409,6 +421,7 @@ const CheckoutForm = (props: any) => {
 						/>
 						<Input
 							placeholder="Passport Issue Place:"
+							required
 							type="text"
 							name="passportIssuePlace"
 							value={inputs.passportIssuePlace}
@@ -418,6 +431,7 @@ const CheckoutForm = (props: any) => {
 						/>
 						<Input
 							placeholder="Place of Residence:"
+							required
 							type="text"
 							name="placeOfResidence"
 							value={inputs.placeOfResidence}
@@ -427,6 +441,7 @@ const CheckoutForm = (props: any) => {
 						/>
 						<Input
 							placeholder="Place of Registration:"
+							required
 							type="text"
 							name="placeOfRegistration"
 							value={inputs.placeOfRegistration}
@@ -436,15 +451,17 @@ const CheckoutForm = (props: any) => {
 						/>
 						<Input
 							placeholder="Surety Name:"
+							required
 							type="text"
-							name="placeOfResidence"
-							value={inputs.placeOfResidence}
+							name="suretyName"
+							value={inputs.suretyName}
 							onChange={handleChange}
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
 						/>
 						<Input
 							placeholder="Surety Place of Residence:"
+							required
 							type="text"
 							name="suretyPlaceOfResidence"
 							value={inputs.suretyPlaceOfResidence}
@@ -454,6 +471,7 @@ const CheckoutForm = (props: any) => {
 						/>
 						<Input
 							placeholder="Surety Passport Number:"
+							required
 							type="text"
 							name="suretyPassportNumber"
 							value={inputs.suretyPassportNumber}
@@ -463,6 +481,7 @@ const CheckoutForm = (props: any) => {
 						/>
 						<Input
 							placeholder="Buyers surety relationship:"
+							required
 							type="text"
 							name="buyersSuretyRelationship"
 							value={inputs.buyersSuretyRelationship}
@@ -472,6 +491,7 @@ const CheckoutForm = (props: any) => {
 						/>
 						<Input
 							placeholder="Home Phone Number:"
+							required
 							type="number"
 							name="homePhoneNumber"
 							value={inputs.homePhoneNumber}
@@ -481,6 +501,7 @@ const CheckoutForm = (props: any) => {
 						/>
 						<Input
 							placeholder="Surety Phone Number 1:"
+							required
 							type="number"
 							name="suretyPhoneNumber1"
 							value={inputs.suretyPhoneNumber1}
