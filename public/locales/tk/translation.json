@@ -29,7 +29,6 @@
 		"server_exchange_checkout_error": "Sargyt ýalňyşlygy: maglumat alyş-çalyş ýalňyşlygy",
 		"payment_fail_contact_admins": "Töleg hasabat alyş ýalňyşlygy, administratorlar bilen habarlaşyň ýa-da täzeden synanşyň",
 		"failed_to_checkout": "Sargyt ýalňyşlygy",
-
 		"input_password": "Açar sözi giriziň!",
 		"input_username": "Ulanyjy ady giriziň!",
 		"or": "Ya-da",
@@ -58,7 +57,6 @@
 		"remark_placeholder": "Teswir ýazyň...",
 		"send": "Iber",
 		"new_arrives": "Soňky gelenler",
-
 		"price": "Baha",
 		"total": "Jemi",
 		"subtotal": "Jemi",
@@ -97,9 +95,24 @@
 		"payment_and_delivery_info": "Töleg we eltip berme barada",
 		"about": "Biz barada",
 		"light": "Ýagty",
-		"dark": "Garaňky"
+		"dark": "Garaňky",
+		"extra_informations_rp_acc": "Goşmaça maglumatlar",
+		"patronomic": "Atasynyň ady",
+		"gender": "Jynsy",
+		"birth_date": "Doglan senesi",
+		"place_of_birth": "Doglan ýeri",
+		"nationality": "Milleti",
+		"passport_no": "Passport belgisi",
+		"passport_issue_place": "Passport berlen ýeri",
+		"place_of_residence": "Ýaşaýan ýeri",
+		"place_of_registration": "Ýazgy ýeri",
+		"surety_name": "Zamunçynyň ady",
+		"surety_place_of_residence": "Zamunçynyň ýaşaýan ýeri",
+		"surety_passport_number": "Zamunçynyň passport belgisi",
+		"buyers_surety_relationship": "Alyjynyň zamunça bolan gatnaşygy",
+		"surety_phone_number_1": "Zamunçynyň telefon belgisi 1",
+		"surety_phone_number_2": "Zamunçynyň telefon belgisi 2"
 	},
-
 	"auth": {
 		"username": "Ulanyjy ady",
 		"password": "Açar söz",

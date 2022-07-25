@@ -29,7 +29,6 @@
 		"server_exchange_checkout_error": "Ошибка отправки заказа: ошибка обмена данных",
 		"payment_fail_contact_admins": "Ошибка регистрации оплаты, сообщите администраторам или попытайтесь снова",
 		"failed_to_checkout": "Ошибка отправки заказа",
-
 		"input_password": "Введите ваш пароль!",
 		"input_username": "Введите ваше имя пользователя!",
 		"or": "Или",
@@ -58,7 +57,6 @@
 		"remark_placeholder": "Напишите комментарий...",
 		"send": "Отправить",
 		"new_arrives": "Новинки",
-
 		"price": "Цена",
 		"total": "Сумма",
 		"subtotal": "Сумма",
@@ -97,7 +95,23 @@
 		"payment_and_delivery_info": "О платежах и доставке",
 		"about": "О нас",
 		"light": "Светлая",
-		"dark": "Тёмная"
+		"dark": "Тёмная",
+		"extra_informations_rp_acc": "Дополнительная информация",
+		"patronomic": "Отчество",
+		"gender": "Пол",
+		"birth_date": "Дата рождения",
+		"place_of_birth": "Место рождения",
+		"nationality": "Национальность",
+		"passport_no": "Номер паспорта",
+		"passport_issue_place": "Место выдачи паспорта",
+		"place_of_residence": "Место жительства",
+		"place_of_registration": "Место прописки",
+		"surety_name": "Имя поручителя",
+		"surety_place_of_residence": "Поручительство по месту жительства",
+		"surety_passport_number": "Номер паспорта поручителя",
+		"buyers_surety_relationship": "Отношения поручительства покупателей",
+		"surety_phone_number_1": "Телефон поручителя 1",
+		"surety_phone_number_2": "Телефон поручителя 2"
 	},
 	"auth": {
 		"username": "Пользователь",

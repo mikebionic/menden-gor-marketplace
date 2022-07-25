@@ -29,7 +29,6 @@
 		"server_exchange_checkout_error": "Failed to checkout order: server exchange error",
 		"payment_fail_contact_admins": "Payment register failed, contact administrators or try again",
 		"failed_to_checkout": "Failed to checkout order",
-
 		"input_password": "Please input your Password!",
 		"input_username": "Please input your Username!",
 		"input_phone_number": "Please input your phone number!",
@@ -58,7 +57,6 @@
 		"remark_placeholder": "Type your remark...",
 		"send": "Send",
 		"new_arrives": "New arrives",
-
 		"price": "Price",
 		"total": "Total",
 		"subtotal": "Subtotal",
@@ -97,7 +95,23 @@
 		"payment_and_delivery_info": "Payment and delivery info",
 		"about": "About",
 		"light": "Light",
-		"dark": "Dark"
+		"dark": "Dark",
+		"extra_informations_rp_acc": "Extra informations",
+		"patronomic": "Patranomic",
+		"gender": "Gender",
+		"birth_date": "Birth date",
+		"place_of_birth": "Place of birth",
+		"nationality": "Nationality",
+		"passport_no": "Passport number",
+		"passport_issue_place": "Passport issue place",
+		"place_of_residence": "Place of residence",
+		"place_of_registration": "Place of registration",
+		"surety_name": "Surety name",
+		"surety_place_of_residence": "Surety place of residence",
+		"surety_passport_number": "Surety passport number",
+		"buyers_surety_relationship": "Buyers surety relationship",
+		"surety_phone_number_1": "Surety phone number 1",
+		"surety_phone_number_2": "Surety phone number 2"
 	},
 	"auth": {
 		"username": "Username",

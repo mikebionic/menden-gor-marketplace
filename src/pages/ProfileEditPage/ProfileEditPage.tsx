@@ -158,8 +158,8 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 					<b className="text-black dark:text-darkTextWhiteColor">El telefony</b>
 					<Input
 						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
-						name="mobilePhoneNumber"
-						value={inputs.mobilePhoneNumber}
+						name="HomePhoneNumber"
+						value={inputs.HomePhoneNumber}
 						onChange={handleChange}
 					/>
 				</div>

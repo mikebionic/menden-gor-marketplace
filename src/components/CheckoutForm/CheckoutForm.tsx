@@ -27,7 +27,7 @@ const CheckoutForm = (props: any) => {
 	const [inputs, setInputs, getInputs] = useSetState({
 		name: loggedIn ? `${user.username} - ${user.name}` : '',
 		phoneNumber: loggedIn
-			? `${user.mobilePhoneNumber || user.homePhoneNumber}`
+			? `${user.homePhoneNumber || user.workPhoneNumber}`
 			: '',
 		description: loggedIn ? `Address: ${user.address || ''}` : '',
 		ptId: 1,
@@ -42,22 +42,24 @@ const CheckoutForm = (props: any) => {
 		orderId: '',
 		payment_window_url: '',
 		lastname: loggedIn ? `${user.lastname}` : '',
-		patronymic: '',
-		gender: '',
-		dateBirthday: '',
-		placeOfBirth: '',
-		nationality: '',
-		passportNumber: '',
-		passportIssuePlace: '',
-		placeOfResidence: '',
-		placeOfRegistration: '',
-		suretyName: '',
-		suretyPlaceOfResidence: '',
-		suretyPassportNumber: '',
-		buyersSuretyRelationship: '',
+		patronomic: loggedIn ? `${user.patronomic}` : '',
+		gender: loggedIn ? `${user.gender}` : '',
+		birthDate: loggedIn ? `${user.birthDate}` : '',
+		placeOfBirth: loggedIn ? `${user.placeOfBirth}` : '',
+		nationality: loggedIn ? `${user.nationality}` : '',
+		passportNo: loggedIn ? `${user.passportNo}` : '',
+		passportIssuePlace: loggedIn ? `${user.passportIssuePlace}` : '',
+		residency: loggedIn ? `${user.residency}` : '',
+		registrationPlace: loggedIn ? `${user.registrationPlace}` : '',
+		suretyName: loggedIn ? `${user.suretyName}` : '',
+		suretyPlaceOfResidence: loggedIn ? `${user.suretyPlaceOfResidence}` : '',
+		suretyPassportNumber: loggedIn ? `${user.suretyPassportNumber}` : '',
+		buyersSuretyRelationship: loggedIn
+			? `${user.buyersSuretyRelationship}`
+			: '',
 		homePhoneNumber: loggedIn ? `${user.homePhoneNumber}` : '',
-		suretyPhoneNumber1: '',
-		suretyPhoneNumber2: '',
+		mobilePhoneNumber: loggedIn ? `${user.mobilePhoneNumber}` : '',
+		workFaxNumber: loggedIn ? `${user.workFaxNumber}` : '',
 	})
 	useEffect(() => {
 		handleKeyValueChange('orderInvLines', orderInvLines)
@@ -110,22 +112,22 @@ const CheckoutForm = (props: any) => {
 								inputs.ptId === 2
 									? `
 								Lastname: ${inputs.lastname}, 
-								Patranomic: ${inputs.patronymic},
+								Patranomic: ${inputs.patronomic},
 								Gender: ${inputs.gender}, 
-								Date Birthday: ${inputs.dateBirthday},
+								Date Birthday: ${inputs.birthDate},
 								Place of Birthday: ${inputs.placeOfBirth}, 
 								Nationality: ${inputs.nationality},
-								Passport: ${inputs.passportNumber}, 
+								Passport: ${inputs.passportNo}, 
 								Passport Issue Place: ${inputs.passportIssuePlace},
-								Place of Residence: ${inputs.placeOfResidence}, 
-								Place of Registration: ${inputs.placeOfRegistration},
+								Place of Residence: ${inputs.residency}, 
+								Place of Registration: ${inputs.registrationPlace},
 								Surety Name: ${inputs.suretyName}, 
 								Surety Place of Residence: ${inputs.suretyPlaceOfResidence},
 								Surety Passport Number: ${inputs.suretyPassportNumber}, 
 								Buyers Surety Relationship: ${inputs.buyersSuretyRelationship}, 
 								Home Phone Number: ${inputs.homePhoneNumber}, 
-								Surety Phone Number 1: ${inputs.suretyPhoneNumber1}, 
-								Surety Phone Number 2: ${inputs.suretyPhoneNumber2}`
+								Surety Phone Number 1: ${inputs.mobilePhoneNumber}, 
+								Surety Phone Number 2: ${inputs.workFaxNumber}`
 									: ''
 							}`,
 						}),
@@ -363,8 +365,8 @@ const CheckoutForm = (props: any) => {
 							placeholder="Patronomic:"
 							required
 							type="text"
-							name="patronymic"
-							value={inputs.patronymic}
+							name="patronomic"
+							value={inputs.patronomic}
 							onChange={handleChange}
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
@@ -383,8 +385,8 @@ const CheckoutForm = (props: any) => {
 							placeholder="Birthday date:"
 							required
 							type="text"
-							name="dateBirthday"
-							value={inputs.dateBirthday}
+							name="birthDate"
+							value={inputs.birthDate}
 							onChange={handleChange}
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
@@ -413,8 +415,8 @@ const CheckoutForm = (props: any) => {
 							placeholder="Passport Number:"
 							required
 							type="text"
-							name="passportNumber"
-							value={inputs.passportNumber}
+							name="passportNo"
+							value={inputs.passportNo}
 							onChange={handleChange}
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
@@ -433,8 +435,8 @@ const CheckoutForm = (props: any) => {
 							placeholder="Place of Residence:"
 							required
 							type="text"
-							name="placeOfResidence"
-							value={inputs.placeOfResidence}
+							name="residency"
+							value={inputs.residency}
 							onChange={handleChange}
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
@@ -443,8 +445,8 @@ const CheckoutForm = (props: any) => {
 							placeholder="Place of Registration:"
 							required
 							type="text"
-							name="placeOfRegistration"
-							value={inputs.placeOfRegistration}
+							name="registrationPlace"
+							value={inputs.registrationPlace}
 							onChange={handleChange}
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
@@ -503,8 +505,8 @@ const CheckoutForm = (props: any) => {
 							placeholder="Surety Phone Number 1:"
 							required
 							type="number"
-							name="suretyPhoneNumber1"
-							value={inputs.suretyPhoneNumber1}
+							name="mobilePhoneNumber"
+							value={inputs.mobilePhoneNumber}
 							onChange={handleChange}
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
@@ -512,8 +514,8 @@ const CheckoutForm = (props: any) => {
 						<Input
 							placeholder="Surety Phone Number 2:"
 							type="number"
-							name="suretyPhoneNumber2"
-							value={inputs.suretyPhoneNumber2}
+							name="workFaxNumber"
+							value={inputs.workFaxNumber}
 							onChange={handleChange}
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"

@@ -1,10 +1,14 @@
-export const transformRpAcc = (data: any, authMethod:string = "username") => ({
+export const transformRpAcc = (data: any, authMethod: string = 'username') => ({
 	addInf1: data.AddInf1 ?? null,
 	addInf2: data.AddInf2 ?? null,
 	addInf3: data.AddInf3 ?? null,
-	addInf4: data.AddInf4 ?? null,
-	addInf5: data.AddInf5 ?? null,
-	addInf6: data.AddInf6 ?? null,
+	suretyName: data.AddInf4 ?? null,
+	suretyPlaceOfResidence: data.AddInf5 ?? null,
+	suretyPassportNumber: data.AddInf6 ?? null,
+	buyersSuretyRelationship: data.AddInf7 ?? null,
+	addInf8: data.AddInf8 ?? null,
+	addInf9: data.AddInf9 ?? null,
+	addInf10: data.AddInf10 ?? null,
 	companyId: data.CId ?? null,
 	createdDate: data.CreatedDate ?? null,
 	createdUId: data.CreatedUId ?? null,
@@ -45,6 +49,7 @@ export const transformRpAcc = (data: any, authMethod:string = "username") => ({
 	purchBalanceLimit: data.RpAccPurchBalanceLimit ?? null,
 	regNo: data.RpAccRegNo ?? null,
 	residency: data.RpAccResidency ?? null,
+	registrationPlace: data.RpAccRegistrationPlace ?? null,
 	saleBalanceLimit: data.RpAccSaleBalanceLimit ?? null,
 	statusId: data.RpAccStatusId ?? null,
 	typeId: data.RpAccTypeId ?? null,
@@ -58,7 +63,14 @@ export const transformRpAcc = (data: any, authMethod:string = "username") => ({
 	workPeriodId: data.WpId ?? null,
 	syncDateTime: data.SyncDateTime ?? null,
 	unusedDeviceQty: data.UnusedDeviceQty ?? null,
-	auth_username: authMethod === "username" ? data.RpAccUName : authMethod === "email" ? data.RpAccEMail : authMethod === "phone_number" ? data.RpAccMobilePhoneNumber : null,
+	auth_username:
+		authMethod === 'username'
+			? data.RpAccUName
+			: authMethod === 'email'
+			? data.RpAccEMail
+			: authMethod === 'phone_number'
+			? data.RpAccHomePhoneNumber
+			: null,
 	auth_password: data.RpAccUPass ?? null,
 })
 
@@ -66,9 +78,13 @@ export const toJsonRpAcc = (data: any, allData: boolean = false) => ({
 	AddInf1: data.addInf1 ?? null,
 	AddInf2: data.addInf2 ?? null,
 	AddInf3: data.addInf3 ?? null,
-	AddInf4: data.addInf4 ?? null,
-	AddInf5: data.addInf5 ?? null,
-	AddInf6: data.addInf6 ?? null,
+	AddInf4: data.suretyName ?? null,
+	AddInf5: data.suretyPlaceOfResidence ?? null,
+	AddInf6: data.suretyPassportNumber ?? null,
+	AddInf7: data.buyersSuretyRelationship ?? null,
+	AddInf8: data.addInf8 ?? null,
+	AddInf9: data.addInf9 ?? null,
+	AddInf10: data.addInf10 ?? null,
 	GenderId: data.genderId ?? null,
 	NatId: data.natId ?? null,
 	ReprId: data.reprId ?? null,
@@ -84,6 +100,7 @@ export const toJsonRpAcc = (data: any, allData: boolean = false) => ({
 	RpAccLongitude: data.longitude ?? null,
 	RpAccId: data.id ?? null,
 	RpAccPassportNo: data.passportNo ?? null,
+	RpAccPassportIssuePlace: data.passportIssuePlace ?? null,
 	RpAccPatronomic: data.patronomic ?? null,
 	RpAccResidency: data.residency ?? null,
 	RpAccUName: data.username ?? null,
@@ -93,6 +110,7 @@ export const toJsonRpAcc = (data: any, allData: boolean = false) => ({
 	RpAccZipCode: data.zipCode ?? null,
 	RpAccTypeId: allData ? data.typeId ?? null : null,
 	RpAccUPass: allData ? data.password ?? null : null,
+	RpAccRegistrationPlace: data.registrationPlace ?? null,
 })
 
 export const transformUser = (data: any) => ({

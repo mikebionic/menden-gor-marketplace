@@ -10,8 +10,10 @@ import { register_rp_acc } from 'sapredux/actions'
 import { Spinner } from 'modules/loaders'
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { useTranslation } from 'react-i18next'
+import { Collapse } from 'antd'
 
 const { Option } = Select
+const { Panel } = Collapse
 
 const formItemLayout = {
 	labelCol: {
@@ -63,13 +65,29 @@ const RegisterRpAccCard = ({
 		password: '',
 		phonePrefix: '+993',
 		homePhoneNumber: authMethod === 'phone_number' ? credentials : '',
-		mobilePhoneNumber: authMethod === 'phone_number' ? credentials : '',
+		workPhoneNumber: authMethod === 'phone_number' ? credentials : '',
 		webAddress: authMethod === 'email' ? credentials : '',
-		workFaxNumber: '',
-		workPhoneNumber: '',
+		// workFaxNumber: '',
+		// workPhoneNumber: '',
 		zipCode: '',
 		latitude: '',
 		logitude: '',
+
+		patronomic: '',
+		gender: '',
+		birthDate: '',
+		placeOfBirth: '',
+		nationality: '',
+		passportNo: '',
+		passportIssuePlace: '',
+		residency: '',
+		registrationPlace: '',
+		suretyName: '',
+		suretyPlaceOfResidence: '',
+		suretyPassportNumber: '',
+		buyersSuretyRelationship: '',
+		mobilePhoneNumber: '',
+		workFaxNumber: '',
 	})
 
 	const handleChange = (e: any) => {
@@ -299,7 +317,7 @@ const RegisterRpAccCard = ({
 								onChange={handleChange}
 							/>
 						</Form.Item>
-						<Form.Item
+						{/* <Form.Item
 							name="workPhone"
 							label={t('auth.work_phone')}
 							initialValue={inputs.workPhoneNumber}
@@ -311,8 +329,8 @@ const RegisterRpAccCard = ({
 								name="workPhoneNumber"
 								onChange={handleChange}
 							/>
-						</Form.Item>
-						<Form.Item
+						</Form.Item> */}
+						{/* <Form.Item
 							name="Fax"
 							label={t('auth.fax')}
 							initialValue={inputs.workFaxNumber}
@@ -324,7 +342,7 @@ const RegisterRpAccCard = ({
 								name="workFaxNumber"
 								onChange={handleChange}
 							/>
-						</Form.Item>
+						</Form.Item> */}
 						<Form.Item
 							name="zip"
 							label={t('auth.zip')}
@@ -338,7 +356,223 @@ const RegisterRpAccCard = ({
 								onChange={handleChange}
 							/>
 						</Form.Item>
-
+						<Collapse ghost>
+							<Panel
+								className="text-sm"
+								header={t('common.extra_informations_rp_acc')}
+							>
+								<Form.Item
+									name="patronomic"
+									label={t('common.patronomic')}
+									initialValue={inputs.patronomic}
+								>
+									<Input
+										placeholder={t('common.patronomic')}
+										type="text"
+										name="patronomic"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="gender"
+									label={t('common.gender')}
+									initialValue={inputs.gender}
+								>
+									<Input
+										placeholder={t('common.gender')}
+										type="text"
+										name="gender"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="birthDate"
+									label={t('common.birth_date')}
+									initialValue={inputs.birthDate}
+								>
+									<Input
+										placeholder={t('common.birth_date')}
+										type="text"
+										name="birthDate"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="placeOfBirth"
+									label={t('common.place_of_birth')}
+									initialValue={inputs.placeOfBirth}
+								>
+									<Input
+										placeholder={t('common.place_of_birth')}
+										type="text"
+										name="placeOfBirth"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="nationality"
+									label={t('common.nationality')}
+									initialValue={inputs.nationality}
+								>
+									<Input
+										placeholder={t('common.nationality')}
+										type="text"
+										name="nationality"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="passportNo"
+									label={t('common.passport_no')}
+									initialValue={inputs.passportNo}
+								>
+									<Input
+										placeholder={t('common.passport_no')}
+										type="text"
+										name="passportNo"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="passportIssuePlace"
+									label={t('common.passport_issue_place')}
+									initialValue={inputs.passportIssuePlace}
+								>
+									<Input
+										placeholder={t('common.passport_issue_place')}
+										type="text"
+										name="passportIssuePlace"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="residency"
+									label={t('common.place_of_residence')}
+									initialValue={inputs.residency}
+								>
+									<Input
+										placeholder={t('common.place_of_residence')}
+										type="text"
+										name="residency"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="registrationPlace"
+									label={t('common.place_of_registration')}
+									initialValue={inputs.registrationPlace}
+								>
+									<Input
+										placeholder={t('common.place_of_registration')}
+										type="text"
+										name="registrationPlace"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="suretyName"
+									label={t('common.surety_name')}
+									initialValue={inputs.suretyName}
+								>
+									<Input
+										placeholder={t('common.surety_name')}
+										type="text"
+										name="suretyName"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="suretyPlaceOfResidence"
+									label={t('common.surety_place_of_residence')}
+									initialValue={inputs.suretyPlaceOfResidence}
+								>
+									<Input
+										placeholder={t('common.surety_place_of_residence')}
+										type="text"
+										name="suretyPlaceOfResidence"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="suretyPassportNumber"
+									label={t('common.surety_passport_number')}
+									initialValue={inputs.suretyPassportNumber}
+								>
+									<Input
+										placeholder={t('common.surety_passport_number')}
+										type="text"
+										name="suretyPassportNumber"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="buyersSuretyRelationship"
+									label={t('common.buyers_surety_relationship')}
+									initialValue={inputs.buyersSuretyRelationship}
+								>
+									<Input
+										placeholder={t('common.buyers_surety_relationship')}
+										type="text"
+										name="buyersSuretyRelationship"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="mobilePhoneNumber"
+									label={t('common.surety_phone_number_1')}
+									initialValue={inputs.mobilePhoneNumber}
+								>
+									<Input
+										placeholder={t('common.surety_phone_number_1')}
+										type="number"
+										name="mobilePhoneNumber"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+								<Form.Item
+									name="workFaxNumber"
+									label={t('common.surety_phone_number_2')}
+									initialValue={inputs.workFaxNumber}
+								>
+									<Input
+										placeholder={t('common.surety_phone_number_2')}
+										type="number"
+										name="workFaxNumber"
+										onChange={handleChange}
+										inputMode="text"
+										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+									/>
+								</Form.Item>
+							</Panel>
+						</Collapse>
 						<Form.Item {...tailFormItemLayout}>
 							<IconLabelButton
 								label={t('common.register')}

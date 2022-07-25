@@ -325,6 +325,22 @@ html:not(.dark) .ant-table-tbody > tr.ant-table-row:hover > td,
 	background: #e6e6e6;
 }
 
+html:not(.dark) .ant-input-affix-wrapper {
+	border: 1px solid #e6e6e6;
+}
+
+html:not(.dark)
+	.ant-steps-item-process
+	> .ant-steps-item-container
+	> .ant-steps-item-content
+	> .ant-steps-item-title {
+	color: var(--textDarkGray);
+}
+
+.ant-collapse-header {
+	place-content: center;
+}
+
 /* --------------------------------------- DARK MODE SYSTEM STYLES --------------------------------------- */
 @media (prefers-color-scheme: dark) {
 	html.dark [type='text']:focus,
