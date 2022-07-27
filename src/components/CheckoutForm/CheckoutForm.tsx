@@ -58,7 +58,7 @@ const CheckoutForm = (props: any) => {
 			? `${user.buyersSuretyRelationship}`
 			: '',
 		homePhoneNumber: loggedIn ? `${user.homePhoneNumber}` : '',
-		mobilePhoneNumber: loggedIn ? `${user.mobilePhoneNumber}` : '',
+		workPhoneNumber: loggedIn ? `${user.workPhoneNumber}` : '',
 		workFaxNumber: loggedIn ? `${user.workFaxNumber}` : '',
 	})
 	useEffect(() => {
@@ -126,7 +126,7 @@ const CheckoutForm = (props: any) => {
 								Surety Passport Number: ${inputs.suretyPassportNumber}, 
 								Buyers Surety Relationship: ${inputs.buyersSuretyRelationship}, 
 								Home Phone Number: ${inputs.homePhoneNumber}, 
-								Surety Phone Number 1: ${inputs.mobilePhoneNumber}, 
+								Surety Phone Number 1: ${inputs.workPhoneNumber}, 
 								Surety Phone Number 2: ${inputs.workFaxNumber}`
 									: ''
 							}`,
@@ -505,8 +505,8 @@ const CheckoutForm = (props: any) => {
 							placeholder="Surety Phone Number 1:"
 							required
 							type="number"
-							name="mobilePhoneNumber"
-							value={inputs.mobilePhoneNumber}
+							name="workPhoneNumber"
+							value={inputs.workPhoneNumber}
 							onChange={handleChange}
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"

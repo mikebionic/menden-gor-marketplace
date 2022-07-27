@@ -65,10 +65,10 @@ const RegisterRpAccCard = ({
 		password: '',
 		phonePrefix: '+993',
 		homePhoneNumber: authMethod === 'phone_number' ? credentials : '',
-		workPhoneNumber: authMethod === 'phone_number' ? credentials : '',
+		mobilePhoneNumber: authMethod === 'phone_number' ? credentials : '',
 		webAddress: authMethod === 'email' ? credentials : '',
 		// workFaxNumber: '',
-		// workPhoneNumber: '',
+		workPhoneNumber: '',
 		zipCode: '',
 		latitude: '',
 		logitude: '',
@@ -86,7 +86,7 @@ const RegisterRpAccCard = ({
 		suretyPlaceOfResidence: '',
 		suretyPassportNumber: '',
 		buyersSuretyRelationship: '',
-		mobilePhoneNumber: '',
+		// mobilePhoneNumber: '',
 		workFaxNumber: '',
 	})
 
@@ -114,6 +114,7 @@ const RegisterRpAccCard = ({
 		setInputs((inputs) => ({
 			...inputs,
 			name: `${inputs.firstName} ${inputs.lastName}`,
+			workPhoneNumber: `${inputs.workPhoneNumber}`,
 		}))
 	}, [inputs.firstName, inputs.lastName])
 
@@ -544,14 +545,14 @@ const RegisterRpAccCard = ({
 									/>
 								</Form.Item>
 								<Form.Item
-									name="mobilePhoneNumber"
+									name="workPhoneNumber"
 									label={t('common.surety_phone_number_1')}
-									initialValue={inputs.mobilePhoneNumber}
+									initialValue={inputs.workPhoneNumber}
 								>
 									<Input
 										placeholder={t('common.surety_phone_number_1')}
 										type="number"
-										name="mobilePhoneNumber"
+										name="workPhoneNumber"
 										onChange={handleChange}
 										inputMode="text"
 										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"

@@ -69,7 +69,7 @@ export const transformRpAcc = (data: any, authMethod: string = 'username') => ({
 			: authMethod === 'email'
 			? data.RpAccEMail
 			: authMethod === 'phone_number'
-			? data.RpAccHomePhoneNumber
+			? data.RpAccMobilePhoneNumber
 			: null,
 	auth_password: data.RpAccUPass ?? null,
 })

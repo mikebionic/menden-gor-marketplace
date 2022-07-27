@@ -7,7 +7,10 @@ import {
 	rp_acc_basic_login_failure,
 } from './mock_data/auth.mock'
 import { fetchWithCred } from 'sapredux/helpers'
-import { transformAuth as transformResponse, transformRpAcc } from './transform_data'
+import {
+	transformAuth as transformResponse,
+	transformRpAcc,
+} from './transform_data'
 
 const login_request = (username = '', password = '', authMethod = 'email') => {
 	if (serviceConfig.useMockApi) {
@@ -50,8 +53,8 @@ const login = async (
 		(response: any) => ({
 			status: response.status,
 			message: response.message,
-			...transformResponse(response, authMethod)
-		})
+			...transformResponse(response, authMethod),
+		}),
 	)
 }
 
@@ -136,7 +139,7 @@ const verifyLogin = async (authMethod: string, payload: any) => {
 		.then((response: any) => ({
 			status: response.status,
 			message: response.message,
-			...transformResponse(response, authMethod)	
+			...transformResponse(response, authMethod),
 		}))
 }
 
@@ -152,12 +155,13 @@ const resetPassword = async (payload: any) => {
 	return await fetchWithCred(
 		`${serviceConfig.apiUrl}${serviceConfig.routes.reset_password}?type=rp_acc`,
 		requestOptions,
-	).then(handleResponse)
-	.then((response: any) => ({
-		status: response.status,
-		message: response.message,
-		...transformRpAcc(response.data)	
-	}))
+	)
+		.then(handleResponse)
+		.then((response: any) => ({
+			status: response.status,
+			message: response.message,
+			...transformRpAcc(response.data),
+		}))
 }
 
 const editProfile = async (payload: any) => {
@@ -206,7 +210,7 @@ const googleAuth = async (payload: any) => {
 		.then((response: any) => ({
 			status: response.status,
 			message: response.message,
-			...transformResponse(response,"email"),
+			...transformResponse(response, 'email'),
 		}))
 }
 
