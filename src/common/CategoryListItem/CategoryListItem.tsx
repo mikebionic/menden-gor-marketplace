@@ -19,7 +19,7 @@ export const CategoryListItem: React.FC<ICategoryListItem> = ({
 				<Image
 					src={icon}
 					alt={name}
-					className="w-6 h-6 2xl:h-8 2xl:w-8 pl-1 text-white dark:text-darkTextWhiteColor dark:brightness-[4]"
+					className="w-6 h-6 2xl:h-8 2xl:w-8 pl-1 text-white dark:text-darkTextWhiteColor dark:brightness-[4] filter-green"
 				/>
 				<h4 className="ml-4 text-left text-base 2xl:text-lg text-[#5B5B5B] dark:text-darkTextWhiteColor">
 					{name}

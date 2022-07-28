@@ -74,7 +74,7 @@ const Footer: React.FC = ({ company }: any) => {
 							to={routeConstants.contact.route}
 							className="hover:text-textColorOrange dark:hover:text-darkFirstColor"
 						>
-							<h1 className="font-semibold xl:text-xl 2xl:text-2xl md:text-base text-gradient">
+							<h1 className="font-semibold xl:text-xl 2xl:text-2xl md:text-base text-gradient dark:text-darkTextWhiteColor">
 								{routeConstants.contact.name}
 							</h1>
 						</Link>

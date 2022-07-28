@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import './Spinner.css'
 
@@ -9,6 +9,14 @@ interface IPropsSpinner {
 export const Spinner: React.FC<IPropsSpinner> = ({
 	overlay = 'bg-[#acacac14] backdrop-blur-glass',
 }) => {
+	useEffect(() => {
+		const body: any = document.querySelector('body')
+		body.style.overflow = 'hidden'
+
+		setTimeout(() => {
+			body.style.overflow = null
+		}, 2000)
+	}, [])
 	return (
 		<>
 			<main

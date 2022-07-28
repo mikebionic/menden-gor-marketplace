@@ -49,7 +49,7 @@ const ProductCard = ({ data }: any) => {
 					}`}
 					color="red"
 				>
-					<div className="items-center justify-center mx-auto my-3 overflow-hidden bg-gray-200 dark:bg-darkBgColor xl:w-56 xl:h-64 md:w-44 md:h-52 ">
+					<div className="items-center justify-center mx-auto my-3 overflow-hidden xl:w-56 xl:h-64 md:w-44 md:h-52 ">
 						<div className="relative">
 							{isNew ? <Ribbon /> : null}
 							<span className="absolute top-0 right-0">

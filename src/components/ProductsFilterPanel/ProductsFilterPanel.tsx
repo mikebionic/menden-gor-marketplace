@@ -367,12 +367,12 @@ const ProductsFilterPanel: React.FC<IPropsProductFilter> = (
 
 				<div className="inline-grid w-56 grid-cols-2 rounded-lg h-9">
 					<IconLabelButton
-						className="w-24 mx-auto my-0 rounded-full bg-secondColorGradientToLight dark:bg-darkFirstColor hover:opacity-80"
+						className="w-full mx-auto my-0 rounded-full bg-secondColorGradientToLight dark:bg-darkFirstColor hover:opacity-80"
 						label={t('common.search')}
 						onClick={() => onNavigate()}
 					/>
 					<IconLabelButton
-						className="w-24 mx-auto my-0 rounded-full bg-firstColorGradientFromDark dark:bg-darkButtonColor hover:opacity-80"
+						className="w-full mx-auto my-0 rounded-full bg-thirdColor dark:bg-darkButtonColor hover:opacity-80"
 						label={t('common.clear')}
 						onClick={() => onFiltersClear()}
 					/>
