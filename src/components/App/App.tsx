@@ -113,7 +113,7 @@ const App: React.FC = (props: any) => {
 					<div className={`alert ${alert.type}`}>{alert.message}</div>
 				)}
 				<Toaster />
-				<div className={`App bg-[#F3F4F8] dark:bg-darkBgColor ${appClasses}`}>
+				<div className={`App bg-[#F0F5F9] dark:bg-darkBgColor ${appClasses}`}>
 					<AppRoutes />
 				</div>
 

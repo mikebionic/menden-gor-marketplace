@@ -9,7 +9,7 @@ export const CategoryList = (props: any) => {
 					{t('common.categories')}
 				</h1>
 			</div>
-			<div className="pl-1 overflow-auto h-[400px] xl:h-full max-h-[80%] relative">
+			<div className="pl-1 h-[400px] xl:h-full max-h-[80%] relative">
 				{props.children}
 			</div>
 		</div>

@@ -1,17 +1,22 @@
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
+import * as R from 'ramda'
 
 import { Image } from 'common/Image'
+import { Link } from 'react-router-dom'
+import { routeConstants } from 'navigation/routeConstants'
 
 interface ICategoryListItem {
 	name: string
 	icon: string
 	image?: string
 	className?: string
+	categories?: any
 }
 
 export const CategoryListItem: React.FC<ICategoryListItem> = ({
 	name,
 	icon,
+	categories,
 }) => {
 	return (
 		<div className="relative group">
@@ -26,7 +31,23 @@ export const CategoryListItem: React.FC<ICategoryListItem> = ({
 				</h4>
 				<MdOutlineKeyboardArrowRight className="mr-2 dark:text-darkTextWhiteColor hover:text-textColorOrange 2xl:w-5 2xl:h-5" />
 			</button>
-			{/* <div className="absolute opacity-0 z-[999] top-0 w-[10rem] h-[10rem] left-[100%] min-w-[200px] bg-fullwhite rounded-lg transition_animation shadow-defaultShadow group-hover:py-1 group-hover:opacity-100 group-hover:visible invisible"></div> */}
+
+			{categories.length > 1 && (
+				<div className="absolute opacity-0 top-0 left-[100%] bg-fullwhite rounded-lg transition_animation shadow-defaultShadow group-hover:py-2 group-hover:opacity-100 group-hover:visible invisible mt-1 ml-1">
+					{categories.map((item: any, idx: number) => (
+						<Link to={`${routeConstants.vGrid.route}?category=${item.id}&`}>
+							<ul
+								key={idx}
+								className="grid w-full h-full px-5 py-2 place-items-center hover:bg-gray-100 dark:group-hover:bg-darkComponentColor"
+							>
+								<li className="text-center text-base 2xl:text-lg w-full text-[#5B5B5B] dark:text-darkTextWhiteColor ">
+									{item.name}
+								</li>
+							</ul>
+						</Link>
+					))}
+				</div>
+			)}
 		</div>
 	)
 }

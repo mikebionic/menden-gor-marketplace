@@ -22,7 +22,11 @@ const BannerWithCategory: React.FC = (props: any) => {
 							key={idx}
 							to={`${routeConstants.vGrid.route}?category=${category.id}&`}
 						>
-							<CategoryListItem key={idx} {...category} />
+							<CategoryListItem
+								key={idx}
+								{...category}
+								categories={category.categories}
+							/>
 						</Link>
 					))}
 				</CategoryList>
