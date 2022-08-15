@@ -74,10 +74,10 @@ const RegisterRpAccCard = ({
 		logitude: '',
 
 		patronomic: '',
-		gender: '',
+		genderId: 1,
 		birthDate: '',
-		placeOfBirth: '',
-		nationality: '',
+		// placeOfBirth: '',
+		natId: 1,
 		passportNo: '',
 		passportIssuePlace: '',
 		residency: '',
@@ -89,13 +89,18 @@ const RegisterRpAccCard = ({
 		// mobilePhoneNumber: '',
 		workFaxNumber: '',
 	})
-
+	console.log(inputs.registrationPlace)
+	console.log(inputs.lastName)
 	const handleChange = (e: any) => {
 		let { name, value } = e.target
 		if (name === 'address') {
 			value = `${inputs.district}, ${value}`
 		}
+		console.log(inputs.registrationPlace)
+		console.log(inputs.lastName)
 		setInputs((inputs) => ({ ...inputs, [name]: value }))
+		console.log(inputs.registrationPlace)
+		console.log(inputs.lastName)
 	}
 	const handleKeyValueChange = (name: string = '', value: any = '') => {
 		setInputs((inputs) => ({ ...inputs, [name]: value }))
@@ -115,6 +120,7 @@ const RegisterRpAccCard = ({
 			...inputs,
 			name: `${inputs.firstName} ${inputs.lastName}`,
 			workPhoneNumber: `${inputs.workPhoneNumber}`,
+			lastName: `${inputs.lastName}`,
 		}))
 	}, [inputs.firstName, inputs.lastName])
 
@@ -318,32 +324,7 @@ const RegisterRpAccCard = ({
 								onChange={handleChange}
 							/>
 						</Form.Item>
-						{/* <Form.Item
-							name="workPhone"
-							label={t('auth.work_phone')}
-							initialValue={inputs.workPhoneNumber}
-						>
-							<Input
-								style={{ width: '100%' }}
-								className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
-								type="number"
-								name="workPhoneNumber"
-								onChange={handleChange}
-							/>
-						</Form.Item> */}
-						{/* <Form.Item
-							name="Fax"
-							label={t('auth.fax')}
-							initialValue={inputs.workFaxNumber}
-						>
-							<Input
-								style={{ width: '100%' }}
-								className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
-								type="text"
-								name="workFaxNumber"
-								onChange={handleChange}
-							/>
-						</Form.Item> */}
+
 						<Form.Item
 							name="zip"
 							label={t('auth.zip')}
@@ -376,19 +357,38 @@ const RegisterRpAccCard = ({
 										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
 									/>
 								</Form.Item>
-								<Form.Item
-									name="gender"
-									label={t('common.gender')}
-									initialValue={inputs.gender}
-								>
-									<Input
-										placeholder={t('common.gender')}
-										type="text"
-										name="gender"
-										onChange={handleChange}
-										inputMode="text"
-										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
-									/>
+
+								<Form.Item name="role" label={t('common.gender')}>
+									<div className="grid grid-flow-col gap-4 auto-cols-max">
+										<div
+											className="grid grid-flow-col gap-2 auto-cols-max"
+											onClick={() => handleKeyValueChange('genderId', 1)}
+										>
+											<input
+												className="w-3 h-3 my-auto transform scale-125 cursor-pointer dark:bg-darkTextWhiteColor text-firstColorGradientFromDark dark:text-darkFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange dark:border-darkFirstColor"
+												type="radio"
+												checked={inputs.genderId === 1 && true}
+												onChange={() => {}}
+											/>
+											<p className="text-sm text-black dark:text-darkTextWhiteColor">
+												Erkek
+											</p>
+										</div>
+										<div
+											className="grid grid-flow-col gap-2 auto-cols-max"
+											onClick={() => handleKeyValueChange('genderId', 2)}
+										>
+											<input
+												className="w-3 h-3 my-auto transform scale-125 cursor-pointer dark:bg-darkTextWhiteColor text-firstColorGradientFromDark dark:text-darkFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange dark:border-darkFirstColor"
+												type="radio"
+												checked={inputs.genderId === 2 && true}
+												onChange={() => {}}
+											/>
+											<p className="text-sm text-black dark:text-darkTextWhiteColor">
+												Ayal
+											</p>
+										</div>
+									</div>
 								</Form.Item>
 								<Form.Item
 									name="birthDate"
@@ -396,7 +396,7 @@ const RegisterRpAccCard = ({
 									initialValue={inputs.birthDate}
 								>
 									<Input
-										placeholder={t('common.birth_date')}
+										placeholder={`${t('common.birth_date')} (yyyy-mm-dd)`}
 										type="text"
 										name="birthDate"
 										onChange={handleChange}
@@ -404,7 +404,7 @@ const RegisterRpAccCard = ({
 										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
 									/>
 								</Form.Item>
-								<Form.Item
+								{/* <Form.Item
 									name="placeOfBirth"
 									label={t('common.place_of_birth')}
 									initialValue={inputs.placeOfBirth}
@@ -417,20 +417,20 @@ const RegisterRpAccCard = ({
 										inputMode="text"
 										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
 									/>
-								</Form.Item>
-								<Form.Item
-									name="nationality"
-									label={t('common.nationality')}
-									initialValue={inputs.nationality}
-								>
-									<Input
+								</Form.Item> */}
+								<Form.Item name="natId" label={t('common.nationality')}>
+									<Select
 										placeholder={t('common.nationality')}
-										type="text"
-										name="nationality"
-										onChange={handleChange}
-										inputMode="text"
-										className="rounded-lg min-h-[32px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
-									/>
+										name="natId"
+										defaultValue={inputs.natId}
+										onChange={(e: any) => handleKeyValueChange('natId', e)}
+									>
+										<Option value={1}>Turkmen</Option>
+										<Option value={2}>Rus</Option>
+										<Option value={3}>Yapon</Option>
+										<Option value={4}>Ozbek</Option>
+										<Option value={5}>Turk</Option>
+									</Select>
 								</Form.Item>
 								<Form.Item
 									name="passportNo"

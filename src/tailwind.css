@@ -1,6 +1,7 @@
 @import '~antd/dist/antd.css';
 @import '~slick-carousel/slick/slick.css';
 @import '~slick-carousel/slick/slick-theme.css';
+@import '~react-image-gallery/styles/css/image-gallery.css';
 
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
 

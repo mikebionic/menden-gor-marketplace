@@ -11,6 +11,7 @@ import SlickSlider from 'common/SlickSlider'
 import { ProductAddToCart, ProductCard } from 'components/ProductCard'
 import { StarRate } from 'common/StarRate'
 import { PriceButton } from 'common/PriceButton'
+import ImageGallery from 'react-image-gallery'
 
 import { ImEye } from 'react-icons/im'
 import { WishlistButton } from 'common/WishlistButton'
@@ -23,6 +24,7 @@ const RenderProuct = ({
 	description,
 	name,
 	image,
+	filePathS,
 	filePathM,
 	priceValue,
 	currencySymbol,
@@ -33,17 +35,57 @@ const RenderProuct = ({
 	viewCnt,
 	ratingValue,
 	discount,
+	images,
 }: any) => {
+	// console.log('HIIIIIIIIIIIII', images)
+
+	// images.map((item: any, idx: number) => ({
+	// 	original: `${item.filePathM}`,
+	// 	thumbnail: `${item.filePathM}`,
+	// }))
+
+	// images.forEach((item: any, idx: number) => ({
+	// 	original: `${item.filePathM}`,
+	// 	thumbnail: `${item.filePathM}`,
+	// 	loading: 'lazy',
+	// }))
+
+	// const imagess = [
+	// 	{
+	// 		original: image.filePathM,
+	// 		thumbnail: image.filePathM,
+	// 		loading: 'lazy',
+	// 	},
+	// ]
+
 	const { t } = useTranslation()
 	return (
 		<ErrorBoundary>
 			<div className="grid gap-8 3xl:gap-20 p-4 3xl:p-12 mx-auto my-8 grid-cols-[auto_1fr] lg:w-[auto] h-[450px] 3xl:h-[600px] bg-fullwhite dark:bg-darkComponentColor place-content-center place-items-center">
-				<div className="bg-gray-200 dark:bg-darkBgColor lg:w-96 md:w-80 lg:h-96 md:h-80 3xl:w-[35rem] 3xl:h-[30rem]">
+				{/* <ImageGallery
+					items={imagess}
+					showPlayButton={false}
+					thumbnailPosition="left"
+				/> */}
+				<div className="lg:w-96 md:w-80 lg:h-96 md:h-80 3xl:w-[35rem] 3xl:h-[30rem]">
 					<Image
 						src={filePathM}
 						alt={`${name} - ${description}`}
 						className="object-contain object-center w-full h-full lg:w-full lg:h-full"
 					/>
+					{/* {images.map((image: any, idx: number) => (
+						// <ImageGallery
+						// 	items={imagess}
+						// 	showPlayButton={false}
+						// 	key={idx}
+						// />
+						<Image
+							key={idx}
+							src={image.filePathM}
+							alt={`${name} - ${description}`}
+							className="object-contain object-center w-full h-full lg:w-full lg:h-full"
+						/>
+					))} */}
 				</div>
 				<div className="inline-grid lg:gap-2 3xl:gap-4 md:gap-1 grid-flow-rows auto-rows-max place-items-stretch">
 					<div>

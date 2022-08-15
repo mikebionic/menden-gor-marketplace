@@ -19,6 +19,10 @@ import { toJsonCheckoutOrderInv } from 'sapredux/services/transform_data'
 import { useTranslation } from 'react-i18next'
 import { resourceAllRemovedFromCart } from 'sapredux/actions'
 import { Spinner } from 'modules/loaders'
+import { Form } from 'antd'
+import { Select } from 'antd'
+
+const { Option } = Select
 
 const CheckoutForm = (props: any) => {
 	const { items, orderInvLines, totalPrice, onDelete, user, loggedIn } = props
@@ -41,12 +45,12 @@ const CheckoutForm = (props: any) => {
 		totalPrice: totalPrice,
 		orderId: '',
 		payment_window_url: '',
-		lastname: loggedIn ? `${user.lastname}` : '',
+		lastName: loggedIn ? `${user.lastName}` : '',
 		patronomic: loggedIn ? `${user.patronomic}` : '',
-		gender: loggedIn ? `${user.gender}` : '',
+		genderId: loggedIn ? `${user.genderId}` : 1,
 		birthDate: loggedIn ? `${user.birthDate}` : '',
-		placeOfBirth: loggedIn ? `${user.placeOfBirth}` : '',
-		nationality: loggedIn ? `${user.nationality}` : '',
+		// placeOfBirth: loggedIn ? `${user.placeOfBirth}` : '',
+		natId: loggedIn ? `${user.natId}` : 'Turkmen',
 		passportNo: loggedIn ? `${user.passportNo}` : '',
 		passportIssuePlace: loggedIn ? `${user.passportIssuePlace}` : '',
 		residency: loggedIn ? `${user.residency}` : '',
@@ -61,6 +65,8 @@ const CheckoutForm = (props: any) => {
 		workPhoneNumber: loggedIn ? `${user.workPhoneNumber}` : '',
 		workFaxNumber: loggedIn ? `${user.workFaxNumber}` : '',
 	})
+
+	console.log(inputs, setInputs, getInputs)
 	useEffect(() => {
 		handleKeyValueChange('orderInvLines', orderInvLines)
 		handleKeyValueChange('totalPrice', totalPrice)
@@ -111,12 +117,11 @@ const CheckoutForm = (props: any) => {
 							}, Phone: ${inputs.phoneNumber}, ${
 								inputs.ptId === 2
 									? `
-								Lastname: ${inputs.lastname}, 
+								Lastname: ${inputs.lastName}, 
 								Patranomic: ${inputs.patronomic},
-								Gender: ${inputs.gender}, 
+								Gender: ${inputs.genderId}, 
 								Date Birthday: ${inputs.birthDate},
-								Place of Birthday: ${inputs.placeOfBirth}, 
-								Nationality: ${inputs.nationality},
+								Nationality: ${inputs.natId},
 								Passport: ${inputs.passportNo}, 
 								Passport Issue Place: ${inputs.passportIssuePlace},
 								Place of Residence: ${inputs.residency}, 
@@ -355,8 +360,8 @@ const CheckoutForm = (props: any) => {
 							required
 							autoFocus
 							type="text"
-							name="lastname"
-							value={inputs.lastname}
+							name="lastName"
+							value={inputs.lastName}
 							onChange={handleChange}
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
@@ -371,18 +376,40 @@ const CheckoutForm = (props: any) => {
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
 						/>
+						<Form.Item name="role" label={t('common.gender')}>
+							<div className="grid grid-flow-col gap-4 auto-cols-max">
+								<div
+									className="grid grid-flow-col gap-2 auto-cols-max"
+									onClick={() => handleKeyValueChange('genderId', 1)}
+								>
+									<input
+										className="w-3 h-3 my-auto transform scale-125 cursor-pointer dark:bg-darkTextWhiteColor text-firstColorGradientFromDark dark:text-darkFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange dark:border-darkFirstColor"
+										type="radio"
+										checked={inputs.genderId === 1 && true}
+										onChange={() => {}}
+									/>
+									<p className="text-sm text-black dark:text-darkTextWhiteColor">
+										Erkek
+									</p>
+								</div>
+								<div
+									className="grid grid-flow-col gap-2 auto-cols-max"
+									onClick={() => handleKeyValueChange('genderId', 2)}
+								>
+									<input
+										className="w-3 h-3 my-auto transform scale-125 cursor-pointer dark:bg-darkTextWhiteColor text-firstColorGradientFromDark dark:text-darkFirstColor focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-transparent border-textColorOrange dark:border-darkFirstColor"
+										type="radio"
+										checked={inputs.genderId === 2 && true}
+										onChange={() => {}}
+									/>
+									<p className="text-sm text-black dark:text-darkTextWhiteColor">
+										Ayal
+									</p>
+								</div>
+							</div>
+						</Form.Item>
 						<Input
-							placeholder="Gender:"
-							required
-							type="text"
-							name="gender"
-							value={inputs.gender}
-							onChange={handleChange}
-							inputMode="text"
-							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
-						/>
-						<Input
-							placeholder="Birthday date:"
+							placeholder={`${t('common.birth_date')} (yyyy-mm-dd)`}
 							required
 							type="text"
 							name="birthDate"
@@ -391,26 +418,20 @@ const CheckoutForm = (props: any) => {
 							inputMode="text"
 							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
 						/>
-						<Input
-							placeholder="Place of Birthday:"
-							required
-							type="text"
-							name="placeOfBirth"
-							value={inputs.placeOfBirth}
-							onChange={handleChange}
-							inputMode="text"
-							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
-						/>
-						<Input
-							placeholder="Nationality:"
-							required
-							type="text"
-							name="nationality"
-							value={inputs.nationality}
-							onChange={handleChange}
-							inputMode="text"
-							className="rounded-lg min-h-[32px] border-[#E6E6E6] dark:bg-darkBgColor hover:border-textColorOrange dark:hover:border-darkFirstColor dark:border-darkBgColor"
-						/>
+						<Form.Item name="natId">
+							<Select
+								placeholder={t('common.nationality')}
+								name="natId"
+								defaultValue={inputs.natId}
+								onChange={(e: any) => handleKeyValueChange('natId', e)}
+							>
+								<Option value={1}>Turkmen</Option>
+								<Option value={2}>Rus</Option>
+								<Option value={3}>Yapon</Option>
+								<Option value={4}>Ozbek</Option>
+								<Option value={5}>Turk</Option>
+							</Select>
+						</Form.Item>
 						<Input
 							placeholder="Passport Number:"
 							required

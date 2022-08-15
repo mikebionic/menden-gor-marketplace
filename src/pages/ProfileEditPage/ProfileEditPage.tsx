@@ -15,8 +15,10 @@ import { ErrorIndicator } from 'modules/errors'
 import { profileUpdate } from 'sapredux/actions'
 import { Spinner } from 'modules/loaders'
 import ResetPassword from './ResetPassword'
+import { useTranslation } from 'react-i18next'
 
 const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
+	const { t } = useTranslation()
 	const [avatar, set_avatar]: any = useState(undefined)
 	const [loading, set_loading] = useState(false)
 
@@ -111,7 +113,9 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 					</Button>
 				</div>
 				<div className="inline-grid gap-2">
-					<b className="text-black dark:text-darkTextWhiteColor">Ulanyjy ady</b>
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('auth.username')}
+					</b>
 					<Input
 						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
 						name="username"
@@ -119,7 +123,9 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 					/>
 				</div>
 				<div className="inline-grid gap-2">
-					<b className="text-black dark:text-darkTextWhiteColor">Öý telefony</b>
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('auth.phone_number')}
+					</b>
 					<Input
 						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
 						name="homePhoneNumber"
@@ -128,7 +134,9 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 					/>
 				</div>
 				<div className="inline-grid gap-2">
-					<b className="text-black dark:text-darkTextWhiteColor">Salgy</b>
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('auth.address')}
+					</b>
 					<Input
 						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
 						name="address"
@@ -137,7 +145,9 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 					/>
 				</div>
 				<div className="inline-grid gap-2">
-					<b className="text-black dark:text-darkTextWhiteColor">Poçta kody</b>
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('auth.zip')}
+					</b>
 					<Input
 						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
 						name="zipCode"
@@ -154,18 +164,11 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 						onChange={handleChange}
 					/>
 				</div>
-				<div className="inline-grid gap-2">
-					<b className="text-black dark:text-darkTextWhiteColor">El telefony</b>
-					<Input
-						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
-						name="HomePhoneNumber"
-						value={inputs.HomePhoneNumber}
-						onChange={handleChange}
-					/>
-				</div>
 
 				<div className="inline-grid gap-2">
-					<b className="text-black dark:text-darkTextWhiteColor">Iş telefony</b>
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.surety_phone_number_1')}
+					</b>
 					<Input
 						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
 						name="workPhoneNumber"
@@ -174,7 +177,9 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 					/>
 				</div>
 				<div className="inline-grid gap-2">
-					<b className="text-black dark:text-darkTextWhiteColor">Web salgysy</b>
+					<b className="text-black dark:text-darkTextWhiteColor">{`${t(
+						'auth.web_address',
+					)}`}</b>
 					<Input
 						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
 						name="webAddress"
@@ -183,12 +188,171 @@ const ProfileEditPage: React.FC = ({ current_user, profileUpdate }: any) => {
 					/>
 				</div>
 				<div className="inline-grid gap-2">
-					<b className="text-black dark:text-darkTextWhiteColor">Faks</b>
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.surety_phone_number_2')}
+					</b>
 					<Input
 						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
 						name="workFaxNumber"
 						value={inputs.workFaxNumber}
 						onChange={handleChange}
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.patronomic')}
+					</b>
+					<Input
+						name="patronomic"
+						onChange={handleChange}
+						value={inputs.patronomic}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.gender')}
+					</b>
+					<Input
+						name="gender"
+						onChange={handleChange}
+						value={inputs.gender}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{`${t('common.birth_date')} (yyyy-mm-dd)`}
+					</b>
+					<Input
+						name="birthDate"
+						onChange={handleChange}
+						value={inputs.birthDate}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.nationality')}
+					</b>
+					<Input
+						name="nationality"
+						onChange={handleChange}
+						value={inputs.nationality}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.passport_no')}
+					</b>
+					<Input
+						name="passportNo"
+						onChange={handleChange}
+						value={inputs.passportNo}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.passport_issue_place')}
+					</b>
+					<Input
+						name="passportIssuePlace"
+						onChange={handleChange}
+						value={inputs.passportIssuePlace}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.place_of_residence')}
+					</b>
+					<Input
+						name="residency"
+						onChange={handleChange}
+						value={inputs.residency}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.place_of_registration')}
+					</b>
+					<Input
+						name="registationPlace"
+						onChange={handleChange}
+						value={inputs.registationPlace}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.surety_name')}
+					</b>
+					<Input
+						name="suretyName"
+						onChange={handleChange}
+						value={inputs.suretyName}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.surety_place_of_residence')}
+					</b>
+					<Input
+						name="suretyPlaceOfResidency"
+						onChange={handleChange}
+						value={inputs.suretyPlaceOfResidency}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.surety_passport_number')}
+					</b>
+					<Input
+						name="suretyPassportNumber"
+						onChange={handleChange}
+						value={inputs.suretyPassportNumber}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.buyers_surety_relationship')}
+					</b>
+					<Input
+						name="buyersSuretyRelationship"
+						onChange={handleChange}
+						value={inputs.buyersSuretyRelationship}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
+					/>
+				</div>
+
+				<div className="inline-grid gap-2">
+					<b className="text-black dark:text-darkTextWhiteColor">
+						{t('common.surety_phone_number_1')}
+					</b>
+					<Input
+						type="number"
+						name="workPhoneNumber"
+						onChange={handleChange}
+						value={inputs.workPhoneNumber}
+						className="w-11/12 inputProfileEdit dark:border-darkText dark:text-darkText dark:hover:border-darkFirstColor"
 					/>
 				</div>
 			</div>

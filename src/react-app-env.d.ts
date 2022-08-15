@@ -1,12 +1,12 @@
 /// <reference types="react-scripts" />
 
 declare module 'connected-react-router/immutable' {
-  export * from 'connected-react-router';
+	export * from 'connected-react-router'
 }
 
-declare module '@heroicons/*';
+declare module '@heroicons/*'
 
-declare module 'redux';
+declare module 'redux'
 
 declare module 'react-icons/*'
 
@@ -22,5 +22,8 @@ declare module '@ant-design/*'
 
 declare module 'common/*'
 
-// declare module 'sapredux/actions'
+declare module 'react-image-gallery'
 
+declare module 'react-input-date-mask'
+
+// declare module 'sapredux/actions'

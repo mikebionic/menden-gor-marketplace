@@ -51,7 +51,8 @@ export const DropdownMenu: React.FC<IDropdownProps> = ({
 					>
 						<div className="px-1 py-1">
 							{items.map((item: any, idx: number) => (
-								<Menu.Item key={idx} onClick={() => onItemClick(item)}>
+								// onClick={() => onItemClick(item)}
+								<Menu.Item key={idx}>
 									{({ active }) => (
 										<button
 											className={`${
