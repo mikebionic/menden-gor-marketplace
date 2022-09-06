@@ -41,7 +41,7 @@ const MobileProductFilter = ({ open, setOpen }: any) => {
 								leaveTo="translate-x-full"
 							>
 								<div className="w-screen max-w-xs">
-									<ProductsFilterPanel mobile={true} />
+									<ProductsFilterPanel mobile={true} setOpen={setOpen} />
 								</div>
 							</Transition.Child>
 						</div>
