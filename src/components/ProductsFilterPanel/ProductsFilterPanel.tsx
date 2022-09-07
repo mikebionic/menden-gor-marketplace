@@ -76,34 +76,6 @@ const ProductsFilterPanel: React.FC<IPropsProductFilter> = (props) => {
 				<div className="mt-2">
 					<div className="flow-root">
 						<AccordionWrapper className="-my-6 divide-y divide-gray-200">
-							<AccordionItem title="Price range">
-								<Form className="grid h-10 grid-flow-col gap-2 auto-cols-max">
-									<Form.Item name="phone">
-										<Input
-											className="rounded-lg min-h-[32px] w-[100px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
-											type="number"
-											name="minimum"
-											placeholder="Min"
-											value={filters.from_price}
-											onChange={(e: any) =>
-												handlePriceChange('from_price', e.target.value)
-											}
-										/>
-									</Form.Item>
-									<Form.Item name="workPhone">
-										<Input
-											className="rounded-lg min-h-[32px] w-[100px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
-											type="number"
-											name="maximum"
-											placeholder="Max"
-											value={filters.to_price}
-											onChange={(e: any) =>
-												handlePriceChange('to_price', e.target.value)
-											}
-										/>
-									</Form.Item>
-								</Form>
-							</AccordionItem>
 							<AccordionItem title="Categories">
 								<ul className="inline-block w-full h-full pl-0 overflow-y-scroll list-none max-h-60">
 									<li className="h-full pl-2">
@@ -209,6 +181,37 @@ const ProductsFilterPanel: React.FC<IPropsProductFilter> = (props) => {
 								</ul>
 							</AccordionItem>
 						</AccordionWrapper>
+						<div className="container p-3">
+							<p className="mb-2 text-base text-black dark:text-darkTextWhiteColor">
+								{t('common.price_range')}:{' '}
+							</p>
+							<Form className="grid h-10 grid-flow-col gap-2 auto-cols-max">
+								<Form.Item name="phone">
+									<Input
+										className="rounded-lg min-h-[32px] w-[100px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+										type="number"
+										name="minimum"
+										placeholder="Min"
+										value={filters.from_price}
+										onChange={(e: any) =>
+											handlePriceChange('from_price', e.target.value)
+										}
+									/>
+								</Form.Item>
+								<Form.Item name="workPhone">
+									<Input
+										className="rounded-lg min-h-[32px] w-[100px] border-[#E6E6E6] hover:border-textColorOrange dark:bg-darkBgColor dark:border-darkBgColor dark:hover:border-darkFirstColor h-9 dark:text-darkTextWhiteColor"
+										type="number"
+										name="maximum"
+										placeholder="Max"
+										value={filters.to_price}
+										onChange={(e: any) =>
+											handlePriceChange('to_price', e.target.value)
+										}
+									/>
+								</Form.Item>
+							</Form>
+						</div>
 						<div className="grid p-3 grid-cols-iconReverse">
 							<p className="text-base text-black dark:text-darkTextWhiteColor">
 								{t('common.discounts')}
