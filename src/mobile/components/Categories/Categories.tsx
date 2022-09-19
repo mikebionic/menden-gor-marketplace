@@ -39,9 +39,12 @@ const Categories: React.FC = ({ categories }: any) => {
 									key={idx}
 									className="h-32 w-[120px] gap-1 bg-fullwhite place-items-center dark:bg-darkComponentColor shadow-defaultShadow grid place-content-center grid-flow-row auto-rows-max"
 								>
-									<Image src={data.icon} className="w-16 dark:brightness-[3]" />
+									<Image
+										src={data.icon}
+										className="w-16 dark:brightness-[3] object-contain h-16"
+									/>
 									<hr className="w-full mt-1 dark:border-darkFirstColor" />
-									<p className="text-black dark:text-darkTextWhiteColor">
+									<p className="text-center text-black dark:text-darkTextWhiteColor">
 										{data.name}
 									</p>
 								</div>
@@ -69,7 +72,7 @@ const Categories: React.FC = ({ categories }: any) => {
 							<Image
 								src={data.icon}
 								alt="category"
-								className="w-16 dark:brightness-[3]"
+								className="w-16 dark:brightness-[3] object-contain h-16"
 							/>
 						</div>
 					))}

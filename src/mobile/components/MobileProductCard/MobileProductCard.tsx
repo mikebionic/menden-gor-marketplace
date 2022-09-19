@@ -32,14 +32,14 @@ export const MobileProductCard = ({ data }: any) => {
 		: ''
 
 	let resource_name = name
-		? name.length > 25
+		? name.length > 15
 			? `${name.slice(0, 50)}...`
 			: name
 		: ''
 
 	return (
 		<ErrorBoundary>
-			<div className="relative grid w-40 h-72 items-center grid-cols-1 mt-4 bg-white dark:bg-darkComponentColor rounded-lg grid-rows-[max-content_30px_auto_auto_auto] shadow-defaultShadow">
+			<div className="relative container grid w-40 h-72 items-center grid-cols-1 mt-4 bg-white dark:bg-darkComponentColor rounded-lg grid-rows-[max-content_30px_auto_auto_auto] shadow-defaultShadow">
 				<Badge.Ribbon
 					text={discount}
 					placement="start"
