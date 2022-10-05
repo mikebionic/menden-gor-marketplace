@@ -21,20 +21,20 @@ const AppHeader = () => {
 	return (
 		<Helmet>
 			<meta charSet="UTF-8" />
-			<title>{title ? title : 'Lomay sowda'}</title>
+			<title>{title ? title : 'Lomaý söwda'}</title>
 			<link rel="canonical" href="https://ls.com.tm" />
 			{/* <link rel="shortcut icon" type="image/x-icon" href={favicon ? favicon : SapCozgutFavIcon} sizes="16x16" /> */}
 			<meta
 				name="description"
-				content={description ? description : 'Lomay sowda'}
+				content={description ? description : 'Lomaý söwda'}
 			></meta>
 			<meta
 				name="keywords"
-				content={keywords ? keywords : 'Lomay sowda, ls, Marketplace'}
+				content={keywords ? keywords : 'Lomaý söwda, ls, Marketplace'}
 			></meta>
-			<meta name="author" content="Lomay sowda"></meta>
-			<meta property="og:site_name" content="Lomay sowda" />
-			<meta property="og:title" content={title ? title : 'Lomay sowda'} />
+			<meta name="author" content="Lomaý söwda"></meta>
+			<meta property="og:site_name" content="Lomaý söwda" />
+			<meta property="og:title" content={title ? title : 'Lomaý söwda'} />
 			<meta
 				property="og:description"
 				content={
@@ -56,7 +56,7 @@ const AppHeader = () => {
 			<meta property="twitter:image" content={img} />
 			<meta property="twitter:site" content="@ls" />
 			<meta property="twitter:url" content={url ? url : 'https://ls.com.tm'} />
-			<meta property="twitter:title" content={title ? title : 'Lomay sowda'} />
+			<meta property="twitter:title" content={title ? title : 'Lomaý söwda'} />
 		</Helmet>
 	)
 }

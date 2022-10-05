@@ -22,10 +22,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/',
 			title: namesConfig.company_name,
-			description:
-				'Öndürijiden sarp edija lomaý söwda',
+			description: 'Öndürijiden sarp edija lomaý söwda',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: serviceConfig.apiHost,
 			type: 'organisation',
 			// "img": SapCozgut
@@ -34,10 +33,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/login/',
 			title: t('title.login'),
-			description:
-				'Öndürijiden sarp edija lomaý söwda',
+			description: 'Öndürijiden sarp edija lomaý söwda',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/login/`,
 			type: 'login',
 			// "img": SapCozgut
@@ -46,10 +44,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/register/',
 			title: t('title.register'),
-			description:
-				'Öndürijiden sarp edija lomaý söwda',
+			description: 'Öndürijiden sarp edija lomaý söwda',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/register/`,
 			type: 'register',
 			// "img": SapCozgut
@@ -58,10 +55,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/profile/',
 			title: t('title.profile'),
-			description:
-				'Profil maglumatlary görmek',
+			description: 'Profil maglumatlary görmek',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/profile/`,
 			type: 'profile',
 			// "img": SapCozgut
@@ -71,10 +67,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/about/',
 			title: t('title.about'),
-			description:
-				'Lomaý söwda - bölekleýin hem-de lomaýlaýyn söwda ulgamy',
+			description: 'Lomaý söwda - bölekleýin hem-de lomaýlaýyn söwda ulgamy',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/about/`,
 			type: 'about',
 			// "img": SapCozgut
@@ -96,10 +91,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/v-grid/',
 			title: t('title.vGrid'),
-			description:
-				'Lomaý söwda önümler filterleri',
+			description: 'Lomaý söwda önümler filterleri',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/v-grid/`,
 			type: 'products',
 			// "img": SapCozgut
@@ -109,10 +103,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/product/',
 			title: t('title.product'),
-			description:
-				'Harydy jikme-jik görmek',
+			description: 'Harydy jikme-jik görmek',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/product/`,
 			type: 'product',
 			// "img": SapCozgut
@@ -122,10 +115,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/wishlist/',
 			title: t('title.wishlist'),
-			description:
-				'Meniň halanlarym',
+			description: 'Meniň halanlarym',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/wishlist/`,
 			type: 'wishlist',
 			// "img": SapCozgut
@@ -135,10 +127,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/profile-edit/',
 			title: t('title.profileEdit'),
-			description:
-				'Profil üýtgeşmeleri girizmek',
+			description: 'Profil üýtgeşmeleri girizmek',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/profile-edit/`,
 			type: 'profile',
 			// "img": SapCozgut
@@ -148,10 +139,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/orders/',
 			title: t('title.orders'),
-			description:
-				'Haryt sargytlaryň sanawlary',
+			description: 'Haryt sargytlaryň sanawlary',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/orders/`,
 			type: 'orders',
 			// "img": SapCozgut
@@ -161,10 +151,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/checkout/',
 			title: t('title.checkout'),
-			description:
-				'Töleg görnüşleri hem-de töleg amala aşyrmak',
+			description: 'Töleg görnüşleri hem-de töleg amala aşyrmak',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/checkout/`,
 			type: 'checkout',
 			// "img": SapCozgut
@@ -174,10 +163,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/categories/',
 			title: t('title.categories'),
-			description:
-				'Haryt kategoriýalary',
+			description: 'Haryt kategoriýalary',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/categories/`,
 			type: 'categories',
 			// "img": SapCozgut
@@ -187,10 +175,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/settings/',
 			title: t('title.settings'),
-			description:
-				'Mobile sazlamalary amala aşyrmak',
+			description: 'Mobile sazlamalary amala aşyrmak',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/settings/`,
 			type: 'settings',
 			// "img": SapCozgut
@@ -200,10 +187,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/brands/',
 			title: t('title.brands'),
-			description:
-				'Ähli brendleri görmek',
+			description: 'Ähli brendleri görmek',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/brands/`,
 			type: 'brands',
 			// "img": SapCozgut
@@ -213,10 +199,9 @@ const getTitle = (t: any) => {
 		{
 			path: '/cart/',
 			title: t('title.cart'),
-			description:
-				'Meniň sebedimi görmek',
+			description: 'Meniň sebedimi görmek',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/cart/`,
 			type: 'cart',
 			// "img": SapCozgut
@@ -229,7 +214,7 @@ const getTitle = (t: any) => {
 			description:
 				'Töleg hem-de eltip bermek hyzmatlaryny amala aşyrmak maglumatlary',
 			keywords:
-				'Ls, Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Lomaý söwda, Service',
+				'Sap Chozgut, Sap Hasap, Akhasap, Sap Sargyt, Hilli, Ls, Service, Ak Hasap, Lomay Sowda, Market, Sowda, biznes, buisness, techology, programming, React, Node, Express, Flask, Flutter, C#, WPF, Python, JavaScript, Golang, Go, Dart, HTML, CSS, SCSS, Garasharyna, Kredit, Nikai, Garantiya, Kepillik, Credit, Guarantee, Tehnika, Telefon, Ashgabat, Turkmenistan, Esma, Penti, Кредит бытовой техники Ашхабад, Кредит телефон Ашхабад, Рассрочка техника, Рассрочка телефон, kredit telefon ashgabat, Рассрочка телефон рядом Ашхабад, turkmenistan telefon bahalary, kredite telefonlar, garaşaryna telefon, garaşaryna telewizor, kredit telewizor, рассрочка телевизор ashgabat, kredit teker ashgabat, kredit akumulator ashgabat, redmi kredit ashgabat, samsung kredit ashgabat, kondisioner kredit ashgabat, elektronika kredit ashgabat, kredit kir masynlar, karzyna hojalyk harytlary, garaşaryna hojalyk harytlar, garaşaryna teker, kredite tehnika, garaşaryna harytlar, marazilnik kredite, haladilnikler kredite, tikin masynlar kredtite, kredit tw, kredite haly, karzyna tikin maşynlar, marazilnik garaşaryna, kompýuter kredite, компьютер в рассрочку без банка, телефон в рассрочку без банка, бытовая техника в кредит в ашхабаде, интернет-магазин бытовой техники ашхабад, sagatlar kredite, smartfon garaşaryna, nagt ýa-da garaşaryna tehnika, sok maşyn garaşaryna we kredit',
 			url: `${serviceConfig.apiHost}/payment_and_delivery_info/`,
 			type: 'website',
 			// "img": SapCozgut
