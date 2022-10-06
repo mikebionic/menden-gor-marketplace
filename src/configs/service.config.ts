@@ -90,7 +90,7 @@ export const serviceConfig = {
 export const namesConfig = {
 	main_page_slider_name:
 		process.env.REACT_APP_MAIN_PAGE_SLIDER_NAME ?? 'commerce_header',
-	company_name: process.env.REACT_APP_COMPANY_NAME ?? 'Marketplace',
+	company_name: process.env.REACT_APP_COMPANY_NAME ?? 'Lomaý söwda',
 	company_email: process.env.REACT_APP_COMPANY_EMAIL ?? 'sapcozgut@gmail.com',
 	company_webAddress:
 		process.env.REACT_APP_COMPANY_WEBADDRESS ?? 'www.saphasap.com',
