@@ -101,7 +101,7 @@ const RenderProuct = ({
 						<p className="py-1 font-medium text-black lg:text-xl 3xl:text-3xl md:text-lg place-self-start dark:text-darkTextWhiteColor">
 							{t('common.quantity')}: {totBalance}
 						</p>
-						<p className="py-1 font-medium text-black lg:text-xl 3xl:text-3xl md:text-lg place-self-start dark:text-darkTextWhiteColor">
+						<p className="py-1 font-medium text-justify text-black lg:text-base 3xl:text-xl md:text-sm place-self-start dark:text-darkTextWhiteColor">
 							{description}
 						</p>
 					</div>

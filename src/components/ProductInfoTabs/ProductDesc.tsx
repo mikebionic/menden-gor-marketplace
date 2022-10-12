@@ -12,9 +12,12 @@ export const ProductDesc: React.FC<IProductDesc> = ({ fullDescription }) => {
 	return (
 		<ErrorBoundary>
 			<div className="px-3 py-6">
-				<p className="text-base text-justify font-oxygen text-textLightGray dark:text-darkText">
-					{fullDescription ?? t('common.full_description_empty')}
-				</p>
+				<p
+					className="text-base text-justify font-oxygen text-textLightGray dark:text-darkText"
+					dangerouslySetInnerHTML={{
+						__html: fullDescription ?? t('common.full_description_empty'),
+					}}
+				/>
 			</div>
 		</ErrorBoundary>
 	)
