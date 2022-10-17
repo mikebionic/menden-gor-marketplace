@@ -27,3 +27,5 @@ yarn-error.log*
 .env
 *.lock
 package-lock.json
+
+/ssr_routes
