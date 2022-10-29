@@ -33,7 +33,7 @@ export const CategoryListItem: React.FC<ICategoryListItem> = ({
 			</button>
 
 			{categories.length > 1 && (
-				<div className="absolute opacity-0 top-0 left-[100%] z-[99999] bg-fullwhite rounded-lg transition_animation shadow-defaultShadow group-hover:py-2 group-hover:opacity-100 group-hover:visible invisible mt-1 ml-1">
+				<div className="absolute opacity-0 top-0 left-[100%] z-[99999] bg-fullwhite rounded-lg transition_animation shadow-defaultShadow w-max group-hover:py-2 group-hover:opacity-100 group-hover:visible invisible mt-1 ml-1">
 					{categories.map((item: any, idx: number) => (
 						<Link to={`${routeConstants.vGrid.route}?category=${item.id}&`}>
 							<ul
