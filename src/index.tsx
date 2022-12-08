@@ -10,10 +10,11 @@ import 'antd/dist/antd.less'
 
 import AppHeader from 'components/AppHeader'
 import { HeaderProvider } from 'components/HeaderProvider'
+import { App } from 'components/App'
 
-const App = React.lazy(() =>
-	import('components/App').then(({ App }) => ({ default: App })),
-)
+// const App = React.lazy(() =>
+// 	import('components/App').then(({ App }) => ({ default: App })),
+// )
 
 ReactDOM.render(
 	<React.Suspense fallback={<Spinner />}>

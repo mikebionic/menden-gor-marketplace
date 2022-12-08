@@ -156,6 +156,12 @@ const CheckoutForm = (props: any) => {
 		}
 	}
 
+	const OnlineErrorSwal = (text?: string) =>
+		sapswal.fire({
+			icon: 'error',
+			title: t('common.error'),
+			text: t('common.online_error'),
+		})
 	const handleOnlineCheckout = async (inputs: any) => {
 		try {
 			set_loading(true)
@@ -170,7 +176,7 @@ const CheckoutForm = (props: any) => {
 						typeId: 13,
 					}))
 				},
-				(error: any) => errorSwal(error.toString()),
+				(error: any) => OnlineErrorSwal(error.toString()),
 			)
 
 			let updatedstate = await getInputs()
@@ -185,10 +191,10 @@ const CheckoutForm = (props: any) => {
 				)
 				.then(
 					(response: any) => handle_payment_register(response),
-					(error: any) => errorSwal(error.toString()),
+					(error: any) => OnlineErrorSwal(error.toString()),
 				)
 		} catch {
-			errorSwal()
+			OnlineErrorSwal()
 		}
 	}
 
@@ -218,7 +224,7 @@ const CheckoutForm = (props: any) => {
 						}
 						open_payment_window(data.checkout_url)
 					},
-					(error: any) => errorSwal(error.toString()),
+					(error: any) => OnlineErrorSwal(error.toString()),
 				)
 		} else {
 			errorSwal(t('common.payment_fail_contact_admins'))
@@ -237,7 +243,7 @@ const CheckoutForm = (props: any) => {
 				}, 5000)
 			})
 		} catch {
-			errorSwal()
+			OnlineErrorSwal()
 			set_loading(false)
 		}
 	}
@@ -266,7 +272,7 @@ const CheckoutForm = (props: any) => {
 			)
 			.then(
 				(response: any) => handleResponse(response),
-				(error: any) => errorSwal(error.toString()),
+				(error: any) => OnlineErrorSwal(error.toString()),
 			)
 	}
 

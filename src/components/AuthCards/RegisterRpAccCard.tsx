@@ -89,18 +89,12 @@ const RegisterRpAccCard = ({
 		// mobilePhoneNumber: '',
 		workFaxNumber: '',
 	})
-	console.log(inputs.registrationPlace)
-	console.log(inputs.lastName)
 	const handleChange = (e: any) => {
 		let { name, value } = e.target
 		if (name === 'address') {
 			value = `${inputs.district}, ${value}`
 		}
-		console.log(inputs.registrationPlace)
-		console.log(inputs.lastName)
 		setInputs((inputs) => ({ ...inputs, [name]: value }))
-		console.log(inputs.registrationPlace)
-		console.log(inputs.lastName)
 	}
 	const handleKeyValueChange = (name: string = '', value: any = '') => {
 		setInputs((inputs) => ({ ...inputs, [name]: value }))
