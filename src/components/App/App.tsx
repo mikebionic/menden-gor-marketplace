@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { RootStateOrAny, useSelector } from 'react-redux'
 import { connect } from 'react-redux'
@@ -30,8 +30,10 @@ import {
 import { getCategories } from 'sapredux/selectors'
 import { MobileNavbar } from 'mobile/components/MobileNavbar'
 import { MobileBottomNavigation } from 'mobile/components/MobileBottomNavigation'
+import { Spinner } from 'modules/loaders'
 
 const App: React.FC = (props: any) => {
+	const [isLoading, setIsLoading] = useState(true)
 	const { t } = useTranslation()
 	const { onHeaderUpdate }: any = useHeader()
 	const page_data_list = getTitle(t)
@@ -66,24 +68,38 @@ const App: React.FC = (props: any) => {
 	} = props
 
 	useEffect(() => {
-		fetchCategories()
-		fetchBrands()
-		fetchCompanyInfo()
-		fetchSliders()
-		fetchFeaturedResources()
-		fetchDiscountResources()
-		fetchLatestResources()
-		fetchResourceCollections()
-	}, [
-		fetchCategories,
-		fetchBrands,
-		fetchCompanyInfo,
-		fetchSliders,
-		fetchFeaturedResources,
-		fetchDiscountResources,
-		fetchLatestResources,
-		fetchResourceCollections,
-	])
+		Promise.all([
+			fetchCategories(),
+			fetchBrands(),
+			fetchCompanyInfo(),
+			fetchSliders(),
+			fetchFeaturedResources(),
+			fetchDiscountResources(),
+			fetchLatestResources(),
+			fetchResourceCollections(),
+		])
+			.then(() => setIsLoading(false))
+			.catch((error) => console.log(error))
+	}, [])
+	// useEffect(() => {
+	// 	fetchCategories()
+	// 	fetchBrands()
+	// 	fetchCompanyInfo()
+	// 	fetchSliders()
+	// 	fetchFeaturedResources()
+	// 	fetchDiscountResources()
+	// 	fetchLatestResources()
+	// 	fetchResourceCollections()
+	// }, [
+	// 	fetchCategories,
+	// 	fetchBrands,
+	// 	fetchCompanyInfo,
+	// 	fetchSliders,
+	// 	fetchFeaturedResources,
+	// 	fetchDiscountResources,
+	// 	fetchLatestResources,
+	// 	fetchResourceCollections,
+	// ])
 
 	const alert = useSelector((state: RootStateOrAny) => state.alert)
 	const chooseNavbar =
@@ -104,6 +120,10 @@ const App: React.FC = (props: any) => {
 		window.innerWidth < 768
 			? appResponsive.mobileView
 			: appResponsive.desktopView
+
+	if (isLoading) {
+		return <Spinner />
+	}
 
 	return (
 		<ErrorBoundary>
