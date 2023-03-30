@@ -1,4 +1,6 @@
-export const transformRpAcc = (data: any, authMethod: string = 'username') => ({
+export const transformRpAcc = (data: any, authMethod: string = 'username') => {
+	console.log('DATAAA RPACC', data)
+	return {
 		addInf1: data.AddInf1 ?? null,
 		addInf2: data.AddInf2 ?? null,
 		addInf3: data.AddInf3 ?? null,
@@ -72,8 +74,8 @@ export const transformRpAcc = (data: any, authMethod: string = 'username') => ({
 				? data.RpAccMobilePhoneNumber
 				: null,
 		auth_password: data.RpAccUPass ?? null,
-	
-})
+	}
+}
 
 export const toJsonRpAcc = (data: any, allData: boolean = false) => ({
 	AddInf1: data.addInf1 ?? null,
@@ -115,37 +117,33 @@ export const toJsonRpAcc = (data: any, allData: boolean = false) => ({
 })
 
 export const transformUser = (data: any) => ({
-	addInf1: data.AddInf1 ?? null,
-	addInf2: data.AddInf2 ?? null,
-	addInf3: data.AddInf3 ?? null,
-	addInf4: data.AddInf4 ?? null,
-	addInf5: data.AddInf5 ?? null,
-	addInf6: data.AddInf6 ?? null,
-	addInf7: data.AddInf7 ?? null,
-	addInf8: data.AddInf8 ?? null,
-	addInf9: data.AddInf9 ?? null,
-	addInf10: data.AddInf10 ?? null,
-	companyId: data.CId ?? null,
-	createdDate: data.CreatedDate ?? null,
-	createdUId: data.CreatedUId ?? null,
-	divId: data.DivId ?? null,
-	empId: data.EmpId ?? null,
-	deleted: data.GCRecord ?? null,
-	modifiedDate: data.ModifiedDate ?? null,
-	modifiedUId: data.ModifiedUId ?? null,
-	resPriceGroupId: data.ResPriceGroupId ?? null,
-	rpAccId: data.RpAccId ?? null,
-	syncDateTime: data.SyncDateTime ?? null,
-	email: data.UEmail ?? null,
-	fullname: data.UFullName ?? null,
-	guid: data.UGuid ?? null,
-	id: data.UId ?? null,
-	lastActivityDate: data.ULastActivityDate ?? null,
-	lastActivityDevice: data.ULastActivityDevice ?? null,
-	name: data.UName ?? null,
-	regNo: data.URegNo ?? null,
-	shortName: data.UShortName ?? null,
-	typeId: data.UTypeId ?? null,
+	addInf1: data.AddInf1,
+	addInf2: data.AddInf2,
+	addInf3: data.AddInf3,
+	addInf4: data.AddInf4,
+	addInf5: data.AddInf5,
+	addInf6: data.AddInf6,
+	companyId: data.CId,
+	createdDate: data.CreatedDate,
+	createdUId: data.CreatedUId,
+	divId: data.DivId,
+	empId: data.EmpId,
+	deleted: data.GCRecord,
+	modifiedDate: data.ModifiedDate,
+	modifiedUId: data.ModifiedUId,
+	resPriceGroupId: data.ResPriceGroupId,
+	rpAccId: data.RpAccId,
+	syncDateTime: data.SyncDateTime,
+	email: data.UEmail,
+	fullname: data.UFullName,
+	guid: data.UGuid,
+	id: data.UId,
+	lastActivityDate: data.ULastActivityDate,
+	lastActivityDevice: data.ULastActivityDevice,
+	name: data.UName,
+	regNo: data.URegNo,
+	shortName: data.UShortName,
+	typeId: data.UTypeId,
 })
 
 export const transFormRpAccStatus = (data: any) => ({

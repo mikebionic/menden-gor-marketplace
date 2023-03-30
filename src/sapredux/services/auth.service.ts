@@ -109,7 +109,7 @@ const register_rp_acc = async (
 		.then((response: any) => ({
 			status: response.status,
 			message: response.message,
-			...transformResponse(response, authMethod),
+			...transformResponse(response.data, authMethod),
 		}))
 }
 
