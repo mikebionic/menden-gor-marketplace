@@ -63,18 +63,29 @@ export const register_rp_acc = (
 	set_loading: any,
 ) => {
 	return (dispatch: any) => {
+		console.log('PAYLOAD', payload)
 		authService.register_rp_acc(authMethod, registerToken, payload).then(
 			(response: any) => {
+				console.log('RESPONSE OF PAYLOAD', response)
 				set_loading(false)
-				response.status === 1 && dispatch(success({...response, authMethod: authMethod, auth_username: payload.username, auth_password: payload.password}))
+				response.status === 1 &&
+					dispatch(
+						success({
+							...response,
+							authMethod: authMethod,
+							auth_username: payload.username,
+							auth_password: payload.password,
+						}),
+					)
 				withToastMessage &&
 					showToastMessage({
 						type: response.status === 1 ? 'success' : 'error',
 						message: response.message,
-						position: 'center-top',
+						position: 'right-top',
 					})
 			},
 			(error: any) => {
+				console.log('ERROR MESSAGE', error)
 				set_loading(false)
 				dispatch(failure(error.toString()))
 				withToastMessage &&
@@ -135,35 +146,30 @@ const googleAuth = (
 	}
 }
 
-
 export const resetPassword = (payload: any) => {
 	return (dispatch: any) => {
-		authService
-			.resetPassword(payload)
-			.then(
-				(response: any) => {
-					response.status === 1 && dispatch(success(response))
-					sapswal.fire({
-						icon: response.status === 1 ? 'success' : 'error',
-						title: response.status === 1 ? 'Success' : "Error",
-						text: response.message,
-					})
-				},
-				(error: any) =>
-					showToastMessage({
-						type: 'error',
-						message: error.toString(),
-						position: 'center-top',
-					}),
-			)
+		authService.resetPassword(payload).then(
+			(response: any) => {
+				response.status === 1 && dispatch(success(response))
+				sapswal.fire({
+					icon: response.status === 1 ? 'success' : 'error',
+					title: response.status === 1 ? 'Success' : 'Error',
+					text: response.message,
+				})
+			},
+			(error: any) =>
+				showToastMessage({
+					type: 'error',
+					message: error.toString(),
+					position: 'center-top',
+				}),
+		)
 	}
 
 	function success(data: string) {
 		return { type: authConstants.RESET_PASSWORD, payload: data }
 	}
-
 }
-
 
 export const verifyLogin = (
 	authMethod: string,
@@ -201,8 +207,6 @@ export const verifyLogin = (
 		return { type: authConstants.LOGIN_FAILURE, payload: error }
 	}
 }
-
-
 
 export const authActions = {
 	login,

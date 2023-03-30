@@ -1,11 +1,12 @@
-import { 
+import {
 	transformRpAcc,
 	transformUser,
 	transformRpAccType,
-	transFormRpAccStatus
-} from "sapredux/services/transform_data";
+	transFormRpAccStatus,
+} from 'sapredux/services/transform_data'
 
-export const transformAuth = (data:any, authMethod:any = "username") => {
+export const transformAuth = (data: any, authMethod: any = 'username') => {
+	console.log('TRASFORMMMMM', data)
 	return {
 		exp: data.exp,
 		...transformRpAcc(data.rp_acc, authMethod),

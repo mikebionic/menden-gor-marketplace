@@ -82,10 +82,10 @@ const RegisterRpAccCard = ({
 		passportIssuePlace: '',
 		residency: '',
 		registrationPlace: '',
-		suretyName: '',
-		suretyPlaceOfResidence: '',
-		suretyPassportNumber: '',
-		buyersSuretyRelationship: '',
+		suretyName: null,
+		suretyPlaceOfResidence: null,
+		suretyPassportNumber: null,
+		buyersSuretyRelationship: null,
 		// mobilePhoneNumber: '',
 		workFaxNumber: '',
 	})
@@ -119,6 +119,7 @@ const RegisterRpAccCard = ({
 	}, [inputs.firstName, inputs.lastName])
 
 	const handleSubmit = async () => {
+		console.log(inputs)
 		set_loading(true)
 		register_rp_acc(
 			authMethod,
