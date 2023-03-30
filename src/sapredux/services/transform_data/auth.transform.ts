@@ -6,7 +6,6 @@ import {
 } from 'sapredux/services/transform_data'
 
 export const transformAuth = (data: any, authMethod: any = 'username') => {
-	console.log('TRASFORMMMMM', data)
 	return {
 		exp: data.exp,
 		...transformRpAcc(data.rp_acc, authMethod),

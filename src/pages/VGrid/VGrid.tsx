@@ -46,7 +46,7 @@ const VGrid: React.FC = (props: any) => {
 		}
 		let search_querystring = `?`
 		Object.keys(history_filters).map((key) => {
-			console.log('HISTORY ', key, history_filters[key])
+			// console.log('HISTORY ', key, history_filters[key])
 			if (history_filters[key]) {
 				search_querystring += `${key}=${history_filters[key]}&`
 			}

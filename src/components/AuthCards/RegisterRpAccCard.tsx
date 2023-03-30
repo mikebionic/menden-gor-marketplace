@@ -119,7 +119,6 @@ const RegisterRpAccCard = ({
 	}, [inputs.firstName, inputs.lastName])
 
 	const handleSubmit = async () => {
-		console.log(inputs)
 		set_loading(true)
 		register_rp_acc(
 			authMethod,

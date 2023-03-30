@@ -63,10 +63,8 @@ export const register_rp_acc = (
 	set_loading: any,
 ) => {
 	return (dispatch: any) => {
-		console.log('PAYLOAD', payload)
 		authService.register_rp_acc(authMethod, registerToken, payload).then(
 			(response: any) => {
-				console.log('RESPONSE OF PAYLOAD', response)
 				set_loading(false)
 				response.status === 1 &&
 					dispatch(
@@ -85,7 +83,6 @@ export const register_rp_acc = (
 					})
 			},
 			(error: any) => {
-				console.log('ERROR MESSAGE', error)
 				set_loading(false)
 				dispatch(failure(error.toString()))
 				withToastMessage &&

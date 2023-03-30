@@ -144,7 +144,6 @@ export const fetchWishlistResources = () => async (dispatch: any) => {
 	})
 	try {
 		const data = await wishlistService.fetchAll_data()
-		console.log(data)
 		dispatch({
 			type: actionConstants.WISHLIST_FETCH_SUCCESS,
 			payload: data,
